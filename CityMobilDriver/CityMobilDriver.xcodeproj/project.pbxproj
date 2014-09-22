@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D70428B819D0071F00F5C38C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428B719D0071F00F5C38C /* main.m */; };
+		D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BA19D0071F00F5C38C /* AppDelegate.m */; };
+		D70428BE19D0071F00F5C38C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BD19D0071F00F5C38C /* ViewController.m */; };
+		D70428C119D0071F00F5C38C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70428BF19D0071F00F5C38C /* Main.storyboard */; };
+		D70428C319D0071F00F5C38C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70428C219D0071F00F5C38C /* Images.xcassets */; };
+		D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70428C419D0071F00F5C38C /* LaunchScreen.xib */; };
+		D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428D119D0072000F5C38C /* CityMobilDriverTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D70428CC19D0072000F5C38C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D70428AA19D0071F00F5C38C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D70428B119D0071F00F5C38C;
+			remoteInfo = CityMobilDriver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D70428B219D0071F00F5C38C /* CityMobilDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityMobilDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70428B619D0071F00F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D70428B719D0071F00F5C38C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D70428B919D0071F00F5C38C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D70428BA19D0071F00F5C38C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D70428BC19D0071F00F5C38C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D70428BD19D0071F00F5C38C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D70428C019D0071F00F5C38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D70428C219D0071F00F5C38C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D70428C519D0071F00F5C38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMobilDriverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70428D019D0072000F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D70428D119D0072000F5C38C /* CityMobilDriverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMobilDriverTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D70428AF19D0071F00F5C38C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D70428C819D0072000F5C38C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D70428A919D0071F00F5C38C = {
+			isa = PBXGroup;
+			children = (
+				D70428B419D0071F00F5C38C /* CityMobilDriver */,
+				D70428CE19D0072000F5C38C /* CityMobilDriverTests */,
+				D70428B319D0071F00F5C38C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D70428B319D0071F00F5C38C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D70428B219D0071F00F5C38C /* CityMobilDriver.app */,
+				D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
+			isa = PBXGroup;
+			children = (
+				D70428B919D0071F00F5C38C /* AppDelegate.h */,
+				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
+				D70428BC19D0071F00F5C38C /* ViewController.h */,
+				D70428BD19D0071F00F5C38C /* ViewController.m */,
+				D70428BF19D0071F00F5C38C /* Main.storyboard */,
+				D70428C219D0071F00F5C38C /* Images.xcassets */,
+				D70428C419D0071F00F5C38C /* LaunchScreen.xib */,
+				D70428B519D0071F00F5C38C /* Supporting Files */,
+			);
+			path = CityMobilDriver;
+			sourceTree = "<group>";
+		};
+		D70428B519D0071F00F5C38C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D70428B619D0071F00F5C38C /* Info.plist */,
+				D70428B719D0071F00F5C38C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D70428CE19D0072000F5C38C /* CityMobilDriverTests */ = {
+			isa = PBXGroup;
+			children = (
+				D70428D119D0072000F5C38C /* CityMobilDriverTests.m */,
+				D70428CF19D0072000F5C38C /* Supporting Files */,
+			);
+			path = CityMobilDriverTests;
+			sourceTree = "<group>";
+		};
+		D70428CF19D0072000F5C38C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D70428D019D0072000F5C38C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D70428B119D0071F00F5C38C /* CityMobilDriver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D70428D519D0072000F5C38C /* Build configuration list for PBXNativeTarget "CityMobilDriver" */;
+			buildPhases = (
+				D70428AE19D0071F00F5C38C /* Sources */,
+				D70428AF19D0071F00F5C38C /* Frameworks */,
+				D70428B019D0071F00F5C38C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CityMobilDriver;
+			productName = CityMobilDriver;
+			productReference = D70428B219D0071F00F5C38C /* CityMobilDriver.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D70428CA19D0072000F5C38C /* CityMobilDriverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D70428D819D0072000F5C38C /* Build configuration list for PBXNativeTarget "CityMobilDriverTests" */;
+			buildPhases = (
+				D70428C719D0072000F5C38C /* Sources */,
+				D70428C819D0072000F5C38C /* Frameworks */,
+				D70428C919D0072000F5C38C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D70428CD19D0072000F5C38C /* PBXTargetDependency */,
+			);
+			name = CityMobilDriverTests;
+			productName = CityMobilDriverTests;
+			productReference = D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D70428AA19D0071F00F5C38C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Davit Baghdagyulyan";
+				TargetAttributes = {
+					D70428B119D0071F00F5C38C = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					D70428CA19D0072000F5C38C = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = D70428B119D0071F00F5C38C;
+					};
+				};
+			};
+			buildConfigurationList = D70428AD19D0071F00F5C38C /* Build configuration list for PBXProject "CityMobilDriver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D70428A919D0071F00F5C38C;
+			productRefGroup = D70428B319D0071F00F5C38C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D70428B119D0071F00F5C38C /* CityMobilDriver */,
+				D70428CA19D0072000F5C38C /* CityMobilDriverTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D70428B019D0071F00F5C38C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D70428C119D0071F00F5C38C /* Main.storyboard in Resources */,
+				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
+				D70428C319D0071F00F5C38C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D70428C919D0072000F5C38C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D70428AE19D0071F00F5C38C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D70428BE19D0071F00F5C38C /* ViewController.m in Sources */,
+				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
+				D70428B819D0071F00F5C38C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D70428C719D0072000F5C38C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D70428CD19D0072000F5C38C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D70428B119D0071F00F5C38C /* CityMobilDriver */;
+			targetProxy = D70428CC19D0072000F5C38C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D70428BF19D0071F00F5C38C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D70428C019D0071F00F5C38C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D70428C419D0071F00F5C38C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D70428C519D0071F00F5C38C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D70428D319D0072000F5C38C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D70428D419D0072000F5C38C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D70428D619D0072000F5C38C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CityMobilDriver/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D70428D719D0072000F5C38C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CityMobilDriver/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D70428D919D0072000F5C38C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CityMobilDriverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityMobilDriver.app/CityMobilDriver";
+			};
+			name = Debug;
+		};
+		D70428DA19D0072000F5C38C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CityMobilDriverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityMobilDriver.app/CityMobilDriver";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D70428AD19D0071F00F5C38C /* Build configuration list for PBXProject "CityMobilDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D70428D319D0072000F5C38C /* Debug */,
+				D70428D419D0072000F5C38C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D70428D519D0072000F5C38C /* Build configuration list for PBXNativeTarget "CityMobilDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D70428D619D0072000F5C38C /* Debug */,
+				D70428D719D0072000F5C38C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D70428D819D0072000F5C38C /* Build configuration list for PBXNativeTarget "CityMobilDriverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D70428D919D0072000F5C38C /* Debug */,
+				D70428DA19D0072000F5C38C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D70428AA19D0071F00F5C38C /* Project object */;
+}
