@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		D70428B819D0071F00F5C38C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428B719D0071F00F5C38C /* main.m */; };
 		D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BA19D0071F00F5C38C /* AppDelegate.m */; };
-		D70428BE19D0071F00F5C38C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BD19D0071F00F5C38C /* ViewController.m */; };
+		D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BD19D0071F00F5C38C /* RootViewController.m */; };
 		D70428C119D0071F00F5C38C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70428BF19D0071F00F5C38C /* Main.storyboard */; };
 		D70428C319D0071F00F5C38C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70428C219D0071F00F5C38C /* Images.xcassets */; };
 		D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70428C419D0071F00F5C38C /* LaunchScreen.xib */; };
 		D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428D119D0072000F5C38C /* CityMobilDriverTests.m */; };
+		ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5519D2D3C800699A2F /* LoginViewController.m */; };
+		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,18 @@
 		D70428B719D0071F00F5C38C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D70428B919D0071F00F5C38C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D70428BA19D0071F00F5C38C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D70428BC19D0071F00F5C38C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D70428BD19D0071F00F5C38C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D70428BC19D0071F00F5C38C /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		D70428BD19D0071F00F5C38C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D70428C019D0071F00F5C38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D70428C219D0071F00F5C38C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D70428C519D0071F00F5C38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMobilDriverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70428D019D0072000F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70428D119D0072000F5C38C /* CityMobilDriverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMobilDriverTests.m; sourceTree = "<group>"; };
+		ECF40D5419D2D3C800699A2F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		ECF40D5519D2D3C800699A2F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+UINavigationController_shouldAutorotate.h"; sourceTree = "<group>"; };
+		ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+UINavigationController_shouldAutorotate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */,
+				ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */,
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
 				D70428CE19D0072000F5C38C /* CityMobilDriverTests */,
 				D70428B319D0071F00F5C38C /* Products */,
@@ -83,8 +91,10 @@
 			children = (
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
-				D70428BC19D0071F00F5C38C /* ViewController.h */,
-				D70428BD19D0071F00F5C38C /* ViewController.m */,
+				D70428BC19D0071F00F5C38C /* RootViewController.h */,
+				D70428BD19D0071F00F5C38C /* RootViewController.m */,
+				ECF40D5419D2D3C800699A2F /* LoginViewController.h */,
+				ECF40D5519D2D3C800699A2F /* LoginViewController.m */,
 				D70428BF19D0071F00F5C38C /* Main.storyboard */,
 				D70428C219D0071F00F5C38C /* Images.xcassets */,
 				D70428C419D0071F00F5C38C /* LaunchScreen.xib */,
@@ -219,9 +229,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70428BE19D0071F00F5C38C /* ViewController.m in Sources */,
+				ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */,
+				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				D70428B819D0071F00F5C38C /* main.m in Sources */,
+				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +424,7 @@
 				D70428D719D0072000F5C38C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D70428D819D0072000F5C38C /* Build configuration list for PBXNativeTarget "CityMobilDriverTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +433,7 @@
 				D70428DA19D0072000F5C38C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

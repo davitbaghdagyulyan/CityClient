@@ -6,29 +6,28 @@
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "RootViewController.h"
 
-@interface ViewController ()
+@interface RootViewController ()
 
 @end
 
-@implementation ViewController
+@implementation RootViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    NSLog(@"Trying to Commit Arus");
-    NSLog(@"Trying to commit with account Ammabell");
-    
-    
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
+    LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"View2"];
+    [self.navigationController pushViewController:log animated:NO];
+   
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end
