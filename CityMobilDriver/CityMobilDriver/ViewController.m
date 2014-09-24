@@ -16,6 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"Trying to Commit Arus");
+    
+    
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
