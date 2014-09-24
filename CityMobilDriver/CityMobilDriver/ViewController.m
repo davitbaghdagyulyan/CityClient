@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     NSLog(@"Trying to Commit Arus");
+    NSLog(@"Trying to commit with account Ammabell");
     
     
     
