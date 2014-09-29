@@ -14,6 +14,7 @@
 		D70428C319D0071F00F5C38C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70428C219D0071F00F5C38C /* Images.xcassets */; };
 		D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70428C419D0071F00F5C38C /* LaunchScreen.xib */; };
 		D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428D119D0072000F5C38C /* CityMobilDriverTests.m */; };
+		ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */; };
 		ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5519D2D3C800699A2F /* LoginViewController.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,8 @@
 		D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMobilDriverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70428D019D0072000F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70428D119D0072000F5C38C /* CityMobilDriverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMobilDriverTests.m; sourceTree = "<group>"; };
+		ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCellObject.h; sourceTree = "<group>"; };
+		ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCellObject.m; sourceTree = "<group>"; };
 		ECF40D5419D2D3C800699A2F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		ECF40D5519D2D3C800699A2F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+UINavigationController_shouldAutorotate.h"; sourceTree = "<group>"; };
@@ -69,6 +72,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */,
+				ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */,
 				ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */,
 				ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */,
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
@@ -229,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
 				ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,

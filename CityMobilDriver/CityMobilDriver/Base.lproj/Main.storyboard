@@ -25,27 +25,63 @@
             <objects>
                 <viewController id="xBa-E3-xZb" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QkP-or-Wcz"/>
-                        <viewControllerLayoutGuide type="bottom" id="Hxq-wk-jz4"/>
+                        <viewControllerLayoutGuide type="top" id="BXv-Yc-XCX"/>
+                        <viewControllerLayoutGuide type="bottom" id="0B4-fG-kwc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6KW-t1-PvS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-wJ-QHd" userLabel="NavigationView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8N-bd-fmM">
+                                        <rect key="frame" x="10" y="20" width="35" height="35"/>
+                                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="C">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openAndCloseLeftMenu:" destination="xBa-E3-xZb" eventType="touchUpInside" id="Kwu-5g-eIs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="60"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
+                                </variation>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="B1w-wJ-QHd" firstAttribute="leading" secondItem="6KW-t1-PvS" secondAttribute="leading" id="Hfu-zc-ajC"/>
+                            <constraint firstItem="B1w-wJ-QHd" firstAttribute="top" secondItem="6KW-t1-PvS" secondAttribute="top" id="ao3-Hs-kmI"/>
+                            <constraint firstAttribute="trailing" secondItem="B1w-wJ-QHd" secondAttribute="trailing" id="ruy-6b-QkE"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ynx-lG-jmy"/>
+                    <navigationItem key="navigationItem" id="Ynx-lG-jmy">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="navigationView" destination="B1w-wJ-QHd" id="fVX-tJ-gy1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2va-g9-Vtx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3851" y="278"/>
+            <point key="canvasLocation" x="-3852" y="277"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="JwS-Y1-iCe">
             <objects>
                 <viewController storyboardIdentifier="View2" id="BYs-UC-td3" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tbe-Bt-M1n"/>
-                        <viewControllerLayoutGuide type="bottom" id="PYf-vO-ldq"/>
+                        <viewControllerLayoutGuide type="top" id="8Th-rF-f42"/>
+                        <viewControllerLayoutGuide type="bottom" id="zvY-70-5VG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gka-EI-bpJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -68,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldl-a0-d6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3192" y="278"/>
+            <point key="canvasLocation" x="-3191.9999999999995" y="278"/>
         </scene>
     </scenes>
 </document>

@@ -1,15 +1,17 @@
-//
-//  ViewController.h
-//  CityMobilDriver
-//
-//  Created by Davit Baghdagyulyan on 9/22/14.
-//  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
+#import "LeftViewCellObject.h"
 
-@interface RootViewController : UIViewController
+@interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UIView *navigationView;
+
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+
+
 
 
 @end
