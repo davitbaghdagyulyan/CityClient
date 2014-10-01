@@ -233,7 +233,7 @@
     {
         if(flag==0)
         {
-            x=leftMenu.frame.origin.x-(self.view.frame.size.width-self.view.frame.size.height);
+            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
         }
         else
         {
@@ -251,7 +251,7 @@
         
         if(flag==0)
         {
-            x=leftMenu.frame.origin.x+(self.view.frame.size.height-self.view.frame.size.width);
+            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
         }
         else
         {
