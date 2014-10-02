@@ -8,7 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
-- (IBAction)actionBack:(UIButton *)sender;
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UIButton *button;
+
+@property (weak, nonatomic) IBOutlet UITextField *login;
+
+@property (weak, nonatomic) IBOutlet UITextField *password;
+
+@property(nonatomic , assign) int keyboardHeightInPortrait;
+@property(nonatomic , assign) int keyboardHeightInLandscape;
+@property(nonatomic,assign) int curentTextField;
+
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginSpace;
+
+
+
 
 @end
