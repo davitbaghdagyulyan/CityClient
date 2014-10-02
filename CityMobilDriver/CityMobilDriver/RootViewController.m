@@ -1,6 +1,7 @@
 
 
 #import "RootViewController.h"
+#import "CellObject.h"
 
 @interface RootViewController ()
 {
@@ -10,6 +11,8 @@
     bool dragging;
     CGFloat oldX;
     NSMutableArray*nameArray;
+    NSArray * arrayForTableView;
+
 }
 @end
 
@@ -49,6 +52,45 @@
     
     leftMenu.delegate=self;
     leftMenu.dataSource=self;
+    
+    
+   self.button1.titleLabel.textAlignment= NSTextAlignmentCenter;
+   self.button1.titleLabel.textAlignment= NSTextAlignmentCenter;
+    
+    CellObject * object1 = [[CellObject alloc]init];
+    object1.orderType = @"First Hour";
+    object1.ordersNumber = 100;
+    CellObject * object2 = [[CellObject alloc]init];
+    object2.orderType = @"Nearest";
+    object2.ordersNumber = 20;
+    CellObject * object3 = [[CellObject alloc]init];
+    object3.orderType = @"Far";
+    object3.ordersNumber = 5;
+    
+    CellObject * object4 = [[CellObject alloc]init];
+    object4.orderType = @"First Hour";
+    object4.ordersNumber = 10;
+    
+    CellObject * object5 = [[CellObject alloc]init];
+    object5.orderType = @"Nearest";
+    object5.ordersNumber = 20;
+    
+    CellObject * object6 = [[CellObject alloc]init];
+    object6.orderType = @"Far";
+    object6.ordersNumber = 5;
+    
+    CellObject * object7 = [[CellObject alloc]init];
+    object7.orderType = @"Nearest";
+    object7.ordersNumber = 20;
+    
+    CellObject * object8 = [[CellObject alloc]init];
+    object8.orderType = @"Far";
+    object8.ordersNumber = 5;
+    
+
+    arrayForTableView = [[NSArray alloc]initWithObjects:object1,object2,
+                         object3,object4,object5,object6,object7,object8,nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,36 +101,99 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return nameArray.count;
+    if (tableView ==  leftMenu) {
+         return nameArray.count;
+    }
+    else if(tableView == self.tableViewOrdersPort)
+    {
+        return arrayForTableView.count;
+    
+    }
+    else
+    {
+    return arrayForTableView.count;
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    if (tableView == leftMenu)
+    {
+        
     NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%d" , indexPath.row];
     
+
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+
     
     if( cell == nil )
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    if (tableView == leftMenu)
-    {
+    
         cell.textLabel.text = [[nameArray objectAtIndex:indexPath.row]name];
 
     
     cell.backgroundColor=[UIColor blueColor];
     cell.textLabel.textColor=[UIColor whiteColor];
         tableView.backgroundColor=[UIColor blueColor];
-    }
+    
     return cell;
+    }
+    else
+    {
+    
+        
+        NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
+        
+        CustomCellIphone * cell = (CustomCellIphone *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
+        if (cell == nil)
+        {
+            
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellIphone" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        
+        
+        CellObject * currentObject = [arrayForTableView objectAtIndex:indexPath.row];
+        cell.label1.text = [NSString stringWithFormat:@"   %@",currentObject.orderType];
+        cell.label2.text =[NSString stringWithFormat:@"%d",currentObject.ordersNumber];
+        
+        return  cell;
+        
+     }
+    
+   
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView ==leftMenu) {
+        return 44;
+    }
+    else if(tableView == self.tableViewOrdersPort)
+    {
+    return  self.view.frame.size.height/10;
+    }
+    else
+    {
+        return self.view.frame.size.height/10;
+    }
+}
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView==leftMenu)
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    
+    else
+    {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     }
 }
 
@@ -233,7 +338,7 @@
     {
         if(flag==0)
         {
-            x=leftMenu.frame.origin.x-(self.view.frame.size.width-self.view.frame.size.height);
+            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
         }
         else
         {
@@ -251,7 +356,7 @@
         
         if(flag==0)
         {
-            x=leftMenu.frame.origin.x+(self.view.frame.size.height-self.view.frame.size.width);
+            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
         }
         else
         {
