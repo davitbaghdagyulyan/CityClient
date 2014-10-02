@@ -15,8 +15,6 @@
 
 @implementation RootViewController
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -235,7 +233,7 @@
     {
         if(flag==0)
         {
-            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
+            x=leftMenu.frame.origin.x-(self.view.frame.size.width-self.view.frame.size.height);
         }
         else
         {
@@ -253,7 +251,7 @@
         
         if(flag==0)
         {
-            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
+            x=leftMenu.frame.origin.x+(self.view.frame.size.height-self.view.frame.size.width);
         }
         else
         {
