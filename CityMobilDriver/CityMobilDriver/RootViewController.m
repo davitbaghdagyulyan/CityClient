@@ -1,6 +1,9 @@
 
 
 #import "RootViewController.h"
+#import "CustomCell.h"
+#import "CellObject.h"
+
 
 @interface RootViewController ()
 {
@@ -10,6 +13,8 @@
     bool dragging;
     CGFloat oldX;
     NSMutableArray*nameArray;
+    NSArray * arrayForTableView;
+
 }
 @end
 
@@ -49,6 +54,29 @@
     
     leftMenu.delegate=self;
     leftMenu.dataSource=self;
+    
+    
+    CellObject* object1 = [[CellObject alloc]init];
+    object1.orderType = @"First Hour";
+    object1.ordersNumber = 10;
+    CellObject * object2 = [[CellObject alloc]init];
+    object2.orderType = @"Nearest";
+    object2.ordersNumber = 20;
+    CellObject * object3 = [[CellObject alloc]init];
+    object3.orderType = @"Far";
+    object3.ordersNumber = 5;
+    CellObject* object4 = [[CellObject alloc]init];
+    object4.orderType = @"First Hour";
+    object4.ordersNumber = 10;
+    CellObject * object5 = [[CellObject alloc]init];
+    object5.orderType = @"Nearest";
+    object5.ordersNumber = 20;
+    CellObject * object6 = [[CellObject alloc]init];
+    object6.orderType = @"Far";
+    object6.ordersNumber = 5;
+    arrayForTableView = [[NSArray alloc]initWithObjects:object1,object2,
+                         object3,object4,object5,object6,nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,11 +87,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return nameArray.count;
-}
+    if(tableView ==leftMenu)
+    {
+        return nameArray.count;
+    }
+    else
+    {
+        return  arrayForTableView.count;
+
+    }
+   }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    
+  if(tableView == leftMenu)
+  {
     NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%d" , indexPath.row];
     
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -82,6 +121,34 @@
         tableView.backgroundColor=[UIColor blueColor];
     }
     return cell;
+  }
+   
+  else
+   {
+    
+    
+    NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
+    
+    CustomCell * cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
+    if (cell == nil)
+    {
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    
+    CellObject * currentObject = [arrayForTableView objectAtIndex:indexPath.row];
+    
+//     cell.label1.font =[UIFont fontWithName:@"Helvetica" size:18];
+    cell.label1.text = [NSString stringWithFormat:@"   %@",currentObject.orderType];
+//     cell.label2.font =[UIFont fontWithName:@"Helvetica" size:18];
+    cell.label2.text =[NSString stringWithFormat:@"%d",currentObject.ordersNumber];
+       
+    
+    return  cell;
+   }
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,7 +157,33 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+    else
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    }
 }
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == leftMenu)
+    {
+        return  44;
+    }
+   else
+    {
+   return  self.view.frame.size.height/10;
+    }
+    
+    
+    
+}
+
+
+
+
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
@@ -233,7 +326,7 @@
     {
         if(flag==0)
         {
-            x=leftMenu.frame.origin.x-(self.view.frame.size.width-self.view.frame.size.height);
+            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
         }
         else
         {
@@ -251,7 +344,7 @@
         
         if(flag==0)
         {
-            x=leftMenu.frame.origin.x+(self.view.frame.size.height-self.view.frame.size.width);
+            x=self.view.frame.size.width*(CGFloat)5/6*(-1);
         }
         else
         {
@@ -267,4 +360,9 @@
    //////// karen mergeTest
 }
 
+- (IBAction)actionGetMessages:(UIButton *)sender
+
+{
+    
+}
 @end

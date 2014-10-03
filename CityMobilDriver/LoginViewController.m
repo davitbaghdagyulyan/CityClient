@@ -278,4 +278,9 @@
 }
 
 
+- (IBAction)backAction:(id)sender
+{
+  [self.navigationController popViewControllerAnimated:NO];
+    
+}
 @end
