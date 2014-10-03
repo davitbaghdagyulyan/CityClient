@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginJson.h"
+#import "LoginResponse.h"
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
-
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
@@ -25,9 +26,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginSpace;
 
 
+- (IBAction)actionLogin:(UIButton *)sender;
 
-
-- (IBAction)backAction:(id)sender;
+//- (IBAction)backAction:(id)sender;
 
 
 

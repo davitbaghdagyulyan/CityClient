@@ -25,6 +25,18 @@
 		D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70428C419D0071F00F5C38C /* LaunchScreen.xib */; };
 		D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428D119D0072000F5C38C /* CityMobilDriverTests.m */; };
 		ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */; };
+		ECCA90A319DEE2060007831F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908C19DEE2050007831F /* JSONModel.m */; };
+		ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908E19DEE2050007831F /* JSONModelArray.m */; };
+		ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA909019DEE2060007831F /* JSONModelClassProperty.m */; };
+		ECCA90A619DEE2060007831F /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA909219DEE2060007831F /* JSONModelError.m */; };
+		ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA909519DEE2060007831F /* NSArray+JSONModel.m */; };
+		ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA909919DEE2060007831F /* JSONAPI.m */; };
+		ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA909B19DEE2060007831F /* JSONHTTPClient.m */; };
+		ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA909D19DEE2060007831F /* JSONModel+networking.m */; };
+		ECCA90AB19DEE2060007831F /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90A019DEE2060007831F /* JSONKeyMapper.m */; };
+		ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90A219DEE2060007831F /* JSONValueTransformer.m */; };
+		ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90AF19DEE3B90007831F /* LoginJson.m */; };
+		ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90B119DEE3B90007831F /* LoginResponse.m */; };
 		ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE2553619DBF1E9000BD8C9 /* bg.png */; };
 		ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5519D2D3C800699A2F /* LoginViewController.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
@@ -68,6 +80,31 @@
 		D70428D119D0072000F5C38C /* CityMobilDriverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMobilDriverTests.m; sourceTree = "<group>"; };
 		ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCellObject.h; sourceTree = "<group>"; };
 		ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCellObject.m; sourceTree = "<group>"; };
+		ECCA908B19DEE2050007831F /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		ECCA908C19DEE2050007831F /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		ECCA908D19DEE2050007831F /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
+		ECCA908E19DEE2050007831F /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
+		ECCA908F19DEE2050007831F /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		ECCA909019DEE2060007831F /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		ECCA909119DEE2060007831F /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		ECCA909219DEE2060007831F /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		ECCA909419DEE2060007831F /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
+		ECCA909519DEE2060007831F /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		ECCA909619DEE2060007831F /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		ECCA909819DEE2060007831F /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		ECCA909919DEE2060007831F /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		ECCA909A19DEE2060007831F /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		ECCA909B19DEE2060007831F /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		ECCA909C19DEE2060007831F /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		ECCA909D19DEE2060007831F /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		ECCA909F19DEE2060007831F /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		ECCA90A019DEE2060007831F /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		ECCA90A119DEE2060007831F /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		ECCA90A219DEE2060007831F /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		ECCA90AE19DEE3B90007831F /* LoginJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginJson.h; sourceTree = "<group>"; };
+		ECCA90AF19DEE3B90007831F /* LoginJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginJson.m; sourceTree = "<group>"; };
+		ECCA90B019DEE3B90007831F /* LoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResponse.h; sourceTree = "<group>"; };
+		ECCA90B119DEE3B90007831F /* LoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponse.m; sourceTree = "<group>"; };
 		ECE2553619DBF1E9000BD8C9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		ECF40D5419D2D3C800699A2F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		ECF40D5519D2D3C800699A2F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
@@ -96,6 +133,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECCA90AD19DEE3920007831F /* Login */,
+				ECCA908919DEE2050007831F /* JSONModel */,
 				ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */,
 				ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */,
 				ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */,
@@ -127,12 +166,12 @@
 			children = (
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
-				D70428BC19D0071F00F5C38C /* RootViewController.h */,
 				8FE032E819DE97B700B17C09 /* CellObject.h */,
 				8FE032E919DE97B700B17C09 /* CellObject.m */,
 				ECF40D5419D2D3C800699A2F /* LoginViewController.h */,
-				D70428BD19D0071F00F5C38C /* RootViewController.m */,
 				ECF40D5519D2D3C800699A2F /* LoginViewController.m */,
+				D70428BC19D0071F00F5C38C /* RootViewController.h */,
+				D70428BD19D0071F00F5C38C /* RootViewController.m */,
 				D70428BF19D0071F00F5C38C /* Main.storyboard */,
 				8FE032DD19DE8AD000B17C09 /* CustomCell.xib */,
 				8FE032E219DE8B3600B17C09 /* CustomCell.h */,
@@ -169,6 +208,77 @@
 				D70428D019D0072000F5C38C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ECCA908919DEE2050007831F /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA908A19DEE2050007831F /* JSONModel */,
+				ECCA909319DEE2060007831F /* JSONModelCategories */,
+				ECCA909619DEE2060007831F /* JSONModelLib.h */,
+				ECCA909719DEE2060007831F /* JSONModelNetworking */,
+				ECCA909E19DEE2060007831F /* JSONModelTransformations */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		ECCA908A19DEE2050007831F /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA908B19DEE2050007831F /* JSONModel.h */,
+				ECCA908C19DEE2050007831F /* JSONModel.m */,
+				ECCA908D19DEE2050007831F /* JSONModelArray.h */,
+				ECCA908E19DEE2050007831F /* JSONModelArray.m */,
+				ECCA908F19DEE2050007831F /* JSONModelClassProperty.h */,
+				ECCA909019DEE2060007831F /* JSONModelClassProperty.m */,
+				ECCA909119DEE2060007831F /* JSONModelError.h */,
+				ECCA909219DEE2060007831F /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		ECCA909319DEE2060007831F /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA909419DEE2060007831F /* NSArray+JSONModel.h */,
+				ECCA909519DEE2060007831F /* NSArray+JSONModel.m */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		ECCA909719DEE2060007831F /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA909819DEE2060007831F /* JSONAPI.h */,
+				ECCA909919DEE2060007831F /* JSONAPI.m */,
+				ECCA909A19DEE2060007831F /* JSONHTTPClient.h */,
+				ECCA909B19DEE2060007831F /* JSONHTTPClient.m */,
+				ECCA909C19DEE2060007831F /* JSONModel+networking.h */,
+				ECCA909D19DEE2060007831F /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		ECCA909E19DEE2060007831F /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA909F19DEE2060007831F /* JSONKeyMapper.h */,
+				ECCA90A019DEE2060007831F /* JSONKeyMapper.m */,
+				ECCA90A119DEE2060007831F /* JSONValueTransformer.h */,
+				ECCA90A219DEE2060007831F /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
+		ECCA90AD19DEE3920007831F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				ECCA90AE19DEE3B90007831F /* LoginJson.h */,
+				ECCA90AF19DEE3B90007831F /* LoginJson.m */,
+				ECCA90B019DEE3B90007831F /* LoginResponse.h */,
+				ECCA90B119DEE3B90007831F /* LoginResponse.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,14 +390,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
+				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
+				ECCA90A619DEE2060007831F /* JSONModelError.m in Sources */,
+				ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */,
 				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
 				ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */,
+				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
+				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
+				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
 				8FE032E419DE8B3600B17C09 /* CustomCell.m in Sources */,
+				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
+				ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */,
+				ECCA90AB19DEE2060007831F /* JSONKeyMapper.m in Sources */,
 				D70428B819D0071F00F5C38C /* main.m in Sources */,
+				ECCA90A319DEE2060007831F /* JSONModel.m in Sources */,
 				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
+				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

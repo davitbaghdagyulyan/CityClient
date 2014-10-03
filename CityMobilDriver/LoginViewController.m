@@ -278,9 +278,83 @@
 }
 
 
-- (IBAction)backAction:(id)sender
+//- (IBAction)backAction:(id)sender
+//{
+//  [self.navigationController popViewControllerAnimated:NO];
+//    
+//}
+
+- (IBAction)actionLogin:(UIButton *)sender
 {
-  [self.navigationController popViewControllerAnimated:NO];
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
     
+    LoginJson* loginJsonObject=[[LoginJson alloc]init];
+    loginJsonObject.bankid=login.text;
+    loginJsonObject.pass=password.text;
+    NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
+    NSString*jsons=[loginJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+ 
+    
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                            message:@"NO INTERNET CONECTION"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            
+            [alert show];
+            return ;
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
+        NSError*err;
+        LoginResponse*loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
+        
+        
+        if(loginResponseObject.code!=nil)
+        {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"
+                                                            message:@"Неправильно указан логин и/или пароль"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+            
+        }
+        else
+        {
+            [self.navigationController popViewControllerAnimated:NO];
+        }
+        
+    }];
+    
+    [indicator stopAnimating];
 }
 @end
