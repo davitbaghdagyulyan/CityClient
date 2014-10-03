@@ -355,9 +355,7 @@
         
     }
     
-
-    //vc retgrteh yerhjrty64euhy
-   //////// karen mergeTest
+    
 }
 
 - (IBAction)actionGetMessages:(UIButton *)sender
