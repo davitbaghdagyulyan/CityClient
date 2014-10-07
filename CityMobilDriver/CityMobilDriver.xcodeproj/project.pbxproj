@@ -24,6 +24,10 @@
 		D70428C319D0071F00F5C38C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70428C219D0071F00F5C38C /* Images.xcassets */; };
 		D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70428C419D0071F00F5C38C /* LaunchScreen.xib */; };
 		D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428D119D0072000F5C38C /* CityMobilDriverTests.m */; };
+		ECB1C16B19E284000027F482 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1C16A19E284000027F482 /* MessagesViewController.m */; };
+		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
+		ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1C16F19E2AB730027F482 /* MessagesCell.m */; };
+		ECB6888419E3E13F00807BD1 /* SubTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB6888319E3E13F00807BD1 /* SubTable.m */; };
 		ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */; };
 		ECCA90A319DEE2060007831F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908C19DEE2050007831F /* JSONModel.m */; };
 		ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908E19DEE2050007831F /* JSONModelArray.m */; };
@@ -78,6 +82,13 @@
 		D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMobilDriverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70428D019D0072000F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70428D119D0072000F5C38C /* CityMobilDriverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMobilDriverTests.m; sourceTree = "<group>"; };
+		EC72C57319E3E49500676A68 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = SOURCE_ROOT; };
+		ECB1C16A19E284000027F482 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessagesViewController.m; path = ../MessagesViewController.m; sourceTree = "<group>"; };
+		ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesCell.xib; path = ../MessagesCell.xib; sourceTree = "<group>"; };
+		ECB1C16E19E2AB730027F482 /* MessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessagesCell.h; path = ../MessagesCell.h; sourceTree = "<group>"; };
+		ECB1C16F19E2AB730027F482 /* MessagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessagesCell.m; path = ../MessagesCell.m; sourceTree = "<group>"; };
+		ECB6888219E3E13F00807BD1 /* SubTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTable.h; sourceTree = "<group>"; };
+		ECB6888319E3E13F00807BD1 /* SubTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTable.m; sourceTree = "<group>"; };
 		ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCellObject.h; sourceTree = "<group>"; };
 		ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCellObject.m; sourceTree = "<group>"; };
 		ECCA908B19DEE2050007831F /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
@@ -133,6 +144,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECB6888219E3E13F00807BD1 /* SubTable.h */,
+				ECB6888319E3E13F00807BD1 /* SubTable.m */,
 				ECCA90AD19DEE3920007831F /* Login */,
 				ECCA908919DEE2050007831F /* JSONModel */,
 				ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */,
@@ -172,10 +185,15 @@
 				ECF40D5519D2D3C800699A2F /* LoginViewController.m */,
 				D70428BC19D0071F00F5C38C /* RootViewController.h */,
 				D70428BD19D0071F00F5C38C /* RootViewController.m */,
+				EC72C57319E3E49500676A68 /* MessagesViewController.h */,
+				ECB1C16A19E284000027F482 /* MessagesViewController.m */,
 				D70428BF19D0071F00F5C38C /* Main.storyboard */,
 				8FE032DD19DE8AD000B17C09 /* CustomCell.xib */,
 				8FE032E219DE8B3600B17C09 /* CustomCell.h */,
 				8FE032E319DE8B3600B17C09 /* CustomCell.m */,
+				ECB1C16E19E2AB730027F482 /* MessagesCell.h */,
+				ECB1C16F19E2AB730027F482 /* MessagesCell.m */,
+				ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */,
 				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				D70428C219D0071F00F5C38C /* Images.xcassets */,
 				D70428C419D0071F00F5C38C /* LaunchScreen.xib */,
@@ -367,6 +385,7 @@
 				8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */,
 				8FDF958219DE7E60005A468A /* logo@2x.png in Resources */,
 				ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */,
+				ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */,
 				8FE032F219DEC83B00B17C09 /* icon.png in Resources */,
 				8FE032F419DEC84A00B17C09 /* icon2.png in Resources */,
 				8FE032F619DEC86900B17C09 /* icon3.png in Resources */,
@@ -409,7 +428,10 @@
 				ECCA90A319DEE2060007831F /* JSONModel.m in Sources */,
 				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
+				ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
+				ECB1C16B19E284000027F482 /* MessagesViewController.m in Sources */,
+				ECB6888419E3E13F00807BD1 /* SubTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
