@@ -55,10 +55,10 @@
     leftMenu.delegate=self;
     leftMenu.dataSource=self;
     
-    
+    //RootViewController Interface
     CellObject* object1 = [[CellObject alloc]init];
-    object1.orderType = @"First Hour";
-    object1.ordersNumber = 10;
+    object1.orderType = @"ближайшие по расстоянию";
+    object1.ordersNumber = 124;
     CellObject * object2 = [[CellObject alloc]init];
     object2.orderType = @"Nearest";
     object2.ordersNumber = 20;
@@ -76,6 +76,23 @@
     object6.ordersNumber = 5;
     arrayForTableView = [[NSArray alloc]initWithObjects:object1,object2,
                          object3,object4,object5,object6,nil];
+    
+    
+    self.labelMessages.font =[UIFont fontWithName:@"MyriadPro-Regular" size:16];
+    self.labelCallToDispetcher.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+    self.titleLabelPort.font =[UIFont fontWithName:@"Roboto-Regular" size:19];
+    
+    
+    self.labelMessagesLand.font =[UIFont fontWithName:@"MyriadPro-Regular" size:20];
+    self.labelCallToDispetcherLand.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
+    self.titleLabelLand.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
+
+    
+    self.labelMessagesIpad.font =[UIFont fontWithName:@"MyriadPro-Regular" size:20];
+    self.labelCallToDispethcerIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
+    self.titleLabelIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
+    
+
 
 }
 
@@ -140,9 +157,9 @@
     
     CellObject * currentObject = [arrayForTableView objectAtIndex:indexPath.row];
     
-//     cell.label1.font =[UIFont fontWithName:@"Helvetica" size:18];
+       cell.label1.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:15];
     cell.label1.text = [NSString stringWithFormat:@"   %@",currentObject.orderType];
-//     cell.label2.font =[UIFont fontWithName:@"Helvetica" size:18];
+     cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
     cell.label2.text =[NSString stringWithFormat:@"%d",currentObject.ordersNumber];
        
     
@@ -174,7 +191,7 @@
     }
    else
     {
-   return  self.view.frame.size.height/10;
+   return  self.view.frame.size.height/12;
     }
     
     
@@ -184,6 +201,21 @@
 
 
 
+
+- (IBAction)actionYandex:(id)sender {
+}
+
+- (IBAction)actionUnknown1:(id)sender {
+}
+
+- (IBAction)actionGPS:(id)sender {
+}
+
+- (IBAction)actionUnkown2:(id)sender {
+}
+
+- (IBAction)actionUnkown3:(id)sender {
+}
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
@@ -362,5 +394,7 @@
 
 {
     
+}
+- (IBAction)actionCallDispetcher:(id)sender {
 }
 @end

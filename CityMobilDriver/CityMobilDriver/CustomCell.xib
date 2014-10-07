@@ -17,18 +17,18 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbR-QR-phX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyZ-wQ-Vh0">
-                                <rect key="frame" x="0.0" y="0.0" width="256" height="41"/>
-                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-bY-jOO">
-                                <rect key="frame" x="256" y="0.0" width="64" height="41"/>
+                                <rect key="frame" x="275" y="0.0" width="45" height="41"/>
                                 <color key="backgroundColor" red="0.52156862745098043" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyZ-wQ-Vh0">
+                                <rect key="frame" x="0.0" y="0.0" width="275" height="41"/>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -37,8 +37,8 @@
                             <constraint firstItem="VuP-bY-jOO" firstAttribute="height" secondItem="gbR-QR-phX" secondAttribute="height" constant="-3" id="3vX-zt-RJz"/>
                             <constraint firstAttribute="bottom" secondItem="VuP-bY-jOO" secondAttribute="bottom" constant="3" id="GYL-Vg-Wj5"/>
                             <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="leading" secondItem="gbR-QR-phX" secondAttribute="leading" id="LNu-pW-LCE"/>
-                            <constraint firstItem="VuP-bY-jOO" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="1/5" id="OXf-4e-zUJ"/>
-                            <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="4/5" id="Ud6-TM-0r0"/>
+                            <constraint firstItem="VuP-bY-jOO" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="0.141" id="OXf-4e-zUJ"/>
+                            <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="0.859" id="Ud6-TM-0r0"/>
                             <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="height" secondItem="gbR-QR-phX" secondAttribute="height" constant="-3" id="axW-Dk-5Mo"/>
                             <constraint firstAttribute="trailing" secondItem="VuP-bY-jOO" secondAttribute="trailing" id="kbh-8p-FkW"/>
                             <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="top" secondItem="gbR-QR-phX" secondAttribute="top" id="qm6-Ce-giZ"/>
