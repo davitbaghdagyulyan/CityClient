@@ -32,7 +32,7 @@
     LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"View2"];
     [self.navigationController pushViewController:log animated:NO];
     
-    leftMenu.delegate=self;
+   
     LeftViewCellObject*obj1=[[LeftViewCellObject alloc]init];
     obj1.name=@"Harut";
     LeftViewCellObject*obj2=[[LeftViewCellObject alloc]init];
@@ -125,7 +125,7 @@
     
   if(tableView == leftMenu)
   {
-    NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%d" , indexPath.row];
+    NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , (long)indexPath.row];
     
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
@@ -398,7 +398,8 @@
 - (IBAction)actionGetMessages:(UIButton *)sender
 
 {
-    
+    MessagesViewController*mvc=[self.storyboard instantiateViewControllerWithIdentifier:@"MessagesViewController"];
+    [self.navigationController pushViewController:mvc  animated:NO];
 }
 - (IBAction)actionCallDispetcher:(id)sender {
 }

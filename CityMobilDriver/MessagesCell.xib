@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="tIu-Wc-oMy" customClass="MessagesCell">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tIu-Wc-oMy" id="vWh-VF-ayG">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQM-RZ-8O2">
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="43"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejl-ox-VvU" userLabel="Label1">
+                                <rect key="frame" x="0.0" y="2" width="452" height="39"/>
+                                <color key="backgroundColor" white="0.85472741788321172" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8H-lG-ZDT" userLabel="Label2">
+                                <rect key="frame" x="452" y="2" width="128" height="39"/>
+                                <color key="backgroundColor" white="0.55537180656934304" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="452" y="0.0" width="42" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o8H-lG-ZDT" firstAttribute="height" secondItem="jQM-RZ-8O2" secondAttribute="height" multiplier="39/43" id="73Z-0S-i12"/>
+                            <constraint firstItem="ejl-ox-VvU" firstAttribute="leading" secondItem="jQM-RZ-8O2" secondAttribute="leading" id="7z0-5C-uhF"/>
+                            <constraint firstItem="ejl-ox-VvU" firstAttribute="top" secondItem="jQM-RZ-8O2" secondAttribute="top" constant="2" id="J5s-OP-sgB"/>
+                            <constraint firstItem="o8H-lG-ZDT" firstAttribute="top" secondItem="jQM-RZ-8O2" secondAttribute="top" constant="2" id="fxU-7W-hX4"/>
+                            <constraint firstItem="ejl-ox-VvU" firstAttribute="width" secondItem="jQM-RZ-8O2" secondAttribute="width" multiplier="452/580" id="jx3-mY-vYA"/>
+                            <constraint firstItem="o8H-lG-ZDT" firstAttribute="leading" secondItem="jQM-RZ-8O2" secondAttribute="trailing" multiplier="452/580" id="rei-KQ-cFJ"/>
+                            <constraint firstItem="ejl-ox-VvU" firstAttribute="height" secondItem="jQM-RZ-8O2" secondAttribute="height" multiplier="39/43" id="slM-he-54l"/>
+                            <constraint firstItem="o8H-lG-ZDT" firstAttribute="width" secondItem="jQM-RZ-8O2" secondAttribute="width" multiplier="128/580" id="viU-OU-eqa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="jQM-RZ-8O2" secondAttribute="bottom" id="MbF-zL-rKq"/>
+                    <constraint firstItem="jQM-RZ-8O2" firstAttribute="top" secondItem="vWh-VF-ayG" secondAttribute="top" id="PRR-0e-XEr"/>
+                    <constraint firstAttribute="trailing" secondItem="jQM-RZ-8O2" secondAttribute="trailing" id="aWJ-ua-AJ2"/>
+                    <constraint firstItem="jQM-RZ-8O2" firstAttribute="leading" secondItem="vWh-VF-ayG" secondAttribute="leading" id="lxl-yk-661"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="o8H-lG-ZDT" id="sII-LH-ttM"/>
+                <outlet property="titLabel" destination="ejl-ox-VvU" id="bwX-uD-jiL"/>
+            </connections>
+            <point key="canvasLocation" x="80" y="45"/>
+        </tableViewCell>
+    </objects>
+</document>

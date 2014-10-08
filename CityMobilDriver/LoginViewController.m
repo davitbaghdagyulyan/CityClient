@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "SingleDataProvider.h"
 @interface LoginViewController ()
 
 @end
@@ -293,8 +293,10 @@
     [self.view addSubview:indicator];
     
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
-    loginJsonObject.bankid=@"104382";
-    loginJsonObject.pass=@"84609";
+    loginJsonObject.bankid=@"104382";//login.text;
+    loginJsonObject.pass=@"84609";//password.text;
+
+
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];
     NSLog(@"%@",jsons);
@@ -350,6 +352,7 @@
         }
         else
         {
+            [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
             [self.navigationController popViewControllerAnimated:NO];
         }
         
