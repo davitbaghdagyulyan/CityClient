@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LeftViewCellObject.h"
-
+#import "MessagesCell.h"
 
 @interface MessagesViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;

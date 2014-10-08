@@ -31,10 +31,13 @@
 		D70428C319D0071F00F5C38C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70428C219D0071F00F5C38C /* Images.xcassets */; };
 		D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70428C419D0071F00F5C38C /* LaunchScreen.xib */; };
 		D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428D119D0072000F5C38C /* CityMobilDriverTests.m */; };
+		EC40D43D19E4323C007BA02C /* MailJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43C19E4323C007BA02C /* MailJson.m */; };
+		EC40D44019E43258007BA02C /* MailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43F19E43258007BA02C /* MailResponse.m */; };
+		EC40D44419E436C5007BA02C /* MailElements.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D44319E436C5007BA02C /* MailElements.m */; };
+		EC55988B19E5364900877CBC /* SingleDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55988A19E5364900877CBC /* SingleDataProvider.m */; };
 		ECB1C16B19E284000027F482 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1C16A19E284000027F482 /* MessagesViewController.m */; };
 		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
 		ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1C16F19E2AB730027F482 /* MessagesCell.m */; };
-		ECB6888419E3E13F00807BD1 /* SubTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB6888319E3E13F00807BD1 /* SubTable.m */; };
 		ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */; };
 		ECCA90A319DEE2060007831F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908C19DEE2050007831F /* JSONModel.m */; };
 		ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908E19DEE2050007831F /* JSONModelArray.m */; };
@@ -96,13 +99,19 @@
 		D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMobilDriverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70428D019D0072000F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70428D119D0072000F5C38C /* CityMobilDriverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMobilDriverTests.m; sourceTree = "<group>"; };
+		EC40D43B19E4323C007BA02C /* MailJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailJson.h; sourceTree = "<group>"; };
+		EC40D43C19E4323C007BA02C /* MailJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailJson.m; sourceTree = "<group>"; };
+		EC40D43E19E43258007BA02C /* MailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailResponse.h; sourceTree = "<group>"; };
+		EC40D43F19E43258007BA02C /* MailResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailResponse.m; sourceTree = "<group>"; };
+		EC40D44219E436C5007BA02C /* MailElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailElements.h; sourceTree = "<group>"; };
+		EC40D44319E436C5007BA02C /* MailElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailElements.m; sourceTree = "<group>"; };
+		EC55988919E5364900877CBC /* SingleDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProvider.h; sourceTree = "<group>"; };
+		EC55988A19E5364900877CBC /* SingleDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProvider.m; sourceTree = "<group>"; };
 		EC72C57319E3E49500676A68 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = SOURCE_ROOT; };
 		ECB1C16A19E284000027F482 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessagesViewController.m; path = ../MessagesViewController.m; sourceTree = "<group>"; };
 		ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesCell.xib; path = ../MessagesCell.xib; sourceTree = "<group>"; };
 		ECB1C16E19E2AB730027F482 /* MessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessagesCell.h; path = ../MessagesCell.h; sourceTree = "<group>"; };
 		ECB1C16F19E2AB730027F482 /* MessagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessagesCell.m; path = ../MessagesCell.m; sourceTree = "<group>"; };
-		ECB6888219E3E13F00807BD1 /* SubTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTable.h; sourceTree = "<group>"; };
-		ECB6888319E3E13F00807BD1 /* SubTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTable.m; sourceTree = "<group>"; };
 		ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCellObject.h; sourceTree = "<group>"; };
 		ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCellObject.m; sourceTree = "<group>"; };
 		ECCA908B19DEE2050007831F /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
@@ -158,8 +167,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
-				ECB6888219E3E13F00807BD1 /* SubTable.h */,
-				ECB6888319E3E13F00807BD1 /* SubTable.m */,
+				EC55988819E535D000877CBC /* Single Data Provider */,
+				EC40D44119E43490007BA02C /* Mail */,
 				ECCA90AD19DEE3920007831F /* Login */,
 				ECCA908919DEE2050007831F /* JSONModel */,
 				ECBB5A9B19D457F5009A151D /* LeftViewCellObject.h */,
@@ -247,6 +256,28 @@
 				D70428D019D0072000F5C38C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC40D44119E43490007BA02C /* Mail */ = {
+			isa = PBXGroup;
+			children = (
+				EC40D44219E436C5007BA02C /* MailElements.h */,
+				EC40D44319E436C5007BA02C /* MailElements.m */,
+				EC40D43E19E43258007BA02C /* MailResponse.h */,
+				EC40D43F19E43258007BA02C /* MailResponse.m */,
+				EC40D43B19E4323C007BA02C /* MailJson.h */,
+				EC40D43C19E4323C007BA02C /* MailJson.m */,
+			);
+			name = Mail;
+			sourceTree = "<group>";
+		};
+		EC55988819E535D000877CBC /* Single Data Provider */ = {
+			isa = PBXGroup;
+			children = (
+				EC55988919E5364900877CBC /* SingleDataProvider.h */,
+				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
+			);
+			name = "Single Data Provider";
 			sourceTree = "<group>";
 		};
 		ECCA908919DEE2050007831F /* JSONModel */ = {
@@ -412,14 +443,11 @@
 				8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */,
 				8FDF958219DE7E60005A468A /* logo@2x.png in Resources */,
 				ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */,
-
 				ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */,
-
 				8FE032F219DEC83B00B17C09 /* icon@2x.png in Resources */,
 				8FE032F419DEC84A00B17C09 /* icon2@2x.png in Resources */,
 				8FE032F619DEC86900B17C09 /* icon3@2x.png in Resources */,
 				8FCCBBC019E2DDC400BD9BC1 /* chat1@2x.png in Resources */,
-
 				D70428C319D0071F00F5C38C /* Images.xcassets in Resources */,
 				8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */,
 				8FE032EC19DEC80600B17C09 /* ya@2x.png in Resources */,
@@ -442,6 +470,8 @@
 			files = (
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
+				EC40D44019E43258007BA02C /* MailResponse.m in Sources */,
+				EC40D43D19E4323C007BA02C /* MailJson.m in Sources */,
 				ECCA90A619DEE2060007831F /* JSONModelError.m in Sources */,
 				ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */,
 				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
@@ -453,6 +483,7 @@
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
 				8FE032E419DE8B3600B17C09 /* CustomCell.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
+				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
 				ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */,
 				ECCA90AB19DEE2060007831F /* JSONKeyMapper.m in Sources */,
 				D70428B819D0071F00F5C38C /* main.m in Sources */,
@@ -460,9 +491,9 @@
 				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 				ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */,
+				EC55988B19E5364900877CBC /* SingleDataProvider.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
 				ECB1C16B19E284000027F482 /* MessagesViewController.m in Sources */,
-				ECB6888419E3E13F00807BD1 /* SubTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

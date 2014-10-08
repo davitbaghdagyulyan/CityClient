@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "SingleDataProvider.h"
 @interface LoginViewController ()
 
 @end
@@ -352,6 +352,7 @@
         }
         else
         {
+            [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
             [self.navigationController popViewControllerAnimated:NO];
         }
         

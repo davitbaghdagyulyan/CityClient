@@ -120,7 +120,7 @@
     
   if(tableView == leftMenu)
   {
-    NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%d" , indexPath.row];
+    NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , (long)indexPath.row];
     
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     

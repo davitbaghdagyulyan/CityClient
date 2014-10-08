@@ -7,8 +7,8 @@
 //
 
 #import "MessagesViewController.h"
-#import "SubTable.h"
-
+#import "MailJson.h"
+#import "MailResponse.h"
 
 @interface MessagesViewController ()
 {
@@ -16,7 +16,8 @@
     UITableView*leftMenu;
     NSInteger flag;
     NSMutableArray*nameArray;
-    SubTable *table;
+
+    MailResponse*mailResponseObject;
 }
 @end
 
@@ -25,12 +26,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self RequestGetMail];
+    
     leftMenu=[[UITableView alloc]initWithFrame:CGRectMake(-1*self.view.frame.size.width*(CGFloat)5/6, self.navigationView.frame.origin.y+self.navigationView.frame.size.height, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-self.navigationView.frame.size.height) ];
     [self.view addSubview:leftMenu];
-    
-    table=[[SubTable alloc]init];
-    self.messagesTableView.delegate = table;
-    self.messagesTableView.dataSource = table;
+    self.messagesTableView.delegate = self;
+    self.messagesTableView.dataSource = self;
+  
+ 
 
     
     flag=0;
@@ -73,7 +76,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
+    if (tableView==leftMenu)
+    {
         return nameArray.count;
+    }
+    else
+    {
+        return mailResponseObject.mail.count;
+    }
    
    
 }
@@ -81,7 +91,11 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     
-           NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , indexPath.row];
+    if (tableView==leftMenu)
+    {
+       
+    
+    NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , indexPath.row];
         
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
         
@@ -89,22 +103,47 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
-        if (tableView == leftMenu)
-        {
+       
+        
             cell.textLabel.text = [[nameArray objectAtIndex:indexPath.row]name];
             
             
             cell.backgroundColor=[UIColor blueColor];
             cell.textLabel.textColor=[UIColor whiteColor];
             tableView.backgroundColor=[UIColor blueColor];
-        }
+        
         return cell;
-   
+    }
+    else
+    {
+        NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , (long)indexPath.row];
+       
+        MessagesCell *cell = (MessagesCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        
+        if( cell == nil )
+        {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MessagesCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+            
+        }
+        cell.titLabel.text=[[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
+        cell.dateLabel.text=[self TimeFormat:[[mailResponseObject.mail objectAtIndex:indexPath.row] getDate]];
+        
+        
+        return cell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    if (tableView==leftMenu)
+    {
+    
+    }
+    else
+    {
+      
+    }
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
    
 }
@@ -298,6 +337,91 @@
     
     
 }
+-(void)RequestGetMail
+{
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
 
+    
+    MailJson* mailJsonObject=[[MailJson alloc]init];
+   
+    
+    
+    NSDictionary*jsonDictionary=[mailJsonObject toDictionary];
+    NSString*jsons=[mailJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+    
+    
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                            message:@"NO INTERNET CONECTION"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            
+            [alert show];
+            return ;
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
+        NSError*err;
+       mailResponseObject = [[MailResponse alloc] initWithString:jsonString error:&err];
+        
+        
+        if(mailResponseObject.code!=nil)
+        {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+            
+        }
+        [indicator stopAnimating];
+        [self.messagesTableView reloadData];
+    }];
 
+}
+-(NSString*)TimeFormat:(NSString*)string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
+    
+    
+    
+    NSDate *date = [[NSDate alloc] init];
+    date = [dateFormatter dateFromString:string];
+    
+    /////////convert nsdata To NSString////////////////////////////////////
+    [dateFormatter setDateFormat:@"dd-MM-yyy"];
+    if(date==nil) return @"";
+    return [dateFormatter stringFromDate:date];
+    
+}
 @end

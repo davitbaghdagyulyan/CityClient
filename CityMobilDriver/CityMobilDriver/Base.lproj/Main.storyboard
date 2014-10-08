@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -507,7 +507,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="actionCallDispetcher:" destination="xBa-E3-xZb" eventType="touchUpInside" id="YWX-55-n9d"/>
+                                            <action selector="actionGetMessages:" destination="xBa-E3-xZb" eventType="touchUpInside" id="xzQ-te-3dY"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch.png" translatesAutoresizingMaskIntoConstraints="NO" id="ssL-BZ-fxm">
@@ -844,18 +844,18 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="dm6-M8-8TE"/>
+                                        <exclude reference="Ava-k0-Jgg"/>
+                                        <exclude reference="U8u-Ai-BFm"/>
+                                        <exclude reference="jgl-Zy-alX"/>
                                         <exclude reference="545-AJ-rQl"/>
                                         <exclude reference="CWv-Rf-813"/>
                                         <exclude reference="Wh4-2L-zhk"/>
                                         <exclude reference="jLP-fS-kVy"/>
-                                        <exclude reference="U8u-Ai-BFm"/>
-                                        <exclude reference="jgl-Zy-alX"/>
                                         <exclude reference="2Hs-io-YP1"/>
                                         <exclude reference="5A8-Pw-rqR"/>
                                         <exclude reference="FT6-nT-GUv"/>
                                         <exclude reference="QcQ-EY-j04"/>
                                         <exclude reference="qrO-o7-MeL"/>
-                                        <exclude reference="Ava-k0-Jgg"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -867,18 +867,18 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="dm6-M8-8TE"/>
+                                        <include reference="Ava-k0-Jgg"/>
+                                        <include reference="U8u-Ai-BFm"/>
+                                        <include reference="jgl-Zy-alX"/>
                                         <include reference="545-AJ-rQl"/>
                                         <include reference="CWv-Rf-813"/>
                                         <include reference="Wh4-2L-zhk"/>
                                         <include reference="jLP-fS-kVy"/>
-                                        <include reference="U8u-Ai-BFm"/>
-                                        <include reference="jgl-Zy-alX"/>
                                         <include reference="2Hs-io-YP1"/>
                                         <include reference="5A8-Pw-rqR"/>
                                         <include reference="FT6-nT-GUv"/>
                                         <include reference="QcQ-EY-j04"/>
                                         <include reference="qrO-o7-MeL"/>
-                                        <include reference="Ava-k0-Jgg"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1739,7 +1739,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA5-tz-jXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2828" y="292"/>
+            <point key="canvasLocation" x="-2708" y="346.5"/>
         </scene>
     </scenes>
     <resources>

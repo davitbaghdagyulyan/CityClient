@@ -10,7 +10,16 @@
 
 @implementation SubTable
 
-
+-(instancetype)init
+{
+    self=[super init];
+    if (self)
+    {
+        [self GetMailRequest];
+    }
+    return self;
+    
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -59,7 +68,10 @@
 {
     return  44;
 }
-
+-(void)GetMailRequest
+{
+    
+}
 
 
 @end
