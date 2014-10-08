@@ -102,6 +102,11 @@
 }
 
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(tableView ==leftMenu)
