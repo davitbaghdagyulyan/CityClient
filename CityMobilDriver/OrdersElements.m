@@ -1,14 +1,14 @@
 //
-//  MailElements.m
+//  OrdersElements.m
 //  CityMobilDriver
 //
-//  Created by Intern on 10/7/14.
+//  Created by Arusyak Mikayelyan on 10/8/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
-#import "MailElements.h"
+#import "OrdersElements.h"
 
-@implementation MailElements
+@implementation OrdersElements
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {
     

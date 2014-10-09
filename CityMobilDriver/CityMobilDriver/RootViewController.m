@@ -3,7 +3,8 @@
 #import "RootViewController.h"
 #import "CustomCell.h"
 #import "CellObject.h"
-
+#import "OrdersJson.h"
+#import "OrdersResponse.h"
 
 @interface RootViewController ()
 {
@@ -13,15 +14,21 @@
     bool dragging;
     CGFloat oldX;
     NSMutableArray*nameArray;
-    NSArray * arrayForTableView;
-
+   
+    OrdersResponse*ordersResponseObject;
+    
 }
 @end
 
 @implementation RootViewController
+-(void)viewDidAppear:(BOOL)animated
+{
 
+    [self requestGetOrders];
+}
 - (void)viewDidLoad
 {
+  
     [super viewDidLoad];
     
     leftMenu=[[UITableView alloc]initWithFrame:CGRectMake(-1*self.view.frame.size.width*(CGFloat)5/6, self.navigationView.frame.origin.y+self.navigationView.frame.size.height, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-self.navigationView.frame.size.height) ];
@@ -56,26 +63,6 @@
     leftMenu.dataSource=self;
     
     //RootViewController Interface
-    CellObject* object1 = [[CellObject alloc]init];
-    object1.orderType = @"ближайшие по расстоянию";
-    object1.ordersNumber = 124;
-    CellObject * object2 = [[CellObject alloc]init];
-    object2.orderType = @"Nearest";
-    object2.ordersNumber = 20;
-    CellObject * object3 = [[CellObject alloc]init];
-    object3.orderType = @"Far";
-    object3.ordersNumber = 5;
-    CellObject* object4 = [[CellObject alloc]init];
-    object4.orderType = @"First Hour";
-    object4.ordersNumber = 10;
-    CellObject * object5 = [[CellObject alloc]init];
-    object5.orderType = @"Nearest";
-    object5.ordersNumber = 20;
-    CellObject * object6 = [[CellObject alloc]init];
-    object6.orderType = @"Far";
-    object6.ordersNumber = 5;
-    arrayForTableView = [[NSArray alloc]initWithObjects:object1,object2,
-                         object3,object4,object5,object6,nil];
     
     
     self.labelMessages.font =[UIFont fontWithName:@"MyriadPro-Regular" size:16];
@@ -102,6 +89,11 @@
 }
 
 
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(tableView ==leftMenu)
@@ -110,7 +102,7 @@
     }
     else
     {
-        return  arrayForTableView.count;
+        return  ordersResponseObject.categories.count;
 
     }
    }
@@ -155,15 +147,16 @@
     }
     
     
-    CellObject * currentObject = [arrayForTableView objectAtIndex:indexPath.row];
+   
     
-       cell.label1.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:15];
-    cell.label1.text = [NSString stringWithFormat:@"   %@",currentObject.orderType];
-     cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
-    cell.label2.text =[NSString stringWithFormat:@"%d",currentObject.ordersNumber];
-       
-    
-    return  cell;
+       cell.label1.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+       cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
+
+       NSString * currentName =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getName];
+       cell.label1.text=[NSString stringWithFormat:@"      %@",currentName];
+       NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
+       cell.label2.text=[NSString stringWithFormat:@"%@",currentCount];
+       return  cell;
    }
     
 }
@@ -195,6 +188,81 @@
     }
     
     
+    
+}
+
+-(void)requestGetOrders
+{
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    
+   OrdersJson* ordersJsonObject=[[OrdersJson alloc]init];
+    
+    
+    
+    NSDictionary*jsonDictionary=[ordersJsonObject toDictionary];
+    NSString*jsons=[ordersJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+    
+    
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                            message:@"NO INTERNET CONECTION"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            
+            [alert show];
+            return ;
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
+        NSError*err;
+       ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
+        
+        
+        if(ordersResponseObject.code!=nil)
+        {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+            
+        }
+        [indicator stopAnimating];
+        [self.tableViewOrdersPort reloadData];
+        [self.tableViewOrdersLand reloadData];
+        [self.tableViewIpad reloadData];
+        //[self.tableViewOrdersIpad reloadData];
+    }];
     
 }
 

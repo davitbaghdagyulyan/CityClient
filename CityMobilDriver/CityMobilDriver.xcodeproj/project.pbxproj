@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F5AA8CD19E57B84003AEDED /* OrdersJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AA8CC19E57B84003AEDED /* OrdersJson.m */; };
+		8F5AA8D019E57FAB003AEDED /* OrdersResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */; };
+		8F5AA8D319E58013003AEDED /* OrdersElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AA8D219E58013003AEDED /* OrdersElements.m */; };
 		8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */; };
 		8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */; };
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
@@ -67,6 +70,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F5AA8CB19E57B84003AEDED /* OrdersJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersJson.h; sourceTree = "<group>"; };
+		8F5AA8CC19E57B84003AEDED /* OrdersJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersJson.m; sourceTree = "<group>"; };
+		8F5AA8CE19E57FAB003AEDED /* OrdersResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersResponse.h; sourceTree = "<group>"; };
+		8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersResponse.m; sourceTree = "<group>"; };
+		8F5AA8D119E58013003AEDED /* OrdersElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersElements.h; sourceTree = "<group>"; };
+		8F5AA8D219E58013003AEDED /* OrdersElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersElements.m; sourceTree = "<group>"; };
 		8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
@@ -164,6 +173,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F5AA8CA19E57B55003AEDED /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				8F5AA8CB19E57B84003AEDED /* OrdersJson.h */,
+				8F5AA8CC19E57B84003AEDED /* OrdersJson.m */,
+				8F5AA8CE19E57FAB003AEDED /* OrdersResponse.h */,
+				8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */,
+				8F5AA8D119E58013003AEDED /* OrdersElements.h */,
+				8F5AA8D219E58013003AEDED /* OrdersElements.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +234,7 @@
 				8FE032E819DE97B700B17C09 /* CellObject.h */,
 				8FE032E919DE97B700B17C09 /* CellObject.m */,
 				ECF40D5419D2D3C800699A2F /* LoginViewController.h */,
+				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				ECF40D5519D2D3C800699A2F /* LoginViewController.m */,
 				D70428BC19D0071F00F5C38C /* RootViewController.h */,
 				D70428BD19D0071F00F5C38C /* RootViewController.m */,
@@ -224,7 +247,6 @@
 				ECB1C16E19E2AB730027F482 /* MessagesCell.h */,
 				ECB1C16F19E2AB730027F482 /* MessagesCell.m */,
 				ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */,
-				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				D70428C219D0071F00F5C38C /* Images.xcassets */,
 				D70428C419D0071F00F5C38C /* LaunchScreen.xib */,
 				D70428B519D0071F00F5C38C /* Supporting Files */,
@@ -276,6 +298,7 @@
 			children = (
 				EC55988919E5364900877CBC /* SingleDataProvider.h */,
 				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
+				8F5AA8CA19E57B55003AEDED /* New Group */,
 			);
 			name = "Single Data Provider";
 			sourceTree = "<group>";
@@ -478,9 +501,11 @@
 				ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */,
 				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
+				8F5AA8D319E58013003AEDED /* OrdersElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
+				8F5AA8CD19E57B84003AEDED /* OrdersJson.m in Sources */,
 				8FE032E419DE8B3600B17C09 /* CustomCell.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
@@ -492,6 +517,7 @@
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 				ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */,
 				EC55988B19E5364900877CBC /* SingleDataProvider.m in Sources */,
+				8F5AA8D019E57FAB003AEDED /* OrdersResponse.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
 				ECB1C16B19E284000027F482 /* MessagesViewController.m in Sources */,
 			);
