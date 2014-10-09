@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F5AA8CD19E57B84003AEDED /* OrdersJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AA8CC19E57B84003AEDED /* OrdersJson.m */; };
-		8F5AA8D019E57FAB003AEDED /* OrdersResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */; };
-		8F5AA8D319E58013003AEDED /* OrdersElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5AA8D219E58013003AEDED /* OrdersElements.m */; };
 		8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */; };
 		8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */; };
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
@@ -55,6 +52,10 @@
 		ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90AF19DEE3B90007831F /* LoginJson.m */; };
 		ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90B119DEE3B90007831F /* LoginResponse.m */; };
 		ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE2553619DBF1E9000BD8C9 /* bg.png */; };
+		ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8119E56BE80044F6AD /* textRequest.m */; };
+		ECE25C8A19E56BE80044F6AD /* messages.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8319E56BE80044F6AD /* messages.m */; };
+		ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8519E56BE80044F6AD /* textResponse.m */; };
+		ECE25C8E19E56C080044F6AD /* infoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8D19E56C080044F6AD /* infoViewController.m */; };
 		ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5519D2D3C800699A2F /* LoginViewController.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
 /* End PBXBuildFile section */
@@ -70,12 +71,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8F5AA8CB19E57B84003AEDED /* OrdersJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersJson.h; sourceTree = "<group>"; };
-		8F5AA8CC19E57B84003AEDED /* OrdersJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersJson.m; sourceTree = "<group>"; };
-		8F5AA8CE19E57FAB003AEDED /* OrdersResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersResponse.h; sourceTree = "<group>"; };
-		8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersResponse.m; sourceTree = "<group>"; };
-		8F5AA8D119E58013003AEDED /* OrdersElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersElements.h; sourceTree = "<group>"; };
-		8F5AA8D219E58013003AEDED /* OrdersElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersElements.m; sourceTree = "<group>"; };
 		8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
@@ -149,6 +144,14 @@
 		ECCA90B019DEE3B90007831F /* LoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResponse.h; sourceTree = "<group>"; };
 		ECCA90B119DEE3B90007831F /* LoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponse.m; sourceTree = "<group>"; };
 		ECE2553619DBF1E9000BD8C9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		ECE25C8019E56BE80044F6AD /* textRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textRequest.h; sourceTree = "<group>"; };
+		ECE25C8119E56BE80044F6AD /* textRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textRequest.m; sourceTree = "<group>"; };
+		ECE25C8219E56BE80044F6AD /* messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messages.h; sourceTree = "<group>"; };
+		ECE25C8319E56BE80044F6AD /* messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messages.m; sourceTree = "<group>"; };
+		ECE25C8419E56BE80044F6AD /* textResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textResponse.h; sourceTree = "<group>"; };
+		ECE25C8519E56BE80044F6AD /* textResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textResponse.m; sourceTree = "<group>"; };
+		ECE25C8C19E56C080044F6AD /* infoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = infoViewController.h; sourceTree = "<group>"; };
+		ECE25C8D19E56C080044F6AD /* infoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = infoViewController.m; sourceTree = "<group>"; };
 		ECF40D5419D2D3C800699A2F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		ECF40D5519D2D3C800699A2F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+UINavigationController_shouldAutorotate.h"; sourceTree = "<group>"; };
@@ -173,22 +176,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8F5AA8CA19E57B55003AEDED /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				8F5AA8CB19E57B84003AEDED /* OrdersJson.h */,
-				8F5AA8CC19E57B84003AEDED /* OrdersJson.m */,
-				8F5AA8CE19E57FAB003AEDED /* OrdersResponse.h */,
-				8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */,
-				8F5AA8D119E58013003AEDED /* OrdersElements.h */,
-				8F5AA8D219E58013003AEDED /* OrdersElements.m */,
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECE25C7919E56BD80044F6AD /* info */,
 				EC55988819E535D000877CBC /* Single Data Provider */,
 				EC40D44119E43490007BA02C /* Mail */,
 				ECCA90AD19DEE3920007831F /* Login */,
@@ -229,12 +220,13 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
+				ECE25C8C19E56C080044F6AD /* infoViewController.h */,
+				ECE25C8D19E56C080044F6AD /* infoViewController.m */,
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
 				8FE032E819DE97B700B17C09 /* CellObject.h */,
 				8FE032E919DE97B700B17C09 /* CellObject.m */,
 				ECF40D5419D2D3C800699A2F /* LoginViewController.h */,
-				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				ECF40D5519D2D3C800699A2F /* LoginViewController.m */,
 				D70428BC19D0071F00F5C38C /* RootViewController.h */,
 				D70428BD19D0071F00F5C38C /* RootViewController.m */,
@@ -247,6 +239,7 @@
 				ECB1C16E19E2AB730027F482 /* MessagesCell.h */,
 				ECB1C16F19E2AB730027F482 /* MessagesCell.m */,
 				ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */,
+				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				D70428C219D0071F00F5C38C /* Images.xcassets */,
 				D70428C419D0071F00F5C38C /* LaunchScreen.xib */,
 				D70428B519D0071F00F5C38C /* Supporting Files */,
@@ -298,7 +291,6 @@
 			children = (
 				EC55988919E5364900877CBC /* SingleDataProvider.h */,
 				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
-				8F5AA8CA19E57B55003AEDED /* New Group */,
 			);
 			name = "Single Data Provider";
 			sourceTree = "<group>";
@@ -372,6 +364,19 @@
 				ECCA90B119DEE3B90007831F /* LoginResponse.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		ECE25C7919E56BD80044F6AD /* info */ = {
+			isa = PBXGroup;
+			children = (
+				ECE25C8019E56BE80044F6AD /* textRequest.h */,
+				ECE25C8119E56BE80044F6AD /* textRequest.m */,
+				ECE25C8219E56BE80044F6AD /* messages.h */,
+				ECE25C8319E56BE80044F6AD /* messages.m */,
+				ECE25C8419E56BE80044F6AD /* textResponse.h */,
+				ECE25C8519E56BE80044F6AD /* textResponse.m */,
+			);
+			name = info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,23 +506,24 @@
 				ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */,
 				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
-				8F5AA8D319E58013003AEDED /* OrdersElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
-				8F5AA8CD19E57B84003AEDED /* OrdersJson.m in Sources */,
 				8FE032E419DE8B3600B17C09 /* CustomCell.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
 				ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */,
+				ECE25C8A19E56BE80044F6AD /* messages.m in Sources */,
 				ECCA90AB19DEE2060007831F /* JSONKeyMapper.m in Sources */,
 				D70428B819D0071F00F5C38C /* main.m in Sources */,
 				ECCA90A319DEE2060007831F /* JSONModel.m in Sources */,
 				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
+				ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */,
 				ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */,
 				EC55988B19E5364900877CBC /* SingleDataProvider.m in Sources */,
-				8F5AA8D019E57FAB003AEDED /* OrdersResponse.m in Sources */,
+				ECE25C8E19E56C080044F6AD /* infoViewController.m in Sources */,
+				ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
 				ECB1C16B19E284000027F482 /* MessagesViewController.m in Sources */,
 			);
