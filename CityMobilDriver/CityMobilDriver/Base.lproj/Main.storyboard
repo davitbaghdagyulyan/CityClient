@@ -2112,7 +2112,7 @@
         <!--View Controller-->
         <scene sceneID="i0e-6R-U4s">
             <objects>
-                <viewController id="hKf-SR-ZVw" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="hKf-SR-ZVw" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ybd-SS-AyL"/>
                         <viewControllerLayoutGuide type="bottom" id="3aU-dJ-LMy"/>
@@ -2455,10 +2455,11 @@
                             <constraint firstItem="xA3-7H-kEw" firstAttribute="leading" secondItem="Vnt-uW-YvK" secondAttribute="leading" id="pod-xY-7aq"/>
                         </constraints>
                     </view>
+                    <keyCommands/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAb-7p-Ba6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2432" y="130"/>
+            <point key="canvasLocation" x="-2374" y="130"/>
         </scene>
     </scenes>
     <resources>
