@@ -5,6 +5,7 @@
 #import "CellObject.h"
 #import "OrdersJson.h"
 #import "OrdersResponse.h"
+#import "SelectedOrdersViewController.h"
 
 @interface RootViewController ()
 {
@@ -169,7 +170,11 @@
     }
     else
     {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+       SelectedOrdersViewController *selectedOrdersCont = [self.storyboard
+                                             instantiateViewControllerWithIdentifier:@"SelectedOrders"];
+        selectedOrdersCont.selectedFilter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+        [self.navigationController pushViewController:selectedOrdersCont animated:YES];
+        
     
     }
 }
