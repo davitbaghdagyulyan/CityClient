@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LoginJson.h"
 #import "LoginResponse.h"
+#import "SingleDataProvider.h"
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 

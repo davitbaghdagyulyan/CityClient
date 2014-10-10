@@ -9,7 +9,6 @@
 #import "MessagesViewController.h"
 #import "MailJson.h"
 #import "MailResponse.h"
-
 @interface MessagesViewController ()
 {
 
@@ -143,6 +142,14 @@
     else
     {
       
+        infoViewController* infoContorller = [self.storyboard instantiateViewControllerWithIdentifier:@"info"];
+        [self.navigationController pushViewController:infoContorller animated:NO];
+        infoContorller.id_mail = [[mailResponseObject.mail objectAtIndex:indexPath.row] id];
+        infoContorller.titleText = [[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
+        
+        
+        
+        
     }
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
    
@@ -389,7 +396,7 @@
         NSLog(@"%@",jsonString);
         NSError*err;
        mailResponseObject = [[MailResponse alloc] initWithString:jsonString error:&err];
-        
+       
         
         if(mailResponseObject.code!=nil)
         {

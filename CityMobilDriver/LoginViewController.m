@@ -336,7 +336,7 @@
         NSLog(@"%@",jsonString);
         NSError*err;
         LoginResponse*loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
-        
+        [SingleDataProvider sharedKey].key = loginResponseObject.key;
         
         if(loginResponseObject.code!=nil)
         {
@@ -352,7 +352,6 @@
         }
         else
         {
-            
             [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
             [self.navigationController popViewControllerAnimated:NO];
         }
