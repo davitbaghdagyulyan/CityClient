@@ -28,7 +28,7 @@
     RecallResponse*recallResponseObject;
     
 
-    NSArray * arrayForTableView;
+ 
 
 
 }
@@ -75,27 +75,6 @@
     leftMenu.dataSource=self;
     
     //RootViewController Interface
-    CellObject* object1 = [[CellObject alloc]init];
-    object1.orderType = @"ближайшие по расстоянию";
-    object1.ordersNumber = 124;
-    CellObject * object2 = [[CellObject alloc]init];
-    object2.orderType = @"Nearest";
-    object2.ordersNumber = 20;
-    CellObject * object3 = [[CellObject alloc]init];
-    object3.orderType = @"Far";
-    object3.ordersNumber = 5;
-    CellObject* object4 = [[CellObject alloc]init];
-    object4.orderType = @"First Hour";
-    object4.ordersNumber = 10;
-    CellObject * object5 = [[CellObject alloc]init];
-    object5.orderType = @"Nearest";
-    object5.ordersNumber = 20;
-    CellObject * object6 = [[CellObject alloc]init];
-    object6.orderType = @"Far";
-    object6.ordersNumber = 5;
-    arrayForTableView = [[NSArray alloc]initWithObjects:object1,object2,
-                         object3,object4,object5,object6,nil];
-    
     
     self.labelMessages.font =[UIFont fontWithName:@"MyriadPro-Regular" size:16];
     self.labelCallToDispetcher.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
@@ -134,8 +113,7 @@
     }
     else
     {
-        return  arrayForTableView.count;
-
+        return  ordersResponseObject.categories.count;
     }
    }
 
@@ -179,12 +157,16 @@
     }
     
     
-    CellObject * currentObject = [arrayForTableView objectAtIndex:indexPath.row];
     
-       cell.label1.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:15];
-    cell.label1.text = [NSString stringWithFormat:@"   %@",currentObject.orderType];
-     cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
-    cell.label2.text =[NSString stringWithFormat:@"%d",currentObject.ordersNumber];
+    
+       cell.label1.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+       cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
+       
+       NSString * currentName =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getName];
+       cell.label1.text=[NSString stringWithFormat:@"      %@",currentName];
+       NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
+       cell.label2.text=[NSString stringWithFormat:@"%@",currentCount];
+       return  cell;
        
     
     return  cell;
