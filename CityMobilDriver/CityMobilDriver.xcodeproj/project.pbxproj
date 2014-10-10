@@ -54,6 +54,9 @@
 		ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90A219DEE2060007831F /* JSONValueTransformer.m */; };
 		ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90AF19DEE3B90007831F /* LoginJson.m */; };
 		ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90B119DEE3B90007831F /* LoginResponse.m */; };
+		ECCC236C19E7D7EA0091C43E /* logo1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCC236B19E7D7EA0091C43E /* logo1@2x.png */; };
+		ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742019E6B66B008D23B9 /* RecallJson.m */; };
+		ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742319E6B683008D23B9 /* RecallResponse.m */; };
 		ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE2553619DBF1E9000BD8C9 /* bg.png */; };
 		ECF40D5619D2D3C800699A2F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5519D2D3C800699A2F /* LoginViewController.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
@@ -148,6 +151,11 @@
 		ECCA90AF19DEE3B90007831F /* LoginJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginJson.m; sourceTree = "<group>"; };
 		ECCA90B019DEE3B90007831F /* LoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResponse.h; sourceTree = "<group>"; };
 		ECCA90B119DEE3B90007831F /* LoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginResponse.m; sourceTree = "<group>"; };
+		ECCC236B19E7D7EA0091C43E /* logo1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo1@2x.png"; sourceTree = "<group>"; };
+		ECD9741F19E6B66B008D23B9 /* RecallJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecallJson.h; sourceTree = "<group>"; };
+		ECD9742019E6B66B008D23B9 /* RecallJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecallJson.m; sourceTree = "<group>"; };
+		ECD9742219E6B683008D23B9 /* RecallResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecallResponse.h; sourceTree = "<group>"; };
+		ECD9742319E6B683008D23B9 /* RecallResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecallResponse.m; sourceTree = "<group>"; };
 		ECE2553619DBF1E9000BD8C9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		ECF40D5419D2D3C800699A2F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		ECF40D5519D2D3C800699A2F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
@@ -189,6 +197,7 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECD9741E19E6B64A008D23B9 /* Recall */,
 				EC55988819E535D000877CBC /* Single Data Provider */,
 				EC40D44119E43490007BA02C /* Mail */,
 				ECCA90AD19DEE3920007831F /* Login */,
@@ -201,6 +210,7 @@
 				D70428CE19D0072000F5C38C /* CityMobilDriverTests */,
 				D70428B319D0071F00F5C38C /* Products */,
 				8FDF958119DE7E60005A468A /* logo@2x.png */,
+				ECCC236B19E7D7EA0091C43E /* logo1@2x.png */,
 				8FE032EB19DEC80600B17C09 /* ya@2x.png */,
 				8FE032ED19DEC80D00B17C09 /* phone@2x.png */,
 				8FE032EF19DEC81B00B17C09 /* gps@2x.png */,
@@ -233,8 +243,8 @@
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
 				8FE032E819DE97B700B17C09 /* CellObject.h */,
 				8FE032E919DE97B700B17C09 /* CellObject.m */,
-				ECF40D5419D2D3C800699A2F /* LoginViewController.h */,
 				ECE2553619DBF1E9000BD8C9 /* bg.png */,
+				ECF40D5419D2D3C800699A2F /* LoginViewController.h */,
 				ECF40D5519D2D3C800699A2F /* LoginViewController.m */,
 				D70428BC19D0071F00F5C38C /* RootViewController.h */,
 				D70428BD19D0071F00F5C38C /* RootViewController.m */,
@@ -374,6 +384,17 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		ECD9741E19E6B64A008D23B9 /* Recall */ = {
+			isa = PBXGroup;
+			children = (
+				ECD9741F19E6B66B008D23B9 /* RecallJson.h */,
+				ECD9742019E6B66B008D23B9 /* RecallJson.m */,
+				ECD9742219E6B683008D23B9 /* RecallResponse.h */,
+				ECD9742319E6B683008D23B9 /* RecallResponse.m */,
+			);
+			name = Recall;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -462,6 +483,7 @@
 				8FCCBBC219E2DE2600BD9BC1 /* ch@2x.png in Resources */,
 				8FE032F019DEC81B00B17C09 /* gps@2x.png in Resources */,
 				D70428C119D0071F00F5C38C /* Main.storyboard in Resources */,
+				ECCC236C19E7D7EA0091C43E /* logo1@2x.png in Resources */,
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */,
 				8FDF958219DE7E60005A468A /* logo@2x.png in Resources */,
@@ -503,6 +525,7 @@
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
 				8F5AA8D319E58013003AEDED /* OrdersElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
+				ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */,
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
 				8F5AA8CD19E57B84003AEDED /* OrdersJson.m in Sources */,
@@ -513,6 +536,7 @@
 				ECCA90AB19DEE2060007831F /* JSONKeyMapper.m in Sources */,
 				D70428B819D0071F00F5C38C /* main.m in Sources */,
 				ECCA90A319DEE2060007831F /* JSONModel.m in Sources */,
+				ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */,
 				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 				ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */,

@@ -4,7 +4,7 @@
 #import "LoginViewController.h"
 #import "LeftViewCellObject.h"
 #import "MessagesViewController.h"
-@interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 
 //UI for Iphones in Portrait
