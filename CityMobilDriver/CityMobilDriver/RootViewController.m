@@ -4,6 +4,11 @@
 #import "CustomCell.h"
 #import "CellObject.h"
 
+#import "OrdersJson.h"
+#import "OrdersResponse.h"
+#import "RecallJson.h"
+#import "RecallResponse.h"
+
 
 @interface RootViewController ()
 {
@@ -13,7 +18,14 @@
     bool dragging;
     CGFloat oldX;
     NSMutableArray*nameArray;
+
+   
+    OrdersResponse*ordersResponseObject;
+    RecallResponse*recallResponseObject;
+    
+
     NSArray * arrayForTableView;
+
 
 }
 @end
@@ -401,6 +413,113 @@
     MessagesViewController*mvc=[self.storyboard instantiateViewControllerWithIdentifier:@"MessagesViewController"];
     [self.navigationController pushViewController:mvc  animated:NO];
 }
-- (IBAction)actionCallDispetcher:(id)sender {
+- (IBAction)actionCallDispetcher:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Выберите действие"
+                                                    message:nil
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Просьба перезвонить",@"Позвонить",nil];
+  
+    [alert show];
+
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0)
+    {
+        [self reCallRequest];
+    }
+    else
+    {
+        UIDevice *device = [UIDevice currentDevice];
+        if ([[device model] isEqualToString:@"iPhone"] )
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:007-495-5005-050"]]];
+        }
+        else
+        {
+            UIAlertView *notPermitted=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [notPermitted show];
+         
+        }
+    }
+}
+-(void)reCallRequest
+{
+    RecallJson* recallJsonObject=[[RecallJson alloc]init];
+    
+    
+    
+    NSDictionary*jsonDictionary=[recallJsonObject toDictionary];
+    NSString*jsons=[recallJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+    
+    
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                            message:@"NO INTERNET CONECTION"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            
+            [alert show];
+            return ;
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
+        NSError*err;
+        recallResponseObject = [[RecallResponse alloc] initWithString:jsonString error:&err];
+        
+        
+       if((![recallResponseObject.code isEqualToString:@"750"])&&(recallResponseObject.code!=nil))
+        {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+            
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        if([recallResponseObject.result isEqual:@1])
+        {
+            alert.message=@"Запрос успешно отправлен!";
+        }
+        else if(recallResponseObject.text !=nil)
+        {
+            alert.message=recallResponseObject.text;
+        }
+        [alert show];
+    }];
+
 }
 @end
