@@ -1,14 +1,14 @@
 //
-//  MailElements.m
+//  RecallResponse.m
 //  CityMobilDriver
 //
-//  Created by Intern on 10/7/14.
+//  Created by Intern on 10/9/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
-#import "MailElements.h"
+#import "RecallResponse.h"
 
-@implementation MailElements
+@implementation RecallResponse
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {
     
