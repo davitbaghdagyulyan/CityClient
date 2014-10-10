@@ -148,7 +148,6 @@
 		ECCC236B19E7D7EA0091C43E /* logo1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo1@2x.png"; sourceTree = "<group>"; };
 		ECCC236D19E7F58A0091C43E /* infoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = infoViewController.h; sourceTree = "<group>"; };
 		ECCC236E19E7F58A0091C43E /* infoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = infoViewController.m; sourceTree = "<group>"; };
-		ECCC237019E7F7930091C43E /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		ECCC237119E7F7930091C43E /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		ECCC237319E7F82F0091C43E /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		ECCC237419E7F82F0091C43E /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		ECCC237D19E7FED20091C43E /* OrdersJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersJson.m; sourceTree = "<group>"; };
 		ECCC237E19E7FED20091C43E /* OrdersResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersResponse.h; sourceTree = "<group>"; };
 		ECCC237F19E7FED20091C43E /* OrdersResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersResponse.m; sourceTree = "<group>"; };
+		ECCC238319E803A90091C43E /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		ECD9741F19E6B66B008D23B9 /* RecallJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecallJson.h; sourceTree = "<group>"; };
 		ECD9742019E6B66B008D23B9 /* RecallJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecallJson.m; sourceTree = "<group>"; };
 		ECD9742219E6B683008D23B9 /* RecallResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecallResponse.h; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 				ECCC236D19E7F58A0091C43E /* infoViewController.h */,
 				ECCC236E19E7F58A0091C43E /* infoViewController.m */,
 				D70428BF19D0071F00F5C38C /* Main.storyboard */,
-				ECCC237019E7F7930091C43E /* CustomCell.h */,
+				ECCC238319E803A90091C43E /* CustomCell.h */,
 				ECCC237119E7F7930091C43E /* CustomCell.m */,
 				8FE032DD19DE8AD000B17C09 /* CustomCell.xib */,
 				ECB1C16E19E2AB730027F482 /* MessagesCell.h */,
