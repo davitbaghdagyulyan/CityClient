@@ -11,4 +11,8 @@
 @interface SelectedOrdersViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong)NSMutableDictionary * selectedFilter;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableViewOrdersDetails;
+
+
 @end

@@ -339,6 +339,10 @@
         LoginResponse*loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
         [SingleDataProvider sharedKey].key = loginResponseObject.key;
         
+        [[UserInformationProvider sharedInformation] setBalance:loginResponseObject.balance];
+        [[UserInformationProvider sharedInformation] setBankid:loginResponseObject.bankid];
+        [[UserInformationProvider sharedInformation] setCredit_limit:loginResponseObject.credit_limit];
+        
         if(loginResponseObject.code!=nil)
         {
             
