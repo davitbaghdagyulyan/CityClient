@@ -10,6 +10,7 @@
 #import "LoginJson.h"
 #import "LoginResponse.h"
 #import "SingleDataProvider.h"
+#import "UserInformationProvider.h"
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
