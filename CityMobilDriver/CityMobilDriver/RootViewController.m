@@ -8,6 +8,7 @@
 #import "OrdersResponse.h"
 
 #import "SelectedOrdersViewController.h"
+#import "SingleDataProviderForFilter.h"
 
 #import "RecallJson.h"
 #import "RecallResponse.h"
@@ -35,10 +36,8 @@
 @end
 
 @implementation RootViewController
--(void)viewDidAppear:(BOOL)animated
-{
-    [self requestGetOrders];
-}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -92,6 +91,11 @@
     
 
 
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self requestGetOrders];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -181,11 +185,18 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     else
+        
     {
-       SelectedOrdersViewController *selectedOrdersCont = [self.storyboard
-                                             instantiateViewControllerWithIdentifier:@"SelectedOrders"];
-        selectedOrdersCont.selectedFilter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+        
+        
+       [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
+            
         [self.navigationController pushViewController:selectedOrdersCont animated:YES];
+        
+        
+        
+
         
     
     }
@@ -430,6 +441,8 @@
         {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:007-495-5005-050"]]];
         }
+        
+        
         else
         {
             UIAlertView *notPermitted=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -566,7 +579,7 @@
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",jsonString);
+        NSLog(@"First Json String %@",jsonString);
         NSError*err;
         ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
         
@@ -576,7 +589,7 @@
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"
                                                             message:nil
-                                                           delegate:self
+                                                        delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];

@@ -28,6 +28,7 @@
         self.locale=@"ru";
         self.method=@"login";
         self.version=@"1.0.2";
+        self.versionCode = @"17";
     }
     return self;
 }

@@ -393,7 +393,7 @@
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",jsonString);
+        NSLog(@"MessagesString%@",jsonString);
         NSError*err;
        mailResponseObject = [[MailResponse alloc] initWithString:jsonString error:&err];
        
