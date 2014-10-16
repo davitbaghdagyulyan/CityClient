@@ -355,9 +355,9 @@
             [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
             [self.navigationController popViewControllerAnimated:NO];
         }
-        
+         [indicator stopAnimating];
     }];
     
-    [indicator stopAnimating];
+   
 }
 @end

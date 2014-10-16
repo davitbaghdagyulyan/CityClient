@@ -26,7 +26,7 @@
         <!--Root View Controller-->
         <scene sceneID="6Du-V3-zfD">
             <objects>
-                <viewController id="xBa-E3-xZb" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootViewController" id="xBa-E3-xZb" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BXv-Yc-XCX"/>
                         <viewControllerLayoutGuide type="bottom" id="0B4-fG-kwc"/>
@@ -2774,13 +2774,8 @@
         <image name="icon2.png" width="25" height="25"/>
         <image name="icon3.png" width="25" height="25"/>
         <image name="logo.png" width="39" height="28"/>
-
-        <image name="logo1.png" width="169" height="57"/>
-        <image name="logo@2x.png" width="35" height="36"/>
-
         <image name="logo1.png" width="84" height="28"/>
-        <image name="logo@2x.png" width="640" height="1136"/>
-
+        <image name="logo@2x.png" width="35" height="36"/>
         <image name="phone.png" width="20" height="26"/>
         <image name="ya.png" width="24" height="25"/>
     </resources>

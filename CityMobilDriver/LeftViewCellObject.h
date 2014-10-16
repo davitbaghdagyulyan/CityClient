@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface LeftViewCellObject : NSObject
+
 @property (strong,nonatomic)NSString*name;
+
 @end
