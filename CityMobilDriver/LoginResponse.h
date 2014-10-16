@@ -11,4 +11,7 @@
 @interface LoginResponse : JSONModel
 @property (nonatomic,strong)NSString*key;
 @property (nonatomic,strong)NSString*code;
+@property (nonatomic,strong)NSString* balance;
+@property (nonatomic,strong)NSString* credit_limit;
+@property (nonatomic,strong)NSString* bankid;
 @end
