@@ -26,7 +26,7 @@
         <!--Root View Controller-->
         <scene sceneID="6Du-V3-zfD">
             <objects>
-                <viewController id="xBa-E3-xZb" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootViewController" id="xBa-E3-xZb" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BXv-Yc-XCX"/>
                         <viewControllerLayoutGuide type="bottom" id="0B4-fG-kwc"/>

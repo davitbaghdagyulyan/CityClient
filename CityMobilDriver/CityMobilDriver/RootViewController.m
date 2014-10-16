@@ -11,17 +11,14 @@
 
 #import "RecallJson.h"
 #import "RecallResponse.h"
-
+#import "LeftMenu.h"
 
 
 @interface RootViewController ()
 {
     NSInteger flag;
-    UITableView*leftMenu;
+    LeftMenu*leftMenu;
     UISwipeGestureRecognizer*recognizerRight;
-    bool dragging;
-    CGFloat oldX;
-    NSMutableArray*nameArray;
 
    
     OrdersResponse*ordersResponseObject;
@@ -37,42 +34,29 @@
 @implementation RootViewController
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    flag=0;
+    self.tableViewOrdersPort.userInteractionEnabled=YES;
+    self.tableViewOrdersLand.userInteractionEnabled=YES;
+    self.tableViewIpad.userInteractionEnabled=YES;
+    leftMenu=[LeftMenu getLeftMenu:self];
     [self requestGetOrders];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    leftMenu=[[UITableView alloc]initWithFrame:CGRectMake(-1*self.view.frame.size.width*(CGFloat)5/6, self.navigationView.frame.origin.y+self.navigationView.frame.size.height, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-self.navigationView.frame.size.height) ];
-    [self.view addSubview:leftMenu];
+
     
-    flag=0;
+   
+    
+
     
     LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"View2"];
     [self.navigationController pushViewController:log animated:NO];
     
    
-    LeftViewCellObject*obj1=[[LeftViewCellObject alloc]init];
-    obj1.name=@"Harut";
-    LeftViewCellObject*obj2=[[LeftViewCellObject alloc]init];
-    obj2.name=@"Vazgen";
-    LeftViewCellObject*obj3=[[LeftViewCellObject alloc]init];
-    obj3.name=@"Karen";
-    LeftViewCellObject*obj4=[[LeftViewCellObject alloc]init];
-    obj4.name=@"Tarzan";
-    LeftViewCellObject*obj5=[[LeftViewCellObject alloc]init];
-    obj5.name=@"Armen";
-    LeftViewCellObject*obj6=[[LeftViewCellObject alloc]init];
-    obj6.name=@"Taron";
-    LeftViewCellObject*obj7=[[LeftViewCellObject alloc]init];
-    obj7.name=@"Miqael";
-    LeftViewCellObject*obj8=[[LeftViewCellObject alloc]init];
-    obj8.name=@"Manvel";
-    
-    nameArray=[[NSMutableArray alloc]initWithObjects:obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8, nil];
-    
-    leftMenu.delegate=self;
-    leftMenu.dataSource=self;
+ 
     
     //RootViewController Interface
     
@@ -107,43 +91,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(tableView ==leftMenu)
-    {
-        return nameArray.count;
-    }
-    else
-    {
-        return  ordersResponseObject.categories.count;
-    }
-   }
+  
+    return  ordersResponseObject.categories.count;
+ 
+}
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    
-  if(tableView == leftMenu)
-  {
-    NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , (long)indexPath.row];
-    
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    
-    if( cell == nil )
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    if (tableView == leftMenu)
-    {
-        cell.textLabel.text = [[nameArray objectAtIndex:indexPath.row]name];
 
-    
-    cell.backgroundColor=[UIColor blueColor];
-    cell.textLabel.textColor=[UIColor whiteColor];
-        tableView.backgroundColor=[UIColor blueColor];
-    }
-    return cell;
-  }
-   
-  else
-   {
     
     
     NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
@@ -170,25 +125,20 @@
        
     
     return  cell;
-   }
+ 
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView==leftMenu)
-    {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
-    else
-    {
+    
        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard
                                              instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         selectedOrdersCont.selectedFilter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
         [self.navigationController pushViewController:selectedOrdersCont animated:YES];
         
     
-    }
+    
 }
 
 
@@ -247,8 +197,20 @@
                      completion:^(BOOL finished)
      {
          
-         if (flag==0) flag=1;
-         else flag=0;
+         if (flag==0)
+         {
+           flag=1;
+             self.tableViewOrdersPort.userInteractionEnabled=NO;
+             self.tableViewOrdersLand.userInteractionEnabled=NO;
+             self.tableViewIpad.userInteractionEnabled=NO;
+         }
+         else
+         {
+           flag=0;
+             self.tableViewOrdersPort.userInteractionEnabled=YES;
+             self.tableViewOrdersLand.userInteractionEnabled=YES;
+             self.tableViewIpad.userInteractionEnabled=YES;
+         }
          
      }
      
@@ -284,13 +246,21 @@
                      if (touchLocation.x<=leftMenu.frame.size.width/2)
                       {
                           flag=0;
+                          self.tableViewOrdersPort.userInteractionEnabled=YES;
+                           self.tableViewOrdersLand.userInteractionEnabled=YES;
+                          self.tableViewIpad.userInteractionEnabled=YES;
+                          
                           point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
                       }
                      
                      else if (touchLocation.x>leftMenu.frame.size.width/2)
                      {
                          point.x=(CGFloat)leftMenu.frame.size.width/2;
-                         flag=1;
+                        
+                         self.tableViewOrdersPort.userInteractionEnabled=NO;
+                         self.tableViewOrdersLand.userInteractionEnabled=NO;
+                         self.tableViewIpad.userInteractionEnabled=NO;
+                          flag=1;
                      }
                          point.y=leftMenu.center.y;
                      
@@ -346,10 +316,12 @@
       
     
     
-             
-             
+    self.tableViewOrdersPort.userInteractionEnabled=NO;
+    self.tableViewOrdersLand.userInteractionEnabled=NO;
+    self.tableViewIpad.userInteractionEnabled=NO;
+    
              flag=1;
-             
+    
     
     
 
@@ -357,10 +329,7 @@
     
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-}
+
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     CGFloat x;
