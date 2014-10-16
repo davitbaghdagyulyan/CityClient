@@ -285,16 +285,9 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
     
- 
-   
     
-  
     
-        
-        
-        
-    
-        if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
             return;
        
             CGPoint point;
@@ -322,11 +315,7 @@
     
              flag=1;
     
-    
-    
 
-
-    
 }
 
 
