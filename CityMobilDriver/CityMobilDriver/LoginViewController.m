@@ -330,6 +330,7 @@
             
             
             [alert show];
+            [indicator stopAnimating];
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -362,6 +363,5 @@
          [indicator stopAnimating];
     }];
     
-   
 }
 @end

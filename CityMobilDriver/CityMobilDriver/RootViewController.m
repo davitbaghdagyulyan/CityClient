@@ -8,6 +8,7 @@
 #import "OrdersResponse.h"
 
 #import "SelectedOrdersViewController.h"
+#import "SingleDataProviderForFilter.h"
 
 #import "RecallJson.h"
 #import "RecallResponse.h"
@@ -32,6 +33,10 @@
 @end
 
 @implementation RootViewController
+
+
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -42,6 +47,7 @@
     leftMenu=[LeftMenu getLeftMenu:self];
     [self requestGetOrders];
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -77,6 +83,8 @@
 
 
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -131,16 +139,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    if (tableView==leftMenu)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else
+        
+    {
+        
+        
+       [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
+            
+
     
-       SelectedOrdersViewController *selectedOrdersCont = [self.storyboard
-                                             instantiateViewControllerWithIdentifier:@"SelectedOrders"];
+      
         selectedOrdersCont.selectedFilter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+
         [self.navigationController pushViewController:selectedOrdersCont animated:YES];
+        
+        
+        
+
         
     
     
 }
-
+}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -285,16 +311,9 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
     
- 
-   
     
-  
     
-        
-        
-        
-    
-        if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
             return;
        
             CGPoint point;
@@ -322,11 +341,7 @@
     
              flag=1;
     
-    
-    
 
-
-    
 }
 
 
@@ -399,6 +414,8 @@
         {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:007-495-5005-050"]]];
         }
+        
+        
         else
         {
             UIAlertView *notPermitted=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -535,7 +552,7 @@
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",jsonString);
+        NSLog(@"First Json String %@",jsonString);
         NSError*err;
         ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
         
@@ -545,7 +562,7 @@
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"
                                                             message:nil
-                                                           delegate:self
+                                                        delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];

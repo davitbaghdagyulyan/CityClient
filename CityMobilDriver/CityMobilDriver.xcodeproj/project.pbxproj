@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		8F0A821D19EBB68100A03D1B /* SelectedOrdersDetailsJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A821C19EBB68100A03D1B /* SelectedOrdersDetailsJson.m */; };
+		8F0A822019EBB6F400A03D1B /* SelectedOrdersDetailsElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A821F19EBB6F400A03D1B /* SelectedOrdersDetailsElements.m */; };
+		8F0A822319EBB74700A03D1B /* SelectedOrdersDetailsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */; };
+
 		84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EDCB19E857D100EFFC54 /* LeftMenu.m */; };
+
 		8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */; };
 		8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5219E7DC1000585B40 /* metroAndroid.png */; };
+		8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */; };
 		8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */; };
 		8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */; };
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
@@ -30,6 +37,7 @@
 		8FE032F219DEC83B00B17C09 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032F119DEC83B00B17C09 /* icon@2x.png */; };
 		8FE032F419DEC84A00B17C09 /* icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032F319DEC84A00B17C09 /* icon2@2x.png */; };
 		8FE032F619DEC86900B17C09 /* icon3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032F519DEC86900B17C09 /* icon3@2x.png */; };
+		8FE4868E19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE4868D19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png */; };
 		D70428B819D0071F00F5C38C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428B719D0071F00F5C38C /* main.m */; };
 		D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BA19D0071F00F5C38C /* AppDelegate.m */; };
 		D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BD19D0071F00F5C38C /* RootViewController.m */; };
@@ -89,17 +97,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+
+		8F0A821B19EBB68100A03D1B /* SelectedOrdersDetailsJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersDetailsJson.h; sourceTree = "<group>"; };
+		8F0A821C19EBB68100A03D1B /* SelectedOrdersDetailsJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersDetailsJson.m; sourceTree = "<group>"; };
+		8F0A821E19EBB6F400A03D1B /* SelectedOrdersDetailsElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersDetailsElements.h; sourceTree = "<group>"; };
+		8F0A821F19EBB6F400A03D1B /* SelectedOrdersDetailsElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersDetailsElements.m; sourceTree = "<group>"; };
+		8F0A822119EBB74700A03D1B /* SelectedOrdersDetailsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersDetailsResponse.h; sourceTree = "<group>"; };
+		8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersDetailsResponse.m; sourceTree = "<group>"; };
+
 		84E6EDCA19E857D100EFFC54 /* LeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenu.h; sourceTree = "<group>"; };
 		84E6EDCB19E857D100EFFC54 /* LeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenu.m; sourceTree = "<group>"; };
+
 		8F0CAA0E19E80C6100C8ED56 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellSelectedOrders.xib; path = ../CustomCellSelectedOrders.xib; sourceTree = "<group>"; };
 		8F52FB5219E7DC1000585B40 /* metroAndroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metroAndroid.png; sourceTree = "<group>"; };
-		8F5AA8CB19E57B84003AEDED /* OrdersJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersJson.h; sourceTree = "<group>"; };
-		8F5AA8CC19E57B84003AEDED /* OrdersJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersJson.m; sourceTree = "<group>"; };
-		8F5AA8CE19E57FAB003AEDED /* OrdersResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersResponse.h; sourceTree = "<group>"; };
-		8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersResponse.m; sourceTree = "<group>"; };
-		8F5AA8D119E58013003AEDED /* OrdersElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersElements.h; sourceTree = "<group>"; };
-		8F5AA8D219E58013003AEDED /* OrdersElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersElements.m; sourceTree = "<group>"; };
+		8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForFilter.h; sourceTree = "<group>"; };
+		8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProviderForFilter.m; sourceTree = "<group>"; };
 		8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
@@ -123,6 +136,7 @@
 		8FE032F119DEC83B00B17C09 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		8FE032F319DEC84A00B17C09 /* icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2@2x.png"; sourceTree = "<group>"; };
 		8FE032F519DEC86900B17C09 /* icon3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon3@2x.png"; sourceTree = "<group>"; };
+		8FE4868D19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_no_smoking_lounge_small.png; sourceTree = "<group>"; };
 		D70428B219D0071F00F5C38C /* CityMobilDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityMobilDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70428B619D0071F00F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70428B719D0071F00F5C38C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -229,17 +243,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8F5AA8CA19E57B55003AEDED /* Orders */ = {
+		8F0A821A19EBAE2800A03D1B /* SelectedOrdersDetails */ = {
 			isa = PBXGroup;
 			children = (
-				8F5AA8CB19E57B84003AEDED /* OrdersJson.h */,
-				8F5AA8CC19E57B84003AEDED /* OrdersJson.m */,
-				8F5AA8CE19E57FAB003AEDED /* OrdersResponse.h */,
-				8F5AA8CF19E57FAB003AEDED /* OrdersResponse.m */,
-				8F5AA8D119E58013003AEDED /* OrdersElements.h */,
-				8F5AA8D219E58013003AEDED /* OrdersElements.m */,
+				8F0A821B19EBB68100A03D1B /* SelectedOrdersDetailsJson.h */,
+				8F0A821C19EBB68100A03D1B /* SelectedOrdersDetailsJson.m */,
+				8F0A821E19EBB6F400A03D1B /* SelectedOrdersDetailsElements.h */,
+				8F0A821F19EBB6F400A03D1B /* SelectedOrdersDetailsElements.m */,
+				8F0A822119EBB74700A03D1B /* SelectedOrdersDetailsResponse.h */,
+				8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */,
 			);
-			name = Orders;
+			name = SelectedOrdersDetails;
 			sourceTree = "<group>";
 		};
 		D70428A919D0071F00F5C38C = {
@@ -276,6 +290,7 @@
 				8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */,
 				8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */,
 				8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */,
+				8FE4868D19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png */,
 				8FCCBBC119E2DE2600BD9BC1 /* ch@2x.png */,
 				8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */,
 				8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */,
@@ -367,12 +382,12 @@
 		EC40D44119E43490007BA02C /* Mail */ = {
 			isa = PBXGroup;
 			children = (
+				EC40D43B19E4323C007BA02C /* MailJson.h */,
+				EC40D43C19E4323C007BA02C /* MailJson.m */,
 				EC40D44219E436C5007BA02C /* MailElements.h */,
 				EC40D44319E436C5007BA02C /* MailElements.m */,
 				EC40D43E19E43258007BA02C /* MailResponse.h */,
 				EC40D43F19E43258007BA02C /* MailResponse.m */,
-				EC40D43B19E4323C007BA02C /* MailJson.h */,
-				EC40D43C19E4323C007BA02C /* MailJson.m */,
 			);
 			name = Mail;
 			sourceTree = "<group>";
@@ -381,8 +396,9 @@
 			isa = PBXGroup;
 			children = (
 				EC55988919E5364900877CBC /* SingleDataProvider.h */,
+				8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */,
+				8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */,
 				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
-				8F5AA8CA19E57B55003AEDED /* Orders */,
 			);
 			name = "Single Data Provider";
 			sourceTree = "<group>";
@@ -498,6 +514,7 @@
 		ECE25C7919E56BD80044F6AD /* info */ = {
 			isa = PBXGroup;
 			children = (
+				8F0A821A19EBAE2800A03D1B /* SelectedOrdersDetails */,
 				ECE25C8019E56BE80044F6AD /* textRequest.h */,
 				ECE25C8119E56BE80044F6AD /* textRequest.m */,
 				ECE25C8219E56BE80044F6AD /* messages.h */,
@@ -615,6 +632,7 @@
 				8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */,
 				8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */,
 				8FE032EC19DEC80600B17C09 /* ya@2x.png in Resources */,
+				8FE4868E19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +658,7 @@
 				ECCA90A619DEE2060007831F /* JSONModelError.m in Sources */,
 				ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */,
 				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
+				8F0A822019EBB6F400A03D1B /* SelectedOrdersDetailsElements.m in Sources */,
 				ECCC237819E7F8F40091C43E /* LoginViewController.m in Sources */,
 				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
 				ECCEE4FA19EFF58000F07532 /* CustomTableViewCell.m in Sources */,
@@ -653,6 +672,7 @@
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
+				8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
 				ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */,
 				ECE25C8A19E56BE80044F6AD /* messages.m in Sources */,
@@ -663,7 +683,9 @@
 				ECCC238119E7FED20091C43E /* OrdersJson.m in Sources */,
 				ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */,
 				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
+				8F0A821D19EBB68100A03D1B /* SelectedOrdersDetailsJson.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
+				8F0A822319EBB74700A03D1B /* SelectedOrdersDetailsResponse.m in Sources */,
 				8FB6DC9419E6A8E200671A4B /* SelectedOrdersViewController.m in Sources */,
 				8FB6DC9D19E6BEA200671A4B /* CustomCellSelectedOrders.m in Sources */,
 				ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */,

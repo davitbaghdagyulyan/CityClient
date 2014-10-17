@@ -10,4 +10,24 @@
 
 @interface CustomCellSelectedOrders : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *View1;
+
+
+@property (weak, nonatomic) IBOutlet UIView *View2;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *View3;
+
+
+
+@property (weak, nonatomic) IBOutlet UILabel *labelShortName;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelPercent;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelCollMetroName;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelDeliveryMetroName;
+
+
 @end

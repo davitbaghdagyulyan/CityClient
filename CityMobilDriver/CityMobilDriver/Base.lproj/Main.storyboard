@@ -21,7 +21,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cD1-GY-5zP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+
+            <point key="canvasLocation" x="-5148" y="200"/>
+
             <point key="canvasLocation" x="-8814" y="161"/>
+
         </scene>
         <!--Root View Controller-->
         <scene sceneID="6Du-V3-zfD">
@@ -2052,7 +2056,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA5-tz-jXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+
+            <point key="canvasLocation" x="-3897" y="200"/>
+
             <point key="canvasLocation" x="-8834" y="1111"/>
+
         </scene>
         <!--Info View Controller-->
         <scene sceneID="6rJ-Lf-Yec">
@@ -2590,7 +2598,7 @@
                                         <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="23" y="266" width="354" height="239"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="23" y="266" width="354" height="239"/>
                                         </variation>
                                     </view>
@@ -2613,7 +2621,10 @@
                                     <constraint firstItem="7ty-bs-mdb" firstAttribute="top" secondItem="C2d-am-Var" secondAttribute="bottom" constant="20" id="yyK-Xl-DyF"/>
                                 </constraints>
                                 <variation key="heightClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="64" width="600" height="336"/>
+                                    <rect key="frame" x="0.0" y="68" width="600" height="332"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="68" width="400" height="732"/>
                                 </variation>
                             </scrollView>
                         </subviews>
@@ -2790,11 +2801,11 @@
                                 </variation>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LKi-Xp-RbK">
-                                <rect key="frame" x="8" y="107" width="584" height="473"/>
+                                <rect key="frame" x="16" y="107" width="568" height="473"/>
                                 <color key="backgroundColor" red="0.52549022440000004" green="0.90980398650000005" blue="0.047058828179999998" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="4oQ-U1-EA0" id="Gyn-nu-Qxe"/>
-                                    <outlet property="delegate" destination="4oQ-U1-EA0" id="A9v-3M-ZmR"/>
+                                    <outlet property="dataSource" destination="4oQ-U1-EA0" id="F5w-ez-WHq"/>
+                                    <outlet property="delegate" destination="4oQ-U1-EA0" id="D92-Jh-Ac1"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -2813,7 +2824,10 @@
                             <constraint firstAttribute="centerX" secondItem="33o-AB-MbA" secondAttribute="centerX" id="K8D-h6-I92"/>
                             <constraint firstItem="l72-JT-dRv" firstAttribute="top" secondItem="aub-U0-a20" secondAttribute="top" id="OwM-zE-gfQ"/>
                             <constraint firstAttribute="centerX" secondItem="LKi-Xp-RbK" secondAttribute="centerX" id="Xtw-tG-kwk"/>
-                            <constraint firstItem="LKi-Xp-RbK" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="trailingMargin" multiplier="1/70" id="ai5-f2-EBQ"/>
+                            <constraint firstItem="LKi-Xp-RbK" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leadingMargin" id="ai5-f2-EBQ">
+                                <variation key="heightClass=compact" constant="30"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-8"/>
+                            </constraint>
                             <constraint firstItem="TuJ-NR-e8W" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leadingMargin" id="gLa-Tq-7hV"/>
                             <constraint firstItem="TuJ-NR-e8W" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leading" id="o3N-uG-P8i"/>
                             <constraint firstAttribute="trailing" secondItem="TuJ-NR-e8W" secondAttribute="trailing" id="onn-91-JNS"/>
@@ -2830,10 +2844,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableViewOrdersDetails" destination="LKi-Xp-RbK" id="3zW-sg-JNn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G22-cb-Yvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7917" y="1119"/>
+            <point key="canvasLocation" x="-1773" y="293"/>
         </scene>
     </scenes>
     <resources>
