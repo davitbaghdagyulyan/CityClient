@@ -11,6 +11,7 @@
 #import "textRequest.h"
 #import "textResponse.h"
 #import "SingleDataProvider.h"
+#import "LeftMenu.h"
 
 @interface infoViewController : UIViewController <UIWebViewDelegate>
 @property(nonatomic,strong)NSString* key;
@@ -24,5 +25,9 @@
 @property(nonatomic,strong) NSString* titleText;
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
+
+
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 
 @end

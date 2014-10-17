@@ -67,10 +67,10 @@
 		ECCC238019E7FED20091C43E /* OrdersElements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCC237B19E7FED20091C43E /* OrdersElements.m */; };
 		ECCC238119E7FED20091C43E /* OrdersJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCC237D19E7FED20091C43E /* OrdersJson.m */; };
 		ECCC238219E7FED20091C43E /* OrdersResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCC237F19E7FED20091C43E /* OrdersResponse.m */; };
+		ECCEE4FA19EFF58000F07532 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCEE4F919EFF58000F07532 /* CustomTableViewCell.m */; };
+		ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCEE4FD19F0121400F07532 /* CustomTableViewCell.xib */; };
 		ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742019E6B66B008D23B9 /* RecallJson.m */; };
 		ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742319E6B683008D23B9 /* RecallResponse.m */; };
-		ECE1C65419EE6DE4001A9A96 /* FontSizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE1C65219EE6DE4001A9A96 /* FontSizeViewController.m */; };
-		ECE1C65519EE6DE4001A9A96 /* FontSizeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECE1C65319EE6DE4001A9A96 /* FontSizeViewController.xib */; };
 		ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE2553619DBF1E9000BD8C9 /* bg.png */; };
 		ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8119E56BE80044F6AD /* textRequest.m */; };
 		ECE25C8A19E56BE80044F6AD /* messages.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8319E56BE80044F6AD /* messages.m */; };
@@ -193,13 +193,13 @@
 		ECCC237D19E7FED20091C43E /* OrdersJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersJson.m; sourceTree = "<group>"; };
 		ECCC237E19E7FED20091C43E /* OrdersResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersResponse.h; sourceTree = "<group>"; };
 		ECCC237F19E7FED20091C43E /* OrdersResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersResponse.m; sourceTree = "<group>"; };
+		ECCEE4F819EFF58000F07532 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		ECCEE4F919EFF58000F07532 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		ECCEE4FD19F0121400F07532 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = ../CustomTableViewCell.xib; sourceTree = "<group>"; };
 		ECD9741F19E6B66B008D23B9 /* RecallJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecallJson.h; sourceTree = "<group>"; };
 		ECD9742019E6B66B008D23B9 /* RecallJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecallJson.m; sourceTree = "<group>"; };
 		ECD9742219E6B683008D23B9 /* RecallResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecallResponse.h; sourceTree = "<group>"; };
 		ECD9742319E6B683008D23B9 /* RecallResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecallResponse.m; sourceTree = "<group>"; };
-		ECE1C65119EE6DE4001A9A96 /* FontSizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSizeViewController.h; sourceTree = "<group>"; };
-		ECE1C65219EE6DE4001A9A96 /* FontSizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSizeViewController.m; sourceTree = "<group>"; };
-		ECE1C65319EE6DE4001A9A96 /* FontSizeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FontSizeViewController.xib; sourceTree = "<group>"; };
 		ECE2553619DBF1E9000BD8C9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		ECE25C8019E56BE80044F6AD /* textRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textRequest.h; sourceTree = "<group>"; };
 		ECE25C8119E56BE80044F6AD /* textRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textRequest.m; sourceTree = "<group>"; };
@@ -488,9 +488,9 @@
 				EC1E4A6519EBC179007C77A2 /* Single UserInformation Provider */,
 				EC1E4A6919EBC22F007C77A2 /* SettingsViewController.h */,
 				EC1E4A6A19EBC22F007C77A2 /* SettingsViewController.m */,
-				ECE1C65119EE6DE4001A9A96 /* FontSizeViewController.h */,
-				ECE1C65219EE6DE4001A9A96 /* FontSizeViewController.m */,
-				ECE1C65319EE6DE4001A9A96 /* FontSizeViewController.xib */,
+				ECCEE4F819EFF58000F07532 /* CustomTableViewCell.h */,
+				ECCEE4F919EFF58000F07532 /* CustomTableViewCell.m */,
+				ECCEE4FD19F0121400F07532 /* CustomTableViewCell.xib */,
 			);
 			name = "Settings Menu";
 			sourceTree = "<group>";
@@ -600,7 +600,6 @@
 				8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */,
 				D70428C119D0071F00F5C38C /* Main.storyboard in Resources */,
 				ECCC236C19E7D7EA0091C43E /* logo1@2x.png in Resources */,
-				ECE1C65519EE6DE4001A9A96 /* FontSizeViewController.xib in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */,
@@ -612,6 +611,7 @@
 				8FE032F619DEC86900B17C09 /* icon3@2x.png in Resources */,
 				8FCCBBC019E2DDC400BD9BC1 /* chat1@2x.png in Resources */,
 				D70428C319D0071F00F5C38C /* Images.xcassets in Resources */,
+				ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */,
 				8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */,
 				8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */,
 				8FE032EC19DEC80600B17C09 /* ya@2x.png in Resources */,
@@ -636,13 +636,13 @@
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
 				ECCC237219E7F7930091C43E /* CustomCell.m in Sources */,
 				EC40D44019E43258007BA02C /* MailResponse.m in Sources */,
-				ECE1C65419EE6DE4001A9A96 /* FontSizeViewController.m in Sources */,
 				EC40D43D19E4323C007BA02C /* MailJson.m in Sources */,
 				ECCA90A619DEE2060007831F /* JSONModelError.m in Sources */,
 				ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */,
 				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
 				ECCC237819E7F8F40091C43E /* LoginViewController.m in Sources */,
 				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
+				ECCEE4FA19EFF58000F07532 /* CustomTableViewCell.m in Sources */,
 				ECCC237519E7F82F0091C43E /* MessagesViewController.m in Sources */,
 				ECCC238219E7FED20091C43E /* OrdersResponse.m in Sources */,
 				EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */,
