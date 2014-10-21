@@ -14,6 +14,7 @@
 @property(nonatomic,strong,getter= getCollMetroName)NSString*CollMetroName;
 @property(nonatomic,strong,getter=getDeliveryMetroName)NSString*DeliveryMetroName;
 @property(nonatomic,strong,getter=getCollDateText)NSString*CollDateText;
+@property(nonatomic,strong,getter=getCollDate)NSString * CollDate;
 @property(nonatomic,strong,getter= getPercent)NSString * percent;
 @property(nonatomic,strong,getter=getNoSmoking)NSString * NoSmoking;
 @property(nonatomic,strong,getter=getG_width)NSString * g_width;

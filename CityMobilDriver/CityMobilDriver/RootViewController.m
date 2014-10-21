@@ -52,12 +52,6 @@
 {
     [super viewDidLoad];
     
-
-    
-   
-    
-
-    
     LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"View2"];
     [self.navigationController pushViewController:log animated:NO];
     
@@ -151,13 +145,27 @@
         
        [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
         SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
+        
             
 
     
       
-        selectedOrdersCont.selectedFilter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+       // selectedOrdersCont.selectedFilter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
 
         [self.navigationController pushViewController:selectedOrdersCont animated:YES];
+        selectedOrdersCont.titleString =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getName];
+        if (indexPath.row==0)
+        {
+            selectedOrdersCont.stringForSrochno =@"СРОЧНО";
+        }
+        
+        else
+        {
+         selectedOrdersCont.stringForSrochno =@"";
+        
+        }
+
+        
         
         
         
@@ -588,5 +596,7 @@
     }];
     
 }
+
+
 
 @end
