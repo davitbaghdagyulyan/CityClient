@@ -330,6 +330,7 @@
             
             
             [alert show];
+            [indicator stopAnimating];
             return ;
         }
      
@@ -362,6 +363,6 @@
         [indicator stopAnimating];
     }];
     
-    
+
 }
 @end

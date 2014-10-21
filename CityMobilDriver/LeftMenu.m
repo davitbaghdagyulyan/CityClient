@@ -97,6 +97,12 @@
             myClass = NSClassFromString(@"MessagesViewController");
             identity =@"MessagesViewController";
             break;
+        case 12:
+            
+            myClass = NSClassFromString(@"SettingsViewController");
+            identity =@"SettingsViewController";
+            break;
+
                     default:
             break;
     }
