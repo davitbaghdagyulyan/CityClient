@@ -113,8 +113,7 @@
         cell = [nib objectAtIndex:0];
     }
     
-    
-    
+  
     
        cell.label1.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
        cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
@@ -123,8 +122,8 @@
        cell.label1.text=[NSString stringWithFormat:@"      %@",currentName];
        NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
        cell.label2.text=[NSString stringWithFormat:@"%@",currentCount];
-       return  cell;
-       
+    
+    
     
     return  cell;
  
@@ -206,6 +205,23 @@
 }
 
 - (IBAction)actionUnkown2:(id)sender {
+}
+
+- (IBAction)back:(id)sender
+
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+        
+    }
+    
+    [self.navigationController popViewControllerAnimated:NO];
+  
+    
 }
 
 - (IBAction)actionUnkown3:(id)sender {

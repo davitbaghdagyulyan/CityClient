@@ -18,7 +18,8 @@
 
 - (IBAction)actionUnkown2:(id)sender;
 
-- (IBAction)actionUnkown3:(id)sender;
+
+- (IBAction)back:(id)sender;
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 

@@ -220,7 +220,7 @@
                 <outlet property="labelPercent" destination="HZF-e4-752" id="OHc-aX-jvq"/>
                 <outlet property="labelShortName" destination="aGc-fZ-nhU" id="2uW-ax-fTS"/>
             </connections>
-            <point key="canvasLocation" x="479.5" y="330"/>
+            <point key="canvasLocation" x="513.5" y="305"/>
         </tableViewCell>
     </objects>
     <resources>
