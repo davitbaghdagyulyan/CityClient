@@ -31,8 +31,6 @@
     NSString * G_Width;
 
 }
-
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [self requestOrder];
@@ -43,14 +41,10 @@
 
        // Do any additional setup after loading the view.
 }
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
@@ -60,15 +54,11 @@
 
     return  selectedOrdersDetailsResponseObject.orders.count;
     
-
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-   
-    
     NSString *simpleTableIdentifierIphone = @"SimpleTableOrdersSelected";
-    
     CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
     {
@@ -76,9 +66,6 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
-    
-    
     if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] getShortname])
     {
         shortName =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] getShortname];
@@ -88,7 +75,6 @@
        shortName = @"";
     
     }
-    
     if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] getCollDateText])
     {
         callDateText =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] getCollDateText];
@@ -98,7 +84,6 @@
         callDateText = @"";
         
     }
-
     NSString * stringForLabelShortName = [NSString stringWithFormat:@"%@ %@",shortName,callDateText];
     
     cell.labelShortName.text = stringForLabelShortName;
@@ -112,22 +97,17 @@
       percent = @"";
         
     }
-   
     NSString * stringForLabelPercent;
     if([percent length]>3)
     {
     stringForLabelPercent= [percent substringToIndex:2];
     }
     else
-        
-        
-        
     {
         stringForLabelPercent = percent;
     }
     stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
     cell.labelPercent.text = stringForLabelPercent;
-    
     if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] getCollMetroName])
     {
        callMetroName =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] getCollMetroName];
@@ -137,7 +117,6 @@
         callMetroName = @"";
         
     }
-
     NSString * stringForLabelCallMetroName = callMetroName;
     cell.labelCollMetroName.text = stringForLabelCallMetroName;
     
@@ -150,7 +129,6 @@
         deliveryMetroName = @"";
         
     }
-    
     NSString * stringForLabelDeliveryMetroName = deliveryMetroName;
     cell.labelDeliveryMetroName.text = stringForLabelDeliveryMetroName;
     
@@ -250,8 +228,6 @@
     
 
 }
-
-
 -(void)requestOrder
 {
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -259,17 +235,10 @@
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
     [self.view addSubview:indicator];
-    
-    
     SelectedOrdersDetailsJson* detailsJsonObject=[[SelectedOrdersDetailsJson alloc]init];
-    
-    
-    
     NSDictionary*jsonDictionary=[detailsJsonObject toDictionary];
     NSString*jsons=[detailsJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    
-    
     NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
     
     NSError* error;
@@ -277,7 +246,6 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
-    
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     [request setURL:url];
     [request setHTTPMethod:@"POST"];
@@ -285,8 +253,6 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
     request.timeoutInterval = 10;
-    
-    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -295,8 +261,6 @@
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
-            
-            
             [alert show];
             return ;
         }
@@ -326,8 +290,6 @@
     
     
 }
-
-
 -(void)addingImages
 {
     NSMutableArray * arrayOfImageViews;
@@ -337,11 +299,5 @@
     [arrayOfImageViews addObject:imgView2];
     UIImageView * imgView3 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 17,18)];
     [arrayOfImageViews addObject:imgView3];
-    
-                              
-
 }
-
-
-
 @end
