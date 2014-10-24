@@ -21,11 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cD1-GY-5zP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="-5148" y="200"/>
-
-            <point key="canvasLocation" x="-8814" y="161"/>
-
         </scene>
         <!--Root View Controller-->
         <scene sceneID="6Du-V3-zfD">
@@ -185,6 +181,9 @@
                                                 <include reference="iYT-ej-GNn"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="back:" destination="xBa-E3-xZb" eventType="touchUpInside" id="Cr6-v4-oDk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zs-EY-ttY">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -329,6 +328,7 @@
                                         </variation>
                                         <connections>
                                             <action selector="actionUnkown3:" destination="xBa-E3-xZb" eventType="touchUpInside" id="bcK-Kn-XO8"/>
+                                            <action selector="back:" destination="xBa-E3-xZb" eventType="touchUpInside" id="DE9-m6-aWc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25i-0z-WSg" userLabel="B1">
@@ -453,7 +453,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <action selector="actionUnkown3:" destination="xBa-E3-xZb" eventType="touchUpInside" id="0ep-Q4-XnO"/>
+                                            <action selector="back:" destination="xBa-E3-xZb" eventType="touchUpInside" id="iYW-Pu-QDS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1895,9 +1895,6 @@
                                         <state key="normal" title="Button" image="logo.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                            <rect key="frame" x="8" y="29" width="39" height="28"/>
-                                        </variation>
                                         <connections>
                                             <action selector="openAndCloseLeftMenu:" destination="2zj-ev-RRD" eventType="touchUpInside" id="OQM-kD-Ef1"/>
                                         </connections>
@@ -1911,9 +1908,6 @@
                                         <state key="normal" title="Button" image="icon2.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="676" y="30" width="25" height="25"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbw-ow-HIT" userLabel="Button1">
                                         <rect key="frame" x="563" y="30" width="25" height="25"/>
@@ -1924,9 +1918,6 @@
                                         <state key="normal" title="Button" image="icon3.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="751" y="30" width="25" height="25"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fw-SP-sNK" userLabel="GPS">
                                         <rect key="frame" x="461" y="30" width="27" height="27"/>
@@ -1937,9 +1928,6 @@
                                         <state key="normal" title="Button" image="gps.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="599" y="30" width="27" height="27"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZS-Hu-Hsd" userLabel="Yandex">
                                         <rect key="frame" x="361" y="30" width="25" height="25"/>
@@ -1950,9 +1938,6 @@
                                         <state key="normal" title="Button" image="ya.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="449" y="30" width="25" height="25"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJD-bM-w9j" userLabel="Button4">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
@@ -1963,9 +1948,9 @@
                                         <state key="normal" title="Button" image="icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="524" y="30" width="25" height="25"/>
-                                        </variation>
+                                        <connections>
+                                            <segue destination="40C-gD-0cA" kind="show" id="haQ-vR-LsE"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-4L-037">
                                         <rect key="frame" x="0.0" y="64" width="600" height="2"/>
@@ -2017,9 +2002,6 @@
                                     <constraint firstItem="0ZS-Hu-Hsd" firstAttribute="top" secondItem="e1F-mJ-tP1" secondAttribute="top" constant="30" id="utl-EA-q42"/>
                                     <constraint firstItem="kEK-ch-qrF" firstAttribute="top" secondItem="e1F-mJ-tP1" secondAttribute="top" constant="29" id="wEb-CU-uMe"/>
                                 </constraints>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="64"/>
-                                </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMi-uD-OqW">
                                 <rect key="frame" x="10" y="552" width="580" height="40"/>
@@ -2056,11 +2038,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA5-tz-jXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
-            <point key="canvasLocation" x="-3897" y="200"/>
-
-            <point key="canvasLocation" x="-8834" y="1111"/>
-
+            <point key="canvasLocation" x="-4383" y="200"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="6rJ-Lf-Yec">
@@ -2090,9 +2068,6 @@
                                         <state key="normal" title="Button" image="logo.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                            <rect key="frame" x="8" y="29" width="39" height="28"/>
-                                        </variation>
                                         <connections>
                                             <action selector="openAndCloseLeftMenu:" destination="XBe-nq-8cO" eventType="touchUpInside" id="PqR-AI-RK1"/>
                                         </connections>
@@ -2106,9 +2081,6 @@
                                         <state key="normal" title="Button" image="icon2.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="676" y="30" width="25" height="25"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziS-yu-q9b" userLabel="Button1">
                                         <rect key="frame" x="563" y="30" width="25" height="25"/>
@@ -2119,9 +2091,6 @@
                                         <state key="normal" title="Button" image="icon3.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="751" y="30" width="25" height="25"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Br-TK-NLu" userLabel="GPS">
                                         <rect key="frame" x="461" y="30" width="27" height="27"/>
@@ -2132,9 +2101,6 @@
                                         <state key="normal" title="Button" image="gps.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="599" y="30" width="27" height="27"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTa-sE-22q" userLabel="Yandex">
                                         <rect key="frame" x="361" y="30" width="25" height="25"/>
@@ -2145,9 +2111,6 @@
                                         <state key="normal" title="Button" image="ya.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="449" y="30" width="25" height="25"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Q-tB-S2e" userLabel="Button4">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
@@ -2158,9 +2121,6 @@
                                         <state key="normal" title="Button" image="icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="524" y="30" width="25" height="25"/>
-                                        </variation>
                                         <connections>
                                             <segue destination="40C-gD-0cA" kind="show" id="W0L-Lr-COz"/>
                                         </connections>
@@ -2212,9 +2172,6 @@
                                     </constraint>
                                     <constraint firstAttribute="trailing" secondItem="9nz-jL-WuH" secondAttribute="trailing" id="xFC-If-aLH"/>
                                 </constraints>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="64"/>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2269,9 +2226,6 @@
                                         <state key="normal" title="Button" image="logo.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                            <rect key="frame" x="8" y="29" width="39" height="28"/>
-                                        </variation>
                                         <connections>
                                             <action selector="openAndCloseLeftMenu:" destination="40C-gD-0cA" eventType="touchUpInside" id="5tX-gA-rXU"/>
                                         </connections>
@@ -2285,9 +2239,6 @@
                                         <state key="normal" title="Button" image="icon3.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="751" y="30" width="25" height="25"/>
-                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3F-u0-BgI" userLabel="GPS">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
@@ -2301,7 +2252,7 @@
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="261" y="30" width="27" height="27"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="599" y="30" width="27" height="27"/>
                                         </variation>
                                     </button>
@@ -2317,7 +2268,7 @@
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="161" y="30" width="25" height="25"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="449" y="30" width="25" height="25"/>
                                         </variation>
                                     </button>
@@ -2333,7 +2284,7 @@
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="211" y="30" width="25" height="25"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="524" y="30" width="25" height="25"/>
                                         </variation>
                                     </button>
@@ -2363,9 +2314,6 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                     </constraint>
                                 </constraints>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="64"/>
-                                </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlA-Oe-JUJ">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
@@ -2629,6 +2577,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="68" width="400" height="732"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="64" width="800" height="736"/>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2664,7 +2615,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vud-m9-pHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5489" y="239"/>
+            <point key="canvasLocation" x="-5461" y="1103"/>
         </scene>
         <!--Selected Orders View Controller-->
         <scene sceneID="gkl-dV-ler">
@@ -2736,6 +2687,9 @@
                                         <state key="normal" title="Button" image="icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="40C-gD-0cA" kind="show" id="O0X-gQ-Ffe"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abx-tP-Wf8" userLabel="Yandex">
                                         <rect key="frame" x="369" y="30" width="25" height="25"/>
@@ -2863,7 +2817,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G22-cb-Yvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2716" y="147"/>
+            <point key="canvasLocation" x="-3714" y="-71"/>
         </scene>
     </scenes>
     <resources>
@@ -2879,4 +2833,7 @@
         <image name="phone.png" width="20" height="26"/>
         <image name="ya.png" width="24" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="O0X-gQ-Ffe"/>
+    </inferredMetricsTieBreakers>
 </document>

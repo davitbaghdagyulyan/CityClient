@@ -26,11 +26,9 @@
 @property(nonatomic,strong,getter=getUseBonus)NSString * useBonus;
 @property(nonatomic,strong,getter=getNeed_wifi)NSString *need_wifi;
 @property(nonatomic,strong,getter=getYellow_reg_num)NSString * yellow_reg_num;
-
-
-
-
-
+@property(nonatomic,strong,getter=getOurComment)NSString *OurComment;
+@property(nonatomic,strong,getter=getCollAddresstext)NSString *CollAddressText;
+@property(nonatomic,strong,getter=getDeliveryAddressText) NSString *DeliveryAddressText;
 
 
 @end
