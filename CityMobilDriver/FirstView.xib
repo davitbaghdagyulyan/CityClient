@@ -454,8 +454,8 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             <variation key="heightClass=regular-widthClass=regular" constant="16"/>
                         </constraint>
-                        <constraint firstAttribute="bottom" secondItem="AMj-wh-6Z1" secondAttribute="bottom" constant="-106" id="VlN-sS-zNq">
-                            <variation key="heightClass=regular-widthClass=compact" constant="94"/>
+                        <constraint firstAttribute="bottom" secondItem="AMj-wh-6Z1" secondAttribute="bottom" constant="8" id="VlN-sS-zNq">
+                            <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                         </constraint>
                         <constraint firstItem="AMj-wh-6Z1" firstAttribute="width" secondItem="2UA-aT-eQb" secondAttribute="width" multiplier="576/600" constant="23.440000000000055" id="hgV-wH-gvp">
                             <variation key="heightClass=regular-widthClass=compact" constant="15.439999999999998"/>
