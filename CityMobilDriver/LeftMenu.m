@@ -8,6 +8,7 @@
 
 #import "LeftMenu.h"
 #import "MessagesViewController.h"
+#import "ProfilViewController.h"
 @implementation LeftMenu
 
 {
@@ -91,24 +92,48 @@
         case 0:
             myClass = NSClassFromString(@"RootViewController");
             identity =@"RootViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
+        case 2:
+            myClass = NSClassFromString(@"ReplenishmentViewController");
+            identity =@"ReplenishmentViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+            
+            
+            
+            
+            
         case 3:
         
             myClass = NSClassFromString(@"MessagesViewController");
             identity =@"MessagesViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
         case 12:
             
             myClass = NSClassFromString(@"SettingsViewController");
             identity =@"SettingsViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-
+            
+            case 10:
+            myClass = NSClassFromString(@"ProfilViewController");
+            identity =@"ProfilViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            
+            break;
+         case 13:
+            exit(0); //not recommended apple
+            break;
                     default:
             break;
+            
+            
     }
-    [self pushOrPoptoViewContrller:myClass andIdentity:identity];
     
     
+   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

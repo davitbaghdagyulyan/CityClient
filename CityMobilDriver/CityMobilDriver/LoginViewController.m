@@ -13,15 +13,14 @@
 @end
 
 @implementation LoginViewController
+
 @synthesize loginSpace;
 @synthesize keyboardHeightInPortrait;
 @synthesize keyboardHeightInLandscape;
 @synthesize curentTextField;
-
 @synthesize login;
 @synthesize password;
 @synthesize button;
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -291,12 +290,12 @@
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
     [self.view addSubview:indicator];
-    
+   
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
+
     loginJsonObject.bankid=@"110314";//login.text;
     loginJsonObject.pass=@"52750";//password.text;
-    
-    
+
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];
     NSLog(@"%@",jsons);
@@ -342,6 +341,10 @@
         loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
         
         [SingleDataProvider sharedKey].key = loginResponseObject.key;
+        [UserInformationProvider sharedInformation].balance = loginResponseObject.balance;
+        [UserInformationProvider sharedInformation].bankid = loginResponseObject.bankid;
+        [UserInformationProvider sharedInformation].credit_limit = loginResponseObject.credit_limit;
+        
         
         if(loginResponseObject.code!=nil)
         {
@@ -365,4 +368,5 @@
     
 
 }
+
 @end

@@ -36,6 +36,10 @@ static bool isWhit;
 {
     [super viewDidLoad];
     
+    
+    NSString* a = [UserInformationProvider sharedInformation].balance;
+    
+    
     self.balance.text =[self.balance.text stringByAppendingString:[UserInformationProvider sharedInformation].balance];
     self.limit.text =[self.limit.text stringByAppendingString:[UserInformationProvider sharedInformation].credit_limit];
     self.callsign.text =[self.callsign.text stringByAppendingString:[UserInformationProvider sharedInformation].bankid];
