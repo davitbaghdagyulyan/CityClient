@@ -21,11 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cD1-GY-5zP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="-5148" y="200"/>
-
-            <point key="canvasLocation" x="-4744" y="233"/>
-
         </scene>
         <!--Root View Controller-->
         <scene sceneID="6Du-V3-zfD">
@@ -1967,11 +1963,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-
-                                            <segue destination="40C-gD-0cA" kind="show" id="haQ-vR-LsE"/>
-
                                             <segue destination="40C-gD-0cA" kind="show" id="ieW-uU-Y40"/>
-
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-4L-037">
@@ -2054,8 +2046,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA5-tz-jXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4383" y="200"/>
-
-            <point key="canvasLocation" x="-4106" y="233"/>
         </scene>
         <!--Sending Message View Controller-->
         <scene sceneID="7kF-fc-pTm">
@@ -2436,7 +2426,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QA9-9N-90l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2822" y="232"/>
-
         </scene>
         <!--Info View Controller-->
         <scene sceneID="6rJ-Lf-Yec">
@@ -3019,10 +3008,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vud-m9-pHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="-5461" y="1103"/>
-
-            <point key="canvasLocation" x="-5476" y="226"/>
         </scene>
         <!--Profil View Controller-->
         <scene sceneID="rru-go-EQb">
@@ -3040,8 +3026,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ap5-8p-DUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5476" y="939"/>
-
+            <point key="canvasLocation" x="-4748" y="1121"/>
         </scene>
         <!--Selected Orders View Controller-->
         <scene sceneID="gkl-dV-ler">
@@ -3114,11 +3099,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-
-                                            <segue destination="40C-gD-0cA" kind="show" id="O0X-gQ-Ffe"/>
-
                                             <segue destination="40C-gD-0cA" kind="show" id="LOx-zv-fv7"/>
-
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Abx-tP-Wf8" userLabel="Yandex">
@@ -3247,11 +3228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G22-cb-Yvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
-            <point key="canvasLocation" x="-3714" y="-71"/>
-
-            <point key="canvasLocation" x="-1835" y="291"/>
-
+            <point key="canvasLocation" x="-3506" y="-73"/>
         </scene>
     </scenes>
     <resources>
@@ -3268,10 +3245,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-
-        <segue reference="O0X-gQ-Ffe"/>
-
-        <segue reference="H6G-Qj-NO6"/>
-
+        <segue reference="LOx-zv-fv7"/>
     </inferredMetricsTieBreakers>
 </document>
