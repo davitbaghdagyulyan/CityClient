@@ -12,13 +12,13 @@
 #import "MessagesCell.h"
 #import "infoViewController.h"
 #import "LeftMenu.h"
+
 @interface MessagesViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+- (IBAction)theNewMessage:(UIButton *)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIView *navigationView;
 @property (strong, nonatomic) IBOutlet UIButton *theNewMessageButton;
-
 @property (strong, nonatomic) IBOutlet UITableView *messagesTableView;
-
-
 
 @end

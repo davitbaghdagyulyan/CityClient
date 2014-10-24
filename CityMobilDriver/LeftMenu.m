@@ -91,11 +91,23 @@
         case 0:
             myClass = NSClassFromString(@"RootViewController");
             identity =@"RootViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
+        case 2:
+            myClass = NSClassFromString(@"ReplenishmentViewController");
+            identity =@"ReplenishmentViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+            
+            
+            
+            
+            
         case 3:
         
             myClass = NSClassFromString(@"MessagesViewController");
             identity =@"MessagesViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
         case 12:
             
@@ -107,8 +119,10 @@
             break;
                     default:
             break;
+            
+            
     }
-    [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+    
     
    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
