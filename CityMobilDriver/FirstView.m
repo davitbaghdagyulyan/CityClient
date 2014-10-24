@@ -7,10 +7,13 @@
 //
 
 #import "FirstView.h"
-
+#import "LeftMenu.h"
 @interface FirstView()
 {
     DriverAllInfoResponse* jsonResponseObject;
+    
+    NSInteger flag;
+    LeftMenu*leftMenu;
 }
 @end
 
@@ -29,11 +32,13 @@
     
     [self setDriverInfoRequest];
     [self setDriverInfo];
+ 
 }
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
+    
     if (sender.contentOffset.x != 0)
     {
         CGPoint offset = sender.contentOffset;
@@ -132,27 +137,18 @@
     textField.attributedText=attributedText;
 }
 
-//
-//-(void)setAtributedString:(NSString*)str  :(NSString*)appendingString
-//{
-//    self.lastName.text = [self.lastName.text stringByAppendingString:appendingString];
-//    NSRange range1 = [self.lastName.text rangeOfString:appendingString];
-//    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:self.lastName.text];
-//    [attributedText setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0f]} range:range1];
-//    self.lastName.attributedText=attributedText;
-//}
+
+- (IBAction)showSettingViewController:(UIButton *)sender
+{
+    [self.delegate showSettingViewController:sender];
+}
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender
+{
+    [self.delegate openAndCloseLeftMenu:sender];
+}
 
 
-//-(void)jewfnw
-//{
-//    myLabel.text=[NSString stringWithFormat:@"%@: 2012/10/14 %@",@"Updated:",@"21:59 PM"];
-//    NSRange range1 = [myLabel.text rangeOfString:@"Updated:"];
-//    NSRange range2 = [myLabel.text rangeOfString:@"21:59 PM"];
-//    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:myLabel.text];
-//    [attributedText setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:17.0f]} range:range1];
-//    [attributedText setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:17.0f]} range:range2];
-//    myLabel.attributedText=attributedText;
-//}
 
 
 

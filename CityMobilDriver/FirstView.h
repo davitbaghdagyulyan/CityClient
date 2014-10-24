@@ -17,6 +17,8 @@
 - (IBAction)segmentControlAction:(UISegmentedControl *)sender;
 - (IBAction)edit:(UIButton *)sender;
 - (IBAction)sendDocumentsAction:(UIButton *)sender;
+- (IBAction)showSettingViewController:(UIButton *)sender;
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @end
 
 @interface FirstView : UIView <UIScrollViewDelegate>
@@ -58,8 +60,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *driverLicenseClass;
 
 
+- (IBAction)showSettingViewController:(UIButton *)sender;
 
-
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 
 
 @end

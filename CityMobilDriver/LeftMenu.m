@@ -8,6 +8,7 @@
 
 #import "LeftMenu.h"
 #import "MessagesViewController.h"
+#import "ProfilViewController.h"
 @implementation LeftMenu
 
 {
@@ -113,9 +114,17 @@
             
             myClass = NSClassFromString(@"SettingsViewController");
             identity =@"SettingsViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+            
+            case 10:
+            myClass = NSClassFromString(@"ProfilViewController");
+            identity =@"ProfilViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            
             break;
          case 13:
-            //exit(0); //not recommended apple
+            exit(0); //not recommended apple
             break;
                     default:
             break;

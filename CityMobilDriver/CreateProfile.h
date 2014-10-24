@@ -11,9 +11,11 @@
 #import "SingleDataProvider.h"
 #import "DriverInfoResponse.h"
 #import "RequestSetDriverInfoWithPoto.h"
+#import "SettingsViewController.h"
 
 @protocol CreateProfilViewDelegate <NSObject>
 -(BOOL)IsPhotoEqual;
+- (IBAction)showSettingViewController:(UIButton *)sender;
 @end
 
 
@@ -50,6 +52,10 @@
 
 
 @property(nonatomic,weak) id<CreateProfilViewDelegate> delegate;
+
+
+- (IBAction)showSettingViewController:(UIButton *)sender;
+
 
 
 @end

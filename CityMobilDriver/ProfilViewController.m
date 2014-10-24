@@ -7,15 +7,21 @@
 //
 
 #import "ProfilViewController.h"
-
+#import "FirstScrollView.h"
 
 @interface ProfilViewController ()
 {
+
+    NSInteger flag;
+    LeftMenu*leftMenu;
+    
     FirstView* firstObj;
     secondView* secondObj;
     CreateProfile* createObj;
     UIWebView* webView;
     UIActivityIndicatorView* indicator;
+    //FirstScrollView*firstScroll;
+    
 }
 @end
 
@@ -25,13 +31,28 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+//    firstScroll=[[FirstScrollView alloc]init];
+//    firstScroll.curentViewController=self;
+    
+    
+    
     firstObj = [[[NSBundle mainBundle]loadNibNamed:@"FirstView" owner:self options:nil] objectAtIndex:0];
     firstObj.delegate = self;
     firstObj.frame = self.view.frame;
-    [self.view addSubview:firstObj];    
+    [self.view addSubview:firstObj];
+
 }
 
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    flag=0;
+    
+    leftMenu=[LeftMenu getLeftMenu:self];
+    
+    firstObj.FirstScrollView.userInteractionEnabled=YES;
+    firstObj.segmentControlView.userInteractionEnabled=YES;
+}
 
 
 
@@ -146,6 +167,150 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [indicator stopAnimating];
+}
+
+- (void)showSettingViewController:(UIButton *)sender
+{
+        SettingsViewController*svc=[self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+        [self.navigationController pushViewController:svc animated:NO];
+}
+- (void)openAndCloseLeftMenu:(UIButton *)sender
+{
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         CGPoint point;
+         if (flag==0)
+             point.x=(CGFloat)leftMenu.frame.size.width/2;
+         else
+             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+         point.y=leftMenu.center.y;
+         leftMenu.center=point;
+         
+     }
+                     completion:^(BOOL finished)
+     {
+         
+         if (flag==0)
+         {
+             flag=1;
+             firstObj.FirstScrollView.userInteractionEnabled=NO;
+             firstObj.segmentControlView.userInteractionEnabled=NO;
+            
+         }
+         else
+         {
+             flag=0;
+             firstObj.FirstScrollView.userInteractionEnabled=YES;
+             firstObj.segmentControlView.userInteractionEnabled=YES;
+         }
+         
+     }
+     
+     
+     ];
+    
+}
+
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:touch.view];
+    
+    
+    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+        return;
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         
+         
+         
+         CGPoint point;
+         
+         NSLog(@"\n%f", 2*leftMenu.center.x);
+         NSLog(@"\n%f",leftMenu.frame.size.width/2);
+         
+         if (touchLocation.x<=leftMenu.frame.size.width/2)
+         {
+             flag=0;
+             firstObj.FirstScrollView.userInteractionEnabled=YES;
+             firstObj.segmentControlView.userInteractionEnabled=YES;
+             
+             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+         }
+         
+         else if (touchLocation.x>leftMenu.frame.size.width/2)
+         {
+             point.x=(CGFloat)leftMenu.frame.size.width/2;
+             
+             firstObj.FirstScrollView.userInteractionEnabled=NO;
+             firstObj.segmentControlView.userInteractionEnabled=NO;
+             flag=1;
+         }
+         point.y=leftMenu.center.y;
+         
+         
+         
+         
+         leftMenu.center=point;
+         NSLog(@"\n%f",leftMenu.frame.size.width);
+         
+     }
+                     completion:nil
+     
+     
+     ];
+    
+    
+}
+
+
+
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:touch.view];
+    
+    
+    
+    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+        return;
+    
+    CGPoint point;
+    
+    
+    
+    point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
+    point.y=leftMenu.center.y;
+    if (point.x>leftMenu.frame.size.width/2)
+    {
+        return;
+    }
+    leftMenu.center=point;
+    
+    
+    
+    
+    
+    
+    
+    
+    firstObj.FirstScrollView.userInteractionEnabled=NO;
+    firstObj.segmentControlView.userInteractionEnabled=NO;
+    
+    flag=1;
+    
+    
 }
 
 

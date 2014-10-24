@@ -331,4 +331,17 @@
 
 
 
+- (IBAction)showSettingViewController:(UIButton *)sender
+{
+    [self.delegate showSettingViewController:sender];
+}
+
+
+
+
+
+
+
+
+
 @end
