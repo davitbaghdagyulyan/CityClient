@@ -102,13 +102,15 @@
             myClass = NSClassFromString(@"SettingsViewController");
             identity =@"SettingsViewController";
             break;
-
+         case 13:
+            //exit(0); //not recommended apple
+            break;
                     default:
             break;
     }
     [self pushOrPoptoViewContrller:myClass andIdentity:identity];
     
-    
+   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

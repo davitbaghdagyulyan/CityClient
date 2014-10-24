@@ -293,8 +293,8 @@
     [self.view addSubview:indicator];
     
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
-    loginJsonObject.bankid=@"104382";//login.text;
-    loginJsonObject.pass=@"84609";//password.text;
+    loginJsonObject.bankid=@"110314";//@"104382";//login.text;
+    loginJsonObject.pass=@"52750";//@"84609";//password.text;
 
 
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
