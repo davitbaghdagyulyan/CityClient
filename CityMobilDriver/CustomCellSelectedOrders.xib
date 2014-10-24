@@ -54,7 +54,7 @@
                                 <rect key="frame" x="0.0" y="102" width="741" height="99"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0y7-rv-wBJ">
-                                        <rect key="frame" x="77" y="0.0" width="371" height="100"/>
+                                        <rect key="frame" x="77" y="0.0" width="648" height="100"/>
                                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -83,7 +83,7 @@
                                     <constraint firstItem="GeX-TT-ZL8" firstAttribute="top" secondItem="SV1-Ib-HoY" secondAttribute="bottom" multiplier="1/5" id="Ycq-hc-Iht"/>
                                     <constraint firstItem="0y7-rv-wBJ" firstAttribute="top" secondItem="SV1-Ib-HoY" secondAttribute="top" id="cQE-Em-OSK"/>
                                     <constraint firstItem="0y7-rv-wBJ" firstAttribute="leading" secondItem="GeX-TT-ZL8" secondAttribute="trailing" id="pC8-el-Dnn"/>
-                                    <constraint firstItem="0y7-rv-wBJ" firstAttribute="width" secondItem="SV1-Ib-HoY" secondAttribute="width" multiplier="1/2" id="wu1-yb-Zqe"/>
+                                    <constraint firstItem="0y7-rv-wBJ" firstAttribute="width" secondItem="SV1-Ib-HoY" secondAttribute="width" multiplier="7/8" id="wu1-yb-Zqe"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -139,7 +139,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAE-lY-OMb">
-                                        <rect key="frame" x="77" y="0.0" width="371" height="100"/>
+                                        <rect key="frame" x="77" y="0.0" width="648" height="100"/>
                                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -154,7 +154,7 @@
                                     <constraint firstItem="XAE-lY-OMb" firstAttribute="leading" secondItem="r0k-LK-Hc2" secondAttribute="trailing" id="Pqq-G1-0R3"/>
                                     <constraint firstItem="r0k-LK-Hc2" firstAttribute="top" secondItem="LAA-pw-btG" secondAttribute="bottom" multiplier="1/5" id="Q1E-uN-Ghk"/>
                                     <constraint firstItem="r0k-LK-Hc2" firstAttribute="leading" secondItem="LAA-pw-btG" secondAttribute="trailing" multiplier="1/21" id="Q45-H0-gD5"/>
-                                    <constraint firstItem="XAE-lY-OMb" firstAttribute="width" secondItem="LAA-pw-btG" secondAttribute="width" multiplier="1/2" id="eZg-X9-1hw"/>
+                                    <constraint firstItem="XAE-lY-OMb" firstAttribute="width" secondItem="LAA-pw-btG" secondAttribute="width" multiplier="7/8" id="eZg-X9-1hw"/>
                                     <constraint firstItem="r0k-LK-Hc2" firstAttribute="width" secondItem="LAA-pw-btG" secondAttribute="width" multiplier="1/18" id="mJD-34-hkY"/>
                                 </constraints>
                                 <variation key="default">

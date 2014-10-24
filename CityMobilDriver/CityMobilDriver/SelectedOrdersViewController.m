@@ -1755,7 +1755,7 @@
     if(selectedRow==indexPath.row)
         
     {
-        return  height;
+        return 200;
     }
     
     else
