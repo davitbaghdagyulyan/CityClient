@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
-
+    
     login.placeholder = @"логин";
     login.returnKeyType = UIReturnKeyNext;
     [login setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -280,7 +280,7 @@
 //- (IBAction)backAction:(id)sender
 //{
 //  [self.navigationController popViewControllerAnimated:NO];
-//    
+//
 //}
 
 - (IBAction)actionLogin:(UIButton *)sender
@@ -295,11 +295,10 @@
     loginJsonObject.bankid=@"110314";//login.text;
     loginJsonObject.pass=@"52750";//password.text;
 
-
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];
     NSLog(@"%@",jsons);
- 
+    
     
     NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
     
@@ -332,15 +331,15 @@
             [indicator stopAnimating];
             return ;
         }
+     
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
         NSError*err;
-        LoginResponse*loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
-        [SingleDataProvider sharedKey].key = loginResponseObject.key;
+        LoginResponse*loginResponseObject=nil;
+       
+        loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
         
-        [[UserInformationProvider sharedInformation] setBalance:loginResponseObject.balance];
-        [[UserInformationProvider sharedInformation] setBankid:loginResponseObject.bankid];
-        [[UserInformationProvider sharedInformation] setCredit_limit:loginResponseObject.credit_limit];
+        [SingleDataProvider sharedKey].key = loginResponseObject.key;
         
         if(loginResponseObject.code!=nil)
         {
@@ -359,9 +358,10 @@
             [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
             [self.navigationController popViewControllerAnimated:NO];
         }
-         [indicator stopAnimating];
+        [indicator stopAnimating];
     }];
     
+
 }
 
 @end

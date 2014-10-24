@@ -12,6 +12,7 @@
 #import "SingleDataProvider.h"
 #import "UserInformationProvider.h"
 
+
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *button;

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
 #import "UserInformationProvider.h"
-#import "FontSizeViewController.h"
-@interface SettingsViewController : UIViewController
+#import "CustomTableViewCell.h"
+#import "LeftMenu.h"
+@interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrolView;
 
@@ -57,8 +58,11 @@
 
 
 - (IBAction)fontSize:(id)sender;
+- (IBAction)stileIcon:(id)sender;
+- (IBAction)selectLanguage:(id)sender;
 
 
 
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 
 @end

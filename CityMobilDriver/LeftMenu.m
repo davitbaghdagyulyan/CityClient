@@ -109,6 +109,12 @@
             identity =@"MessagesViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
+        case 12:
+            
+            myClass = NSClassFromString(@"SettingsViewController");
+            identity =@"SettingsViewController";
+            break;
+
                     default:
             break;
             
