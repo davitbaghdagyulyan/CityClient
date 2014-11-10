@@ -9,6 +9,7 @@
 #import "LeftMenu.h"
 #import "MessagesViewController.h"
 #import "ProfilViewController.h"
+#import "OrdersHistoryViewController.h"
 @implementation LeftMenu
 
 {
@@ -99,6 +100,17 @@
             identity =@"ReplenishmentViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
+
+
+        case 5:
+            myClass =NSClassFromString(@"OrdersHistoryViewController");
+            identity =@"OrdersHistoryViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+            
+            
+            
+
         case 3:
         
             myClass = NSClassFromString(@"MessagesViewController");

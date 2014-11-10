@@ -2,7 +2,7 @@
 
 #import "RootViewController.h"
 #import "CustomCell.h"
-#import "CellObject.h"
+
 
 #import "OrdersJson.h"
 #import "OrdersResponse.h"
@@ -21,21 +21,18 @@
     LeftMenu*leftMenu;
     UISwipeGestureRecognizer*recognizerRight;
 
-   
     OrdersResponse*ordersResponseObject;
     RecallResponse*recallResponseObject;
+    UIAlertView *alertBack;
+    UIAlertView *alert;
+    LoginViewController*log;
     
-
- 
-
-
+    
 }
+
 @end
 
 @implementation RootViewController
-
-
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -52,11 +49,12 @@
 {
     [super viewDidLoad];
     
-    LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"View2"];
-    [self.navigationController pushViewController:log animated:NO];
-    
+
    
- 
+
+    LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [self.navigationController pushViewController:log animated:NO];
+
     
     //RootViewController Interface
     
@@ -74,8 +72,6 @@
     self.labelCallToDispethcerIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
     self.titleLabelIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
     
-
-
 }
 
 
@@ -100,9 +96,6 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-
-    
-    
     NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
     
     CustomCell * cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
@@ -112,22 +105,14 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
-  
-    
-       cell.label1.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
-       cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
-       
-       NSString * currentName =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getName];
-       cell.label1.text=[NSString stringWithFormat:@"      %@",currentName];
-       NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
-       cell.label2.text=[NSString stringWithFormat:@"%@",currentCount];
-    
-    
+    cell.label1.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+    cell.label2.font =[UIFont fontWithName:@"RobotoCondensed-Regular" size:23];
+    cell.label1.text=[NSString stringWithFormat:@"      %@",[[ordersResponseObject.categories objectAtIndex:indexPath.row] name]];
+    NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
+    cell.label2.text=[NSString stringWithFormat:@"%@",currentCount];
     
     return  cell;
  
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,19 +125,11 @@
     else
         
     {
-        
-        
-       [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+        [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
         SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         
-            
-
-    
-      
-       // selectedOrdersCont.selectedFilter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
-
         [self.navigationController pushViewController:selectedOrdersCont animated:YES];
-        selectedOrdersCont.titleString =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getName];
+        selectedOrdersCont.titleString =[[ordersResponseObject.categories objectAtIndex:indexPath.row]name];
         if (indexPath.row==0)
         {
             selectedOrdersCont.stringForSrochno =@"СРОЧНО";
@@ -164,15 +141,7 @@
         
         }
 
-        
-        
-        
-        
-
-        
-    
-    
-}
+    }
 }
 
 
@@ -180,19 +149,20 @@
 {
     if (tableView == leftMenu)
     {
-        return  44;
+                return  44;
     }
    else
     {
-   return  self.view.frame.size.height/12;
+        NSString * count = [[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
+        if ([count isEqualToString:@"0"])
+        {
+            return 0;
+        }
+
+     return  self.view.frame.size.height/12;
     }
     
-    
-    
 }
-
-
-
 
 
 - (IBAction)actionYandex:(id)sender {
@@ -210,16 +180,13 @@
 - (IBAction)back:(id)sender
 
 {
-    if (flag)
-    {
-        CGPoint point;
-        point.x=leftMenu.center.x-leftMenu.frame.size.width;
-        point.y=leftMenu.center.y;
-        leftMenu.center=point;
-        
-    }
-    
-    [self.navigationController popViewControllerAnimated:NO];
+   alertBack = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"Подтвердите выход из приложения"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Отмена"
+                                          otherButtonTitles:@"ОК"];
+    [alertBack show];
+    return ;
   
     
 }
@@ -414,6 +381,7 @@
     MessagesViewController*mvc=[self.storyboard instantiateViewControllerWithIdentifier:@"MessagesViewController"];
     [self.navigationController pushViewController:mvc  animated:NO];
 }
+
 - (IBAction)actionCallDispetcher:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Выберите действие"
@@ -427,6 +395,10 @@
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (alertView ==alert)
+    {
+        
+  
     if (buttonIndex==0)
     {
         [self reCallRequest];
@@ -447,6 +419,20 @@
          
         }
     }
+ }
+    
+else if(alertView ==  alertBack)
+{
+    if (buttonIndex==0)
+    {
+        [self requestGetOrders];
+    }
+   else
+   {
+    [[self navigationController] pushViewController:log animated:NO];
+   }
+
+}
 }
 -(void)reCallRequest
 {

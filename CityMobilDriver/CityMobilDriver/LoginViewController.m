@@ -22,13 +22,6 @@
 @synthesize password;
 @synthesize button;
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,7 +36,6 @@
     password.placeholder = @"Пароль";
     password.returnKeyType = UIReturnKeyDone;
     password.delegate = self;
-    
 }
 
 
@@ -97,7 +89,8 @@
         loginSpace.constant = self.view.frame.size.height -  keyboardHeightInPortrait - login.frame.size.height - 25;//g
     }
     
-    
+        login.placeholder = [[NSUserDefaults standardUserDefaults]stringForKey:@"bankid"];
+        password.placeholder = [[NSUserDefaults standardUserDefaults]stringForKey:@"password"];
 }
 
 
@@ -277,11 +270,7 @@
 }
 
 
-//- (IBAction)backAction:(id)sender
-//{
-//  [self.navigationController popViewControllerAnimated:NO];
-//
-//}
+
 
 - (IBAction)actionLogin:(UIButton *)sender
 {
@@ -290,12 +279,12 @@
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
     [self.view addSubview:indicator];
-   
+    
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
-
+    
     loginJsonObject.bankid=@"110314";//login.text;
     loginJsonObject.pass=@"52750";//password.text;
-
+    
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];
     NSLog(@"%@",jsons);
@@ -332,13 +321,16 @@
             [indicator stopAnimating];
             return ;
         }
-     
+        
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
         NSError*err;
         LoginResponse*loginResponseObject=nil;
-       
+        
         loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
+        
+       
+        
         
         [SingleDataProvider sharedKey].key = loginResponseObject.key;
         [UserInformationProvider sharedInformation].balance = loginResponseObject.balance;
@@ -361,12 +353,38 @@
         else
         {
             [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
+            if ([self image:self.rememberButton.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]]) {
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:loginJsonObject.bankid forKey:@"bankid"];
+                [defaults setObject:loginJsonObject.pass forKey:@"password"];
+                [defaults synchronize];
+                
+            }
             [self.navigationController popViewControllerAnimated:NO];
         }
         [indicator stopAnimating];
     }];
     
-
+    
 }
 
+- (IBAction)remember:(UIButton*)sender {
+    
+    
+    if ([self image:sender.imageView.image isEqualTo:[UIImage imageNamed:@"box.png"]]) {
+        [self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+    }
+}
+
+
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2
+{
+    NSData *data1 = UIImagePNGRepresentation(image1);
+    NSData *data2 = UIImagePNGRepresentation(image2);
+    
+    return [data1 isEqual:data2];
+}
 @end

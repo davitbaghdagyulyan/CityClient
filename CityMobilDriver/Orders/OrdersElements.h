@@ -12,8 +12,8 @@
 #import "JSONModel.h"
 
 @interface OrdersElements : JSONModel
-@property(nonatomic,strong,getter=getName)NSString*name;
-@property(nonatomic,strong,getter= getCount)NSString*count;
+@property(nonatomic,strong)NSString*name;
+@property(nonatomic,strong,getter=getCount)NSString*count;
 @property(nonatomic,strong,getter=getFilter)NSMutableDictionary * filter;
 
 @end
