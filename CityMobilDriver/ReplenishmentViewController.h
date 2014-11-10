@@ -12,12 +12,7 @@
 
 @interface ReplenishmentViewController : UIViewController<UIWebViewDelegate,view1Delegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
-
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)replenishmentSegmentedControl:(UISegmentedControl *)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
-
-
-
 @end

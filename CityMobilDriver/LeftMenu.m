@@ -99,11 +99,6 @@
             identity =@"ReplenishmentViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-            
-            
-            
-            
-            
         case 3:
         
             myClass = NSClassFromString(@"MessagesViewController");
@@ -117,13 +112,30 @@
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
             
-            case 10:
+        case 10:
             myClass = NSClassFromString(@"ProfilViewController");
             identity =@"ProfilViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
-            
             break;
-         case 13:
+            
+        case 11:
+        
+            myClass = NSClassFromString(@"StatisticsViewController");
+            identity =@"StatisticsViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+        case 7:
+            myClass = NSClassFromString(@"TariffsCityMobilViewController");
+            identity =@"TariffsCityMobilViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+        case 9:
+            myClass = NSClassFromString(@"DesignationIconsViewController");
+            identity =@"DesignationIconsViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+
+        case 13:
             exit(0); //not recommended apple
             break;
                     default:
@@ -180,4 +192,5 @@
     }
  
 }
+
 @end

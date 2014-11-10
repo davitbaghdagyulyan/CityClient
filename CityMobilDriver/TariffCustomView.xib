@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="bgv-gL-19c" customClass="TariffsCustomView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L5-ud-5g1" customClass="CustomLabel">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="33R-C4-paM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ok9-q6-wkj" customClass="CustomTableView">
+                    <rect key="frame" x="0.0" y="40" width="600" height="560"/>
+                    <color key="backgroundColor" red="0.42419259770232987" green="1" blue="0.18502553886124651" alpha="1" colorSpace="calibratedRGB"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5L5-ud-5g1" secondAttribute="trailing" id="PeL-je-1zx"/>
+                <constraint firstItem="Ok9-q6-wkj" firstAttribute="top" secondItem="bgv-gL-19c" secondAttribute="top" constant="40" id="TRY-D2-kST"/>
+                <constraint firstItem="5L5-ud-5g1" firstAttribute="leading" secondItem="bgv-gL-19c" secondAttribute="leading" id="gNf-e5-mWe"/>
+                <constraint firstItem="5L5-ud-5g1" firstAttribute="top" secondItem="bgv-gL-19c" secondAttribute="top" id="jG5-Et-KMg"/>
+                <constraint firstAttribute="trailing" secondItem="Ok9-q6-wkj" secondAttribute="trailing" id="lkH-kQ-obu"/>
+                <constraint firstAttribute="bottom" secondItem="Ok9-q6-wkj" secondAttribute="bottom" id="ukf-xr-gHy"/>
+                <constraint firstItem="Ok9-q6-wkj" firstAttribute="leading" secondItem="bgv-gL-19c" secondAttribute="leading" id="w93-XZ-mrT"/>
+            </constraints>
+            <connections>
+                <outlet property="customLabel" destination="5L5-ud-5g1" id="g1B-1u-vDy"/>
+                <outlet property="customTableView" destination="Ok9-q6-wkj" id="cL8-If-5x0"/>
+            </connections>
+            <point key="canvasLocation" x="558" y="374"/>
+        </view>
+    </objects>
+</document>

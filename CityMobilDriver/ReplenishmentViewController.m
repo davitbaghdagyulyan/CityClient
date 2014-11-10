@@ -16,7 +16,6 @@
 #import "BindCardJson.h"
 #import "BindCardResponse.h"
 
-
 @interface ReplenishmentViewController ()
 {
     
@@ -40,10 +39,17 @@
     isPressedCloseButton=NO;
     [super viewDidAppear:animated];
     loadcount=0;
-    self.segmentedControl.selectedSegmentIndex=0;
-    [self replenishmentSegmentedControl:self.segmentedControl];
-    
-    
+   
+    if (!loadcount)
+    {
+        [self requestGetCards];
+    }
+    else
+    {
+        
+        [self.view addSubview:view1];
+    }
+
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     
@@ -68,36 +74,13 @@
             [view2 removeFromSuperview];
             if (!loadcount)
             {
-                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:self options:nil];
-                view1 = [nib objectAtIndex:0];
-                view1.delegate=self;
-                
-                view1.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height - 93);
-                
-                
-                [self.view addSubview:view1];
-                
-                
-                [view1.customView bringSubviewToFront:view1.addCardButton];
-                [self requestGetCards];
-                view1.webView.delegate=self;
-                
-                NSLog(@"height=%f",self.view.frame.size.height);
-                
-                NSLog(@"view1Height=%f",view1.frame.size.height);
-                
-                NSLog(@"webViewHeight=%f",view1.webView.frame.size.height);
-                
-                NSLog(@"customViewHeight=%f",view1.customView.frame.size.height);
-                
-                
-                
-                
+                 [self requestGetCards];
             }
             else
             {
                 
                 [self.view addSubview:view1];
+                [self.view bringSubviewToFront:leftMenu];
             }
         }
             break;
@@ -126,6 +109,7 @@
             {
                 
                 [self.view addSubview:view2];
+                [self.view bringSubviewToFront:leftMenu];
             }
             
             loadcount=1;
@@ -134,7 +118,7 @@
         default:
             break;
     }
-    [self.view bringSubviewToFront:leftMenu];
+    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -162,8 +146,6 @@
 
 -(void)requestBindCard
 {
-    
-    
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
@@ -205,10 +187,7 @@
         NSLog(@"bindCardResponseJsonString:%@",jsonString);
         NSError*err;
         bindCardResponseObject = [[BindCardResponse alloc] initWithString:jsonString error:&err];
-        
-        
-        
-        
+
         if(bindCardResponseObject.code!=nil)
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
@@ -223,8 +202,7 @@
         
         [view1.customView bringSubviewToFront:view1.webView];
         [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:bindCardResponseObject.link]]];
-        
-        
+
     }];
     
 }
@@ -272,10 +250,7 @@
         NSLog(@"getCardsJsonString:%@",jsonString);
         NSError*err;
         getCardsResponseObject = [[GetCardsResponse alloc] initWithString:jsonString error:&err];
-        
-        
-        
-        
+
         if(getCardsResponseObject.code!=nil)
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
@@ -287,10 +262,26 @@
             [alert show];
             [indicator stopAnimating];
         }
-        
-        view1.checkCardLabel.text=@"нет привязанных карт";
+
         [indicator stopAnimating];
         
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:self options:nil];
+        view1 = [nib objectAtIndex:0];
+        view1.delegate=self;
+        
+        view1.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height - 93);
+
+       [self.view addSubview:view1];
+         view1.checkCardLabel.text=@"нет привязанных карт";
+        
+        
+        [view1.customView bringSubviewToFront:view1.addCardButton];
+        
+        view1.webView.delegate=self;
+      
+        [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+        
+        [self.view bringSubviewToFront:leftMenu];
     }];
     
 }
@@ -355,9 +346,9 @@
         
         
         [view2.customWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:getQiwiBillsUrlResponseObject.qiwi_bills_url]]];
+         [self.view bringSubviewToFront:leftMenu];
         
     }];
-    
 }
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
@@ -456,32 +447,24 @@
     [coordinator animateAlongsideTransition:nil
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context){
-                                     switch (self.segmentedControl.selectedSegmentIndex)
-                                     {
-                                         case 0:
-                                         {
+                                    
                                              view1.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height - 93);
-                                             NSLog(@"height=%f",self.view.frame.size.height);
-                                             
-                                             NSLog(@"view1Height=%f",view1.frame.size.height);
-                                             
-                                             NSLog(@"webViewHeight=%f",view1.webView.frame.size.height);
-                                             
-                                             NSLog(@"customViewHeight=%f",view1.customView.frame.size.height);
-                                         }
-                                             break;
-                                         case 1:
+                                              view2.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height-93);
+                                     CGFloat x;
+                                    
+                                         if(flag==0)
                                          {
-                                             view2.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height-93);
+                                             x=self.view.frame.size.width*(CGFloat)5/6*(-1);
                                          }
-                                             break;
-                                         default:
-                                             break;
-                                     }
+                                         else
+                                         {
+                                             x=0;
+                                         }
+                                         
+                                         leftMenu.frame =CGRectMake(x, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                          
                                  }];
     
     [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
 }
-
-
 @end

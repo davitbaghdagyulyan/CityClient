@@ -10,5 +10,4 @@
 
 @interface CustomWebView : UIView
 @property (strong, nonatomic) IBOutlet UIWebView *customWebView;
-
 @end

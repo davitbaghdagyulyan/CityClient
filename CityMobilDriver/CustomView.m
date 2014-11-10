@@ -9,9 +9,6 @@
 #import "CustomView.h"
 
 @implementation CustomView
-
-
-
 - (IBAction)actionAdd:(UIButton *)sender
 {
     [self.delegate requestBindCard];
