@@ -277,11 +277,7 @@
 }
 
 
-//- (IBAction)backAction:(id)sender
-//{
-//  [self.navigationController popViewControllerAnimated:NO];
-//
-//}
+
 
 - (IBAction)actionLogin:(UIButton *)sender
 {

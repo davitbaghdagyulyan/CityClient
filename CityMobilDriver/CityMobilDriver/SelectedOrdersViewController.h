@@ -8,22 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectedOrdersViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-
-@property(nonatomic,strong)NSMutableDictionary * selectedFilter;
+@interface SelectedOrdersViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property(nonatomic,strong)NSString * titleString;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableViewOrdersDetails;
 @property(strong,nonatomic)NSString * stringForSrochno;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
-
-
 - (IBAction)back:(id)sender;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
-
-
-
 @end

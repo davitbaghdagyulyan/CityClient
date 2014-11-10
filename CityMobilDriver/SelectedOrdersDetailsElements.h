@@ -10,12 +10,17 @@
 #import "JSONModel.h"
 
 @interface SelectedOrdersDetailsElements : JSONModel
-@property(nonatomic,strong,getter=getShortname)NSString*shortname;
-@property(nonatomic,strong,getter= getCollMetroName)NSString*CollMetroName;
-@property(nonatomic,strong,getter=getDeliveryMetroName)NSString*DeliveryMetroName;
+@property(nonatomic,strong)NSString * idhash;
+@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString*shortname;
+@property(nonatomic,strong)NSString*CollMetroName;
+@property(nonatomic,strong)NSString*DeliveryMetroName;
 @property(nonatomic,strong,getter=getCollDateText)NSString*CollDateText;
-@property(nonatomic,strong,getter=getCollDate)NSString * CollDate;
-@property(nonatomic,strong,getter= getPercent)NSString * percent;
+@property(nonatomic,strong)NSString * CollDate;
+@property(nonatomic,strong)NSString * percent;
+@property(nonatomic,strong)NSString * DeliveryAddrTypeMenu;
+@property(nonatomic,strong)NSString * CollAddrTypeMenu;
+@property(nonatomic,strong)NSString * CanBuyDeliveryAddress;
 @property(nonatomic,strong,getter=getNoSmoking)NSString * NoSmoking;
 @property(nonatomic,strong,getter=getG_width)NSString * g_width;
 @property(nonatomic,strong,getter=getPayment_method)NSString * payment_method;
@@ -26,9 +31,11 @@
 @property(nonatomic,strong,getter=getUseBonus)NSString * useBonus;
 @property(nonatomic,strong,getter=getNeed_wifi)NSString *need_wifi;
 @property(nonatomic,strong,getter=getYellow_reg_num)NSString * yellow_reg_num;
-@property(nonatomic,strong,getter=getOurComment)NSString *OurComment;
-@property(nonatomic,strong,getter=getCollAddresstext)NSString *CollAddressText;
-@property(nonatomic,strong,getter=getDeliveryAddressText) NSString *DeliveryAddressText;
+@property(nonatomic,strong)NSString *OurComment;
+@property(nonatomic,strong)NSString *CollComment;
+@property(nonatomic,strong)NSString *DeliveryComment;
+@property(nonatomic,strong)NSString *CollAddressText;
+@property(nonatomic,strong) NSString *DeliveryAddressText;
 
 
 @end

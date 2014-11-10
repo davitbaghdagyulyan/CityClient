@@ -11,7 +11,6 @@
 		8F0A821D19EBB68100A03D1B /* SelectedOrdersDetailsJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A821C19EBB68100A03D1B /* SelectedOrdersDetailsJson.m */; };
 		8F0A822019EBB6F400A03D1B /* SelectedOrdersDetailsElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A821F19EBB6F400A03D1B /* SelectedOrdersDetailsElements.m */; };
 		8F0A822319EBB74700A03D1B /* SelectedOrdersDetailsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */; };
-		8F51B0AF19F69AF70032E52D /* CustomCellSelectORDER.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F51B0AE19F69AF70032E52D /* CustomCellSelectORDER.m */; };
 		8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */; };
 		8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5219E7DC1000585B40 /* metroAndroid.png */; };
 		8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */; };
@@ -20,13 +19,17 @@
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
 		8F8D322A19E3C7D2003232F7 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */; };
 		8F8D322C19E3FA7F003232F7 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */; };
-		8FB64FAF19F7FAFA005AAF2A /* CustomCellSelectORDER.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FAE19F7FAFA005AAF2A /* CustomCellSelectORDER.xib */; };
 		8FB64FB119F91759005AAF2A /* metro.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB019F91759005AAF2A /* metro.png */; };
 		8FB64FB319F9221F005AAF2A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB219F9221F005AAF2A /* map.png */; };
-		8FB6DC9419E6A8E200671A4B /* SelectedOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9319E6A8E200671A4B /* SelectedOrdersViewController.m */; };
 		8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */; };
 		8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */; };
 		8FB6DC9D19E6BEA200671A4B /* CustomCellSelectedOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9C19E6BEA200671A4B /* CustomCellSelectedOrders.m */; };
+		8FBD45181A0B62EB004CEF7D /* OrdersHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBD45171A0B62EB004CEF7D /* OrdersHistoryViewController.m */; };
+		8FC51A821A0CA8A400E13D03 /* SingleDataProviderForStartDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A811A0CA8A400E13D03 /* SingleDataProviderForStartDate.m */; };
+		8FC51A851A0CA93300E13D03 /* SingleDataProviderForEndDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */; };
+		8FC51A881A0CAA1100E13D03 /* OrdersHistoryJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */; };
+		8FC51A8B1A0CAD3000E13D03 /* OrdersHistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */; };
+		8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */; };
 		8FCCBBC019E2DDC400BD9BC1 /* chat1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */; };
 		8FCCBBC219E2DE2600BD9BC1 /* ch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCCBBC119E2DE2600BD9BC1 /* ch@2x.png */; };
 		8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF58519F5051400C6E3A7 /* ic_air_conditioning_small.png */; };
@@ -38,9 +41,18 @@
 		8FCFF59219F5053C00C6E3A7 /* ic_order_with_visiting_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */; };
 		8FCFF59419F5054200C6E3A7 /* ic_transportation_of_animals_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */; };
 		8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */; };
+		8FD011B71A03D55700E9363A /* SelectedOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */; };
+		8FD011BA1A03D65C00E9363A /* CustomCellSelectORDER.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD011B91A03D65C00E9363A /* CustomCellSelectORDER.m */; };
+		8FD011BC1A03DA1A00E9363A /* CustomCellSelectORDER.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD011BB1A03DA1A00E9363A /* CustomCellSelectORDER.xib */; };
+		8FD113831A0A097700E1A2B7 /* BuyDeliveryAddressJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113821A0A097700E1A2B7 /* BuyDeliveryAddressJson.m */; };
+		8FD113861A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113851A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m */; };
+		8FD113891A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */; };
+		8FD25E921A0B88CD0056038C /* CustomCellOrdersHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */; };
+		8FD25E951A0B892A0056038C /* CustomCellOrdersHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */; };
+		8FDE115F1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE115E1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib */; };
+		8FDE11611A09186C00B4DA8A /* CustomCellSelectORDER2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */; };
 		8FDF958219DE7E60005A468A /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF958119DE7E60005A468A /* logo@2x.png */; };
 		8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032DD19DE8AD000B17C09 /* CustomCell.xib */; };
-		8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE032E919DE97B700B17C09 /* CellObject.m */; };
 		8FE032EC19DEC80600B17C09 /* ya@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032EB19DEC80600B17C09 /* ya@2x.png */; };
 		8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032ED19DEC80D00B17C09 /* phone@2x.png */; };
 		8FE032F019DEC81B00B17C09 /* gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032EF19DEC81B00B17C09 /* gps@2x.png */; };
@@ -148,8 +160,6 @@
 		8F0A822119EBB74700A03D1B /* SelectedOrdersDetailsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersDetailsResponse.h; sourceTree = "<group>"; };
 		8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersDetailsResponse.m; sourceTree = "<group>"; };
 		8F0CAA0E19E80C6100C8ED56 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
-		8F51B0AD19F69AF70032E52D /* CustomCellSelectORDER.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellSelectORDER.h; sourceTree = "<group>"; };
-		8F51B0AE19F69AF70032E52D /* CustomCellSelectORDER.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellSelectORDER.m; sourceTree = "<group>"; };
 		8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellSelectedOrders.xib; path = ../CustomCellSelectedOrders.xib; sourceTree = "<group>"; };
 		8F52FB5219E7DC1000585B40 /* metroAndroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metroAndroid.png; sourceTree = "<group>"; };
 		8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForFilter.h; sourceTree = "<group>"; };
@@ -159,15 +169,24 @@
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
-		8FB64FAE19F7FAFA005AAF2A /* CustomCellSelectORDER.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER.xib; sourceTree = "<group>"; };
 		8FB64FB019F91759005AAF2A /* metro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro.png; sourceTree = "<group>"; };
 		8FB64FB219F9221F005AAF2A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
-		8FB6DC9219E6A8E200671A4B /* SelectedOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersViewController.h; sourceTree = "<group>"; };
-		8FB6DC9319E6A8E200671A4B /* SelectedOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersViewController.m; sourceTree = "<group>"; };
 		8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cash_payment_small.png; sourceTree = "<group>"; };
 		8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_smoking_lounge_small.png; sourceTree = "<group>"; };
 		8FB6DC9B19E6BEA200671A4B /* CustomCellSelectedOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellSelectedOrders.h; sourceTree = "<group>"; };
 		8FB6DC9C19E6BEA200671A4B /* CustomCellSelectedOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellSelectedOrders.m; sourceTree = "<group>"; };
+		8FBD45161A0B62EB004CEF7D /* OrdersHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersHistoryViewController.h; sourceTree = "<group>"; };
+		8FBD45171A0B62EB004CEF7D /* OrdersHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersHistoryViewController.m; sourceTree = "<group>"; };
+		8FC51A801A0CA8A400E13D03 /* SingleDataProviderForStartDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForStartDate.h; sourceTree = "<group>"; };
+		8FC51A811A0CA8A400E13D03 /* SingleDataProviderForStartDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProviderForStartDate.m; sourceTree = "<group>"; };
+		8FC51A831A0CA93300E13D03 /* SingleDataProviderForEndDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForEndDate.h; sourceTree = "<group>"; };
+		8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProviderForEndDate.m; sourceTree = "<group>"; };
+		8FC51A861A0CAA1100E13D03 /* OrdersHistoryJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersHistoryJson.h; sourceTree = "<group>"; };
+		8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersHistoryJson.m; sourceTree = "<group>"; };
+		8FC51A891A0CAD3000E13D03 /* OrdersHistoryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersHistoryResponse.h; sourceTree = "<group>"; };
+		8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersHistoryResponse.m; sourceTree = "<group>"; };
+		8FC51A8C1A0CAD6300E13D03 /* OrdersHistoryElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersHistoryElements.h; sourceTree = "<group>"; };
+		8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersHistoryElements.m; sourceTree = "<group>"; };
 		8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat1@2x.png"; sourceTree = "<group>"; };
 		8FCCBBC119E2DE2600BD9BC1 /* ch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ch@2x.png"; sourceTree = "<group>"; };
 		8FCFF58519F5051400C6E3A7 /* ic_air_conditioning_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_air_conditioning_small.png; sourceTree = "<group>"; };
@@ -179,10 +198,24 @@
 		8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order_with_visiting_small.png; sourceTree = "<group>"; };
 		8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_transportation_of_animals_small.png; sourceTree = "<group>"; };
 		8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wifi_small.png; sourceTree = "<group>"; };
+		8FD011B51A03D54F00E9363A /* SelectedOrdersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersViewController.h; sourceTree = "<group>"; };
+		8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersViewController.m; sourceTree = "<group>"; };
+		8FD011B81A03D65300E9363A /* CustomCellSelectORDER.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCellSelectORDER.h; sourceTree = "<group>"; };
+		8FD011B91A03D65C00E9363A /* CustomCellSelectORDER.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellSelectORDER.m; sourceTree = "<group>"; };
+		8FD011BB1A03DA1A00E9363A /* CustomCellSelectORDER.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER.xib; sourceTree = "<group>"; };
+		8FD113811A0A097700E1A2B7 /* BuyDeliveryAddressJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyDeliveryAddressJson.h; path = ../BuyDeliveryAddressJson.h; sourceTree = "<group>"; };
+		8FD113821A0A097700E1A2B7 /* BuyDeliveryAddressJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyDeliveryAddressJson.m; path = ../BuyDeliveryAddressJson.m; sourceTree = "<group>"; };
+		8FD113841A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDeliveryAddressElements.h; sourceTree = "<group>"; };
+		8FD113851A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDeliveryAddressElements.m; sourceTree = "<group>"; };
+		8FD113871A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDeliveryAddressResponse.h; sourceTree = "<group>"; };
+		8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDeliveryAddressResponse.m; sourceTree = "<group>"; };
+		8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellOrdersHistory.xib; path = ../CustomCellOrdersHistory.xib; sourceTree = "<group>"; };
+		8FD25E931A0B892A0056038C /* CustomCellOrdersHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCellOrdersHistory.h; path = ../CustomCellOrdersHistory.h; sourceTree = "<group>"; };
+		8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCellOrdersHistory.m; path = ../CustomCellOrdersHistory.m; sourceTree = "<group>"; };
+		8FDE115E1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders2.xib; sourceTree = "<group>"; };
+		8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER2.xib; sourceTree = "<group>"; };
 		8FDF958119DE7E60005A468A /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		8FE032DD19DE8AD000B17C09 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
-		8FE032E819DE97B700B17C09 /* CellObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellObject.h; sourceTree = "<group>"; };
-		8FE032E919DE97B700B17C09 /* CellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellObject.m; sourceTree = "<group>"; };
 		8FE032EB19DEC80600B17C09 /* ya@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ya@2x.png"; sourceTree = "<group>"; };
 		8FE032ED19DEC80D00B17C09 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
 		8FE032EF19DEC81B00B17C09 /* gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps@2x.png"; sourceTree = "<group>"; };
@@ -366,6 +399,20 @@
 			name = SelectedOrdersDetails;
 			sourceTree = "<group>";
 		};
+		8FD113801A0A091600E1A2B7 /* BuyDeliveryAddress */ = {
+			isa = PBXGroup;
+			children = (
+				8FD113811A0A097700E1A2B7 /* BuyDeliveryAddressJson.h */,
+				8FD113821A0A097700E1A2B7 /* BuyDeliveryAddressJson.m */,
+				8FD113841A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.h */,
+				8FD113851A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m */,
+				8FD113871A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.h */,
+				8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */,
+			);
+			name = BuyDeliveryAddress;
+			path = Orders;
+			sourceTree = "<group>";
+		};
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
@@ -439,30 +486,35 @@
 				D70428BF19D0071F00F5C38C /* Main.storyboard */,
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
-				8FE032E819DE97B700B17C09 /* CellObject.h */,
-				8FE032E919DE97B700B17C09 /* CellObject.m */,
 				D70428BC19D0071F00F5C38C /* RootViewController.h */,
 				D70428BD19D0071F00F5C38C /* RootViewController.m */,
-				8FB6DC9219E6A8E200671A4B /* SelectedOrdersViewController.h */,
-				8FB6DC9319E6A8E200671A4B /* SelectedOrdersViewController.m */,
+				8FD25E931A0B892A0056038C /* CustomCellOrdersHistory.h */,
+				8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */,
+				8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */,
 				8FB6DC9B19E6BEA200671A4B /* CustomCellSelectedOrders.h */,
 				8FB6DC9C19E6BEA200671A4B /* CustomCellSelectedOrders.m */,
 				8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */,
+				8FD011B51A03D54F00E9363A /* SelectedOrdersViewController.h */,
+				8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */,
+				8FDE115E1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib */,
 				ECCC237619E7F8F40091C43E /* LoginViewController.h */,
 				ECCC237719E7F8F40091C43E /* LoginViewController.m */,
 				ECCC237319E7F82F0091C43E /* MessagesViewController.h */,
 				ECCC237419E7F82F0091C43E /* MessagesViewController.m */,
+				8FBD45161A0B62EB004CEF7D /* OrdersHistoryViewController.h */,
+				8FBD45171A0B62EB004CEF7D /* OrdersHistoryViewController.m */,
 				ECCC236D19E7F58A0091C43E /* infoViewController.h */,
 				ECCC236E19E7F58A0091C43E /* infoViewController.m */,
 				8F0CAA0E19E80C6100C8ED56 /* CustomCell.h */,
-				8F51B0AD19F69AF70032E52D /* CustomCellSelectORDER.h */,
-				8F51B0AE19F69AF70032E52D /* CustomCellSelectORDER.m */,
-				8FB64FAE19F7FAFA005AAF2A /* CustomCellSelectORDER.xib */,
+				8FD011B81A03D65300E9363A /* CustomCellSelectORDER.h */,
+				8FD011B91A03D65C00E9363A /* CustomCellSelectORDER.m */,
+				8FD011BB1A03DA1A00E9363A /* CustomCellSelectORDER.xib */,
 				ECCC237119E7F7930091C43E /* CustomCell.m */,
 				8FE032DD19DE8AD000B17C09 /* CustomCell.xib */,
 				ECB1C16E19E2AB730027F482 /* MessagesCell.h */,
 				ECB1C16F19E2AB730027F482 /* MessagesCell.m */,
 				ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */,
+				8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */,
 				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				EC00342219F15DCA0062A6DF /* Profil */,
 				ECE1C64E19EE6960001A9A96 /* Settings Menu */,
@@ -569,6 +621,10 @@
 				EC55988919E5364900877CBC /* SingleDataProvider.h */,
 				8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */,
 				8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */,
+				8FC51A801A0CA8A400E13D03 /* SingleDataProviderForStartDate.h */,
+				8FC51A811A0CA8A400E13D03 /* SingleDataProviderForStartDate.m */,
+				8FC51A831A0CA93300E13D03 /* SingleDataProviderForEndDate.h */,
+				8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */,
 				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
 			);
 			name = "Single Data Provider";
@@ -606,6 +662,7 @@
 		ECC71B8C19F00BBB00468D33 /* SendingMessageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8FD113801A0A091600E1A2B7 /* BuyDeliveryAddress */,
 				ECD4064319F145FC00EFE6B2 /* WriteLetter */,
 				ECC71B8D19F00BFB00468D33 /* SendingMessageViewController.h */,
 				ECC71B8E19F00BFB00468D33 /* SendingMessageViewController.m */,
@@ -739,6 +796,12 @@
 				ECD9741F19E6B66B008D23B9 /* RecallJson.h */,
 				ECD9742019E6B66B008D23B9 /* RecallJson.m */,
 				ECD9742219E6B683008D23B9 /* RecallResponse.h */,
+				8FC51A861A0CAA1100E13D03 /* OrdersHistoryJson.h */,
+				8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */,
+				8FC51A891A0CAD3000E13D03 /* OrdersHistoryResponse.h */,
+				8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */,
+				8FC51A8C1A0CAD6300E13D03 /* OrdersHistoryElements.h */,
+				8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */,
 				ECD9742319E6B683008D23B9 /* RecallResponse.m */,
 			);
 			name = Recall;
@@ -854,10 +917,10 @@
 				8F8D322C19E3FA7F003232F7 /* RobotoCondensed-Light.ttf in Resources */,
 				8F8D322A19E3C7D2003232F7 /* RobotoCondensed-Regular.ttf in Resources */,
 				ECEB634A19F63E4200E6F666 /* photo.png in Resources */,
+				8FDE115F1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib in Resources */,
 				8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */,
 				8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */,
 				8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */,
-				8FB64FAF19F7FAFA005AAF2A /* CustomCellSelectORDER.xib in Resources */,
 				8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
 				ECEB634B19F63E4200E6F666 /* edit.png in Resources */,
@@ -865,6 +928,7 @@
 				8FE032F019DEC81B00B17C09 /* gps@2x.png in Resources */,
 				8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */,
 				D70428C119D0071F00F5C38C /* Main.storyboard in Resources */,
+				8FDE11611A09186C00B4DA8A /* CustomCellSelectORDER2.xib in Resources */,
 				ECB49FD219F5419F0022EB28 /* CustomView.xib in Resources */,
 				ECCC236C19E7D7EA0091C43E /* logo1@2x.png in Resources */,
 				8FCFF58819F5051D00C6E3A7 /* ic_baggage_small.png in Resources */,
@@ -872,6 +936,7 @@
 				8FCFF59019F5053600C6E3A7 /* ic_on_bonuses_payment_small.png in Resources */,
 				8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
+				8FD25E921A0B88CD0056038C /* CustomCellOrdersHistory.xib in Resources */,
 				ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */,
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */,
@@ -890,6 +955,7 @@
 				8FE032F619DEC86900B17C09 /* icon3@2x.png in Resources */,
 				8FB64FB119F91759005AAF2A /* metro.png in Resources */,
 				8FCCBBC019E2DDC400BD9BC1 /* chat1@2x.png in Resources */,
+				8FD011BC1A03DA1A00E9363A /* CustomCellSelectORDER.xib in Resources */,
 				D70428C319D0071F00F5C38C /* Images.xcassets in Resources */,
 				ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */,
 				8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */,
@@ -926,6 +992,7 @@
 				ECD55D8B19F7C776002E182D /* GetCardsResponse.m in Sources */,
 				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
 				8F0A822019EBB6F400A03D1B /* SelectedOrdersDetailsElements.m in Sources */,
+				8FD113831A0A097700E1A2B7 /* BuyDeliveryAddressJson.m in Sources */,
 				ECC7B82719F524E40045CBCE /* FirstView.m in Sources */,
 				ECCC237819E7F8F40091C43E /* LoginViewController.m in Sources */,
 				EC4CB3FF19F7D1800028F219 /* RequestDocScansUrl.m in Sources */,
@@ -938,6 +1005,7 @@
 				ECC6A26F19F787CA00F85E02 /* secondView.m in Sources */,
 				ECCC238219E7FED20091C43E /* OrdersResponse.m in Sources */,
 				ECEFF6CD19FA68D40098F505 /* FirstScrollView.m in Sources */,
+				8FC51A851A0CA93300E13D03 /* SingleDataProviderForEndDate.m in Sources */,
 				EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
 				ECCC238019E7FED20091C43E /* OrdersElements.m in Sources */,
@@ -945,12 +1013,15 @@
 				ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				ECD55D9219F7EEFA002E182D /* BindCardResponse.m in Sources */,
+				8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */,
 				ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */,
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
 				EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */,
+				8FBD45181A0B62EB004CEF7D /* OrdersHistoryViewController.m in Sources */,
 				ECCA300619F8F36100BE48E0 /* DriverAllInfoResponse.m in Sources */,
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
+				8FC51A8B1A0CAD3000E13D03 /* OrdersHistoryResponse.m in Sources */,
 				EC4CB40619F7E5E00028F219 /* RequestSetDriverInfo.m in Sources */,
 				8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
@@ -966,21 +1037,25 @@
 				ECCA90A319DEE2060007831F /* JSONModel.m in Sources */,
 				ECCC238119E7FED20091C43E /* OrdersJson.m in Sources */,
 				ECC71B8F19F00BFB00468D33 /* SendingMessageViewController.m in Sources */,
+				8FD25E951A0B892A0056038C /* CustomCellOrdersHistory.m in Sources */,
 				ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */,
 				ECEA963B19F548EE001A6305 /* CustomWebView.m in Sources */,
-				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
 				8F0A821D19EBB68100A03D1B /* SelectedOrdersDetailsJson.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
+				8FC51A821A0CA8A400E13D03 /* SingleDataProviderForStartDate.m in Sources */,
 				8F0A822319EBB74700A03D1B /* SelectedOrdersDetailsResponse.m in Sources */,
-				8FB6DC9419E6A8E200671A4B /* SelectedOrdersViewController.m in Sources */,
+				8FD113891A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m in Sources */,
 				8FB6DC9D19E6BEA200671A4B /* CustomCellSelectedOrders.m in Sources */,
 				ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */,
 				EC4CB40919F7F6EF0028F219 /* DriverInfoResponse.m in Sources */,
+				8FC51A881A0CAA1100E13D03 /* OrdersHistoryJson.m in Sources */,
 				ECCC236F19E7F58A0091C43E /* infoViewController.m in Sources */,
 				84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */,
-				8F51B0AF19F69AF70032E52D /* CustomCellSelectORDER.m in Sources */,
+				8FD113861A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m in Sources */,
+				8FD011BA1A03D65C00E9363A /* CustomCellSelectORDER.m in Sources */,
 				ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */,
 				EC55988B19E5364900877CBC /* SingleDataProvider.m in Sources */,
+				8FD011B71A03D55700E9363A /* SelectedOrdersViewController.m in Sources */,
 				EC4CB40319F7D6B80028F219 /* ResponseGetDocScansUrl.m in Sources */,
 				ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
