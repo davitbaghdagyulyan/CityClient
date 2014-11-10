@@ -30,6 +30,7 @@
 		8FC51A881A0CAA1100E13D03 /* OrdersHistoryJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */; };
 		8FC51A8B1A0CAD3000E13D03 /* OrdersHistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */; };
 		8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */; };
+		8FCB5E1E1A11102C00028035 /* RecallJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742019E6B66B008D23B9 /* RecallJson.m */; };
 		8FCCBBC019E2DDC400BD9BC1 /* chat1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */; };
 		8FCCBBC219E2DE2600BD9BC1 /* ch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCCBBC119E2DE2600BD9BC1 /* ch@2x.png */; };
 		8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF58519F5051400C6E3A7 /* ic_air_conditioning_small.png */; };
@@ -73,7 +74,6 @@
 		EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E4A6C19EC1C13007C77A2 /* pages_background.png */; };
 		EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2437191A0B9807005FC018 /* LoginViewController.m */; };
 		EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */; };
-		EC2437231A0BB105005FC018 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2437211A0BA58E005FC018 /* CoreLocation.framework */; };
 		EC40D43D19E4323C007BA02C /* MailJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43C19E4323C007BA02C /* MailJson.m */; };
 		EC40D44019E43258007BA02C /* MailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43F19E43258007BA02C /* MailResponse.m */; };
 		EC40D44419E436C5007BA02C /* MailElements.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D44319E436C5007BA02C /* MailElements.m */; };
@@ -154,14 +154,12 @@
 		ECD55D8B19F7C776002E182D /* GetCardsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD55D8A19F7C776002E182D /* GetCardsResponse.m */; };
 		ECD55D8F19F7EEE8002E182D /* BindCardJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD55D8E19F7EEE8002E182D /* BindCardJson.m */; };
 		ECD55D9219F7EEFA002E182D /* BindCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD55D9119F7EEFA002E182D /* BindCardResponse.m */; };
-		ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742019E6B66B008D23B9 /* RecallJson.m */; };
 		ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742319E6B683008D23B9 /* RecallResponse.m */; };
 		ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE2553619DBF1E9000BD8C9 /* bg.png */; };
 		ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8119E56BE80044F6AD /* textRequest.m */; };
 		ECE25C8A19E56BE80044F6AD /* messages.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8319E56BE80044F6AD /* messages.m */; };
 		ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8519E56BE80044F6AD /* textResponse.m */; };
 		ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE3CFAC1A0918900053FF85 /* tachometer_arrow.png */; };
-		ECEA963B19F548EE001A6305 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA963A19F548EE001A6305 /* CustomWebView.m */; };
 		ECEA963E19F54917001A6305 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA963D19F54917001A6305 /* CustomView.m */; };
 		ECEB634A19F63E4200E6F666 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEB634819F63E4200E6F666 /* photo.png */; };
 		ECEB634B19F63E4200E6F666 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEB634919F63E4200E6F666 /* edit.png */; };
@@ -279,7 +277,6 @@
 		EC2437191A0B9807005FC018 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = CityMobilDriver/LoginViewController.m; sourceTree = "<group>"; };
 		EC24371E1A0BA1DA005FC018 /* RegionalSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionalSettingsViewController.h; sourceTree = "<group>"; };
 		EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionalSettingsViewController.m; sourceTree = "<group>"; };
-		EC2437211A0BA58E005FC018 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EC40D43B19E4323C007BA02C /* MailJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailJson.h; sourceTree = "<group>"; };
 		EC40D43C19E4323C007BA02C /* MailJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailJson.m; sourceTree = "<group>"; };
 		EC40D43E19E43258007BA02C /* MailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailResponse.h; sourceTree = "<group>"; };
@@ -464,7 +461,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC2437231A0BB105005FC018 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +505,6 @@
 			isa = PBXGroup;
 			children = (
 				ECCC12091A0CACDE00AC94EE /* Regional Settings */,
-				EC2437211A0BA58E005FC018 /* CoreLocation.framework */,
 				EC2437181A0B9807005FC018 /* LoginViewController.h */,
 				EC2437191A0B9807005FC018 /* LoginViewController.m */,
 				ECB59E9119F6876E00F69529 /* UINavigationController+shouldAutorotate.h */,
@@ -560,13 +555,9 @@
 				8FB6DC9B19E6BEA200671A4B /* CustomCellSelectedOrders.h */,
 				8FB6DC9C19E6BEA200671A4B /* CustomCellSelectedOrders.m */,
 				8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */,
-
 				8FD011B51A03D54F00E9363A /* SelectedOrdersViewController.h */,
 				8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */,
 				8FDE115E1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib */,
-				ECCC237619E7F8F40091C43E /* LoginViewController.h */,
-				ECCC237719E7F8F40091C43E /* LoginViewController.m */,
-
 				ECCC237319E7F82F0091C43E /* MessagesViewController.h */,
 				ECCC237419E7F82F0091C43E /* MessagesViewController.m */,
 				8FBD45161A0B62EB004CEF7D /* OrdersHistoryViewController.h */,
@@ -1124,11 +1115,8 @@
 				8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */,
 				8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */,
 				8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */,
-
 				ECC786301A109F8A00DAD7A6 /* rb_2.png in Resources */,
-				8FB64FAF19F7FAFA005AAF2A /* CustomCellSelectORDER.xib in Resources */,
 				ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */,
-
 				8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
 				ECEB634B19F63E4200E6F666 /* edit.png in Resources */,
@@ -1145,12 +1133,8 @@
 				8FCFF59019F5053600C6E3A7 /* ic_on_bonuses_payment_small.png in Resources */,
 				8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
-
 				8FD25E921A0B88CD0056038C /* CustomCellOrdersHistory.xib in Resources */,
-				ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */,
-
 				ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */,
-
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */,
 				8FCFF59219F5053C00C6E3A7 /* ic_order_with_visiting_small.png in Resources */,
@@ -1195,6 +1179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCB5E1E1A11102C00028035 /* RecallJson.m in Sources */,
 				ECEBD8821A0A73C300118466 /* GetActivationCodeRequest.m in Sources */,
 				ECCD4F461A0A2624002456F6 /* SucceedResponse.m in Sources */,
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
@@ -1209,13 +1194,8 @@
 				ECD55D8B19F7C776002E182D /* GetCardsResponse.m in Sources */,
 				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
 				8F0A822019EBB6F400A03D1B /* SelectedOrdersDetailsElements.m in Sources */,
-
 				8FD113831A0A097700E1A2B7 /* BuyDeliveryAddressJson.m in Sources */,
-				ECC7B82719F524E40045CBCE /* FirstView.m in Sources */,
-				ECCC237819E7F8F40091C43E /* LoginViewController.m in Sources */,
-
 				EC5BF09E1A02300B009EC444 /* Colors.m in Sources */,
-
 				EC4CB3FF19F7D1800028F219 /* RequestDocScansUrl.m in Sources */,
 				ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */,
 				ECB59E9319F6876E00F69529 /* UINavigationController+shouldAutorotate.m in Sources */,
@@ -1226,10 +1206,7 @@
 				ECCC237519E7F82F0091C43E /* MessagesViewController.m in Sources */,
 				ECCD344A1A039F44000444BF /* RequestStandart.m in Sources */,
 				ECCC238219E7FED20091C43E /* OrdersResponse.m in Sources */,
-
-				ECEFF6CD19FA68D40098F505 /* FirstScrollView.m in Sources */,
 				8FC51A851A0CA93300E13D03 /* SingleDataProviderForEndDate.m in Sources */,
-
 				EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
 				EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */,
@@ -1239,12 +1216,9 @@
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,
 				ECD55D9219F7EEFA002E182D /* BindCardResponse.m in Sources */,
-
 				8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */,
-
 				ECC965371A011F4700768E1F /* RequestGetModelList.m in Sources */,
 				ECC965341A0102AE00768E1F /* Mark.m in Sources */,
-
 				ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */,
 				ECCB8AE419FFD6480012F2FD /* CreateProfilViewController.m in Sources */,
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
@@ -1253,12 +1227,9 @@
 				ECCA300619F8F36100BE48E0 /* DriverAllInfoResponse.m in Sources */,
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
-
 				8FC51A8B1A0CAD3000E13D03 /* OrdersHistoryResponse.m in Sources */,
-
 				ECC9653D1A0128E400768E1F /* Models.m in Sources */,
 				ECCD344D1A03AC49000444BF /* ResponseSetCarInfo.m in Sources */,
-
 				EC4CB40619F7E5E00028F219 /* RequestSetDriverInfo.m in Sources */,
 				EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */,
 				8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */,
@@ -1280,17 +1251,9 @@
 				ECCD4F431A0A20B8002456F6 /* RequestSetYandexAutoget.m in Sources */,
 				ECCC238119E7FED20091C43E /* OrdersJson.m in Sources */,
 				ECC71B8F19F00BFB00468D33 /* SendingMessageViewController.m in Sources */,
-
 				8FD25E951A0B892A0056038C /* CustomCellOrdersHistory.m in Sources */,
-				ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */,
-				ECEA963B19F548EE001A6305 /* CustomWebView.m in Sources */,
-
 				EC5BF0981A022E69009EC444 /* RequestGetColorList.m in Sources */,
-				ECD9742119E6B66B008D23B9 /* RecallJson.m in Sources */,
-				ECEA963B19F548EE001A6305 /* CustomWebView.m in Sources */,
-				8FE032EA19DE97B700B17C09 /* CellObject.m in Sources */,
 				ECC9653A1A01255A00768E1F /* ResponseGetModelList.m in Sources */,
-
 				8F0A821D19EBB68100A03D1B /* SelectedOrdersDetailsJson.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 				8FC51A821A0CA8A400E13D03 /* SingleDataProviderForStartDate.m in Sources */,
@@ -1306,15 +1269,11 @@
 				ECC9652E1A00F85800768E1F /* RequestGetMarkList.m in Sources */,
 				ECCA4CB31A0B60E6007CEBC4 /* RegisterResponse.m in Sources */,
 				84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */,
-
 				8FD113861A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m in Sources */,
 				8FD011BA1A03D65C00E9363A /* CustomCellSelectORDER.m in Sources */,
-
 				EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */,
 				ECCA4CB01A0B5CE1007CEBC4 /* RegisterRequest.m in Sources */,
-				8F51B0AF19F69AF70032E52D /* CustomCellSelectORDER.m in Sources */,
 				ECCA4CAD1A0B55F2007CEBC4 /* ActivateAccountViewController.m in Sources */,
-
 				ECB1C17019E2AB730027F482 /* MessagesCell.m in Sources */,
 				EC55988B19E5364900877CBC /* SingleDataProvider.m in Sources */,
 				8FD011B71A03D55700E9363A /* SelectedOrdersViewController.m in Sources */,
@@ -1447,8 +1406,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1457,8 +1418,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
