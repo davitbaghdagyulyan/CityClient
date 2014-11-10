@@ -49,9 +49,12 @@
 {
     [super viewDidLoad];
     
-     log=[self.storyboard instantiateViewControllerWithIdentifier:@"View2"];
-    [self.navigationController pushViewController:log animated:NO];
+
    
+
+    LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [self.navigationController pushViewController:log animated:NO];
+
     
     //RootViewController Interface
     

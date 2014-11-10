@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CarInfo" id="QMg-75-cHY" customClass="CarInfo">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmY-lW-Vqh">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="308"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7c7-wy-t1n">
+                            <rect key="frame" x="554" y="8" width="38" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="RTN-aM-RRQ"/>
+                                <constraint firstAttribute="width" constant="38" id="fpC-FG-Y5H"/>
+                            </constraints>
+                            <state key="normal" image="edit.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="editCarInfo:" destination="QMg-75-cHY" eventType="touchUpInside" id="yBU-au-LBf"/>
+                            </connections>
+                        </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="haD-Yj-7dK">
+                            <rect key="frame" x="0.0" y="0.0" width="552" height="308"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="308" id="hkv-K9-m0a"/>
+                            </constraints>
+                            <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstItem="7c7-wy-t1n" firstAttribute="leading" secondItem="haD-Yj-7dK" secondAttribute="trailing" constant="2" id="8Kv-PY-3gf"/>
+                        <constraint firstItem="haD-Yj-7dK" firstAttribute="leading" secondItem="AmY-lW-Vqh" secondAttribute="leading" id="Fct-aj-BQV"/>
+                        <constraint firstItem="haD-Yj-7dK" firstAttribute="top" secondItem="AmY-lW-Vqh" secondAttribute="top" id="Pl9-pH-3sX"/>
+                        <constraint firstItem="7c7-wy-t1n" firstAttribute="top" secondItem="AmY-lW-Vqh" secondAttribute="top" constant="8" id="WXQ-YE-dQj"/>
+                        <constraint firstAttribute="height" constant="308" id="cKd-6i-4XJ"/>
+                        <constraint firstAttribute="trailing" secondItem="7c7-wy-t1n" secondAttribute="trailing" constant="8" id="t3g-Fv-NyR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLv-tj-5XM">
+                    <rect key="frame" x="0.0" y="316" width="600" height="129"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q0L-5H-DCO">
+                            <rect key="frame" x="421" y="8" width="113" height="113"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="113" id="DqF-v1-r9D"/>
+                                <constraint firstAttribute="height" constant="113" id="zHA-Cb-FUb"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="фото машины" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eX-Iv-mZT">
+                            <rect key="frame" x="8" y="33" width="178" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="74O-n5-bab"/>
+                                <constraint firstAttribute="width" constant="178" id="XXN-NL-Kag"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstItem="2eX-Iv-mZT" firstAttribute="leading" secondItem="DLv-tj-5XM" secondAttribute="leading" constant="8" id="I8Y-qv-XF9"/>
+                        <constraint firstAttribute="centerY" secondItem="Q0L-5H-DCO" secondAttribute="centerY" id="JSm-AZ-OIQ"/>
+                        <constraint firstAttribute="trailing" secondItem="Q0L-5H-DCO" secondAttribute="trailing" constant="66" id="Nuh-2e-PWy">
+                            <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                        </constraint>
+                        <constraint firstAttribute="centerY" secondItem="2eX-Iv-mZT" secondAttribute="centerY" constant="7" id="RoS-mJ-7Rw"/>
+                        <constraint firstAttribute="height" constant="129" id="h1S-2u-Ejg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="DLv-tj-5XM" firstAttribute="top" secondItem="AmY-lW-Vqh" secondAttribute="bottom" constant="8" id="1t0-4L-ytz"/>
+                <constraint firstAttribute="trailing" secondItem="AmY-lW-Vqh" secondAttribute="trailing" id="NzF-FA-JvF"/>
+                <constraint firstItem="AmY-lW-Vqh" firstAttribute="leading" secondItem="QMg-75-cHY" secondAttribute="leading" id="Xvd-0A-OGk"/>
+                <constraint firstAttribute="trailing" secondItem="DLv-tj-5XM" secondAttribute="trailing" id="a3q-Xc-ikf"/>
+                <constraint firstItem="AmY-lW-Vqh" firstAttribute="top" secondItem="QMg-75-cHY" secondAttribute="top" id="rFh-kq-skv"/>
+                <constraint firstItem="DLv-tj-5XM" firstAttribute="leading" secondItem="QMg-75-cHY" secondAttribute="leading" id="wxZ-nn-p2Q"/>
+            </constraints>
+            <connections>
+                <outlet property="carInfoTable" destination="haD-Yj-7dK" id="Vnm-mg-4vA"/>
+            </connections>
+            <point key="canvasLocation" x="368" y="-5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="edit.png" width="77" height="77"/>
+        <image name="photo.png" width="226" height="226"/>
+    </resources>
+</document>

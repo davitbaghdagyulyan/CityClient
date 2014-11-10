@@ -28,5 +28,5 @@
 @property(nonatomic,strong) NSString* method;
 @property(nonatomic,strong) NSString* passport_who;
 @property(nonatomic,strong) NSString* key;
-@property(nonatomic,strong) NSData* photo;
+@property(nonatomic,strong) NSString* photo;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ProfilViewController.h"
-#import "FirstScrollView.h"
+
 
 @interface ProfilViewController ()
 {
@@ -15,32 +15,21 @@
     NSInteger flag;
     LeftMenu*leftMenu;
     
-    FirstView* firstObj;
-    secondView* secondObj;
-    CreateProfile* createObj;
     UIWebView* webView;
     UIActivityIndicatorView* indicator;
-    //FirstScrollView*firstScroll;
     
+    DriverAllInfoResponse* jsonResponseObject;
 }
 @end
 
 @implementation ProfilViewController
 
-
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidLoad
 {
-    [super viewWillAppear:animated];
-//    firstScroll=[[FirstScrollView alloc]init];
-//    firstScroll.curentViewController=self;
-    
-    
-    
-    firstObj = [[[NSBundle mainBundle]loadNibNamed:@"FirstView" owner:self options:nil] objectAtIndex:0];
-    firstObj.delegate = self;
-    firstObj.frame = self.view.frame;
-    [self.view addSubview:firstObj];
-
+    self.scrollView.delegate = self;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    [self setDriverInfoRequest];
+    [self setDriverInfo];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -50,63 +39,95 @@
     
     leftMenu=[LeftMenu getLeftMenu:self];
     
-    firstObj.FirstScrollView.userInteractionEnabled=YES;
-    firstObj.segmentControlView.userInteractionEnabled=YES;
+
+    self.segmentedControll.selectedSegmentIndex = 0;
 }
-
-
-
-
-- (void)segmentControlAction:(UISegmentedControl *)sender
+- (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    if (sender.selectedSegmentIndex == 1)
+    
+    if (sender.contentOffset.x != 0)
     {
-        secondObj = [[[NSBundle mainBundle]loadNibNamed:@"secondView" owner:self options:nil] objectAtIndex:0];
-        secondObj.frame = self.view.frame;
-        [self.view addSubview:secondObj];
+        CGPoint offset = sender.contentOffset;
+        offset.x = 0;
+        sender.contentOffset = offset;
     }
 }
 
-- (void)edit:(UIButton *)sender
+-(void)setDriverInfoRequest
 {
-    createObj = [[[NSBundle mainBundle]loadNibNamed:@"CreateProfil" owner:self options:nil] objectAtIndex:0];
-    createObj.frame = self.view.frame;
-    createObj.delegate = self;
-
-    [self removeSubViews];
-    [self.view addSubview:createObj];
-}
--(BOOL)IsPhotoEqual
-{
-    NSData* data1 = UIImagePNGRepresentation(firstObj.profilPhoto.image);
-    NSData* data2 = UIImagePNGRepresentation(createObj.createPhotoImageView.image);
-    return [data1 isEqual:data2];
-}
-
-
-
-
-- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
-     {
-     }
-     
-                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context){
-                                     firstObj.frame = self.view.frame;
-                                     secondObj.frame = self.view.frame;
-                                     createObj.frame = self.view.frame;
-                                 }];
+    RequestDocScansUrl* RequestDocScansUrlObject=[[RequestDocScansUrl alloc]init];
+    RequestDocScansUrlObject.key = [SingleDataProvider sharedKey].key;
+    RequestDocScansUrlObject.method = @"getDriverInfo";
+    NSDictionary* jsonDictionary = [RequestDocScansUrlObject toDictionary];
+    NSString* aa = [RequestDocScansUrlObject toJSONString];
+    NSLog(@"%@",aa);
     
-    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    
+    
+    
+    NSError* err;
+    NSURLResponse *response = [[NSURLResponse alloc]init];
+    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"------------======= = = == -%@",jsonString);
+    jsonResponseObject = [[DriverAllInfoResponse alloc]initWithString:jsonString error:&err];
+    
+    NSLog(@"******* %@",[jsonResponseObject description]);
+    
 }
 
 
--(void)removeSubViews
+-(void)setDriverInfo
 {
-    for (UIView* subView in [self.view subviews])
-    {
-        [subView removeFromSuperview];
+    [self setAtributedString:self.lastName :jsonResponseObject.last_name];
+    [self setAtributedString:self.name :jsonResponseObject.name];
+    [self setAtributedString:self.middleName :jsonResponseObject.middle_name];
+    
+    [self setAtributedString:self.percentToCharge :jsonResponseObject.percenttocharge];
+    [self setAtributedString:self.passportSer :jsonResponseObject.passport_ser];
+    
+    [self setAtributedString:self.passportNum :jsonResponseObject.passport_num];
+    [self setAtributedString:self.pasportDate :jsonResponseObject.passport_date];
+    
+    [self setAtributedString:self.dateRegister :jsonResponseObject.date_register];
+    
+    [self setAtributedString:self.passportWho :jsonResponseObject.passport_who];
+    
+    //[self setAtributedString:self.passportAddress :jsonResponseObject.passport_address];
+    
+    [self setAtributedString:self.driverLicenseSerial :jsonResponseObject.driver_license_serial];
+    
+    [self setAtributedString:self.driverLicenseNumber :jsonResponseObject.driver_license_number];
+    
+    [self setAtributedString:self.driverLicenseClass :jsonResponseObject.driver_license_class];
+    
+}
+
+
+-(void)setAtributedString:(UILabel*)label  :(NSString*)appendingString
+{
+    if (appendingString) {
+        label.text = [label.text stringByAppendingString:@" "];
+        label.text = [label.text stringByAppendingString:appendingString];
+        NSRange range1 = [label.text rangeOfString:appendingString];
+        NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
+        [attributedText setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0f]} range:range1];
+        label.attributedText=attributedText;
     }
 }
 
@@ -141,16 +162,17 @@
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     //NSLog(@"--%@",jsonString);
-    ResponseGetDocScansUrl* jsonResponseObject = [[ResponseGetDocScansUrl alloc]initWithString:jsonString error:&err];
+    ResponseGetDocScansUrl* jsonResponseGetUrlObject = [[ResponseGetDocScansUrl alloc]initWithString:jsonString error:&err];
     //NSLog(@"******* %@",jsonResponseObject.doc_scans_url);
-    return jsonResponseObject.doc_scans_url;
+    return jsonResponseGetUrlObject.doc_scans_url;
 }
 
-- (void)sendDocumentsAction:(UIButton *)sender
+
+
+- (IBAction)sendDocumentsAction:(UIButton *)sender
 {
     webView = [[UIWebView alloc]initWithFrame:self.view.frame];
     webView.delegate = self;
-    [self removeSubViews];
     
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
@@ -169,11 +191,43 @@
     [indicator stopAnimating];
 }
 
-- (void)showSettingViewController:(UIButton *)sender
+- (IBAction)segmentContollAction:(UISegmentedControl*)sender
 {
-        SettingsViewController*svc=[self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-        [self.navigationController pushViewController:svc animated:NO];
+    if (sender.selectedSegmentIndex == 0)
+    {
+    }
+    if (sender.selectedSegmentIndex == 1)
+    {
+        CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
+        [self pushOrPopViewController:carInfoController];
+        
+    }
 }
+
+-(void)pushOrPopViewController:(UIViewController*)controller//
+{
+    NSArray *viewControlles = self.navigationController.viewControllers;
+    
+    for (UIViewController* currentController in viewControlles) {
+        if ([controller isKindOfClass:currentController.class]) {
+            [self.navigationController popToViewController:currentController animated:NO];
+            return;
+        }
+    }
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+- (IBAction)edit:(UIButton *)sender
+{
+    CreateProfilViewController* createProfilController=[self.storyboard instantiateViewControllerWithIdentifier:@"CreateProfilViewController"];
+    createProfilController.profilImage = self.profilImageView.image;
+    [self pushOrPopViewController:createProfilController];
+}
+
+
+
+///////////
+
 - (void)openAndCloseLeftMenu:(UIButton *)sender
 {
     
@@ -197,15 +251,15 @@
          if (flag==0)
          {
              flag=1;
-             firstObj.FirstScrollView.userInteractionEnabled=NO;
-             firstObj.segmentControlView.userInteractionEnabled=NO;
+             //firstObj.FirstScrollView.userInteractionEnabled=NO;
+             //firstObj.segmentControlView.userInteractionEnabled=NO;
             
          }
          else
          {
              flag=0;
-             firstObj.FirstScrollView.userInteractionEnabled=YES;
-             firstObj.segmentControlView.userInteractionEnabled=YES;
+             //firstObj.FirstScrollView.userInteractionEnabled=YES;
+             //firstObj.segmentControlView.userInteractionEnabled=YES;
          }
          
      }
@@ -242,8 +296,8 @@
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              flag=0;
-             firstObj.FirstScrollView.userInteractionEnabled=YES;
-             firstObj.segmentControlView.userInteractionEnabled=YES;
+             //firstObj.FirstScrollView.userInteractionEnabled=YES;
+             //firstObj.segmentControlView.userInteractionEnabled=YES;
              
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
@@ -252,8 +306,8 @@
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              
-             firstObj.FirstScrollView.userInteractionEnabled=NO;
-             firstObj.segmentControlView.userInteractionEnabled=NO;
+             //firstObj.FirstScrollView.userInteractionEnabled=NO;
+             //firstObj.segmentControlView.userInteractionEnabled=NO;
              flag=1;
          }
          point.y=leftMenu.center.y;
@@ -298,20 +352,14 @@
     }
     leftMenu.center=point;
     
-    
-    
-    
-    
-    
-    
-    
-    firstObj.FirstScrollView.userInteractionEnabled=NO;
-    firstObj.segmentControlView.userInteractionEnabled=NO;
+//    firstObj.FirstScrollView.userInteractionEnabled=NO;
+//    firstObj.segmentControlView.userInteractionEnabled=NO;
     
     flag=1;
     
     
 }
+
 
 
 @end

@@ -16,17 +16,17 @@
 @protocol CreateProfilViewDelegate <NSObject>
 -(BOOL)IsPhotoEqual;
 - (IBAction)showSettingViewController:(UIButton *)sender;
+-(void)addImagePicker:(UIView*)view;
+-(void)removeImagePicker:(UIView*)view;
 @end
 
 
 @interface CreateProfile : UIView <UIScrollViewDelegate,UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UIScrollView* scrollView;
+@property(nonatomic, assign) BOOL isSubview;
 
 - (IBAction)seveUserInformation:(UIButton *)sender;
-
-
 
 @property (weak, nonatomic) IBOutlet UITextField *middleName;
 @property (weak, nonatomic) IBOutlet UITextField *name;

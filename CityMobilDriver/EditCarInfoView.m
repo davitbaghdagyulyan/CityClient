@@ -1,14 +1,14 @@
 //
-//  secondView.m
+//  EditCarInfoView.m
 //  CityMobilDriver
 //
-//  Created by Intern on 10/22/14.
+//  Created by Intern on 10/28/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
-#import "secondView.h"
+#import "EditCarInfoView.h"
 
-@implementation secondView
+@implementation EditCarInfoView
 
 /*
 // Only override drawRect: if you perform custom drawing.
