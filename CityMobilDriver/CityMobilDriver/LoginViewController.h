@@ -18,6 +18,10 @@
 @property(nonatomic,strong) NSString* bankid;
 @property(nonatomic,strong) NSString* passwordText;
 
+- (IBAction)remember:(UIButton*)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *rememberButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
 @property (weak, nonatomic) IBOutlet UITextField *login;

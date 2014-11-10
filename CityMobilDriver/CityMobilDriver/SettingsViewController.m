@@ -79,14 +79,14 @@
     if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
     {
         //NSLog(@"%@",NSStringFromCGSize(size));
-        CGSize scrollSize = size;
-        scrollSize.height = size.width;
-        self.scrolView.contentSize = scrollSize;
+//        CGSize scrollSize = size;
+//        scrollSize.height = size.width;
+//        self.scrolView.contentSize = scrollSize;
     }
         
     if (([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait || [UIDevice currentDevice].orientation == UIDeviceOrientationPortraitUpsideDown) && self.view.frame.size.height == 480)
         {
-            self.scrolView.contentSize = size;
+//            self.scrolView.contentSize = size;
         }
         
         fontSizeView.center = self.view.center;

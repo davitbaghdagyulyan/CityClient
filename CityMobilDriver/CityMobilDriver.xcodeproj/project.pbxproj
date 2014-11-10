@@ -59,8 +59,6 @@
 		EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */; };
 		EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6A19EBC22F007C77A2 /* SettingsViewController.m */; };
 		EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E4A6C19EC1C13007C77A2 /* pages_background.png */; };
-		EC2394D319FE909600A3E42A /* CarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2394D219FE909600A3E42A /* CarInfo.m */; };
-		EC2394D519FE90A100A3E42A /* CarInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2394D419FE90A100A3E42A /* CarInfo.xib */; };
 		EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2437191A0B9807005FC018 /* LoginViewController.m */; };
 		EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */; };
 		EC2437231A0BB105005FC018 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2437211A0BA58E005FC018 /* CoreLocation.framework */; };
@@ -86,13 +84,11 @@
 		ECB59E9A19F6A3B300F69529 /* GetQiwiBillsUrlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB59E9919F6A3B300F69529 /* GetQiwiBillsUrlResponse.m */; };
 		ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */; };
 		ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFF24319F9106600DE8131 /* CardsElements.m */; };
-		ECC6A27419F791DF00F85E02 /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC6A27319F791DF00F85E02 /* CreateProfile.m */; };
-		ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC6A27519F791F700F85E02 /* CreateProfil.xib */; };
 		ECC71B8F19F00BFB00468D33 /* SendingMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC71B8E19F00BFB00468D33 /* SendingMessageViewController.m */; };
 		ECC7862E1A109F8600DAD7A6 /* rb.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC7862D1A109F8600DAD7A6 /* rb.png */; };
 		ECC786301A109F8A00DAD7A6 /* rb_2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC7862F1A109F8A00DAD7A6 /* rb_2.png */; };
-		ECC7B82719F524E40045CBCE /* FirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC7B82619F524E40045CBCE /* FirstView.m */; };
-		ECC7B82C19F52D3A0045CBCE /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC7B82B19F52D3A0045CBCE /* FirstView.xib */; };
+		ECC8CCE61A10E58400883CD1 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE51A10E58400883CD1 /* box.png */; };
+		ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE71A10E7D800883CD1 /* box2.png */; };
 		ECC965281A00C23800768E1F /* CarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC965271A00C23800768E1F /* CarInfoViewController.m */; };
 		ECC9652B1A00D91A00768E1F /* EditCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9652A1A00D91A00768E1F /* EditCarInfoViewController.m */; };
 		ECC9652E1A00F85800768E1F /* RequestGetMarkList.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9652D1A00F85800768E1F /* RequestGetMarkList.m */; };
@@ -101,8 +97,6 @@
 		ECC965371A011F4700768E1F /* RequestGetModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC965361A011F4700768E1F /* RequestGetModelList.m */; };
 		ECC9653A1A01255A00768E1F /* ResponseGetModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC965391A01255A00768E1F /* ResponseGetModelList.m */; };
 		ECC9653D1A0128E400768E1F /* Models.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9653C1A0128E400768E1F /* Models.m */; };
-		ECCA249619FF9CEE0000B50F /* EditCarInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA249519FF9CEE0000B50F /* EditCarInfoView.m */; };
-		ECCA249819FF9CFC0000B50F /* EditCarInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCA249719FF9CFC0000B50F /* EditCarInfoView.xib */; };
 		ECCA300619F8F36100BE48E0 /* DriverAllInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA300519F8F36100BE48E0 /* DriverAllInfoResponse.m */; };
 		ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA300B19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m */; };
 		ECCA4CAD1A0B55F2007CEBC4 /* ActivateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA4CAC1A0B55F2007CEBC4 /* ActivateAccountViewController.m */; };
@@ -248,9 +242,6 @@
 		EC1E4A6919EBC22F007C77A2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		EC1E4A6A19EBC22F007C77A2 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		EC1E4A6C19EC1C13007C77A2 /* pages_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pages_background.png; sourceTree = "<group>"; };
-		EC2394D119FE909600A3E42A /* CarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfo.h; sourceTree = "<group>"; };
-		EC2394D219FE909600A3E42A /* CarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfo.m; sourceTree = "<group>"; };
-		EC2394D419FE90A100A3E42A /* CarInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarInfo.xib; sourceTree = "<group>"; };
 		EC2437181A0B9807005FC018 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = CityMobilDriver/LoginViewController.h; sourceTree = "<group>"; };
 		EC2437191A0B9807005FC018 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = CityMobilDriver/LoginViewController.m; sourceTree = "<group>"; };
 		EC24371E1A0BA1DA005FC018 /* RegionalSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionalSettingsViewController.h; sourceTree = "<group>"; };
@@ -297,16 +288,12 @@
 		ECBB5A9C19D457F5009A151D /* LeftViewCellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCellObject.m; sourceTree = "<group>"; };
 		ECBFF24219F9106600DE8131 /* CardsElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsElements.h; sourceTree = "<group>"; };
 		ECBFF24319F9106600DE8131 /* CardsElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsElements.m; sourceTree = "<group>"; };
-		ECC6A27219F791DF00F85E02 /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProfile.h; sourceTree = "<group>"; };
-		ECC6A27319F791DF00F85E02 /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProfile.m; sourceTree = "<group>"; };
-		ECC6A27519F791F700F85E02 /* CreateProfil.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateProfil.xib; sourceTree = "<group>"; };
 		ECC71B8D19F00BFB00468D33 /* SendingMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingMessageViewController.h; sourceTree = "<group>"; };
 		ECC71B8E19F00BFB00468D33 /* SendingMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingMessageViewController.m; sourceTree = "<group>"; };
 		ECC7862D1A109F8600DAD7A6 /* rb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb.png; sourceTree = "<group>"; };
 		ECC7862F1A109F8A00DAD7A6 /* rb_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_2.png; sourceTree = "<group>"; };
-		ECC7B82519F524E40045CBCE /* FirstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstView.h; sourceTree = "<group>"; };
-		ECC7B82619F524E40045CBCE /* FirstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstView.m; sourceTree = "<group>"; };
-		ECC7B82B19F52D3A0045CBCE /* FirstView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
+		ECC8CCE51A10E58400883CD1 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
+		ECC8CCE71A10E7D800883CD1 /* box2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box2.png; sourceTree = "<group>"; };
 		ECC965261A00C23800768E1F /* CarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfoViewController.h; sourceTree = "<group>"; };
 		ECC965271A00C23800768E1F /* CarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfoViewController.m; sourceTree = "<group>"; };
 		ECC965291A00D91A00768E1F /* EditCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCarInfoViewController.h; sourceTree = "<group>"; };
@@ -323,9 +310,6 @@
 		ECC965391A01255A00768E1F /* ResponseGetModelList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetModelList.m; sourceTree = "<group>"; };
 		ECC9653B1A0128E400768E1F /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		ECC9653C1A0128E400768E1F /* Models.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Models.m; sourceTree = "<group>"; };
-		ECCA249419FF9CEE0000B50F /* EditCarInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCarInfoView.h; sourceTree = "<group>"; };
-		ECCA249519FF9CEE0000B50F /* EditCarInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCarInfoView.m; sourceTree = "<group>"; };
-		ECCA249719FF9CFC0000B50F /* EditCarInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditCarInfoView.xib; sourceTree = "<group>"; };
 		ECCA300419F8F36100BE48E0 /* DriverAllInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverAllInfoResponse.h; sourceTree = "<group>"; };
 		ECCA300519F8F36100BE48E0 /* DriverAllInfoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverAllInfoResponse.m; sourceTree = "<group>"; };
 		ECCA300A19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSetDriverInfoWithPoto.h; sourceTree = "<group>"; };
@@ -582,7 +566,6 @@
 		EC00342219F15DCA0062A6DF /* Profil */ = {
 			isa = PBXGroup;
 			children = (
-				EC2394CB19FE8D7500A3E42A /* jnjn */,
 				EC4CB40019F7D18A0028F219 /* requests */,
 				EC00342319F1620A0062A6DF /* ProfilViewController.h */,
 				EC00342419F1620A0062A6DF /* ProfilViewController.m */,
@@ -607,25 +590,6 @@
 			);
 			name = "Single UserInformation Provider";
 			path = ..;
-			sourceTree = "<group>";
-		};
-		EC2394CB19FE8D7500A3E42A /* jnjn */ = {
-			isa = PBXGroup;
-			children = (
-				EC2394D119FE909600A3E42A /* CarInfo.h */,
-				EC2394D219FE909600A3E42A /* CarInfo.m */,
-				EC2394D419FE90A100A3E42A /* CarInfo.xib */,
-				ECC6A27219F791DF00F85E02 /* CreateProfile.h */,
-				ECC6A27319F791DF00F85E02 /* CreateProfile.m */,
-				ECC6A27519F791F700F85E02 /* CreateProfil.xib */,
-				ECC7B82519F524E40045CBCE /* FirstView.h */,
-				ECC7B82619F524E40045CBCE /* FirstView.m */,
-				ECC7B82B19F52D3A0045CBCE /* FirstView.xib */,
-				ECCA249419FF9CEE0000B50F /* EditCarInfoView.h */,
-				ECCA249519FF9CEE0000B50F /* EditCarInfoView.m */,
-				ECCA249719FF9CFC0000B50F /* EditCarInfoView.xib */,
-			);
-			name = jnjn;
 			sourceTree = "<group>";
 		};
 		EC40D44119E43490007BA02C /* Mail */ = {
@@ -849,6 +813,8 @@
 		ECCD34511A03D422000444BF /* photos */ = {
 			isa = PBXGroup;
 			children = (
+				ECC8CCE51A10E58400883CD1 /* box.png */,
+				ECC8CCE71A10E7D800883CD1 /* box2.png */,
 				ECC7862D1A109F8600DAD7A6 /* rb.png */,
 				ECC7862F1A109F8A00DAD7A6 /* rb_2.png */,
 				ECEB634819F63E4200E6F666 /* photo.png */,
@@ -1092,7 +1058,7 @@
 				8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */,
 				ECC786301A109F8A00DAD7A6 /* rb_2.png in Resources */,
 				8FB64FAF19F7FAFA005AAF2A /* CustomCellSelectORDER.xib in Resources */,
-				ECCA249819FF9CFC0000B50F /* EditCarInfoView.xib in Resources */,
+				ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */,
 				8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
 				ECEB634B19F63E4200E6F666 /* edit.png in Resources */,
@@ -1108,7 +1074,6 @@
 				8FCFF59019F5053600C6E3A7 /* ic_on_bonuses_payment_small.png in Resources */,
 				8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
-				ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */,
 				ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */,
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */,
@@ -1118,9 +1083,7 @@
 				8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */,
 				8FDF958219DE7E60005A468A /* logo@2x.png in Resources */,
 				8FB64FB319F9221F005AAF2A /* map.png in Resources */,
-				EC2394D519FE90A100A3E42A /* CarInfo.xib in Resources */,
 				ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */,
-				ECC7B82C19F52D3A0045CBCE /* FirstView.xib in Resources */,
 				ECCC120F1A0CD54500AC94EE /* FoundRegion.xib in Resources */,
 				ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */,
 				8FE032F219DEC83B00B17C09 /* icon@2x.png in Resources */,
@@ -1135,6 +1098,7 @@
 				ECB49FD019F539650022EB28 /* CustomWebView.xib in Resources */,
 				8FCFF58A19F5052300C6E3A7 /* ic_child_seat_small.png in Resources */,
 				8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */,
+				ECC8CCE61A10E58400883CD1 /* box.png in Resources */,
 				8FE032EC19DEC80600B17C09 /* ya@2x.png in Resources */,
 				8FE4868E19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png in Resources */,
 			);
@@ -1169,7 +1133,6 @@
 				ECBB5A9D19D457F5009A151D /* LeftViewCellObject.m in Sources */,
 				8F0A822019EBB6F400A03D1B /* SelectedOrdersDetailsElements.m in Sources */,
 				EC5BF09E1A02300B009EC444 /* Colors.m in Sources */,
-				ECC7B82719F524E40045CBCE /* FirstView.m in Sources */,
 				EC4CB3FF19F7D1800028F219 /* RequestDocScansUrl.m in Sources */,
 				ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */,
 				ECB59E9319F6876E00F69529 /* UINavigationController+shouldAutorotate.m in Sources */,
@@ -1184,7 +1147,6 @@
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
 				EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */,
 				ECCC238019E7FED20091C43E /* OrdersElements.m in Sources */,
-				EC2394D319FE909600A3E42A /* CarInfo.m in Sources */,
 				ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */,
 				ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
@@ -1212,11 +1174,9 @@
 				ECD4064919F146D200EFE6B2 /* WriteLetterResponse.m in Sources */,
 				ECB59E9719F6A36D00F69529 /* GetQiwiBillsUrlJson.m in Sources */,
 				ECE25C8A19E56BE80044F6AD /* messages.m in Sources */,
-				ECC6A27419F791DF00F85E02 /* CreateProfile.m in Sources */,
 				ECD55D8F19F7EEE8002E182D /* BindCardJson.m in Sources */,
 				ECCD34501A03B224000444BF /* RequestSetCarInfoWidthPhoto.m in Sources */,
 				ECCA90AB19DEE2060007831F /* JSONKeyMapper.m in Sources */,
-				ECCA249619FF9CEE0000B50F /* EditCarInfoView.m in Sources */,
 				D70428B819D0071F00F5C38C /* main.m in Sources */,
 				ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */,
 				EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */,

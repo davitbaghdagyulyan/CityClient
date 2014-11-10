@@ -89,10 +89,8 @@
         loginSpace.constant = self.view.frame.size.height -  keyboardHeightInPortrait - login.frame.size.height - 25;//g
     }
     
-    if (self.bankid) {
-        login.placeholder = self.bankid;
-        password.placeholder = self.passwordText;
-    }
+        login.placeholder = [[NSUserDefaults standardUserDefaults]stringForKey:@"bankid"];
+        password.placeholder = [[NSUserDefaults standardUserDefaults]stringForKey:@"password"];
 }
 
 
@@ -359,6 +357,13 @@
         else
         {
             [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
+            if ([self image:self.rememberButton.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]]) {
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:loginJsonObject.bankid forKey:@"bankid"];
+                [defaults setObject:loginJsonObject.pass forKey:@"password"];
+                [defaults synchronize];
+                
+            }
             [self.navigationController popViewControllerAnimated:NO];
         }
         [indicator stopAnimating];
@@ -367,4 +372,23 @@
     
 }
 
+- (IBAction)remember:(UIButton*)sender {
+    
+    
+    if ([self image:sender.imageView.image isEqualTo:[UIImage imageNamed:@"box.png"]]) {
+        [self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+    }
+}
+
+
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2
+{
+    NSData *data1 = UIImagePNGRepresentation(image1);
+    NSData *data2 = UIImagePNGRepresentation(image2);
+    
+    return [data1 isEqual:data2];
+}
 @end

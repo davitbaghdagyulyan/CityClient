@@ -105,10 +105,12 @@
     
     int y = (max - min) / 2;
     
-    //[imagePicker popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self.createPhotoImageView setImage:[self imageWithImage:info[UIImagePickerControllerOriginalImage] scaledToSize:CGRectMake(0, y, min, min)]];
+    self.createPhotoImageView.layer.cornerRadius = self.createPhotoImageView.frame.size.height /2;
+    self.createPhotoImageView.layer.masksToBounds = YES;
+    self.createPhotoImageView.layer.borderWidth = 0;
 }
 
 -(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGRect)newRect;
@@ -284,15 +286,6 @@
 - (NSString *)encodeToBase64String:(UIImage *)image {
     return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 }
-/*
-  Decode as:
- 
- - (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
- NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
- return [UIImage imageWithData:data];
- }
- 
- */
 
 
 -(void)RequestSetDriverInfoWithPoto

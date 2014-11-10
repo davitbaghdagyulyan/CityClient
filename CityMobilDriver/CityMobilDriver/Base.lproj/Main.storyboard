@@ -162,18 +162,25 @@
                                             <constraint firstAttribute="height" constant="28" id="Y3T-p9-Kx4"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOc-Rj-jiE">
-                                        <rect key="frame" x="277" y="17" width="33" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOc-Rj-jiE">
+                                        <rect key="frame" x="581" y="28" width="11" height="19"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="11" id="0zt-6c-6gp"/>
                                             <constraint firstAttribute="height" constant="30" id="SAL-IA-q9l"/>
                                             <constraint firstAttribute="width" constant="33" id="g6f-el-d4s"/>
+                                            <constraint firstAttribute="height" constant="19" id="hHw-j6-7cw"/>
                                         </constraints>
-                                        <state key="normal" title="login">
+                                        <state key="normal" image="tachometer_arrow.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="SAL-IA-q9l"/>
+                                                <exclude reference="g6f-el-d4s"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
-                                            <segue destination="Poh-dO-P0e" kind="show" id="kFp-wD-AfS"/>
+                                            <segue destination="Poh-dO-P0e" kind="show" id="J9c-gg-Ur8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -181,10 +188,18 @@
                                 <constraints>
                                     <constraint firstItem="BQB-Eh-0xv" firstAttribute="top" secondItem="qRW-05-TmI" secondAttribute="top" constant="29" id="2NN-Fj-0Oz"/>
                                     <constraint firstItem="GOc-Rj-jiE" firstAttribute="top" secondItem="qRW-05-TmI" secondAttribute="top" constant="17" id="3Qa-0h-clE"/>
+                                    <constraint firstItem="GOc-Rj-jiE" firstAttribute="top" secondItem="qRW-05-TmI" secondAttribute="top" constant="28" id="Dk1-e4-SYj"/>
                                     <constraint firstAttribute="centerX" secondItem="GOc-Rj-jiE" secondAttribute="centerX" constant="6.5" id="bh8-XO-Pwh"/>
                                     <constraint firstItem="BQB-Eh-0xv" firstAttribute="leading" secondItem="qRW-05-TmI" secondAttribute="leading" constant="7" id="dkS-fb-l0X"/>
                                     <constraint firstAttribute="height" constant="64" id="fRz-xK-9ki"/>
+                                    <constraint firstAttribute="trailing" secondItem="GOc-Rj-jiE" secondAttribute="trailing" constant="8" id="tRo-V5-bOo"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3Qa-0h-clE"/>
+                                        <exclude reference="bh8-XO-Pwh"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2044,12 +2059,6 @@
                                     <segue destination="hpo-5l-gOZ" kind="show" id="Ifs-sI-hn6"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CtS-0x-arZ">
-                                <rect key="frame" x="423" y="516" width="51" height="31"/>
-                                <color key="backgroundColor" red="0.9490196704864502" green="0.9490196704864502" blue="0.9490196704864502" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="onTintColor" red="0.89803928136825562" green="0.89803928136825562" blue="0.89803928136825562" alpha="1" colorSpace="deviceRGB"/>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gV4-Sy-z6S">
                                 <rect key="frame" x="16" y="517" width="90" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -2134,19 +2143,31 @@
                                     <constraint firstAttribute="height" constant="64" id="nOY-Qk-Spj"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSF-bg-l98">
+                                <rect key="frame" x="472" y="524" width="16" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Ccb-jg-pCb"/>
+                                    <constraint firstAttribute="width" constant="16" id="xaq-ou-L4z"/>
+                                </constraints>
+                                <state key="normal" image="box.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="remember:" destination="Poh-dO-P0e" eventType="touchUpInside" id="Xb4-4f-T7z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="srK-FU-gSo" firstAttribute="top" secondItem="l6Z-er-Fm6" secondAttribute="bottom" constant="8" id="3oZ-QH-vpj"/>
                             <constraint firstItem="efq-c0-x6M" firstAttribute="leading" secondItem="YjW-QK-9Sp" secondAttribute="leading" constant="16" id="9ZQ-b9-bcf"/>
                             <constraint firstItem="gV4-Sy-z6S" firstAttribute="leading" secondItem="YjW-QK-9Sp" secondAttribute="leading" constant="16" id="BFq-Zv-5yd"/>
-                            <constraint firstItem="FYA-P9-tXB" firstAttribute="leading" secondItem="CtS-0x-arZ" secondAttribute="trailing" constant="24" id="Bit-dM-N67"/>
                             <constraint firstAttribute="trailing" secondItem="B4S-Qa-ZGD" secondAttribute="trailing" id="Bnz-d9-L7e"/>
-                            <constraint firstItem="efq-c0-x6M" firstAttribute="top" secondItem="CtS-0x-arZ" secondAttribute="bottom" constant="8" id="D59-ic-957"/>
                             <constraint firstItem="SK6-xH-uVu" firstAttribute="leading" secondItem="YjW-QK-9Sp" secondAttribute="leading" id="JsC-qc-juV"/>
                             <constraint firstAttribute="trailing" secondItem="efq-c0-x6M" secondAttribute="trailing" constant="42" id="KfC-LD-2mh"/>
                             <constraint firstAttribute="trailing" secondItem="SK6-xH-uVu" secondAttribute="trailing" id="LJJ-fD-Nyj"/>
                             <constraint firstItem="SK6-xH-uVu" firstAttribute="leading" secondItem="YjW-QK-9Sp" secondAttribute="leading" id="Pk7-Qq-LVE"/>
+                            <constraint firstItem="cSF-bg-l98" firstAttribute="centerY" secondItem="FYA-P9-tXB" secondAttribute="centerY" id="SHI-MD-fDH"/>
                             <constraint firstItem="SK6-xH-uVu" firstAttribute="top" secondItem="YjW-QK-9Sp" secondAttribute="top" id="SYr-AM-qmn"/>
                             <constraint firstAttribute="trailing" secondItem="FYA-P9-tXB" secondAttribute="trailing" constant="16" id="Uzj-Qs-e6q"/>
                             <constraint firstAttribute="trailing" secondItem="SK6-xH-uVu" secondAttribute="trailing" id="VD8-c2-0pS"/>
@@ -2161,6 +2182,7 @@
                             <constraint firstItem="l6Z-er-Fm6" firstAttribute="top" secondItem="gWA-k4-NzW" secondAttribute="bottom" constant="280" id="llc-Nf-5wc" userLabel="loginSpace"/>
                             <constraint firstItem="B4S-Qa-ZGD" firstAttribute="leading" secondItem="YjW-QK-9Sp" secondAttribute="leading" id="neJ-fe-Ikg"/>
                             <constraint firstItem="HkO-qi-WDn" firstAttribute="top" secondItem="srK-FU-gSo" secondAttribute="bottom" constant="8" id="qry-pR-b8K"/>
+                            <constraint firstItem="FYA-P9-tXB" firstAttribute="leading" secondItem="cSF-bg-l98" secondAttribute="trailing" constant="8" id="wYG-IY-5YD"/>
                             <constraint firstItem="B4S-Qa-ZGD" firstAttribute="top" secondItem="YjW-QK-9Sp" secondAttribute="top" id="x2B-Ms-z2s"/>
                         </constraints>
                     </view>
@@ -2169,6 +2191,7 @@
                         <outlet property="login" destination="l6Z-er-Fm6" id="Qlh-ua-3NF"/>
                         <outlet property="loginSpace" destination="llc-Nf-5wc" id="oY9-Dr-81r"/>
                         <outlet property="password" destination="srK-FU-gSo" id="kai-SF-dl9"/>
+                        <outlet property="rememberButton" destination="cSF-bg-l98" id="Zk7-Br-pEm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKX-wJ-yx6" sceneMemberID="firstResponder"/>
@@ -2940,9 +2963,6 @@
                                         <state key="normal" title="Button" image="gps.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="261" y="30" width="27" height="27"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="599" y="30" width="27" height="27"/>
                                         </variation>
@@ -2956,9 +2976,6 @@
                                         <state key="normal" title="Button" image="ya.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="161" y="30" width="25" height="25"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="449" y="30" width="25" height="25"/>
                                         </variation>
@@ -2972,9 +2989,6 @@
                                         <state key="normal" title="Button" image="icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="211" y="30" width="25" height="25"/>
-                                        </variation>
                                         <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                             <rect key="frame" x="524" y="30" width="25" height="25"/>
                                         </variation>
@@ -3277,9 +3291,6 @@
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="23" y="266" width="354" height="239"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="23" y="266" width="354" height="239"/>
-                                        </variation>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Автоназначение СитиМобил" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkw-dk-432">
                                         <rect key="frame" x="185" y="60" width="230" height="21"/>
@@ -3317,9 +3328,6 @@
                                         <exclude reference="2LU-7s-Qw8"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="68" width="600" height="332"/>
-                                </variation>
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="64" width="600" height="736"/>
                                 </variation>
@@ -3334,9 +3342,6 @@
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="68" width="800" height="332"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="68" width="400" height="732"/>
                                 </variation>
                             </scrollView>
                         </subviews>
@@ -5728,6 +5733,7 @@
     <resources>
         <image name="arrow.png" width="15" height="8"/>
         <image name="bg.png" width="640" height="1136"/>
+        <image name="box.png" width="32" height="29"/>
         <image name="ch.png" width="32" height="26"/>
         <image name="edit.png" width="77" height="77"/>
         <image name="gps.png" width="27" height="27"/>

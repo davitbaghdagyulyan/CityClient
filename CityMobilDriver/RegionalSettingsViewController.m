@@ -15,10 +15,11 @@
 @interface RegionalSettingsViewController ()
 {
     CLLocationManager *locationManager;
-    CLLocation* location;
+    CLLocation* currentLocation;
     GetZonesResponse* responseObject;
     NSString* sity;
     
+    CLLocationDistance currentDistance;
     
     UIView* backgroundView;
     UIView* buttomView;
@@ -42,6 +43,7 @@
         [locationManager requestWhenInUseAuthorization];
     }
     
+    
     [locationManager startUpdatingLocation];
     
 }
@@ -55,7 +57,7 @@
 {
     //NSLog(@" class = %@",[[locations lastObject] class]);
     
-    location = [locations lastObject];
+    currentLocation = [locations lastObject];
     //NSLog(@"%f--- %f", location.coordinate.latitude,location.coordinate.longitude);
     //NSLog(@"%@", [[locations lastObject] class]);
 }
@@ -121,23 +123,27 @@
             [self regionNotFound:NO];
         }
         
-        [indicator startAnimating];
+        [indicator stopAnimating];
         
     }];
 }
 
 -(BOOL)isCircleContainsPoint
 {
+    if (currentLocation) {
     for (int i = 0; i < [responseObject.zones count]; ++i) {
         CLLocation* sityLocation = [[CLLocation alloc]initWithLatitude:[responseObject.zones[i] latitude]
                                                              longitude:[responseObject.zones[i] longitude]];
+
         
-        CLLocationDistance currentDistance = [sityLocation distanceFromLocation:location];
-        NSLog(@" oooo = %f",currentDistance);
-        if (currentDistance < [responseObject.zones[i] getRadius]) {
-            sity = [responseObject.zones[i] name];
-            return YES;
+        NSLog(@"%@",currentLocation);
+            currentDistance = [sityLocation distanceFromLocation:currentLocation];
+            if (currentDistance < [responseObject.zones[i] getRadius]) {
+                sity = [responseObject.zones[i] name];
+                return YES;
+            
         }
+    }
     }
     return NO;
 }
@@ -190,6 +196,8 @@
 
 -(void)changeButtonAction{
     isRegionFound = NO;
+    [backgroundView removeFromSuperview];
+    [buttomView removeFromSuperview];
     [self regionNotFound:YES];
 }
 
@@ -306,24 +314,26 @@
 
 
 
-//#pragma mark - rotation
-//
-//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-//{
-//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-//    
-//    [coordinator animateAlongsideTransition:nil
-//                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-//                                     backgroundView.frame = self.view.frame;
-//                                     if (isbuttomViewInNotFound) {
-//                                         buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 250) / 2, 300, 250);
-//                                     }
-//                                     else{
-//                                         buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 120) / 2, 300, 120);
-//                                     }
-//    }];
-//    
-//}
-//
-//
+#pragma mark - rotation
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        backgroundView.frame = self.view.frame;
+        if (isbuttomViewInNotFound) {
+            buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 250) / 2, 300, 250);
+        }
+        else{
+            buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 120) / 2, 300, 120);
+        }
+    }
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+
+    }];
+    
+}
+
+
 @end

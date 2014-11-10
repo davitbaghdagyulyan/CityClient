@@ -497,6 +497,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self.carImageView setImage:[self imageWithImage:info[UIImagePickerControllerOriginalImage] scaledToSize:CGRectMake(0, y, min, min)]];
+    self.carImageView.layer.cornerRadius = self.carImageView.frame.size.height /2;
+    self.carImageView.layer.masksToBounds = YES;
+    self.carImageView.layer.borderWidth = 0;
 }
 
 -(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGRect)newRect;
