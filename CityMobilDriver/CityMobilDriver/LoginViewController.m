@@ -22,13 +22,6 @@
 @synthesize password;
 @synthesize button;
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,7 +36,6 @@
     password.placeholder = @"Пароль";
     password.returnKeyType = UIReturnKeyDone;
     password.delegate = self;
-    
 }
 
 
@@ -97,7 +89,10 @@
         loginSpace.constant = self.view.frame.size.height -  keyboardHeightInPortrait - login.frame.size.height - 25;//g
     }
     
-    
+    if (self.bankid) {
+        login.placeholder = self.bankid;
+        password.placeholder = self.passwordText;
+    }
 }
 
 
@@ -290,12 +285,12 @@
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
     [self.view addSubview:indicator];
-   
+    
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
-
+    
     loginJsonObject.bankid=@"110314";//login.text;
     loginJsonObject.pass=@"52750";//password.text;
-
+    
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];
     NSLog(@"%@",jsons);
@@ -332,13 +327,16 @@
             [indicator stopAnimating];
             return ;
         }
-     
+        
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
         NSError*err;
         LoginResponse*loginResponseObject=nil;
-       
+        
         loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
+        
+       
+        
         
         [SingleDataProvider sharedKey].key = loginResponseObject.key;
         [UserInformationProvider sharedInformation].balance = loginResponseObject.balance;
@@ -366,7 +364,7 @@
         [indicator stopAnimating];
     }];
     
-
+    
 }
 
 @end

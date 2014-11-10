@@ -15,6 +15,9 @@
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
+@property(nonatomic,strong) NSString* bankid;
+@property(nonatomic,strong) NSString* passwordText;
+
 @property (weak, nonatomic) IBOutlet UIButton *button;
 
 @property (weak, nonatomic) IBOutlet UITextField *login;

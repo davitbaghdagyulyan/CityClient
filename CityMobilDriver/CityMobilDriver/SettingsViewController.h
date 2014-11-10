@@ -11,6 +11,8 @@
 #import "UserInformationProvider.h"
 #import "CustomTableViewCell.h"
 #import "LeftMenu.h"
+#import "RequestSetAutoget.h"
+#import "RequestSetYandexAutoget.h"
 @interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrolView;

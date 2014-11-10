@@ -20,12 +20,12 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QHB-na-tZo">
-                        <rect key="frame" x="297" y="17" width="15" height="10"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rb.png" translatesAutoresizingMaskIntoConstraints="NO" id="QHB-na-tZo">
+                        <rect key="frame" x="295" y="13" width="17" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="auo-v7-HfF"/>
-                            <constraint firstAttribute="height" constant="10" id="brA-29-5l2"/>
-                            <constraint firstAttribute="width" constant="15" id="kxd-rk-qcX"/>
+                            <constraint firstAttribute="height" constant="17" id="brA-29-5l2"/>
+                            <constraint firstAttribute="width" constant="17" id="kxd-rk-qcX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -38,10 +38,10 @@
                     <constraint firstAttribute="bottom" secondItem="CMK-Im-WJZ" secondAttribute="bottom" id="4xa-sg-JNk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="QHB-na-tZo" secondAttribute="bottom" constant="6" id="Bqs-tX-dxl"/>
                     <constraint firstItem="CMK-Im-WJZ" firstAttribute="leading" secondItem="eNG-Za-ljH" secondAttribute="leading" id="Dhs-pb-eOZ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="QHB-na-tZo" secondAttribute="bottom" constant="8" id="JGg-7i-57G"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="QHB-na-tZo" secondAttribute="bottom" constant="5" id="JGg-7i-57G"/>
                     <constraint firstItem="CMK-Im-WJZ" firstAttribute="top" secondItem="eNG-Za-ljH" secondAttribute="top" id="Qdf-a8-gJB"/>
                     <constraint firstItem="QHB-na-tZo" firstAttribute="top" secondItem="eNG-Za-ljH" secondAttribute="topMargin" constant="6" id="VYt-0L-8Jr"/>
-                    <constraint firstItem="QHB-na-tZo" firstAttribute="top" secondItem="eNG-Za-ljH" secondAttribute="topMargin" constant="9" id="acD-sb-AnF"/>
+                    <constraint firstItem="QHB-na-tZo" firstAttribute="top" secondItem="eNG-Za-ljH" secondAttribute="topMargin" constant="5" id="acD-sb-AnF"/>
                     <constraint firstItem="QHB-na-tZo" firstAttribute="trailing" secondItem="eNG-Za-ljH" secondAttribute="trailingMargin" id="iS9-qD-lxQ"/>
                     <constraint firstAttribute="trailing" secondItem="CMK-Im-WJZ" secondAttribute="trailing" id="xB1-Ho-3se"/>
                 </constraints>
@@ -59,4 +59,7 @@
             <point key="canvasLocation" x="549" y="256"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="rb.png" width="33" height="33"/>
+    </resources>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "SucceedResponse.h"
 
 @interface SettingsViewController ()
 {
@@ -27,24 +28,19 @@
 @end
 
 @implementation SettingsViewController
-static bool isWhit;
-+(BOOL) getScrinColor
-{
-    return isWhit;
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    NSString* a = [UserInformationProvider sharedInformation].balance;
-    
-    
+//    NSString* a = [UserInformationProvider sharedInformation].balance;
     self.balance.text =[self.balance.text stringByAppendingString:[UserInformationProvider sharedInformation].balance];
     self.limit.text =[self.limit.text stringByAppendingString:[UserInformationProvider sharedInformation].credit_limit];
     self.callsign.text =[self.callsign.text stringByAppendingString:[UserInformationProvider sharedInformation].bankid];
     self.buttonTextColor = self.required.titleLabel.textColor;
-    //NSLog(@"%@",self.buttonTextColor);//????
+    
+    self.nightMode.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue];
+    NSLog(@"%i",self.nightMode.on);
+    [self setAppMode];
 }
 
 
@@ -105,54 +101,201 @@ static bool isWhit;
 
 - (IBAction)nightModeAction:(id)sender
 {
+    NSNumber* isNightMode = nil;
     if (self.nightMode.on)
+    {
+        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
+        self.settings.textColor = [UIColor orangeColor];
+        self.yandexSettings.textColor = [UIColor orangeColor];
+        isNightMode = [NSNumber numberWithBool:YES];
+    }
+    else
     {
         self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
         self.settings.textColor = [UIColor blackColor];
         self.yandexSettings.textColor = [UIColor blackColor];
-
+        isNightMode = [NSNumber numberWithBool:NO];
     }
-    else
+    [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void)setAppMode
+{
+    if (self.nightMode.on)
     {
         self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
         self.settings.textColor = [UIColor orangeColor];
         self.yandexSettings.textColor = [UIColor orangeColor];
     }
+    else
+    {
+        self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
+        self.settings.textColor = [UIColor blackColor];
+        self.yandexSettings.textColor = [UIColor blackColor];
+    }
 }
+
 
 
 - (IBAction)requiredAction:(id)sender
 {
-    [self.required setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [self.notRequired setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-    [self.off setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+    [self setAutoAssign:3];
 }
 
 
 - (IBAction)notRequiredAction:(id)sender
 {
-    [self.notRequired setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [self.required setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-    [self.off setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+    [self setAutoAssign:0];
 }
 
 
 - (IBAction)offAction:(id)sender
 {
-    [self.off setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [self.required setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-    [self.notRequired setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+    [self setAutoAssign:1];
 }
 
 - (IBAction)onAction:(id)sender
 {
     [self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     [self.yandexOff setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+    
+    [self setYandexAutoAssign:1];
 }
 - (IBAction)yandexOffAction:(id)sender
 {
     [self.yandexOff setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [self.on setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+    
+    [self setYandexAutoAssign:0];
+}
+
+
+
+
+-(void)setAutoAssign:(NSInteger)state
+{
+    RequestSetAutoget* RequestObject=[[RequestSetAutoget alloc]init];
+    RequestObject.state = state;
+    NSDictionary* jsonDictionary = [RequestObject toDictionary];
+    
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                            message:@"NO INTERNET CONECTION"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            
+            [alert show];
+            return ;
+        }
+        
+        NSError* err;
+        NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        SucceedResponse* responseObject = [[SucceedResponse alloc]initWithString:jsonString error:&err];
+        if (responseObject.result == 1) {
+            switch (state) {
+                case 3:
+                    [self.required setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                    [self.notRequired setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    [self.off setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    break;
+                case 0:
+                    [self.notRequired setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+                    [self.required setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    [self.off setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    break;
+                    
+                case 1:
+                    [self.off setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                    [self.required setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    [self.notRequired setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        
+    }];
+}
+
+
+-(void)setYandexAutoAssign:(NSInteger)y_state
+{
+    RequestSetYandexAutoget* RequestObject=[[RequestSetYandexAutoget alloc]init];
+    RequestObject.y_state = y_state;
+    NSDictionary* jsonDictionary = [RequestObject toDictionary];
+    
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                            message:@"NO INTERNET CONECTION"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            
+            [alert show];
+            return ;
+        }
+        
+        NSError* err;
+        NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        SucceedResponse* responseObject = [[SucceedResponse alloc]initWithString:jsonString error:&err];
+        if (responseObject.result == 1) {
+        switch (y_state) {
+            case 1:
+                [self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                [self.yandexOff setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                break;
+            case 0:
+                [self.yandexOff setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                [self.on setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                break;
+            default:
+                break;
+        }
+        }
+    }];
 }
 
 
@@ -283,13 +426,31 @@ static bool isWhit;
 {
     if (tableView == fontSizeTableView)
     {
-        CustomTableViewCell* cell = (CustomTableViewCell*)[fontSizeTableView cellForRowAtIndexPath:indexPath];
-        cell.selectedCell.backgroundColor = [UIColor blueColor];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"fontSize"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     if (tableView == StileIconTableView)
     {
-        CustomTableViewCell* cell = (CustomTableViewCell*)[StileIconTableView cellForRowAtIndexPath:indexPath];
-        cell.selectedCell.backgroundColor = [UIColor blueColor];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"stileIcon"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    if (tableView == selectLanguageTableView)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"language"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    
+    CustomTableViewCell* selectedCell = (CustomTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    selectedCell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
+    
+    for (UIView *view in tableView.subviews) {
+        for (CustomTableViewCell* cell in view.subviews) {
+            if (cell != selectedCell) {
+                cell.selectedCell.image = [UIImage imageNamed:@"rb.png"];
+            }
+        }
     }
 }
 

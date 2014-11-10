@@ -19,8 +19,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.delegate = self;
+    //self.scrollView.showsHorizontalScrollIndicator = NO;
+    //self.scrollView.delegate = self;
     
 
     self.lastName.returnKeyType = UIReturnKeyNext;
@@ -59,22 +59,21 @@
     
 }
 
-
-
-
 -(void)actionHandleTapOnCreateImageView
 {
     imagePicker = [[UIImagePickerController alloc]init];
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imagePicker.delegate = self;
-    [self addSubview:imagePicker.view];
+    
+    [self.delegate addImagePicker:imagePicker.view];
+    //[self addSubview:imagePicker.view];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [imagePicker.view removeFromSuperview];
+    [self.delegate removeImagePicker:imagePicker.view];
 }
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage* img = info[UIImagePickerControllerOriginalImage];
@@ -83,13 +82,12 @@
     int max = MAX(img.size.height, img.size.width);
     
     int y = (max - min) / 2;
-    [self.createPhotoImageView setImage:[self imageWithImage:info[UIImagePickerControllerOriginalImage] scaledToSize:CGRectMake(0, y, min, min)]];
     
-    [imagePicker.view removeFromSuperview];
+    [self.delegate removeImagePicker:imagePicker.view];
+    
+    
+    [self.createPhotoImageView setImage:[self imageWithImage:info[UIImagePickerControllerOriginalImage] scaledToSize:CGRectMake(0, y, min, min)]];
 }
-
-
-
 
 -(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGRect)newRect;
 {
@@ -101,84 +99,84 @@
 }
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    switch (textField.tag)
-    {
-        case 100:
-            [self.name becomeFirstResponder];
-            break;
-        case 101:
-            [self.middleName becomeFirstResponder];
-            break;
-        case 102:
-            [self.pasportSer becomeFirstResponder];
-            break;
-        case 103:
-            [self.pasportNum becomeFirstResponder];
-            break;
-            
-        case 104:
-        {
-            [self setScrollViewContentOffSet];
-            [self.pasportWho becomeFirstResponder];
-        }
-            break;
-            
-        case 105:
-        {
-            [self setScrollViewContentOffSet];
-            [self.passportDate becomeFirstResponder];
-        }
-            break;
-        case 106:
-        {
-            [self setScrollViewContentOffSet];
-            [self.pasportAdress becomeFirstResponder];
-        }
-            break;
-        case 107:
-        {
-            CGPoint offset = self.scrollView.contentOffset;
-            offset.y+=96;
-            [self.scrollView setContentOffset:offset animated:YES];
-            [self.driverLicenseNumber becomeFirstResponder];
-        }
-            break;
-        case 108:
-        {
-            [self setScrollViewContentOffSet];
-            [self.driverLicenseSerial becomeFirstResponder];
-        }
-            break;
-        case 109:
-        {
-            [self setScrollViewContentOffSet];
-            [self.driverLicenseClass becomeFirstResponder];
-        }
-            break;
-        case 110:
-        {
-            [self.driverLicenseClass resignFirstResponder];
-            CGPoint offset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.frame.size.height);
-            [self.scrollView setContentOffset:offset animated:YES];
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return YES;
-}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    switch (textField.tag)
+//    {
+//        case 100:
+//            [self.name becomeFirstResponder];
+//            break;
+//        case 101:
+//            [self.middleName becomeFirstResponder];
+//            break;
+//        case 102:
+//            [self.pasportSer becomeFirstResponder];
+//            break;
+//        case 103:
+//            [self.pasportNum becomeFirstResponder];
+//            break;
+//            
+//        case 104:
+//        {
+//            [self setScrollViewContentOffSet];
+//            [self.pasportWho becomeFirstResponder];
+//        }
+//            break;
+//            
+//        case 105:
+//        {
+//            [self setScrollViewContentOffSet];
+//            [self.passportDate becomeFirstResponder];
+//        }
+//            break;
+//        case 106:
+//        {
+//            [self setScrollViewContentOffSet];
+//            [self.pasportAdress becomeFirstResponder];
+//        }
+//            break;
+//        case 107:
+//        {
+//            CGPoint offset = self.scrollView.contentOffset;
+//            offset.y+=96;
+//            [self.scrollView setContentOffset:offset animated:YES];
+//            [self.driverLicenseNumber becomeFirstResponder];
+//        }
+//            break;
+//        case 108:
+//        {
+//            [self setScrollViewContentOffSet];
+//            [self.driverLicenseSerial becomeFirstResponder];
+//        }
+//            break;
+//        case 109:
+//        {
+//            [self setScrollViewContentOffSet];
+//            [self.driverLicenseClass becomeFirstResponder];
+//        }
+//            break;
+//        case 110:
+//        {
+//            [self.driverLicenseClass resignFirstResponder];
+//            CGPoint offset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.frame.size.height);
+//            [self.scrollView setContentOffset:offset animated:YES];
+//            
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    return YES;
+//}
 
--(void)setScrollViewContentOffSet
-{
-    CGPoint offset = self.scrollView.contentOffset;
-    offset.y+=48;
-    [self.scrollView setContentOffset:offset animated:YES];
-}
+//-(void)setScrollViewContentOffSet
+//{
+//    CGPoint offset = self.scrollView.contentOffset;
+//    offset.y+=48;
+//    [self.scrollView setContentOffset:offset animated:YES];
+//}
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
@@ -191,8 +189,15 @@
 }
 
 
+- (void)didAddSubview:(UIView *)subview
+{
+    self.isSubview = YES;
+}
 
-
+- (void)willRemoveSubview:(UIView *)subview
+{
+    self.isSubview = NO;
+}
 
 
 

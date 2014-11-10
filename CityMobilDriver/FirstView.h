@@ -42,22 +42,7 @@
 
 
 
-@property (weak, nonatomic) IBOutlet UILabel *lastName;
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *middleName;
 
-
-@property (weak, nonatomic) IBOutlet UILabel *percentToCharge;
-@property (weak, nonatomic) IBOutlet UILabel *passportSer;
-@property (weak, nonatomic) IBOutlet UILabel *passportNum;
-@property (weak, nonatomic) IBOutlet UILabel *dateRegister;
-@property (weak, nonatomic) IBOutlet UILabel *passportWho;
-@property (weak, nonatomic) IBOutlet UILabel *passportAddress;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *driverLicenseSerial;
-@property (weak, nonatomic) IBOutlet UILabel *driverLicenseNumber;
-@property (weak, nonatomic) IBOutlet UILabel *driverLicenseClass;
 
 
 - (IBAction)showSettingViewController:(UIButton *)sender;
