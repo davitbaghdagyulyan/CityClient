@@ -15,6 +15,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *callMetroName;
 @property (weak, nonatomic) IBOutlet UILabel *deliveryMetroName;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
-
-
 @end

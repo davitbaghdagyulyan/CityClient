@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -58,7 +58,7 @@
                 <outlet property="dateLabel" destination="o8H-lG-ZDT" id="sII-LH-ttM"/>
                 <outlet property="titLabel" destination="ejl-ox-VvU" id="bwX-uD-jiL"/>
             </connections>
-            <point key="canvasLocation" x="80" y="45"/>
+            <point key="canvasLocation" x="131" y="107"/>
         </tableViewCell>
     </objects>
 </document>

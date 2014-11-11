@@ -417,23 +417,15 @@ else
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
      {
-         
-         
-         
-         CGPoint point;
-         
-         NSLog(@"\n%f", 2*leftMenu.center.x);
-         NSLog(@"\n%f",leftMenu.frame.size.width/2);
-         
-         if (touchLocation.x<=leftMenu.frame.size.width/2)
+        CGPoint point;
+        NSLog(@"\n%f", 2*leftMenu.center.x);
+        NSLog(@"\n%f",leftMenu.frame.size.width/2);
+        if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              flag=0;
              self.tableViewOrdersHistory.userInteractionEnabled=YES;
-             
-             
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
-         
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
@@ -443,20 +435,12 @@ else
              flag=1;
          }
          point.y=leftMenu.center.y;
-         
-         
-         
-         
          leftMenu.center=point;
          NSLog(@"\n%f",leftMenu.frame.size.width);
          
      }
                      completion:nil
-     
-     
      ];
-    
-    
 }
 
 
@@ -464,23 +448,9 @@ else
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
-    
     CGPoint point;
-    
-    
-    
     point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
     point.y=leftMenu.center.y;
     if (point.x>leftMenu.frame.size.width/2)
@@ -488,25 +458,30 @@ else
         return;
     }
     leftMenu.center=point;
-    
-    
-    
-    
-    
-    
-    
-    
     self.tableViewOrdersHistory.userInteractionEnabled=NO;
-    
-    
     flag=1;
-    
-    
-    
-    
-    
-    
 }
 
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:nil
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+        CGFloat xx;
+         if(flag==0)
+         {
+             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+         }
+         else
+         {
+             xx=0;
+         }
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         
+     }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+}
 
 @end

@@ -7,9 +7,7 @@
 //
 
 #import "LeftMenu.h"
-#import "MessagesViewController.h"
-#import "ProfilViewController.h"
-#import "OrdersHistoryViewController.h"
+
 @implementation LeftMenu
 
 {

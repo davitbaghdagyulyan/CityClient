@@ -707,7 +707,7 @@
         deliveryAddrTypeMenu =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
         if(deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==0)
         {
-          NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders%d",indexPath.row];
+          NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders%ld",(long)indexPath.row];
             CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
@@ -734,7 +734,7 @@
         }
         else
         {
-            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders2%d",indexPath.row];
+            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders2%ld",(long)indexPath.row];
             CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
@@ -1670,4 +1670,31 @@ else
         
     }
 }
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:nil
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         
+         
+        
+         CGFloat xx;
+         
+         if(flag==0)
+         {
+             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+         }
+         else
+         {
+             xx=0;
+         }
+         
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         
+     }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+}
+
 @end

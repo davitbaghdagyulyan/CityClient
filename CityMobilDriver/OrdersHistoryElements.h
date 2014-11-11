@@ -10,7 +10,6 @@
 
 @protocol OrdersHistoryElements @end
 #import "JSONModel.h"
-
 @interface OrdersHistoryElements : JSONModel
 @property(nonatomic,strong)NSString* yandex_rating;
 @property(nonatomic,strong)NSString * yandex_review;

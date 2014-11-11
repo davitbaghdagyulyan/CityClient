@@ -2587,7 +2587,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbj-6s-hpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="-3584" y="367"/>
         </scene>
         <!--Statistics View Controller-->
@@ -3069,6 +3068,9 @@
                                         <state key="normal" title="Button" image="logo.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="openAndCloseLeftMenu:" destination="VVV-UW-ZC0" eventType="touchUpInside" id="goY-f1-lNd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-Uw-nFR" userLabel="Button2">
                                         <rect key="frame" x="513" y="30" width="25" height="25"/>
@@ -3205,9 +3207,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nO-1Q-FOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1673" y="1065"/>
-=======
-            <point key="canvasLocation" x="-3780" y="-89"/>
->>>>>>> 24c8df90baf319f2d7ee014257eab93d01d38439
         </scene>
         <!--Replenishment View Controller-->
         <scene sceneID="yjE-gZ-gUi">
@@ -3947,9 +3946,6 @@
                                         <exclude reference="R7z-j2-3J0"/>
                                         <exclude reference="2LU-7s-Qw8"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="64" width="600" height="736"/>
                                 </variation>
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="64" width="600" height="736"/>
@@ -6350,10 +6346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G22-cb-Yvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="-3556" y="-130"/>
-
-            <point key="canvasLocation" x="-3440" y="-543"/>
         </scene>
         <!--Orders History View Controller-->
         <scene sceneID="Ek7-zk-hOL">
@@ -6733,7 +6726,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbY-tw-MR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3680" y="-58"/>
->>>>>>> 24c8df90baf319f2d7ee014257eab93d01d38439
         </scene>
     </scenes>
     <resources>
@@ -6748,11 +6740,7 @@
         <image name="icon3.png" width="25" height="25"/>
         <image name="logo.png" width="39" height="28"/>
         <image name="logo1.png" width="84" height="28"/>
-
         <image name="logo@2x.png" width="32" height="24"/>
-
-        <image name="logo@2x.png" width="28" height="21"/>
-
         <image name="phone.png" width="20" height="26"/>
         <image name="photo.png" width="226" height="226"/>
         <image name="tachometer_arrow.png" width="22" height="38"/>

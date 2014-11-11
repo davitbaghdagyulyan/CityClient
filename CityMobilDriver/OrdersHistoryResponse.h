@@ -12,5 +12,4 @@
 @interface OrdersHistoryResponse : JSONModel
 @property (nonatomic,strong)NSMutableArray<OrdersHistoryElements>*orders;
 @property(nonatomic,strong)NSString*code;
-
 @end

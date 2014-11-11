@@ -7,7 +7,6 @@
 //
 
 #import "JSONModel.h"
-
 @interface OrdersHistoryJson : JSONModel
 @property(nonatomic,strong)NSMutableDictionary * versions;
 @property(nonatomic,strong)NSString * ipass;
@@ -18,6 +17,4 @@
 @property(nonatomic,strong)NSString * end;
 @property(nonatomic,strong)NSString * key;
 @property(nonatomic,strong)NSString * version;
-
-
 @end

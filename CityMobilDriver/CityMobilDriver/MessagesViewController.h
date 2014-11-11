@@ -8,7 +8,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "LeftViewCellObject.h"
+
 #import "MessagesCell.h"
 #import "infoViewController.h"
 #import "LeftMenu.h"

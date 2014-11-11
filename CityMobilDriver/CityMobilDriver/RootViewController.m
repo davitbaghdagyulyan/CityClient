@@ -2,14 +2,10 @@
 
 #import "RootViewController.h"
 #import "CustomCell.h"
-
-
 #import "OrdersJson.h"
 #import "OrdersResponse.h"
-
 #import "SelectedOrdersViewController.h"
 #import "SingleDataProviderForFilter.h"
-
 #import "RecallJson.h"
 #import "RecallResponse.h"
 #import "LeftMenu.h"
@@ -20,18 +16,14 @@
     NSInteger flag;
     LeftMenu*leftMenu;
     UISwipeGestureRecognizer*recognizerRight;
-
     OrdersResponse*ordersResponseObject;
     RecallResponse*recallResponseObject;
     UIAlertView *alertBack;
     UIAlertView *alert;
+    UIAlertView *callDispetcherAlert;
     LoginViewController*log;
-    
-    
 }
-
 @end
-
 @implementation RootViewController
 
 -(void)viewDidAppear:(BOOL)animated
@@ -48,26 +40,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
-   
-
     LoginViewController*log=[self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self.navigationController pushViewController:log animated:NO];
-
-    
     //RootViewController Interface
-    
     self.labelMessages.font =[UIFont fontWithName:@"MyriadPro-Regular" size:16];
     self.labelCallToDispetcher.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
     self.titleLabelPort.font =[UIFont fontWithName:@"Roboto-Regular" size:19];
-    
-    
     self.labelMessagesLand.font =[UIFont fontWithName:@"MyriadPro-Regular" size:20];
     self.labelCallToDispetcherLand.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
     self.titleLabelLand.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
-
-    
     self.labelMessagesIpad.font =[UIFont fontWithName:@"MyriadPro-Regular" size:20];
     self.labelCallToDispethcerIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
     self.titleLabelIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
@@ -97,7 +78,6 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
-    
     CustomCell * cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
     {
@@ -110,21 +90,17 @@
     cell.label1.text=[NSString stringWithFormat:@"      %@",[[ordersResponseObject.categories objectAtIndex:indexPath.row] name]];
     NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
     cell.label2.text=[NSString stringWithFormat:@"%@",currentCount];
-    
     return  cell;
- 
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    if (tableView==leftMenu)
+   if (tableView==leftMenu)
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     else
-        
-    {
+        {
         [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
         SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         
@@ -134,12 +110,10 @@
         {
             selectedOrdersCont.stringForSrochno =@"СРОЧНО";
         }
-        
-        else
+    else
         {
          selectedOrdersCont.stringForSrochno =@"";
-        
-        }
+         }
 
     }
 }
@@ -384,18 +358,18 @@
 
 - (IBAction)actionCallDispetcher:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Выберите действие"
+   callDispetcherAlert = [[UIAlertView alloc] initWithTitle:@"Выберите действие"
                                                     message:nil
                                                    delegate:self
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"Просьба перезвонить",@"Позвонить",nil];
   
-    [alert show];
+    [callDispetcherAlert show];
 
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView ==alert)
+    if (alertView ==callDispetcherAlert)
     {
         
   
