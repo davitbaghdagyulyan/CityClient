@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TariffsYandexViewController : UIViewController
-
+- (IBAction)back:(id)sender;
 @end

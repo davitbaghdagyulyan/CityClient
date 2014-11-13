@@ -47,7 +47,18 @@
     [super didReceiveMemoryWarning];
     
 }
-
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -77,6 +88,7 @@
        
         [gradLayer setColors:[NSArray arrayWithObjects:(id)([UIColor lightGrayColor].CGColor), (id)([UIColor whiteColor].CGColor),nil]];
         label=[[CustomLabel alloc]initWithFrame:cell.designationView.frame];
+        label.font=[UIFont fontWithName:@"Roboto-Regular" size:17];
         label.backgroundColor=[UIColor clearColor];
 
     }

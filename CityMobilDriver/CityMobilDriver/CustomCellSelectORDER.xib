@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -311,6 +311,7 @@
                 <outlet property="View1" destination="hUu-Xt-Z8A" id="HCT-cA-9UF"/>
                 <outlet property="View2" destination="OUD-ZQ-Reb" id="8kX-NP-IUc"/>
                 <outlet property="View3" destination="60p-yd-arS" id="03C-gA-Qfj"/>
+                <outlet property="buttonMap1" destination="mbr-AQ-8IT" id="4WR-kh-A20"/>
                 <outlet property="buttonMap2" destination="fkK-sw-m37" id="ei7-94-np4"/>
                 <outlet property="imgViewCall" destination="Gf9-nl-iZ3" id="eLf-0L-ZL3"/>
                 <outlet property="imgViewDel" destination="1rj-Xk-eRF" id="bjM-gn-cuH"/>
@@ -322,7 +323,7 @@
                 <outlet property="whiteLabel" destination="xJ3-4f-8hl" id="Zf9-5Q-e3H"/>
                 <outlet property="whiteView" destination="7M3-1E-lOl" id="gnG-Ae-s6k"/>
             </connections>
-            <point key="canvasLocation" x="78.5" y="327"/>
+            <point key="canvasLocation" x="128.5" y="308"/>
         </tableViewCell>
     </objects>
     <resources>

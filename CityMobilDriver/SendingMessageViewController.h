@@ -16,5 +16,5 @@
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UILabel *writeLetterLabel;
-
+- (IBAction)back:(id)sender;
 @end

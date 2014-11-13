@@ -15,4 +15,5 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)replenishmentSegmentedControl:(UISegmentedControl *)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)back:(id)sender;
 @end

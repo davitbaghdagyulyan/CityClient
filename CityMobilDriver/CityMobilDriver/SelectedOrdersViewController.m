@@ -15,11 +15,19 @@
 #import "JSONModel.h"
 #import "LeftMenu.h"
 #import "CustomCellSelectORDER.h"
+#import "CustomViewForMaps.h"
+
 
 @interface SelectedOrdersViewController ()
 {
     NSInteger flag;
     LeftMenu*leftMenu;
+    NSUInteger index;
+    CustomViewForMaps*viewMap;
+    CGRect rect;
+    NSUInteger number;
+     CLLocationManager *locationManager;
+    CLLocation* currentLocation;
 }
 
 @end
@@ -64,6 +72,36 @@
     leftMenu=[LeftMenu getLeftMenu:self];
     [self requestOrder];
     selectedRow = -1;
+    viewMap=[[CustomViewForMaps alloc] init];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
+    viewMap = [nib objectAtIndex:0];
+    
+    
+    viewMap.frame=self.view.frame;
+    viewMap.center=self.view.center;
+    [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
+    [singleTapYandex setNumberOfTapsRequired:1];
+    
+    UITapGestureRecognizer *singleTapGoogle =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openGoogleMap)];
+    [singleTapYandex setNumberOfTapsRequired:1];
+
+    viewMap.yandexImageView.userInteractionEnabled=YES;
+    viewMap.googleImageView.userInteractionEnabled=YES;
+    [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
+    [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
+    
+ 
+   
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    [locationManager startUpdatingLocation];
+    
+
+    
 }
 
 - (void)viewDidLoad
@@ -246,6 +284,11 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
+           //******************************************Nareks Change*******************************************
+            
+            [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
+            [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
+            index=indexPath.row;
             cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
             cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
             [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
@@ -352,14 +395,19 @@
     [cell.showAddress  addTarget:self action:@selector(showAddress) forControlEvents:UIControlEventTouchUpInside];
     return cell;
     }
-    NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%d",indexPath.row];
+    NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%ld",(long)indexPath.row];
     CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
         {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-    // VIEW1
+    
+        
+        [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
+        [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
+        index=indexPath.row;
+        // VIEW1
     cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
     cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
     [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
@@ -1676,8 +1724,8 @@ else
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         
-         
+         viewMap.frame=self.view.frame;
+         viewMap.center=self.view.center;
         
          CGFloat xx;
          
@@ -1696,5 +1744,122 @@ else
     
     [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
 }
+-(void)collMap
+{
+    [self.view addSubview:viewMap];
+    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
+    number=0;
+    [self animation];
+}
 
+-(void)deliveryMapp
+{
+    [self.view addSubview:viewMap];
+     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
+    number=1;
+    [self animation];
+}
+-(void)close
+{
+    [viewMap removeFromSuperview];
+}
+
+-(void)openYandexMap
+{
+ 
+    if (number)
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude]doubleValue],
+                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue],
+                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_latitude] doubleValue],
+                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+
+    }
+    else
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",currentLocation.coordinate.latitude,
+                            currentLocation.coordinate.longitude,
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+
+    }
+}
+-(void)openGoogleMap
+{
+    if (number)
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude]doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_latitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+
+    }
+    else
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+                            currentLocation.coordinate.latitude,
+                            currentLocation.coordinate.longitude,
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/google-maps/id585027354?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+        
+     
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    currentLocation = [locations lastObject];
+    NSLog(@"%f--- %f", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
+}
+-(void)animation
+{
+    [UIView animateWithDuration:1
+                          delay:0.0
+                        options: 0
+                     animations:^(void)
+     {
+       viewMap.smallMapView.transform = CGAffineTransformIdentity;
+     }
+                             completion:nil];
+}
 @end

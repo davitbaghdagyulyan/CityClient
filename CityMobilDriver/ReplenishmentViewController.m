@@ -63,7 +63,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
 - (IBAction)replenishmentSegmentedControl:(UISegmentedControl *)sender
 {
     

@@ -16,4 +16,5 @@
 @interface TariffsCityMobilViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIScrollView *tariffsSacrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)back:(id)sender;
 @end
