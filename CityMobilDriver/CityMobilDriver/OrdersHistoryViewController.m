@@ -246,39 +246,6 @@ else
 }
 
 
--(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    
-    
-    if (fromInterfaceOrientation == UIInterfaceOrientationPortrait
-        || fromInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-    {
-        self.buttonDatePicker.userInteractionEnabled = YES;
-        self.buttonIntervalTableView.userInteractionEnabled = YES;
-        [labelSettingTheDate removeFromSuperview];
-        [datePicker removeFromSuperview];
-        [buttonCancell removeFromSuperview];
-        [buttonSetStartDate removeFromSuperview];
-        [tableViewInterval removeFromSuperview];
-        indicator.center = self.view.center;
-       
-       
-        
-    }
-    else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft
-             || fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-        
-    {
-        self.buttonDatePicker.userInteractionEnabled = YES;
-        self.buttonIntervalTableView.userInteractionEnabled = YES;
-        [labelSettingTheDate removeFromSuperview];
-        [datePicker removeFromSuperview];
-        [tableViewInterval removeFromSuperview];
-        [buttonCancell removeFromSuperview];
-        [buttonSetStartDate removeFromSuperview];
-        indicator.center = self.view.center;
-    }
-}
 
 
 - (IBAction)findOrdersFromInterval:(id)sender
@@ -464,11 +431,42 @@ else
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    [coordinator animateAlongsideTransition:nil
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+        UIDeviceOrientation deviceOrientation   = [[UIDevice currentDevice] orientation];
+        
+        if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
+            NSLog(@"Will change to Landscape");
+            self.buttonDatePicker.userInteractionEnabled = YES;
+            self.buttonIntervalTableView.userInteractionEnabled = YES;
+            [labelSettingTheDate removeFromSuperview];
+            [datePicker removeFromSuperview];
+            [buttonCancell removeFromSuperview];
+            [buttonSetStartDate removeFromSuperview];
+            [tableViewInterval removeFromSuperview];
+            indicator.center = self.view.center;
+            
+            
+        }
+        else {
+            NSLog(@"Will change to Portrait");
+            self.buttonDatePicker.userInteractionEnabled = YES;
+            self.buttonIntervalTableView.userInteractionEnabled = YES;
+            [labelSettingTheDate removeFromSuperview];
+            [datePicker removeFromSuperview];
+            [buttonCancell removeFromSuperview];
+            [buttonSetStartDate removeFromSuperview];
+            [tableViewInterval removeFromSuperview];
+            indicator.center = self.view.center;
+        }
+        
+        
+    }
+     
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-        CGFloat xx;
+         CGFloat xx;
          if(flag==0)
          {
              xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
@@ -481,7 +479,11 @@ else
          
      }];
     
-    [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+    
+    
+    
+    
 }
-
 @end

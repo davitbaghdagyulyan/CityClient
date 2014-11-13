@@ -439,14 +439,14 @@ else if(alertView ==  alertBack)
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+            UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"ERROR"
                                                             message:@"NO INTERNET CONECTION"
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             
             
-            [alert show];
+            [alert1 show];
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -458,30 +458,30 @@ else if(alertView ==  alertBack)
        if((![recallResponseObject.code isEqualToString:@"750"])&&(recallResponseObject.code!=nil))
         {
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
+            UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
                                                             message:nil
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
-            [alert show];
+            [alert1 show];
             return;
             
         }
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+        UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:nil
                                                         message:nil
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         if([recallResponseObject.result isEqual:@1])
         {
-            alert.message=@"Запрос успешно отправлен!";
+            alert1.message=@"Запрос успешно отправлен!";
         }
         else if(recallResponseObject.text !=nil)
         {
-            alert.message=recallResponseObject.text;
+            alert1.message=recallResponseObject.text;
         }
-        [alert show];
+        [alert1 show];
     }];
 
 }

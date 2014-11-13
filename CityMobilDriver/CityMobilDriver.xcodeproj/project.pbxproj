@@ -231,6 +231,11 @@
 		ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD8841A0A781700118466 /* GetActivationCodeResponse.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
 		ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4822B1A08D29B00415270 /* ResponseGetCarInfo.m */; };
+		ECF529B71A1229D300150931 /* CustomViewForMaps.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B61A1229D300150931 /* CustomViewForMaps.xib */; };
+		ECF529BA1A122BC500150931 /* yandex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B81A122BC500150931 /* yandex@2x.png */; };
+		ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B91A122BC500150931 /* gmap@2x.png */; };
+		ECF529BE1A12366B00150931 /* CustomViewForMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529BD1A12366B00150931 /* CustomViewForMaps.m */; };
+		ECF529C41A124AA000150931 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529C31A124AA000150931 /* CustomWebView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -607,8 +612,6 @@
 		ECE25C8419E56BE80044F6AD /* textResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textResponse.h; sourceTree = "<group>"; };
 		ECE25C8519E56BE80044F6AD /* textResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textResponse.m; sourceTree = "<group>"; };
 		ECE3CFAC1A0918900053FF85 /* tachometer_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachometer_arrow.png; sourceTree = "<group>"; };
-		ECEA963919F548EE001A6305 /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
-		ECEA963A19F548EE001A6305 /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebView.m; sourceTree = "<group>"; };
 		ECEA963C19F54917001A6305 /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
 		ECEA963D19F54917001A6305 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
 		ECEB634819F63E4200E6F666 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
@@ -623,6 +626,13 @@
 		ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+UINavigationController_shouldAutorotate.m"; path = "../UINavigationController+UINavigationController_shouldAutorotate.m"; sourceTree = "<group>"; };
 		ECF4822A1A08D29B00415270 /* ResponseGetCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetCarInfo.h; sourceTree = "<group>"; };
 		ECF4822B1A08D29B00415270 /* ResponseGetCarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetCarInfo.m; sourceTree = "<group>"; };
+		ECF529B61A1229D300150931 /* CustomViewForMaps.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomViewForMaps.xib; sourceTree = "<group>"; };
+		ECF529B81A122BC500150931 /* yandex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yandex@2x.png"; sourceTree = "<group>"; };
+		ECF529B91A122BC500150931 /* gmap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gmap@2x.png"; sourceTree = "<group>"; };
+		ECF529BC1A12366B00150931 /* CustomViewForMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewForMaps.h; sourceTree = "<group>"; };
+		ECF529BD1A12366B00150931 /* CustomViewForMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewForMaps.m; sourceTree = "<group>"; };
+		ECF529C21A124AA000150931 /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
+		ECF529C31A124AA000150931 /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -963,8 +973,6 @@
 				ECB49FCA19F5294D0022EB28 /* ReplenishmentViewController.h */,
 				ECB49FCB19F5294D0022EB28 /* ReplenishmentViewController.m */,
 				ECB49FCF19F539650022EB28 /* CustomWebView.xib */,
-				ECEA963919F548EE001A6305 /* CustomWebView.h */,
-				ECEA963A19F548EE001A6305 /* CustomWebView.m */,
 				ECB49FD119F5419F0022EB28 /* CustomView.xib */,
 				ECEA963C19F54917001A6305 /* CustomView.h */,
 				ECEA963D19F54917001A6305 /* CustomView.m */,
@@ -1042,6 +1050,8 @@
 				ECB59E9619F6A36D00F69529 /* GetQiwiBillsUrlJson.m */,
 				ECB59E9819F6A3B300F69529 /* GetQiwiBillsUrlResponse.h */,
 				ECB59E9919F6A3B300F69529 /* GetQiwiBillsUrlResponse.m */,
+				ECF529C21A124AA000150931 /* CustomWebView.h */,
+				ECF529C31A124AA000150931 /* CustomWebView.m */,
 			);
 			name = GetQiwiBillsUrl;
 			sourceTree = "<group>";
@@ -1073,6 +1083,9 @@
 				8FD011B91A03D65C00E9363A /* CustomCellSelectORDER.m */,
 				8FB6DC9B19E6BEA200671A4B /* CustomCellSelectedOrders.h */,
 				8FB6DC9C19E6BEA200671A4B /* CustomCellSelectedOrders.m */,
+				ECF529B61A1229D300150931 /* CustomViewForMaps.xib */,
+				ECF529BC1A12366B00150931 /* CustomViewForMaps.h */,
+				ECF529BD1A12366B00150931 /* CustomViewForMaps.m */,
 				8F0A821A19EBAE2800A03D1B /* SelectedOrdersDetails */,
 			);
 			name = SelectedOrdersViewController;
@@ -1347,6 +1360,8 @@
 				8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */,
 				8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */,
 				ECCD34521A03D454000444BF /* arrow.png */,
+				ECF529B81A122BC500150931 /* yandex@2x.png */,
+				ECF529B91A122BC500150931 /* gmap@2x.png */,
 			);
 			name = Images;
 			path = ..;
@@ -1557,9 +1572,11 @@
 				8FDE115F1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib in Resources */,
 				8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */,
 				8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */,
+				ECF529BA1A122BC500150931 /* yandex@2x.png in Resources */,
 				8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */,
 				ECC786301A109F8A00DAD7A6 /* rb_2.png in Resources */,
 				ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */,
+				ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */,
 				8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */,
 				EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
@@ -1615,6 +1632,7 @@
 				ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */,
 				8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */,
 				ECB49FD019F539650022EB28 /* CustomWebView.xib in Resources */,
+				ECF529B71A1229D300150931 /* CustomViewForMaps.xib in Resources */,
 				ECC2BA561A10CD3B009A8CE4 /* DesignationCustomCell.xib in Resources */,
 				8FCFF58A19F5052300C6E3A7 /* ic_child_seat_small.png in Resources */,
 				8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */,
@@ -1725,6 +1743,7 @@
 				ECC978F21A00DD4700D77B80 /* StatisticsViewController.m in Sources */,
 				ECB52E4E1A077F620091293F /* SpanClass.m in Sources */,
 				ECB3D76B1A03D16E0039DD3A /* XMLReader.m in Sources */,
+				ECF529C41A124AA000150931 /* CustomWebView.m in Sources */,
 				ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */,
 				ECC9652B1A00D91A00768E1F /* EditCarInfoViewController.m in Sources */,
 				ECC965311A0101D900768E1F /* ResponseGetMarkList.m in Sources */,
@@ -1780,6 +1799,7 @@
 				8FD011B71A03D55700E9363A /* SelectedOrdersViewController.m in Sources */,
 				EC4CB40319F7D6B80028F219 /* ResponseGetDocScansUrl.m in Sources */,
 				ECCC12071A0CACA000AC94EE /* GetZonesResponse.m in Sources */,
+				ECF529BE1A12366B00150931 /* CustomViewForMaps.m in Sources */,
 				ECCD34441A036549000444BF /* RequestGetCarInfo.m in Sources */,
 				ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */,
 				ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */,

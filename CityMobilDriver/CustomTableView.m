@@ -13,10 +13,12 @@
 
 {
     NSDictionary*xmlDictionary;
+        NSRange range;
 }
 -(void)setXmlDictionary:(NSDictionary*)dictionary
 {
     xmlDictionary=dictionary;
+    range=NSMakeRange(0,1);
 }
 - (NSInteger)tableView:(CustomTableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -48,14 +50,21 @@
     {
         cell.txtLabel.text=[[[[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"Transfer"] objectForKey:@"Destination"]objectAtIndex:j] objectForKey:@"Source"]objectAtIndex:indexPath.row]objectForKey:@"name"];
         
-        cell.priceLabel.text=[[[[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"Transfer"] objectForKey:@"Destination"]objectAtIndex:j] objectForKey:@"Source"]objectAtIndex:indexPath.row]objectForKey:@"text"];
+
+        
+        cell.priceLabel.text=[NSString stringWithFormat:@"%@%@",[[[[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"Transfer"] objectForKey:@"Destination"]objectAtIndex:j] objectForKey:@"Source"]objectAtIndex:indexPath.row]objectForKey:@"text"],
+                              [[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"City"] objectForKey:@"Currency"] objectForKey:@"text"] substringWithRange:range]];
     }
     else
     {
         cell.txtLabel.text=[[[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"Transfer"] objectForKey:@"Destination"]objectAtIndex:j] objectForKey:@"Source"] objectForKey:@"name"];
         
-        cell.priceLabel.text=[[[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"Transfer"] objectForKey:@"Destination"]objectAtIndex:j] objectForKey:@"Source"] objectForKey:@"text"];
         
+        
+        cell.priceLabel.text=[NSString stringWithFormat:@"%@%@",[[[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"Transfer"] objectForKey:@"Destination"]objectAtIndex:j] objectForKey:@"Source"] objectForKey:@"text"],
+                              [[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"City"] objectForKey:@"Currency"] objectForKey:@"text"] substringWithRange:range]];
+
+       
     }
     return cell;
 }

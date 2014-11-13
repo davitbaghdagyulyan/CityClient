@@ -75,7 +75,7 @@
         
         
         cell.textLabel.text = [self.nameArray objectAtIndex:indexPath.row];
-        
+    cell.textLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:17];
     
         cell.backgroundColor=[UIColor colorWithRed:(CGFloat)111/255 green:(CGFloat)111/255 blue:(CGFloat)111/255 alpha:1];
         cell.textLabel.textColor=[UIColor blackColor];

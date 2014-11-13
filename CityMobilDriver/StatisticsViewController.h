@@ -14,5 +14,5 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *statisticsScrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
-
+- (IBAction)back:(id)sender;
 @end

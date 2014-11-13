@@ -44,7 +44,18 @@
      self.statisticsScrollView.userInteractionEnabled=YES;
    
 }
-
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
 -(void)requestGetInfo
 {
     UIActivityIndicatorView*indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -107,7 +118,7 @@
         for (int i=0;i<getInfoResponseObject.info.count; i++)
         {
             UILabel*titleLabel=[[UILabel alloc]init];
-            titleLabel.font=[UIFont boldSystemFontOfSize:20];
+            titleLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:20];
             titleLabel.textColor=[UIColor orangeColor];
             titleLabel.textAlignment=NSTextAlignmentCenter;
             titleLabel.numberOfLines = 0;
@@ -132,6 +143,7 @@
                 UILabel*textsLabel=[[UILabel alloc]init];
                 textsLabel.numberOfLines = 0;
                 textsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+                textsLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:15];
                 textsLabel.text=[[[getInfoResponseObject.info objectAtIndex:i]texts]objectAtIndex:j];
                 CGSize maximumLabelSize = CGSizeMake(self.view.frame.size.width-20,100);
                 CGSize expectSizeFortitleLabel = [textsLabel sizeThatFits:maximumLabelSize];
