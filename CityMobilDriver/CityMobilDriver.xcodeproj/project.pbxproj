@@ -160,6 +160,7 @@
 		ECC7B82C19F52D3A0045CBCE /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC7B82B19F52D3A0045CBCE /* FirstView.xib */; };
 		ECC8CCE61A10E58400883CD1 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE51A10E58400883CD1 /* box.png */; };
 		ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE71A10E7D800883CD1 /* box2.png */; };
+		ECC9215E1A1204920012FBFA /* UserRegistrationInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */; };
 		ECC965281A00C23800768E1F /* CarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC965271A00C23800768E1F /* CarInfoViewController.m */; };
 		ECC9652B1A00D91A00768E1F /* EditCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9652A1A00D91A00768E1F /* EditCarInfoViewController.m */; };
 		ECC9652E1A00F85800768E1F /* RequestGetMarkList.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9652D1A00F85800768E1F /* RequestGetMarkList.m */; };
@@ -479,6 +480,8 @@
 		ECC7B82B19F52D3A0045CBCE /* FirstView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
 		ECC8CCE51A10E58400883CD1 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		ECC8CCE71A10E7D800883CD1 /* box2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box2.png; sourceTree = "<group>"; };
+		ECC9215C1A1204920012FBFA /* UserRegistrationInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegistrationInformation.h; sourceTree = "<group>"; };
+		ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegistrationInformation.m; sourceTree = "<group>"; };
 		ECC965261A00C23800768E1F /* CarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfoViewController.h; sourceTree = "<group>"; };
 		ECC965271A00C23800768E1F /* CarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfoViewController.m; sourceTree = "<group>"; };
 		ECC965291A00D91A00768E1F /* EditCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCarInfoViewController.h; sourceTree = "<group>"; };
@@ -850,6 +853,8 @@
 				8FC51A831A0CA93300E13D03 /* SingleDataProviderForEndDate.h */,
 				8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */,
 				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
+				ECC9215C1A1204920012FBFA /* UserRegistrationInformation.h */,
+				ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */,
 			);
 			name = "Single Data Provider";
 			path = ..;
@@ -1744,6 +1749,7 @@
 				ECB52E361A0776BA0091293F /* SpecialClass.m in Sources */,
 				ECB52E5A1A0784EA0091293F /* OtherCityClass.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
+				ECC9215E1A1204920012FBFA /* UserRegistrationInformation.m in Sources */,
 				ECB3D7641A03BBF60039DD3A /* GetTariffsUrlResponse.m in Sources */,
 				ECB52E5D1A07853B0091293F /* CurrencyClass.m in Sources */,
 				ECC2BA591A10D2EF009A8CE4 /* DesignationCustomCell.m in Sources */,

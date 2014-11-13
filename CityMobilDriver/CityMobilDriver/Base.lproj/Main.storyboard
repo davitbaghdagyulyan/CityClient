@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -3768,145 +3768,184 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ночной режим:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPZ-UU-XeU">
-                                                <rect key="frame" x="8" y="95" width="124" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Размер шрифта:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKb-8e-Q7I">
-                                                <rect key="frame" x="8" y="124" width="134" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стиль иконок:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8o-jJ-epj">
-                                                <rect key="frame" x="8" y="153" width="116" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Язык:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSm-Uu-kVw">
-                                                <rect key="frame" x="8" y="182" width="47" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sud-9V-UtH">
+                                                <rect key="frame" x="8" y="95" width="568" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="eQX-zC-V6k"/>
+                                                    <constraint firstAttribute="height" constant="30" id="lzI-gN-OEo"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ah-GV-nBK">
-                                                <rect key="frame" x="527" y="90" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="nightModeAction:" destination="40C-gD-0cA" eventType="valueChanged" id="GgW-Zo-AlW"/>
-                                                </connections>
-                                            </switch>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjy-0W-XdU">
-                                                <rect key="frame" x="558" y="125" width="11" height="19"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="0bR-0t-cYd"/>
-                                                    <constraint firstAttribute="height" constant="19" id="72f-dc-N7L"/>
-                                                    <constraint firstAttribute="width" constant="11" id="FTr-GM-Vk2"/>
-                                                    <constraint firstAttribute="width" constant="25" id="oDG-jS-A94"/>
-                                                </constraints>
-                                                <state key="normal" image="tachometer_arrow.png">
+                                                <state key="normal" title="Ночной режим:">
+                                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="0bR-0t-cYd"/>
-                                                        <exclude reference="oDG-jS-A94"/>
-                                                    </mask>
-                                                </variation>
                                                 <connections>
-                                                    <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="0qX-oF-6ME"/>
+                                                    <action selector="nightModeAction:" destination="40C-gD-0cA" eventType="touchUpInside" id="HhP-uT-AzI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqJ-iE-0l3">
-                                                <rect key="frame" x="558" y="154" width="11" height="19"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-3J-q3A">
+                                                <rect key="frame" x="560" y="102" width="16" height="15"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="11" id="Fh5-6N-XSk"/>
-                                                    <constraint firstAttribute="height" constant="20" id="JaY-9A-Jmn"/>
-                                                    <constraint firstAttribute="width" constant="25" id="g3g-Bo-7wn"/>
-                                                    <constraint firstAttribute="height" constant="19" id="yrK-cV-LSo"/>
+                                                    <constraint firstAttribute="height" constant="15" id="niC-qW-7R9"/>
+                                                    <constraint firstAttribute="width" constant="16" id="tsM-8v-uw4"/>
                                                 </constraints>
-                                                <state key="normal" image="tachometer_arrow.png">
+                                                <state key="normal" image="box.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="JaY-9A-Jmn"/>
-                                                        <exclude reference="g3g-Bo-7wn"/>
-                                                    </mask>
-                                                </variation>
                                                 <connections>
-                                                    <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="1aF-LK-Gnh"/>
+                                                    <action selector="nightModeAction:" destination="40C-gD-0cA" eventType="touchUpInside" id="VW2-rG-iUd"/>
+                                                    <action selector="remember:" destination="Poh-dO-P0e" eventType="touchUpInside" id="Gqr-XK-WuN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNH-Vn-boZ">
-                                                <rect key="frame" x="558" y="185" width="11" height="19"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpC-MB-kcd">
+                                                <rect key="frame" x="8" y="133" width="568" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="11" id="6CJ-j1-yLd"/>
-                                                    <constraint firstAttribute="height" constant="20" id="6gv-qh-Ahu"/>
-                                                    <constraint firstAttribute="height" constant="19" id="HEQ-12-qse"/>
-                                                    <constraint firstAttribute="width" constant="25" id="VIx-81-oao"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="06q-aM-oAq"/>
+                                                    <constraint firstAttribute="height" constant="30" id="R7i-3A-eTh"/>
+                                                </constraints>
+                                                <state key="normal" title="Размер шрифта:  Обычный">
+                                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="06q-aM-oAq"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="7La-sh-Wn1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Zb-3rM">
+                                                <rect key="frame" x="565" y="138" width="11" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="1Aw-wx-4nz"/>
+                                                    <constraint firstAttribute="width" constant="25" id="IiQ-Xt-dcZ"/>
+                                                    <constraint firstAttribute="width" constant="11" id="OjL-hs-hC4"/>
+                                                    <constraint firstAttribute="height" constant="19" id="ntH-41-ci6"/>
                                                 </constraints>
                                                 <state key="normal" image="tachometer_arrow.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="6gv-qh-Ahu"/>
-                                                        <exclude reference="VIx-81-oao"/>
+                                                        <exclude reference="1Aw-wx-4nz"/>
+                                                        <exclude reference="IiQ-Xt-dcZ"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="O1E-4J-6Ha"/>
+                                                    <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="Jg4-vg-bwH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-kz-TbG">
+                                                <rect key="frame" x="8" y="171" width="568" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="77Q-ul-ZTi"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="P8b-gT-9J5"/>
+                                                </constraints>
+                                                <state key="normal" title="Стиль иконок:  Радужный">
+                                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="P8b-gT-9J5"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="3iP-K8-Ln2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-gB-u27">
+                                                <rect key="frame" x="565" y="176" width="11" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="bVZ-2Q-M8v"/>
+                                                    <constraint firstAttribute="width" constant="11" id="gdY-Dg-aIp"/>
+                                                    <constraint firstAttribute="height" constant="20" id="oxz-ED-I9m"/>
+                                                    <constraint firstAttribute="height" constant="19" id="uhV-Yx-dJh"/>
+                                                </constraints>
+                                                <state key="normal" image="tachometer_arrow.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="bVZ-2Q-M8v"/>
+                                                        <exclude reference="oxz-ED-I9m"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="r5h-Pj-sx0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulw-Ml-TX4">
+                                                <rect key="frame" x="8" y="209" width="568" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="89k-k4-M4F"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="nos-ZA-OC2"/>
+                                                </constraints>
+                                                <state key="normal" title="Язык:  Русский">
+                                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="nos-ZA-OC2"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="selectLanguage:" destination="40C-gD-0cA" eventType="touchUpInside" id="E5c-cE-AYb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-8A-wuG">
+                                                <rect key="frame" x="565" y="214" width="11" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="19" id="Fv6-N5-jSE"/>
+                                                    <constraint firstAttribute="width" constant="11" id="Ygb-XZ-8yu"/>
+                                                    <constraint firstAttribute="width" constant="25" id="g7F-RN-4fh"/>
+                                                    <constraint firstAttribute="height" constant="20" id="nZ0-Ge-zCU"/>
+                                                </constraints>
+                                                <state key="normal" image="tachometer_arrow.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="g7F-RN-4fh"/>
+                                                        <exclude reference="nZ0-Ge-zCU"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="selectLanguage:" destination="40C-gD-0cA" eventType="touchUpInside" id="3nj-uE-yNv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="qqJ-iE-0l3" secondAttribute="trailing" constant="15" id="6Vp-mY-EmA"/>
-                                            <constraint firstItem="vjy-0W-XdU" firstAttribute="centerY" secondItem="YKb-8e-Q7I" secondAttribute="centerY" id="7Ax-RG-owt"/>
-                                            <constraint firstItem="oPZ-UU-XeU" firstAttribute="top" secondItem="lAV-a9-zOm" secondAttribute="bottom" constant="8" id="7YV-Tb-xTN"/>
+                                            <constraint firstAttribute="trailing" secondItem="3m3-gB-u27" secondAttribute="trailing" constant="8" id="2KT-OX-QqO"/>
                                             <constraint firstItem="2x5-hm-EWz" firstAttribute="top" secondItem="Ir4-Cw-5A2" secondAttribute="top" constant="8" id="9cN-Dn-AWx"/>
-                                            <constraint firstItem="RSm-Uu-kVw" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="Ebh-LX-Kuw"/>
-                                            <constraint firstItem="j8o-jJ-epj" firstAttribute="top" secondItem="YKb-8e-Q7I" secondAttribute="bottom" constant="8" id="Een-Ti-MVm"/>
-                                            <constraint firstItem="j8o-jJ-epj" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="GIm-If-GW3"/>
+                                            <constraint firstItem="Sud-9V-UtH" firstAttribute="centerY" secondItem="Dks-3J-q3A" secondAttribute="centerY" constant="0.5" id="AwK-bb-8SH"/>
+                                            <constraint firstAttribute="trailing" secondItem="fpC-MB-kcd" secondAttribute="trailing" constant="8" id="BT3-5l-ktJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ulw-Ml-TX4" secondAttribute="trailing" constant="8" id="DJc-CN-Xjl"/>
+                                            <constraint firstAttribute="trailing" secondItem="o3M-kz-TbG" secondAttribute="trailing" constant="8" id="EyC-EE-GUt"/>
+                                            <constraint firstItem="Ulw-Ml-TX4" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="GuM-BV-pGA"/>
                                             <constraint firstItem="lAV-a9-zOm" firstAttribute="top" secondItem="S0Z-3V-SAB" secondAttribute="bottom" constant="8" id="HIZ-Jc-wVf"/>
-                                            <constraint firstItem="YKb-8e-Q7I" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="RuQ-qk-Wk7"/>
-                                            <constraint firstItem="oPZ-UU-XeU" firstAttribute="centerY" secondItem="2ah-GV-nBK" secondAttribute="centerY" id="Sdj-7N-oCg"/>
-                                            <constraint firstItem="RSm-Uu-kVw" firstAttribute="top" secondItem="j8o-jJ-epj" secondAttribute="bottom" constant="8" id="T0d-mH-sa1"/>
-                                            <constraint firstItem="YKb-8e-Q7I" firstAttribute="top" secondItem="oPZ-UU-XeU" secondAttribute="bottom" constant="8" id="V12-eG-fyP"/>
-                                            <constraint firstAttribute="trailing" secondItem="dNH-Vn-boZ" secondAttribute="trailing" constant="8" id="baR-Rr-KAP"/>
-                                            <constraint firstItem="RSm-Uu-kVw" firstAttribute="centerY" secondItem="dNH-Vn-boZ" secondAttribute="centerY" id="cWh-Zw-Umq"/>
-                                            <constraint firstAttribute="trailing" secondItem="qqJ-iE-0l3" secondAttribute="trailing" constant="8" id="d2a-E3-pJq"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sud-9V-UtH" secondAttribute="trailing" constant="8" id="MgK-6F-AMy"/>
+                                            <constraint firstItem="o3M-kz-TbG" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="QhV-Ia-ags"/>
+                                            <constraint firstItem="fpC-MB-kcd" firstAttribute="top" secondItem="Sud-9V-UtH" secondAttribute="bottom" constant="8" id="Sg4-6t-4go"/>
+                                            <constraint firstItem="fpC-MB-kcd" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="TXU-qi-PAk"/>
+                                            <constraint firstItem="Sud-9V-UtH" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="Uas-nX-cNd"/>
+                                            <constraint firstAttribute="trailing" secondItem="rse-Zb-3rM" secondAttribute="trailing" constant="8" id="Wuj-kC-DdM"/>
+                                            <constraint firstItem="rse-Zb-3rM" firstAttribute="centerY" secondItem="fpC-MB-kcd" secondAttribute="centerY" id="ZYI-E1-53W"/>
+                                            <constraint firstItem="Sud-9V-UtH" firstAttribute="top" secondItem="lAV-a9-zOm" secondAttribute="bottom" constant="8" id="c8g-vI-FFt"/>
                                             <constraint firstItem="2x5-hm-EWz" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="dhb-zN-9yc"/>
                                             <constraint firstItem="S0Z-3V-SAB" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="g2b-09-9hg"/>
-                                            <constraint firstItem="j8o-jJ-epj" firstAttribute="centerY" secondItem="qqJ-iE-0l3" secondAttribute="centerY" constant="-0.5" id="hg8-ux-puI"/>
-                                            <constraint firstItem="oPZ-UU-XeU" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="j9g-R7-6b4"/>
-                                            <constraint firstAttribute="trailing" secondItem="vjy-0W-XdU" secondAttribute="trailing" constant="15" id="jfW-b4-Ykh"/>
-                                            <constraint firstItem="dNH-Vn-boZ" firstAttribute="centerY" secondItem="RSm-Uu-kVw" secondAttribute="centerY" constant="0.5" id="k3z-I2-zF8"/>
-                                            <constraint firstAttribute="trailing" secondItem="vjy-0W-XdU" secondAttribute="trailing" constant="8" id="n6X-BO-B2u"/>
-                                            <constraint firstAttribute="trailing" secondItem="dNH-Vn-boZ" secondAttribute="trailing" constant="15" id="nlI-c3-h6b"/>
-                                            <constraint firstItem="j8o-jJ-epj" firstAttribute="centerY" secondItem="qqJ-iE-0l3" secondAttribute="centerY" id="noC-BK-3xv"/>
-                                            <constraint firstItem="vjy-0W-XdU" firstAttribute="centerY" secondItem="YKb-8e-Q7I" secondAttribute="centerY" id="oGv-mc-rcO"/>
+                                            <constraint firstAttribute="trailing" secondItem="a9q-8A-wuG" secondAttribute="trailing" constant="8" id="gJ9-3u-Tij"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dks-3J-q3A" secondAttribute="trailing" constant="8" id="h8a-Rb-mqf"/>
+                                            <constraint firstItem="o3M-kz-TbG" firstAttribute="top" secondItem="fpC-MB-kcd" secondAttribute="bottom" constant="8" id="inh-Nc-rf9"/>
                                             <constraint firstItem="lAV-a9-zOm" firstAttribute="leading" secondItem="Ir4-Cw-5A2" secondAttribute="leading" constant="8" id="ofb-mw-nji"/>
-                                            <constraint firstAttribute="trailing" secondItem="2ah-GV-nBK" secondAttribute="trailing" constant="8" id="pqN-xl-pvy"/>
                                             <constraint firstAttribute="height" constant="239" id="r4N-Cr-Ffo"/>
+                                            <constraint firstItem="3m3-gB-u27" firstAttribute="centerY" secondItem="o3M-kz-TbG" secondAttribute="centerY" id="rWG-Bt-3kD"/>
+                                            <constraint firstItem="a9q-8A-wuG" firstAttribute="centerY" secondItem="Ulw-Ml-TX4" secondAttribute="centerY" constant="-0.5" id="scV-QI-OQb"/>
+                                            <constraint firstItem="Ulw-Ml-TX4" firstAttribute="top" secondItem="o3M-kz-TbG" secondAttribute="bottom" constant="8" id="tpg-Ie-2yg"/>
                                             <constraint firstItem="S0Z-3V-SAB" firstAttribute="top" secondItem="2x5-hm-EWz" secondAttribute="bottom" constant="8" id="weC-S0-N29"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="hg8-ux-puI"/>
-                                                <exclude reference="n6X-BO-B2u"/>
-                                                <exclude reference="oGv-mc-rcO"/>
-                                                <exclude reference="d2a-E3-pJq"/>
-                                                <exclude reference="baR-Rr-KAP"/>
-                                                <exclude reference="k3z-I2-zF8"/>
-                                            </mask>
-                                        </variation>
                                         <variation key="widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="23" y="266" width="354" height="239"/>
                                         </variation>
@@ -3983,14 +4022,17 @@
                         <outlet property="backgroundImage" destination="1HH-or-Xen" id="u4g-Wk-SRH"/>
                         <outlet property="balance" destination="S0Z-3V-SAB" id="5d5-ad-med"/>
                         <outlet property="callsign" destination="2x5-hm-EWz" id="0Hm-6Y-pDq"/>
+                        <outlet property="checkBox" destination="Dks-3J-q3A" id="Qav-ow-XPa"/>
+                        <outlet property="fontSize" destination="fpC-MB-kcd" id="QBP-nm-IAk"/>
                         <outlet property="limit" destination="lAV-a9-zOm" id="xZV-aW-ItA"/>
-                        <outlet property="nightMode" destination="2ah-GV-nBK" id="5oD-pe-fqO"/>
                         <outlet property="notRequired" destination="AJt-pH-UYP" id="hlQ-cn-Amb"/>
                         <outlet property="off" destination="FRT-GK-xcN" id="ihg-cj-Re4"/>
                         <outlet property="on" destination="3cN-pV-2uA" id="bBS-S9-ipL"/>
                         <outlet property="required" destination="dbP-1c-Mf9" id="Llb-0s-eGG"/>
                         <outlet property="scrolView" destination="jlA-Oe-JUJ" id="0YD-vn-yVZ"/>
+                        <outlet property="selectLanguage" destination="Ulw-Ml-TX4" id="0MG-CS-God"/>
                         <outlet property="settings" destination="XT0-VD-43L" id="vxe-Zn-8fM"/>
+                        <outlet property="stileIcon" destination="o3M-kz-TbG" id="vcY-Ah-WrE"/>
                         <outlet property="yandexOff" destination="31f-O6-WhJ" id="iSs-nS-ouK"/>
                         <outlet property="yandexSettings" destination="7ty-bs-mdb" id="SKv-cj-vVv"/>
                     </connections>

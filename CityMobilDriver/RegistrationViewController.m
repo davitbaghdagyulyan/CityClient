@@ -157,7 +157,7 @@
         RequestObject.id_locality = 338;
     }
     if (idLocalityNumber == 1) {
-        RequestObject.id_locality = 338;
+        RequestObject.id_locality = 2;
     }
     
     NSDictionary* jsonDictionary = [RequestObject toDictionary];
@@ -197,11 +197,12 @@
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
         GetActivationCodeResponse* responseObject = [[GetActivationCodeResponse alloc]initWithString:jsonString error:&err];
+        responseObject.delegate = self;
         
-        if (responseObject.code != nil) {
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:responseObject.text delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [alert show];
-        }
+//        if (responseObject.code != nil) {
+//            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:responseObject.text delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+//            [alert show];
+//        }
         if (responseObject.result == 1) {
             ActivateAccountViewController* activationController=[self.storyboard instantiateViewControllerWithIdentifier:@"ActivateAccountViewController"];
             activationController.phone = self.phoneNumber.text;

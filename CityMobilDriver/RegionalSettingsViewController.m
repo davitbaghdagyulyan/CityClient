@@ -43,7 +43,6 @@
         [locationManager requestWhenInUseAuthorization];
     }
     
-    
     [locationManager startUpdatingLocation];
     
 }
