@@ -7,11 +7,12 @@
 //
 
 #import "JSONModel.h"
-
-@interface GetActivationCodeResponse : JSONModel
+#import "RegistrationViewController.h"
+@interface GetActivationCodeResponse : JSONModel//ErrorInformation
 //@property (nonatomic,strong) NSString* bankid;
 @property (nonatomic,strong) NSString* pincode;
 @property (nonatomic,assign) NSInteger result;
 @property (nonatomic,strong) NSString* code;
 @property (nonatomic,strong) NSString* text;
+@property (nonatomic, weak) RegistrationViewController* delegate;
 @end

@@ -148,7 +148,6 @@
             CGSize maximumLabelSize = CGSizeMake(220,100);
             expectSizeForCollAddress = [labelCollAddressText sizeThatFits:maximumLabelSize];
         }
-        
         else
         {
             expectSizeForCollAddress = CGSizeMake(0, 0);

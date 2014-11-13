@@ -13,7 +13,10 @@
 #import "LeftMenu.h"
 #import "RequestSetAutoget.h"
 #import "RequestSetYandexAutoget.h"
-@interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+
+
+
+@interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>//,ComboBoxDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrolView;
 
@@ -22,8 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *limit;
 
-- (IBAction)nightModeAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UISwitch *nightMode;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
@@ -59,9 +61,22 @@
 @property (weak, nonatomic) IBOutlet UILabel *yandexSettings;
 
 
+- (IBAction)nightModeAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwitch *nightMode;// ---
+
+@property (weak, nonatomic) IBOutlet UIButton *checkBox;
+
 - (IBAction)fontSize:(id)sender;
 - (IBAction)stileIcon:(id)sender;
 - (IBAction)selectLanguage:(id)sender;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *fontSize;
+
+@property (weak, nonatomic) IBOutlet UIButton *stileIcon;
+
+@property (weak, nonatomic) IBOutlet UIButton *selectLanguage;
+
 
 
 

@@ -26,5 +26,6 @@
 @property(nonatomic,strong)NSString *OrderFinished;
 @property(nonatomic,strong)NSString *shortname;
 @property(nonatomic,strong)NSString *CollMetroName;
+@property(nonatomic,strong)NSString * DeliveryMetroName;
 @end
 

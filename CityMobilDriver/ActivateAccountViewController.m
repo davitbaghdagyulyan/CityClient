@@ -10,6 +10,7 @@
 #import "RegisterRequest.h"
 #import "RegisterResponse.h"
 #import "LoginViewController.h"
+#import "UserRegistrationInformation.h"
 
 @interface ActivateAccountViewController ()
 
@@ -123,11 +124,12 @@
         if (responseObject.result == 1) {
             LoginViewController* loginController=[self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             
-            NSString* aa = responseObject.bankid;
             
             loginController.bankid = responseObject.bankid;
-            NSString* bb = loginController.bankid;
             loginController.passwordText = responseObject.password;
+            
+            [UserRegistrationInformation sharedInformation].bankId = responseObject.bankid;
+            [UserRegistrationInformation sharedInformation].password = responseObject.password;
             
             [self pushOrPopViewController:loginController];
         }
