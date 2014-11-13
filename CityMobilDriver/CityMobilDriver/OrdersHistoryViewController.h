@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface OrdersHistoryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *labelC;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labelPo;
+@property (weak, nonatomic) IBOutlet UILabel *designLabel;
 - (IBAction)back:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *buttonFind;
 - (IBAction)pickFromDate:(id)sender;

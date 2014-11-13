@@ -4,6 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>rublsi.ttf</string>
+		<string></string>
+		<string></string>
 		<string>RobotoCondensed-Light.ttf</string>
 		<string>RobotoCondensed-Regular.ttf</string>
 		<string>RobotoCondensed-Bold.ttf</string>

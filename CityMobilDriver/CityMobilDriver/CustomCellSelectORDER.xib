@@ -322,7 +322,7 @@
                 <outlet property="whiteLabel" destination="xJ3-4f-8hl" id="Zf9-5Q-e3H"/>
                 <outlet property="whiteView" destination="7M3-1E-lOl" id="gnG-Ae-s6k"/>
             </connections>
-            <point key="canvasLocation" x="78.5" y="327"/>
+            <point key="canvasLocation" x="211.5" y="329"/>
         </tableViewCell>
     </objects>
     <resources>

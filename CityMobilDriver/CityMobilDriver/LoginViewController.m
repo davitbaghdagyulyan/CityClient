@@ -282,8 +282,8 @@
     
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
     
-    loginJsonObject.bankid=@"110314";//login.text;
-    loginJsonObject.pass=@"52750";//password.text;
+    loginJsonObject.bankid=@"6666";//login.text;
+    loginJsonObject.pass=@"6666";//password.text;
     
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];

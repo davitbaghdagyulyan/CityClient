@@ -23,24 +23,54 @@
 
 @implementation OrdersHistoryViewController
 {
+    //Design For self.View
+    CAGradientLayer *gradLayer;
+    CAGradientLayer *gradLayerForSelfView;
+    UIView * transparentView;
+    //
     UITableView * tableViewInterval;
+    NSArray*intervalArray;
+    //Interface For the Views that surrounds datePicker
+    UILabel * labelSettingTheDate;
+    UIDatePicker * datePicker;
+    UILabel * designLabel;
     UIButton *  buttonCancell;
     UIButton * buttonSetStartDate;
-    UIDatePicker * datePicker;
-    NSArray*intervalArray;
-    UIView * pickerView;
-    UILabel * labelSettingTheDate;
+    //Objects For Date Formating and Request
     NSDateFormatter *df;
     NSString *stringEndDate;
-    UILabel * designLabel;
+    OrdersHistoryResponse * ordersHistoryResponseObject;
+    //Other
     UIAlertView *alertForNoInternetCon;
     UIAlertView *alertWrongData;
-    OrdersHistoryResponse * ordersHistoryResponseObject;
     UIActivityIndicatorView* indicator;
+    NSInteger  ratingArray[5];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //Adding Gradient For self.view
+    gradLayerForSelfView =[CAGradientLayer layer];
+    UIColor * gradColStartSelView =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];
+    UIColor * gradColFinSelView =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.0f];
+    gradLayerForSelfView.frame =CGRectMake(0,65, self.view.frame.size.width,self.view.frame.size.height);
+    [gradLayerForSelfView setColors:[NSArray arrayWithObjects:(id)(gradColStartSelView.CGColor), (id)(gradColFinSelView.CGColor),nil]];
+    [self.view.layer insertSublayer:gradLayerForSelfView atIndex:0];
+    //Adding Gradient For GreyView
+    gradLayer=[CAGradientLayer layer];
+    UIColor * graColStart = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
+    UIColor * graColFin =[UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0f];
+    gradLayer.frame = CGRectMake(0, 0, self.GreyView.frame.size.width/2+16,self.GreyView.frame.size.height);
+    [gradLayer setColors:[NSArray arrayWithObjects:(id)(graColStart.CGColor), (id)(graColFin.CGColor),nil]];
+    [self.GreyView.layer insertSublayer:gradLayer atIndex:0];
+    //Setting Labels and Buttons clearColor
+    self.GreyView.backgroundColor =[UIColor clearColor];
+    self.labelInterval.backgroundColor =[UIColor clearColor];
+    self.labelSelectedDate.backgroundColor=[UIColor clearColor];
+    self.labelC.backgroundColor =[UIColor clearColor];
+    self.labelPo.backgroundColor =[UIColor clearColor];
+    self.designLabel.backgroundColor = [UIColor clearColor];
+    //DatePickerPart
     stringEndDate = nil;
     datePicker =[[UIDatePicker alloc]init];
     [datePicker setDate:[NSDate date] animated:YES];
@@ -49,9 +79,23 @@
     [df setDateFormat:@"yyyy-MM-dd"];
     self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",[df stringFromDate:datePicker.date]];
     intervalArray =[ [NSArray alloc]initWithObjects:@"один день",@"три дня",@"одна неделя",@"две недели",@"месяц", nil];
+    self.tableViewOrdersHistory.hidden = YES;
+    //FONTS VIEWDIDLOAD
+    self.labelC.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+    self.labelPo.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+    self.labelSelectedDate.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+    self.labelInterval.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+    self.buttonFind.titleLabel.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
+    self.titleLabel.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
+    //
+    for (int i=0; i<5; i++)
+    {
+        ratingArray[i]=0;
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
+
 {
     [super viewDidAppear:YES];
      leftMenu=[LeftMenu getLeftMenu:self];
@@ -67,9 +111,16 @@
 {
     if(tableView ==tableViewInterval )
     {
-        return intervalArray.count;
+     return intervalArray.count;
     }
-    return 10;
+    else
+    {
+    if (ordersHistoryResponseObject.orders.count !=0)
+    {
+        self.tableViewOrdersHistory.hidden = NO;
+    }
+     return ordersHistoryResponseObject.orders.count;
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -82,8 +133,28 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
         }
         cell.textLabel.text = [intervalArray objectAtIndex:indexPath.row];
+        cell.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
         return cell;
     }
+    if (0)
+    {
+        NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
+        CustomCellOrdersHistory * cell = (CustomCellOrdersHistory *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
+        if (cell == nil)
+        {
+            
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellOrdersHistory2" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        UIView * myView = [[UIView alloc]initWithFrame:CGRectMake(0,200,100,20)];
+        myView.backgroundColor = [UIColor greenColor];
+        [cell.underView addSubview:myView];
+        [self addYandexRattingToView:myView rate:3];
+        return  cell;
+  
+    }
+    else
+    {
     NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
     CustomCellOrdersHistory * cell = (CustomCellOrdersHistory *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
@@ -92,17 +163,81 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellOrdersHistory" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+     cell.labelCallMetroName.font =[UIFont fontWithName:@"Roboto-Regular" size:12];
+     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName])
+     {
+            cell.labelCallMetroName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName];
+     }
+     else
+    {
+          cell.labelCallMetroName.text = @"";
+    }
+    cell.deliveryMetroName.font =[UIFont fontWithName:@"Roboto-Regular" size:12];
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]DeliveryMetroName])
+    {
+            cell.deliveryMetroName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]DeliveryMetroName];
+    }
+    else
+    {
+    cell.deliveryMetroName.text= @"";
+    }
+    cell.labelDate.textColor =[UIColor whiteColor];
+    cell.labelDate.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:12];
+    cell.labelDate.numberOfLines=2;
+    NSString * collDate =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollDate];
+    if (collDate)
+    {
+    NSString *collDate1 =[collDate substringToIndex:16];
+    cell.labelDate.text =[collDate1 substringFromIndex:2];
+    }
+    else
+    {
+    cell.labelDate.text= @"";
+    }
+    cell.labelShortName.font = [UIFont fontWithName:@"Roboto-Regular" size:30];
+    cell.labelShortName.textColor  = [UIColor whiteColor];
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]shortname])
+    {
+     cell.labelShortName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]shortname];
+    }
+    else
+    {
+     cell.labelShortName.text =@"";
+    }
+    cell.labelPrice.font = [UIFont fontWithName:@"RublSign" size:20];
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]price])
+    {
+    cell.labelPrice.text =[NSString stringWithFormat:@"%@ b",[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]price]];
+    }
+    else
+    {
+    cell.labelPrice.text =@"";
+    }
     return  cell;
+  }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView ==tableViewInterval)
+    {
+         return 44;
+    }
+    else
+    {
+        return 38;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 if (tableView == tableViewInterval)
 {
- [tableViewInterval removeFromSuperview];
- self.labelInterval.text = [intervalArray objectAtIndex:indexPath.row];
- NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
- switch (indexPath.row) {
+    [transparentView removeFromSuperview];
+    [tableViewInterval removeFromSuperview];
+    self.labelInterval.text = [intervalArray objectAtIndex:indexPath.row];
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    switch (indexPath.row) {
             case 0:
                 [dateComponents setDay:1];
                 break;
@@ -121,10 +256,10 @@ if (tableView == tableViewInterval)
             default:
                 break;
  }
-NSCalendar *calendar = [NSCalendar currentCalendar];
-NSDate *endDate = [calendar dateByAddingComponents:dateComponents toDate:datePicker.date options:0];
-stringEndDate = [df stringFromDate:endDate];
-self.buttonIntervalTableView.userInteractionEnabled = YES;
+   NSCalendar *calendar = [NSCalendar currentCalendar];
+   NSDate *endDate = [calendar dateByAddingComponents:dateComponents toDate:datePicker.date options:0];
+   stringEndDate = [df stringFromDate:endDate];
+   self.buttonIntervalTableView.userInteractionEnabled = YES;
 }
 else
 {
@@ -136,7 +271,14 @@ else
 {
     self.tableViewOrdersHistory.userInteractionEnabled = NO;
     self.buttonDatePicker.userInteractionEnabled = NO;
-    [self.view addSubview:datePicker];
+    transparentView = [[UIView alloc]initWithFrame:self.view.frame];
+    transparentView.backgroundColor = [UIColor blackColor];
+    transparentView.alpha =0.7;
+    [self.view addSubview:transparentView];
+    [self.view  addSubview:datePicker];
+    UITapGestureRecognizer *letterTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeDatePicker)];
+    letterTapRecognizer.numberOfTapsRequired = 1;
+    [transparentView addGestureRecognizer:letterTapRecognizer];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.hidden = NO;
     [datePicker addTarget:self action:@selector(changeDateInLabel:)forControlEvents:UIControlEventValueChanged];
@@ -144,58 +286,101 @@ else
     if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
        [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
-        datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y+65,0,0);
+        datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y+25,self.tableViewOrdersHistory.frame.size.width,0);
     }
     else
     {
-    datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y+5,0,0);
+    datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x+self.tableViewOrdersHistory.frame.size.width/4 ,self.GreyView.frame.origin.y+20,self.tableViewOrdersHistory.frame.size.width/2,0);
     }
     labelSettingTheDate = [[UILabel alloc]init];
-    labelSettingTheDate.frame  = CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,datePicker.frame.origin.y-25,datePicker.frame.size.width,25);
-    labelSettingTheDate.backgroundColor = [UIColor whiteColor];
-    labelSettingTheDate.text = @"Настройка даты";
-    labelSettingTheDate.textColor = [UIColor blackColor];
-    labelSettingTheDate.textAlignment =NSTextAlignmentCenter;
-    labelSettingTheDate.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:labelSettingTheDate];
-    buttonCancell = [[UIButton alloc]initWithFrame:CGRectMake(0,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,25)];
+    labelSettingTheDate.frame  = CGRectMake(datePicker.frame.origin.x ,datePicker.frame.origin.y-25,datePicker.frame.size.width,25);
+    labelSettingTheDate.font=[UIFont fontWithName:@"Roboto-Regular" size:15];
+    labelSettingTheDate.textColor=[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1];
+    labelSettingTheDate.backgroundColor=[UIColor whiteColor];
+    labelSettingTheDate.text=@"Настройка даты";
+    labelSettingTheDate.textAlignment=NSTextAlignmentCenter;
+    designLabel=[[UILabel alloc]init];
+    designLabel.frame=CGRectMake(datePicker.frame.origin.x, labelSettingTheDate.frame.origin.y + labelSettingTheDate.frame.size.height, datePicker.frame.size.width,1);
+    designLabel.backgroundColor=[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1];
+    [self.view  addSubview:labelSettingTheDate];
+    [self.view  addSubview:designLabel];
+    buttonCancell = [[UIButton alloc]init];
+    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                        [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    {
+        buttonCancell.frame =CGRectMake(datePicker.frame.origin.x,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,50);
+    }
+    else
+    {
+       buttonCancell.frame =CGRectMake(datePicker.frame.origin.x,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,25);
+    }
+    [[buttonCancell layer] setBorderWidth:1.0f];
+    buttonCancell.layer.borderColor =[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1].CGColor;
     buttonCancell.backgroundColor = [UIColor whiteColor];
+    buttonCancell.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
     [buttonCancell setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [buttonCancell  addTarget:self action:@selector(Cancell) forControlEvents:UIControlEventTouchUpInside];
     [buttonCancell setTitle:@"Отмена" forState:UIControlStateNormal];
-    [self.view addSubview:buttonCancell];
-    buttonSetStartDate = [[UIButton alloc]initWithFrame:CGRectMake(buttonCancell.frame.size.width,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,25)];
+    [self.view  addSubview:buttonCancell];
+    buttonSetStartDate = [[UIButton alloc]init];
+    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                             [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    {
+      buttonSetStartDate.frame =CGRectMake(datePicker.frame.origin.x+buttonCancell.frame.size.width,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,50);
+    }
+    else
+    {
+      buttonSetStartDate.frame =CGRectMake(datePicker.frame.origin.x+buttonCancell.frame.size.width,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,25);
+    }
+    [[buttonSetStartDate layer] setBorderWidth:1.0f];
+    buttonSetStartDate.layer.borderColor =[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1].CGColor;
     buttonSetStartDate.backgroundColor = [UIColor whiteColor];
+    buttonSetStartDate.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
     [buttonSetStartDate setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [buttonSetStartDate addTarget:self action:@selector(setTime) forControlEvents:UIControlEventTouchUpInside];
     [buttonSetStartDate setTitle:@"Установить" forState:UIControlStateNormal];
-    [self.view addSubview:buttonSetStartDate];
+    [self.view  addSubview:buttonSetStartDate];
 
 }
-
-
 
 -(void)Cancell
 {
     self.buttonDatePicker.userInteractionEnabled = YES;
+    [transparentView removeFromSuperview];
     [datePicker removeFromSuperview];
-    [buttonSetStartDate removeFromSuperview];
     [buttonCancell removeFromSuperview];
+    [buttonSetStartDate removeFromSuperview];
     [labelSettingTheDate removeFromSuperview];
+    [designLabel removeFromSuperview];
     self.tableViewOrdersHistory.userInteractionEnabled = YES;
 }
-
 
 -(void)setTime
 {
     self.buttonDatePicker.userInteractionEnabled = YES;
-    self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",
-                                  [df stringFromDate:datePicker.date]];
-    [labelSettingTheDate removeFromSuperview];
     [datePicker removeFromSuperview];
+    [transparentView removeFromSuperview];
     [buttonSetStartDate removeFromSuperview];
     [buttonCancell removeFromSuperview];
+    [labelSettingTheDate removeFromSuperview];
+    [designLabel removeFromSuperview];
+    self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",
+                                  [df stringFromDate:datePicker.date]];
     self.tableViewOrdersHistory.userInteractionEnabled = YES;
+}
+
+
+-(void)removeDatePicker
+{
+    [transparentView removeFromSuperview];
+    [datePicker removeFromSuperview];
+    [labelSettingTheDate removeFromSuperview];
+    [buttonCancell removeFromSuperview];
+    [buttonSetStartDate removeFromSuperview];
+    [tableViewInterval removeFromSuperview];
+    [designLabel removeFromSuperview];
+    self.buttonDatePicker.userInteractionEnabled = YES;
+    self.buttonIntervalTableView.userInteractionEnabled = YES;
     
 }
 
@@ -208,14 +393,21 @@ else
 
 - (IBAction)pickToDate:(id)sender
 {
+    transparentView = [[UIView alloc]initWithFrame:self.view.frame];
+    transparentView.backgroundColor = [UIColor blackColor];
+    transparentView.alpha =0.7;
+    UITapGestureRecognizer *letterTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeDatePicker)];
+    letterTapRecognizer.numberOfTapsRequired = 1;
+    [transparentView addGestureRecognizer:letterTapRecognizer];
+    [self.view addSubview:transparentView];
     if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
     [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
-     tableViewInterval = [[UITableView alloc]initWithFrame:CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y + self.buttonFind.frame.origin.y,self.tableViewOrdersHistory.frame.size.width,self.GreyView.frame.size.height*4)];
+        tableViewInterval = [[UITableView alloc]initWithFrame:CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y,self.tableViewOrdersHistory.frame.size.width,5*44)];
         self.buttonIntervalTableView.userInteractionEnabled = NO;
     }else
     {
-     tableViewInterval = [[UITableView alloc]initWithFrame:CGRectMake(self.tableViewOrdersHistory.frame.origin.x +self.GreyView.frame.size.width/4,self.GreyView.frame.origin.y-10,self.tableViewOrdersHistory.frame.size.width/2,self.GreyView.frame.size.height +self.tableViewOrdersHistory.frame.size.height+10)];
+     tableViewInterval = [[UITableView alloc]initWithFrame:CGRectMake(self.tableViewOrdersHistory.frame.origin.x +self.GreyView.frame.size.width/4,self.GreyView.frame.origin.y-10,self.tableViewOrdersHistory.frame.size.width/2,5*44)];
      self.buttonIntervalTableView.userInteractionEnabled = NO;
       }
     tableViewInterval.delegate = self;
@@ -246,52 +438,15 @@ else
 }
 
 
--(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    
-    
-    if (fromInterfaceOrientation == UIInterfaceOrientationPortrait
-        || fromInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-    {
-        self.buttonDatePicker.userInteractionEnabled = YES;
-        self.buttonIntervalTableView.userInteractionEnabled = YES;
-        [labelSettingTheDate removeFromSuperview];
-        [datePicker removeFromSuperview];
-        [buttonCancell removeFromSuperview];
-        [buttonSetStartDate removeFromSuperview];
-        [tableViewInterval removeFromSuperview];
-        indicator.center = self.view.center;
-       
-       
-        
-    }
-    else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft
-             || fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-        
-    {
-        self.buttonDatePicker.userInteractionEnabled = YES;
-        self.buttonIntervalTableView.userInteractionEnabled = YES;
-        [labelSettingTheDate removeFromSuperview];
-        [datePicker removeFromSuperview];
-        [tableViewInterval removeFromSuperview];
-        [buttonCancell removeFromSuperview];
-        [buttonSetStartDate removeFromSuperview];
-        indicator.center = self.view.center;
-    }
-}
-
-
 - (IBAction)findOrdersFromInterval:(id)sender
 {
     [SingleDataProviderForStartDate sharedStartDate].startDate = self.labelSelectedDate.text;
     [SingleDataProviderForEndDate sharedEndDate].endDate = stringEndDate;
     [self requestOrdersHistory];
-   
 }
 
 -(void)requestOrdersHistory
 {
-
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
@@ -398,7 +553,6 @@ else
         leftMenu.center=point;
     }
     [self.navigationController popViewControllerAnimated:NO];
-    
 }
 
 
@@ -464,9 +618,45 @@ else
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    [coordinator animateAlongsideTransition:nil
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+    {
+        UIDeviceOrientation deviceOrientation   = [[UIDevice currentDevice] orientation];
+        
+        if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
+            NSLog(@"Will change to Landscape");
+            self.buttonDatePicker.userInteractionEnabled = YES;
+            self.buttonIntervalTableView.userInteractionEnabled = YES;
+            [transparentView removeFromSuperview];
+            [datePicker removeFromSuperview];
+            [labelSettingTheDate removeFromSuperview];
+            [buttonSetStartDate removeFromSuperview];
+            [buttonCancell removeFromSuperview];
+            [tableViewInterval removeFromSuperview];
+            [designLabel removeFromSuperview];
+            indicator.center = self.view.center;
+            gradLayer.frame =CGRectMake(0, 0, self.GreyView.frame.size.width,self.GreyView.frame.size.height);
+            gradLayerForSelfView.frame =CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height);
+
+}
+        else {
+            NSLog(@"Will change to Portrait");
+            self.buttonDatePicker.userInteractionEnabled = YES;
+            self.buttonIntervalTableView.userInteractionEnabled = YES;
+            [transparentView removeFromSuperview];
+            [datePicker removeFromSuperview];
+            [labelSettingTheDate removeFromSuperview];
+            [buttonCancell removeFromSuperview];
+            [buttonSetStartDate removeFromSuperview];
+            [tableViewInterval removeFromSuperview];
+            [designLabel removeFromSuperview];
+            gradLayer.frame = CGRectMake(0, 0, self.GreyView.frame.size.width,self.GreyView.frame.size.height);
+            gradLayerForSelfView.frame =CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height);
+            indicator.center = self.view.center;
+        }
+    }
+
      
-                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+    completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
         CGFloat xx;
          if(flag==0)
@@ -481,7 +671,42 @@ else
          
      }];
     
-    [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+    
+    
+
+   
 }
 
+
+
+-(void)addYandexRattingToView:(UIView*)view
+                         rate:(NSInteger)k
+{
+ 
+    for (int i=0; i<k; i++)
+    {
+        ratingArray[i]=1;
+    }
+
+    for (int i =0; i<5; i++)
+    {
+        UIImageView * img1 = [[UIImageView alloc]init];
+        if (ratingArray[i]==1)
+        {
+            img1.image = [UIImage imageNamed:@"star.png"];
+        }
+        else
+        {
+            img1.image = [UIImage imageNamed:@"star_none.png"];
+        }
+        
+        img1.frame =CGRectMake(0+i*20, 0,20,20);
+        
+        [view addSubview:img1];
+        
+    }
+
+}
 @end
