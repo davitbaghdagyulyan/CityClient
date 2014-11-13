@@ -436,8 +436,6 @@ else
 {
     return UIInterfaceOrientationMaskAll;
 }
-
-
 - (IBAction)findOrdersFromInterval:(id)sender
 {
     [SingleDataProviderForStartDate sharedStartDate].startDate = self.labelSelectedDate.text;
@@ -618,8 +616,10 @@ else
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
-    {
+
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+
         UIDeviceOrientation deviceOrientation   = [[UIDevice currentDevice] orientation];
         
         if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
@@ -638,6 +638,7 @@ else
             gradLayerForSelfView.frame =CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height);
 
 }
+
         else {
             NSLog(@"Will change to Portrait");
             self.buttonDatePicker.userInteractionEnabled = YES;
@@ -653,12 +654,15 @@ else
             gradLayerForSelfView.frame =CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height);
             indicator.center = self.view.center;
         }
+     
+        
     }
+     
 
      
     completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-        CGFloat xx;
+         CGFloat xx;
          if(flag==0)
          {
              xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
@@ -675,7 +679,6 @@ else
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
     
     
-
    
 }
 
@@ -709,4 +712,9 @@ else
     }
 
 }
+
+    
+    
+
+
 @end

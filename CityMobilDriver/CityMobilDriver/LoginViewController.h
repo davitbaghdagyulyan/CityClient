@@ -13,6 +13,11 @@
 #import "UserInformationProvider.h"
 
 
+extern NSString* const UserDefaultsBankId;
+extern NSString* const UserDefaultsPassword;
+extern NSString* const UserDefaultsIsRemember;
+
+
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
 @property(nonatomic,strong) NSString* bankid;

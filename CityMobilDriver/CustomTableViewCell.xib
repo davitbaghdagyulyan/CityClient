@@ -38,6 +38,7 @@
                     <constraint firstAttribute="bottom" secondItem="CMK-Im-WJZ" secondAttribute="bottom" id="4xa-sg-JNk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="QHB-na-tZo" secondAttribute="bottom" constant="6" id="Bqs-tX-dxl"/>
                     <constraint firstItem="CMK-Im-WJZ" firstAttribute="leading" secondItem="eNG-Za-ljH" secondAttribute="leading" id="Dhs-pb-eOZ"/>
+                    <constraint firstItem="QHB-na-tZo" firstAttribute="centerY" secondItem="CMK-Im-WJZ" secondAttribute="centerY" id="JA7-2H-fxS"/>
                     <constraint firstAttribute="bottomMargin" secondItem="QHB-na-tZo" secondAttribute="bottom" constant="5" id="JGg-7i-57G"/>
                     <constraint firstItem="CMK-Im-WJZ" firstAttribute="top" secondItem="eNG-Za-ljH" secondAttribute="top" id="Qdf-a8-gJB"/>
                     <constraint firstItem="QHB-na-tZo" firstAttribute="top" secondItem="eNG-Za-ljH" secondAttribute="topMargin" constant="6" id="VYt-0L-8Jr"/>
@@ -48,10 +49,13 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="Bqs-tX-dxl"/>
+                        <exclude reference="JGg-7i-57G"/>
                         <exclude reference="VYt-0L-8Jr"/>
+                        <exclude reference="acD-sb-AnF"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="cellText" destination="CMK-Im-WJZ" id="0SD-p3-01g"/>
                 <outlet property="selectedCell" destination="QHB-na-tZo" id="F0I-RT-xMq"/>

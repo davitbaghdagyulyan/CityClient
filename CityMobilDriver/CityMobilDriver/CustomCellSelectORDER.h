@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomCellSelectORDER : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIButton *buttonMap1;
 
 
 

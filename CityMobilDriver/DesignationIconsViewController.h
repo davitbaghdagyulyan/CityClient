@@ -11,4 +11,5 @@
 @interface DesignationIconsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *designationTableView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)back:(id)sender;
 @end

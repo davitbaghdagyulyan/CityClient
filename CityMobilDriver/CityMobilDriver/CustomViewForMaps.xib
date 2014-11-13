@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="wk0-Mc-Yek" customClass="CustomViewForMaps">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOt-dQ-GOw">
+                    <rect key="frame" x="239" y="234" width="122" height="132"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Карты" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyI-lt-zJ2">
+                            <rect key="frame" x="0.0" y="0.0" width="122" height="41"/>
+                            <color key="backgroundColor" white="0.48360515510948904" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="41" id="6SB-B4-7bt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yandex.png" translatesAutoresizingMaskIntoConstraints="NO" id="hV2-2I-d2w">
+                            <rect key="frame" x="10" y="51" width="41" height="41"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="41" id="0A4-Ja-bAM"/>
+                                <constraint firstAttribute="width" constant="41" id="ffh-Jp-F3N"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gmap.png" translatesAutoresizingMaskIntoConstraints="NO" id="6YK-B6-jXA">
+                            <rect key="frame" x="71" y="51" width="41" height="41"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="41" id="7UC-fL-NE3"/>
+                                <constraint firstAttribute="width" constant="41" id="acn-rk-I4U"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAx-4U-UZG">
+                            <rect key="frame" x="0.0" y="112" width="122" height="20"/>
+                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="JDZ-sB-1hM"/>
+                                <constraint firstAttribute="width" constant="122" id="c18-Zq-LSg"/>
+                            </constraints>
+                            <state key="normal" title="Закрыть">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egx-Xc-w6c">
+                            <rect key="frame" x="71" y="92" width="41" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="41" id="Px8-7n-lST"/>
+                                <constraint firstAttribute="height" constant="20" id="S2H-Uc-uye"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="0.74697764598540151" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Яндекс" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHt-Zh-6zy">
+                            <rect key="frame" x="10" y="92" width="41" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="41" id="Wav-YK-SVV"/>
+                                <constraint firstAttribute="height" constant="20" id="miq-W4-A5j"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="0.75134010036496346" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="bHt-Zh-6zy" firstAttribute="top" secondItem="hV2-2I-d2w" secondAttribute="bottom" id="4zQ-5s-lPu"/>
+                        <constraint firstItem="hV2-2I-d2w" firstAttribute="leading" secondItem="JOt-dQ-GOw" secondAttribute="leading" constant="10" id="6tZ-f0-6XZ"/>
+                        <constraint firstAttribute="height" constant="132" id="98h-0g-vUg"/>
+                        <constraint firstItem="egx-Xc-w6c" firstAttribute="leading" secondItem="bHt-Zh-6zy" secondAttribute="trailing" constant="20" id="Agp-CX-yF9"/>
+                        <constraint firstItem="egx-Xc-w6c" firstAttribute="top" secondItem="6YK-B6-jXA" secondAttribute="bottom" id="FWA-rg-phG"/>
+                        <constraint firstAttribute="trailing" secondItem="JyI-lt-zJ2" secondAttribute="trailing" id="G01-88-rPN"/>
+                        <constraint firstItem="HAx-4U-UZG" firstAttribute="leading" secondItem="JOt-dQ-GOw" secondAttribute="leading" id="TkQ-Nd-bX0"/>
+                        <constraint firstItem="HAx-4U-UZG" firstAttribute="top" secondItem="egx-Xc-w6c" secondAttribute="bottom" id="Ysd-ge-4YV"/>
+                        <constraint firstItem="hV2-2I-d2w" firstAttribute="top" secondItem="JyI-lt-zJ2" secondAttribute="bottom" constant="10" id="bCa-2p-RNR"/>
+                        <constraint firstItem="6YK-B6-jXA" firstAttribute="top" secondItem="JyI-lt-zJ2" secondAttribute="bottom" constant="10" id="dZ8-rP-LKl"/>
+                        <constraint firstItem="bHt-Zh-6zy" firstAttribute="leading" secondItem="JOt-dQ-GOw" secondAttribute="leading" constant="10" id="hx3-NP-eWL"/>
+                        <constraint firstItem="JyI-lt-zJ2" firstAttribute="leading" secondItem="JOt-dQ-GOw" secondAttribute="leading" id="oiM-iu-baA"/>
+                        <constraint firstAttribute="width" constant="122" id="pS1-cJ-n3r"/>
+                        <constraint firstItem="JyI-lt-zJ2" firstAttribute="top" secondItem="JOt-dQ-GOw" secondAttribute="top" id="quL-OM-USv"/>
+                        <constraint firstItem="6YK-B6-jXA" firstAttribute="leading" secondItem="hV2-2I-d2w" secondAttribute="trailing" constant="20" id="xrN-FJ-wj4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.26000000000000001" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="JOt-dQ-GOw" secondAttribute="centerY" id="Wrb-ri-8h5"/>
+                <constraint firstAttribute="centerX" secondItem="JOt-dQ-GOw" secondAttribute="centerX" id="aUG-zu-yVu"/>
+            </constraints>
+            <connections>
+                <outlet property="closeButton" destination="HAx-4U-UZG" id="eQf-1M-7XW"/>
+                <outlet property="googleImageView" destination="6YK-B6-jXA" id="s4g-MT-MMP"/>
+                <outlet property="smallMapView" destination="JOt-dQ-GOw" id="b6f-Uk-hBc"/>
+                <outlet property="yandexImageView" destination="hV2-2I-d2w" id="B1H-H6-CeW"/>
+            </connections>
+            <point key="canvasLocation" x="474" y="312"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gmap.png" width="41" height="41"/>
+        <image name="yandex.png" width="41" height="41"/>
+    </resources>
+</document>

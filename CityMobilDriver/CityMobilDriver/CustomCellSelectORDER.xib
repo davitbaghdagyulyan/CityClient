@@ -311,6 +311,7 @@
                 <outlet property="View1" destination="hUu-Xt-Z8A" id="HCT-cA-9UF"/>
                 <outlet property="View2" destination="OUD-ZQ-Reb" id="8kX-NP-IUc"/>
                 <outlet property="View3" destination="60p-yd-arS" id="03C-gA-Qfj"/>
+                <outlet property="buttonMap1" destination="mbr-AQ-8IT" id="4WR-kh-A20"/>
                 <outlet property="buttonMap2" destination="fkK-sw-m37" id="ei7-94-np4"/>
                 <outlet property="imgViewCall" destination="Gf9-nl-iZ3" id="eLf-0L-ZL3"/>
                 <outlet property="imgViewDel" destination="1rj-Xk-eRF" id="bjM-gn-cuH"/>

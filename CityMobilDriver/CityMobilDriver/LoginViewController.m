@@ -8,6 +8,13 @@
 
 #import "LoginViewController.h"
 #import "SingleDataProvider.h"
+#import "UserRegistrationInformation.h"
+
+NSString* const UserDefaultsBankId = @"bankid";
+NSString* const UserDefaultsPassword = @"password";
+NSString* const UserDefaultsIsRemember = @"isRemember";
+
+
 @interface LoginViewController ()
 
 @end
@@ -36,6 +43,7 @@
     password.placeholder = @"Пароль";
     password.returnKeyType = UIReturnKeyDone;
     password.delegate = self;
+    
 }
 
 
@@ -89,8 +97,31 @@
         loginSpace.constant = self.view.frame.size.height -  keyboardHeightInPortrait - login.frame.size.height - 25;//g
     }
     
-        login.placeholder = [[NSUserDefaults standardUserDefaults]stringForKey:@"bankid"];
-        password.placeholder = [[NSUserDefaults standardUserDefaults]stringForKey:@"password"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    
+    
+    if ([defaults boolForKey:UserDefaultsIsRemember]) {
+        [self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
+        login.text = [defaults stringForKey:UserDefaultsBankId];
+        password.text = [defaults stringForKey:UserDefaultsPassword];
+    }
+    else{
+        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+        login.placeholder = @"логин";
+        password.placeholder = @"Пароль";
+
+    }
+    
+    
+    if ([UserRegistrationInformation sharedInformation].bankId) {
+        login.text = [UserRegistrationInformation sharedInformation].bankId;
+        password.text = [UserRegistrationInformation sharedInformation].password;
+    }
+    
+
+    
 }
 
 
@@ -281,9 +312,25 @@
     [self.view addSubview:indicator];
     
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
-    
     loginJsonObject.bankid=@"6666";//login.text;
     loginJsonObject.pass=@"6666";//password.text;
+
+    
+
+    
+
+    
+    
+    if (self.login.text.length > 0) {
+        loginJsonObject.bankid = self.login.text;
+        loginJsonObject.pass = self.password.text;
+    }
+    else{
+        loginJsonObject.bankid=@"110314";
+        loginJsonObject.pass=@"52750";
+    }
+    
+
     
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];
@@ -329,7 +376,7 @@
         
         loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
         
-       
+        
         
         
         [SingleDataProvider sharedKey].key = loginResponseObject.key;
@@ -347,21 +394,27 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];
-            return;
             
         }
+        
         else
         {
             [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             if ([self image:self.rememberButton.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]]) {
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:loginJsonObject.bankid forKey:@"bankid"];
-                [defaults setObject:loginJsonObject.pass forKey:@"password"];
+                [defaults setObject:[NSNumber numberWithBool:YES] forKey:UserDefaultsIsRemember];
+                [defaults setObject:loginJsonObject.bankid forKey:UserDefaultsBankId];
+                [defaults setObject:loginJsonObject.pass forKey:UserDefaultsPassword];
                 [defaults synchronize];
-                
+            }
+            else{
+                [defaults setObject:[NSNumber numberWithBool:NO] forKey:UserDefaultsIsRemember];
+                [defaults setObject:@"логин" forKey:UserDefaultsBankId];
+                [defaults setObject:@"Пароль" forKey:UserDefaultsPassword];
             }
             [self.navigationController popViewControllerAnimated:NO];
         }
+        
         [indicator stopAnimating];
     }];
     
@@ -384,7 +437,6 @@
 {
     NSData *data1 = UIImagePNGRepresentation(image1);
     NSData *data2 = UIImagePNGRepresentation(image2);
-    
     return [data1 isEqual:data2];
 }
 @end

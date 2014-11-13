@@ -14,14 +14,19 @@
     NSInteger flag;
     LeftMenu*leftMenu;
     
-    UITableView* fontSizeTableView;
+    
     UIView* backgroundView;
     UIView* fontSizeView;
-    
     UIView* fontStileView;
-    UITableView* StileIconTableView;
     
+    UITableView* fontSizeTableView;
+    UITableView* StileIconTableView;
     UITableView* selectLanguageTableView;
+    
+    
+    NSString* fontSizeText;
+    NSString* fontStileText;
+    NSString* languageText;
 }
 @property(nonatomic,strong) UIColor* viewsColor;
 @property(nonatomic,strong) UIColor* buttonTextColor;
@@ -29,21 +34,27 @@
 
 @implementation SettingsViewController
 
+
+
+
+#pragma mark - lifecicle Object
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    NSString* a = [UserInformationProvider sharedInformation].balance;
     self.balance.text =[self.balance.text stringByAppendingString:[UserInformationProvider sharedInformation].balance];
     self.limit.text =[self.limit.text stringByAppendingString:[UserInformationProvider sharedInformation].credit_limit];
     self.callsign.text =[self.callsign.text stringByAppendingString:[UserInformationProvider sharedInformation].bankid];
     self.buttonTextColor = self.required.titleLabel.textColor;
     
-    self.nightMode.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue];
-    NSLog(@"%i",self.nightMode.on);
-    [self setAppMode];
+    //self.nightMode.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue];
+    //NSLog(@"%i",self.nightMode.on);
+    
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue]) {
+        [self.checkBox.imageView setImage:[UIImage imageNamed:@"box2.png"]];
+        [self setAppMode];
+    }
 }
-
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -64,33 +75,81 @@
         self.scrolView.contentSize = scrolViewSize;
     }
     
+    NSInteger fontNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"fontSize"];
+    
+    if (fontNubmer == 0) {
+        [self replaceString:self.fontSize.titleLabel widthString:@"  Мелкий"];
+    }
+    if (fontNubmer == 1) {
+        [self replaceString:self.fontSize.titleLabel widthString:@"  Обычный"];
+    }
+    if (fontNubmer == 2) {
+        [self replaceString:self.fontSize.titleLabel widthString:@"  Крупный"];
+    }
+    
+    
+    NSInteger styleNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"stileIcon"];
+    
+    if (styleNubmer == 0) {
+        [self replaceString:self.stileIcon.titleLabel widthString:@"  Радужный"];
+    }
+    if (styleNubmer == 1) {
+        [self replaceString:self.stileIcon.titleLabel widthString:@"  Черный"];
+    }
+    
+    
+    NSInteger languageNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"language"];
+    
+    if (languageNubmer == 0) {
+        [self replaceString:self.selectLanguage.titleLabel widthString:@"  Русский"];
+    }
+    if (languageNubmer == 1) {
+        [self replaceString:self.selectLanguage.titleLabel widthString:@"  English"];
+    }
+    
+    fontSizeText = [self replaceString:self.fontSize.titleLabel.text];
+    fontStileText = [self replaceString:self.stileIcon.titleLabel.text];
+    languageText = [self replaceString:self.selectLanguage.titleLabel.text];
+    
 }
 
 
+-(void) replaceString:(UILabel*)label widthString:(NSString*) newString{
+    NSRange range = [label.text rangeOfString:@":"];
+    NSString* subString = [label.text substringFromIndex:range.location + 1];
+    label.text = [label.text stringByReplacingOccurrencesOfString:subString withString:newString];
+}
+
+-(NSString*) replaceString:(NSString*)string{
+    NSRange range = [string rangeOfString:@":"];
+    return [string substringFromIndex:range.location + 1];
+}
+
+#pragma mark - rotation Method
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
     {
-        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    }
-     
-    completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-    if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
-    {
-        //NSLog(@"%@",NSStringFromCGSize(size));
-//        CGSize scrollSize = size;
-//        scrollSize.height = size.width;
-//        self.scrolView.contentSize = scrollSize;
-    }
-        
-    if (([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait || [UIDevice currentDevice].orientation == UIDeviceOrientationPortraitUpsideDown) && self.view.frame.size.height == 480)
+        if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
         {
-//            self.scrolView.contentSize = size;
+            //NSLog(@"%@",NSStringFromCGSize(size));
+            //        CGSize scrollSize = size;
+            //        scrollSize.height = size.width;
+            //        self.scrolView.contentSize = scrollSize;
+        }
+        
+        if (([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait || [UIDevice currentDevice].orientation == UIDeviceOrientationPortraitUpsideDown) && self.view.frame.size.height == 480)
+        {
+            //            self.scrolView.contentSize = size;
         }
         
         fontSizeView.center = self.view.center;
         fontStileView.center = self.view.center;
+    }
+     
+    completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+
     }];
     
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
@@ -99,44 +158,7 @@
 
 
 
-- (IBAction)nightModeAction:(id)sender
-{
-    NSNumber* isNightMode = nil;
-    if (self.nightMode.on)
-    {
-        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
-        self.settings.textColor = [UIColor orangeColor];
-        self.yandexSettings.textColor = [UIColor orangeColor];
-        isNightMode = [NSNumber numberWithBool:YES];
-    }
-    else
-    {
-        self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
-        self.settings.textColor = [UIColor blackColor];
-        self.yandexSettings.textColor = [UIColor blackColor];
-        isNightMode = [NSNumber numberWithBool:NO];
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
--(void)setAppMode
-{
-    if (self.nightMode.on)
-    {
-        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
-        self.settings.textColor = [UIColor orangeColor];
-        self.yandexSettings.textColor = [UIColor orangeColor];
-    }
-    else
-    {
-        self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
-        self.settings.textColor = [UIColor blackColor];
-        self.yandexSettings.textColor = [UIColor blackColor];
-    }
-}
-
-
+#pragma mark - yandex Settings
 
 - (IBAction)requiredAction:(id)sender
 {
@@ -169,9 +191,6 @@
     
     [self setYandexAutoAssign:0];
 }
-
-
-
 
 -(void)setAutoAssign:(NSInteger)state
 {
@@ -240,7 +259,6 @@
     }];
 }
 
-
 -(void)setYandexAutoAssign:(NSInteger)y_state
 {
     RequestSetYandexAutoget* RequestObject=[[RequestSetYandexAutoget alloc]init];
@@ -300,15 +318,10 @@
 
 
 
+#pragma mark - program settings
 
-
-
-
-
-
-
-- (IBAction)fontSize:(id)sender/////////
-{
+- (IBAction)fontSize:(id)sender{
+    
     backgroundView = [[UIView alloc]initWithFrame:self.view.frame];
     backgroundView.alpha = 0.5;
     backgroundView.backgroundColor = [UIColor grayColor];
@@ -319,162 +332,17 @@
     fontSizeView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 310, 250)];
     fontSizeView.center = self.view.center;
     [self.view addSubview:fontSizeView];
-    
-    UILabel* descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, fontSizeView.frame.size.width, 50)];
-    descriptionLabel.text = @"Размер шрифта";
-    descriptionLabel.backgroundColor = [UIColor whiteColor];
-    [fontSizeView addSubview:descriptionLabel];
 
     
-    fontSizeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, fontSizeView.frame.size.width, 150)];
+    fontSizeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, fontSizeView.frame.size.width, 250)];
     fontSizeTableView.scrollEnabled = NO;
     fontSizeTableView.delegate = self;
     fontSizeTableView.dataSource = self;
+//    [fontSizeTableView setSeparatorInset:UIEdgeInsetsZero];
     [fontSizeView addSubview:fontSizeTableView];
     
     
-    UIButton* okSizeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 200, fontSizeView.frame.size.width, 50)];
-    okSizeButton.backgroundColor = [UIColor whiteColor];
-    [okSizeButton addTarget:self action:@selector(okButton) forControlEvents:UIControlEventTouchUpInside];
-    [okSizeButton setTitle:@"OK" forState:UIControlStateNormal];
-    [okSizeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [fontSizeView addSubview:okSizeButton];
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (tableView == fontSizeTableView)
-    {
-        return 3;
-    }
-    if (tableView == StileIconTableView || tableView == selectLanguageTableView)
-    {
-        return 2;
-    }
-    return 0;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView == fontSizeTableView)
-    {
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
-        CustomTableViewCell* cell = [nibArray objectAtIndex:0];
-        
-        switch (indexPath.row)
-        {
-            case 0:
-                cell.cellText.text = @"Мелкий";
-                break;
-            case 1:
-                cell.cellText.text = @"Обычный";
-                break;
-            case 2:
-                cell.cellText.text = @"Крупный";
-                break;
-            default:
-                break;
-        }
-        return cell;
-    }
-    
-    if (tableView == StileIconTableView)
-    {
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
-        CustomTableViewCell* cell = [nibArray objectAtIndex:0];
-        
-        switch (indexPath.row)
-        {
-            case 0:
-                cell.cellText.text = @"Радужный";
-                break;
-            case 1:
-                cell.cellText.text = @"Черный";
-                break;
-            default:
-                break;
-        }
-        return cell;
-    }
-    
-    if (tableView == selectLanguageTableView)
-    {
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
-        CustomTableViewCell* cell = [nibArray objectAtIndex:0];
-        
-        switch (indexPath.row)
-        {
-            case 0:
-                cell.cellText.text = @"Русский";
-                break;
-            case 1:
-                cell.cellText.text = @"English";
-                break;
-            default:
-                break;
-        }
-        return cell;
-    }
-    return nil;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-        return 50;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView == fontSizeTableView)
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"fontSize"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    if (tableView == StileIconTableView)
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"stileIcon"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    if (tableView == selectLanguageTableView)
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"language"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    
-    CustomTableViewCell* selectedCell = (CustomTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
-    selectedCell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
-    
-    for (UIView *view in tableView.subviews) {
-        for (CustomTableViewCell* cell in view.subviews) {
-            if (cell != selectedCell) {
-                cell.selectedCell.image = [UIImage imageNamed:@"rb.png"];
-            }
-        }
-    }
-}
-
-
--(void)okButton
-{
-    [fontSizeView removeFromSuperview];
-    [backgroundView removeFromSuperview];
-}
-
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [[event allTouches] anyObject];
-    if (backgroundView == touch.view)
-    {
-        [fontStileView removeFromSuperview];
-        [fontSizeView removeFromSuperview];
-        [backgroundView removeFromSuperview];
-    }
-}
-
-
-
 
 
 - (IBAction)stileIcon:(id)sender
@@ -490,94 +358,371 @@
     fontStileView.center = self.view.center;
     [self.view addSubview:fontStileView];
     
-    UILabel* descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, fontStileView.frame.size.width, 50)];
-    if ([sender tag] == 100)
-    {
-        descriptionLabel.text = @"Размер шрифта";
-    }
-    if ([sender tag] == 101)
-    {
-        descriptionLabel.text = @"Выберите язык";
-    }
-    descriptionLabel.backgroundColor = [UIColor whiteColor];
-    [fontStileView addSubview:descriptionLabel];
-    
-    
-    
-    if ([sender tag] == 100)
-    {
-        StileIconTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, fontStileView.frame.size.width, 100)];
-        StileIconTableView.scrollEnabled = NO;
-        StileIconTableView.delegate = self;
-        StileIconTableView.dataSource = self;
-        [fontStileView addSubview:StileIconTableView];
-    }
-    if ([sender tag] == 101)
-    {
-        selectLanguageTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, fontStileView.frame.size.width, 100)];
-        selectLanguageTableView.scrollEnabled = NO;
-        selectLanguageTableView.delegate = self;
-        selectLanguageTableView.dataSource = self;
-        [fontStileView addSubview:selectLanguageTableView];
-    }
 
-    
-    UIButton* okStileButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 150, fontStileView.frame.size.width, 50)];
-    okStileButton.backgroundColor = [UIColor whiteColor];
-    [okStileButton addTarget:self action:@selector(okStileButton) forControlEvents:UIControlEventTouchUpInside];
-    [okStileButton setTitle:@"OK" forState:UIControlStateNormal];
-    [okStileButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [fontStileView addSubview:okStileButton];
+    StileIconTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, fontStileView.frame.size.width, 200)];
+    StileIconTableView.scrollEnabled = NO;
+    StileIconTableView.delegate = self;
+    StileIconTableView.dataSource = self;
+    [fontStileView addSubview:StileIconTableView];
+
 }
 
-//- (IBAction)selectLanguage:(id)sender
-//{
-//    backgroundView = [[UIView alloc]initWithFrame:self.view.frame];
-//    backgroundView.alpha = 0.5;
-//    backgroundView.backgroundColor = [UIColor grayColor];
-//    backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [self.view addSubview:backgroundView];
-//    
-//    
-//    fontStileView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 310, 200)];
-//    fontStileView.center = self.view.center;
-//    [self.view addSubview:fontStileView];
-//    
-//    UILabel* descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, fontStileView.frame.size.width, 50)];
-//    descriptionLabel.text = @"Выберите язык";
-//    descriptionLabel.backgroundColor = [UIColor whiteColor];
-//    [fontStileView addSubview:descriptionLabel];
-//    
-//    
-//    StileIconTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, fontStileView.frame.size.width, 100)];
-//    StileIconTableView.scrollEnabled = NO;
-//    StileIconTableView.delegate = self;
-//    StileIconTableView.dataSource = self;
-//    [fontStileView addSubview:StileIconTableView];
-//    
-//    
-//    UIButton* okStileButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 150, fontStileView.frame.size.width, 50)];
-//    okStileButton.backgroundColor = [UIColor whiteColor];
-//    [okStileButton addTarget:self action:@selector(okStileButton) forControlEvents:UIControlEventTouchUpInside];
-//    [okStileButton setTitle:@"OK" forState:UIControlStateNormal];
-//    [okStileButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [fontStileView addSubview:okStileButton];
-//}
+
+- (IBAction)selectLanguage:(id)sender{
+    
+    backgroundView = [[UIView alloc]initWithFrame:self.view.frame];
+    backgroundView.alpha = 0.5;
+    backgroundView.backgroundColor = [UIColor grayColor];
+    backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:backgroundView];
+    
+    
+    fontStileView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 310, 200)];
+    fontStileView.center = self.view.center;
+    [self.view addSubview:fontStileView];
+
+    selectLanguageTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, fontStileView.frame.size.width, 200)];
+    selectLanguageTableView.scrollEnabled = NO;
+    selectLanguageTableView.delegate = self;
+    selectLanguageTableView.dataSource = self;
+    [fontStileView addSubview:selectLanguageTableView];
+}
 
 
--(void)okStileButton
+
+- (IBAction)nightModeAction:(id)sender
 {
-    [fontStileView removeFromSuperview];
-    [backgroundView removeFromSuperview];
+    NSNumber* isNightMode = nil;
+    if ([self image:self.checkBox.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]]) {
+        [self.checkBox.imageView setImage:[UIImage imageNamed:@"box.png"]];
+        
+        self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
+        self.settings.textColor = [UIColor blackColor];
+        self.yandexSettings.textColor = [UIColor blackColor];
+        isNightMode = [NSNumber numberWithBool:NO];
+    }
+    else{
+        [self.checkBox.imageView setImage:[UIImage imageNamed:@"box2.png"]];
+        
+        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
+        self.settings.textColor = [UIColor orangeColor];
+        self.yandexSettings.textColor = [UIColor orangeColor];
+        isNightMode = [NSNumber numberWithBool:YES];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void)setAppMode
+{
+    if ([self image:self.checkBox.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]])
+    {
+        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
+        self.settings.textColor = [UIColor orangeColor];
+        self.yandexSettings.textColor = [UIColor orangeColor];
+    }
+    else
+    {
+        self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
+        self.settings.textColor = [UIColor blackColor];
+        self.yandexSettings.textColor = [UIColor blackColor];
+    }
+}
+
+- (BOOL)image:(UIImage *)image1 isEqualTo:(UIImage *)image2
+{
+    NSData *data1 = UIImagePNGRepresentation(image1);
+    NSData *data2 = UIImagePNGRepresentation(image2);
+    return [data1 isEqual:data2];
 }
 
 
+#pragma mark Table View settings
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 50;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView* titleView = [[UIView alloc]init];
+    titleView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel* titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 310, 48)];
+    if (tableView == fontSizeTableView) {
+        titleLabel.text = @"   Размер шрифта";
+    }
+    if (tableView == StileIconTableView) {
+        titleLabel.text = @"   Стиль иконок";
+    }
+    if (tableView == selectLanguageTableView) {
+        titleLabel.text = @"   Выберите язык";
+    }
+    
+    [titleView addSubview:titleLabel];
+    
+    UIView* lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 48, 310, 2)];
+    lineView.backgroundColor = [UIColor colorWithRed:227/255 green:227/255 blue:229/255 alpha:0.1];
+    [titleView addSubview:lineView];
+    
+    
+    return titleView;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == fontSizeTableView)
+    {
+        return 5;
+    }
+    if (tableView == StileIconTableView || tableView == selectLanguageTableView)
+    {
+        return 4;
+    }
+    return 0;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* okCell = [[UITableViewCell alloc]init];
+    if (tableView == fontSizeTableView)
+    {
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
+        CustomTableViewCell* cell = [nibArray objectAtIndex:0];
+
+        [tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        
+        switch (indexPath.row)
+        {
+            case 0:
+                cell.cellText.text = @"   Мелкий";
+                break;
+            case 1:
+                cell.cellText.text = @"   Обычный";
+                break;
+            case 2:
+                cell.cellText.text = @"   Крупный";
+                break;
+            case 3:
+                okCell.textLabel.text = @"ok";
+                okCell.tag = 150;
+                [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
+                return okCell;
+                break;
+            default:
+                break;
+        }
+        
+        NSInteger fontNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"fontSize"];
+        
+        if (fontNubmer == indexPath.row) {
+            cell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
+        }
+        
+        return cell;
+    }
+    
+    if (tableView == StileIconTableView)
+    {
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
+        CustomTableViewCell* cell = [nibArray objectAtIndex:0];
+        
+        switch (indexPath.row)
+        {
+            case 0:
+                cell.cellText.text = @"   Радужный";
+                break;
+            case 1:
+                cell.cellText.text = @"   Черный";
+                break;
+            case 2:
+                okCell.textLabel.text = @"ok";
+                okCell.tag = 151;
+                [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
+                return okCell;
+            default:
+                break;
+        }
+        NSInteger styleNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"stileIcon"];
+        
+        if (styleNubmer == indexPath.row) {
+            cell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
+        }
+        return cell;
+    }
+    
+    if (tableView == selectLanguageTableView)
+    {
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
+        CustomTableViewCell* cell = [nibArray objectAtIndex:0];
+        
+        switch (indexPath.row)
+        {
+            case 0:
+                cell.cellText.text = @"   Русский";
+                break;
+            case 1:
+                cell.cellText.text = @"   English";
+                break;
+            case 2:
+                okCell.textLabel.text = @"ok";
+                okCell.tag = 152;
+                [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
+                return okCell;
+            default:
+                break;
+        }
+        NSInteger languageNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"language"];
+        if (languageNubmer == indexPath.row) {
+            cell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
+        }
+        return cell;
+    }
+    
+    
+    return nil;
+}
+
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if ([fontSizeTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [fontSizeTableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([fontSizeTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [fontSizeTableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([StileIconTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [StileIconTableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([StileIconTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [StileIconTableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    if ([fontSizeTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [fontSizeTableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([selectLanguageTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [selectLanguageTableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if ([tableView cellForRowAtIndexPath:indexPath].tag == 150) {
+        [fontSizeView removeFromSuperview];
+        [backgroundView removeFromSuperview];
+        
+        NSString* fontText = self.fontSize.titleLabel.text;
+        NSRange range = [fontText rangeOfString:@":"];
+        NSString* subString = [fontText substringFromIndex:range.location + 1];
+        
+        fontText = [fontText stringByReplacingOccurrencesOfString:subString withString:fontSizeText];
+        [self.fontSize setTitle:fontText forState:UIControlStateNormal];
+        
+        }
+    else if ([tableView cellForRowAtIndexPath:indexPath].tag == 151) {
+        [fontStileView removeFromSuperview];
+        [backgroundView removeFromSuperview];
+        
+        
+        NSString* fontText = self.stileIcon.titleLabel.text;
+        NSRange range = [fontText rangeOfString:@":"];
+        NSString* subString = [fontText substringFromIndex:range.location + 1];
+        fontText = [fontText stringByReplacingOccurrencesOfString:subString withString:fontStileText];
+        [self.stileIcon setTitle:fontText forState:UIControlStateNormal];
+        
+    }
+    else if ([tableView cellForRowAtIndexPath:indexPath].tag == 152) {
+        [fontStileView removeFromSuperview];
+        [backgroundView removeFromSuperview];
+        
+        NSString* fontText = self.selectLanguage.titleLabel.text;
+        NSRange range = [fontText rangeOfString:@":"];
+        NSString* subString = [fontText substringFromIndex:range.location + 1];
+        fontText = [fontText stringByReplacingOccurrencesOfString:subString withString:languageText];
+        [self.selectLanguage setTitle:fontText forState:UIControlStateNormal];
+    }
+    
+    else{
+        if (tableView == fontSizeTableView)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:indexPath.row] forKey:@"fontSize"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            CustomTableViewCell* cell = (CustomTableViewCell*)[fontSizeTableView cellForRowAtIndexPath:indexPath];
+            
+            fontSizeText = [NSString stringWithString:cell.cellText.text];
+        }
+        if (tableView == StileIconTableView)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"stileIcon"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            CustomTableViewCell* cell = (CustomTableViewCell*)[StileIconTableView cellForRowAtIndexPath:indexPath];
+            
+            fontStileText = [NSString stringWithString:cell.cellText.text];
+        }
+        
+        if (tableView == selectLanguageTableView)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:indexPath.row] forKey:@"language"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            CustomTableViewCell* cell = (CustomTableViewCell*)[selectLanguageTableView cellForRowAtIndexPath:indexPath];
+            languageText = [NSString stringWithString:cell.cellText.text];
+        }
+        
+        
+        
+        CustomTableViewCell* selectedCell = (CustomTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+        selectedCell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
+        for (UIView *view in tableView.subviews) {
+            for (UITableViewCell* cell in view.subviews) {
+                if ( [cell isKindOfClass:[CustomTableViewCell class]] && cell != selectedCell) {
+                    CustomTableViewCell* celll = (CustomTableViewCell*)cell;
+                    celll.selectedCell.image = [UIImage imageNamed:@"rb.png"];
+                }
+            }
+        }
+    }
+    
+}
 
 
 
 
 /////////////////////////
 
+
+#pragma mark - left Menu
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {

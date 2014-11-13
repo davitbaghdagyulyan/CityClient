@@ -37,5 +37,13 @@
 @property(nonatomic,strong)NSString *CollAddressText;
 @property(nonatomic,strong) NSString *DeliveryAddressText;
 
+//*******************Nareks Change*******************************
+
+@property(nonatomic,strong)NSString*latitude;
+@property(nonatomic,strong)NSString*longitude;
+@property(nonatomic,strong)NSString*del_latitude;
+@property(nonatomic,strong)NSString*del_longitude;
+
+//*******************Nareks Change End*******************************
 
 @end
