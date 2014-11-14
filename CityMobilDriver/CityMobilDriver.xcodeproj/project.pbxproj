@@ -236,6 +236,7 @@
 		ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B91A122BC500150931 /* gmap@2x.png */; };
 		ECF529BE1A12366B00150931 /* CustomViewForMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529BD1A12366B00150931 /* CustomViewForMaps.m */; };
 		ECF529C41A124AA000150931 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529C31A124AA000150931 /* CustomWebView.m */; };
+		ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -633,6 +634,8 @@
 		ECF529BD1A12366B00150931 /* CustomViewForMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewForMaps.m; sourceTree = "<group>"; };
 		ECF529C21A124AA000150931 /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
 		ECF529C31A124AA000150931 /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebView.m; sourceTree = "<group>"; };
+		ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingDocumentsViewController.h; sourceTree = "<group>"; };
+		ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingDocumentsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -774,6 +777,8 @@
 				ECC9652A1A00D91A00768E1F /* EditCarInfoViewController.m */,
 				ECCD34451A039EA4000444BF /* CardsViewController.h */,
 				ECCD34461A039EA4000444BF /* CardsViewController.m */,
+				ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */,
+				ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */,
 			);
 			name = Profil;
 			path = ..;
@@ -1695,6 +1700,7 @@
 				ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */,
 				ECB59E9319F6876E00F69529 /* UINavigationController+shouldAutorotate.m in Sources */,
 				ECB52E421A0779020091293F /* DriveAfterMKADClass.m in Sources */,
+				ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */,
 				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
 				ECB52E2D1A07763D0091293F /* SuburbClass.m in Sources */,
 				ECB59E9A19F6A3B300F69529 /* GetQiwiBillsUrlResponse.m in Sources */,

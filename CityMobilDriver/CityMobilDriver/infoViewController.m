@@ -7,40 +7,32 @@
 //
 
 #import "infoViewController.h"
+#import "SendingMessageViewController.h"
 @interface infoViewController ()
 {
     NSInteger flag;
     LeftMenu* leftMenu;
-    int loadCount;
-    NSArray* subviewsArray;
+
+    UIButton* answerButton;
+    NSString* HTMLString;
+    
+    textResponse* jsonResponseObject;
 }
 @end
 
 @implementation infoViewController
-@synthesize web;
-@synthesize HTMLString;
-@synthesize backButton;
-@synthesize key;
-@synthesize id_mail;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self textJsonRequest];
     
-    NSURL* url = [[NSURL alloc]init];
-    NSString* str = @"<h3>";
-    str =[str stringByAppendingString: self.titleText];
-    str =[str stringByAppendingString: @"</h3>"];
-    str = [str stringByAppendingString:@"<br><br>"];
-    str = [str stringByAppendingString:self.text];//???
-    [web loadHTMLString:str baseURL:url];
-    web.delegate = self;
-    loadCount = 1;
-    HTMLString = str;
+    
+    self.web.scrollView.scrollEnabled = NO;
+
 
     
 }
-
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -50,13 +42,20 @@
 }
 
 
+
 -(void)textJsonRequest
 {
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    
     textRequest* textJsonObject=[[textRequest alloc]init];
     textJsonObject.key = [SingleDataProvider sharedKey].key;
     textJsonObject.id_mail = self.id_mail;
     NSDictionary* jsonDictionary = [textJsonObject toDictionary];
-    
     
     NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
     
@@ -75,55 +74,124 @@
     request.timeoutInterval = 10;
     
     
-    
-    NSError* err;
-    NSURLResponse *response = [[NSURLResponse alloc]init];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    
-    textResponse* jsonResponseObject = [[textResponse alloc]initWithString:jsonString error:&err];
-    
-    
-    self.text = [[jsonResponseObject.messages objectAtIndex:0] text];
-
-}
-
-
-- (IBAction)backAction:(id)sender
-{
-    NSURL* url = [[NSURL alloc]init];
-    [web loadHTMLString:HTMLString baseURL:url];
-    [backButton removeFromSuperview];
-    
-    for (int i = 0; i < [subviewsArray count]; ++i)
-    {
-        UIButton* button = [subviewsArray objectAtIndex:i];
-        button.hidden = NO;
-    }
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    if (loadCount % 2 == 0)
-    {
-        subviewsArray = [self.navigationView subviews];
-        for (int i = 0; i < [subviewsArray count]; ++i)
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
         {
-            UIButton* button = [subviewsArray objectAtIndex:i];
-            button.hidden = YES;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                            message:@"NO INTERNET CONECTION"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            
+            
+            [alert show];
+            return ;
         }
         
+        NSError* err;
+        NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         
-        backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 100, 40)];
-        backButton.backgroundColor = [UIColor redColor];
-        [backButton setTitle:@"BACK" forState:UIControlStateNormal];
-        [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:backButton];
+        NSLog(@"%@",jsonString);
+        jsonResponseObject = [[textResponse alloc]initWithString:jsonString error:&err];
         
-    }
-    ++loadCount;
+        NSURL* url = [[NSURL alloc]init];
+
+        NSString *str = [[NSString alloc]init];
+        str = [str stringByAppendingFormat:@"<b><font size=\"4\">%@</font></b></br>",self.titleText];
+        
+        
+        for (int i = 0; i < [jsonResponseObject.messages count]; ++i) {
+            if ([[jsonResponseObject.messages objectAtIndex:i] from_me] == 0) {
+                str = [str stringByAppendingString:@"<b><font size=\"4\">От: </font></b> Сити мобил</br>"];
+            }
+            else{
+                str = [str stringByAppendingString:@"<b><font size=\"4\">От: </font></b> Вас</br>"];
+            }
+            
+            
+            NSString* dateString = [[jsonResponseObject.messages objectAtIndex:i] getDate];
+            dateString = [self TimeFormat:dateString];
+            dateString = [dateString stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+            str = [str stringByAppendingString:@"<b><font size=\"4\">Когда: </font></b>"];
+            str = [str stringByAppendingFormat:@"<font size=\"4\"> %@ </font><br>" ,dateString];
+            str = [str stringByAppendingString:[[jsonResponseObject.messages objectAtIndex:i] text]];
+            str = [str stringByAppendingString:@"</font><br>"];
+        }
+        
+        HTMLString = str;
+        
+        if (jsonResponseObject.can_answer == 1) {
+            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(8, self.web.frame.size.height - 44, self.web.frame.size.width - 16, 36)];
+            answerButton.backgroundColor = [UIColor orangeColor];
+            [answerButton addTarget:self action:@selector(pushSendingMessage) forControlEvents:UIControlEventTouchUpInside];
+            [answerButton setTitle:@"Ответить" forState:UIControlStateNormal];
+            [self.web addSubview:answerButton];
+        }
+        
+        [self.web loadHTMLString:str baseURL:url];
+        self.web.delegate = self;
+       
+        [indicator stopAnimating];
+    }];
 }
 
+
+-(void)pushSendingMessage{
+    SendingMessageViewController* contorller = [self.storyboard instantiateViewControllerWithIdentifier:@"SendingMessageViewController"];
+    contorller.isPushWidthInfoController = YES;
+    contorller.titleText = self.titleText;
+    contorller.id_mail = self.id_mail;
+    
+    [self.navigationController pushViewController:contorller animated:NO];
+}
+
+-(NSString*)TimeFormat:(NSString*)string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
+    NSDate *date = [[NSDate alloc] init];
+    date = [dateFormatter dateFromString:string];
+    /////////convert nsdata To NSString////////////////////////////////////
+    [dateFormatter setDateFormat:@"dd-MM-yy HH:mm"];
+    
+    if(date==nil) return @"";
+    
+    return [dateFormatter stringFromDate:date];
+    
+}
+
+
+#pragma mark - rotation
+
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         
+         NSURL* url = [[NSURL alloc]init];
+         [self.web loadHTMLString:HTMLString baseURL:url];
+         answerButton.frame = CGRectMake(8, self.web.frame.size.height - 44, self.web.frame.size.width - 16, 36);
+     }
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     
+                                 }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
+
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
 
 
 

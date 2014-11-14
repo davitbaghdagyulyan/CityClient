@@ -10,5 +10,6 @@
 #import "messages.h"
 @interface textResponse : JSONModel
 @property(nonatomic,strong) NSArray<messages>* messages;
-@property(nonatomic,strong) NSString* can_answer;
+@property(nonatomic,assign) NSInteger can_answer;
+
 @end

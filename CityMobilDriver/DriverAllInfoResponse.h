@@ -7,6 +7,9 @@
 //
 
 #import "JSONModel.h"
+//#import "ProfilViewController.h"
+
+@class ProfilViewController;
 
 @interface DriverAllInfoResponse : JSONModel
 @property(nonatomic,strong) NSString* bankid;
@@ -25,4 +28,12 @@
 @property(nonatomic,strong) NSString* driver_license_number;
 @property(nonatomic,strong) NSString* phone_text;
 @property(nonatomic,strong) NSString* photo;
+
+
+@property (nonatomic,strong) NSString* code;
+@property (nonatomic,strong) NSString* text;
+
+@property (nonatomic, weak) ProfilViewController* delegate;
+
+
 @end

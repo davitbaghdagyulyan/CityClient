@@ -11,8 +11,8 @@
 #import "JSONModel.h"
 
 @interface messages : JSONModel
-@property(nonatomic,strong) NSString* id;
-@property(nonatomic,strong) NSString* date;
+@property(nonatomic,strong,getter=getId) NSString* id;
+@property(nonatomic,strong, getter=getDate) NSString* date;
 @property(nonatomic,strong) NSString* text;
-@property(nonatomic,strong) NSString* from_me;
+@property(nonatomic,assign) NSInteger from_me;
 @end
