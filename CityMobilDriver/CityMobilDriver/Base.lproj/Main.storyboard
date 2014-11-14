@@ -3431,6 +3431,7 @@
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vmY-I1-Ltd">
                                 <rect key="frame" x="0.0" y="64" width="600" height="29"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="uuA-Ko-ymg"/>
                                 </constraints>
@@ -3438,6 +3439,7 @@
                                     <segment title="ПЛАТЕЖ ПО КАРТЕ"/>
                                     <segment title="QIWI"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="replenishmentSegmentedControl:" destination="Xdg-X0-9WC" eventType="valueChanged" id="C1F-PE-qhw"/>
                                 </connections>
@@ -6656,8 +6658,8 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="АРХИВ ЗАКАЗОВ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQd-L3-Kc1">
                                 <rect key="frame" x="150" y="74" width="300" height="21"/>
-                                <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.96078431372549022" green="0.50588235294117645" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -6666,7 +6668,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bW-S9-dtv">
                                         <rect key="frame" x="8" y="10" width="21" height="21"/>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="21" id="VEC-3z-Cve"/>
                                             <constraint firstAttribute="height" constant="21" id="gXm-t6-n7x"/>
@@ -6677,7 +6679,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25S-QR-ahf">
                                         <rect key="frame" x="49" y="10" width="239" height="21"/>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="6pg-ph-YDd">
                                                 <variation key="heightClass=compact" constant="150"/>
@@ -6709,7 +6711,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qca-Fa-qEJ">
                                         <rect key="frame" x="307" y="10" width="31" height="21"/>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LkB-I3-Wd8"/>
                                             <constraint firstAttribute="width" constant="31" id="uW9-Dg-7Ro"/>
@@ -6720,7 +6722,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f99-8e-6Ei">
                                         <rect key="frame" x="358" y="10" width="224" height="21"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="p8I-jz-qx0"/>
                                             <constraint firstAttribute="width" constant="70" id="yOT-Nx-nd0">
@@ -6744,7 +6746,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="месяц" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7P3-7J-WUP">
                                         <rect key="frame" x="358" y="10" width="226" height="21"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="2rv-cV-S26"/>
                                             <constraint firstAttribute="width" constant="68" id="dcR-xk-Abd">
@@ -6795,7 +6797,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.81853874362244894" green="0.81853874362244894" blue="0.81853874362244894" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="25S-QR-ahf" firstAttribute="leading" secondItem="ymv-8v-fqJ" secondAttribute="leading" id="13h-pC-jPF"/>
                                     <constraint firstAttribute="trailing" secondItem="f99-8e-6Ei" secondAttribute="trailing" constant="10" id="23q-cv-4sB"/>
@@ -6843,7 +6845,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="V1l-lB-tyv">
                                 <rect key="frame" x="4" y="201" width="592" height="349"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="UOx-5W-Hwi"/>
                                     <constraint firstAttribute="width" constant="300" id="rFk-hU-QP1"/>
@@ -6964,7 +6966,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vQd-L3-Kc1" firstAttribute="height" secondItem="aPc-0l-F3R" secondAttribute="height" multiplier="27/1136" constant="7" id="1Hy-9K-CmS"/>
                             <constraint firstAttribute="trailing" secondItem="ewZ-vx-436" secondAttribute="trailing" id="6eN-oS-LZm"/>
@@ -7002,9 +7004,13 @@
                         <outlet property="buttonDatePicker" destination="25S-QR-ahf" id="IuE-J9-QfA"/>
                         <outlet property="buttonFind" destination="5jG-RU-vUe" id="9Sj-Om-wTK"/>
                         <outlet property="buttonIntervalTableView" destination="f99-8e-6Ei" id="irg-Bt-ozh"/>
+                        <outlet property="designLabel" destination="wtP-3B-Hdg" id="Bk9-dN-t05"/>
+                        <outlet property="labelC" destination="4bW-S9-dtv" id="sMD-JC-Dkj"/>
                         <outlet property="labelInterval" destination="7P3-7J-WUP" id="1IB-eF-i9H"/>
+                        <outlet property="labelPo" destination="Qca-Fa-qEJ" id="R2v-Mi-MFF"/>
                         <outlet property="labelSelectedDate" destination="ymv-8v-fqJ" id="M1D-qZ-g1b"/>
                         <outlet property="tableViewOrdersHistory" destination="V1l-lB-tyv" id="Czl-cD-5no"/>
+                        <outlet property="titleLabel" destination="vQd-L3-Kc1" id="3xO-Mp-fVG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbY-tw-MR2" userLabel="First Responder" sceneMemberID="firstResponder"/>

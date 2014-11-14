@@ -64,11 +64,15 @@
                         <constraint firstItem="7t5-Aw-QqG" firstAttribute="width" secondItem="q1a-Tu-9lU" secondAttribute="width" multiplier="580/600" id="9JC-ua-eOl"/>
                         <constraint firstAttribute="trailing" secondItem="fyA-i2-cze" secondAttribute="trailing" id="BIu-rm-Mv5"/>
                         <constraint firstItem="rPI-qG-DEz" firstAttribute="width" secondItem="q1a-Tu-9lU" secondAttribute="width" multiplier="580/600" id="EcR-aC-n6H"/>
-                        <constraint firstItem="Hi3-Pj-mOB" firstAttribute="top" secondItem="q1a-Tu-9lU" secondAttribute="top" constant="40" id="GTp-KK-Hjw"/>
+                        <constraint firstItem="Hi3-Pj-mOB" firstAttribute="top" secondItem="q1a-Tu-9lU" secondAttribute="top" constant="40" id="GTp-KK-Hjw">
+                            <variation key="widthClass=compact" constant="10"/>
+                        </constraint>
                         <constraint firstItem="fyA-i2-cze" firstAttribute="leading" secondItem="q1a-Tu-9lU" secondAttribute="leading" id="Iy6-Pj-gYc"/>
                         <constraint firstItem="rPI-qG-DEz" firstAttribute="leading" secondItem="q1a-Tu-9lU" secondAttribute="trailing" multiplier="10/600" id="KAG-SQ-bdv"/>
                         <constraint firstItem="fyA-i2-cze" firstAttribute="top" secondItem="Hi3-Pj-mOB" secondAttribute="bottom" constant="20" id="Wpx-nK-Ew9"/>
-                        <constraint firstAttribute="bottom" secondItem="7t5-Aw-QqG" secondAttribute="bottom" id="YLn-zf-3L4"/>
+                        <constraint firstAttribute="bottom" secondItem="7t5-Aw-QqG" secondAttribute="bottom" id="YLn-zf-3L4">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
                         <constraint firstAttribute="trailing" secondItem="Hi3-Pj-mOB" secondAttribute="trailing" id="aep-0G-4sy"/>
                         <constraint firstItem="7t5-Aw-QqG" firstAttribute="top" secondItem="Hi3-Pj-mOB" secondAttribute="bottom" constant="50" id="axe-OZ-ltY"/>
                         <constraint firstItem="Hi3-Pj-mOB" firstAttribute="leading" secondItem="q1a-Tu-9lU" secondAttribute="leading" id="srF-0f-xNE"/>

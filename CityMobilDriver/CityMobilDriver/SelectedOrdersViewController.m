@@ -148,7 +148,6 @@
             CGSize maximumLabelSize = CGSizeMake(220,100);
             expectSizeForCollAddress = [labelCollAddressText sizeThatFits:maximumLabelSize];
         }
-        
         else
         {
             expectSizeForCollAddress = CGSizeMake(0, 0);
@@ -1853,7 +1852,7 @@ else
 }
 -(void)animation
 {
-    [UIView animateWithDuration:1
+    [UIView animateWithDuration:0.5
                           delay:0.0
                         options: 0
                      animations:^(void)
