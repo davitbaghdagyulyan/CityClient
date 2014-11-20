@@ -32,6 +32,11 @@
     [(UIView*)self.writeLetterLabel addGestureRecognizer:recognizer];
     
     // Do any additional setup after loading the view.
+    
+    if (self.isPushWidthInfoController) {
+        self.titleTextView.text = [NSString stringWithFormat:@"Re: %@",self.titleText];
+        self.titleTextView.userInteractionEnabled = NO;
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -45,9 +50,9 @@
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     
-    self.titleTextView.userInteractionEnabled=YES;
+    //self.titleTextView.userInteractionEnabled=YES;
     self.messageTextView.userInteractionEnabled=YES;
-   
+    
 }
 
 - (IBAction)back:(id)sender
@@ -106,7 +111,13 @@
     WriteLetterJson* writeLetterJsonObject=[[WriteLetterJson alloc]init];
     if((![self.titleTextView.text isEqualToString:@"Заголовок"])&&(![self.messageTextView.text isEqualToString:@"Текст сообщения"]))
     {
-    writeLetterJsonObject.title=self.titleTextView.text;
+        if (self.isPushWidthInfoController) {
+            writeLetterJsonObject.title=self.titleText;
+            writeLetterJsonObject.id_mail = self.id_mail;
+        }
+        else{
+            writeLetterJsonObject.title=self.titleTextView.text;
+        }
     writeLetterJsonObject.text=self.messageTextView.text;
     }
     NSDictionary*jsonDictionary=[writeLetterJsonObject toDictionary];

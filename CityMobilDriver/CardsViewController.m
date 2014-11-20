@@ -84,7 +84,7 @@
         
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
-        NSError*err;
+       // NSError*err;
         
         
         //        LoginResponse* loginResponseObject=nil;

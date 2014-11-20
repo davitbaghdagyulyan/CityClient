@@ -17,9 +17,10 @@
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
 		8F8D322A19E3C7D2003232F7 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */; };
 		8F8D322C19E3FA7F003232F7 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */; };
-		8FA028EF1A12295900729054 /* CustomCellOrdersHistory2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FA028EE1A12295900729054 /* CustomCellOrdersHistory2.xib */; };
 		8FA028F11A122B1700729054 /* star_none.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FA028F01A122B1700729054 /* star_none.png */; };
 		8FA028F31A122B2A00729054 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FA028F21A122B2A00729054 /* star.png */; };
+		8FB453071A1CB06B0063336C /* CustomCellSelectedOrders2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB453061A1CB06B0063336C /* CustomCellSelectedOrders2.xib */; };
+		8FB453091A1CB19E0063336C /* CustomCellOrdersHistory2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB453081A1CB19E0063336C /* CustomCellOrdersHistory2.xib */; };
 		8FB64FB119F91759005AAF2A /* metro.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB019F91759005AAF2A /* metro.png */; };
 		8FB64FB319F9221F005AAF2A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB219F9221F005AAF2A /* map.png */; };
 		8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */; };
@@ -31,6 +32,9 @@
 		8FC51A881A0CAA1100E13D03 /* OrdersHistoryJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */; };
 		8FC51A8B1A0CAD3000E13D03 /* OrdersHistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */; };
 		8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */; };
+		8FC5D8E91A14F5AD00B33FA9 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */; };
+		8FC5D8EB1A14FE5100B33FA9 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */; };
+		8FC5D8ED1A14FFC600B33FA9 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */; };
 		8FCB177E1A136EB200228F98 /* rublsi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FCB177D1A136E9200228F98 /* rublsi.ttf */; };
 		8FCB5E1E1A11102C00028035 /* RecallJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD9742019E6B66B008D23B9 /* RecallJson.m */; };
 		8FCCBBC019E2DDC400BD9BC1 /* chat1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */; };
@@ -52,7 +56,6 @@
 		8FD113891A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */; };
 		8FD25E921A0B88CD0056038C /* CustomCellOrdersHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */; };
 		8FD25E951A0B892A0056038C /* CustomCellOrdersHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */; };
-		8FDE115F1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE115E1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib */; };
 		8FDE11611A09186C00B4DA8A /* CustomCellSelectORDER2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */; };
 		8FDF958219DE7E60005A468A /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF958119DE7E60005A468A /* logo@2x.png */; };
 		8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032DD19DE8AD000B17C09 /* CustomCell.xib */; };
@@ -161,6 +164,7 @@
 		ECC2BA611A111B80009A8CE4 /* SelectedOrdersDetailsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */; };
 		ECC2BA621A111C18009A8CE4 /* SingleDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55988A19E5364900877CBC /* SingleDataProvider.m */; };
 		ECC2BA631A111C54009A8CE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428B719D0071F00F5C38C /* main.m */; };
+		ECC42DA81A1B3F750020F7C7 /* childYear.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC42DA71A1B3F750020F7C7 /* childYear.xib */; };
 		ECC471861A11EC770062803A /* MessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC471851A11EC770062803A /* MessagesCell.m */; };
 		ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC6A27519F791F700F85E02 /* CreateProfil.xib */; };
 		ECC71B8F19F00BFB00468D33 /* SendingMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC71B8E19F00BFB00468D33 /* SendingMessageViewController.m */; };
@@ -170,6 +174,8 @@
 		ECC8CCE61A10E58400883CD1 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE51A10E58400883CD1 /* box.png */; };
 		ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE71A10E7D800883CD1 /* box2.png */; };
 		ECC9215E1A1204920012FBFA /* UserRegistrationInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */; };
+		ECC929F51A19CAA80047E84C /* RobotSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC929F41A19CAA80047E84C /* RobotSettingsViewController.m */; };
+		ECC929FC1A1A11CB0047E84C /* ResponseGetAutoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC929FB1A1A11CB0047E84C /* ResponseGetAutoSettings.m */; };
 		ECC965281A00C23800768E1F /* CarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC965271A00C23800768E1F /* CarInfoViewController.m */; };
 		ECC9652B1A00D91A00768E1F /* EditCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9652A1A00D91A00768E1F /* EditCarInfoViewController.m */; };
 		ECC9652E1A00F85800768E1F /* RequestGetMarkList.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9652D1A00F85800768E1F /* RequestGetMarkList.m */; };
@@ -260,6 +266,9 @@
 		ECEBD87E1A0A664E00118466 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD87D1A0A664E00118466 /* RegistrationViewController.m */; };
 		ECEBD8821A0A73C300118466 /* GetActivationCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD8811A0A73C300118466 /* GetActivationCodeRequest.m */; };
 		ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD8841A0A781700118466 /* GetActivationCodeResponse.m */; };
+		ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC62B1A1C7215000F5776 /* Tariffs.m */; };
+		ECEEC62F1A1C873A000F5776 /* RequestUpdateAutoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC62E1A1C873A000F5776 /* RequestUpdateAutoSettings.m */; };
+		ECEEC6321A1C8967000F5776 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC6311A1C8967000F5776 /* Settings.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
 		ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4822B1A08D29B00415270 /* ResponseGetCarInfo.m */; };
 		ECF529B71A1229D300150931 /* CustomViewForMaps.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B61A1229D300150931 /* CustomViewForMaps.xib */; };
@@ -267,6 +276,8 @@
 		ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B91A122BC500150931 /* gmap@2x.png */; };
 		ECF529BE1A12366B00150931 /* CustomViewForMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529BD1A12366B00150931 /* CustomViewForMaps.m */; };
 		ECF529C41A124AA000150931 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529C31A124AA000150931 /* CustomWebView.m */; };
+		ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */; };
+		ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,9 +309,10 @@
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
-		8FA028EE1A12295900729054 /* CustomCellOrdersHistory2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellOrdersHistory2.xib; sourceTree = "<group>"; };
 		8FA028F01A122B1700729054 /* star_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_none.png; path = CityMobilDriver/star_none.png; sourceTree = "<group>"; };
 		8FA028F21A122B2A00729054 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = CityMobilDriver/star.png; sourceTree = "<group>"; };
+		8FB453061A1CB06B0063336C /* CustomCellSelectedOrders2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders2.xib; sourceTree = "<group>"; };
+		8FB453081A1CB19E0063336C /* CustomCellOrdersHistory2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellOrdersHistory2.xib; sourceTree = "<group>"; };
 		8FB64FB019F91759005AAF2A /* metro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro.png; sourceTree = "<group>"; };
 		8FB64FB219F9221F005AAF2A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cash_payment_small.png; sourceTree = "<group>"; };
@@ -319,6 +331,9 @@
 		8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrdersHistoryResponse.m; path = ../OrdersHistoryResponse.m; sourceTree = "<group>"; };
 		8FC51A8C1A0CAD6300E13D03 /* OrdersHistoryElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrdersHistoryElements.h; path = ../OrdersHistoryElements.h; sourceTree = "<group>"; };
 		8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrdersHistoryElements.m; path = ../OrdersHistoryElements.m; sourceTree = "<group>"; };
+		8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		8FCB177D1A136E9200228F98 /* rublsi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rublsi.ttf; sourceTree = "<group>"; };
 		8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat1@2x.png"; sourceTree = "<group>"; };
 		8FCCBBC119E2DE2600BD9BC1 /* ch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ch@2x.png"; sourceTree = "<group>"; };
@@ -345,7 +360,6 @@
 		8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellOrdersHistory.xib; path = ../CustomCellOrdersHistory.xib; sourceTree = "<group>"; };
 		8FD25E931A0B892A0056038C /* CustomCellOrdersHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCellOrdersHistory.h; path = ../CustomCellOrdersHistory.h; sourceTree = "<group>"; };
 		8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCellOrdersHistory.m; path = ../CustomCellOrdersHistory.m; sourceTree = "<group>"; };
-		8FDE115E1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders2.xib; sourceTree = "<group>"; };
 		8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER2.xib; sourceTree = "<group>"; };
 		8FDF958119DE7E60005A468A /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		8FE032DD19DE8AD000B17C09 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
@@ -520,6 +534,7 @@
 		ECC2BA571A10D2EF009A8CE4 /* DesignationCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignationCustomCell.h; sourceTree = "<group>"; };
 		ECC2BA581A10D2EF009A8CE4 /* DesignationCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignationCustomCell.m; sourceTree = "<group>"; };
 		ECC2BA5A1A10F801009A8CE4 /* 12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12@2x.png"; sourceTree = "<group>"; };
+		ECC42DA71A1B3F750020F7C7 /* childYear.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = childYear.xib; sourceTree = "<group>"; };
 		ECC471841A11EC770062803A /* MessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesCell.h; sourceTree = "<group>"; };
 		ECC471851A11EC770062803A /* MessagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesCell.m; sourceTree = "<group>"; };
 		ECC6A27519F791F700F85E02 /* CreateProfil.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateProfil.xib; sourceTree = "<group>"; };
@@ -532,6 +547,10 @@
 		ECC8CCE71A10E7D800883CD1 /* box2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box2.png; sourceTree = "<group>"; };
 		ECC9215C1A1204920012FBFA /* UserRegistrationInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegistrationInformation.h; sourceTree = "<group>"; };
 		ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegistrationInformation.m; sourceTree = "<group>"; };
+		ECC929F31A19CAA80047E84C /* RobotSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotSettingsViewController.h; sourceTree = "<group>"; };
+		ECC929F41A19CAA80047E84C /* RobotSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotSettingsViewController.m; sourceTree = "<group>"; };
+		ECC929FA1A1A11CB0047E84C /* ResponseGetAutoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetAutoSettings.h; sourceTree = "<group>"; };
+		ECC929FB1A1A11CB0047E84C /* ResponseGetAutoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetAutoSettings.m; sourceTree = "<group>"; };
 		ECC965261A00C23800768E1F /* CarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfoViewController.h; sourceTree = "<group>"; };
 		ECC965271A00C23800768E1F /* CarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfoViewController.m; sourceTree = "<group>"; };
 		ECC965291A00D91A00768E1F /* EditCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCarInfoViewController.h; sourceTree = "<group>"; };
@@ -694,6 +713,12 @@
 		ECEBD8811A0A73C300118466 /* GetActivationCodeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetActivationCodeRequest.m; sourceTree = "<group>"; };
 		ECEBD8831A0A781700118466 /* GetActivationCodeResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetActivationCodeResponse.h; sourceTree = "<group>"; };
 		ECEBD8841A0A781700118466 /* GetActivationCodeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetActivationCodeResponse.m; sourceTree = "<group>"; };
+		ECEEC62A1A1C7215000F5776 /* Tariffs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tariffs.h; sourceTree = "<group>"; };
+		ECEEC62B1A1C7215000F5776 /* Tariffs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tariffs.m; sourceTree = "<group>"; };
+		ECEEC62D1A1C873A000F5776 /* RequestUpdateAutoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestUpdateAutoSettings.h; sourceTree = "<group>"; };
+		ECEEC62E1A1C873A000F5776 /* RequestUpdateAutoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUpdateAutoSettings.m; sourceTree = "<group>"; };
+		ECEEC6301A1C8967000F5776 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		ECEEC6311A1C8967000F5776 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+UINavigationController_shouldAutorotate.h"; path = "../UINavigationController+UINavigationController_shouldAutorotate.h"; sourceTree = "<group>"; };
 		ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+UINavigationController_shouldAutorotate.m"; path = "../UINavigationController+UINavigationController_shouldAutorotate.m"; sourceTree = "<group>"; };
 		ECF4822A1A08D29B00415270 /* ResponseGetCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetCarInfo.h; sourceTree = "<group>"; };
@@ -705,6 +730,10 @@
 		ECF529BD1A12366B00150931 /* CustomViewForMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewForMaps.m; sourceTree = "<group>"; };
 		ECF529C21A124AA000150931 /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
 		ECF529C31A124AA000150931 /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebView.m; sourceTree = "<group>"; };
+		ECF7A7821A1CE68E001F0B49 /* StandartResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandartResponse.h; sourceTree = "<group>"; };
+		ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandartResponse.m; sourceTree = "<group>"; };
+		ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingDocumentsViewController.h; sourceTree = "<group>"; };
+		ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingDocumentsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -756,6 +785,7 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
 				ECCA908919DEE2050007831F /* JSONModel */,
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
@@ -850,6 +880,8 @@
 				ECC9652A1A00D91A00768E1F /* EditCarInfoViewController.m */,
 				ECCD34451A039EA4000444BF /* CardsViewController.h */,
 				ECCD34461A039EA4000444BF /* CardsViewController.m */,
+				ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */,
+				ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */,
 			);
 			name = Profil;
 			path = ..;
@@ -1184,12 +1216,17 @@
 		ECC471881A11F0790062803A /* SelectedOrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
+
 				EC5AD4351A14D4F500588DE6 /* AssignOrder */,
+
+				8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */,
+
 				8FD011B51A03D54F00E9363A /* SelectedOrdersViewController.h */,
 				8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */,
 				8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */,
+				8FB453061A1CB06B0063336C /* CustomCellSelectedOrders2.xib */,
+				8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */,
 				8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */,
-				8FDE115E1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib */,
 				8FD011BB1A03DA1A00E9363A /* CustomCellSelectORDER.xib */,
 				8FD011B81A03D65300E9363A /* CustomCellSelectORDER.h */,
 				8FCB177D1A136E9200228F98 /* rublsi.ttf */,
@@ -1213,7 +1250,7 @@
 				8FD25E931A0B892A0056038C /* CustomCellOrdersHistory.h */,
 				8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */,
 				8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */,
-				8FA028EE1A12295900729054 /* CustomCellOrdersHistory2.xib */,
+				8FB453081A1CB19E0063336C /* CustomCellOrdersHistory2.xib */,
 			);
 			name = OrdersHistoryViewController;
 			sourceTree = "<group>";
@@ -1296,6 +1333,34 @@
 			);
 			name = SendingMessageViewController;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		ECC929F21A19CA840047E84C /* Robot Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ECC929F61A1A115E0047E84C /* Requests */,
+				ECC929F31A19CAA80047E84C /* RobotSettingsViewController.h */,
+				ECC929F41A19CAA80047E84C /* RobotSettingsViewController.m */,
+				ECC42DA71A1B3F750020F7C7 /* childYear.xib */,
+			);
+			name = "Robot Settings";
+			sourceTree = "<group>";
+		};
+		ECC929F61A1A115E0047E84C /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				ECC929FA1A1A11CB0047E84C /* ResponseGetAutoSettings.h */,
+				ECC929FB1A1A11CB0047E84C /* ResponseGetAutoSettings.m */,
+				ECEEC62A1A1C7215000F5776 /* Tariffs.h */,
+				ECEEC62B1A1C7215000F5776 /* Tariffs.m */,
+				ECEEC6301A1C8967000F5776 /* Settings.h */,
+				ECEEC6311A1C8967000F5776 /* Settings.m */,
+				ECEEC62D1A1C873A000F5776 /* RequestUpdateAutoSettings.h */,
+				ECEEC62E1A1C873A000F5776 /* RequestUpdateAutoSettings.m */,
+				ECF7A7821A1CE68E001F0B49 /* StandartResponse.h */,
+				ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */,
+			);
+			name = Requests;
 			sourceTree = "<group>";
 		};
 		ECC978EF1A00DCE800D77B80 /* StatisticsViewController */ = {
@@ -1436,6 +1501,7 @@
 			children = (
 				ECB38B281A0D12D400DFBB77 /* Designation Icons Images */,
 				ECC8CCE51A10E58400883CD1 /* box.png */,
+				8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */,
 				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				8FA028F21A122B2A00729054 /* star.png */,
 				8FA028F01A122B1700729054 /* star_none.png */,
@@ -1733,13 +1799,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FC5D8ED1A14FFC600B33FA9 /* Roboto-LightItalic.ttf in Resources */,
+				8FC5D8EB1A14FE5100B33FA9 /* Roboto-Italic.ttf in Resources */,
+				8FC5D8E91A14F5AD00B33FA9 /* Roboto-Bold.ttf in Resources */,
 				8FCB177E1A136EB200228F98 /* rublsi.ttf in Resources */,
 				ECB38B3E1A0D130B00DFBB77 /* 8@2x.png in Resources */,
 				ECB38B391A0D130B00DFBB77 /* 3@2x.png in Resources */,
 				8F8D322C19E3FA7F003232F7 /* RobotoCondensed-Light.ttf in Resources */,
 				8F8D322A19E3C7D2003232F7 /* RobotoCondensed-Regular.ttf in Resources */,
 				ECEB634A19F63E4200E6F666 /* photo.png in Resources */,
-				8FDE115F1A08C9E900B4DA8A /* CustomCellSelectedOrders2.xib in Resources */,
 				8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */,
 				8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */,
 				ECF529BA1A122BC500150931 /* yandex@2x.png in Resources */,
@@ -1747,10 +1815,15 @@
 				ECCD99421A19DF93009D482C /* Roboto-Medium.ttf in Resources */,
 				ECC786301A109F8A00DAD7A6 /* rb_2.png in Resources */,
 				ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */,
+				ECC42DA81A1B3F750020F7C7 /* childYear.xib in Resources */,
 				ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */,
 				ECCD99391A19DF93009D482C /* Roboto-Bold.ttf in Resources */,
 				8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */,
+
 				ECCD99371A19DF93009D482C /* Roboto-Black.ttf in Resources */,
+
+				8FB453091A1CB19E0063336C /* CustomCellOrdersHistory2.xib in Resources */,
+
 				EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */,
 				ECCD993B1A19DF93009D482C /* Roboto-BoldCondensedItalic.ttf in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
@@ -1789,7 +1862,6 @@
 				ECCD993C1A19DF93009D482C /* Roboto-BoldItalic.ttf in Resources */,
 				8FCFF59419F5054200C6E3A7 /* ic_transportation_of_animals_small.png in Resources */,
 				8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */,
-				8FA028EF1A12295900729054 /* CustomCellOrdersHistory2.xib in Resources */,
 				8FDF958219DE7E60005A468A /* logo@2x.png in Resources */,
 				ECCD993E1A19DF93009D482C /* Roboto-CondensedItalic.ttf in Resources */,
 				ECCD993D1A19DF93009D482C /* Roboto-Condensed.ttf in Resources */,
@@ -1815,6 +1887,7 @@
 				ECCD99401A19DF93009D482C /* Roboto-Light.ttf in Resources */,
 				8FD011BC1A03DA1A00E9363A /* CustomCellSelectORDER.xib in Resources */,
 				D70428C319D0071F00F5C38C /* Images.xcassets in Resources */,
+				8FB453071A1CB06B0063336C /* CustomCellSelectedOrders2.xib in Resources */,
 				EC896A7D19FE5C4700822D9E /* CustomView2.xib in Resources */,
 				ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */,
 				8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */,
@@ -1858,10 +1931,15 @@
 				8FCB5E1E1A11102C00028035 /* RecallJson.m in Sources */,
 				ECEBD8821A0A73C300118466 /* GetActivationCodeRequest.m in Sources */,
 				ECCD4F461A0A2624002456F6 /* SucceedResponse.m in Sources */,
+				ECEEC6321A1C8967000F5776 /* Settings.m in Sources */,
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
 				ECCC237219E7F7930091C43E /* CustomCell.m in Sources */,
+
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
+
+				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
+
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
 				ECB52E3C1A0778BD0091293F /* StartAfterMKADClass.m in Sources */,
 				ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */,
@@ -1890,6 +1968,7 @@
 				ECD2188F1A1CE7E200F38F7D /* TachometerViewController.m in Sources */,
 				ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */,
 				ECB52E421A0779020091293F /* DriveAfterMKADClass.m in Sources */,
+				ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */,
 				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
 				ECB52E2D1A07763D0091293F /* SuburbClass.m in Sources */,
 				ECB59E9A19F6A3B300F69529 /* GetQiwiBillsUrlResponse.m in Sources */,
@@ -1926,6 +2005,7 @@
 				8FBD45181A0B62EB004CEF7D /* OrdersHistoryViewController.m in Sources */,
 				ECCA300619F8F36100BE48E0 /* DriverAllInfoResponse.m in Sources */,
 				ECB38B231A0CFA7B00DFBB77 /* DesignationIconsViewController.m in Sources */,
+				ECC929FC1A1A11CB0047E84C /* ResponseGetAutoSettings.m in Sources */,
 				ECCA90A719DEE2060007831F /* NSArray+JSONModel.m in Sources */,
 				EC03D0E61A091F1B00D90F72 /* TariffsCustomView.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
@@ -1940,6 +2020,7 @@
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
 				ECC978F21A00DD4700D77B80 /* StatisticsViewController.m in Sources */,
 				ECB52E4E1A077F620091293F /* SpanClass.m in Sources */,
+				ECC929F51A19CAA80047E84C /* RobotSettingsViewController.m in Sources */,
 				ECB3D76B1A03D16E0039DD3A /* XMLReader.m in Sources */,
 				ECF529C41A124AA000150931 /* CustomWebView.m in Sources */,
 				ECCA90AC19DEE2060007831F /* JSONValueTransformer.m in Sources */,
@@ -2009,6 +2090,8 @@
 				ECB52E2A1A0773190091293F /* UnitElements.m in Sources */,
 				ECEA963E19F54917001A6305 /* CustomView.m in Sources */,
 				ECB52E451A077A770091293F /* OtherClass.m in Sources */,
+				ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */,
+				ECEEC62F1A1C873A000F5776 /* RequestUpdateAutoSettings.m in Sources */,
 				ECEBD87E1A0A664E00118466 /* RegistrationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

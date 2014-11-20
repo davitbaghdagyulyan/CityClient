@@ -15,7 +15,7 @@
 #import "CarInfoViewController.h"
 #import "CreateProfilViewController.h"
 
-@interface ProfilViewController : UIViewController <UIScrollViewDelegate,UIWebViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface ProfilViewController : UIViewController <UIScrollViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 
 
@@ -57,4 +57,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *driverLicenseClass;
 
 
+
+#pragma mark - left menu
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+- (IBAction)back:(UIButton *)sender;
 @end

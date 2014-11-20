@@ -21,4 +21,10 @@
 - (IBAction)edit:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *carImage;
 
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+#pragma mark - left Menu
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)back:(UIButton *)sender;
 @end

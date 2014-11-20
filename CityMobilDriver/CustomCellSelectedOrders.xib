@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+        <mutableArray key="RobotoCondensed-Regular.ttf">
+            <string>RobotoCondensed-Regular</string>
+            <string>RobotoCondensed-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,23 +32,20 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGc-fZ-nhU">
                                         <rect key="frame" x="0.0" y="0.0" width="247" height="101"/>
-                                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZF-e4-752">
                                         <rect key="frame" x="635" y="0.0" width="106" height="101"/>
                                         <color key="backgroundColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="deviceRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="HZF-e4-752" firstAttribute="width" secondItem="tKq-rp-Jrd" secondAttribute="width" multiplier="1/7" id="1kn-Ad-Ozb"/>
                                     <constraint firstItem="aGc-fZ-nhU" firstAttribute="leading" secondItem="tKq-rp-Jrd" secondAttribute="leading" id="4L6-M6-DRe"/>
@@ -55,8 +62,8 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0y7-rv-wBJ">
                                         <rect key="frame" x="54" y="0.0" width="648" height="101"/>
-                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -74,7 +81,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="0y7-rv-wBJ" firstAttribute="height" secondItem="SV1-Ib-HoY" secondAttribute="height" constant="1" id="O2v-Xc-La2"/>
                                     <constraint firstItem="GeX-TT-ZL8" firstAttribute="leading" secondItem="SV1-Ib-HoY" secondAttribute="trailing" multiplier="1/21" id="PLi-oe-49X"/>
@@ -140,13 +147,13 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAE-lY-OMb">
                                         <rect key="frame" x="54" y="0.0" width="648" height="101"/>
-                                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="XAE-lY-OMb" firstAttribute="top" secondItem="LAA-pw-btG" secondAttribute="top" id="2J6-wW-i2m"/>
                                     <constraint firstItem="XAE-lY-OMb" firstAttribute="height" secondItem="LAA-pw-btG" secondAttribute="height" id="NFT-gx-9pa"/>
@@ -165,7 +172,7 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LHK-kv-JMy" secondAttribute="trailing" id="0O5-82-Wdn"/>
                             <constraint firstItem="LAA-pw-btG" firstAttribute="width" secondItem="H1A-5c-Qvs" secondAttribute="width" id="B21-Pa-xXK"/>
@@ -187,6 +194,7 @@
                             <constraint firstItem="ejR-vd-wGE" firstAttribute="top" secondItem="SV1-Ib-HoY" secondAttribute="bottom" id="c5G-W3-w9Z"/>
                             <constraint firstItem="TmN-kj-axx" firstAttribute="width" secondItem="H1A-5c-Qvs" secondAttribute="width" multiplier="12/15" id="eAf-Ff-U5v"/>
                             <constraint firstItem="SV1-Ib-HoY" firstAttribute="top" secondItem="tKq-rp-Jrd" secondAttribute="bottom" id="eFX-Bi-Mz4"/>
+                            <constraint firstAttribute="height" constant="302" id="eWE-vS-dBk"/>
                             <constraint firstItem="LAA-pw-btG" firstAttribute="height" secondItem="H1A-5c-Qvs" secondAttribute="height" multiplier="100/302" id="hgU-vf-XiU"/>
                             <constraint firstItem="LHK-kv-JMy" firstAttribute="leading" secondItem="H1A-5c-Qvs" secondAttribute="leading" id="jip-OE-dGE"/>
                             <constraint firstItem="LAA-pw-btG" firstAttribute="leading" secondItem="H1A-5c-Qvs" secondAttribute="leading" id="kFf-Ep-33P"/>
@@ -227,12 +235,14 @@
                 <outlet property="View1" destination="tKq-rp-Jrd" id="2bL-vb-fo8"/>
                 <outlet property="View2" destination="SV1-Ib-HoY" id="HJG-a2-7YL"/>
                 <outlet property="View3" destination="LAA-pw-btG" id="RwQ-1i-gWG"/>
+                <outlet property="additionalView" destination="H1A-5c-Qvs" id="2no-hd-msX"/>
+                <outlet property="heightAdditionalView" destination="eWE-vS-dBk" id="L8h-Wh-axf"/>
                 <outlet property="labelCollMetroName" destination="0y7-rv-wBJ" id="tqq-RK-jck"/>
                 <outlet property="labelDeliveryMetroName" destination="XAE-lY-OMb" id="whp-iD-2pO"/>
                 <outlet property="labelPercent" destination="HZF-e4-752" id="OHc-aX-jvq"/>
                 <outlet property="labelShortName" destination="aGc-fZ-nhU" id="2uW-ax-fTS"/>
             </connections>
-            <point key="canvasLocation" x="537.5" y="362"/>
+            <point key="canvasLocation" x="627.5" y="491"/>
         </tableViewCell>
     </objects>
     <resources>

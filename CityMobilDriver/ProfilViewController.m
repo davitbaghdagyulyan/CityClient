@@ -7,7 +7,7 @@
 //
 
 #import "ProfilViewController.h"
-
+#import "SendingDocumentsViewController.h"
 
 @interface ProfilViewController ()
 {
@@ -15,7 +15,6 @@
     NSInteger flag;
     LeftMenu*leftMenu;
     
-    UIWebView* webView;
     UIActivityIndicatorView* indicator;
     
     DriverAllInfoResponse* jsonResponseObject;
@@ -35,12 +34,13 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    flag=0;
-    
-    leftMenu=[LeftMenu getLeftMenu:self];
-    
-
     self.segmentedControll.selectedSegmentIndex = 0;
+    
+    flag=0;
+    leftMenu=[LeftMenu getLeftMenu:self];
+    self.scrollView.userInteractionEnabled=YES;
+    self.segmentedControll.userInteractionEnabled=YES;
+    self.segmentedControll.userInteractionEnabled=YES;
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
@@ -86,9 +86,8 @@
     NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"------------======= = = == -%@",jsonString);
     jsonResponseObject = [[DriverAllInfoResponse alloc]initWithString:jsonString error:&err];
-    
-    NSLog(@"******* %@",[jsonResponseObject description]);
-    
+    jsonResponseObject.delegate = self;
+
 }
 
 
@@ -134,6 +133,11 @@
 
 -(NSString*)getLink
 {
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    
     RequestDocScansUrl* RequestDocScansUrlObject=[[RequestDocScansUrl alloc]init];
     RequestDocScansUrlObject.key = [SingleDataProvider sharedKey].key;
     NSDictionary* jsonDictionary = [RequestDocScansUrlObject toDictionary];
@@ -164,32 +168,22 @@
     //NSLog(@"--%@",jsonString);
     ResponseGetDocScansUrl* jsonResponseGetUrlObject = [[ResponseGetDocScansUrl alloc]initWithString:jsonString error:&err];
     //NSLog(@"******* %@",jsonResponseObject.doc_scans_url);
+    [indicator stopAnimating];
     return jsonResponseGetUrlObject.doc_scans_url;
+    
 }
 
 
 
 - (IBAction)sendDocumentsAction:(UIButton *)sender
 {
-    webView = [[UIWebView alloc]initWithFrame:self.view.frame];
-    webView.delegate = self;
-    
-    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicator.center = self.view.center;
-    indicator.color=[UIColor blackColor];
-    [indicator startAnimating];
-    
-    
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self getLink]]]];
-    [self.view addSubview:webView];
-    [webView addSubview:indicator];
+    SendingDocumentsViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SendingDocumentsViewController"];
+    controller.urlString = [self getLink];
+    [self.navigationController pushViewController:controller animated:NO];
     
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [indicator stopAnimating];
-}
+
 
 - (IBAction)segmentContollAction:(UISegmentedControl*)sender
 {
@@ -226,9 +220,9 @@
 
 
 
-///////////
+#pragma mark - left Menu
 
-- (void)openAndCloseLeftMenu:(UIButton *)sender
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     
     [UIView animateWithDuration:0.5
@@ -251,25 +245,20 @@
          if (flag==0)
          {
              flag=1;
-             //firstObj.FirstScrollView.userInteractionEnabled=NO;
-             //firstObj.segmentControlView.userInteractionEnabled=NO;
-            
+             self.scrollView.userInteractionEnabled = NO;
+             self.segmentedControll.userInteractionEnabled = NO;
          }
          else
          {
              flag=0;
-             //firstObj.FirstScrollView.userInteractionEnabled=YES;
-             //firstObj.segmentControlView.userInteractionEnabled=YES;
+             self.scrollView.userInteractionEnabled = YES;
+             self.segmentedControll.userInteractionEnabled = YES;
          }
          
      }
-     
-     
      ];
     
 }
-
-
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -296,8 +285,8 @@
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              flag=0;
-             //firstObj.FirstScrollView.userInteractionEnabled=YES;
-             //firstObj.segmentControlView.userInteractionEnabled=YES;
+             self.scrollView.userInteractionEnabled = YES;
+             self.segmentedControll.userInteractionEnabled = YES;
              
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
@@ -306,44 +295,28 @@
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              
-             //firstObj.FirstScrollView.userInteractionEnabled=NO;
-             //firstObj.segmentControlView.userInteractionEnabled=NO;
+             self.scrollView.userInteractionEnabled = NO;
+             self.segmentedControll.userInteractionEnabled = NO;
              flag=1;
          }
          point.y=leftMenu.center.y;
-         
-         
-         
-         
          leftMenu.center=point;
          NSLog(@"\n%f",leftMenu.frame.size.width);
          
      }
                      completion:nil
-     
-     
      ];
-    
-    
+
 }
-
-
-
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    
-    
-    
     if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     
     CGPoint point;
-    
-    
-    
     point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
     point.y=leftMenu.center.y;
     if (point.x>leftMenu.frame.size.width/2)
@@ -352,14 +325,16 @@
     }
     leftMenu.center=point;
     
-//    firstObj.FirstScrollView.userInteractionEnabled=NO;
-//    firstObj.segmentControlView.userInteractionEnabled=NO;
+    self.scrollView.userInteractionEnabled = NO;
+    self.segmentedControll.userInteractionEnabled = NO;
     
     flag=1;
     
     
 }
 
-
+- (IBAction)back:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 @end
