@@ -151,7 +151,6 @@
 		ECB59E9A19F6A3B300F69529 /* GetQiwiBillsUrlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB59E9919F6A3B300F69529 /* GetQiwiBillsUrlResponse.m */; };
 		ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC00181A0B8A3A0040EBC7 /* CustomTableView.m */; };
 		ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC001B1A0BBF900040EBC7 /* CustomLabel.m */; };
-		ECBCC8EE1A1DDC38003A6345 /* UIAlertView+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCC8ED1A1DDC38003A6345 /* UIAlertView+Orientation.m */; };
 		ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFF24319F9106600DE8131 /* CardsElements.m */; };
 		ECC2BA561A10CD3B009A8CE4 /* DesignationCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC2BA551A10CD3B009A8CE4 /* DesignationCustomCell.xib */; };
 		ECC2BA591A10D2EF009A8CE4 /* DesignationCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC2BA581A10D2EF009A8CE4 /* DesignationCustomCell.m */; };
@@ -526,8 +525,6 @@
 		ECBC00181A0B8A3A0040EBC7 /* CustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableView.m; sourceTree = "<group>"; };
 		ECBC001A1A0BBF900040EBC7 /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
 		ECBC001B1A0BBF900040EBC7 /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
-		ECBCC8EC1A1DDC38003A6345 /* UIAlertView+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Orientation.h"; sourceTree = "<group>"; };
-		ECBCC8ED1A1DDC38003A6345 /* UIAlertView+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Orientation.m"; sourceTree = "<group>"; };
 		ECBFF24219F9106600DE8131 /* CardsElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsElements.h; sourceTree = "<group>"; };
 		ECBFF24319F9106600DE8131 /* CardsElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsElements.m; sourceTree = "<group>"; };
 		ECC2BA551A10CD3B009A8CE4 /* DesignationCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesignationCustomCell.xib; sourceTree = "<group>"; };
@@ -1216,11 +1213,8 @@
 		ECC471881A11F0790062803A /* SelectedOrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
-
 				EC5AD4351A14D4F500588DE6 /* AssignOrder */,
-
 				8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */,
-
 				8FD011B51A03D54F00E9363A /* SelectedOrdersViewController.h */,
 				8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */,
 				8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */,
@@ -1317,8 +1311,6 @@
 				ECB3D7701A03D95B0039DD3A /* NSDictionary+BVJSONString.m */,
 				ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */,
 				ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */,
-				ECBCC8EC1A1DDC38003A6345 /* UIAlertView+Orientation.h */,
-				ECBCC8ED1A1DDC38003A6345 /* UIAlertView+Orientation.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1819,11 +1811,8 @@
 				ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */,
 				ECCD99391A19DF93009D482C /* Roboto-Bold.ttf in Resources */,
 				8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */,
-
 				ECCD99371A19DF93009D482C /* Roboto-Black.ttf in Resources */,
-
 				8FB453091A1CB19E0063336C /* CustomCellOrdersHistory2.xib in Resources */,
-
 				EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */,
 				ECCD993B1A19DF93009D482C /* Roboto-BoldCondensedItalic.ttf in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
@@ -1935,11 +1924,8 @@
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
 				ECCC237219E7F7930091C43E /* CustomCell.m in Sources */,
-
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
-
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
-
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
 				ECB52E3C1A0778BD0091293F /* StartAfterMKADClass.m in Sources */,
 				ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */,
@@ -1994,7 +1980,6 @@
 				ECB52E301A0776530091293F /* TransferClass.m in Sources */,
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,
 				8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */,
-				ECBCC8EE1A1DDC38003A6345 /* UIAlertView+Orientation.m in Sources */,
 				ECC965371A011F4700768E1F /* RequestGetModelList.m in Sources */,
 				ECC965341A0102AE00768E1F /* Mark.m in Sources */,
 				ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */,
