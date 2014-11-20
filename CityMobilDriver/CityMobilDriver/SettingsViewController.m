@@ -396,20 +396,19 @@
 {
     
     NSNumber* isNightMode = nil;
-    if ([self image:self.checkBox.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]]) {
-        [self.checkBox.imageView setImage:[UIImage imageNamed:@"box.png"]];
-        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
-        self.settings.textColor = [UIColor blackColor];
-        self.yandexSettings.textColor = [UIColor blackColor];
-        isNightMode = [NSNumber numberWithBool:NO];
-    }
-    else{
-        [self.checkBox.imageView setImage:[UIImage imageNamed:@"box2.png"]];
-        
+    if (![self.checkBox isSelected]) {
         self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
         self.settings.textColor = [UIColor orangeColor];
         self.yandexSettings.textColor = [UIColor orangeColor];
         isNightMode = [NSNumber numberWithBool:YES];
+        [self.checkBox setSelected:YES];
+    }
+    else{
+        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
+        self.settings.textColor = [UIColor blackColor];
+        self.yandexSettings.textColor = [UIColor blackColor];
+        isNightMode = [NSNumber numberWithBool:NO];
+        [self.checkBox setSelected:NO];
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];

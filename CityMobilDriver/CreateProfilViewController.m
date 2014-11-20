@@ -39,28 +39,55 @@
     
     self.lastName.returnKeyType = UIReturnKeyNext;
     self.lastName.delegate = self;
+    self.lastName.placeholder = self.lastNameText;
+    
     self.name.returnKeyType = UIReturnKeyNext;
     self.name.delegate = self;
+    self.name.placeholder = self.nameText;
+    
     self.middleName.returnKeyType = UIReturnKeyNext;
     self.middleName.delegate = self;
+    self.middleName.placeholder = self.middleNameText;
     
     self.pasportSer.returnKeyType = UIReturnKeyNext;
     self.pasportSer.delegate = self;
+    self.pasportSer.placeholder = self.pasportSerText;
+    
     self.pasportNum.returnKeyType = UIReturnKeyNext;
     self.pasportNum.delegate = self;
+    self.pasportNum.placeholder = self.pasportNumText;
+    
     self.pasportWho.returnKeyType = UIReturnKeyNext;
     self.pasportWho.delegate = self;
+    self.pasportWho.placeholder = self.pasportWhoText;
+    
     self.pasportAdress.returnKeyType = UIReturnKeyNext;
     self.pasportAdress.delegate = self;
+    self.pasportAdress.placeholder = self.pasportAdressText;
     
     self.passportDate.returnKeyType = UIReturnKeyNext;
     self.passportDate.delegate = self;
+    self.passportDate.placeholder = self.passportDateText;
+    
     self.driverLicenseSerial.returnKeyType = UIReturnKeyNext;
     self.driverLicenseSerial.delegate = self;
+    self.driverLicenseSerial.placeholder = self.driverLicenseSerialText;
+    
     self.driverLicenseNumber.returnKeyType = UIReturnKeyNext;
     self.driverLicenseNumber.delegate = self;
+    self.driverLicenseNumber.placeholder = self.driverLicenseNumberText;
+    
     self.driverLicenseClass.returnKeyType = UIReturnKeyDone;
     self.driverLicenseClass.delegate = self;
+    self.driverLicenseClass.placeholder = self.driverLicenseClassText;
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     [self registerForKeyboardNotifications];
@@ -70,7 +97,6 @@
     
     UITapGestureRecognizer* tapBeganSecondView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchRecognizer)];
     [self.secondView addGestureRecognizer:tapBeganSecondView];
-    
 }
 
 
@@ -219,8 +245,6 @@
     NSLog(@"%@",NSStringFromCGRect(activeTextFeild.frame));
     if (!CGRectContainsPoint(aRect, activeTextFeild.frame.origin) ) {
         [self.scrollView scrollRectToVisible:activeTextFeild.frame animated:YES];
-        
-        
     }
 }
 

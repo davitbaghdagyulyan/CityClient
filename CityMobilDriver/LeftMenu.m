@@ -93,6 +93,11 @@
             identity =@"RootViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
+        case 1:
+            myClass = NSClassFromString(@"MyOrdersViewController");
+            identity =@"MyOrdersViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
         case 2:
             myClass = NSClassFromString(@"ReplenishmentViewController");
             identity =@"ReplenishmentViewController";

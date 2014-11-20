@@ -380,7 +380,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         loginResponseObject = [[LoginResponse alloc] initWithString:jsonString error:&err];
         
         
-        
+        NSLog(@"%@",loginResponseObject.key);
         
         [SingleDataProvider sharedKey].key = loginResponseObject.key;
         [UserInformationProvider sharedInformation].balance = loginResponseObject.balance;

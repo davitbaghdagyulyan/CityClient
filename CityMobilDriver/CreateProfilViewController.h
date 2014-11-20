@@ -52,4 +52,28 @@
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(UIButton *)sender;
+
+
+
+
+
+
+@property (weak, nonatomic) NSString *middleNameText;
+@property (weak, nonatomic) NSString *nameText;
+@property (weak, nonatomic) NSString *lastNameText;
+///////
+
+@property (weak, nonatomic) NSString *pasportSerText;
+@property (weak, nonatomic) NSString *pasportNumText;
+@property (weak, nonatomic) NSString *pasportWhoText;
+@property (weak, nonatomic) NSString *passportDateText;
+@property (weak, nonatomic) NSString *pasportAdressText;
+
+///////
+
+@property (weak, nonatomic) NSString *driverLicenseNumberText;
+@property (weak, nonatomic) NSString *driverLicenseSerialText;
+@property (weak, nonatomic) NSString *driverLicenseClassText;
+
+
 @end
