@@ -111,7 +111,9 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
         login.placeholder = @"логин";
         password.placeholder = @"Пароль";
-
+        
+        login.text=@"110314";
+        password.text=@"52750";
     }
     
     
@@ -121,7 +123,6 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     }
     
 
-    
 }
 
 

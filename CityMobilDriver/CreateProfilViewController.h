@@ -48,4 +48,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *driverLicenseSerial;
 @property (weak, nonatomic) IBOutlet UITextField *driverLicenseClass;
 
+
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)back:(UIButton *)sender;
 @end

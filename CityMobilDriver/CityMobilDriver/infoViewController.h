@@ -17,14 +17,14 @@
 
 @property(nonatomic,strong)NSString* key;
 @property (weak, nonatomic) IBOutlet UIWebView *web;
-@property(nonatomic,strong) NSString* text;
-@property(nonatomic,strong) NSString* HTMLString;
-@property(nonatomic,strong) UIButton* backButton;
+//@property(nonatomic,strong) NSString* text;
+//@property(nonatomic,strong) NSString* HTMLString;
+//@property(nonatomic,strong) UIButton* backButton;
 @property(nonatomic,strong) NSString* id_mail;
 @property(nonatomic,strong) NSString* titleText;
-@property (weak, nonatomic) IBOutlet UIView *navigationView;
+//@property (weak, nonatomic) IBOutlet UIView *navigationView;
 
-
+- (IBAction)back:(id)sender;
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 

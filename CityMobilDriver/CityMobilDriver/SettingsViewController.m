@@ -50,10 +50,7 @@
     //NSLog(@"%i",self.nightMode.on);
     
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue]) {
-        [self.checkBox.imageView setImage:[UIImage imageNamed:@"box2.png"]];
-        [self setAppMode];
-    }
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -111,6 +108,11 @@
     fontStileText = [self replaceString:self.stileIcon.titleLabel.text];
     languageText = [self replaceString:self.selectLanguage.titleLabel.text];
     
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue]) {
+        [self.checkBox.imageView setImage:[UIImage imageNamed:@"box2.png"]];
+        [self setAppMode];
+    }
 }
 
 
@@ -392,11 +394,11 @@
 
 - (IBAction)nightModeAction:(id)sender
 {
+    
     NSNumber* isNightMode = nil;
     if ([self image:self.checkBox.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]]) {
         [self.checkBox.imageView setImage:[UIImage imageNamed:@"box.png"]];
-        
-        self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
+        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
         self.settings.textColor = [UIColor blackColor];
         self.yandexSettings.textColor = [UIColor blackColor];
         isNightMode = [NSNumber numberWithBool:NO];
@@ -424,7 +426,7 @@
     }
     else
     {
-        self.backgroundImage.image = [UIImage imageNamed:@"XXX.png"];
+        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
         self.settings.textColor = [UIColor blackColor];
         self.yandexSettings.textColor = [UIColor blackColor];
     }
@@ -818,15 +820,5 @@
     self.scrolView.userInteractionEnabled=NO;
     flag=1;
 }
-
-
-
-
-
-
-
-
-
-
 
 @end

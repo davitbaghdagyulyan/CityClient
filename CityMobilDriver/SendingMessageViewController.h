@@ -10,6 +10,10 @@
 #import "LeftMenu.h"
 @interface SendingMessageViewController : UIViewController<UITextViewDelegate>
 
+@property (nonatomic, assign) BOOL isPushWidthInfoController;
+@property (nonatomic, strong) NSString* titleText;
+@property (nonatomic, strong) NSString* id_mail;
+
 - (IBAction)sendAction:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UITextView *messageTextView;
 @property (strong, nonatomic) IBOutlet UITextView *titleTextView;

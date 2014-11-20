@@ -65,4 +65,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *carImageView;
 
 
+
+#pragma mark - left Menu
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)back:(UIButton *)sender;
+
 @end
