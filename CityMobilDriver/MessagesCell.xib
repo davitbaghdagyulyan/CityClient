@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQM-RZ-8O2">
                         <rect key="frame" x="0.0" y="0.0" width="580" height="43"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejl-ox-VvU" userLabel="Label1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejl-ox-VvU" userLabel="Label1" customClass="CustomLabel">
                                 <rect key="frame" x="0.0" y="2" width="452" height="39"/>
                                 <color key="backgroundColor" white="0.85472741788321172" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
@@ -62,7 +62,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateLabel" destination="o8H-lG-ZDT" id="sII-LH-ttM"/>
-                <outlet property="titLabel" destination="ejl-ox-VvU" id="bwX-uD-jiL"/>
+                <outlet property="titLabel" destination="ejl-ox-VvU" id="59Y-LG-660"/>
             </connections>
             <point key="canvasLocation" x="131" y="107"/>
         </tableViewCell>

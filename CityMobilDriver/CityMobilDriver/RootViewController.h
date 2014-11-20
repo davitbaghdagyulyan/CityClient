@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
-
+#import "UIAlertView+Orientation.h"
 #import "MessagesViewController.h"
 @interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 

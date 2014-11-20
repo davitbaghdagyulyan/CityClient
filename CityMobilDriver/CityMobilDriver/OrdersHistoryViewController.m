@@ -13,14 +13,12 @@
 #import "OrdersHistoryResponse.h"
 #import "OrdersHistoryJson.h"
 #import "LeftMenu.h"
-
 @interface OrdersHistoryViewController ()
 {
  LeftMenu*leftMenu;
  NSInteger flag;
 }
 @end
-
 @implementation OrdersHistoryViewController
 {
     //Design For self.View
@@ -33,7 +31,7 @@
     //Interface For the Views that surrounds datePicker
     UILabel * labelSettingTheDate;
     UIDatePicker * datePicker;
-    UILabel * designLabel;
+    UILabel * designLabel1;
     UIButton *  buttonCancell;
     UIButton * buttonSetStartDate;
     //Objects For Date Formating and Request
@@ -45,24 +43,12 @@
     UIAlertView *alertWrongData;
     UIActivityIndicatorView* indicator;
     NSInteger  ratingArray[5];
+    NSMutableArray * arrayRateImageViews;
+    float height;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //Adding Gradient For self.view
-    gradLayerForSelfView =[CAGradientLayer layer];
-    UIColor * gradColStartSelView =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];
-    UIColor * gradColFinSelView =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.0f];
-    gradLayerForSelfView.frame =CGRectMake(0,65, self.view.frame.size.width,self.view.frame.size.height);
-    [gradLayerForSelfView setColors:[NSArray arrayWithObjects:(id)(gradColStartSelView.CGColor), (id)(gradColFinSelView.CGColor),nil]];
-    [self.view.layer insertSublayer:gradLayerForSelfView atIndex:0];
-    //Adding Gradient For GreyView
-    gradLayer=[CAGradientLayer layer];
-    UIColor * graColStart = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
-    UIColor * graColFin =[UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0f];
-    gradLayer.frame = CGRectMake(0, 0, self.GreyView.frame.size.width/2+16,self.GreyView.frame.size.height);
-    [gradLayer setColors:[NSArray arrayWithObjects:(id)(graColStart.CGColor), (id)(graColFin.CGColor),nil]];
-    [self.GreyView.layer insertSublayer:gradLayer atIndex:0];
     //Setting Labels and Buttons clearColor
     self.GreyView.backgroundColor =[UIColor clearColor];
     self.labelInterval.backgroundColor =[UIColor clearColor];
@@ -97,8 +83,22 @@
 -(void)viewDidAppear:(BOOL)animated
 
 {
+    //Adding Gradient For self.view
+    gradLayerForSelfView =[CAGradientLayer layer];
+    UIColor * gradColStartSelView =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];
+    UIColor * gradColFinSelView =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.0f];
+    gradLayerForSelfView.frame =CGRectMake(0,65, self.view.frame.size.width,self.view.frame.size.height);
+    [gradLayerForSelfView setColors:[NSArray arrayWithObjects:(id)(gradColStartSelView.CGColor), (id)(gradColFinSelView.CGColor),nil]];
+    [self.view.layer insertSublayer:gradLayerForSelfView atIndex:0];
+    //Adding Gradient For GreyView
+    gradLayer=[CAGradientLayer layer];
+    UIColor * graColStart = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
+    UIColor * graColFin =[UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0f];
+    gradLayer.frame = self.GreyView.bounds;
+    [gradLayer setColors:[NSArray arrayWithObjects:(id)(graColStart.CGColor), (id)(graColFin.CGColor),nil]];
+    [self.GreyView.layer insertSublayer:gradLayer atIndex:0];
     [super viewDidAppear:YES];
-     leftMenu=[LeftMenu getLeftMenu:self];
+    leftMenu=[LeftMenu getLeftMenu:self];
 
 }
 - (void)didReceiveMemoryWarning {
@@ -125,6 +125,8 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    height =38;
+    NSString * myString = @"jsdfjhfjhsfjkhsfj";
     if (tableView==tableViewInterval)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
@@ -136,85 +138,116 @@
         cell.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
         return cell;
     }
-    if (0)
+    if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating] && [[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating]integerValue] != -1)
     {
-        NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
-        CustomCellOrdersHistory * cell = (CustomCellOrdersHistory *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
-        if (cell == nil)
+       if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review] && [[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review].length !=0)
         {
-            
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellOrdersHistory2" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
+            UILabel * labelDefiningSize;
+            CGSize  expectSize;
+            //NSString * myString =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
+            labelDefiningSize  = [[UILabel alloc] init];
+            labelDefiningSize.text =myString;
+            labelDefiningSize.numberOfLines = 0;
+            labelDefiningSize.lineBreakMode = NSLineBreakByWordWrapping;
+            CGSize maximumLabelSize = CGSizeMake(252,100);
+            expectSize = [labelDefiningSize sizeThatFits:maximumLabelSize];
+            if (expectSize.height<=20)
+            {
+                height =height+20;
+            }
+            else
+            {
+                height =height+expectSize.height;
+            }
         }
-        UIView * myView = [[UIView alloc]initWithFrame:CGRectMake(0,200,100,20)];
-        myView.backgroundColor = [UIColor greenColor];
-        [cell.underView addSubview:myView];
-        [self addYandexRattingToView:myView rate:3];
-        return  cell;
-  
+        else
+        {
+            height =height +20;
+        }
     }
     else
     {
-    NSString *simpleTableIdentifierIphone = @"SimpleTableCellIphone";
+        height = height +2;
+    }
+    NSString *simpleTableIdentifierIphone = @"SimpleTableCellIdentifier";
     CustomCellOrdersHistory * cell = (CustomCellOrdersHistory *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
     {
         
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellOrdersHistory" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellOrdersHistory2" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-     cell.labelCallMetroName.font =[UIFont fontWithName:@"Roboto-Regular" size:12];
-     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName])
-     {
-            cell.labelCallMetroName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName];
-     }
-     else
+    arrayRateImageViews = [[NSMutableArray alloc]initWithObjects:cell.rateImgView1,cell.rateImgView2,cell.rateImgView3,cell.rateImgView4,cell.rateImgView5, nil];
+    cell.labelYandexReview.numberOfLines = 0;
+    cell.labelYandexReview.font=[UIFont fontWithName:@"Roboto-Regular" size:12];
+    cell.labelYandexReview.lineBreakMode =  NSLineBreakByWordWrapping;
+    cell.labelYandexReview.text = myString;
+    cell.labelCallMetroName.font =[UIFont fontWithName:@"Roboto-Regular" size:12];
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName])
     {
-          cell.labelCallMetroName.text = @"";
+        cell.labelCallMetroName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName];
+    }
+    else
+    {
+        cell.labelCallMetroName.text = @"";
     }
     cell.deliveryMetroName.font =[UIFont fontWithName:@"Roboto-Regular" size:12];
     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]DeliveryMetroName])
     {
-            cell.deliveryMetroName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]DeliveryMetroName];
+        cell.deliveryMetroName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]DeliveryMetroName];
     }
     else
     {
-    cell.deliveryMetroName.text= @"";
+        cell.deliveryMetroName.text= @"";
     }
     cell.labelDate.textColor =[UIColor whiteColor];
     cell.labelDate.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:12];
-    cell.labelDate.numberOfLines=2;
+    cell.labelDate.numberOfLines =2;
     NSString * collDate =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollDate];
     if (collDate)
     {
     NSString *collDate1 =[collDate substringToIndex:16];
-    cell.labelDate.text =[collDate1 substringFromIndex:2];
+    NSString * collDate2 =[collDate1 substringFromIndex:2];
+    NSString * collDateFirstRow=[collDate2 substringToIndex:8];
+    NSString * collDateSecondRow =[collDate2 substringFromIndex:9];
+    NSString * stringForDate = [NSString stringWithFormat:@"%@\n%@",collDateFirstRow,collDateSecondRow];
+    cell.labelDate.text = stringForDate;
     }
     else
     {
-    cell.labelDate.text= @"";
+        cell.labelDate.text= @"";
     }
     cell.labelShortName.font = [UIFont fontWithName:@"Roboto-Regular" size:30];
     cell.labelShortName.textColor  = [UIColor whiteColor];
     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]shortname])
     {
-     cell.labelShortName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]shortname];
+        cell.labelShortName.text =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]shortname];
     }
     else
     {
-     cell.labelShortName.text =@"";
+        cell.labelShortName.text =@"";
     }
-    cell.labelPrice.font = [UIFont fontWithName:@"RublSign" size:20];
     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]price])
     {
-    cell.labelPrice.text =[NSString stringWithFormat:@"%@ b",[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]price]];
+        cell.labelPrice.text =[NSString stringWithFormat:@"%@ b",[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]price]];
     }
     else
     {
-    cell.labelPrice.text =@"";
+        cell.labelPrice.text =@"";
     }
+    if (height ==40)
+    {
+        cell.labelYandexReview.text = @"";
+        cell.rateImgView1.hidden =YES;
+        cell.rateImgView2.hidden = YES;
+        cell.rateImgView3.hidden = YES;
+        cell.rateImgView4.hidden =YES;
+        cell.rateImgView5.hidden = YES;
+    }
+    [self addYandexRate:3];
     return  cell;
-  }
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -225,7 +258,7 @@
     }
     else
     {
-        return 38;
+     return height;
     }
 }
 
@@ -286,24 +319,32 @@ else
     if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
        [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
-        datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y+25,self.tableViewOrdersHistory.frame.size.width,0);
+        datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y+50,self.tableViewOrdersHistory.frame.size.width,0);
     }
     else
     {
     datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x+self.tableViewOrdersHistory.frame.size.width/4 ,self.GreyView.frame.origin.y+20,self.tableViewOrdersHistory.frame.size.width/2,0);
     }
     labelSettingTheDate = [[UILabel alloc]init];
-    labelSettingTheDate.frame  = CGRectMake(datePicker.frame.origin.x ,datePicker.frame.origin.y-25,datePicker.frame.size.width,25);
+    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    {
+        labelSettingTheDate.frame  = CGRectMake(datePicker.frame.origin.x ,datePicker.frame.origin.y-50,datePicker.frame.size.width,50);
+    }
+    else
+    {
+        labelSettingTheDate.frame  = CGRectMake(datePicker.frame.origin.x ,datePicker.frame.origin.y-25,datePicker.frame.size.width,25);
+    }
     labelSettingTheDate.font=[UIFont fontWithName:@"Roboto-Regular" size:15];
     labelSettingTheDate.textColor=[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1];
     labelSettingTheDate.backgroundColor=[UIColor whiteColor];
     labelSettingTheDate.text=@"Настройка даты";
     labelSettingTheDate.textAlignment=NSTextAlignmentCenter;
-    designLabel=[[UILabel alloc]init];
-    designLabel.frame=CGRectMake(datePicker.frame.origin.x, labelSettingTheDate.frame.origin.y + labelSettingTheDate.frame.size.height, datePicker.frame.size.width,1);
-    designLabel.backgroundColor=[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1];
+    designLabel1=[[UILabel alloc]init];
+    designLabel1.frame=CGRectMake(datePicker.frame.origin.x, labelSettingTheDate.frame.origin.y + labelSettingTheDate.frame.size.height, datePicker.frame.size.width,1);
+    designLabel1.backgroundColor=[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1];
     [self.view  addSubview:labelSettingTheDate];
-    [self.view  addSubview:designLabel];
+    [self.view  addSubview:designLabel1];
     buttonCancell = [[UIButton alloc]init];
     if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
                         [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
@@ -351,7 +392,7 @@ else
     [buttonCancell removeFromSuperview];
     [buttonSetStartDate removeFromSuperview];
     [labelSettingTheDate removeFromSuperview];
-    [designLabel removeFromSuperview];
+    [designLabel1 removeFromSuperview];
     self.tableViewOrdersHistory.userInteractionEnabled = YES;
 }
 
@@ -363,7 +404,7 @@ else
     [buttonSetStartDate removeFromSuperview];
     [buttonCancell removeFromSuperview];
     [labelSettingTheDate removeFromSuperview];
-    [designLabel removeFromSuperview];
+    [designLabel1 removeFromSuperview];
     self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",
                                   [df stringFromDate:datePicker.date]];
     self.tableViewOrdersHistory.userInteractionEnabled = YES;
@@ -378,7 +419,7 @@ else
     [buttonCancell removeFromSuperview];
     [buttonSetStartDate removeFromSuperview];
     [tableViewInterval removeFromSuperview];
-    [designLabel removeFromSuperview];
+    [designLabel1 removeFromSuperview];
     self.buttonDatePicker.userInteractionEnabled = YES;
     self.buttonIntervalTableView.userInteractionEnabled = YES;
     
@@ -632,7 +673,7 @@ else
             [buttonSetStartDate removeFromSuperview];
             [buttonCancell removeFromSuperview];
             [tableViewInterval removeFromSuperview];
-            [designLabel removeFromSuperview];
+            [designLabel1 removeFromSuperview];
             indicator.center = self.view.center;
             gradLayer.frame =CGRectMake(0, 0, self.GreyView.frame.size.width,self.GreyView.frame.size.height);
             gradLayerForSelfView.frame =CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height);
@@ -649,7 +690,7 @@ else
             [buttonCancell removeFromSuperview];
             [buttonSetStartDate removeFromSuperview];
             [tableViewInterval removeFromSuperview];
-            [designLabel removeFromSuperview];
+            [designLabel1 removeFromSuperview];
             gradLayer.frame = CGRectMake(0, 0, self.GreyView.frame.size.width,self.GreyView.frame.size.height);
             gradLayerForSelfView.frame =CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height);
             indicator.center = self.view.center;
@@ -684,8 +725,7 @@ else
 
 
 
--(void)addYandexRattingToView:(UIView*)view
-                         rate:(NSInteger)k
+-(void)addYandexRate:(NSInteger)k
 {
  
     for (int i=0; i<k; i++)
@@ -695,26 +735,20 @@ else
 
     for (int i =0; i<5; i++)
     {
-        UIImageView * img1 = [[UIImageView alloc]init];
-        if (ratingArray[i]==1)
+        UIImageView * imgView = [arrayRateImageViews objectAtIndex:i];
+       if (ratingArray[i]==1)
         {
-            img1.image = [UIImage imageNamed:@"star.png"];
+            
+            imgView.image =[UIImage imageNamed:@"star.png"];
         }
         else
         {
-            img1.image = [UIImage imageNamed:@"star_none.png"];
+            imgView.image = [UIImage imageNamed:@"star_none.png"];
         }
         
-        img1.frame =CGRectMake(0+i*20, 0,20,20);
-        
-        [view addSubview:img1];
         
     }
 
 }
-
-    
-    
-
 
 @end

@@ -9,23 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomCellSelectedOrders : UITableViewCell
-
-
-
+@property (weak, nonatomic) IBOutlet UIView *additionalView;
 @property (weak, nonatomic) IBOutlet UILabel *labelShortName0;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *labelPercent0;
-
 @property (weak, nonatomic) IBOutlet UILabel *labelCallMetroName0;
 
+@property (weak, nonatomic) IBOutlet UIView *additionalViewXib2;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightAdditionalView;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewCall;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewDel;
-
-
-
 
 @property (weak, nonatomic) IBOutlet UIView *View1;
 @property (weak, nonatomic) IBOutlet UIView *View2;
@@ -34,6 +29,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelPercent;
 @property (weak, nonatomic) IBOutlet UILabel *labelCollMetroName;
 @property (weak, nonatomic) IBOutlet UILabel *labelDeliveryMetroName;
-
-
 @end

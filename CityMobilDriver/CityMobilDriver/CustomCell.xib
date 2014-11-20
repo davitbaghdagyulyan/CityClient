@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -15,49 +15,63 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbR-QR-phX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="222" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-bY-jOO">
-                                <rect key="frame" x="275" y="0.0" width="45" height="41"/>
-                                <color key="backgroundColor" red="0.52156862745098043" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyZ-wQ-Vh0">
-                                <rect key="frame" x="0.0" y="0.0" width="275" height="41"/>
-                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOM-Iw-Kua" userLabel="View2">
+                                <rect key="frame" x="275" y="0.0" width="45" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1N-pg-vM0" userLabel="View1">
+                                <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VuP-bY-jOO" firstAttribute="height" secondItem="gbR-QR-phX" secondAttribute="height" constant="-3" id="3vX-zt-RJz"/>
-                            <constraint firstAttribute="bottom" secondItem="VuP-bY-jOO" secondAttribute="bottom" constant="3" id="GYL-Vg-Wj5"/>
-                            <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="leading" secondItem="gbR-QR-phX" secondAttribute="leading" id="LNu-pW-LCE"/>
-                            <constraint firstItem="VuP-bY-jOO" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="0.141" id="OXf-4e-zUJ"/>
-                            <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="0.859" id="Ud6-TM-0r0"/>
-                            <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="height" secondItem="gbR-QR-phX" secondAttribute="height" constant="-3" id="axW-Dk-5Mo"/>
-                            <constraint firstAttribute="trailing" secondItem="VuP-bY-jOO" secondAttribute="trailing" id="kbh-8p-FkW"/>
-                            <constraint firstItem="SyZ-wQ-Vh0" firstAttribute="top" secondItem="gbR-QR-phX" secondAttribute="top" id="qm6-Ce-giZ"/>
+                            <constraint firstItem="R1N-pg-vM0" firstAttribute="leading" secondItem="gbR-QR-phX" secondAttribute="leading" id="6OP-8M-aDo"/>
+                            <constraint firstAttribute="height" secondItem="iOM-Iw-Kua" secondAttribute="height" id="AYb-EE-sjg"/>
+                            <constraint firstAttribute="bottom" secondItem="iOM-Iw-Kua" secondAttribute="bottom" id="BUF-Ox-xU7"/>
+                            <constraint firstItem="iOM-Iw-Kua" firstAttribute="top" secondItem="gbR-QR-phX" secondAttribute="top" id="LmO-Cr-5Wz"/>
+                            <constraint firstItem="iOM-Iw-Kua" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="0.141" id="PCb-4k-A03"/>
+                            <constraint firstItem="R1N-pg-vM0" firstAttribute="width" secondItem="gbR-QR-phX" secondAttribute="width" multiplier="0.859" id="V7B-Ab-Ibd"/>
+                            <constraint firstAttribute="height" secondItem="R1N-pg-vM0" secondAttribute="height" id="cYP-AJ-pNc"/>
+                            <constraint firstAttribute="bottom" secondItem="R1N-pg-vM0" secondAttribute="bottom" id="czo-Sh-6IB"/>
+                            <constraint firstItem="R1N-pg-vM0" firstAttribute="top" secondItem="gbR-QR-phX" secondAttribute="top" id="wWQ-bH-n8r"/>
+                            <constraint firstAttribute="trailing" secondItem="iOM-Iw-Kua" secondAttribute="trailing" id="yCR-tD-HIM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cYP-AJ-pNc"/>
+                                <exclude reference="AYb-EE-sjg"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="gbR-QR-phX" firstAttribute="top" secondItem="RYb-qC-B70" secondAttribute="top" id="57O-PC-f7r"/>
+                    <constraint firstAttribute="trailing" secondItem="gbR-QR-phX" secondAttribute="trailing" id="Egx-6s-l6U"/>
                     <constraint firstAttribute="trailingMargin" secondItem="gbR-QR-phX" secondAttribute="trailing" constant="-8" id="LPm-cX-T9U"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gbR-QR-phX" secondAttribute="bottom" constant="-9" id="azh-r3-RRK"/>
                     <constraint firstItem="gbR-QR-phX" firstAttribute="leading" secondItem="RYb-qC-B70" secondAttribute="leadingMargin" constant="-8" id="eBb-QG-TyY"/>
+                    <constraint firstAttribute="bottom" secondItem="gbR-QR-phX" secondAttribute="bottom" constant="3" id="jQi-02-xlM"/>
                     <constraint firstItem="gbR-QR-phX" firstAttribute="top" secondItem="RYb-qC-B70" secondAttribute="topMargin" constant="-8" id="sbS-mU-BwN"/>
+                    <constraint firstItem="gbR-QR-phX" firstAttribute="leading" secondItem="RYb-qC-B70" secondAttribute="leading" id="urR-Dv-M6z"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="LPm-cX-T9U"/>
+                        <exclude reference="azh-r3-RRK"/>
+                        <exclude reference="eBb-QG-TyY"/>
+                        <exclude reference="sbS-mU-BwN"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="forConstraints" destination="gbR-QR-phX" id="HaU-lD-yJi"/>
-                <outlet property="label1" destination="SyZ-wQ-Vh0" id="NVr-N4-ZeA"/>
-                <outlet property="label2" destination="VuP-bY-jOO" id="rWk-df-aWb"/>
+                <outlet property="View1" destination="R1N-pg-vM0" id="Xtg-cc-G95"/>
+                <outlet property="View2" destination="iOM-Iw-Kua" id="4ID-Yi-HDc"/>
+                <outlet property="underView" destination="gbR-QR-phX" id="TfD-0c-vlM"/>
             </connections>
-            <point key="canvasLocation" x="628" y="58"/>
+            <point key="canvasLocation" x="416" y="193"/>
         </tableViewCell>
     </objects>
 </document>

@@ -17,17 +17,25 @@
 #import "CustomCellSelectORDER.h"
 #import "CustomViewForMaps.h"
 
+#import "AssignOrderJson.h"
+#import "AssignOrderResponse.h"
+
+#import "TakenOrderViewController.h"
 
 @interface SelectedOrdersViewController ()
 {
     NSInteger flag;
+    NSInteger flag1;
     LeftMenu*leftMenu;
     NSUInteger index;
     CustomViewForMaps*viewMap;
     CGRect rect;
     NSUInteger number;
-     CLLocationManager *locationManager;
+    CLLocationManager *locationManager;
     CLLocation* currentLocation;
+    AssignOrderResponse*assignOrderResponseObject;
+    UIAlertView*confirmOrdersTakenAlert;
+    UIView*underView;
 }
 
 @end
@@ -59,26 +67,42 @@
     UILabel * labelDeliveryAddressText;
     UILabel *labelDeliveryComment;
     UILabel *labelOurComment;
+    NSTimer * timerForTitleLabel;
+    NSTimer * requestTimer;
+    bool timerCreated;
+    
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.titleLabel.font = [UIFont fontWithName:@"MyriadPro-Regular" size:20];
+    //FONT TITLE LABEL
+    self.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:20];
     self.titleLabel.text = self.titleString;
+    self.titleLabel.textColor =[UIColor redColor];
+//    if ([self.titleString isEqualToString:@"СРОЧНЫЕ"])
+//    {
+//    timerForTitleLabel = [NSTimer scheduledTimerWithTimeInterval:5
+//                                                          target:self selector:@selector(toggleTitleLabel) userInfo:nil repeats:YES];}
     flag=0;
     self.tableViewOrdersDetails.userInteractionEnabled = YES;
     leftMenu=[LeftMenu getLeftMenu:self];
+    timerCreated =NO;
     [self requestOrder];
     selectedRow = -1;
+    //MAPVIEW
     viewMap=[[CustomViewForMaps alloc] init];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
     viewMap = [nib objectAtIndex:0];
-    
-    
     viewMap.frame=self.view.frame;
     viewMap.center=self.view.center;
+    
+    viewMap.smallMapView.layer.cornerRadius = 30;
+     viewMap.smallMapView.layer.borderWidth = 2;
+    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+    viewMap.smallMapView.layer.masksToBounds = YES;
+    
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
     [singleTapYandex setNumberOfTapsRequired:1];
@@ -90,29 +114,26 @@
     viewMap.googleImageView.userInteractionEnabled=YES;
     [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
     [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
-    
- 
-   
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [locationManager requestWhenInUseAuthorization];
     }
     [locationManager startUpdatingLocation];
-    
+}
 
-    
+-(void)toggleTitleLabel
+{
+[self.titleLabel setHidden:(!self.titleLabel.hidden)];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableViewOrdersDetails.separatorStyle = UITableViewCellSeparatorStyleNone;
     deviceType= [UIDevice currentDevice].model;
-    
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -134,14 +155,14 @@
     //SELECTED
     if(selectedRow==indexPath.row)
     {
-        //CALLADDRESS
+      //CALLADDRESS
         CGSize expectSizeForCollAddress;
         NSString * collAddress =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollAddressText];
         NSLog(@"CollAddress is %@",collAddress);
         if (collAddress && collAddress.length !=0)
         {
             labelCollAddressText  = [[UILabel alloc] init];
-            labelCollAddressText.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:14];
+            labelCollAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
             labelCollAddressText.text = collAddress;
             labelCollAddressText.numberOfLines = 0;
             labelCollAddressText.lineBreakMode = NSLineBreakByWordWrapping;
@@ -168,7 +189,7 @@
         if(callComment && callComment.length !=0)
         {
             labelCallComment  = [[UILabel alloc] init];
-            labelCallComment.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:14];
+            labelCallComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelCallComment.text =callComment;
             labelCallComment.numberOfLines = 0;
             labelCallComment.lineBreakMode = NSLineBreakByWordWrapping;
@@ -194,7 +215,7 @@
         if(deliveryAddress && deliveryAddress.length !=0)
         {
             labelDeliveryAddressText  = [[UILabel alloc] init];
-            labelDeliveryAddressText.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:14];
+            labelDeliveryAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
             labelDeliveryAddressText.text =deliveryAddress;
             labelDeliveryAddressText.numberOfLines = 0;
             labelDeliveryAddressText.lineBreakMode = NSLineBreakByWordWrapping;
@@ -220,7 +241,7 @@
         if(deliveryComment && deliveryComment.length !=0)
         {
             labelDeliveryComment  = [[UILabel alloc] init];
-            labelDeliveryComment.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:14];
+            labelDeliveryComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelDeliveryComment.text =deliveryComment;
             labelDeliveryComment.numberOfLines = 0;
             labelDeliveryComment.lineBreakMode = NSLineBreakByWordWrapping;
@@ -242,7 +263,7 @@
         if(ourComment && ourComment.length !=0)
         {
             labelOurComment  = [[UILabel alloc] init];
-            labelOurComment.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:14];
+            labelOurComment.font =  [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelOurComment.text = ourComment;
             labelOurComment.numberOfLines = 0;
             labelOurComment.lineBreakMode = NSLineBreakByWordWrapping;
@@ -267,16 +288,13 @@
         {
             height2 = 0;
         }
-
-        
-        //DEFINING HEIGHT FOR CELL
+       //DEFINING HEIGHT FOR CELL
         height = 2+1+22+height1+height2+1+4+45+4;
        //CustomCellSelectedORDER2
-        //xxxx[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1
-        if ([[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1)
+      if ([[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1)
         {
             height = 2+1+22+height1+4+80;
-            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDER2Selected%d",indexPath.row];
+            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDER2Selected%ld",(long)indexPath.row];
             CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
@@ -284,7 +302,8 @@
                 cell = [nib objectAtIndex:0];
             }
            //******************************************Nareks Change*******************************************
-            
+
+            [cell.Button addTarget:self action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
             [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
             index=indexPath.row;
@@ -293,12 +312,13 @@
             [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
             NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
             [cell.whiteView addConstraint:view11Height];
+
         //VIEW2
         cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
         [cell.View2 removeConstraint:[cell.View2.constraints objectAtIndex:0]];
         NSLayoutConstraint * view22Height =[NSLayoutConstraint constraintWithItem:cell.View2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height1];
             [cell.whiteView addConstraint:view22Height];
-        if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName])
+              if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
                 cell.labelCallMetroName.text =[NSString stringWithFormat:@"  %@",[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
             }
@@ -341,7 +361,6 @@
                 stringForLabelPercent = percent;
             }
      stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
-     cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
      cell.labelPercent.text = stringForLabelPercent;
      if (expectSizeForCollAddress.height !=0)
      {
@@ -392,6 +411,19 @@
             }
     idhash =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] idhash];
     [cell.showAddress  addTarget:self action:@selector(showAddress) forControlEvents:UIControlEventTouchUpInside];
+
+            underView=cell.underView;
+
+    if (flag1 ==-1)
+    {
+                cell.whiteLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+    }
+    else
+    {
+                cell.whiteLabel.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+    }
+        
+
     return cell;
     }
     NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%ld",(long)indexPath.row];
@@ -402,11 +434,11 @@
             cell = [nib objectAtIndex:0];
         }
     
-        
+        [cell.Button addTarget:self action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
         [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
         [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
         index=indexPath.row;
-        // VIEW1
+    // VIEW1
     cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
     cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
     [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
@@ -451,6 +483,7 @@
          }
          
          */
+    
     if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName])
         {
             cell.labelCallMetroName.text = [[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName];
@@ -660,7 +693,6 @@
             stringForLabelPercent = percent;
         }
         stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
-        cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
         cell.labelPercent.textColor = [UIColor whiteColor];
         cell.labelPercent.text = stringForLabelPercent;
         if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] shortname])
@@ -682,6 +714,20 @@
         }
         stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,callDateFormat,shortName];
         cell.labelShortName.text=[NSString stringWithFormat:@"  %@", stringForLabelShortName];
+
+        underView=cell.underView;
+
+        if (flag1 ==-1)
+        {
+            cell.whiteLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+        }
+        else
+        {
+            cell.whiteLabel.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+        }
+
+       
+
         return  cell;
         
     }
@@ -723,9 +769,6 @@
             stringForLabelPercent = percent;
         }
         stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
-        // cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
-        //cell.labelPercent.textColor = [UIColor whiteColor];
-        //cell.labelPercent.text = stringForLabelPercent;
         NSString * collAddressType =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollAddrTypeMenu];
         /*  Will add after I will have images
          switch ([collAddressType integerValue]) {
@@ -762,7 +805,6 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
-            cell.labelPercent0.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
             cell.labelPercent0.textColor = [UIColor whiteColor];
             cell.labelPercent0.text =  stringForLabelPercent;
             cell.labelShortName0.text =  stringForLabelShortName;
@@ -776,6 +818,21 @@
             }
             
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
+
+            if (flag1 ==-1)
+            {
+                cell.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+
+                cell.contentView.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+            }
+            else
+            {
+                cell.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+
+                cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            }
+         
+
             return cell;
             
         }
@@ -789,11 +846,12 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
-            cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
-            cell.labelPercent.textColor = [UIColor whiteColor];
-            cell.labelPercent.text = stringForLabelPercent;
-            cell.labelShortName.text = stringForLabelShortName;
-            if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName])
+            
+        cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
+        cell.labelPercent.textColor = [UIColor whiteColor];
+        cell.labelPercent.text = stringForLabelPercent;
+        cell.labelShortName.text = stringForLabelShortName;
+        if ([[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
                 cell.labelCollMetroName.text = [NSString stringWithFormat:@"  %@",[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
             }
@@ -801,6 +859,7 @@
             {
                 cell.labelCollMetroName.text =@"";
             }
+        
             if ( deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==50)
             {
                 cell.labelDeliveryMetroName.text = @"  По указанию";
@@ -838,6 +897,23 @@
              
              */
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
+
+         
+            if (flag1 ==-1)
+            {
+                cell.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+
+                cell.contentView.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+            }
+            else
+            {
+                cell.backgroundColor = [UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+
+                cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            }
+
+          
+
             return  cell;
         }
         
@@ -846,6 +922,68 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(CustomCellSelectedOrders *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row!=selectedRow) {
+        
+    
+   if(deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==0)
+   {
+   
+       CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
+       UIColor * gradColStart =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];
+       UIColor * gradColFin =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.0f];
+       if ([deviceType isEqualToString:@"iPhone Simulator"])
+       {
+           if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+              [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+           {
+               gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,48);
+           }
+           else
+           {
+               gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(self.view.frame.size.height/6)-3);
+           }
+           
+       }
+       [gradLayerForCell setColors:[NSArray arrayWithObjects:(id)(gradColStart.CGColor), (id)(gradColFin.CGColor),nil]];
+       [cell.additionalViewXib2.layer insertSublayer:gradLayerForCell atIndex:0];
+
+   
+   }
+    else
+    {
+    
+        CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
+        UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.0f];
+        UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.0f];
+        if ([deviceType isEqualToString:@"iPhone Simulator"])
+        {
+            if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+               [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+            {
+                gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(self.view.frame.size.height*146/1136)-3);
+            }
+            else
+            {
+                gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(self.view.frame.size.height/4)-3);
+            }
+            
+        }
+        [gradLayerForCell setColors:[NSArray arrayWithObjects:(id)(gradColStart.CGColor), (id)(gradColFin.CGColor),nil]];
+        [cell.additionalView.layer insertSublayer:gradLayerForCell atIndex:0];
+
+    
+    
+    }
+    
+    }
+    
+    
+}
+ 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -863,7 +1001,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *deviceType = [UIDevice currentDevice].model;
+   
     if(selectedRow==indexPath.row)
     {
         return height;
@@ -917,11 +1055,12 @@
 
 -(void)requestOrder
 {
-    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicator.center = self.view.center;
-    indicator.color=[UIColor blackColor];
-    [indicator startAnimating];
-    [self.view addSubview:indicator];
+    flag1=-1;
+    self.view.backgroundColor = [UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+    self.tableViewOrdersDetails.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+    
+    self.titleLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+    [self.tableViewOrdersDetails reloadData];
     SelectedOrdersDetailsJson* detailsJsonObject=[[SelectedOrdersDetailsJson alloc]init];
     NSDictionary*jsonDictionary=[detailsJsonObject toDictionary];
     NSString*jsons=[detailsJsonObject toJSONString];
@@ -967,8 +1106,20 @@
             return;
             
         }
-        [indicator stopAnimating];
+        flag1=1;
+        self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+        self.tableViewOrdersDetails.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+        self.titleLabel.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
         [self.tableViewOrdersDetails reloadData];
+        if (timerCreated ==NO)
+        {
+            requestTimer= [NSTimer scheduledTimerWithTimeInterval:10
+                                                           target:self
+                                                         selector:@selector(requestOrder)
+                                                         userInfo:nil
+                                                          repeats:YES];
+            timerCreated =YES;
+       }
         
     }];
     
@@ -1148,45 +1299,13 @@
     
 }
 
-
--(BOOL) shouldAutorotate
-{
-    return YES;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskAll;
-}
-
-
--(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-  if (fromInterfaceOrientation == UIInterfaceOrientationPortrait
-        || fromInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-    {
-        selectedRow = -1;
-        [self requestOrder];
-        [self.tableViewOrdersDetails reloadData];
-    }
-    else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft
-             || fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-        selectedRow = -1;
-        [self requestOrder];
-        [self.tableViewOrdersDetails reloadData];
-    }
-
-}
-
-
 -(void)showAddress
 {
     alertConfirmPurchase = [[UIAlertView alloc] initWithTitle:@""
                                            message:@"Подтвердите покупку"
                                           delegate:self
                                  cancelButtonTitle:@"Отмена"
-                                 otherButtonTitles:@"ОК"];
+                                 otherButtonTitles:@"ОК",nil];
     [alertConfirmPurchase show];
     return ;
 
@@ -1195,18 +1314,29 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-
-    if (buttonIndex==0)
+    if ([alertView isEqual:alertConfirmPurchase])
     {
-        [self requestOrder];
         
+    
+        if (buttonIndex==0)
+        {
+            [self requestOrder];
+            
+        }
+        else
+        {
+            [self requestBuyDeliveryAddress];
+            if ([result integerValue]==1)
+            {
+                [self requestOrder];
+            }
+        }
     }
     else
     {
-        [self requestBuyDeliveryAddress];
-        if ([result integerValue]==1)
+        if (buttonIndex==0)
         {
-            [self requestOrder];
+            [self requestAssignOrder];
         }
     }
 }
@@ -1719,9 +1849,33 @@ else
 }
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    [coordinator animateAlongsideTransition:nil
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+        
+        UIDeviceOrientation deviceOrientation   = [[UIDevice currentDevice] orientation];
+        
+      if (UIDeviceOrientationIsLandscape(deviceOrientation))
+        {
+            NSLog(@"Will change to Landscape");
+            selectedRow = -1;
+            [self requestOrder];
+            [self.tableViewOrdersDetails reloadData];
+        }
+        
+        else {
+            NSLog(@"Will change to Portrait");
+            selectedRow = -1;
+            [self requestOrder];
+            [self.tableViewOrdersDetails reloadData];
+
+            }
+        
+        
+    }
+             
+
      
-                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+      completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          viewMap.frame=self.view.frame;
          viewMap.center=self.view.center;
@@ -1860,5 +2014,100 @@ else
        viewMap.smallMapView.transform = CGAffineTransformIdentity;
      }
                              completion:nil];
+}
+
+-(void)toTakeAction
+{
+    confirmOrdersTakenAlert = [[UIAlertView alloc] initWithTitle:@"Подтверждение взятия заказа"
+                                          message:nil
+                                         delegate:self
+                                cancelButtonTitle:nil
+                                otherButtonTitles:@"ОК",@"Отмена", nil];
+    confirmOrdersTakenAlert.backgroundColor=[UIColor blackColor];
+    
+
+[confirmOrdersTakenAlert show];
+
+}
+-(void)requestAssignOrder
+{
+UIActivityIndicatorView*indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+indicator.center = self.view.center;
+indicator.color=[UIColor blackColor];
+[indicator startAnimating];
+[self.view addSubview:indicator];
+
+AssignOrderJson* assignOrderJsonObject=[[AssignOrderJson alloc]init];
+assignOrderJsonObject.idhash=[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] idhash];
+NSDictionary*jsonDictionary=[assignOrderJsonObject toDictionary];
+NSString*jsons=[assignOrderJsonObject toJSONString];
+NSLog(@"%@",jsons);
+NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+NSError* error;
+NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:&error];
+NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+[request setURL:url];
+[request setHTTPMethod:@"POST"];
+[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+[request setHTTPBody:jsonData];
+request.timeoutInterval = 10;
+[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    if (!data)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                        message:@"NO INTERNET CONECTION"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+        [indicator stopAnimating];
+        return ;
+    }
+    NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString:%@",jsonString);
+    NSError*err;
+    assignOrderResponseObject = [[AssignOrderResponse alloc] initWithString:jsonString error:&err];
+    
+    NSLog(@"result=%@",assignOrderResponseObject.result);
+    
+    
+    if(assignOrderResponseObject.code!=nil)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
+                                                        message:assignOrderResponseObject.text
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+        [indicator stopAnimating];
+    }
+    else
+    {
+        
+        
+        TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
+        
+        
+        [self.navigationController pushViewController:tovc animated:NO];
+        [tovc setIdHash:assignOrderJsonObject.idhash andUnderView:underView];
+        
+        [indicator stopAnimating];
+
+    }
+    
+//   // ***** for test
+//    TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
+//    
+//    
+//    [self.navigationController pushViewController:tovc animated:NO];
+//    [tovc setIdHash:assignOrderJsonObject.idhash andUnderView:underView];
+//    //*** for test
+}];
+
 }
 @end
