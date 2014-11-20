@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UIView *forConstraints;
-@property (weak, nonatomic) IBOutlet UILabel *label1;
-@property (weak, nonatomic) IBOutlet UILabel *label2;
-
+@property (weak, nonatomic) IBOutlet UIView *underView;
+@property (weak, nonatomic) IBOutlet UIView *View2;
+@property (weak, nonatomic) IBOutlet UIView *View1;
 @end

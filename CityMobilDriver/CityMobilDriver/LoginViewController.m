@@ -312,8 +312,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     [self.view addSubview:indicator];
     
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
-    loginJsonObject.bankid=@"6666";//login.text;
-    loginJsonObject.pass=@"6666";//password.text;
+    loginJsonObject.bankid=@"111310";//login.text;
+    loginJsonObject.pass=@"51384";//password.text;
 
     
 
@@ -326,8 +326,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         loginJsonObject.pass = self.password.text;
     }
     else{
-        loginJsonObject.bankid=@"110314";
-        loginJsonObject.pass=@"52750";
+        loginJsonObject.bankid=@"6666";
+        loginJsonObject.pass=@"6666";
     }
     
 
