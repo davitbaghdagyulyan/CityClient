@@ -98,6 +98,13 @@
             identity =@"ReplenishmentViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
+            
+            
+        case 4:
+            myClass = NSClassFromString(@"RobotSettingsViewController");
+            identity =@"RobotSettingsViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
 
 
         case 5:

@@ -7,9 +7,13 @@
 //
 
 #import "SendingDocumentsViewController.h"
+#import "LeftMenu.h"
 
 @interface SendingDocumentsViewController ()
 {
+    NSInteger flag;
+    LeftMenu*leftMenu;
+    
     UIActivityIndicatorView* indicator;
 }
 @end
@@ -28,19 +32,130 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    flag=0;
+    leftMenu=[LeftMenu getLeftMenu:self];
 }
 
-- (IBAction)back:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:NO];
-}
 
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [indicator stopAnimating];
 }
 
+
+
+#pragma mark - left Menu
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender
+{
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         CGPoint point;
+         if (flag==0)
+             point.x=(CGFloat)leftMenu.frame.size.width/2;
+         else
+             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+         point.y=leftMenu.center.y;
+         leftMenu.center=point;
+         
+     }
+                     completion:^(BOOL finished)
+     {
+         
+         if (flag==0)
+         {
+             flag=1;
+             self.webView.userInteractionEnabled = NO;
+         }
+         else
+         {
+             flag=0;
+             self.webView.userInteractionEnabled = YES;
+         }
+         
+     }
+     ];
+    
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:touch.view];
+    
+    
+    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+        return;
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         
+         
+         
+         CGPoint point;
+         
+         NSLog(@"\n%f", 2*leftMenu.center.x);
+         NSLog(@"\n%f",leftMenu.frame.size.width/2);
+         
+         if (touchLocation.x<=leftMenu.frame.size.width/2)
+         {
+             flag=0;
+             self.webView.userInteractionEnabled = YES;
+             
+             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+         }
+         
+         else if (touchLocation.x>leftMenu.frame.size.width/2)
+         {
+             point.x=(CGFloat)leftMenu.frame.size.width/2;
+             
+             self.webView.userInteractionEnabled = NO;
+             flag=1;
+         }
+         point.y=leftMenu.center.y;
+         leftMenu.center=point;
+         NSLog(@"\n%f",leftMenu.frame.size.width);
+         
+     }
+                     completion:nil
+     ];
+    
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:touch.view];
+    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+        return;
+    
+    CGPoint point;
+    point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
+    point.y=leftMenu.center.y;
+    if (point.x>leftMenu.frame.size.width/2)
+    {
+        return;
+    }
+    leftMenu.center=point;
+    
+    self.webView.userInteractionEnabled = NO;
+    
+    flag=1;
+    
+    
+}
+
+- (IBAction)back:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 @end

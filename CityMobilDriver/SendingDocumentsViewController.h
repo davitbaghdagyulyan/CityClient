@@ -10,7 +10,13 @@
 
 @interface SendingDocumentsViewController : UIViewController<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-- (IBAction)back:(UIButton *)sender;
 
 @property (nonatomic, strong) NSString* urlString;
+
+
+//// left Menu /////
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+
+- (IBAction)back:(UIButton *)sender;
 @end

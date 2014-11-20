@@ -216,8 +216,11 @@
     self.scrollView.scrollIndicatorInsets = contentInsets;
     CGRect aRect = self.view.frame;
     aRect.size.height -= keyboardSize.height;
+    NSLog(@"%@",NSStringFromCGRect(activeTextFeild.frame));
     if (!CGRectContainsPoint(aRect, activeTextFeild.frame.origin) ) {
         [self.scrollView scrollRectToVisible:activeTextFeild.frame animated:YES];
+        
+        
     }
 }
 
@@ -227,6 +230,8 @@
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
 }
+
+
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField;
 {
@@ -421,7 +426,6 @@
 
 
 
-
 #pragma mark - left Menu
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
@@ -443,7 +447,6 @@
      }
                      completion:^(BOOL finished)
      {
-         
          if (flag==0)
          {
              flag=1;
@@ -456,7 +459,6 @@
              self.scrollView.userInteractionEnabled = YES;
              self.segmentControll.userInteractionEnabled = YES;
          }
-         
      }
      ];
     

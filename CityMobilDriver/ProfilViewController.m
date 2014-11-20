@@ -38,7 +38,6 @@
     
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
-    flag=0;
     self.scrollView.userInteractionEnabled=YES;
     self.segmentedControll.userInteractionEnabled=YES;
     self.segmentedControll.userInteractionEnabled=YES;
