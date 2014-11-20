@@ -245,7 +245,6 @@
 		ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCEE4FD19F0121400F07532 /* CustomTableViewCell.xib */; };
 		ECD218851A1CBCF100F38F7D /* SetStatusJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD218841A1CBCF100F38F7D /* SetStatusJson.m */; };
 		ECD218881A1CBD0E00F38F7D /* SetStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD218871A1CBD0E00F38F7D /* SetStatusResponse.m */; };
-		ECD2188C1A1CE17400F38F7D /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD2188B1A1CE17400F38F7D /* MyOrdersViewController.m */; };
 		ECD2188F1A1CE7E200F38F7D /* TachometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD2188E1A1CE7E200F38F7D /* TachometerViewController.m */; };
 		ECD4064619F1467D00EFE6B2 /* WriteLetterJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD4064519F1467D00EFE6B2 /* WriteLetterJson.m */; };
 		ECD4064919F146D200EFE6B2 /* WriteLetterResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD4064819F146D200EFE6B2 /* WriteLetterResponse.m */; };
@@ -673,8 +672,6 @@
 		ECD218841A1CBCF100F38F7D /* SetStatusJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetStatusJson.m; sourceTree = "<group>"; };
 		ECD218861A1CBD0E00F38F7D /* SetStatusResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetStatusResponse.h; sourceTree = "<group>"; };
 		ECD218871A1CBD0E00F38F7D /* SetStatusResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetStatusResponse.m; sourceTree = "<group>"; };
-		ECD2188A1A1CE17400F38F7D /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
-		ECD2188B1A1CE17400F38F7D /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
 		ECD2188D1A1CE7E200F38F7D /* TachometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TachometerViewController.h; sourceTree = "<group>"; };
 		ECD2188E1A1CE7E200F38F7D /* TachometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TachometerViewController.m; sourceTree = "<group>"; };
 		ECD4064419F1467D00EFE6B2 /* WriteLetterJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteLetterJson.h; sourceTree = "<group>"; };
@@ -811,7 +808,6 @@
 			isa = PBXGroup;
 			children = (
 				ECD218901A1CE80600F38F7D /* TachometerViewController */,
-				ECD218891A1CE13D00F38F7D /* MyOrdersViewController */,
 				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
 				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
 				EC00342219F15DCA0062A6DF /* Profil */,
@@ -1220,11 +1216,8 @@
 		ECC471881A11F0790062803A /* SelectedOrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
-
 				EC5AD4351A14D4F500588DE6 /* AssignOrder */,
-
 				8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */,
-
 				8FD011B51A03D54F00E9363A /* SelectedOrdersViewController.h */,
 				8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */,
 				8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */,
@@ -1601,15 +1594,6 @@
 			name = SetStatus;
 			sourceTree = "<group>";
 		};
-		ECD218891A1CE13D00F38F7D /* MyOrdersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ECD2188A1A1CE17400F38F7D /* MyOrdersViewController.h */,
-				ECD2188B1A1CE17400F38F7D /* MyOrdersViewController.m */,
-			);
-			name = MyOrdersViewController;
-			sourceTree = "<group>";
-		};
 		ECD218901A1CE80600F38F7D /* TachometerViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1832,11 +1816,8 @@
 				ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */,
 				ECCD99391A19DF93009D482C /* Roboto-Bold.ttf in Resources */,
 				8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */,
-
 				ECCD99371A19DF93009D482C /* Roboto-Black.ttf in Resources */,
-
 				8FB453091A1CB19E0063336C /* CustomCellOrdersHistory2.xib in Resources */,
-
 				EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */,
 				ECCD993B1A19DF93009D482C /* Roboto-BoldCondensedItalic.ttf in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
@@ -1948,11 +1929,8 @@
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
 				ECCC237219E7F7930091C43E /* CustomCell.m in Sources */,
-
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
-
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
-
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
 				ECB52E3C1A0778BD0091293F /* StartAfterMKADClass.m in Sources */,
 				ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */,
@@ -1965,7 +1943,6 @@
 				EC40D43D19E4323C007BA02C /* MailJson.m in Sources */,
 				ECD218881A1CBD0E00F38F7D /* SetStatusResponse.m in Sources */,
 				ECCA90A619DEE2060007831F /* JSONModelError.m in Sources */,
-				ECD2188C1A1CE17400F38F7D /* MyOrdersViewController.m in Sources */,
 				ECB52E141A0764F60091293F /* TariffsClass.m in Sources */,
 				ECC965281A00C23800768E1F /* CarInfoViewController.m in Sources */,
 				ECB49FCC19F5294D0022EB28 /* ReplenishmentViewController.m in Sources */,
