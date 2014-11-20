@@ -215,9 +215,25 @@
 {
     CreateProfilViewController* createProfilController=[self.storyboard instantiateViewControllerWithIdentifier:@"CreateProfilViewController"];
     createProfilController.profilImage = self.profilImageView.image;
+    
+    createProfilController.middleNameText = jsonResponseObject.middle_name;
+    createProfilController.nameText = jsonResponseObject.name;
+    createProfilController.lastNameText = jsonResponseObject.last_name;
+    
+    createProfilController.pasportSerText = jsonResponseObject.passport_ser;
+    createProfilController.pasportNumText = jsonResponseObject.passport_num;
+    createProfilController.pasportWhoText = jsonResponseObject.passport_who;
+    createProfilController.passportDateText = jsonResponseObject.passport_date;
+    createProfilController.pasportAdressText = jsonResponseObject.passport_address;
+    createProfilController.driverLicenseNumberText = jsonResponseObject.driver_license_number;
+    createProfilController.driverLicenseSerialText = jsonResponseObject.driver_license_serial;
+    createProfilController.driverLicenseClassText = jsonResponseObject.driver_license_class;
+    
+    
+    
     [self pushOrPopViewController:createProfilController];
+    
 }
-
 
 
 #pragma mark - left Menu
