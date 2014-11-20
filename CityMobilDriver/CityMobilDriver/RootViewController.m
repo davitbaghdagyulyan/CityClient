@@ -9,7 +9,7 @@
 #import "RecallJson.h"
 #import "RecallResponse.h"
 #import "LeftMenu.h"
-
+#import "CustomAlertView.h"
 
 @interface RootViewController ()
 {
@@ -315,6 +315,8 @@
     CGFloat x;
     if (fromInterfaceOrientation == UIInterfaceOrientationPortrait || fromInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
     {
+        
+        
         if(flag==0)
         {
             x=self.view.frame.size.width*(CGFloat)5/6*(-1);
@@ -332,6 +334,10 @@
     }
     else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
     {
+        
+        
+        CGAffineTransform transformFlip = CGAffineTransformMakeRotation( 1.571 );
+        callDispetcherAlert.transform = transformFlip;
         
         if(flag==0)
         {
@@ -363,6 +369,7 @@
                                                    delegate:self
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"Просьба перезвонить",@"Позвонить",nil];
+  
   
     [callDispetcherAlert show];
 
@@ -408,6 +415,7 @@ else if(alertView ==  alertBack)
 
 }
 }
+
 -(void)reCallRequest
 {
     RecallJson* recallJsonObject=[[RecallJson alloc]init];

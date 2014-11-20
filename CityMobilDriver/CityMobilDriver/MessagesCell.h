@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomLabel.h"
 
 @interface MessagesCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet CustomLabel *titLabel;
 
 
-@property (strong, nonatomic) IBOutlet UILabel *titLabel;
+
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
 

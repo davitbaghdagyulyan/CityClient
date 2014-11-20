@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -93,7 +93,7 @@
                                                             <constraint firstAttribute="width" constant="14" id="sW6-2O-UGI"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbr-AQ-8IT">
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbr-AQ-8IT">
                                                         <rect key="frame" x="443" y="5" width="43" height="43"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="43" id="Zh2-6K-5jB"/>
@@ -137,7 +137,7 @@
                                                             <constraint firstAttribute="width" constant="14" id="t7G-jI-jbt"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkK-sw-m37">
+                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkK-sw-m37">
                                                         <rect key="frame" x="443" y="5" width="43" height="43"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="43" id="4xm-jE-HtB"/>
@@ -319,6 +319,7 @@
                 <outlet property="labelDeliveryMetroName" destination="goa-vB-gSk" id="AUs-Pd-ksV"/>
                 <outlet property="labelPercent" destination="Yq3-4R-A1j" id="bOF-gG-uZT"/>
                 <outlet property="labelShortName" destination="XKo-mT-HZg" id="mzL-uB-Psl"/>
+                <outlet property="underView" destination="Lez-Oy-prd" id="Qhf-cz-yBH"/>
                 <outlet property="view1Height" destination="NYt-mE-6FG" id="qDw-5P-NIp"/>
                 <outlet property="whiteLabel" destination="xJ3-4f-8hl" id="Zf9-5Q-e3H"/>
                 <outlet property="whiteView" destination="7M3-1E-lOl" id="gnG-Ae-s6k"/>

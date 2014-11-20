@@ -17,6 +17,10 @@
 #import "CustomCellSelectORDER.h"
 #import "CustomViewForMaps.h"
 
+#import "AssignOrderJson.h"
+#import "AssignOrderResponse.h"
+
+#import "TakenOrderViewController.h"
 
 @interface SelectedOrdersViewController ()
 {
@@ -28,6 +32,9 @@
     NSUInteger number;
      CLLocationManager *locationManager;
     CLLocation* currentLocation;
+    AssignOrderResponse*assignOrderResponseObject;
+    UIAlertView*confirmOrdersTakenAlert;
+    UIView*underView;
 }
 
 @end
@@ -79,6 +86,12 @@
     
     viewMap.frame=self.view.frame;
     viewMap.center=self.view.center;
+    
+    viewMap.smallMapView.layer.cornerRadius = 30;
+     viewMap.smallMapView.layer.borderWidth = 2;
+    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+    viewMap.smallMapView.layer.masksToBounds = YES;
+    
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
     [singleTapYandex setNumberOfTapsRequired:1];
@@ -284,7 +297,7 @@
                 cell = [nib objectAtIndex:0];
             }
            //******************************************Nareks Change*******************************************
-            
+            [cell.Button addTarget:self action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
             [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
             index=indexPath.row;
@@ -392,6 +405,7 @@
             }
     idhash =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] idhash];
     [cell.showAddress  addTarget:self action:@selector(showAddress) forControlEvents:UIControlEventTouchUpInside];
+            underView=cell.underView;
     return cell;
     }
     NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%ld",(long)indexPath.row];
@@ -402,7 +416,7 @@
             cell = [nib objectAtIndex:0];
         }
     
-        
+        [cell.Button addTarget:self action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
         [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
         [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
         index=indexPath.row;
@@ -682,6 +696,7 @@
         }
         stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,callDateFormat,shortName];
         cell.labelShortName.text=[NSString stringWithFormat:@"  %@", stringForLabelShortName];
+        underView=cell.underView;
         return  cell;
         
     }
@@ -776,6 +791,7 @@
             }
             
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
+            
             return cell;
             
         }
@@ -838,6 +854,7 @@
              
              */
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
+         
             return  cell;
         }
         
@@ -1195,18 +1212,29 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-
-    if (buttonIndex==0)
+    if ([alertView isEqual:alertConfirmPurchase])
     {
-        [self requestOrder];
         
+    
+        if (buttonIndex==0)
+        {
+            [self requestOrder];
+            
+        }
+        else
+        {
+            [self requestBuyDeliveryAddress];
+            if ([result integerValue]==1)
+            {
+                [self requestOrder];
+            }
+        }
     }
     else
     {
-        [self requestBuyDeliveryAddress];
-        if ([result integerValue]==1)
+        if (buttonIndex==0)
         {
-            [self requestOrder];
+            [self requestAssignOrder];
         }
     }
 }
@@ -1860,5 +1888,100 @@ else
        viewMap.smallMapView.transform = CGAffineTransformIdentity;
      }
                              completion:nil];
+}
+
+-(void)toTakeAction
+{
+    confirmOrdersTakenAlert = [[UIAlertView alloc] initWithTitle:@"Подтверждение взятия заказа"
+                                          message:nil
+                                         delegate:self
+                                cancelButtonTitle:nil
+                                otherButtonTitles:@"ОК",@"Отмена", nil];
+    confirmOrdersTakenAlert.backgroundColor=[UIColor blackColor];
+    
+
+[confirmOrdersTakenAlert show];
+
+}
+-(void)requestAssignOrder
+{
+UIActivityIndicatorView*indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+indicator.center = self.view.center;
+indicator.color=[UIColor blackColor];
+[indicator startAnimating];
+[self.view addSubview:indicator];
+
+AssignOrderJson* assignOrderJsonObject=[[AssignOrderJson alloc]init];
+assignOrderJsonObject.idhash=[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] idhash];
+NSDictionary*jsonDictionary=[assignOrderJsonObject toDictionary];
+NSString*jsons=[assignOrderJsonObject toJSONString];
+NSLog(@"%@",jsons);
+NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+NSError* error;
+NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:&error];
+NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+[request setURL:url];
+[request setHTTPMethod:@"POST"];
+[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+[request setHTTPBody:jsonData];
+request.timeoutInterval = 10;
+[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    if (!data)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                        message:@"NO INTERNET CONECTION"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+        [indicator stopAnimating];
+        return ;
+    }
+    NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"responseString:%@",jsonString);
+    NSError*err;
+    assignOrderResponseObject = [[AssignOrderResponse alloc] initWithString:jsonString error:&err];
+    
+    NSLog(@"result=%@",assignOrderResponseObject.result);
+    
+    
+    if(assignOrderResponseObject.code!=nil)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
+                                                        message:assignOrderResponseObject.text
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+        [indicator stopAnimating];
+    }
+    else
+    {
+        
+        
+        TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
+        
+        
+        [self.navigationController pushViewController:tovc animated:NO];
+        [tovc setIdHash:assignOrderJsonObject.idhash andUnderView:underView];
+        
+        [indicator stopAnimating];
+
+    }
+    
+//   // ***** for test
+//    TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
+//    
+//    
+//    [self.navigationController pushViewController:tovc animated:NO];
+//    [tovc setIdHash:assignOrderJsonObject.idhash andUnderView:underView];
+//    //*** for test
+}];
+
 }
 @end
