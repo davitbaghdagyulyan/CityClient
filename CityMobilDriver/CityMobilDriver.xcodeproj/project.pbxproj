@@ -75,6 +75,12 @@
 		EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC00342419F1620A0062A6DF /* ProfilViewController.m */; };
 		EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC03D0E21A091D0900D90F72 /* TariffCustomView.xib */; };
 		EC03D0E61A091F1B00D90F72 /* TariffsCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC03D0E51A091F1B00D90F72 /* TariffsCustomView.m */; };
+		EC0798D91A2331A10085E3F0 /* yandexIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798D81A2331A10085E3F0 /* yandexIcon.m */; };
+		EC0798DB1A23327F0085E3F0 /* ya_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798DA1A23327F0085E3F0 /* ya_green.png */; };
+		EC0798E71A2342B00085E3F0 /* IconsColorSingltone.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798E61A2342B00085E3F0 /* IconsColorSingltone.m */; };
+		EC0798EA1A2348DC0085E3F0 /* CityMobilIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */; };
+		EC0798EC1A2349840085E3F0 /* icon_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798EB1A2349840085E3F0 /* icon_green.png */; };
+		EC0798EE1A2379C90085E3F0 /* set3_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798ED1A2379C90085E3F0 /* set3_orange.png */; };
 		EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */; };
 		EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6A19EBC22F007C77A2 /* SettingsViewController.m */; };
 		EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E4A6C19EC1C13007C77A2 /* pages_background.png */; };
@@ -261,6 +267,7 @@
 		ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE3CFAC1A0918900053FF85 /* tachometer_arrow.png */; };
 		ECEA963E19F54917001A6305 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA963D19F54917001A6305 /* CustomView.m */; };
 		ECEADF8F1A1E051A00FBA389 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEADF8E1A1E051A00FBA389 /* MyOrdersViewController.m */; };
+		ECEADF911A1F29B300FBA389 /* tachometer_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEADF901A1F29B300FBA389 /* tachometer_bg.png */; };
 		ECEB634A19F63E4200E6F666 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEB634819F63E4200E6F666 /* photo.png */; };
 		ECEB634B19F63E4200E6F666 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEB634919F63E4200E6F666 /* edit.png */; };
 		ECEBD87E1A0A664E00118466 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD87D1A0A664E00118466 /* RegistrationViewController.m */; };
@@ -388,6 +395,15 @@
 		EC03D0E21A091D0900D90F72 /* TariffCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TariffCustomView.xib; sourceTree = "<group>"; };
 		EC03D0E41A091F1B00D90F72 /* TariffsCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffsCustomView.h; sourceTree = "<group>"; };
 		EC03D0E51A091F1B00D90F72 /* TariffsCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffsCustomView.m; sourceTree = "<group>"; };
+		EC0798D71A2331A10085E3F0 /* yandexIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yandexIcon.h; sourceTree = "<group>"; };
+		EC0798D81A2331A10085E3F0 /* yandexIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yandexIcon.m; sourceTree = "<group>"; };
+		EC0798DA1A23327F0085E3F0 /* ya_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ya_green.png; sourceTree = "<group>"; };
+		EC0798E51A2342B00085E3F0 /* IconsColorSingltone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconsColorSingltone.h; sourceTree = "<group>"; };
+		EC0798E61A2342B00085E3F0 /* IconsColorSingltone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconsColorSingltone.m; sourceTree = "<group>"; };
+		EC0798E81A2348DC0085E3F0 /* CityMobilIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityMobilIcon.h; sourceTree = "<group>"; };
+		EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityMobilIcon.m; sourceTree = "<group>"; };
+		EC0798EB1A2349840085E3F0 /* icon_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_green.png; sourceTree = "<group>"; };
+		EC0798ED1A2379C90085E3F0 /* set3_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set3_orange.png; sourceTree = "<group>"; };
 		EC1E4A6619EBC189007C77A2 /* UserInformationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationProvider.h; sourceTree = "<group>"; };
 		EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationProvider.m; sourceTree = "<group>"; };
 		EC1E4A6919EBC22F007C77A2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -705,6 +721,7 @@
 		ECEA963D19F54917001A6305 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
 		ECEADF8D1A1E051A00FBA389 /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
 		ECEADF8E1A1E051A00FBA389 /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
+		ECEADF901A1F29B300FBA389 /* tachometer_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachometer_bg.png; sourceTree = "<group>"; };
 		ECEB634819F63E4200E6F666 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		ECEB634919F63E4200E6F666 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		ECEBD87C1A0A664E00118466 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
@@ -785,6 +802,7 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				EC0798D31A232E290085E3F0 /* Navigation view */,
 				ECEADF8C1A1E04F600FBA389 /* my Orders */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
@@ -885,6 +903,19 @@
 			);
 			name = Profil;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		EC0798D31A232E290085E3F0 /* Navigation view */ = {
+			isa = PBXGroup;
+			children = (
+				EC0798D71A2331A10085E3F0 /* yandexIcon.h */,
+				EC0798D81A2331A10085E3F0 /* yandexIcon.m */,
+				EC0798E81A2348DC0085E3F0 /* CityMobilIcon.h */,
+				EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */,
+				EC0798E51A2342B00085E3F0 /* IconsColorSingltone.h */,
+				EC0798E61A2342B00085E3F0 /* IconsColorSingltone.m */,
+			);
+			name = "Navigation view";
 			sourceTree = "<group>";
 		};
 		EC1E4A6519EBC179007C77A2 /* Single UserInformation Provider */ = {
@@ -1047,6 +1078,9 @@
 		ECB38B281A0D12D400DFBB77 /* Designation Icons Images */ = {
 			isa = PBXGroup;
 			children = (
+				EC0798ED1A2379C90085E3F0 /* set3_orange.png */,
+				EC0798DA1A23327F0085E3F0 /* ya_green.png */,
+				ECEADF901A1F29B300FBA389 /* tachometer_bg.png */,
 				ECB38B291A0D130B00DFBB77 /* 0@2x.png */,
 				ECB38B2A1A0D130B00DFBB77 /* 1@2x.png */,
 				ECB38B2B1A0D130B00DFBB77 /* 2@2x.png */,
@@ -1498,6 +1532,7 @@
 			children = (
 				ECB38B281A0D12D400DFBB77 /* Designation Icons Images */,
 				ECC8CCE51A10E58400883CD1 /* box.png */,
+				EC0798EB1A2349840085E3F0 /* icon_green.png */,
 				8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */,
 				ECE2553619DBF1E9000BD8C9 /* bg.png */,
 				8FA028F21A122B2A00729054 /* star.png */,
@@ -1822,6 +1857,7 @@
 				ECCD993B1A19DF93009D482C /* Roboto-BoldCondensedItalic.ttf in Resources */,
 				8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */,
 				ECEB634B19F63E4200E6F666 /* edit.png in Resources */,
+				EC0798EC1A2349840085E3F0 /* icon_green.png in Resources */,
 				ECCD99381A19DF93009D482C /* Roboto-BlackItalic.ttf in Resources */,
 				8FCCBBC219E2DE2600BD9BC1 /* ch@2x.png in Resources */,
 				ECCD993A1A19DF93009D482C /* Roboto-BoldCondensed.ttf in Resources */,
@@ -1844,10 +1880,12 @@
 				ECB38B3D1A0D130B00DFBB77 /* 7@2x.png in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
 				ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */,
+				EC0798EE1A2379C90085E3F0 /* set3_orange.png in Resources */,
 				ECCD99461A19DF93009D482C /* Roboto-ThinItalic.ttf in Resources */,
 				ECB38B401A0D130B00DFBB77 /* 10@2x.png in Resources */,
 				ECC2BA5B1A10F801009A8CE4 /* 12@2x.png in Resources */,
 				8FD25E921A0B88CD0056038C /* CustomCellOrdersHistory.xib in Resources */,
+				ECEADF911A1F29B300FBA389 /* tachometer_bg.png in Resources */,
 				ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */,
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */,
@@ -1897,6 +1935,7 @@
 				8FE032EC19DEC80600B17C09 /* ya@2x.png in Resources */,
 				ECCD99431A19DF93009D482C /* Roboto-MediumItalic.ttf in Resources */,
 				8FE4868E19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png in Resources */,
+				EC0798DB1A23327F0085E3F0 /* ya_green.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2006,6 +2045,7 @@
 				EC5AD4421A14FA2800588DE6 /* TakenOrderViewController.m in Sources */,
 				ECCD344D1A03AC49000444BF /* ResponseSetCarInfo.m in Sources */,
 				EC4CB40619F7E5E00028F219 /* RequestSetDriverInfo.m in Sources */,
+				EC0798D91A2331A10085E3F0 /* yandexIcon.m in Sources */,
 				EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */,
 				8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
@@ -2079,8 +2119,10 @@
 				ECD55D8819F7C755002E182D /* GetCardsJson.m in Sources */,
 				ECC978F61A00DDC900D77B80 /* GetInfoJson.m in Sources */,
 				ECB52E2A1A0773190091293F /* UnitElements.m in Sources */,
+				EC0798EA1A2348DC0085E3F0 /* CityMobilIcon.m in Sources */,
 				ECEA963E19F54917001A6305 /* CustomView.m in Sources */,
 				ECB52E451A077A770091293F /* OtherClass.m in Sources */,
+				EC0798E71A2342B00085E3F0 /* IconsColorSingltone.m in Sources */,
 				ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */,
 				ECEEC62F1A1C873A000F5776 /* RequestUpdateAutoSettings.m in Sources */,
 				ECEBD87E1A0A664E00118466 /* RegistrationViewController.m in Sources */,

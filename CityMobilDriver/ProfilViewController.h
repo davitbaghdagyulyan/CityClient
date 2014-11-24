@@ -19,6 +19,9 @@
 
 
 
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilImageView;

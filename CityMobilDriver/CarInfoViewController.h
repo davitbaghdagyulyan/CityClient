@@ -14,6 +14,10 @@
 #import "ResponseGetCarInfo.h"
 
 @interface CarInfoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
 @property (weak, nonatomic) IBOutlet UITableView *carInfoTable;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControll;

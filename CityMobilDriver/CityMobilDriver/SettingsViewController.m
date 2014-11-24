@@ -8,6 +8,13 @@
 
 #import "SettingsViewController.h"
 #import "SucceedResponse.h"
+#import "yandexIcon.h"
+#import "IconsColorSingltone.h"
+
+//static UIColor* buttonTextColor = nil;
+
+static int yandexColor;
+static int cityColor = -1;
 
 @interface SettingsViewController ()
 {
@@ -28,8 +35,9 @@
     NSString* fontStileText;
     NSString* languageText;
 }
-@property(nonatomic,strong) UIColor* viewsColor;
 @property(nonatomic,strong) UIColor* buttonTextColor;
+
+
 @end
 
 @implementation SettingsViewController
@@ -48,8 +56,6 @@
     
     //self.nightMode.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue];
     //NSLog(@"%i",self.nightMode.on);
-    
-    
 
 }
 
@@ -113,6 +119,40 @@
         [self.checkBox.imageView setImage:[UIImage imageNamed:@"box2.png"]];
         [self setAppMode];
     }
+    
+    
+    
+    NSLog(@"cityColor = %i",cityColor);
+    if ([IconsColorSingltone sharedColor].cityMobilColor == 0) {
+        [self.off setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [self.notRequired setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.required setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }
+    
+    if ([IconsColorSingltone sharedColor].cityMobilColor == 1) {
+        [self.required setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.notRequired setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [self.off setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }
+    
+    if ([IconsColorSingltone sharedColor].cityMobilColor == 2) {
+        [self.off setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.notRequired setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.required setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    }
+    
+    
+    if ([IconsColorSingltone sharedColor].yandexColor == 0) {
+        [self.on setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.yandexOff setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
+    
+    if ([IconsColorSingltone sharedColor].yandexColor == 1) {
+        [self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        [self.yandexOff setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }
+    
+    
 }
 
 
@@ -157,40 +197,41 @@
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
 }
 
-
-
-
-#pragma mark - yandex Settings
-
-- (IBAction)requiredAction:(id)sender
+- (IBAction)offAction:(id)sender
 {
-    [self setAutoAssign:3];
-}
-
-
-- (IBAction)notRequiredAction:(id)sender
-{
+//    cityColor = 0;
     [self setAutoAssign:0];
 }
 
-
-- (IBAction)offAction:(id)sender
+- (IBAction)notRequiredAction:(id)sender
 {
+//    cityColor = 1;
     [self setAutoAssign:1];
 }
 
+- (IBAction)requiredAction:(id)sender
+{
+//    cityColor = 2;
+    [self setAutoAssign:2];////???? 3
+}
+
+
+#pragma mark - yandex Settings
 - (IBAction)onAction:(id)sender
 {
-    [self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    [self.yandexOff setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+    //[self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    //[self.yandexOff setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
     
+    
+    yandexColor = 1;
     [self setYandexAutoAssign:1];
 }
 - (IBAction)yandexOffAction:(id)sender
 {
-    [self.yandexOff setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [self.on setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+    //[self.yandexOff setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    //[self.on setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
     
+    yandexColor = 0;
     [self setYandexAutoAssign:0];
 }
 
@@ -236,21 +277,31 @@
         SucceedResponse* responseObject = [[SucceedResponse alloc]initWithString:jsonString error:&err];
         if (responseObject.result == 1) {
             switch (state) {
-                case 3:
-                    [self.required setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-                    [self.notRequired setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-                    [self.off setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-                    break;
                 case 0:
-                    [self.notRequired setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-                    [self.required setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-                    [self.off setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    [self.notRequired setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                    [self.required setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                    [self.off setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                    
+                    [self.cityIcon setImage:[UIImage imageNamed:@"icon.png"] forState:UIControlStateNormal];
+                    [IconsColorSingltone sharedColor].cityMobilColor = 0;
+                    
                     break;
                     
                 case 1:
-                    [self.off setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-                    [self.required setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-                    [self.notRequired setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                    [self.off setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                    [self.required setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                    [self.notRequired setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+                    
+                    [self.cityIcon setImage:[UIImage imageNamed:@"set3_orange.png"] forState:UIControlStateNormal];
+                    [IconsColorSingltone sharedColor].cityMobilColor = 1;
+                    break;
+                case 2:
+                    [self.required setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                    [self.notRequired setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                    [self.off setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+                    
+                    [self.cityIcon setImage:[UIImage imageNamed:@"icon_green.png"] forState:UIControlStateNormal];
+                    [IconsColorSingltone sharedColor].cityMobilColor = 2;
                     break;
                 default:
                     break;
@@ -274,6 +325,9 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
+    
+    NSString*jsons=[RequestObject toJSONString];
+    NSLog(@"%@",jsons);
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     [request setURL:url];
@@ -303,13 +357,21 @@
         SucceedResponse* responseObject = [[SucceedResponse alloc]initWithString:jsonString error:&err];
         if (responseObject.result == 1) {
         switch (y_state) {
-            case 1:
-                [self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-                [self.yandexOff setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-                break;
             case 0:
+            {
                 [self.yandexOff setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
                 [self.on setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                [IconsColorSingltone sharedColor].yandexColor = 0;
+                [self.yandexIcon setImage:[UIImage imageNamed:@"ya@2x"] forState:UIControlStateNormal];
+                break;
+            }
+            case 1:
+            {
+                [self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                [self.yandexOff setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
+                [IconsColorSingltone sharedColor].yandexColor = 1;
+                [self.yandexIcon setImage:[UIImage imageNamed:@"ya_green.png"] forState:UIControlStateNormal];
+            }
                 break;
             default:
                 break;
@@ -317,7 +379,6 @@
         }
     }];
 }
-
 
 
 #pragma mark - program settings

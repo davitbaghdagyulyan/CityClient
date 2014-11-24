@@ -65,10 +65,6 @@
     [self.carImageView addGestureRecognizer:singleTap];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -82,6 +78,9 @@
     self.scrollView.userInteractionEnabled=YES;
     self.segmentControll.userInteractionEnabled=YES;
     self.scrollView.userInteractionEnabled=YES;
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
 }
 
 -(void)requestGetColorList

@@ -41,6 +41,10 @@
     self.scrollView.userInteractionEnabled=YES;
     self.segmentedControll.userInteractionEnabled=YES;
     self.segmentedControll.userInteractionEnabled=YES;
+    
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {

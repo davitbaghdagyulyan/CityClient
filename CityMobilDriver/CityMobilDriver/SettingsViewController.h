@@ -18,6 +18,10 @@
 
 @interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>//,ComboBoxDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton* cityIcon;
+@property (weak, nonatomic) IBOutlet UIButton* yandexIcon;
+
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrolView;
 
 @property (weak, nonatomic) IBOutlet UILabel *callsign;
