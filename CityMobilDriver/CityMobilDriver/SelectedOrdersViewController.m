@@ -27,7 +27,7 @@
     NSInteger flag;
     NSInteger flag1;
     LeftMenu*leftMenu;
-    NSUInteger index;
+    NSUInteger indexOfCell;
     CustomViewForMaps*viewMap;
     CGRect rect;
     NSUInteger number;
@@ -306,7 +306,7 @@
             [cell.Button addTarget:self action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
             [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
             [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
-            index=indexPath.row;
+            indexOfCell=indexPath.row;
             cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
             cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
             [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
@@ -437,7 +437,7 @@
         [cell.Button addTarget:self action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
         [cell.buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
         [cell.buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
-        index=indexPath.row;
+        indexOfCell=indexPath.row;
     // VIEW1
     cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
     cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
@@ -1922,10 +1922,10 @@ else
  
     if (number)
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude]doubleValue],
-                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue],
-                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_latitude] doubleValue],
-                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_longitude] doubleValue]];
+        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -1942,8 +1942,8 @@ else
     {
         NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",currentLocation.coordinate.latitude,
                             currentLocation.coordinate.longitude,
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue]];
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -1961,10 +1961,10 @@ else
 {
     if (number)
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude]doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_latitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] del_longitude] doubleValue]];
+        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -1982,8 +1982,8 @@ else
         NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
                             currentLocation.coordinate.latitude,
                             currentLocation.coordinate.longitude,
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] latitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] longitude] doubleValue]];
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -2038,7 +2038,7 @@ indicator.color=[UIColor blackColor];
 [self.view addSubview:indicator];
 
 AssignOrderJson* assignOrderJsonObject=[[AssignOrderJson alloc]init];
-assignOrderJsonObject.idhash=[[selectedOrdersDetailsResponseObject.orders objectAtIndex:index] idhash];
+assignOrderJsonObject.idhash=[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] idhash];
 NSDictionary*jsonDictionary=[assignOrderJsonObject toDictionary];
 NSString*jsons=[assignOrderJsonObject toJSONString];
 NSLog(@"%@",jsons);
