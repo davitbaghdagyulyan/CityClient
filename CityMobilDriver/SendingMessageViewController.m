@@ -20,6 +20,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116)];
+    self.writeLetterLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, 50)];
+    self.underView=[[UIView alloc]initWithFrame:CGRectMake(0, 50, self.scrollView.frame.size.width, self.scrollView.frame.size.height-50)];
+     self.titleTextView=[[UITextView alloc] initWithFrame:CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40)];
+     self.messageTextView=[[UITextView alloc] initWithFrame:CGRectMake(10, 60, self.scrollView.frame.size.width-20, 80)];
+    self.sendButton=[[UIButton alloc]initWithFrame:CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40)];
+    [self.view addSubview:self.scrollView];
+    
+ 
+    self.writeLetterLabel.text=@"Написать письмо";
+    self.writeLetterLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:17];
+    self.writeLetterLabel.textColor=[UIColor orangeColor];
+    self.writeLetterLabel.textAlignment=NSTextAlignmentCenter;
+    
+    
+    self.underView.backgroundColor=[UIColor colorWithRed:(float)217/255 green:(float)217/255 blue:(float)217/255 alpha:1];
+    
+    
+   
+    
+    
+    [self.sendButton addTarget:self action:@selector(sendAction) forControlEvents:UIControlEventTouchUpInside];
+    self.sendButton.backgroundColor=[UIColor orangeColor];
+    [self.sendButton setTitle:@"Отправить" forState:UIControlStateNormal];
+    [self.sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [self.scrollView addSubview:self.writeLetterLabel];
+    [self.scrollView addSubview:self.underView];
+    [self.underView addSubview:self.titleTextView];
+    [self.underView addSubview:self.messageTextView];
+    [self.view addSubview:self.sendButton];
+    
+    [self.scrollView addSubview:self.writeLetterLabel];
+    [self.scrollView addSubview:self.underView];
     self.titleTextView.delegate=self;
     self.messageTextView.delegate=self;
     self.titleTextView.text = @"Заголовок";
@@ -30,7 +64,8 @@
     recognizer.numberOfTapsRequired=1;
     self.writeLetterLabel.userInteractionEnabled=YES;
     [(UIView*)self.writeLetterLabel addGestureRecognizer:recognizer];
-    
+    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    [self registerForKeyboardNotifications];
     // Do any additional setup after loading the view.
     
     if (self.isPushWidthInfoController) {
@@ -101,7 +136,7 @@
     [self.titleTextView resignFirstResponder];
     [self.messageTextView resignFirstResponder];
 }
-- (IBAction)sendAction:(UIButton *)sender
+- (void)sendAction
 {
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
@@ -138,14 +173,18 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             
-            [alert show];
+
             [indicator stopAnimating];
             return ;
         }
@@ -156,11 +195,18 @@
         
 
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                    [self.navigationController popViewControllerAnimated:NO];
+                                }];
+        [alert addAction:cancel];
+       
+        
+
         if([writeLetterResponseObject.result isEqual:@1])
         {
             alert.message=@"Запрос успешно отправлен!";
@@ -171,16 +217,39 @@
             alert.message=writeLetterResponseObject.text;
             
         }
-        [alert show];
+         [self presentViewController:alert animated:YES completion:nil];
         
         [indicator stopAnimating];
         
     }];
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+
+
+- (void)registerForKeyboardNotifications
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
 }
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+NSDictionary* info = [aNotification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height+keyboardSize.height-(self.scrollView.frame.size.height-(self.messageTextView.frame.origin.y+self.messageTextView.frame.size.height)));
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+  self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+}
+
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     [UIView animateWithDuration:0.5
@@ -214,6 +283,7 @@
      }
      ];
 }
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [[event allTouches] anyObject];
@@ -270,4 +340,37 @@
     self.titleTextView.userInteractionEnabled=NO;
     self.messageTextView.userInteractionEnabled=NO;
 }
+
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:nil
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         
+         self.scrollView.frame=CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116);
+         self.writeLetterLabel.frame=CGRectMake(0, 0, self.scrollView.frame.size.width, 50);
+         self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width, self.scrollView.frame.size.height-50);
+         self.titleTextView.frame=CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40);
+         self.messageTextView.frame=CGRectMake(10, 60, self.scrollView.frame.size.width-20, 80);
+         self.sendButton.frame=CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40);
+     self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+         CGFloat xx;
+         
+         if(flag==0)
+         {
+             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+         }
+         else
+         {
+             xx=0;
+         }
+         
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         
+     }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+}
+
 @end

@@ -2,12 +2,13 @@
 //  MyOrdersViewController.h
 //  CityMobilDriver
 //
-//  Created by Intern on 11/19/14.
+//  Created by Intern on 11/20/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LeftMenu.h"
 @interface MyOrdersViewController : UIViewController
-
+- (IBAction)back:(id)sender;
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @end

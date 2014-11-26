@@ -120,7 +120,6 @@
 		ECB3D75B1A03B3FD0039DD3A /* TariffsCityMobilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D75A1A03B3FD0039DD3A /* TariffsCityMobilViewController.m */; };
 		ECB3D7611A03BB680039DD3A /* GetTariffsUrlJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7601A03BB680039DD3A /* GetTariffsUrlJson.m */; };
 		ECB3D7641A03BBF60039DD3A /* GetTariffsUrlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7631A03BBF60039DD3A /* GetTariffsUrlResponse.m */; };
-		ECB3D76A1A03D16E0039DD3A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7671A03D16E0039DD3A /* README.md */; };
 		ECB3D76B1A03D16E0039DD3A /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7691A03D16E0039DD3A /* XMLReader.m */; };
 		ECB3D76E1A03D7B40039DD3A /* GetTariffsUrlResponseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D76D1A03D7B40039DD3A /* GetTariffsUrlResponseXML.m */; };
 		ECB3D7711A03D95B0039DD3A /* NSDictionary+BVJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7701A03D95B0039DD3A /* NSDictionary+BVJSONString.m */; };
@@ -169,6 +168,7 @@
 		ECC2BA611A111B80009A8CE4 /* SelectedOrdersDetailsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */; };
 		ECC2BA621A111C18009A8CE4 /* SingleDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55988A19E5364900877CBC /* SingleDataProvider.m */; };
 		ECC2BA631A111C54009A8CE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428B719D0071F00F5C38C /* main.m */; };
+		ECC39FEE1A25EB6100217A41 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC39FED1A25EB6100217A41 /* MyOrdersViewController.m */; };
 		ECC42DA81A1B3F750020F7C7 /* childYear.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC42DA71A1B3F750020F7C7 /* childYear.xib */; };
 		ECC471861A11EC770062803A /* MessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC471851A11EC770062803A /* MessagesCell.m */; };
 		ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC6A27519F791F700F85E02 /* CreateProfil.xib */; };
@@ -469,7 +469,6 @@
 		ECB3D7601A03BB680039DD3A /* GetTariffsUrlJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTariffsUrlJson.m; sourceTree = "<group>"; };
 		ECB3D7621A03BBF60039DD3A /* GetTariffsUrlResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTariffsUrlResponse.h; sourceTree = "<group>"; };
 		ECB3D7631A03BBF60039DD3A /* GetTariffsUrlResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTariffsUrlResponse.m; sourceTree = "<group>"; };
-		ECB3D7671A03D16E0039DD3A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ECB3D7681A03D16E0039DD3A /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		ECB3D7691A03D16E0039DD3A /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		ECB3D76C1A03D7B40039DD3A /* GetTariffsUrlResponseXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTariffsUrlResponseXML.h; sourceTree = "<group>"; };
@@ -546,6 +545,8 @@
 		ECC2BA571A10D2EF009A8CE4 /* DesignationCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignationCustomCell.h; sourceTree = "<group>"; };
 		ECC2BA581A10D2EF009A8CE4 /* DesignationCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignationCustomCell.m; sourceTree = "<group>"; };
 		ECC2BA5A1A10F801009A8CE4 /* 12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12@2x.png"; sourceTree = "<group>"; };
+		ECC39FEC1A25EB6100217A41 /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
+		ECC39FED1A25EB6100217A41 /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
 		ECC42DA71A1B3F750020F7C7 /* childYear.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = childYear.xib; sourceTree = "<group>"; };
 		ECC471841A11EC770062803A /* MessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesCell.h; sourceTree = "<group>"; };
 		ECC471851A11EC770062803A /* MessagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesCell.m; sourceTree = "<group>"; };
@@ -796,6 +797,7 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECC39FEF1A25F1DD00217A41 /*  my Orders */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
@@ -1127,7 +1129,6 @@
 		ECB3D7661A03D16E0039DD3A /* XMLReader-master */ = {
 			isa = PBXGroup;
 			children = (
-				ECB3D7671A03D16E0039DD3A /* README.md */,
 				ECB3D7681A03D16E0039DD3A /* XMLReader.h */,
 				ECB3D7691A03D16E0039DD3A /* XMLReader.m */,
 			);
@@ -1224,6 +1225,15 @@
 				ECF529C31A124AA000150931 /* CustomWebView.m */,
 			);
 			name = GetQiwiBillsUrl;
+			sourceTree = "<group>";
+		};
+		ECC39FEF1A25F1DD00217A41 /*  my Orders */ = {
+			isa = PBXGroup;
+			children = (
+				ECC39FEC1A25EB6100217A41 /* MyOrdersViewController.h */,
+				ECC39FED1A25EB6100217A41 /* MyOrdersViewController.m */,
+			);
+			name = " my Orders";
 			sourceTree = "<group>";
 		};
 		ECC471871A11EF270062803A /* RootViewController */ = {
@@ -2000,7 +2010,6 @@
 				ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */,
 				ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
-				ECB3D76A1A03D16E0039DD3A /* README.md in Sources */,
 				ECC471861A11EC770062803A /* MessagesCell.m in Sources */,
 				ECB52E301A0776530091293F /* TransferClass.m in Sources */,
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,
@@ -2062,6 +2071,7 @@
 				ECC9215E1A1204920012FBFA /* UserRegistrationInformation.m in Sources */,
 				ECB3D7641A03BBF60039DD3A /* GetTariffsUrlResponse.m in Sources */,
 				EC5AD4381A14D55100588DE6 /* AssignOrderJson.m in Sources */,
+				ECC39FEE1A25EB6100217A41 /* MyOrdersViewController.m in Sources */,
 				ECB52E5D1A07853B0091293F /* CurrencyClass.m in Sources */,
 				ECC2BA591A10D2EF009A8CE4 /* DesignationCustomCell.m in Sources */,
 				ECC978FC1A00E11900D77B80 /* InfoElements.m in Sources */,

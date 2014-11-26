@@ -110,7 +110,18 @@
     
 }
 
-
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
 -(void)requestGetOrder
 {
         isRefuseTheOrderButtonPressed=NO;
@@ -142,15 +153,19 @@
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (!data)
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                                message:@"NO INTERNET CONECTION"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                
-                [alert show];
                 [indicator stopAnimating];
-                return ;
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action)
+                                        {
+                                            [alert dismissViewControllerAnimated:YES completion:nil];
+                                            
+                                         
+                                        }];
+                [alert addAction:cancel];
+                [self presentViewController:alert animated:YES completion:nil];
+               return ;
             }
             NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"responseString:%@",jsonString);
@@ -165,16 +180,20 @@
             
            
             
-            
+          
+
             if(getOrderResponseObject.code!=nil)
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                                message:getOrderResponseObject.text
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getOrderResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
                 
-                [alert show];
+                UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action)
+                                        {
+                                            [alert dismissViewControllerAnimated:YES completion:nil];
+                                            
+                                        }];
+                [alert addAction:cancel];
+                [self presentViewController:alert animated:YES completion:nil];
             }
             else
             {
@@ -597,15 +616,20 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+           
             
-            [alert show];
-            [indicator stopAnimating];
-            return ;
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        [indicator stopAnimating];
+                                        return ;
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"responseString:%@",jsonString);
@@ -620,13 +644,17 @@
         
         if(setStatusResponseObject.code!=nil)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                            message:setStatusResponseObject.text
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:setStatusResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
             
-            [alert show];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                       
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            
         }
         else if ([setStatusResponseObject.result isEqualToString:@"1"])
         {
@@ -846,8 +874,22 @@
     
     else
     {
-        UIAlertView *notPermitted=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [notPermitted show];
+        
+        
+      
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка" message:@"Your device doesn't support this feature."preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                    
+                                }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+
     }
 
 }

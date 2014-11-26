@@ -298,6 +298,7 @@
             CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
+                [tableView deselectRowAtIndexPath:indexPath animated:NO];
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
@@ -423,13 +424,14 @@
                 cell.whiteLabel.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
     }
         
-
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
     }
     NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%ld",(long)indexPath.row];
     CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
         {
+            [tableView deselectRowAtIndexPath:indexPath animated:NO];
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
@@ -727,7 +729,7 @@
         }
 
        
-
+cell.selectionStyle=UITableViewCellSelectionStyleNone;
         return  cell;
         
     }
@@ -801,7 +803,7 @@
             CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
-                
+                [tableView deselectRowAtIndexPath:indexPath animated:NO];
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
@@ -831,7 +833,7 @@
 
                 cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             }
-         
+         cell.selectionStyle=UITableViewCellSelectionStyleNone;
 
             return cell;
             
@@ -842,7 +844,7 @@
             CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
-                
+                [tableView deselectRowAtIndexPath:indexPath animated:NO];
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
@@ -913,7 +915,7 @@
             }
 
           
-
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
             return  cell;
         }
         
@@ -993,9 +995,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }else{
         selectedRow =indexPath.row;
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self.tableViewOrdersDetails reloadData];
     [self.tableViewOrdersDetails scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+ 
 }
 
 
@@ -2018,15 +2021,33 @@ else
 
 -(void)toTakeAction
 {
-    confirmOrdersTakenAlert = [[UIAlertView alloc] initWithTitle:@"Подтверждение взятия заказа"
-                                          message:nil
-                                         delegate:self
-                                cancelButtonTitle:nil
-                                otherButtonTitles:@"ОК",@"Отмена", nil];
-    confirmOrdersTakenAlert.backgroundColor=[UIColor blackColor];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Подтверждение взятия заказа" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction*ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                            {
+                                 [self requestAssignOrder];
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                
+                            }];
+    [alert addAction:ok];
+    
+    UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
+                                              handler:^(UIAlertAction * action)
+                        {
+                            [alert dismissViewControllerAnimated:YES completion:nil];
+                            
+                        }];
+    [alert addAction:cancel];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+    
+  
     
 
-[confirmOrdersTakenAlert show];
+
 
 }
 -(void)requestAssignOrder
@@ -2057,13 +2078,16 @@ request.timeoutInterval = 10;
 [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     if (!data)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                        message:@"NO INTERNET CONECTION"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
         
-        [alert show];
+        UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                    
+                                }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
         [indicator stopAnimating];
         return ;
     }
@@ -2077,13 +2101,20 @@ request.timeoutInterval = 10;
     
     if(assignOrderResponseObject.code!=nil)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                        message:assignOrderResponseObject.text
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+   
         
-        [alert show];
+        
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:assignOrderResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                    
+                                }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
         [indicator stopAnimating];
     }
     else

@@ -13,5 +13,6 @@
 
 @property (nonatomic,strong)NSMutableArray<MailElements>*mail;
 @property(nonatomic,strong)NSString*code;
+@property(nonatomic,strong)NSString*text;
 
 @end
