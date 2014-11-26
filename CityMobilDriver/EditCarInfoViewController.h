@@ -23,6 +23,10 @@
 
 @interface EditCarInfoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
+
 @property(nonatomic,strong) UIImage* carImage;
 @property(nonatomic,strong) NSString* id_car;
 

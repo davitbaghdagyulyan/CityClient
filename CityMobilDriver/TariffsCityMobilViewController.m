@@ -28,6 +28,7 @@
       NSDictionary *xmlDictionary;
     TariffsCustomView*customView;
     CustomTableView*ctvObject;
+    CAGradientLayer *gradient;
 }
 @end
 
@@ -36,6 +37,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    
     [self requestGetTariffsUrl];
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
@@ -47,6 +50,18 @@
     shortLabelArray=[[NSMutableArray alloc]init];
      range=NSMakeRange(0,1);
     ctvObject=[[CustomTableView alloc] init];
+    
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//
+//    //    CGColorRef darkColor = [[self.scrollView.backgroundColor colorWithAlphaComponent:0.5] CGColor];
+//    //    CGColorRef lightColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.6] CGColor];
+//   
+//    gradient.frame = CGRectMake(0, 0, self.tariffsSacrollView.frame.size.width, 60);
+//  
+//   
+//    [gradient setColors:[NSArray arrayWithObjects:(id)([UIColor lightGrayColor].CGColor), (id)([UIColor whiteColor].CGColor),nil]];
+//    [self.tariffsSacrollView.layer addSublayer:gradient];
+    
   
 }
 
@@ -89,13 +104,17 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            [alert show];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                       
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+
             [indicator stopAnimating];
             return ;
         }
@@ -109,14 +128,22 @@
         
         if(getTariffsUrlResponseObject.code!=nil)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                            message:getTariffsUrlResponseObject.text
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+           
             
-            [alert show];
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getTariffsUrlResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+           
             [indicator stopAnimating];
+            
         }
         
         [indicator stopAnimating];
@@ -143,6 +170,18 @@
 }
 -(void)actionTariffsPageMake
 {
+    gradient = [CAGradientLayer layer];
+    
+    //    CGColorRef darkColor = [[self.scrollView.backgroundColor colorWithAlphaComponent:0.5] CGColor];
+    //    CGColorRef lightColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.6] CGColor];
+    
+    gradient.frame = CGRectMake(0, 0, self.tariffsSacrollView.frame.size.width*getTariffsUrlResponseXMLObject.Tariffs.Tariff.count, self.tariffsSacrollView.frame.size.height);
+    
+    
+    [gradient setColors:[NSArray arrayWithObjects:(id)([UIColor lightGrayColor].CGColor), (id)([UIColor whiteColor].CGColor),nil]];
+    [self.tariffsSacrollView.layer addSublayer:gradient];
+
+    
     for (int i=0; i<getTariffsUrlResponseXMLObject.Tariffs.Tariff.count; i++)
     {
         UIScrollView*smallScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];
@@ -254,6 +293,8 @@
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
+          gradient.frame = CGRectMake(0, 0, self.tariffsSacrollView.frame.size.width*getTariffsUrlResponseXMLObject.Tariffs.Tariff.count, self.tariffsSacrollView.frame.size.height);
+         
          for (int i=0;i<scrollViewArray.count;i++)
          {
              [[scrollViewArray objectAtIndex:i]setFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];

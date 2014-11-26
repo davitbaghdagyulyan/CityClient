@@ -15,6 +15,10 @@
     
     RequestGetCarInfo* getCarInfoObject;
     ResponseGetCarInfo* getCarInfoResponse;
+    
+    
+    CAGradientLayer* gradientLayer1;
+    CAGradientLayer* gradientLayer2;
 }
 @end
 
@@ -26,6 +30,15 @@
     getCarInfoResponse = [[ResponseGetCarInfo alloc]init];
     self.carInfoTable.delegate = self;
     self.carInfoTable.dataSource = self;
+    
+    
+    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    
+    gradientLayer1 = [self greyGradient:self.bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19)];
+    [self.bgView.layer insertSublayer:gradientLayer1 atIndex:0];
+    
+    
+    
 }
 
 
@@ -39,6 +52,9 @@
     self.scrollView.userInteractionEnabled=YES;
     self.segmentControll.userInteractionEnabled=YES;
     self.scrollView.userInteractionEnabled=YES;
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
 }
 
 
@@ -112,11 +128,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [[UITableViewCell alloc]init];
-    cell.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
+    cell.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"марка ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.mark];
+            
+            
+            gradientLayer2 = [self greyGradient:cell.contentView widthFrame:CGRectMake(0, 0, CGRectGetWidth(cell.contentView.frame), CGRectGetHeight(cell.contentView.frame))];
+            [cell.contentView.layer insertSublayer:gradientLayer2 atIndex:0];
+            
             break;
         case 1:
             cell.textLabel.text = @"модель ";
@@ -157,7 +178,7 @@
     label.text = [label.text stringByAppendingString:appendingString];//
     NSRange range1 = [label.text rangeOfString:appendingString];
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
-    [attributedText setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0f]} range:range1];
+    [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:17]} range:range1];
     label.attributedText=attributedText;
 }
 
@@ -194,6 +215,45 @@
     [self pushOrPopViewController:controller];
 }
 
+
+#pragma mark - gradient
+- (CAGradientLayer*) greyGradient:(UIView*)view widthFrame:(CGRect) rect{
+    UIColor *colorOne = [UIColor colorWithRed:198.f/255 green:198.f/255 blue:198.f/255 alpha:1.f];
+    UIColor *colorTwo = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1.f];
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    headerLayer.frame = rect;
+    
+    return headerLayer;
+}
+
+
+#pragma mark - rotation
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19);
+     }
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     CGFloat xx;
+                                     
+                                     if(flag==0)
+                                     {
+                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                     }
+                                     else
+                                     {
+                                         xx=0;
+                                     }
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                 }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
 
 
 #pragma mark - left Menu
@@ -293,12 +353,6 @@
 - (IBAction)back:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:NO];
 }
-
-
-
-
-
-
 
 
 

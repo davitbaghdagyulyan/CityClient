@@ -27,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>aaaaaaaaa</string>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-LightItalic.ttf</string>

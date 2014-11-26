@@ -18,6 +18,11 @@
 @interface ProfilViewController : UIViewController <UIScrollViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 
+@property (nonatomic,weak) IBOutlet UIView* bgView;
+
+
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 
 
 

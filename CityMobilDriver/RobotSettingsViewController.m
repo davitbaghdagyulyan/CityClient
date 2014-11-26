@@ -103,10 +103,10 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     scrollView.userInteractionEnabled=YES;
-    leftMenu=[LeftMenu getLeftMenu:self];
-    flag = 0;
-    
     [self RequestGetAutoSettings];
+    
+    flag = 0;
+    leftMenu=[LeftMenu getLeftMenu:self];
 }
 
 
@@ -800,8 +800,24 @@
 
         backgroundView.frame = self.view.frame;
         indicator.center = self.view.center;
+        
+   
+        
+
     }
-                                 completion:nil];
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+    {     CGFloat xx;
+                                     
+                                     if(flag==0)
+                                     {
+                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                     }
+                                     else
+                                     {
+                                         xx=0;
+                                     }
+                                     
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);}];
 }
 
 

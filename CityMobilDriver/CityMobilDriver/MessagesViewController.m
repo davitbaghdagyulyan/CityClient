@@ -54,8 +54,9 @@
     if( cell == nil )
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MessagesCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+        cell =[nib objectAtIndex:0];
     }
+    
     cell.titLabel.text=[[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
     cell.dateLabel.text=[self TimeFormat:[[mailResponseObject.mail objectAtIndex:indexPath.row] getDate]];
     return cell;
@@ -163,7 +164,18 @@
     flag=1;
     self.messagesTableView.userInteractionEnabled=NO;
 }
-
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     CGFloat x;
@@ -220,12 +232,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             [indicator stopAnimating];
             return ;
         }
@@ -235,12 +251,16 @@
         mailResponseObject = [[MailResponse alloc] initWithString:jsonString error:&err];
         if(mailResponseObject.code!=nil)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"
-                                                            message:nil
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:mailResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             [indicator stopAnimating];
             return;
             

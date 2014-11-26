@@ -13,8 +13,9 @@
 #import "SingleDataProvider.h"
 #import "LeftMenu.h"
 
-@interface infoViewController : UIViewController <UIWebViewDelegate>
+@interface infoViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property(nonatomic,strong)NSString* key;
 @property (weak, nonatomic) IBOutlet UIWebView *web;
 //@property(nonatomic,strong) NSString* text;
@@ -24,8 +25,9 @@
 @property(nonatomic,strong) NSString* titleText;
 //@property (weak, nonatomic) IBOutlet UIView *navigationView;
 
-- (IBAction)back:(id)sender;
 
+///// left Menu
+- (IBAction)back:(id)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 
 @end

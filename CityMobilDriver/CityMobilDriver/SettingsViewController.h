@@ -16,7 +16,14 @@
 
 
 
-@interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>//,ComboBoxDelegate>
+@interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+
+
+
+
+@property (weak, nonatomic) IBOutlet UIButton* cityIcon;
+@property (weak, nonatomic) IBOutlet UIButton* yandexIcon;
+
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrolView;
 
@@ -30,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 
+@property (weak, nonatomic) IBOutlet UIView *settingsView;
 
 
 
@@ -79,7 +87,7 @@
 
 
 
-
+////// left Menu
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
-
+- (IBAction)back:(id)sender;
 @end

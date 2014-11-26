@@ -25,24 +25,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.web.scrollView.delegate = self;
+    self.web.scrollView.showsHorizontalScrollIndicator = NO;
     [self textJsonRequest];
-    
-    
-    self.web.scrollView.scrollEnabled = NO;
-
-
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     self.web.userInteractionEnabled=YES;
+    flag = 0;
     leftMenu=[LeftMenu getLeftMenu:self];
 }
-
-
-
 -(void)textJsonRequest
 {
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -83,7 +78,6 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             
-            
             [alert show];
             return ;
         }
@@ -95,11 +89,10 @@
         jsonResponseObject = [[textResponse alloc]initWithString:jsonString error:&err];
         
         NSURL* url = [[NSURL alloc]init];
-
+        
         NSString *str = [[NSString alloc]init];
-        str = [str stringByAppendingFormat:@"<b><font size=\"4\">%@</font></b></br>",self.titleText];
-        
-        
+        self.descriptionLabel.text = [NSString stringWithFormat:@" %@", self.titleText];
+        self.web.opaque = NO;//????
         for (int i = 0; i < [jsonResponseObject.messages count]; ++i) {
             if ([[jsonResponseObject.messages objectAtIndex:i] from_me] == 0) {
                 str = [str stringByAppendingString:@"<b><font size=\"4\">От: </font></b> Сити мобил</br>"];
@@ -116,25 +109,50 @@
             str = [str stringByAppendingFormat:@"<font size=\"4\"> %@ </font><br>" ,dateString];
             str = [str stringByAppendingString:[[jsonResponseObject.messages objectAtIndex:i] text]];
             str = [str stringByAppendingString:@"</font><br>"];
+            
+//            if (i%2 == 1) {
+//                UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 65*i,CGRectGetWidth(self.web.frame), 65)];
+//                view.userInteractionEnabled = NO;
+//                
+//                view.backgroundColor = [UIColor grayColor];
+//                view.alpha = 0.09;
+//                [self.web.scrollView addSubview:view];
+//            }
+        }
+        
+        if ([jsonResponseObject.messages count] < 8) {
+            self.web.scrollView.scrollEnabled = NO;
         }
         
         HTMLString = str;
         
         if (jsonResponseObject.can_answer == 1) {
-            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(8, self.web.frame.size.height - 44, self.web.frame.size.width - 16, 36)];
+            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36)];
             answerButton.backgroundColor = [UIColor orangeColor];
             [answerButton addTarget:self action:@selector(pushSendingMessage) forControlEvents:UIControlEventTouchUpInside];
             [answerButton setTitle:@"Ответить" forState:UIControlStateNormal];
-            [self.web addSubview:answerButton];
+            [self.view addSubview:answerButton];
         }
         
+        //str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
         [self.web loadHTMLString:str baseURL:url];
         self.web.delegate = self;
-       
+        
         [indicator stopAnimating];
     }];
 }
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender
+{
+    
+    if (sender.contentOffset.x != 0)
+    {
+        CGPoint offset = sender.contentOffset;
+        offset.x = 0;
+        sender.contentOffset = offset;
+    }
+}
 
 -(void)pushSendingMessage{
     SendingMessageViewController* contorller = [self.storyboard instantiateViewControllerWithIdentifier:@"SendingMessageViewController"];
@@ -167,19 +185,29 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         
          NSURL* url = [[NSURL alloc]init];
          [self.web loadHTMLString:HTMLString baseURL:url];
-         answerButton.frame = CGRectMake(8, self.web.frame.size.height - 44, self.web.frame.size.width - 16, 36);
+          answerButton.frame = CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36);
      }
-     
-                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-                                     
-                                 }];
-    
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         CGFloat xx;
+         
+         if(flag==0)
+         {
+             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+         }
+         else
+         {
+             xx=0;
+         }
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+        
+     }];
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
 }
 
+     
 - (IBAction)back:(id)sender
 {
     if (flag)
@@ -200,7 +228,7 @@
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
-    
+    [self.view bringSubviewToFront:leftMenu];
     [UIView animateWithDuration:0.5
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
@@ -222,12 +250,14 @@
          {
              flag=1;
              self.web.userInteractionEnabled=NO;
+             answerButton.userInteractionEnabled=NO;
              
          }
          else
          {
              flag=0;
              self.web.userInteractionEnabled=YES;
+             answerButton.userInteractionEnabled=YES;
          }
      }
      ];
@@ -241,7 +271,7 @@
     CGPoint touchLocation = [touch locationInView:touch.view];
     if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
-    
+    [self.view bringSubviewToFront:leftMenu];
     [UIView animateWithDuration:0.5
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
@@ -254,7 +284,7 @@
          {
              flag=0;
              self.web.userInteractionEnabled=YES;
-             
+             answerButton.userInteractionEnabled=YES;
              
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
@@ -263,6 +293,7 @@
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              
              self.web.userInteractionEnabled=NO;
+             answerButton.userInteractionEnabled=NO;
              
              flag=1;
          }
@@ -277,6 +308,7 @@
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self.view bringSubviewToFront:leftMenu];
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
     if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
@@ -290,6 +322,7 @@
     }
     leftMenu.center=point;
     self.web.userInteractionEnabled=NO;
+    answerButton.userInteractionEnabled=NO;
     flag=1;
 }
 

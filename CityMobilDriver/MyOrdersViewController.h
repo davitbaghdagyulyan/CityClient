@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LeftMenu.h"
 @interface MyOrdersViewController : UIViewController
+- (IBAction)back:(id)sender;
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 -(void)setIndexOfCell:(NSUInteger)indexOf;
-
+-(void)collMap;
+-(void)deliveryMapp;
+-(void)close;
+-(void)openYandexMap;
+-(void)openGoogleMap;
+-(void)toTakeAction;
 @end
