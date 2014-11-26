@@ -9,10 +9,8 @@
 
 //UI for Iphones in Portrait
 @property (strong, nonatomic) IBOutlet UIView *navigationView;
-- (IBAction)actionYandex:(id)sender;
-- (IBAction)actionUnknown1:(id)sender;
 - (IBAction)actionGPS:(id)sender;
-- (IBAction)actionUnkown2:(id)sender;
+- (IBAction)refreshPage:(id)sender;
 - (IBAction)back:(id)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *labelForDesign;
@@ -36,5 +34,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabelIpad;
 @property (weak, nonatomic) IBOutlet UILabel *labelMessagesIpad;
 @property (weak, nonatomic) IBOutlet UILabel *labelCallToDispethcerIpad;
+-(void)setSelectedRow;
 @end
 

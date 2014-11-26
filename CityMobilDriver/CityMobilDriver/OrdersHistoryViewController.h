@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface OrdersHistoryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+
+
+
+- (IBAction)actionGPS:(id)sender;
+
+- (IBAction)refresh:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UILabel *labelC;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *labelPo;

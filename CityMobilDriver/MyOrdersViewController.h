@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyOrdersViewController : UIViewController
+-(void)setIndexOfCell:(NSUInteger)indexOf;
 
 @end

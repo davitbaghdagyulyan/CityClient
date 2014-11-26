@@ -15,7 +15,12 @@
 {
     NSInteger flag;
     NSInteger flag1;
-    bool  timerCreated;
+    BOOL  timerCreated;
+    BOOL alertNoConIsCreated;
+    BOOL  cancelOfAlertNoConIsClicked;
+    BOOL alertServErrIsCreated;
+    BOOL cancelOfAlertServErrIsCreated;
+    NSData * data1;
     LeftMenu*leftMenu;
     UISwipeGestureRecognizer*recognizerRight;
     OrdersResponse*ordersResponseObject;
@@ -41,6 +46,22 @@
     self.tableViewOrdersLand.userInteractionEnabled=YES;
     self.tableViewIpad.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
+    if (cancelOfAlertNoConIsClicked ==YES)
+    {
+        alertNoConIsCreated=NO;
+    }
+    else
+    {
+       alertNoConIsCreated=YES;
+    }
+    if (cancelOfAlertServErrIsCreated ==YES)
+    {
+        alertServErrIsCreated =NO;
+    }
+    else
+    {
+        alertServErrIsCreated =YES;
+    }
     [self requestGetOrders];
 }
 
@@ -54,19 +75,26 @@
     self.labelMessages.font =[UIFont fontWithName:@"Roboto-Regular" size:16];
     self.labelCallToDispetcher.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
     self.titleLabelPort.font =[UIFont fontWithName:@"Roboto-Regular" size:19];
-    self.labelMessagesLand.font =[UIFont fontWithName:@"MyriadPro-Regular" size:20];
+    self.labelMessagesLand.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
     self.labelCallToDispetcherLand.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
     self.titleLabelLand.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
-    self.labelMessagesIpad.font =[UIFont fontWithName:@"MyriadPro-Regular" size:20];
+    self.labelMessagesIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
     self.labelCallToDispethcerIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:18];
     self.titleLabelIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
-    
-    
+    //Controlling AlertVCS
+    cancelOfAlertNoConIsClicked =YES;
+    cancelOfAlertServErrIsCreated=YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)setSelectedRow
+{
+    selectedRow=-1;
+}
+
 
 - (BOOL)prefersStatusBarHidden
 {
@@ -112,7 +140,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
     gradLayerLabel1 =[CAGradientLayer layer];
     UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.0f];
-    UIColor * gradColFin =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+    UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.0f];
     gradLayerLabel1.frame =CGRectMake(0, 0, cell.bounds.size.width*0.859, self.view.frame.size.height/12-3);
     [gradLayerLabel1 setColors:[NSArray arrayWithObjects:(id)(gradColStart.CGColor), (id)(gradColFin.CGColor),nil]];
     [cell.View1.layer insertSublayer:gradLayerLabel1 atIndex:0];
@@ -203,32 +231,48 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
 }
 
-
-- (IBAction)actionYandex:(id)sender {
+- (IBAction)actionGPS:(id)sender
+{
 }
 
-- (IBAction)actionUnknown1:(id)sender {
-}
-
-- (IBAction)actionGPS:(id)sender {
-}
-
-- (IBAction)actionUnkown2:(id)sender {
+- (IBAction)refreshPage:(id)sender
+{
+    if (cancelOfAlertNoConIsClicked ==YES)
+    {
+        alertNoConIsCreated=NO;
+    }
+    else
+    {
+        alertNoConIsCreated=YES;
+    }
+    
+    if (cancelOfAlertServErrIsCreated ==YES)
+    {
+        alertServErrIsCreated =NO;
+    }
+    else
+    {
+        alertServErrIsCreated =YES;
+    }
+    
+    [self requestGetOrders];
 }
 
 - (IBAction)back:(id)sender
 
-{
-   alertBack = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:@"Подтвердите выход из приложения"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Отмена"
-                                          otherButtonTitles:@"ОК",nil];
-    [alertBack show];
-    return;
-}
-
-- (IBAction)actionUnkown3:(id)sender {
+{UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
+UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                    [[self navigationController] pushViewController:log animated:NO];
+                                                              }];
+UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action) {
+                                            [self requestGetOrders];
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                            }];
+[alert addAction:cancel];
+[alert addAction:cancellation];
+[self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
@@ -491,15 +535,18 @@ else if(alertView ==  alertBack)
 }
 -(void)requestGetOrders
 {
-
     flag1=-1;
     self.view.backgroundColor = [UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+    self.tableViewIpad.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+    self.tableViewOrdersLand.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+    self.tableViewOrdersPort.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     self.titleLabelPort.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     self.titleLabelIpad.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     self.titleLabelLand.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     [self.tableViewOrdersPort reloadData];
     [self.tableViewOrdersLand reloadData];
     [self.tableViewIpad reloadData];
+    
     OrdersJson* ordersJsonObject=[[OrdersJson alloc]init];
     NSDictionary*jsonDictionary=[ordersJsonObject toDictionary];
     NSString*jsons=[ordersJsonObject toJSONString];
@@ -517,43 +564,63 @@ else if(alertView ==  alertBack)
     [request setHTTPBody:jsonData];
     request.timeoutInterval = 10;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (!data)
+        if (!data && alertNoConIsCreated ==NO)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            
-            
-            [alert show];
-            return ;
+            data1=data;
+            UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            alertNoConIsCreated =YES;
+            cancelOfAlertNoConIsClicked =NO;
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              cancelOfAlertNoConIsClicked=YES;
+                                                              [alertNoCon dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertNoCon addAction:cancel];
+            [self presentViewController:alertNoCon animated:YES completion:nil];
         }
+        else if(data)
+        {
+            alertNoConIsCreated =NO;
+        }
+        
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"First Json String %@",jsonString);
         NSError*err;
         ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
-        if(ordersResponseObject.code!=nil)
+        if(ordersResponseObject.code!=nil && alertServErrIsCreated==NO)
         {
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"
-                                                            message:nil
-                                                        delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-            return;
+            UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:ordersResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            alertServErrIsCreated =YES;
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              cancelOfAlertServErrIsCreated = YES;
+                                                              [alertServerErr dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertServerErr addAction:cancel];
+            [self presentViewController:alertServerErr animated:YES completion:nil];
             
         }
-     flag1=1;
-     self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-     self.titleLabelPort.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-     self.titleLabelLand.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-     self.titleLabelIpad.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-     [self.tableViewOrdersPort reloadData];
-     [self.tableViewOrdersLand reloadData];
-     [self.tableViewIpad reloadData];
-        if (timerCreated ==NO) {
+        else if(ordersResponseObject.code==nil)
+        {
+            alertServErrIsCreated=NO;
+        }
+        flag1=1;
+        
+        
+            
+     if (ordersResponseObject.code==nil && data)
+        {   self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.tableViewOrdersPort.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.tableViewOrdersLand.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.tableViewIpad.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.titleLabelPort.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.titleLabelLand.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.titleLabelIpad.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            [self.tableViewOrdersPort reloadData];
+            [self.tableViewOrdersLand reloadData];
+            [self.tableViewIpad reloadData];
+        }
+       if (timerCreated ==NO) {
             requestTimer= [NSTimer scheduledTimerWithTimeInterval:10
                                                        target:self
                                                      selector:@selector(requestGetOrders)
@@ -567,6 +634,10 @@ else if(alertView ==  alertBack)
     
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [requestTimer invalidate];
+}
 
 
 @end

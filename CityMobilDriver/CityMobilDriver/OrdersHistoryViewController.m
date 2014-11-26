@@ -93,7 +93,7 @@
     //Adding Gradient For GreyView
     gradLayer=[CAGradientLayer layer];
     UIColor * graColStart = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
-    UIColor * graColFin =[UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0f];
+    UIColor * graColFin =[UIColor colorWithRed:233/255.0f green:233/255.0f blue:233/255.0f alpha:1.0f];
     gradLayer.frame = self.GreyView.bounds;
     [gradLayer setColors:[NSArray arrayWithObjects:(id)(graColStart.CGColor), (id)(graColFin.CGColor),nil]];
     [self.GreyView.layer insertSublayer:gradLayer atIndex:0];
@@ -751,4 +751,9 @@ else
 
 }
 
+- (IBAction)actionGPS:(id)sender {
+}
+
+- (IBAction)refresh:(id)sender {
+}
 @end

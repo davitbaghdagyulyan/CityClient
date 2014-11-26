@@ -11,5 +11,5 @@
 @interface OrdersResponse : JSONModel
 @property (nonatomic,strong)NSMutableArray<OrdersElements>*categories;
 @property(nonatomic,strong)NSString*code;
-
+@property(nonatomic,strong)NSString* text;
 @end

@@ -9,7 +9,9 @@
 #import "MyOrdersViewController.h"
 
 @interface MyOrdersViewController ()
-
+{
+    NSUInteger indexOfCell;
+}
 @end
 
 @implementation MyOrdersViewController
@@ -22,6 +24,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)setIndexOfCell:(NSUInteger)indexOf
+{
+    indexOfCell=indexOf;
 }
 
 /*

@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong)NSMutableArray<SelectedOrdersDetailsElements>*orders;
 @property(nonatomic,strong)NSString*code;
+@property(nonatomic,strong)NSString*text;
 
 
 @end

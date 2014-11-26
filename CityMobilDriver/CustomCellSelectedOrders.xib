@@ -119,16 +119,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHK-kv-JMy" userLabel="DL3">
-                                <rect key="frame" x="0.0" y="304" width="741" height="2"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="DnW-gJ-FED"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAA-pw-btG" userLabel="View3">
                                 <rect key="frame" x="0.0" y="203" width="741" height="101"/>
                                 <subviews>
@@ -174,13 +164,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="LHK-kv-JMy" secondAttribute="trailing" id="0O5-82-Wdn"/>
                             <constraint firstItem="LAA-pw-btG" firstAttribute="width" secondItem="H1A-5c-Qvs" secondAttribute="width" id="B21-Pa-xXK"/>
                             <constraint firstItem="ejR-vd-wGE" firstAttribute="width" secondItem="H1A-5c-Qvs" secondAttribute="width" multiplier="12/15" id="Djo-Ld-8XJ"/>
                             <constraint firstItem="tKq-rp-Jrd" firstAttribute="width" secondItem="H1A-5c-Qvs" secondAttribute="width" id="Erf-pH-8En"/>
-                            <constraint firstItem="LAA-pw-btG" firstAttribute="top" secondItem="LHK-kv-JMy" secondAttribute="bottom" constant="39" id="EyK-cK-U7w"/>
                             <constraint firstItem="SV1-Ib-HoY" firstAttribute="height" secondItem="H1A-5c-Qvs" secondAttribute="height" multiplier="100/302" id="HNs-TP-NE3"/>
-                            <constraint firstItem="LHK-kv-JMy" firstAttribute="top" secondItem="LAA-pw-btG" secondAttribute="bottom" id="Hao-3R-dQu"/>
                             <constraint firstItem="tKq-rp-Jrd" firstAttribute="height" secondItem="H1A-5c-Qvs" secondAttribute="height" multiplier="100/302" id="Hke-oz-7M3"/>
                             <constraint firstItem="SV1-Ib-HoY" firstAttribute="width" secondItem="H1A-5c-Qvs" secondAttribute="width" id="Luw-mW-da1"/>
                             <constraint firstItem="SV1-Ib-HoY" firstAttribute="top" secondItem="TmN-kj-axx" secondAttribute="bottom" id="MFP-Vc-JJK"/>
@@ -196,16 +183,15 @@
                             <constraint firstItem="SV1-Ib-HoY" firstAttribute="top" secondItem="tKq-rp-Jrd" secondAttribute="bottom" id="eFX-Bi-Mz4"/>
                             <constraint firstAttribute="height" constant="302" id="eWE-vS-dBk"/>
                             <constraint firstItem="LAA-pw-btG" firstAttribute="height" secondItem="H1A-5c-Qvs" secondAttribute="height" multiplier="100/302" id="hgU-vf-XiU"/>
-                            <constraint firstItem="LHK-kv-JMy" firstAttribute="leading" secondItem="H1A-5c-Qvs" secondAttribute="leading" id="jip-OE-dGE"/>
                             <constraint firstItem="LAA-pw-btG" firstAttribute="leading" secondItem="H1A-5c-Qvs" secondAttribute="leading" id="kFf-Ep-33P"/>
                             <constraint firstItem="LAA-pw-btG" firstAttribute="top" secondItem="ejR-vd-wGE" secondAttribute="bottom" id="lmL-9K-0av"/>
                             <constraint firstItem="TmN-kj-axx" firstAttribute="height" secondItem="H1A-5c-Qvs" secondAttribute="height" id="nS8-i7-4n2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="eWE-vS-dBk"/>
                                 <exclude reference="eFX-Bi-Mz4"/>
                                 <exclude reference="nS8-i7-4n2"/>
-                                <exclude reference="EyK-cK-U7w"/>
                                 <exclude reference="Qg6-a6-aha"/>
                             </mask>
                         </variation>
@@ -242,7 +228,7 @@
                 <outlet property="labelPercent" destination="HZF-e4-752" id="OHc-aX-jvq"/>
                 <outlet property="labelShortName" destination="aGc-fZ-nhU" id="2uW-ax-fTS"/>
             </connections>
-            <point key="canvasLocation" x="627.5" y="491"/>
+            <point key="canvasLocation" x="523.5" y="366"/>
         </tableViewCell>
     </objects>
     <resources>

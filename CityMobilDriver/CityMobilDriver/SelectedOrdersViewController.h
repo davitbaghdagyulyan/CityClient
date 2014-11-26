@@ -8,13 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SelectedOrdersTableViewHandler.h"
 
 
-@interface SelectedOrdersViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
+@interface SelectedOrdersViewController : UIViewController<UIAlertViewDelegate,CLLocationManagerDelegate>
+@property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;
-@property (weak, nonatomic) IBOutlet UITableView *tableViewOrdersDetails;
 @property(strong,nonatomic)NSString * stringForSrochno;
+- (IBAction)actionGPS:(id)sender;
+- (IBAction)refresh:(id)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
+-(void)collMap;
+-(void)deliveryMapp;
+-(void)close;
+-(void)openYandexMap;
+-(void)openGoogleMap;
+-(void)toTakeAction;
+-(void)setIndexOfCell:(NSUInteger)indexOf;
+-(void)setUnderView:(UIView*)under;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
