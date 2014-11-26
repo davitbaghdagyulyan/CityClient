@@ -14,4 +14,7 @@
 @property (nonatomic,strong)NSString* balance;
 @property (nonatomic,strong)NSString* credit_limit;
 @property (nonatomic,strong)NSString* bankid;
+
+@property (nonatomic, assign) NSInteger autoget;
+@property (nonatomic, assign) NSInteger y_autoget;
 @end

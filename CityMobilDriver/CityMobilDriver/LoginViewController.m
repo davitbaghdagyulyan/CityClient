@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "SingleDataProvider.h"
 #import "UserRegistrationInformation.h"
+#import "IconsColorSingltone.h"
 
 NSString* const UserDefaultsBankId = @"bankid";
 NSString* const UserDefaultsPassword = @"password";
@@ -72,7 +73,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         {
             keyboardHeightInLandscape = 193;
         }
-        loginSpace.constant = self.view.frame.size.height -  keyboardHeightInLandscape - login.frame.size.height - 25;//po
+        loginSpace.constant = self.view.frame.size.height -  keyboardHeightInLandscape - login.frame.size.height - 25;
     }
     
     if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
@@ -386,6 +387,9 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         [UserInformationProvider sharedInformation].balance = loginResponseObject.balance;
         [UserInformationProvider sharedInformation].bankid = loginResponseObject.bankid;
         [UserInformationProvider sharedInformation].credit_limit = loginResponseObject.credit_limit;
+        [IconsColorSingltone sharedColor].yandexColor = loginResponseObject.y_autoget;
+        [IconsColorSingltone sharedColor].cityMobilColor = loginResponseObject.autoget;
+        
         
         
         if(loginResponseObject.code!=nil)

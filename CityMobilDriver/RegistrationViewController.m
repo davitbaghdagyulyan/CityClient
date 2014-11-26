@@ -122,12 +122,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CustomTableViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil] objectAtIndex:0];;
+//    CustomTableViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil] objectAtIndex:0];
+    UITableViewCell* cell = [[UITableViewCell alloc]init];
     if (indexPath.row == 0) {
-        cell.cellText.text = @"  Москва";
+        cell.textLabel.text = @"  Москва";
     }
     if (indexPath.row == 1) {
-        cell.cellText.text = @"  Краснодар";
+        cell.textLabel.text = @"  Краснодар";
     }
     return cell;
 }
@@ -142,9 +143,36 @@
     [regionTable removeFromSuperview];
     [regionBackgroundView removeFromSuperview];
     idLocalityNumber = indexPath.row;
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self.region setTitle:cell.textLabel.text forState:UIControlStateNormal];
+    
+//    [cell.selectedCell setImage:[UIImage imageNamed:@"rb_2.png"]];
 }
 
+#pragma mark - separators
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if ([regionTable respondsToSelector:@selector(setSeparatorInset:)]) {
+        [regionTable setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([regionTable respondsToSelector:@selector(setLayoutMargins:)]) {
+        [regionTable setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
 
 #pragma mark Requests
@@ -154,7 +182,7 @@
     GetActivationCodeRequest* RequestObject=[[GetActivationCodeRequest alloc]init];
     RequestObject.phone = self.phoneNumber.text;
     if (idLocalityNumber == 0) {
-        RequestObject.id_locality = 338;
+        RequestObject.id_locality = 232;//338;
     }
     if (idLocalityNumber == 1) {
         RequestObject.id_locality = 2;
