@@ -15,6 +15,9 @@
 @interface CreateProfilViewController : UIViewController<UIScrollViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate>
 
 
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *bgViews;
+
+
 
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;

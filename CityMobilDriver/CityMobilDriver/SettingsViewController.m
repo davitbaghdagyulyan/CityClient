@@ -11,11 +11,6 @@
 #import "yandexIcon.h"
 #import "IconsColorSingltone.h"
 
-//static UIColor* buttonTextColor = nil;
-
-static int yandexColor;
-static int cityColor = -1;
-
 @interface SettingsViewController ()
 {
     NSInteger flag;
@@ -34,6 +29,9 @@ static int cityColor = -1;
     NSString* fontSizeText;
     NSString* fontStileText;
     NSString* languageText;
+
+    CAGradientLayer* backgroundLayer;
+    CAGradientLayer* gradientLayer;
 }
 @property(nonatomic,strong) UIColor* buttonTextColor;
 
@@ -54,9 +52,16 @@ static int cityColor = -1;
     self.callsign.text =[self.callsign.text stringByAppendingString:[UserInformationProvider sharedInformation].bankid];
     self.buttonTextColor = self.required.titleLabel.textColor;
     
-    //self.nightMode.on = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isNightMode"] boolValue];
-    //NSLog(@"%i",self.nightMode.on);
-
+    
+    
+    backgroundLayer = [self greyBackgroundGradient];
+    backgroundLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:backgroundLayer atIndex:0];
+    
+    self.settingsView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    gradientLayer = [self greyGradient];
+    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.settingsView.frame), CGRectGetHeight(self.settingsView.frame)*9.f/46);
+    [self.settingsView.layer insertSublayer:gradientLayer atIndex:0];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -64,6 +69,7 @@ static int cityColor = -1;
     
     self.scrolView.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
+    flag = 0;
     
     [super viewDidAppear:animated];
     if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait && self.view.frame.size.height == 480)
@@ -122,7 +128,6 @@ static int cityColor = -1;
     
     
     
-    NSLog(@"cityColor = %i",cityColor);
     if ([IconsColorSingltone sharedColor].cityMobilColor == 0) {
         [self.off setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [self.notRequired setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -167,71 +172,31 @@ static int cityColor = -1;
     return [string substringFromIndex:range.location + 1];
 }
 
-#pragma mark - rotation Method
 
-- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
-    {
-        if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
-        {
-            //NSLog(@"%@",NSStringFromCGSize(size));
-            //        CGSize scrollSize = size;
-            //        scrollSize.height = size.width;
-            //        self.scrolView.contentSize = scrollSize;
-        }
-        
-        if (([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait || [UIDevice currentDevice].orientation == UIDeviceOrientationPortraitUpsideDown) && self.view.frame.size.height == 480)
-        {
-            //            self.scrolView.contentSize = size;
-        }
-        
-        fontSizeView.center = self.view.center;
-        fontStileView.center = self.view.center;
-    }
-     
-    completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-
-    }];
-    
-    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
-}
 
 - (IBAction)offAction:(id)sender
 {
-//    cityColor = 0;
     [self setAutoAssign:0];
 }
 
 - (IBAction)notRequiredAction:(id)sender
 {
-//    cityColor = 1;
     [self setAutoAssign:1];
 }
 
 - (IBAction)requiredAction:(id)sender
 {
-//    cityColor = 2;
-    [self setAutoAssign:2];////???? 3
+    [self setAutoAssign:2];
 }
 
 
 #pragma mark - yandex Settings
 - (IBAction)onAction:(id)sender
 {
-    //[self.on setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    //[self.yandexOff setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-    
-    
-    yandexColor = 1;
     [self setYandexAutoAssign:1];
 }
 - (IBAction)yandexOffAction:(id)sender
 {
-    //[self.yandexOff setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    //[self.on setTitleColor:self.buttonTextColor forState:UIControlStateNormal];
-    
-    yandexColor = 0;
     [self setYandexAutoAssign:0];
 }
 
@@ -779,7 +744,58 @@ static int cityColor = -1;
 }
 
 
+#pragma mark - gradient
 
+- (CAGradientLayer*) greyBackgroundGradient {
+    UIColor *colorOne = [UIColor colorWithRed:230.f/255 green:230.f/255 blue:230.f/255 alpha:1.f];
+    UIColor *colorTwo = [UIColor colorWithRed:255.f/255 green:255.f/255 blue:255.f/255 alpha:1.f];
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    return headerLayer;
+}
+
+- (CAGradientLayer*) greyGradient {
+    UIColor *colorOne = [UIColor colorWithRed:198.f/255 green:198.f/255 blue:198.f/255 alpha:1.f];
+    UIColor *colorTwo = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1.f];
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    return headerLayer;
+}
+
+
+#pragma mark - rotation Method
+
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         fontSizeView.center = self.view.center;
+         fontStileView.center = self.view.center;
+         
+         backgroundLayer.frame = self.view.bounds;
+         gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.settingsView.frame), CGRectGetHeight(self.settingsView.frame)*9.f/46);
+     }
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     CGFloat xx;
+                                     
+                                     if(flag==0)
+                                     {
+                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                     }
+                                     else
+                                     {
+                                         xx=0;
+                                     }
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                 }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
 
 /////////////////////////
 
@@ -801,7 +817,6 @@ static int cityColor = -1;
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          point.y=leftMenu.center.y;
          leftMenu.center=point;
-         
      }
                      completion:^(BOOL finished)
      {
@@ -879,6 +894,12 @@ static int cityColor = -1;
     leftMenu.center=point;
     self.scrolView.userInteractionEnabled=NO;
     flag=1;
+}
+
+
+- (IBAction)back:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end

@@ -444,17 +444,33 @@
 
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    self.scrollView.contentInset = contentInsets;
-    self.scrollView.scrollIndicatorInsets = contentInsets;
-    CGRect aRect = self.view.frame;
-    aRect.size.height -= kbSize.height;
-    if (!CGRectContainsPoint(aRect, activeTextFeild.frame.origin) ) {
-        [self.scrollView scrollRectToVisible:activeTextFeild.frame animated:YES];
-    }
+//    NSDictionary* info = [aNotification userInfo];
+//    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+//    
+//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+//    self.scrollView.contentInset = contentInsets;
+//    self.scrollView.scrollIndicatorInsets = contentInsets;
+//    CGRect aRect = self.view.frame;
+//    aRect.size.height -= keyboardSize.height;
+//    
+//    NSLog(@"--->>> %@",NSStringFromCGPoint(activeTextFeild.frame.origin));
+//    
+//   // CGPoint point = [activeTextFeild convertPoint:activeTextFeild.frame.origin fromView:self.view];
+//    
+//    
+//    
+//    CGPoint point = [activeTextFeild convertPoint:activeTextFeild.frame.origin toView:self.view];
+//    //point.y += 30;
+//    
+//    CGRect rect = [activeTextFeild convertRect:activeTextFeild.frame toView:self.view];
+//    
+//    NSLog(@"point = %@",NSStringFromCGPoint(point));
+//    NSLog(@"aRect = %@",NSStringFromCGRect(aRect));
+//    NSLog(@"aRect = %@",NSStringFromCGRect(rect));
+//    
+//    if (!CGRectContainsPoint(aRect, point) ) {
+//        [self.scrollView scrollRectToVisible:rect animated:YES];
+//    }
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
@@ -673,6 +689,31 @@
     }
 }
 
+
+#pragma mark - rotation
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         
+     }
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     CGFloat xx;
+                                     
+                                     if(flag==0)
+                                     {
+                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                     }
+                                     else
+                                     {
+                                         xx=0;
+                                     }
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                 }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
 
 
 #pragma mark - left Menu

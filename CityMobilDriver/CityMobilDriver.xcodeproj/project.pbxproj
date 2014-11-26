@@ -265,7 +265,6 @@
 		ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8519E56BE80044F6AD /* textResponse.m */; };
 		ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE3CFAC1A0918900053FF85 /* tachometer_arrow.png */; };
 		ECEA963E19F54917001A6305 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA963D19F54917001A6305 /* CustomView.m */; };
-		ECEADF8F1A1E051A00FBA389 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEADF8E1A1E051A00FBA389 /* MyOrdersViewController.m */; };
 		ECEADF911A1F29B300FBA389 /* tachometer_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEADF901A1F29B300FBA389 /* tachometer_bg.png */; };
 		ECEB634A19F63E4200E6F666 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEB634819F63E4200E6F666 /* photo.png */; };
 		ECEB634B19F63E4200E6F666 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEB634919F63E4200E6F666 /* edit.png */; };
@@ -716,8 +715,6 @@
 		ECE3CFAC1A0918900053FF85 /* tachometer_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachometer_arrow.png; sourceTree = "<group>"; };
 		ECEA963C19F54917001A6305 /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
 		ECEA963D19F54917001A6305 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
-		ECEADF8D1A1E051A00FBA389 /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
-		ECEADF8E1A1E051A00FBA389 /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
 		ECEADF901A1F29B300FBA389 /* tachometer_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachometer_bg.png; sourceTree = "<group>"; };
 		ECEB634819F63E4200E6F666 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		ECEB634919F63E4200E6F666 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
@@ -800,7 +797,6 @@
 			isa = PBXGroup;
 			children = (
 				EC0798D31A232E290085E3F0 /* Navigation view */,
-				ECEADF8C1A1E04F600FBA389 /* my Orders */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
 				ECCA908919DEE2050007831F /* JSONModel */,
@@ -1709,15 +1705,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		ECEADF8C1A1E04F600FBA389 /* my Orders */ = {
-			isa = PBXGroup;
-			children = (
-				ECEADF8D1A1E051A00FBA389 /* MyOrdersViewController.h */,
-				ECEADF8E1A1E051A00FBA389 /* MyOrdersViewController.m */,
-			);
-			name = "my Orders";
-			sourceTree = "<group>";
-		};
 		ECEBD87B1A0A661600118466 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -1993,7 +1980,6 @@
 				ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */,
 				ECB52E421A0779020091293F /* DriveAfterMKADClass.m in Sources */,
 				ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */,
-				ECEADF8F1A1E051A00FBA389 /* MyOrdersViewController.m in Sources */,
 				ECCA90B319DEE3B90007831F /* LoginResponse.m in Sources */,
 				ECB52E2D1A07763D0091293F /* SuburbClass.m in Sources */,
 				ECB59E9A19F6A3B300F69529 /* GetQiwiBillsUrlResponse.m in Sources */,

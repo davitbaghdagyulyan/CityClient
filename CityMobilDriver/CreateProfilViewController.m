@@ -18,6 +18,10 @@
     UIImagePickerController* imagePicker;
     UITextField* activeTextFeild;
     UIAlertView* succeedAlert;
+    
+    CAGradientLayer* gradientLaye1;
+    CAGradientLayer* gradientLaye2;
+    CAGradientLayer* gradientLaye3;
 }
 @end
 
@@ -81,15 +85,6 @@
     self.driverLicenseClass.delegate = self;
     self.driverLicenseClass.placeholder = self.driverLicenseClassText;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     [self registerForKeyboardNotifications];
     UITapGestureRecognizer* tapBeganFirstView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchRecognizer)];
     [self.firstView addGestureRecognizer:tapBeganFirstView];
@@ -97,6 +92,27 @@
     
     UITapGestureRecognizer* tapBeganSecondView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchRecognizer)];
     [self.secondView addGestureRecognizer:tapBeganSecondView];
+ 
+    /// gradients ////
+    for (int  i = 0; i < self.bgViews.count; ++i) {
+        
+        UIView* bgView = [self.bgViews objectAtIndex:i];
+        bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+        
+        if (i == 0) {
+            gradientLaye1 = [self greyGradient:bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(bgView.frame), CGRectGetHeight(bgView.frame)*9.f/34)];
+            [bgView.layer insertSublayer:gradientLaye1 atIndex:0];
+        }
+        if (i == 1) {
+            gradientLaye2 = [self greyGradient:bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(bgView.frame), CGRectGetHeight(bgView.frame)*9.f/52)];
+            [bgView.layer insertSublayer:gradientLaye2 atIndex:0];
+        }
+        if (i == 2) {
+            gradientLaye3 = [self greyGradient:bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(bgView.frame), CGRectGetHeight(bgView.frame)*9.f/19)];
+            [bgView.layer insertSublayer:gradientLaye3 atIndex:0];
+        }
+    }
+    
 }
 
 
@@ -451,6 +467,65 @@
     }
 }
 
+#pragma mark - gradient
+- (CAGradientLayer*) greyGradient:(UIView*)view widthFrame:(CGRect) rect{
+    UIColor *colorOne = [UIColor colorWithRed:198.f/255 green:198.f/255 blue:198.f/255 alpha:1.f];
+    UIColor *colorTwo = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1.f];
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    headerLayer.frame = rect;
+    
+    return headerLayer;
+}
+
+#pragma mark - rotation
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+
+     }
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     CGFloat xx;
+                                     
+                                     if(flag==0)
+                                     {
+                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                     }
+                                     else
+                                     {
+                                         xx=0;
+                                     }
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                     
+                                     
+                                     for (int  i = 0; i < self.bgViews.count; ++i) {
+                                         UIView* bgView = [self.bgViews objectAtIndex:i];
+                                         if (i == 0) {
+                                             NSLog(@"%f",CGRectGetWidth(bgView.frame));
+                                             gradientLaye1.frame =CGRectMake(0, 0, CGRectGetWidth(bgView.frame), CGRectGetHeight(bgView.frame)*9.f/34);
+                                         }
+                                         if (i == 1) {
+                                             NSLog(@"%f",CGRectGetWidth(bgView.frame));
+                                             gradientLaye2.frame = CGRectMake(0, 0, CGRectGetWidth(bgView.frame), CGRectGetHeight(bgView.frame)*9.f/52);
+                                         }
+                                         if (i == 2) {
+                                             NSLog(@"%f",CGRectGetWidth(bgView.frame));
+                                             gradientLaye3.frame = CGRectMake(0, 0, CGRectGetWidth(bgView.frame), CGRectGetHeight(bgView.frame)*9.f/19);
+                                         }
+                                         //NSLog(@"------>>> = %@",NSStringFromCGSize(bgView.frame.size));
+                                     }
+                                     
+                                     
+                                     
+                                     //NSLog(@"size = %@",NSStringFromCGSize(size));
+                                 }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
 
 
 #pragma mark - left Menu
@@ -545,8 +620,17 @@
     flag=1;
 }
 
-- (IBAction)back:(UIButton *)sender {
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
     [self.navigationController popViewControllerAnimated:NO];
+    
 }
 
 

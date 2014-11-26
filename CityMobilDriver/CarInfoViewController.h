@@ -15,6 +15,9 @@
 
 @interface CarInfoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
+@property(nonatomic,weak) IBOutlet UIView* bgView;
+
+
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 

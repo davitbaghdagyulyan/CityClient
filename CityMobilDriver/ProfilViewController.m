@@ -18,6 +18,8 @@
     UIActivityIndicatorView* indicator;
     
     DriverAllInfoResponse* jsonResponseObject;
+    
+    CAGradientLayer* gradientLayer;
 }
 @end
 
@@ -29,19 +31,23 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self setDriverInfoRequest];
     [self setDriverInfo];
+    
+    
+    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    gradientLayer = [self greyGradient];
+    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
+    [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.segmentedControll.selectedSegmentIndex = 0;
-    
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
+    
+    self.segmentedControll.selectedSegmentIndex = 0;
     self.scrollView.userInteractionEnabled=YES;
     self.segmentedControll.userInteractionEnabled=YES;
-    self.segmentedControll.userInteractionEnabled=YES;
-    
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
@@ -129,7 +135,7 @@
         label.text = [label.text stringByAppendingString:appendingString];
         NSRange range1 = [label.text rangeOfString:appendingString];
         NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
-        [attributedText setAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0f]} range:range1];
+        [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:17]} range:range1];
         label.attributedText=attributedText;
     }
 }
@@ -238,6 +244,45 @@
     [self pushOrPopViewController:createProfilController];
     
 }
+
+
+#pragma mark - gradient
+- (CAGradientLayer*) greyGradient {
+    UIColor *colorOne = [UIColor colorWithRed:198.f/255 green:198.f/255 blue:198.f/255 alpha:1.f];
+    UIColor *colorTwo = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1.f];
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    return headerLayer;
+}
+
+
+#pragma mark - rotation
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
+     }
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     CGFloat xx;
+                                     
+                                     if(flag==0)
+                                     {
+                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                     }
+                                     else
+                                     {
+                                         xx=0;
+                                     }
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                 }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
+
 
 
 #pragma mark - left Menu
@@ -353,8 +398,17 @@
     
 }
 
-- (IBAction)back:(UIButton *)sender {
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
     [self.navigationController popViewControllerAnimated:NO];
+    
 }
 
 @end
