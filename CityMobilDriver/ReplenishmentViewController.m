@@ -183,14 +183,19 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             
             
-            [alert show];
+            
             [indicator stopAnimating];
             return ;
         }
@@ -201,14 +206,20 @@
 
         if(bindCardResponseObject.code!=nil)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                            message:bindCardResponseObject.text
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            
-            [alert show];
+           
             [indicator stopAnimating];
+            
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:bindCardResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
         }
         
         [view1.customView bringSubviewToFront:view1.webView];
@@ -246,14 +257,17 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+
             [indicator stopAnimating];
             return ;
         }
@@ -264,13 +278,17 @@
 
         if(getCardsResponseObject.code!=nil)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                            message:getCardsResponseObject.text
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getCardsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
             
-            [alert show];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+
             [indicator stopAnimating];
         }
 
@@ -324,14 +342,18 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             
-            [alert show];
+
             [indicator stopAnimating];
             return ;
         }
@@ -345,13 +367,18 @@
         
         if(getQiwiBillsUrlResponseObject.code!=nil)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                            message:getQiwiBillsUrlResponseObject.text
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getQiwiBillsUrlResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
             
-            [alert show];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+
             [indicator stopAnimating];
         }
         

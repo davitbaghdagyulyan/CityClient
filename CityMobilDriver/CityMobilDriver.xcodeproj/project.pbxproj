@@ -114,7 +114,6 @@
 		ECB3D75B1A03B3FD0039DD3A /* TariffsCityMobilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D75A1A03B3FD0039DD3A /* TariffsCityMobilViewController.m */; };
 		ECB3D7611A03BB680039DD3A /* GetTariffsUrlJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7601A03BB680039DD3A /* GetTariffsUrlJson.m */; };
 		ECB3D7641A03BBF60039DD3A /* GetTariffsUrlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7631A03BBF60039DD3A /* GetTariffsUrlResponse.m */; };
-		ECB3D76A1A03D16E0039DD3A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7671A03D16E0039DD3A /* README.md */; };
 		ECB3D76B1A03D16E0039DD3A /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7691A03D16E0039DD3A /* XMLReader.m */; };
 		ECB3D76E1A03D7B40039DD3A /* GetTariffsUrlResponseXML.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D76D1A03D7B40039DD3A /* GetTariffsUrlResponseXML.m */; };
 		ECB3D7711A03D95B0039DD3A /* NSDictionary+BVJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3D7701A03D95B0039DD3A /* NSDictionary+BVJSONString.m */; };
@@ -454,7 +453,6 @@
 		ECB3D7601A03BB680039DD3A /* GetTariffsUrlJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTariffsUrlJson.m; sourceTree = "<group>"; };
 		ECB3D7621A03BBF60039DD3A /* GetTariffsUrlResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTariffsUrlResponse.h; sourceTree = "<group>"; };
 		ECB3D7631A03BBF60039DD3A /* GetTariffsUrlResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTariffsUrlResponse.m; sourceTree = "<group>"; };
-		ECB3D7671A03D16E0039DD3A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ECB3D7681A03D16E0039DD3A /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		ECB3D7691A03D16E0039DD3A /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		ECB3D76C1A03D7B40039DD3A /* GetTariffsUrlResponseXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTariffsUrlResponseXML.h; sourceTree = "<group>"; };
@@ -782,7 +780,6 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
-				ECEADF8C1A1E04F600FBA389 /* my Orders */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
 				ECCA908919DEE2050007831F /* JSONModel */,
@@ -804,6 +801,7 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
+				ECEADF8C1A1E04F600FBA389 /* my Orders */,
 				ECD218901A1CE80600F38F7D /* TachometerViewController */,
 				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
 				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
@@ -1097,7 +1095,6 @@
 		ECB3D7661A03D16E0039DD3A /* XMLReader-master */ = {
 			isa = PBXGroup;
 			children = (
-				ECB3D7671A03D16E0039DD3A /* README.md */,
 				ECB3D7681A03D16E0039DD3A /* XMLReader.h */,
 				ECB3D7691A03D16E0039DD3A /* XMLReader.m */,
 			);
@@ -1681,6 +1678,7 @@
 				ECEADF8E1A1E051A00FBA389 /* MyOrdersViewController.m */,
 			);
 			name = "my Orders";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECEBD87B1A0A661600118466 /* Registration */ = {
@@ -1975,7 +1973,6 @@
 				ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */,
 				ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
-				ECB3D76A1A03D16E0039DD3A /* README.md in Sources */,
 				ECC471861A11EC770062803A /* MessagesCell.m in Sources */,
 				ECB52E301A0776530091293F /* TransferClass.m in Sources */,
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,

@@ -1,4 +1,4 @@
-//
+///Users/intern/Documents/Projects/CityMobilDriver/SendingMessageViewController.h
 //  TakenOrderViewController.h
 //  CityMobilDriver
 //
@@ -13,5 +13,5 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 -(void)setIdHash:(NSString*)idhash andUnderView:(UIView*)underView;
-
+- (IBAction)back:(id)sender;
 @end

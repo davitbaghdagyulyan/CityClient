@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LeftMenu.h"
 @interface MyOrdersViewController : UIViewController
-
+- (IBAction)back:(id)sender;
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @end

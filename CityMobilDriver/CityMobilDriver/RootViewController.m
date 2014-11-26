@@ -374,55 +374,60 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)actionCallDispetcher:(id)sender
 {
-   callDispetcherAlert = [[UIAlertView alloc] initWithTitle:@"Выберите действие"
-                                                    message:nil
-                                                   delegate:self
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Просьба перезвонить",@"Позвонить",nil];
-  
-  
-    [callDispetcherAlert show];
-
-}
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView ==callDispetcherAlert)
-    {
-        
-  
-    if (buttonIndex==0)
-    {
-        [self reCallRequest];
-    }
-    else
-    {
-        UIDevice *device = [UIDevice currentDevice];
-        if ([[device model] isEqualToString:@"iPhone"] )
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:007-495-5005-050"]]];
-        }
-        else
-        {
-            UIAlertView *notPermitted=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [notPermitted show];
-         
-        }
-    }
- }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Выберите действие" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-else if(alertView ==  alertBack)
-{
-    if (buttonIndex==0)
-    {
-        [self requestGetOrders];
-    }
-   else
-   {
-    [[self navigationController] pushViewController:log animated:NO];
-   }
+    UIAlertAction*pleaseCallBack = [UIAlertAction actionWithTitle:@"Просьба перезвонить" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                            {
+                                
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                [self reCallRequest];
+                                
+                            }];
+    [alert addAction:pleaseCallBack];
+    
+    
+    UIAlertAction*call = [UIAlertAction actionWithTitle:@"Позвонить" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                        UIDevice *device = [UIDevice currentDevice];
+                                        if ([[device model] isEqualToString:@"iPhone"] )
+                                        {
+                                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:007-495-5005-050"]]];
+                                        }
+                                        else
+                                        {
+                                            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Your device doesn't support this feature." preferredStyle:UIAlertControllerStyleAlert];
+                                            
+                                            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                          handler:^(UIAlertAction * action)
+                                                                    {
+                                                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                                                        
+                                                                    }];
+                                            [alert addAction:cancel];
+                                            [self presentViewController:alert animated:YES completion:nil];
+                                        }
+                                        
+                                    }];
+    [alert addAction:call];
+    
+    UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                            {
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                
+                            }];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+
 
 }
-}
+
+    
+
 
 -(void)reCallRequest
 {
@@ -445,14 +450,16 @@ else if(alertView ==  alertBack)
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert1 show];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -462,21 +469,33 @@ else if(alertView ==  alertBack)
         if((![recallResponseObject.code isEqualToString:@"750"])&&(recallResponseObject.code!=nil))
         {
             
-            UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                            message:nil
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert1 show];
-            return;
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:recallResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
             
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
         }
         
-        UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:nil
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+       
+        
+        UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    [alert1 dismissViewControllerAnimated:YES completion:nil];
+                                    
+                                }];
+        [alert1 addAction:cancel];
+        
+        
+        
         if([recallResponseObject.result isEqual:@1])
         {
             alert1.message=@"Запрос успешно отправлен!";
@@ -485,7 +504,7 @@ else if(alertView ==  alertBack)
         {
             alert1.message=recallResponseObject.text;
         }
-        [alert1 show];
+       [self presentViewController:alert1 animated:YES completion:nil];
     }];
 
 }

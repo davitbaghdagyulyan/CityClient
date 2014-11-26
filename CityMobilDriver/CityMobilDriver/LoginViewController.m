@@ -329,8 +329,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         loginJsonObject.pass = self.password.text;
     }
     else{
-        loginJsonObject.bankid=@"6666";
-        loginJsonObject.pass=@"6666";
+        loginJsonObject.bankid=@"110314";
+        loginJsonObject.pass=@"52750";
     }
     
 
