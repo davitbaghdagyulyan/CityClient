@@ -17,6 +17,8 @@
     NSString* HTMLString;
     
     textResponse* jsonResponseObject;
+    
+    CAGradientLayer* gradientLayer;
 }
 @end
 
@@ -28,6 +30,9 @@
     self.web.scrollView.delegate = self;
     self.web.scrollView.showsHorizontalScrollIndicator = NO;
     [self textJsonRequest];
+    
+    
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -37,6 +42,10 @@
     self.web.userInteractionEnabled=YES;
     flag = 0;
     leftMenu=[LeftMenu getLeftMenu:self];
+    
+//    NSLog(@"%@",NSStringFromCGRect(self.web.frame));
+//    gradientLayer = [self greyGradient:self.web widthFrame:self.web.frame];
+//    [self.web.layer insertSublayer:gradientLayer atIndex:0];
 }
 -(void)textJsonRequest
 {
@@ -179,6 +188,20 @@
 }
 
 
+#pragma mark - gradient
+- (CAGradientLayer*) greyGradient:(UIView*)view widthFrame:(CGRect) rect{
+    UIColor *colorOne = [UIColor colorWithRed:198.f/255 green:198.f/255 blue:198.f/255 alpha:1.f];
+    UIColor *colorTwo = [UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f];
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    headerLayer.frame = rect;
+    
+    return headerLayer;
+}
+
+
 #pragma mark - rotation
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -188,6 +211,14 @@
          NSURL* url = [[NSURL alloc]init];
          [self.web loadHTMLString:HTMLString baseURL:url];
           answerButton.frame = CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36);
+         
+         UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+         if (orientation == UIDeviceOrientationLandscapeLeft || orientation ==UIDeviceOrientationLandscapeRight)
+         {
+             if ([jsonResponseObject.messages count] > 3) {
+                 self.web.scrollView.scrollEnabled = YES;
+             }
+         }
      }
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
@@ -208,23 +239,12 @@
 }
 
      
-- (IBAction)back:(id)sender
-{
-    if (flag)
-    {
-        CGPoint point;
-        point.x=leftMenu.center.x-leftMenu.frame.size.width;
-        point.y=leftMenu.center.y;
-        leftMenu.center=point;
-    }
-    [self.navigationController popViewControllerAnimated:NO];
-    
-}
+
 
 
 
 /////////////////////////
-
+#pragma mark - left Menu
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
@@ -327,5 +347,18 @@
 }
 
 
+
+- (IBAction)back:(id)sender
+{
+    if (flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
+}
 @end
 

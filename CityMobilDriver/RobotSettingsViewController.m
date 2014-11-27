@@ -44,6 +44,9 @@
     
     UILabel* childSeatLabel;
     
+    
+    CAGradientLayer* bgLayer;
+    CAGradientLayer* cellLayer;
 }
 @end
 
@@ -60,6 +63,7 @@
     
     descriptionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width, 50)];
     descriptionLabel.text = @"НАСТРОЙКА РОБОТА";
+    descriptionLabel.backgroundColor = [UIColor clearColor];
     descriptionLabel.textColor = [UIColor orangeColor];
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     [scrollView addSubview:descriptionLabel];
@@ -107,6 +111,14 @@
     
     flag = 0;
     leftMenu=[LeftMenu getLeftMenu:self];
+    
+    UIColor* firstColor = [UIColor colorWithRed:234.f/255 green:234.f/255 blue:234.f/255 alpha:1.f];
+    UIColor* endColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.f];
+    bgLayer = [self greyGradient:self.view widthFrame:self.view.frame firstColor:firstColor endColor:endColor];
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    
+    
+    
 }
 
 
@@ -183,6 +195,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     if (tableView == robotTable) {
+        
     cell.backgroundColor = [UIColor colorWithRed:236/255 green:236/255 blue:236/255 alpha:0.1];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
@@ -245,6 +258,10 @@
             {
                 textLabel.text = @" Радиус поиска показа, км";
                 [self setButton:cell isDefaultTable:NO isRadius:YES];
+                
+                cellLayer = [self greyGradient:cell.contentView widthFrame:CGRectMake(0, 0, CGRectGetWidth(robotTable.frame), 44) firstColor:[UIColor colorWithRed:200.f/255 green:200.f/255 blue:200.f/255 alpha:1] endColor:[UIColor colorWithRed:227.f/255 green:227.f/255 blue:227.f/255 alpha:1]];
+                [cell.contentView.layer insertSublayer:cellLayer atIndex:0];
+                
             }
                 break;
             case 1:
@@ -456,6 +473,9 @@
             return self.view.frame.size.height*5/72;
             }
     }
+    
+    
+    
     return 0;
 }
 
@@ -765,6 +785,20 @@
     }
 }
 
+#pragma mark - gradient
+- (CAGradientLayer*) greyGradient:(UIView*)view widthFrame:(CGRect) rect firstColor:(UIColor*)firstColor endColor:(UIColor*)endColor{
+    UIColor *colorOne = firstColor;//
+    UIColor *colorTwo = endColor;
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    headerLayer.frame = rect;
+    
+    return headerLayer;
+}
+
+
 
 #pragma mark - rotation
 
@@ -802,7 +836,8 @@
         indicator.center = self.view.center;
         
    
-        
+        bgLayer.frame = self.view.frame;
+        cellLayer.frame = CGRectMake(0, 0, CGRectGetWidth(robotTable.frame), 44);
 
     }
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
