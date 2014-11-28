@@ -10,6 +10,7 @@
 #import "CustomCellSelectedOrders.h"
 #import "SingleDataProvider.h"
 #import "SingleDataProviderForFilter.h"
+#import "SingleDataProviderArrayForSelectedCells.h"
 #import "SelectedOrdersDetailsResponse.h"
 #import "SelectedOrdersDetailsJson.h"
 #import "JSONModel.h"
@@ -55,11 +56,13 @@
     NSTimer * requestTimer;
     bool timerCreated;
     
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    NSLog(@"%ld",[[UIDevice currentDevice] orientation]);
     //FONT TITLE LABEL
     selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
     self.tableViewOrdersDetails.delegate=selectedOrdersTableViewHandlerObject;
@@ -94,6 +97,7 @@
         alertServErrIsCreated =YES;
     }
     [self requestOrder];
+    [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
     selectedRow = -1;
     //MAPVIEW
     viewMap=[[CustomViewForMaps alloc] init];
@@ -130,6 +134,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
     self.tableViewOrdersDetails.separatorStyle = UITableViewCellSeparatorStyleNone;
     cancelOfAlertNoConIsClicked =YES;
     cancelOfAlertServErrIsCreated=YES;
@@ -213,13 +218,13 @@
          alertServErrIsCreated=NO;
      }
      flag1=1;
-    [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
+        [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
      if (selectedOrdersDetailsResponseObject.code==nil && data)
      {
         self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
         self.tableViewOrdersDetails.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
         self.titleLabel.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-        [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
+         [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
          [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
          [self.tableViewOrdersDetails reloadData];
      }
@@ -511,17 +516,18 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         //[activityIndicator stopAnimating];
      if (!data) {
-            
-            
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"NetworkError" message:@"No iNet Connection" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alertView show];
-            return ;
-        }
+         UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+         UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [alertNoCon dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
+         [alertNoCon addAction:cancel];
+         [self presentViewController:alertNoCon animated:YES completion:nil];
+                }
         NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",newStr);
         id detailData;
         detailData  = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        
         NSLog(@"json2=%@",detailData);
         NSLog(@"result is %@",[detailData objectForKey:@"result"]);
         result = [detailData objectForKey:@"result"];
