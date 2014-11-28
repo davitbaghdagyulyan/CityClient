@@ -2330,6 +2330,9 @@
                                 <state key="normal" title="Регистрация">
                                     <color key="titleColor" red="1" green="0.4963733917" blue="0.1055777322" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="16" y="317" width="90" height="30"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="16" y="717" width="90" height="30"/>
                                 </variation>
@@ -2393,6 +2396,9 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="496" y="322" width="88" height="20"/>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="296" y="722" width="88" height="20"/>
                                 </variation>
@@ -6010,6 +6016,9 @@
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="45" width="67" height="23"/>
+                                                </variation>
                                                 <variation key="widthClass=regular" misplaced="YES">
                                                     <rect key="frame" x="8" y="46" width="68" height="23"/>
                                                 </variation>
@@ -6022,9 +6031,6 @@
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="157" width="91" height="23"/>
-                                                </variation>
                                                 <variation key="widthClass=regular" misplaced="YES">
                                                     <rect key="frame" x="8" y="159" width="91" height="23"/>
                                                 </variation>
@@ -6273,6 +6279,9 @@
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="238" width="97" height="23"/>
+                                                </variation>
                                                 <variation key="widthClass=regular" misplaced="YES">
                                                     <rect key="frame" x="8" y="238" width="99" height="23"/>
                                                 </variation>
@@ -6288,6 +6297,9 @@
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="198" width="64" height="23"/>
+                                                </variation>
                                                 <variation key="widthClass=regular" misplaced="YES">
                                                     <rect key="frame" x="8" y="199" width="67" height="23"/>
                                                 </variation>
@@ -6318,6 +6330,9 @@
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="10" width="55" height="23"/>
+                                                </variation>
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="17" width="55" height="23"/>
                                                 </variation>
@@ -6907,15 +6922,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="l72-JT-dRv" secondAttribute="trailing" id="Hz7-hM-d46"/>
                             <constraint firstAttribute="centerX" secondItem="33o-AB-MbA" secondAttribute="centerX" id="K8D-h6-I92"/>
                             <constraint firstItem="l72-JT-dRv" firstAttribute="top" secondItem="aub-U0-a20" secondAttribute="top" id="OwM-zE-gfQ"/>
+                            <constraint firstItem="LKi-Xp-RbK" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leading" constant="16" id="VWV-DE-JGr">
+                                <variation key="heightClass=compact" constant="30"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="LKi-Xp-RbK" secondAttribute="centerX" id="Xtw-tG-kwk"/>
                             <constraint firstItem="LKi-Xp-RbK" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leadingMargin" id="ai5-f2-EBQ">
                                 <variation key="heightClass=compact" constant="20"/>
                                 <variation key="heightClass=regular-widthClass=compact" constant="-13"/>
                             </constraint>
                             <constraint firstItem="TuJ-NR-e8W" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leadingMargin" id="gLa-Tq-7hV"/>
-                            <constraint firstItem="LKi-Xp-RbK" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leading" constant="16" id="myO-B5-ay4">
-                                <variation key="heightClass=compact" constant="30"/>
-                            </constraint>
                             <constraint firstItem="TuJ-NR-e8W" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leading" id="o3N-uG-P8i"/>
                             <constraint firstAttribute="trailing" secondItem="TuJ-NR-e8W" secondAttribute="trailing" id="onn-91-JNS"/>
                             <constraint firstItem="l72-JT-dRv" firstAttribute="leading" secondItem="aub-U0-a20" secondAttribute="leadingMargin" id="rHa-1T-ZZZ"/>
@@ -6940,7 +6955,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G22-cb-Yvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5883" y="-469"/>
+            <point key="canvasLocation" x="-5881" y="-473"/>
         </scene>
         <!--Orders History View Controller-->
         <scene sceneID="Ek7-zk-hOL">

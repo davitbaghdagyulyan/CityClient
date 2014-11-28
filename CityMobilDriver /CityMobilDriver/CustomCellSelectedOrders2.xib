@@ -153,7 +153,7 @@
                 <outlet property="View1" destination="tKq-rp-Jrd" id="2bL-vb-fo8"/>
                 <outlet property="View2" destination="SV1-Ib-HoY" id="HJG-a2-7YL"/>
                 <outlet property="additionalViewXib2" destination="H1A-5c-Qvs" id="b5d-DN-C7M"/>
-                <outlet property="imgViewCall" destination="GeX-TT-ZL8" id="p53-15-ObF"/>
+                <outlet property="imgViewCall" destination="GeX-TT-ZL8" id="SeV-kh-3DU"/>
                 <outlet property="labelCallMetroName0" destination="0y7-rv-wBJ" id="naB-tu-QLr"/>
                 <outlet property="labelCollMetroName" destination="0y7-rv-wBJ" id="tqq-RK-jck"/>
                 <outlet property="labelPercent" destination="HZF-e4-752" id="OHc-aX-jvq"/>
@@ -161,7 +161,7 @@
                 <outlet property="labelShortName" destination="aGc-fZ-nhU" id="2uW-ax-fTS"/>
                 <outlet property="labelShortName0" destination="aGc-fZ-nhU" id="W2V-9N-6E8"/>
             </connections>
-            <point key="canvasLocation" x="580.5" y="251"/>
+            <point key="canvasLocation" x="477.5" y="311"/>
         </tableViewCell>
     </objects>
 </document>

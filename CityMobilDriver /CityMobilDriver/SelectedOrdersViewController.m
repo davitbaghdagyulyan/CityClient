@@ -520,8 +520,7 @@
                                                        }];
          [alertNoCon addAction:cancel];
          [self presentViewController:alertNoCon animated:YES completion:nil];
-
-        }
+     }
         NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",newStr);
         id detailData;
@@ -743,7 +742,6 @@ NSString*jsons=[assignOrderJsonObject toJSONString];
 NSLog(@"%@",jsons);
 NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
 NSError* error;
-    
 NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                    options:NSJSONWritingPrettyPrinted
                                                      error:&error];

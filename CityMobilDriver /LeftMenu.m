@@ -188,7 +188,7 @@
     self.center=point;
     if ([self.curentViewController isKindOfClass:[aClass class]])
     {
-         [(RootViewController*)self.curentViewController setSelectedRow];
+         //[(RootViewController*)self.curentViewController setSelectedRow];
         [self.curentViewController viewDidAppear:NO];
         return;
     }
@@ -202,10 +202,10 @@
             
            
             [self.curentViewController.navigationController popToViewController:controller animated:NO];
-            if ([controller isKindOfClass:[RootViewController class]])
-            {
-                [(RootViewController*)controller setSelectedRow];
-            }
+//            if ([controller isKindOfClass:[RootViewController class]])
+//            {
+//                [(RootViewController*)controller setSelectedRow];
+//            }
             isFirstloadViewController=NO;
             break;
             

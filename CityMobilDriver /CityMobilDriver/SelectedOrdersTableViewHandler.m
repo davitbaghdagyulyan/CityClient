@@ -47,6 +47,7 @@
 {
         return responseObject.orders.count;
 }
+
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSInteger k=0;
@@ -93,20 +94,19 @@
         stringForLabelPercent = percent;
     }
     stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
-   
     if(selectedRow==indexPath.row)
     {
-      
         //CustomCellSelectedORDER2
         if ([[[responseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1)
         {
-           
+            
             NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDER2Selected%ld",(long)indexPath.row];
             CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
+                
             }
             //******************************************Nareks Change*******************************************
             
@@ -202,7 +202,170 @@
         {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER" owner:self options:nil];
             cell = [nib objectAtIndex:0];
+            if (numberOfClass==1 && height!=0)
+            {
+                [cell.Button removeFromSuperview];
+                
+                UIView*buttonView=[[UIView alloc]init];
+                buttonView.backgroundColor=[UIColor whiteColor];
+                [cell.orangeView addSubview:buttonView];
+                buttonView.translatesAutoresizingMaskIntoConstraints=NO;
+                
+                UIButton*closeButton=[[UIButton alloc]init];
+                closeButton.backgroundColor=[UIColor grayColor];
+                [buttonView addSubview:closeButton];
+                closeButton.translatesAutoresizingMaskIntoConstraints=NO;
+                [closeButton setTitle:@"Закрыть" forState:UIControlStateNormal];
+                [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                
+                UIButton*toOrderButton=[[UIButton alloc]init];
+                toOrderButton.backgroundColor=[UIColor orangeColor];
+                [buttonView addSubview:toOrderButton];
+                toOrderButton.translatesAutoresizingMaskIntoConstraints=NO;
+                [toOrderButton setTitle:@"К заказу" forState:UIControlStateNormal];
+                [toOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                
+                [closeButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(closeOrderAction) forControlEvents:UIControlEventTouchUpInside];
+                
+                [toOrderButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(toOrderAction) forControlEvents:UIControlEventTouchUpInside];
+                
+                
+                
+                
+                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                            attribute:NSLayoutAttributeLeading
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:cell.orangeView
+                                                                            attribute:NSLayoutAttributeLeading
+                                                                           multiplier:1.0
+                                                                             constant:0]];
+                
+                
+                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                            attribute:NSLayoutAttributeTop
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:cell.DL5Label
+                                                                            attribute:NSLayoutAttributeBottom
+                                                                           multiplier:1.0
+                                                                             constant:0]];
+                
+                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:cell.orangeView
+                                                                            attribute:NSLayoutAttributeBottom
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:buttonView
+                                                                            attribute:NSLayoutAttributeBottom
+                                                                           multiplier:1.0
+                                                                             constant:4]];
+                
+                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                            attribute:NSLayoutAttributeTrailing
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:cell.orangeView
+                                                                            attribute:NSLayoutAttributeTrailing
+                                                                           multiplier:1.0
+                                                                             constant:0]];
+                
+                
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                       attribute: NSLayoutAttributeHeight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:nil
+                                                                       attribute: NSLayoutAttributeHeight
+                                                                      multiplier:1.0
+                                                                        constant:cell.Button.frame.size.height]];
+                
+                ///closebutton constraits*************
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:buttonView
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                      multiplier:1.0
+                                                                        constant:0]];
+                
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:buttonView
+                                                                       attribute:NSLayoutAttributeTop
+                                                                      multiplier:1.0
+                                                                        constant:0]];
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                       attribute:NSLayoutAttributeBottom
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:closeButton
+                                                                       attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:0]];
+                
+                [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                        attribute: NSLayoutAttributeWidth
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute: NSLayoutAttributeWidth
+                                                                       multiplier:1.0
+                                                                         constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                
+                [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                        attribute: NSLayoutAttributeHeight
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute: NSLayoutAttributeHeight
+                                                                       multiplier:1.0
+                                                                         constant:cell.Button.frame.size.height]];
+                
+                //********************toOrderButton
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:closeButton
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:4]];
+                
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:buttonView
+                                                                       attribute:NSLayoutAttributeTop
+                                                                      multiplier:1.0
+                                                                        constant:0]];
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                       attribute:NSLayoutAttributeBottom
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:toOrderButton
+                                                                       attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:0]];
+                
+                [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                          attribute: NSLayoutAttributeWidth
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:nil
+                                                                          attribute: NSLayoutAttributeWidth
+                                                                         multiplier:1.0
+                                                                           constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                
+                [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                          attribute: NSLayoutAttributeHeight
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:nil
+                                                                          attribute: NSLayoutAttributeHeight
+                                                                         multiplier:1.0
+                                                                           constant:cell.Button.frame.size.height]];
+                
+            }
+    
+
         }
+    
         indexOfCell=indexPath.row;
         if (numberOfClass==0)
         {
@@ -462,849 +625,9 @@
     }
     
 }
-//- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-//{
-//    
-//    if(selectedRow==indexPath.row)
-//    {
-//        
-//        if ([[[responseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1)
-//        {
-//            
-//            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDER2Selected%ld",(long)indexPath.row];
-//            CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
-//            if (cell == nil)
-//            {
-//                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER2" owner:self options:nil];
-//                cell = [nib objectAtIndex:0];
-//                
-//                //***  narek ****
-//                
-//                
-//                //*** narek****
-//                
-//            }
-//            //******************************************Nareks Change*******************************************
-//            
-//            indexOfCell=indexPath.row;
-//            if (numberOfClass==0)
-//            {
-//                [cell.Button addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
-//                [cell.buttonMap1 addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
-//                [cell.buttonMap2  addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
-//                [(SelectedOrdersViewController*)curentSelf setIndexOfCell:indexOfCell];
-//            }
-//            else
-//            {
-//                
-//                [cell.Button addTarget:(MyOrdersViewController*)curentSelf action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
-//                [cell.buttonMap1 addTarget:(MyOrdersViewController*)curentSelf action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
-//                [cell.buttonMap2  addTarget:(MyOrdersViewController*)curentSelf action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
-//                [(MyOrdersViewController*)curentSelf setIndexOfCell:indexOfCell];
-//                
-//                
-//            }
-//            
-//            
-//            cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
-//            cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
-//            [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
-//            NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
-//            [cell.whiteView addConstraint:view11Height];
-//            
-//            //VIEW2
-//            cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
-//            [cell.View2 removeConstraint:[cell.View2.constraints objectAtIndex:0]];
-//            NSLayoutConstraint * view22Height =[NSLayoutConstraint constraintWithItem:cell.View2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height1];
-//            [cell.whiteView addConstraint:view22Height];
-//            if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
-//            {
-//                cell.labelCallMetroName.text =[NSString stringWithFormat:@"  %@",[[responseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
-//            }
-//            else
-//            {
-//                cell.labelCallMetroName.text = @"";
-//            }
-//            if ([[responseObject.orders objectAtIndex:indexPath.row] shortname])
-//            {
-//                shortName =[[responseObject.orders objectAtIndex:indexPath.row] shortname];
-//            }
-//            else
-//            {
-//                shortName = @"";
-//            }
-//            if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
-//            {
-//                callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
-//            }
-//            else
-//            {
-//                callDateFormat = @"";
-//            }
-//            stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
-//            cell.labelShortName.text = stringForLabelShortName;
-//            if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
-//            {
-//                percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
-//            }
-//            else
-//            {
-//                percent = @"";
-//            }
-//            if([percent length]>3)
-//            {
-//                stringForLabelPercent= [percent substringToIndex:2];
-//            }
-//            else
-//            {
-//                stringForLabelPercent = percent;
-//            }
-//            stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
-//            cell.labelPercent.text = stringForLabelPercent;
-//            if (expectSizeForCollAddress.height !=0)
-//            {
-//                labelCollAddressText.backgroundColor=[UIColor whiteColor];
-//                if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
-//                   [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                {
-//                    labelCollAddressText.frame = CGRectMake(10, 30+5, expectSizeForCollAddress.width, expectSizeForCollAddress.height+4);
-//                }
-//                else
-//                {
-//                    labelCollAddressText.frame = CGRectMake(10, 30+5, 400, expectSizeForCollAddress.height+4);
-//                }
-//                
-//                [cell.View2 addSubview:labelCollAddressText];
-//            }
-//            if(expectSizeForCallComment.height !=0)
-//            {
-//                labelCallComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
-//                if (expectSizeForCollAddress.height ==0)
-//                {
-//                    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelCallComment.frame =CGRectMake(10,30+20,290,  expectSizeForCallComment.height+4);
-//                    }
-//                    else
-//                    {
-//                        labelCallComment.frame =CGRectMake(10,30+20,550,  expectSizeForCallComment.height+4);
-//                    }
-//                    
-//                    
-//                }
-//                else
-//                {
-//                    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,290,  expectSizeForCallComment.height+4);
-//                    }
-//                    else
-//                    {
-//                        labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,450,  expectSizeForCallComment.height+4);
-//                    }
-//                    
-//                }
-//                [cell.View2 addSubview:labelCallComment];
-//            }
-//            idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
-//            [cell.showAddress  addTarget:curentSelf action:@selector(showAddress) forControlEvents:UIControlEventTouchUpInside];
-//            if (numberOfClass==0)
-//            {
-//                underView=cell.underView;
-//                [(SelectedOrdersViewController*)curentSelf setUnderView:underView];
-//            }
-//            
-//            
-//            
-//            
-//            if (flag1 ==-1)
-//            {
-//                cell.whiteLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-//            }
-//            else
-//            {
-//                cell.whiteLabel.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-//            }
-//            
-//            cell.selectionStyle =UITableViewCellSelectionStyleNone;
-//            
-//            return cell;
-//        }
-//        NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%ld",(long)indexPath.row];
-//        CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
-//        if (cell == nil)
-//        {
-//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER" owner:self options:nil];
-//            cell = [nib objectAtIndex:0];
-//            if (numberOfClass==1 && height!=0)
-//            {
-//                [cell.Button removeFromSuperview];
-//                
-//                UIView*buttonView=[[UIView alloc]init];
-//                buttonView.backgroundColor=[UIColor whiteColor];
-//                [cell.orangeView addSubview:buttonView];
-//                buttonView.translatesAutoresizingMaskIntoConstraints=NO;
-//                
-//                UIButton*closeButton=[[UIButton alloc]init];
-//                closeButton.backgroundColor=[UIColor grayColor];
-//                [buttonView addSubview:closeButton];
-//                closeButton.translatesAutoresizingMaskIntoConstraints=NO;
-//                [closeButton setTitle:@"Закрыть" forState:UIControlStateNormal];
-//                [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//                
-//                UIButton*toOrderButton=[[UIButton alloc]init];
-//                toOrderButton.backgroundColor=[UIColor orangeColor];
-//                [buttonView addSubview:toOrderButton];
-//                toOrderButton.translatesAutoresizingMaskIntoConstraints=NO;
-//                [toOrderButton setTitle:@"К заказу" forState:UIControlStateNormal];
-//                [toOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//                
-//                [closeButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(closeOrderAction) forControlEvents:UIControlEventTouchUpInside];
-//                
-//                [toOrderButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(toOrderAction) forControlEvents:UIControlEventTouchUpInside];
-//                
-//                
-//                
-//                
-//                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-//                                                                            attribute:NSLayoutAttributeLeading
-//                                                                            relatedBy:NSLayoutRelationEqual
-//                                                                               toItem:cell.orangeView
-//                                                                            attribute:NSLayoutAttributeLeading
-//                                                                           multiplier:1.0
-//                                                                             constant:0]];
-//                
-//                
-//                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-//                                                                            attribute:NSLayoutAttributeTop
-//                                                                            relatedBy:NSLayoutRelationEqual
-//                                                                               toItem:cell.DL5Label
-//                                                                            attribute:NSLayoutAttributeBottom
-//                                                                           multiplier:1.0
-//                                                                             constant:0]];
-//                
-//                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:cell.orangeView
-//                                                                            attribute:NSLayoutAttributeBottom
-//                                                                            relatedBy:NSLayoutRelationEqual
-//                                                                               toItem:buttonView
-//                                                                            attribute:NSLayoutAttributeBottom
-//                                                                           multiplier:1.0
-//                                                                             constant:4]];
-//                
-//                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-//                                                                            attribute:NSLayoutAttributeTrailing
-//                                                                            relatedBy:NSLayoutRelationEqual
-//                                                                               toItem:cell.orangeView
-//                                                                            attribute:NSLayoutAttributeTrailing
-//                                                                           multiplier:1.0
-//                                                                             constant:0]];
-//                
-//                
-//                
-//                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-//                                                                       attribute: NSLayoutAttributeHeight
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:nil
-//                                                                       attribute: NSLayoutAttributeHeight
-//                                                                      multiplier:1.0
-//                                                                        constant:cell.Button.frame.size.height]];
-//                
-//                ///closebutton constraits*************
-//                
-//                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
-//                                                                       attribute:NSLayoutAttributeLeading
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:buttonView
-//                                                                       attribute:NSLayoutAttributeLeading
-//                                                                      multiplier:1.0
-//                                                                        constant:0]];
-//                
-//                
-//                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
-//                                                                       attribute:NSLayoutAttributeTop
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:buttonView
-//                                                                       attribute:NSLayoutAttributeTop
-//                                                                      multiplier:1.0
-//                                                                        constant:0]];
-//                
-//                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-//                                                                       attribute:NSLayoutAttributeBottom
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:closeButton
-//                                                                       attribute:NSLayoutAttributeBottom
-//                                                                      multiplier:1.0
-//                                                                        constant:0]];
-//                
-//                [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
-//                                                                        attribute: NSLayoutAttributeWidth
-//                                                                        relatedBy:NSLayoutRelationEqual
-//                                                                           toItem:nil
-//                                                                        attribute: NSLayoutAttributeWidth
-//                                                                       multiplier:1.0
-//                                                                         constant:(curentSelf.view.frame.size.width-20)/2-2]];
-//                
-//                [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
-//                                                                        attribute: NSLayoutAttributeHeight
-//                                                                        relatedBy:NSLayoutRelationEqual
-//                                                                           toItem:nil
-//                                                                        attribute: NSLayoutAttributeHeight
-//                                                                       multiplier:1.0
-//                                                                         constant:cell.Button.frame.size.height]];
-//                
-//                //********************toOrderButton
-//                
-//                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
-//                                                                       attribute:NSLayoutAttributeLeading
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:closeButton
-//                                                                       attribute:NSLayoutAttributeTrailing
-//                                                                      multiplier:1.0
-//                                                                        constant:4]];
-//                
-//                
-//                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
-//                                                                       attribute:NSLayoutAttributeTop
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:buttonView
-//                                                                       attribute:NSLayoutAttributeTop
-//                                                                      multiplier:1.0
-//                                                                        constant:0]];
-//                
-//                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
-//                                                                       attribute:NSLayoutAttributeBottom
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:toOrderButton
-//                                                                       attribute:NSLayoutAttributeBottom
-//                                                                      multiplier:1.0
-//                                                                        constant:0]];
-//                
-//                [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
-//                                                                          attribute: NSLayoutAttributeWidth
-//                                                                          relatedBy:NSLayoutRelationEqual
-//                                                                             toItem:nil
-//                                                                          attribute: NSLayoutAttributeWidth
-//                                                                         multiplier:1.0
-//                                                                           constant:(curentSelf.view.frame.size.width-20)/2-2]];
-//                
-//                [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
-//                                                                          attribute: NSLayoutAttributeHeight
-//                                                                          relatedBy:NSLayoutRelationEqual
-//                                                                             toItem:nil
-//                                                                          attribute: NSLayoutAttributeHeight
-//                                                                         multiplier:1.0
-//                                                                           constant:cell.Button.frame.size.height]];
-//                
-//            }
-//        }
-//        indexOfCell=indexPath.row;
-//        if (numberOfClass==0)
-//        {
-//            [cell.Button addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
-//            [cell.buttonMap1 addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
-//            [cell.buttonMap2  addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
-//            [(SelectedOrdersViewController*)curentSelf setIndexOfCell:indexOfCell];
-//        }
-//        else
-//        {
-//            
-//            [cell.Button addTarget:(MyOrdersViewController*)curentSelf action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
-//            [cell.buttonMap1 addTarget:(MyOrdersViewController*)curentSelf action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
-//            [cell.buttonMap2  addTarget:(MyOrdersViewController*)curentSelf action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
-//            
-//            [(MyOrdersViewController*)curentSelf setIndexOfCell:indexOfCell];
-//        }
-//        
-//        
-//        // VIEW1
-//        cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
-//        cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
-//        [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
-//        NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
-//        [cell.whiteView addConstraint:view11Height];
-//        //VIEW2
-//        cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
-//        [cell.View2 removeConstraint:[cell.View2.constraints objectAtIndex:0]];
-//        NSLayoutConstraint * view22Height =[NSLayoutConstraint constraintWithItem:cell.View2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height1];
-//        [cell.whiteView addConstraint:view22Height];
-//        //VIEW3
-//        cell.View3.translatesAutoresizingMaskIntoConstraints = NO;
-//        [cell.View3 removeConstraint:[cell.View3.constraints objectAtIndex:0]];
-//        NSLayoutConstraint * view33Height =[NSLayoutConstraint constraintWithItem:cell.View3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height2];
-//        [cell.whiteView addConstraint:view33Height];
-//        if (![[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]|| [[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]length]==0)
-//        {
-//            cell.buttonMap2.hidden = YES;
-//        }
-//        /* Will add after I will have images
-//         NSString * collAddressType =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollAddrTypeMenu];
-//         switch ([collAddressType integerValue]) {
-//         case 1:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
-//         break;
-//         case 2:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
-//         case 3:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
-//         case 4:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
-//         case 10:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
-//         case 11:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"School"];
-//         case 12:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
-//         case 13:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
-//         default:
-//         break;
-//         }
-//         
-//         */
-//        
-//        if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
-//        {
-//            cell.labelCallMetroName.text = [[responseObject.orders objectAtIndex:indexPath.row] CollMetroName];
-//        }
-//        else
-//        {
-//            cell.labelCallMetroName.text = @"";
-//        }
-//        
-//        if (expectSizeForCollAddress.height !=0)
-//        {
-//            labelCollAddressText.backgroundColor=[UIColor whiteColor];
-//            if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//               [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown
-//               )
-//            {
-//                labelCollAddressText.frame = CGRectMake(10, 30+5, expectSizeForCollAddress.width, expectSizeForCollAddress.height+4);
-//            }
-//            else
-//            {
-//                labelCollAddressText.frame = CGRectMake(10, 30+5, 400, expectSizeForCollAddress.height+4);
-//            }
-//            [cell.View2 addSubview:labelCollAddressText];
-//        }
-//        if(expectSizeForCallComment.height !=0)
-//        {
-//            labelCallComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
-//            if (expectSizeForCollAddress.height ==0)
-//            {
-//                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                {
-//                    labelCallComment.frame =CGRectMake(10,30+20,290,  expectSizeForCallComment.height+4);
-//                }
-//                else
-//                {
-//                    labelCallComment.frame =CGRectMake(10,30+20,550,  expectSizeForCallComment.height+4);
-//                }
-//                
-//            }
-//            else
-//            {
-//                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                {
-//                    labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,290,  expectSizeForCallComment.height+4);
-//                }
-//                else
-//                {
-//                    labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,450,  expectSizeForCallComment.height+4);
-//                }
-//                
-//            }
-//            [cell.View2 addSubview:labelCallComment];
-//        }
-//        if (height2 !=0) {
-//            NSString *deliveryAddressType =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
-//            /* Will add after I will have images
-//             switch ([deliveryAddressType integerValue]) {
-//             case 1:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
-//             break;
-//             case 2:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
-//             case 3:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
-//             case 4:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
-//             case 10:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
-//             case 11:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"School"];
-//             case 12:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
-//             case 13:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
-//             default:
-//             break;
-//             }
-//             
-//             */
-//            if(deliveryAddressType && [deliveryAddressType integerValue]==50)
-//            {
-//                cell.labelDeliveryMetroName.text = @"По указанию";
-//            }else
-//            {
-//                cell.labelDeliveryMetroName.backgroundColor =[UIColor whiteColor];
-//                if ([[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName])
-//                {
-//                    cell.labelDeliveryMetroName.text =[NSString stringWithFormat:@"%@",[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]];
-//                }else
-//                {
-//                    cell.labelDeliveryMetroName.text =@"";
-//                }
-//            }
-//            if(expectSizeForDeliveryAddress.height !=0)
-//            {
-//                labelDeliveryAddressText.backgroundColor= [UIColor whiteColor];
-//                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                {
-//                    labelDeliveryAddressText.frame = CGRectMake(10, 30+5, expectSizeForDeliveryAddress.width, expectSizeForDeliveryAddress.height+4);
-//                }else
-//                {
-//                    labelDeliveryAddressText.frame = CGRectMake(10, 30+5, 400, expectSizeForDeliveryAddress.height+4);
-//                }
-//                [cell.View3 addSubview:labelDeliveryAddressText];
-//            }
-//            if(expectSizeDeliveryComment.height !=0)
-//            {
-//                labelDeliveryComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
-//                if (expectSizeForDeliveryAddress.height ==0)
-//                {
-//                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelDeliveryComment.frame = CGRectMake(10, 35+15, 290,  expectSizeDeliveryComment.height+4);
-//                    }else
-//                    {
-//                        labelDeliveryComment.frame = CGRectMake(10, 35+15, 450,  expectSizeDeliveryComment.height+4);
-//                    }
-//                }
-//                else
-//                {
-//                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelDeliveryComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, 290,  expectSizeDeliveryComment.height+4);
-//                    }else
-//                    {
-//                        labelDeliveryComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, 450,  expectSizeDeliveryComment.height+4);
-//                    }
-//                    
-//                }
-//                [cell.View3 addSubview:labelDeliveryComment];
-//            }
-//            if (expectSizeForOurComment.height !=0)
-//            {
-//                labelOurComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
-//                if(expectSizeForDeliveryAddress.height ==0 && expectSizeDeliveryComment.height !=0)
-//                {
-//                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelOurComment.frame = CGRectMake(10, 35+15+expectSizeDeliveryComment.height +4+5, 290, expectSizeForOurComment.height);
-//                    }
-//                    else
-//                    {
-//                        labelOurComment.frame = CGRectMake(10, 35+15+expectSizeDeliveryComment.height +4+5, 450, expectSizeForOurComment.height);
-//                    }
-//                }
-//                else if(expectSizeForDeliveryAddress.height ==0 && expectSizeDeliveryComment.height ==0)
-//                {
-//                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelOurComment.frame =CGRectMake(10,35+15,290,expectSizeForOurComment.height);
-//                    }
-//                    else
-//                    {
-//                        labelOurComment.frame =CGRectMake(10,35+15,450,expectSizeForOurComment.height);
-//                    }
-//                }
-//                else if(expectSizeForDeliveryAddress.height !=0 && expectSizeDeliveryComment.height ==0)
-//                {
-//                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, 290, expectSizeForOurComment.height);
-//                    }
-//                    else
-//                    {
-//                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5,450, expectSizeForOurComment.height);
-//                    }
-//                }
-//                else
-//                {
-//                    
-//                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-//                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-//                    {
-//                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5+expectSizeDeliveryComment.height+4+5, 290, expectSizeForOurComment.height);
-//                    }
-//                    else
-//                    {
-//                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5+expectSizeDeliveryComment.height+4+5, 450, expectSizeForOurComment.height);
-//                    }
-//                }
-//                [cell.View3 addSubview:labelOurComment];
-//            }
-//        }
-//        [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
-//        if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
-//        {
-//            percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
-//        }
-//        else
-//        {
-//            percent = @"";
-//        }
-//        if([percent length]>3)
-//        {
-//            stringForLabelPercent= [percent substringToIndex:2];
-//        }
-//        else
-//        {
-//            stringForLabelPercent = percent;
-//        }
-//        stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
-//        cell.labelPercent.textColor = [UIColor whiteColor];
-//        cell.labelPercent.text = stringForLabelPercent;
-//        if ([[responseObject.orders objectAtIndex:indexPath.row] shortname])
-//        {
-//            shortName =[[responseObject.orders objectAtIndex:indexPath.row] shortname];
-//        }
-//        else
-//        {
-//            shortName = @"";
-//        }
-//        if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
-//        {
-//            
-//            callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
-//        }
-//        else
-//        {
-//            callDateFormat = @"";
-//        }
-//        stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
-//        cell.labelShortName.text=[NSString stringWithFormat:@"  %@", stringForLabelShortName];
-//        
-//        if (numberOfClass==0)
-//        {
-//            underView=cell.underView;
-//            [(SelectedOrdersViewController*)curentSelf setUnderView:underView];
-//        }
-//        
-//        if (flag1 ==-1)
-//        {
-//            cell.whiteLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-//        }
-//        else
-//        {
-//            cell.whiteLabel.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-//        }
-//        
-//        
-//        cell.selectionStyle =UITableViewCellSelectionStyleNone;
-//        return  cell;
-//        
-//    }
-//    
-//    
-//    else
-//    {
-//        if ([[responseObject.orders objectAtIndex:indexPath.row] shortname])
-//        {
-//            shortName =[[responseObject.orders objectAtIndex:indexPath.row] shortname];
-//        }
-//        else
-//        {
-//            shortName = @"";
-//        }
-//        if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
-//        {
-//            callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
-//        }
-//        else
-//        {
-//            callDateFormat = @"";
-//        }
-//        stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
-//        if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
-//        {
-//            percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
-//        }
-//        else
-//        {
-//            percent = @"";
-//        }
-//        if([percent length]>3)
-//        {
-//            stringForLabelPercent= [percent substringToIndex:2];
-//        }
-//        else
-//        {
-//            stringForLabelPercent = percent;
-//        }
-//        stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
-//        NSString * collAddressType =[[responseObject.orders objectAtIndex:indexPath.row] CollAddrTypeMenu];
-//        /*  Will add after I will have images
-//         switch ([collAddressType integerValue]) {
-//         case 1:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
-//         break;
-//         case 2:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
-//         case 3:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
-//         case 4:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
-//         case 10:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
-//         case 11:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"School"];
-//         case 12:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
-//         case 13:
-//         cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
-//         default:
-//         break;
-//         }
-//         
-//         */
-//        deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
-//        if(deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==0)
-//        {
-//            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders%ld",(long)indexPath.row];
-//            CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
-//            if (cell == nil)
-//            {
-//                
-//                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders2" owner:self options:nil];
-//                cell = [nib objectAtIndex:0];
-//            }
-//            cell.labelPercent0.textColor = [UIColor whiteColor];
-//            cell.labelPercent0.text =  stringForLabelPercent;
-//            cell.labelShortName0.text =  stringForLabelShortName;
-//            if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
-//            {
-//                cell.labelCallMetroName0.text = [NSString stringWithFormat:@"  %@",[[responseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
-//            }
-//            else
-//            {
-//                cell.labelCallMetroName0.text =@"";
-//            }
-//            
-//            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
-//            
-//            if (flag1 ==-1)
-//            {
-//                cell.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-//                
-//                cell.contentView.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-//            }
-//            else
-//            {
-//                cell.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-//                
-//                cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-//            }
-//            
-//            cell.selectionStyle =UITableViewCellSelectionStyleNone;
-//            return cell;
-//            
-//        }
-//        else
-//        {
-//            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders2%ld",(long)indexPath.row];
-//            CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
-//            if (cell == nil)
-//            {
-//                
-//                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders" owner:self options:nil];
-//                cell = [nib objectAtIndex:0];
-//            }
-//            
-//            cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
-//            cell.labelPercent.textColor = [UIColor whiteColor];
-//            cell.labelPercent.text = stringForLabelPercent;
-//            cell.labelShortName.text = stringForLabelShortName;
-//            if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
-//            {
-//                cell.labelCollMetroName.text = [NSString stringWithFormat:@"  %@",[[responseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
-//            }
-//            else
-//            {
-//                cell.labelCollMetroName.text =@"";
-//            }
-//            
-//            if ( deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==50)
-//            {
-//                cell.labelDeliveryMetroName.text = @"  По указанию";
-//            }
-//            else if([[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName])
-//            {
-//                cell.labelDeliveryMetroName.text = [NSString stringWithFormat:@"  %@",[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]];
-//            }
-//            else
-//            {
-//                cell.labelDeliveryMetroName.text = @"";
-//            }
-//            /*  Will add after I will have images
-//             switch (deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue]) {
-//             case 1:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
-//             break;
-//             case 2:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
-//             case 3:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
-//             case 4:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
-//             case 10:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
-//             case 11:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"School"];
-//             case 12:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
-//             case 13:
-//             cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
-//             default:
-//             break;
-//             }
-//             
-//             */
-//            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
-//            
-//            
-//            if (flag1 ==-1)
-//            {
-//                cell.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-//                
-//                cell.contentView.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-//            }
-//            else
-//            {
-//                cell.backgroundColor = [UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-//                
-//                cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-//            }
-//            
-//            
-//            cell.selectionStyle =UITableViewCellSelectionStyleNone;
-//            return  cell;
-//        }
-//        
-//        
-//    }
-//    
-//}
+
+
+
 - (void)tableView:(UITableView *)tableView
   willDisplayCell:(CustomCellSelectedOrders *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -1491,8 +814,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     
     
-    
-    
     deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
     
     if(selectedRow==indexPath.row)
@@ -1638,7 +959,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
             height = 2+1+22+height1+4+80;
         }
-
         
         return height;
         
@@ -1665,7 +985,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             
             else
             {
-              
+                NSLog(@"%d",[[UIDevice currentDevice] orientation]);
                 return curentSelf.view.frame.size.height/6;
             }
             
