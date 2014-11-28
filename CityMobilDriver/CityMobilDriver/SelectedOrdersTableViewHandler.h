@@ -18,6 +18,7 @@
 
 @interface SelectedOrdersTableViewHandler : UITableView<UITableViewDataSource,UITableViewDelegate>
 {
+    CGFloat heightOfMyOrderCell;
     NSString * idhash;
     NSString * result;
     UIAlertView * alertConfirmPurchase;
@@ -49,11 +50,17 @@
     UIView*underView;
     UIViewController*curentSelf;
     NSUInteger numberOfClass;
- 
+    CGSize expectSizeForCollAddress;
+    CGSize expectSizeForCallComment;
+     CGSize  expectSizeForDeliveryAddress;
+        CGSize expectSizeDeliveryComment;
+       CGSize expectSizeForOurComment;
+    CGFloat height2;
+    CGFloat height1;
     
 }
 -(void)setResponseObject:(SelectedOrdersDetailsResponse*)object andStringforSroch:(NSString*)string andFlag1:(NSInteger)flag andCurentSelf:(UIViewController*)vc andNumberOfClass:(NSUInteger)number;
 
-
+-(void)setSelectedRow:(NSInteger)selectedRo;
 
 @end

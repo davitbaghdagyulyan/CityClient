@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomCellSelectORDER : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIView *orangeView;
+
+@property (strong, nonatomic) IBOutlet UILabel *DL5Label;
 @property (strong, nonatomic) IBOutlet UIView *underView;
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonMap1;

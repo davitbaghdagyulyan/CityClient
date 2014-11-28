@@ -7,15 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "LeftMenu.h"
-@interface MyOrdersViewController : UIViewController
+#import "SelectedOrdersTableViewHandler.h"
+
+@interface MyOrdersViewController : UIViewController<CLLocationManagerDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *myOrdersTableView;
+
 - (IBAction)back:(id)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 -(void)setIndexOfCell:(NSUInteger)indexOf;
+-(void)setUnderView:(UIView*)under;
 -(void)collMap;
 -(void)deliveryMapp;
 -(void)close;
 -(void)openYandexMap;
 -(void)openGoogleMap;
 -(void)toTakeAction;
+-(void)closeOrderAction;
+-(void)toOrderAction;
 @end

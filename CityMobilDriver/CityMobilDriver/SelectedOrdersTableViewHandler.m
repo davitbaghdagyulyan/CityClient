@@ -24,7 +24,10 @@
     }
     return self;
 }
-
+-(void)setSelectedRow:(NSInteger)selectedRo
+{
+    selectedRow=selectedRo;
+}
 -(void)setResponseObject:(SelectedOrdersDetailsResponse*)object andStringforSroch:(NSString*)string andFlag1:(NSInteger)flag andCurentSelf:(UIViewController*)vc andNumberOfClass:(NSUInteger)number;
 {
     responseObject=object;
@@ -32,166 +35,35 @@
     flag1=flag;
     curentSelf=vc;
     numberOfClass=number;
+    
    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
         return responseObject.orders.count;
- 
-        
-    
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    float height1 =35;
+    
     if(selectedRow==indexPath.row)
     {
-        //CALLADDRESS
-        CGSize expectSizeForCollAddress;
-        NSString * collAddress =[[responseObject.orders objectAtIndex:indexPath.row] CollAddressText];
-        NSLog(@"CollAddress is %@",collAddress);
-        if (collAddress && collAddress.length !=0)
-        {
-            labelCollAddressText  = [[UILabel alloc] init];
-            labelCollAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
-            labelCollAddressText.text = collAddress;
-            labelCollAddressText.numberOfLines = 0;
-            labelCollAddressText.lineBreakMode = NSLineBreakByWordWrapping;
-            CGSize maximumLabelSize = CGSizeMake(220,100);
-            expectSizeForCollAddress = [labelCollAddressText sizeThatFits:maximumLabelSize];
-        }
-        else
-        {
-            expectSizeForCollAddress = CGSizeMake(0, 0);
-        }
-        
-        if (expectSizeForCollAddress.height !=0)
-        {
-            height1 += expectSizeForCollAddress.height+4+5;
-        }
-        else
-        {
-            height1 += 15;
-        }
-        //CALLCOMMENT
-        NSString * callComment =[[responseObject.orders objectAtIndex:indexPath.row] CollComment];
-        NSLog(@"CallComment is %@",callComment);
-        CGSize expectSizeForCallComment;
-        if(callComment && callComment.length !=0)       {
-            labelCallComment  = [[UILabel alloc] init];
-            labelCallComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
-            labelCallComment.text =callComment;
-            labelCallComment.numberOfLines = 0;
-            labelCallComment.lineBreakMode = NSLineBreakByWordWrapping;
-            CGSize maximumLabelSize = CGSizeMake(300,100);
-            expectSizeForCallComment = [labelCallComment sizeThatFits:maximumLabelSize];
-        }
-        else
-        {
-            expectSizeForCallComment = CGSizeMake(0, 0);
-        }
-        if (expectSizeForCallComment.height !=0)
-        {
-            height1 +=expectSizeForCallComment.height+4+5;
-        }
-        else
-        {
-            height1 +=5;
-        }
-        //DELIVERYADDRESS
-        float height2 =35;
-        NSString * deliveryAddress =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddressText];
-        CGSize  expectSizeForDeliveryAddress;
-        if(deliveryAddress && deliveryAddress.length !=0)
-        {
-            labelDeliveryAddressText  = [[UILabel alloc] init];
-            labelDeliveryAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
-            labelDeliveryAddressText.text =deliveryAddress;
-            labelDeliveryAddressText.numberOfLines = 0;
-            labelDeliveryAddressText.lineBreakMode = NSLineBreakByWordWrapping;
-            CGSize maximumLabelSize = CGSizeMake(220,100);
-            expectSizeForDeliveryAddress = [labelCollAddressText sizeThatFits:maximumLabelSize];
-        }
-        else
-        {
-            expectSizeForDeliveryAddress = CGSizeMake(0, 0);
-        }
-        if (expectSizeForDeliveryAddress.height !=0)
-        {
-            height2 += expectSizeForDeliveryAddress.height+4+5;
-        }
-        else
-        {
-            height2 += 15;
-        }
-        
-        //DELIVERYCOMMENT
-        NSString * deliveryComment =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryComment];
-        CGSize expectSizeDeliveryComment;
-        if(deliveryComment && deliveryComment.length !=0)
-        {
-            labelDeliveryComment  = [[UILabel alloc] init];
-            labelDeliveryComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
-            labelDeliveryComment.text =deliveryComment;
-            labelDeliveryComment.numberOfLines = 0;
-            labelDeliveryComment.lineBreakMode = NSLineBreakByWordWrapping;
-            CGSize maximumLabelSize = CGSizeMake(300,100);
-            expectSizeDeliveryComment = [labelCallComment sizeThatFits:maximumLabelSize];
-        }
-        else
-        {
-            expectSizeDeliveryComment = CGSizeMake(0, 0);
-        }
-        if (expectSizeDeliveryComment.height != 0)
-        {
-            height2 +=expectSizeDeliveryComment.height+4+5;
-        }
-        
-        //OURCOMMENT
-        NSString * ourComment =[[responseObject.orders objectAtIndex:indexPath.row] OurComment];
-        CGSize expectSizeForOurComment;
-        if(ourComment && ourComment.length !=0)
-        {
-            labelOurComment  = [[UILabel alloc] init];
-            labelOurComment.font =  [UIFont fontWithName:@"Roboto-LightItalic" size:15];
-            labelOurComment.text = ourComment;
-            labelOurComment.numberOfLines = 0;
-            labelOurComment.lineBreakMode = NSLineBreakByWordWrapping;
-            CGSize maximumLabelSize = CGSizeMake(300,100);
-            expectSizeForOurComment = [labelOurComment sizeThatFits:maximumLabelSize];
-        }
-        else
-        {
-            expectSizeForOurComment = CGSizeMake(0, 0);
-        }
-        if (expectSizeForOurComment.height != 0)
-        {
-            height2 +=expectSizeForOurComment.height +4+5;
-        }
-        else
-        {
-            height2 +=5;
-        }
-        
-        //DEFINING HEGHT FOR VIEW3
-        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0)
-        {
-            height2 = 0;
-        }
-        //DEFINING HEIGHT FOR CELL
-        height = 2+1+22+height1+height2+1+4+45+4;
-        //CustomCellSelectedORDER2
+
         if ([[[responseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1)
         {
-            height = 2+1+22+height1+4+80;
+          
             NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDER2Selected%ld",(long)indexPath.row];
             CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
+               
+                //***  narek ****
+               
+                
+                //*** narek****
+                
             }
             //******************************************Nareks Change*******************************************
             
@@ -273,8 +145,8 @@
             if (expectSizeForCollAddress.height !=0)
             {
                 labelCollAddressText.backgroundColor=[UIColor whiteColor];
-                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                   [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
                 {
                     labelCollAddressText.frame = CGRectMake(10, 30+5, expectSizeForCollAddress.width, expectSizeForCollAddress.height+4);
                 }
@@ -290,8 +162,8 @@
                 labelCallComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
                 if (expectSizeForCollAddress.height ==0)
                 {
-                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
                     {
                         labelCallComment.frame =CGRectMake(10,30+20,290,  expectSizeForCallComment.height+4);
                     }
@@ -304,8 +176,8 @@
                 }
                 else
                 {
-                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
                     {
                         labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,290,  expectSizeForCallComment.height+4);
                     }
@@ -318,7 +190,7 @@
                 [cell.View2 addSubview:labelCallComment];
             }
             idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
-            [cell.showAddress  addTarget:self action:@selector(showAddress) forControlEvents:UIControlEventTouchUpInside];
+            [cell.showAddress  addTarget:curentSelf action:@selector(showAddress) forControlEvents:UIControlEventTouchUpInside];
             if (numberOfClass==0)
             {
                 underView=cell.underView;
@@ -338,6 +210,7 @@
             }
             
             cell.selectionStyle =UITableViewCellSelectionStyleNone;
+           
             return cell;
         }
         NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%ld",(long)indexPath.row];
@@ -346,6 +219,166 @@
         {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER" owner:self options:nil];
             cell = [nib objectAtIndex:0];
+            if (numberOfClass==1 && height!=0)
+            {
+                [cell.Button removeFromSuperview];
+
+                UIView*buttonView=[[UIView alloc]init];
+                buttonView.backgroundColor=[UIColor whiteColor];
+               [cell.orangeView addSubview:buttonView];
+                buttonView.translatesAutoresizingMaskIntoConstraints=NO;
+
+                 UIButton*closeButton=[[UIButton alloc]init];
+                closeButton.backgroundColor=[UIColor grayColor];
+                [buttonView addSubview:closeButton];
+                closeButton.translatesAutoresizingMaskIntoConstraints=NO;
+                [closeButton setTitle:@"Закрыть" forState:UIControlStateNormal];
+                [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                
+                UIButton*toOrderButton=[[UIButton alloc]init];
+                toOrderButton.backgroundColor=[UIColor orangeColor];
+                [buttonView addSubview:toOrderButton];
+                toOrderButton.translatesAutoresizingMaskIntoConstraints=NO;
+                [toOrderButton setTitle:@"К заказу" forState:UIControlStateNormal];
+                [toOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                
+                [closeButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(closeOrderAction) forControlEvents:UIControlEventTouchUpInside];
+                
+                [toOrderButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(toOrderAction) forControlEvents:UIControlEventTouchUpInside];
+
+                
+                
+                
+                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                        attribute:NSLayoutAttributeLeading
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:cell.orangeView
+                                                                        attribute:NSLayoutAttributeLeading
+                                                                       multiplier:1.0
+                                                                         constant:0]];
+                
+                
+               [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                        attribute:NSLayoutAttributeTop
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:cell.DL5Label
+                                                                        attribute:NSLayoutAttributeBottom
+                                                                       multiplier:1.0
+                                                                         constant:0]];
+                
+                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:cell.orangeView
+                                                                          attribute:NSLayoutAttributeBottom
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:buttonView
+                                                                          attribute:NSLayoutAttributeBottom
+                                                                         multiplier:1.0
+                                                                           constant:4]];
+                
+                [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                            attribute:NSLayoutAttributeTrailing
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:cell.orangeView
+                                                                            attribute:NSLayoutAttributeTrailing
+                                                                           multiplier:1.0
+                                                                             constant:0]];
+                
+
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                        attribute: NSLayoutAttributeHeight
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute: NSLayoutAttributeHeight
+                                                                       multiplier:1.0
+                                                                         constant:cell.Button.frame.size.height]];
+               
+             ///closebutton constraits*************
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                            attribute:NSLayoutAttributeLeading
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:buttonView
+                                                                            attribute:NSLayoutAttributeLeading
+                                                                           multiplier:1.0
+                                                                             constant:0]];
+                
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                            attribute:NSLayoutAttributeTop
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:buttonView
+                                                                            attribute:NSLayoutAttributeTop
+                                                                           multiplier:1.0
+                                                                             constant:0]];
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                            attribute:NSLayoutAttributeBottom
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:closeButton
+                                                                            attribute:NSLayoutAttributeBottom
+                                                                           multiplier:1.0
+                                                                             constant:0]];
+                
+                [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                       attribute: NSLayoutAttributeWidth
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:nil
+                                                                       attribute: NSLayoutAttributeWidth
+                                                                      multiplier:1.0
+                                                                        constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                
+                [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                       attribute: NSLayoutAttributeHeight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:nil
+                                                                       attribute: NSLayoutAttributeHeight
+                                                                      multiplier:1.0
+                                                                        constant:cell.Button.frame.size.height]];
+
+               //********************toOrderButton
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:closeButton
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:4]];
+                
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:buttonView
+                                                                       attribute:NSLayoutAttributeTop
+                                                                      multiplier:1.0
+                                                                        constant:0]];
+                
+                [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
+                                                                       attribute:NSLayoutAttributeBottom
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:toOrderButton
+                                                                       attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:0]];
+                
+                [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                        attribute: NSLayoutAttributeWidth
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute: NSLayoutAttributeWidth
+                                                                       multiplier:1.0
+                                                                         constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                
+                [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
+                                                                        attribute: NSLayoutAttributeHeight
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute: NSLayoutAttributeHeight
+                                                                       multiplier:1.0
+                                                                         constant:cell.Button.frame.size.height]];
+                
+            }
         }
         indexOfCell=indexPath.row;
         if (numberOfClass==0)
@@ -870,8 +903,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             if ([deviceType isEqualToString:@"iPhone Simulator"])
             {
          
-                if([[UIDevice currentDevice] orientation]==UIDeviceOrientationPortrait ||
-                   [[UIDevice currentDevice] orientation]==UIDeviceOrientationPortraitUpsideDown)
+                if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+                   [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
                 {
                     gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,48);
                 }
@@ -894,8 +927,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.0f];
             if ([deviceType isEqualToString:@"iPhone Simulator"])
             {
-                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                   [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
                 {
                     gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(curentSelf.view.frame.size.height*146/1136)-3);
                 }
@@ -933,28 +966,183 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-     deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
+{  height1 =35;
+    
+    //CALLADDRESS
+
+    NSString * collAddress =[[responseObject.orders objectAtIndex:indexPath.row] CollAddressText];
+    NSLog(@"CollAddress is %@",collAddress);
+    if (collAddress && collAddress.length !=0)
+    {
+        labelCollAddressText  = [[UILabel alloc] init];
+        labelCollAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
+        labelCollAddressText.text = collAddress;
+        labelCollAddressText.numberOfLines = 0;
+        labelCollAddressText.lineBreakMode = NSLineBreakByWordWrapping;
+        CGSize maximumLabelSize = CGSizeMake(220,100);
+        expectSizeForCollAddress = [labelCollAddressText sizeThatFits:maximumLabelSize];
+    }
+    else
+    {
+        expectSizeForCollAddress = CGSizeMake(0, 0);
+    }
+    
+    if (expectSizeForCollAddress.height !=0)
+    {
+        height1 += expectSizeForCollAddress.height+4+5;
+    }
+    else
+    {
+        height1 += 15;
+    }
+    //CALLCOMMENT
+    NSString * callComment =[[responseObject.orders objectAtIndex:indexPath.row] CollComment];
+    NSLog(@"CallComment is %@",callComment);
+    
+    if(callComment && callComment.length !=0)       {
+        labelCallComment  = [[UILabel alloc] init];
+        labelCallComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
+        labelCallComment.text =callComment;
+        labelCallComment.numberOfLines = 0;
+        labelCallComment.lineBreakMode = NSLineBreakByWordWrapping;
+        CGSize maximumLabelSize = CGSizeMake(300,100);
+        expectSizeForCallComment = [labelCallComment sizeThatFits:maximumLabelSize];
+    }
+    else
+    {
+        expectSizeForCallComment = CGSizeMake(0, 0);
+    }
+    if (expectSizeForCallComment.height !=0)
+    {
+        height1 +=expectSizeForCallComment.height+4+5;
+    }
+    else
+    {
+        height1 +=5;
+    }
+    //DELIVERYADDRESS
+    height2 =35;
+    NSString * deliveryAddress =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddressText];
+   
+    if(deliveryAddress && deliveryAddress.length !=0)
+    {
+        labelDeliveryAddressText  = [[UILabel alloc] init];
+        labelDeliveryAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
+        labelDeliveryAddressText.text =deliveryAddress;
+        labelDeliveryAddressText.numberOfLines = 0;
+        labelDeliveryAddressText.lineBreakMode = NSLineBreakByWordWrapping;
+        CGSize maximumLabelSize = CGSizeMake(220,100);
+        expectSizeForDeliveryAddress = [labelCollAddressText sizeThatFits:maximumLabelSize];
+    }
+    else
+    {
+        expectSizeForDeliveryAddress = CGSizeMake(0, 0);
+    }
+    if (expectSizeForDeliveryAddress.height !=0)
+    {
+        height2 += expectSizeForDeliveryAddress.height+4+5;
+    }
+    else
+    {
+        height2 += 15;
+    }
+    
+    //DELIVERYCOMMENT
+    NSString * deliveryComment =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryComment];
+
+    if(deliveryComment && deliveryComment.length !=0)
+    {
+        labelDeliveryComment  = [[UILabel alloc] init];
+        labelDeliveryComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
+        labelDeliveryComment.text =deliveryComment;
+        labelDeliveryComment.numberOfLines = 0;
+        labelDeliveryComment.lineBreakMode = NSLineBreakByWordWrapping;
+        CGSize maximumLabelSize = CGSizeMake(300,100);
+        expectSizeDeliveryComment = [labelCallComment sizeThatFits:maximumLabelSize];
+    }
+    else
+    {
+        expectSizeDeliveryComment = CGSizeMake(0, 0);
+    }
+    if (expectSizeDeliveryComment.height != 0)
+    {
+        height2 +=expectSizeDeliveryComment.height+4+5;
+    }
+    
+    //OURCOMMENT
+    NSString * ourComment =[[responseObject.orders objectAtIndex:indexPath.row] OurComment];
+ 
+    if(ourComment && ourComment.length !=0)
+    {
+        labelOurComment  = [[UILabel alloc] init];
+        labelOurComment.font =  [UIFont fontWithName:@"Roboto-LightItalic" size:15];
+        labelOurComment.text = ourComment;
+        labelOurComment.numberOfLines = 0;
+        labelOurComment.lineBreakMode = NSLineBreakByWordWrapping;
+        CGSize maximumLabelSize = CGSizeMake(300,100);
+        expectSizeForOurComment = [labelOurComment sizeThatFits:maximumLabelSize];
+    }
+    else
+    {
+        expectSizeForOurComment = CGSizeMake(0, 0);
+    }
+    if (expectSizeForOurComment.height != 0)
+    {
+        height2 +=expectSizeForOurComment.height +4+5;
+    }
+    else
+    {
+        height2 +=5;
+    }
+    
+    //DEFINING HEGHT FOR VIEW3
+    if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0)
+    {
+        height2 = 0;
+    }
+    //DEFINING HEIGHT FOR CELL
+    height = 2+1+22+height1+height2+1+4+45+4;
+    //CustomCellSelectedORDER2
+    if ([[[responseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1)
+    {
+        height = 2+1+22+height1+4+80;
+    }
+    
+    
+    
+    
+    
+    
+    deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
     
     if(selectedRow==indexPath.row)
     {
         return height;
+        
+        
     }
+//    else if (selectedRow==indexPath.row && numberOfClass==1)
+//    {
+//        heightOfMyOrderCell=height+45;
+//       
+//        return height+45;
+//       
+//    }
     
     else
     {
-       
+    
         if([deliveryAddrTypeMenu integerValue] ==0)
         {
-            if([[UIDevice currentDevice] orientation]==UIDeviceOrientationPortrait ||
-               [[UIDevice currentDevice] orientation]==UIDeviceOrientationPortraitUpsideDown)
+            if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+               [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
             {
                 return 51;
             }
             
             else
             {
-                NSLog(@"%ld",[[UIDevice currentDevice] orientation]);
+                NSLog(@"%d",[[UIDevice currentDevice] orientation]);
                 return curentSelf.view.frame.size.height/6;
             }
             
@@ -963,8 +1151,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
             if ([deviceType isEqualToString:@"iPhone Simulator"])
             {
-                if([[UIDevice currentDevice] orientation]==UIDeviceOrientationPortrait ||
-                   [[UIDevice currentDevice] orientation]==UIDeviceOrientationPortraitUpsideDown)
+                if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+                   [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
                 {
                     return  curentSelf.view.frame.size.height*146/1136;
                 }
@@ -975,8 +1163,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             }
             else
             {
-                if([[UIDevice currentDevice] orientation]==UIDeviceOrientationPortrait ||
-                   [[UIDevice currentDevice] orientation]==UIDeviceOrientationPortraitUpsideDown)
+                if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+                   [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
                 {
                     return  curentSelf.view.frame.size.height*146/1136;
                 }
