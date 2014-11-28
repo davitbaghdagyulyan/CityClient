@@ -17,8 +17,10 @@
     ResponseGetCarInfo* getCarInfoResponse;
     
     
+    CAGradientLayer* gradientLayer;
     CAGradientLayer* gradientLayer1;
     CAGradientLayer* gradientLayer2;
+    
 }
 @end
 
@@ -34,11 +36,12 @@
     
     self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
     
-    gradientLayer1 = [self greyGradient:self.bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19)];
-    [self.bgView.layer insertSublayer:gradientLayer1 atIndex:0];
+    gradientLayer = [self greyGradient:self.bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19)];
+    [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
     
     
-    
+    gradientLayer1 = [self greyGradient:self.bgView1 widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), 44)];
+    [self.bgView1.layer insertSublayer:gradientLayer1 atIndex:0];
 }
 
 
@@ -128,14 +131,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [[UITableViewCell alloc]init];
-    cell.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    cell.backgroundColor = [UIColor colorWithRed:231.f/255 green:231.f/255 blue:231.f/255 alpha:1];
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"марка ";
+            cell.textLabel.backgroundColor = [UIColor clearColor];
             [self setAtributedString:cell.textLabel :getCarInfoResponse.mark];
             
             
-            gradientLayer2 = [self greyGradient:cell.contentView widthFrame:CGRectMake(0, 0, CGRectGetWidth(cell.contentView.frame), CGRectGetHeight(cell.contentView.frame))];
+            
+            gradientLayer2 = [self greyGradient:cell.contentView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.carInfoTable.frame), 44)];
             [cell.contentView.layer insertSublayer:gradientLayer2 atIndex:0];
             
             break;
@@ -235,7 +240,11 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19);
+         gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19);
+         
+         gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), 44);
+         
+         gradientLayer2.frame = CGRectMake(0, 0, CGRectGetWidth(self.carInfoTable.frame), 44);
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {

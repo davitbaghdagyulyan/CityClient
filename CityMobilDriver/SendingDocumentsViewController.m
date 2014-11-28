@@ -36,6 +36,9 @@
     [super viewDidAppear:animated];
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
 }
 
 

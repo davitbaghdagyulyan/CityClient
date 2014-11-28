@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CardsViewController : UIViewController
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end

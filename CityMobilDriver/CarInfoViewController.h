@@ -15,6 +15,8 @@
 
 @interface CarInfoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIView *bgView1;
+
 @property(nonatomic,weak) IBOutlet UIView* bgView;
 
 

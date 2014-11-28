@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EDCB19E857D100EFFC54 /* LeftMenu.m */; };
 		8F0A822019EBB6F400A03D1B /* SelectedOrdersDetailsElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A821F19EBB6F400A03D1B /* SelectedOrdersDetailsElements.m */; };
-		8F4EBB751A1F98820010F18B /* LabelUnderLineForOHVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EBB741A1F98820010F18B /* LabelUnderLineForOHVC.m */; };
 		8F52FB5119E7CA9000585B40 /* CustomCellSelectedOrders.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */; };
 		8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5219E7DC1000585B40 /* metroAndroid.png */; };
 		8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */; };
@@ -20,8 +19,8 @@
 		8F8D322C19E3FA7F003232F7 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */; };
 		8FA028F11A122B1700729054 /* star_none.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FA028F01A122B1700729054 /* star_none.png */; };
 		8FA028F31A122B2A00729054 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FA028F21A122B2A00729054 /* star.png */; };
+		8FB453071A1CB06B0063336C /* CustomCellSelectedOrders2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB453061A1CB06B0063336C /* CustomCellSelectedOrders2.xib */; };
 		8FB453091A1CB19E0063336C /* CustomCellOrdersHistory2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB453081A1CB19E0063336C /* CustomCellOrdersHistory2.xib */; };
-		8FB487F41A24979800170542 /* SelectedOrdersTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB487F31A24979800170542 /* SelectedOrdersTableViewHandler.m */; };
 		8FB64FB119F91759005AAF2A /* metro.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB019F91759005AAF2A /* metro.png */; };
 		8FB64FB319F9221F005AAF2A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB219F9221F005AAF2A /* map.png */; };
 		8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */; };
@@ -57,7 +56,6 @@
 		8FD113891A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */; };
 		8FD25E921A0B88CD0056038C /* CustomCellOrdersHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */; };
 		8FD25E951A0B892A0056038C /* CustomCellOrdersHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */; };
-		8FD44FA91A1F49860098EC93 /* CustomCellSelectedOrders2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD44FA81A1F49860098EC93 /* CustomCellSelectedOrders2.xib */; };
 		8FDE11611A09186C00B4DA8A /* CustomCellSelectORDER2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */; };
 		8FDF958219DE7E60005A468A /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF958119DE7E60005A468A /* logo@2x.png */; };
 		8FE032DE19DE8AD000B17C09 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FE032DD19DE8AD000B17C09 /* CustomCell.xib */; };
@@ -240,7 +238,9 @@
 		ECCD993C1A19DF93009D482C /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */; };
 		ECCD993D1A19DF93009D482C /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992B1A19DF93009D482C /* Roboto-Condensed.ttf */; };
 		ECCD993E1A19DF93009D482C /* Roboto-CondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992C1A19DF93009D482C /* Roboto-CondensedItalic.ttf */; };
+		ECCD993F1A19DF93009D482C /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992D1A19DF93009D482C /* Roboto-Italic.ttf */; };
 		ECCD99401A19DF93009D482C /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992E1A19DF93009D482C /* Roboto-Light.ttf */; };
+		ECCD99411A19DF93009D482C /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992F1A19DF93009D482C /* Roboto-LightItalic.ttf */; };
 		ECCD99421A19DF93009D482C /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99301A19DF93009D482C /* Roboto-Medium.ttf */; };
 		ECCD99431A19DF93009D482C /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99311A19DF93009D482C /* Roboto-MediumItalic.ttf */; };
 		ECCD99441A19DF93009D482C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99321A19DF93009D482C /* Roboto-Regular.ttf */; };
@@ -306,8 +306,6 @@
 		8F0A822119EBB74700A03D1B /* SelectedOrdersDetailsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersDetailsResponse.h; sourceTree = "<group>"; };
 		8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersDetailsResponse.m; sourceTree = "<group>"; };
 		8F0CAA0E19E80C6100C8ED56 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
-		8F4EBB731A1F98820010F18B /* LabelUnderLineForOHVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelUnderLineForOHVC.h; sourceTree = "<group>"; };
-		8F4EBB741A1F98820010F18B /* LabelUnderLineForOHVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelUnderLineForOHVC.m; sourceTree = "<group>"; };
 		8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellSelectedOrders.xib; path = ../CustomCellSelectedOrders.xib; sourceTree = "<group>"; };
 		8F52FB5219E7DC1000585B40 /* metroAndroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metroAndroid.png; sourceTree = "<group>"; };
 		8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForFilter.h; sourceTree = "<group>"; };
@@ -319,9 +317,8 @@
 		8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		8FA028F01A122B1700729054 /* star_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_none.png; path = CityMobilDriver/star_none.png; sourceTree = "<group>"; };
 		8FA028F21A122B2A00729054 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = CityMobilDriver/star.png; sourceTree = "<group>"; };
+		8FB453061A1CB06B0063336C /* CustomCellSelectedOrders2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders2.xib; sourceTree = "<group>"; };
 		8FB453081A1CB19E0063336C /* CustomCellOrdersHistory2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellOrdersHistory2.xib; sourceTree = "<group>"; };
-		8FB487F21A24979800170542 /* SelectedOrdersTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersTableViewHandler.h; sourceTree = "<group>"; };
-		8FB487F31A24979800170542 /* SelectedOrdersTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersTableViewHandler.m; sourceTree = "<group>"; };
 		8FB64FB019F91759005AAF2A /* metro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro.png; sourceTree = "<group>"; };
 		8FB64FB219F9221F005AAF2A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cash_payment_small.png; sourceTree = "<group>"; };
@@ -369,7 +366,6 @@
 		8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellOrdersHistory.xib; path = ../CustomCellOrdersHistory.xib; sourceTree = "<group>"; };
 		8FD25E931A0B892A0056038C /* CustomCellOrdersHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCellOrdersHistory.h; path = ../CustomCellOrdersHistory.h; sourceTree = "<group>"; };
 		8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCellOrdersHistory.m; path = ../CustomCellOrdersHistory.m; sourceTree = "<group>"; };
-		8FD44FA81A1F49860098EC93 /* CustomCellSelectedOrders2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders2.xib; sourceTree = "<group>"; };
 		8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER2.xib; sourceTree = "<group>"; };
 		8FDF958119DE7E60005A468A /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		8FE032DD19DE8AD000B17C09 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
@@ -675,7 +671,9 @@
 		ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		ECCD992B1A19DF93009D482C /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Condensed.ttf"; sourceTree = "<group>"; };
 		ECCD992C1A19DF93009D482C /* Roboto-CondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-CondensedItalic.ttf"; sourceTree = "<group>"; };
+		ECCD992D1A19DF93009D482C /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		ECCD992E1A19DF93009D482C /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		ECCD992F1A19DF93009D482C /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		ECCD99301A19DF93009D482C /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		ECCD99311A19DF93009D482C /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		ECCD99321A19DF93009D482C /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -846,6 +844,7 @@
 				ECC471881A11F0790062803A /* SelectedOrdersViewController */,
 				ECC471871A11EF270062803A /* RootViewController */,
 				ECC471891A11F1AE0062803A /* OrdersHistoryViewController */,
+				D70428BF19D0071F00F5C38C /* Main.storyboard */,
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
 				D70428BF19D0071F00F5C38C /* Main.storyboard */,
@@ -1273,7 +1272,7 @@
 				8FD011B51A03D54F00E9363A /* SelectedOrdersViewController.h */,
 				8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */,
 				8FDE11601A09186C00B4DA8A /* CustomCellSelectORDER2.xib */,
-				8FD44FA81A1F49860098EC93 /* CustomCellSelectedOrders2.xib */,
+				8FB453061A1CB06B0063336C /* CustomCellSelectedOrders2.xib */,
 				8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */,
 				8F52FB5019E7CA9000585B40 /* CustomCellSelectedOrders.xib */,
 				8FD011BB1A03DA1A00E9363A /* CustomCellSelectORDER.xib */,
@@ -1286,8 +1285,6 @@
 				ECF529BC1A12366B00150931 /* CustomViewForMaps.h */,
 				ECF529BD1A12366B00150931 /* CustomViewForMaps.m */,
 				8F0A821A19EBAE2800A03D1B /* SelectedOrdersDetails */,
-				8FB487F21A24979800170542 /* SelectedOrdersTableViewHandler.h */,
-				8FB487F31A24979800170542 /* SelectedOrdersTableViewHandler.m */,
 			);
 			name = SelectedOrdersViewController;
 			sourceTree = "<group>";
@@ -1309,8 +1306,6 @@
 		ECC4718A1A11F25D0062803A /* OrdersHistory */ = {
 			isa = PBXGroup;
 			children = (
-				8F4EBB731A1F98820010F18B /* LabelUnderLineForOHVC.h */,
-				8F4EBB741A1F98820010F18B /* LabelUnderLineForOHVC.m */,
 				8FC51A861A0CAA1100E13D03 /* OrdersHistoryJson.h */,
 				8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */,
 				8FC51A891A0CAD3000E13D03 /* OrdersHistoryResponse.h */,
@@ -1626,7 +1621,9 @@
 				ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */,
 				ECCD992B1A19DF93009D482C /* Roboto-Condensed.ttf */,
 				ECCD992C1A19DF93009D482C /* Roboto-CondensedItalic.ttf */,
+				ECCD992D1A19DF93009D482C /* Roboto-Italic.ttf */,
 				ECCD992E1A19DF93009D482C /* Roboto-Light.ttf */,
+				ECCD992F1A19DF93009D482C /* Roboto-LightItalic.ttf */,
 				ECCD99301A19DF93009D482C /* Roboto-Medium.ttf */,
 				ECCD99311A19DF93009D482C /* Roboto-MediumItalic.ttf */,
 				ECCD99321A19DF93009D482C /* Roboto-Regular.ttf */,
@@ -1881,9 +1878,11 @@
 				ECCC236C19E7D7EA0091C43E /* logo1@2x.png in Resources */,
 				8FCFF58819F5051D00C6E3A7 /* ic_baggage_small.png in Resources */,
 				8FCFF58C19F5052800C6E3A7 /* ic_credit_card_payment_small.png in Resources */,
+				ECCD99411A19DF93009D482C /* Roboto-LightItalic.ttf in Resources */,
 				ECB38B3B1A0D130B00DFBB77 /* 5@2x.png in Resources */,
 				8FCFF59019F5053600C6E3A7 /* ic_on_bonuses_payment_small.png in Resources */,
 				8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */,
+				ECCD993F1A19DF93009D482C /* Roboto-Italic.ttf in Resources */,
 				ECB38B3D1A0D130B00DFBB77 /* 7@2x.png in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
 				ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */,
@@ -1926,10 +1925,10 @@
 				ECCD99401A19DF93009D482C /* Roboto-Light.ttf in Resources */,
 				8FD011BC1A03DA1A00E9363A /* CustomCellSelectORDER.xib in Resources */,
 				D70428C319D0071F00F5C38C /* Images.xcassets in Resources */,
+				8FB453071A1CB06B0063336C /* CustomCellSelectedOrders2.xib in Resources */,
 				EC896A7D19FE5C4700822D9E /* CustomView2.xib in Resources */,
 				ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */,
 				8FE032EE19DEC80D00B17C09 /* phone@2x.png in Resources */,
-				8FD44FA91A1F49860098EC93 /* CustomCellSelectedOrders2.xib in Resources */,
 				ECB49FD019F539650022EB28 /* CustomWebView.xib in Resources */,
 				ECF529B71A1229D300150931 /* CustomViewForMaps.xib in Resources */,
 				ECCD99361A19DF93009D482C /* NOTICE.txt in Resources */,
@@ -1975,7 +1974,6 @@
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
 				ECCC237219E7F7930091C43E /* CustomCell.m in Sources */,
-				8F4EBB751A1F98820010F18B /* LabelUnderLineForOHVC.m in Sources */,
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
@@ -2011,7 +2009,6 @@
 				ECB59E9A19F6A3B300F69529 /* GetQiwiBillsUrlResponse.m in Sources */,
 				ECD4064619F1467D00EFE6B2 /* WriteLetterJson.m in Sources */,
 				ECCEE4FA19EFF58000F07532 /* CustomTableViewCell.m in Sources */,
-				8FB487F41A24979800170542 /* SelectedOrdersTableViewHandler.m in Sources */,
 				ECB52E331A07767B0091293F /* ScheduleClass.m in Sources */,
 				ECCC237519E7F82F0091C43E /* MessagesViewController.m in Sources */,
 				ECB52E1E1A076B620091293F /* NameClass.m in Sources */,

@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface RobotSettingsViewController : UIViewController<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
+
 - (IBAction)checkBoxAction:(UIButton *)sender;
 - (IBAction)okChildYear:(UIButton *)sender;
 
