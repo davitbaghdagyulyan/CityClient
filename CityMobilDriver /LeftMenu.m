@@ -199,8 +199,6 @@
     {
         if ([controller isKindOfClass:[aClass class]])
         {
-            
-           
             [self.curentViewController.navigationController popToViewController:controller animated:NO];
 //            if ([controller isKindOfClass:[RootViewController class]])
 //            {
