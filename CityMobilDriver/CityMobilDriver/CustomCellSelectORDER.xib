@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -322,6 +322,7 @@
                 <outlet property="Button" destination="OAt-J6-717" id="Xj3-Vj-OSB"/>
                 <outlet property="DL1" destination="cee-xC-hnS" id="HV3-4d-b6g"/>
                 <outlet property="DL4" destination="ni5-rp-j6C" id="NvH-qH-j4B"/>
+                <outlet property="DL5Label" destination="8Jx-dV-L98" id="j9U-5Q-OTY"/>
                 <outlet property="View1" destination="hUu-Xt-Z8A" id="HCT-cA-9UF"/>
                 <outlet property="View2" destination="OUD-ZQ-Reb" id="8kX-NP-IUc"/>
                 <outlet property="View3" destination="60p-yd-arS" id="03C-gA-Qfj"/>
@@ -333,12 +334,13 @@
                 <outlet property="labelDeliveryMetroName" destination="goa-vB-gSk" id="AUs-Pd-ksV"/>
                 <outlet property="labelPercent" destination="Yq3-4R-A1j" id="bOF-gG-uZT"/>
                 <outlet property="labelShortName" destination="XKo-mT-HZg" id="mzL-uB-Psl"/>
+                <outlet property="orangeView" destination="BrK-4I-HjO" id="7Ij-dG-t2a"/>
                 <outlet property="underView" destination="Lez-Oy-prd" id="Qhf-cz-yBH"/>
                 <outlet property="view1Height" destination="NYt-mE-6FG" id="qDw-5P-NIp"/>
-                <outlet property="whiteLabel" destination="xJ3-4f-8hl" id="Zf9-5Q-e3H"/>
+                <outlet property="whiteLabel" destination="xJ3-4f-8hl" id="rHz-WA-oM1"/>
                 <outlet property="whiteView" destination="7M3-1E-lOl" id="gnG-Ae-s6k"/>
             </connections>
-            <point key="canvasLocation" x="413.5" y="321"/>
+            <point key="canvasLocation" x="357.5" y="316"/>
         </tableViewCell>
     </objects>
     <resources>

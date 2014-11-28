@@ -547,14 +547,15 @@
         {
             NSLog(@"Will change to Landscape");
             selectedRow = -1;
+            [selectedOrdersTableViewHandlerObject setSelectedRow:selectedRow];
             [self requestOrder];
-           
             [self.tableViewOrdersDetails reloadData];
         }
         
         else {
             NSLog(@"Will change to Portrait");
             selectedRow = -1;
+            [selectedOrdersTableViewHandlerObject setSelectedRow:selectedRow];
             [self requestOrder];
           
             [self.tableViewOrdersDetails reloadData];

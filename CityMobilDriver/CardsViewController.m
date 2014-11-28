@@ -31,6 +31,9 @@
 {
     [super viewDidAppear:animated];
     [self getCarInfo];
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
 }
 
 

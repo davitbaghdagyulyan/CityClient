@@ -7,11 +7,24 @@
 //
 
 #import "MyOrdersViewController.h"
+#import "SelectedOrdersDetailsResponse.h"
+#import "GetMyOrdersJson.h"
+#import "CustomViewForMaps.h"
 
 @interface MyOrdersViewController ()
 {
     LeftMenu*leftMenu;
     NSInteger flag;
+    SelectedOrdersDetailsResponse*getMyOrdersResponseObject;
+    SelectedOrdersTableViewHandler*selectedOrdersTableViewHandlerObject;
+    
+    NSUInteger indexOfCell;
+    NSUInteger number;
+    CLLocationManager *locationManager;
+    CLLocation* currentLocation;
+    UIView*underView;
+     NSInteger selectedRow;
+    CustomViewForMaps*viewMap;
 }
 @end
 
@@ -31,7 +44,261 @@
     [super viewDidAppear:animated];
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
+   selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
+    self.myOrdersTableView.delegate=selectedOrdersTableViewHandlerObject;
+    self.myOrdersTableView.dataSource=selectedOrdersTableViewHandlerObject;
+    [self requestGetMyOrders];
+    
+    viewMap=[[CustomViewForMaps alloc] init];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
+    viewMap = [nib objectAtIndex:0];
+    viewMap.frame=self.view.frame;
+    viewMap.center=self.view.center;
+    viewMap.smallMapView.layer.cornerRadius = 30;
+    viewMap.smallMapView.layer.borderWidth = 2;
+    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+    viewMap.smallMapView.layer.masksToBounds = YES;
+    [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
+    [singleTapYandex setNumberOfTapsRequired:1];
+    UITapGestureRecognizer *singleTapGoogle =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openGoogleMap)];
+    [singleTapYandex setNumberOfTapsRequired:1];
+    viewMap.yandexImageView.userInteractionEnabled=YES;
+    viewMap.googleImageView.userInteractionEnabled=YES;
+    [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
+    [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    [locationManager startUpdatingLocation];
+
 }
+
+-(void)requestGetMyOrders
+{
+    UIActivityIndicatorView*indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    GetMyOrdersJson* getMyOrdersJsonObject=[[GetMyOrdersJson alloc]init];
+    
+    
+    NSDictionary*jsonDictionary=[getMyOrdersJsonObject toDictionary];
+    NSString*jsons=[getMyOrdersJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSError* error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 10;
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            
+            
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        [indicator stopAnimating];
+                                        return ;
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"responseString:%@",jsonString);
+        NSError*err;
+        
+        
+        
+        getMyOrdersResponseObject = [[SelectedOrdersDetailsResponse alloc] initWithString:jsonString error:&err];
+        
+        
+        
+        
+        if(getMyOrdersResponseObject.code!=nil)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getMyOrdersResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+            
+        }
+        else
+        {
+            [selectedOrdersTableViewHandlerObject setResponseObject:getMyOrdersResponseObject andStringforSroch:nil andFlag1:0 andCurentSelf:self andNumberOfClass:1];
+         
+            
+            [self.myOrdersTableView reloadData];
+
+            
+            
+            
+            
+        }
+        [indicator stopAnimating];
+ }];
+}
+-(void)setIndexOfCell:(NSUInteger)indexOf
+{
+    indexOfCell=indexOf;
+}
+-(void)setUnderView:(UIView*)under
+{
+    underView=under;
+}
+
+-(void)closeOrderAction
+{
+    selectedRow=-1;
+    [selectedOrdersTableViewHandlerObject setSelectedRow:selectedRow];
+    [self.myOrdersTableView reloadData];
+}
+-(void)toOrderAction
+{
+    
+}
+
+-(void)collMap
+{
+    [self.view addSubview:viewMap];
+    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
+    number=0;
+    [self animation];
+}
+
+-(void)deliveryMapp
+{
+    [self.view addSubview:viewMap];
+    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
+    number=1;
+    [self animation];
+}
+-(void)close
+{
+    [viewMap removeFromSuperview];
+}
+
+-(void)openYandexMap
+{
+    
+    if (number)
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+            
+        }
+        
+    }
+    else
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",currentLocation.coordinate.latitude,
+                            currentLocation.coordinate.longitude,
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+        
+    }
+}
+-(void)openGoogleMap
+{
+    if (number)
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+        
+    }
+    else
+    {
+        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+                            currentLocation.coordinate.latitude,
+                            currentLocation.coordinate.longitude,
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/google-maps/id585027354?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+        
+        
+    }
+}
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    currentLocation = [locations lastObject];
+    NSLog(@"%f--- %f", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
+}
+-(void)animation
+{
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options: 0
+                     animations:^(void)
+     {
+         viewMap.smallMapView.transform = CGAffineTransformIdentity;
+     }
+                     completion:nil];
+}
+
 - (IBAction)back:(id)sender
 {
     if (flag)
@@ -67,11 +334,11 @@
          if (flag==0)
          {
              flag=1;
-            // self.designationTableView.userInteractionEnabled=NO;
+             self.myOrdersTableView.userInteractionEnabled=NO;
          }
          else
          {
-            // self.designationTableView.userInteractionEnabled=YES;
+             self.myOrdersTableView.userInteractionEnabled=YES;
              flag=0;
          }
          
@@ -95,16 +362,16 @@
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              flag=0;
-             //self.titleTextView.userInteractionEnabled=YES;
-             //self.messageTextView.userInteractionEnabled=YES;
+             self.myOrdersTableView.userInteractionEnabled=YES;
+           
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              flag=1;
-            // self.titleTextView.userInteractionEnabled=NO;
-             //self.messageTextView.userInteractionEnabled=NO;
+             self.myOrdersTableView.userInteractionEnabled=NO;
+         
          }
          point.y=leftMenu.center.y;
          leftMenu.center=point;
@@ -131,8 +398,8 @@
     }
     leftMenu.center=point;
     flag=1;
-    //self.titleTextView.userInteractionEnabled=NO;
-   // self.messageTextView.userInteractionEnabled=NO;
+    self.myOrdersTableView.userInteractionEnabled=NO;
+
 }
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
@@ -141,7 +408,9 @@
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          
-        
+         selectedRow = -1;
+         [selectedOrdersTableViewHandlerObject setSelectedRow:selectedRow];
+         [self.myOrdersTableView reloadData];
          CGFloat xx;
          
          

@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface SendingDocumentsViewController : UIViewController<UIWebViewDelegate>
+
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @property (nonatomic, strong) NSString* urlString;
-
 
 //// left Menu /////
 

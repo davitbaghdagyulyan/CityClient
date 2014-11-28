@@ -11,20 +11,15 @@
 #import "CustomCellSelectORDER.h"
 #import "SelectedOrdersDetailsResponse.h"
 #import "SelectedOrdersViewController.h"
-#import "SingleDataProvider.h"
 @implementation SelectedOrdersTableViewHandler
 -(instancetype)init
 {
+    
     self=[super init];
     if (self)
     {
         selectedRow=-1;
         deviceType= [UIDevice currentDevice].model;
-        if ([SingleDataProvider sharedKey].arrayOfIndexes.count==0) {
-            NSMutableArray * arrayOfIndexes =[[NSMutableArray alloc]init];
-            [SingleDataProvider sharedKey].arrayOfIndexes=arrayOfIndexes;
-        }
-        
        
     }
     return self;
@@ -50,54 +45,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-
-    NSInteger k=0;
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
-    {
-    k=36;
-    }
-    else
-    {
-    k=64;
-    }
-    if ([[responseObject.orders objectAtIndex:indexPath.row] shortname])
-    {
-        shortName =[[responseObject.orders objectAtIndex:indexPath.row] shortname];
-    }
-    else
-    {
-        shortName = @"";
-    }
-    if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
-    {
-        callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
-    }
-    else
-    {
-        callDateFormat = @"";
-    }
-    stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
-    if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
-    {
-        percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
-    }
-    else
-    {
-        percent = @"";
-    }
-    if([percent length]>3)
-    {
-        stringForLabelPercent= [percent substringToIndex:2];
-    }
-    else
-    {
-        stringForLabelPercent = percent;
-    }
-    stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
     
-
-
     if(selectedRow==indexPath.row)
     {
 
@@ -138,15 +86,12 @@
 
             }
             
-            //VIEW1
+          
             cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
             cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
             [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
             NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
             [cell.whiteView addConstraint:view11Height];
-            cell.labelPercent.text = stringForLabelPercent;
-            cell.labelShortName.text=stringForLabelShortName;
-            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
             
             //VIEW2
             cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
@@ -161,29 +106,85 @@
             {
                 cell.labelCallMetroName.text = @"";
             }
-           if (expectSizeForCollAddress.height !=0)
+            if ([[responseObject.orders objectAtIndex:indexPath.row] shortname])
+            {
+                shortName =[[responseObject.orders objectAtIndex:indexPath.row] shortname];
+            }
+            else
+            {
+                shortName = @"";
+            }
+            if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
+            {
+                callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
+            }
+            else
+            {
+                callDateFormat = @"";
+            }
+            stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
+            cell.labelShortName.text = stringForLabelShortName;
+            if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
+            {
+                percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
+            }
+            else
+            {
+                percent = @"";
+            }
+            if([percent length]>3)
+            {
+                stringForLabelPercent= [percent substringToIndex:2];
+            }
+            else
+            {
+                stringForLabelPercent = percent;
+            }
+            stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
+            cell.labelPercent.text = stringForLabelPercent;
+            if (expectSizeForCollAddress.height !=0)
             {
                 labelCollAddressText.backgroundColor=[UIColor whiteColor];
-
-                labelCollAddressText.frame = CGRectMake(10, 30+5, curentSelf.view.frame.size.width-k-43-25, expectSizeForCollAddress.height+4);
-
+                if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                   [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
+                {
+                    labelCollAddressText.frame = CGRectMake(10, 30+5, expectSizeForCollAddress.width, expectSizeForCollAddress.height+4);
+                }
+                else
+                {
+                    labelCollAddressText.frame = CGRectMake(10, 30+5, 400, expectSizeForCollAddress.height+4);
+                }
+                
                 [cell.View2 addSubview:labelCollAddressText];
             }
-            
             if(expectSizeForCallComment.height !=0)
             {
                 labelCallComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
                 if (expectSizeForCollAddress.height ==0)
                 {
-
+                    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelCallComment.frame =CGRectMake(10,30+20,290,  expectSizeForCallComment.height+4);
+                    }
+                    else
+                    {
+                        labelCallComment.frame =CGRectMake(10,30+20,550,  expectSizeForCallComment.height+4);
+                    }
                     
-                labelCallComment.frame =CGRectMake(10,30+20,curentSelf.view.frame.size.width-k-15,  expectSizeForCallComment.height+4);
+                    
                 }
                 else
                 {
-                labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,curentSelf.view.frame.size.width-k-15,expectSizeForCallComment.height+4);
-                 
-
+                    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,290,  expectSizeForCallComment.height+4);
+                    }
+                    else
+                    {
+                        labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,450,  expectSizeForCallComment.height+4);
+                    }
                     
                 }
                 [cell.View2 addSubview:labelCallComment];
@@ -195,6 +196,7 @@
                 underView=cell.underView;
                 [(SelectedOrdersViewController*)curentSelf setUnderView:underView];
             }
+
             
             
             
@@ -403,10 +405,6 @@
         [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
         NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
         [cell.whiteView addConstraint:view11Height];
-        cell.labelShortName.text=[NSString stringWithFormat:@"%@", stringForLabelShortName];
-        cell.labelPercent.text = stringForLabelPercent;
-        [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
-
         //VIEW2
         cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
         [cell.View2 removeConstraint:[cell.View2.constraints objectAtIndex:0]];
@@ -421,7 +419,32 @@
         {
             cell.buttonMap2.hidden = YES;
         }
-       
+        /* Will add after I will have images
+         NSString * collAddressType =[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexPath.row] CollAddrTypeMenu];
+         switch ([collAddressType integerValue]) {
+         case 1:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
+         break;
+         case 2:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
+         case 3:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
+         case 4:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
+         case 10:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
+         case 11:
+         cell.imgViewCall.image = [UIImage imageNamed:@"School"];
+         case 12:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
+         case 13:
+         cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
+         default:
+         break;
+         }
+         
+         */
+        
         if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
         {
             cell.labelCallMetroName.text = [[responseObject.orders objectAtIndex:indexPath.row] CollMetroName];
@@ -434,7 +457,16 @@
         if (expectSizeForCollAddress.height !=0)
         {
             labelCollAddressText.backgroundColor=[UIColor whiteColor];
-            labelCollAddressText.frame = CGRectMake(10, 30+5,curentSelf.view.frame.size.width-k-43-25,expectSizeForCollAddress.height+4);
+            if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+               [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown
+               )
+            {
+                labelCollAddressText.frame = CGRectMake(10, 30+5, expectSizeForCollAddress.width, expectSizeForCollAddress.height+4);
+            }
+            else
+            {
+                labelCollAddressText.frame = CGRectMake(10, 30+5, 400, expectSizeForCollAddress.height+4);
+            }
             [cell.View2 addSubview:labelCollAddressText];
         }
         if(expectSizeForCallComment.height !=0)
@@ -442,20 +474,61 @@
             labelCallComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
             if (expectSizeForCollAddress.height ==0)
             {
-            labelCallComment.frame =CGRectMake(10,30+20,curentSelf.view.frame.size.width-k-15,expectSizeForCallComment.height+4);
+                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                {
+                    labelCallComment.frame =CGRectMake(10,30+20,290,  expectSizeForCallComment.height+4);
+                }
+                else
+                {
+                    labelCallComment.frame =CGRectMake(10,30+20,550,  expectSizeForCallComment.height+4);
+                }
+                
             }
             else
             {
-            labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,curentSelf.view.frame.size.width-k-15,  expectSizeForCallComment.height+4);
-              
+                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                {
+                    labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,290,  expectSizeForCallComment.height+4);
+                }
+                else
+                {
+                    labelCallComment.frame =CGRectMake(10,30+5+expectSizeForCollAddress.height+4+5,450,  expectSizeForCallComment.height+4);
+                }
+                
             }
             [cell.View2 addSubview:labelCallComment];
         }
         if (height2 !=0) {
             NSString *deliveryAddressType =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
-                        if(deliveryAddressType && [deliveryAddressType integerValue]==50)
+            /* Will add after I will have images
+             switch ([deliveryAddressType integerValue]) {
+             case 1:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
+             break;
+             case 2:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
+             case 3:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
+             case 4:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
+             case 10:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
+             case 11:
+             cell.imgViewCall.image = [UIImage imageNamed:@"School"];
+             case 12:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
+             case 13:
+             cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
+             default:
+             break;
+             }
+             
+             */
+            if(deliveryAddressType && [deliveryAddressType integerValue]==50)
             {
-            cell.labelDeliveryMetroName.text = @"По указанию";
+                cell.labelDeliveryMetroName.text = @"По указанию";
             }else
             {
                 cell.labelDeliveryMetroName.backgroundColor =[UIColor whiteColor];
@@ -467,13 +540,17 @@
                     cell.labelDeliveryMetroName.text =@"";
                 }
             }
-            
-                       if(expectSizeForDeliveryAddress.height !=0)
+            if(expectSizeForDeliveryAddress.height !=0)
             {
                 labelDeliveryAddressText.backgroundColor= [UIColor whiteColor];
-                labelDeliveryAddressText.frame = CGRectMake(10, 30+5, curentSelf.view.frame.size.width-k-43-25,
-                                                                expectSizeForDeliveryAddress.height+4);
-               
+                if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                   [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                {
+                    labelDeliveryAddressText.frame = CGRectMake(10, 30+5, expectSizeForDeliveryAddress.width, expectSizeForDeliveryAddress.height+4);
+                }else
+                {
+                    labelDeliveryAddressText.frame = CGRectMake(10, 30+5, 400, expectSizeForDeliveryAddress.height+4);
+                }
                 [cell.View3 addSubview:labelDeliveryAddressText];
             }
             if(expectSizeDeliveryComment.height !=0)
@@ -481,11 +558,26 @@
                 labelDeliveryComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
                 if (expectSizeForDeliveryAddress.height ==0)
                 {
-                labelDeliveryComment.frame = CGRectMake(10, 35+15, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelDeliveryComment.frame = CGRectMake(10, 35+15, 290,  expectSizeDeliveryComment.height+4);
+                    }else
+                    {
+                        labelDeliveryComment.frame = CGRectMake(10, 35+15, 450,  expectSizeDeliveryComment.height+4);
+                    }
                 }
                 else
                 {
-                labelDeliveryComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelDeliveryComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, 290,  expectSizeDeliveryComment.height+4);
+                    }else
+                    {
+                        labelDeliveryComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, 450,  expectSizeDeliveryComment.height+4);
+                    }
+                    
                 }
                 [cell.View3 addSubview:labelDeliveryComment];
             }
@@ -494,28 +586,95 @@
                 labelOurComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
                 if(expectSizeForDeliveryAddress.height ==0 && expectSizeDeliveryComment.height !=0)
                 {
-                labelOurComment.frame = CGRectMake(10, 35+15+expectSizeDeliveryComment.height +4+5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
+                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelOurComment.frame = CGRectMake(10, 35+15+expectSizeDeliveryComment.height +4+5, 290, expectSizeForOurComment.height);
+                    }
+                    else
+                    {
+                        labelOurComment.frame = CGRectMake(10, 35+15+expectSizeDeliveryComment.height +4+5, 450, expectSizeForOurComment.height);
+                    }
                 }
                 else if(expectSizeForDeliveryAddress.height ==0 && expectSizeDeliveryComment.height ==0)
                 {
-                        labelOurComment.frame =CGRectMake(10,35+15,curentSelf.view.frame.size.width-k-15,expectSizeForOurComment.height);
-                   
+                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelOurComment.frame =CGRectMake(10,35+15,290,expectSizeForOurComment.height);
+                    }
+                    else
+                    {
+                        labelOurComment.frame =CGRectMake(10,35+15,450,expectSizeForOurComment.height);
+                    }
                 }
                 else if(expectSizeForDeliveryAddress.height !=0 && expectSizeDeliveryComment.height ==0)
                 {
-                labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5,curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
-                   
+                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, 290, expectSizeForOurComment.height);
+                    }
+                    else
+                    {
+                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5,450, expectSizeForOurComment.height);
+                    }
                 }
                 else
                 {
-                labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5+expectSizeDeliveryComment.height+4+5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
-                   
+                    
+                    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
+                       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+                    {
+                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5+expectSizeDeliveryComment.height+4+5, 290, expectSizeForOurComment.height);
+                    }
+                    else
+                    {
+                        labelOurComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5+expectSizeDeliveryComment.height+4+5, 450, expectSizeForOurComment.height);
+                    }
                 }
                 [cell.View3 addSubview:labelOurComment];
             }
         }
-        
-       
+        [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
+        if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
+        {
+            percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
+        }
+        else
+        {
+            percent = @"";
+        }
+        if([percent length]>3)
+        {
+            stringForLabelPercent= [percent substringToIndex:2];
+        }
+        else
+        {
+            stringForLabelPercent = percent;
+        }
+        stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
+        cell.labelPercent.textColor = [UIColor whiteColor];
+        cell.labelPercent.text = stringForLabelPercent;
+        if ([[responseObject.orders objectAtIndex:indexPath.row] shortname])
+        {
+            shortName =[[responseObject.orders objectAtIndex:indexPath.row] shortname];
+        }
+        else
+        {
+            shortName = @"";
+        }
+        if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
+        {
+            
+            callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
+        }
+        else
+        {
+            callDateFormat = @"";
+        }
+        stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
+        cell.labelShortName.text=[NSString stringWithFormat:@"  %@", stringForLabelShortName];
         
         if (numberOfClass==0)
         {
@@ -541,10 +700,69 @@
     
     else
     {
+        if ([[responseObject.orders objectAtIndex:indexPath.row] shortname])
+        {
+            shortName =[[responseObject.orders objectAtIndex:indexPath.row] shortname];
+        }
+        else
+        {
+            shortName = @"";
+        }
+        if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
+        {
+            callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
+        }
+        else
+        {
+            callDateFormat = @"";
+        }
+        stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
+        if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
+        {
+            percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
+        }
+        else
+        {
+            percent = @"";
+        }
+        if([percent length]>3)
+        {
+            stringForLabelPercent= [percent substringToIndex:2];
+        }
+        else
+        {
+            stringForLabelPercent = percent;
+        }
+        stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
+        NSString * collAddressType =[[responseObject.orders objectAtIndex:indexPath.row] CollAddrTypeMenu];
+        /*  Will add after I will have images
+         switch ([collAddressType integerValue]) {
+         case 1:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
+         break;
+         case 2:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
+         case 3:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
+         case 4:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
+         case 10:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
+         case 11:
+         cell.imgViewCall.image = [UIImage imageNamed:@"School"];
+         case 12:
+         cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
+         case 13:
+         cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
+         default:
+         break;
+         }
+         
+         */
         deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
         if(deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==0)
         {
-            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrdersSecond%ld",(long)indexPath.row];
+            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders%ld",(long)indexPath.row];
             CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
@@ -555,7 +773,6 @@
             cell.labelPercent0.textColor = [UIColor whiteColor];
             cell.labelPercent0.text =  stringForLabelPercent;
             cell.labelShortName0.text =  stringForLabelShortName;
-            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
             if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
                 cell.labelCallMetroName0.text = [NSString stringWithFormat:@"  %@",[[responseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
@@ -564,6 +781,9 @@
             {
                 cell.labelCallMetroName0.text =@"";
             }
+            
+            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
+            
             if (flag1 ==-1)
             {
                 cell.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
@@ -576,13 +796,14 @@
                 
                 cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             }
+            
             cell.selectionStyle =UITableViewCellSelectionStyleNone;
             return cell;
             
         }
         else
         {
-            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrdersFirst%ld",(long)indexPath.row];
+            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableOrders2%ld",(long)indexPath.row];
             CustomCellSelectedOrders * cell = (CustomCellSelectedOrders *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
             if (cell == nil)
             {
@@ -595,7 +816,6 @@
             cell.labelPercent.textColor = [UIColor whiteColor];
             cell.labelPercent.text = stringForLabelPercent;
             cell.labelShortName.text = stringForLabelShortName;
-            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
             if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
                 cell.labelCollMetroName.text = [NSString stringWithFormat:@"  %@",[[responseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
@@ -617,7 +837,34 @@
             {
                 cell.labelDeliveryMetroName.text = @"";
             }
-                        if (flag1 ==-1)
+            /*  Will add after I will have images
+             switch (deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue]) {
+             case 1:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Metro"];
+             break;
+             case 2:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Gnacq"];
+             case 3:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Odanav"];
+             case 4:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Shoce"];
+             case 10:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Hospital"];
+             case 11:
+             cell.imgViewCall.image = [UIImage imageNamed:@"School"];
+             case 12:
+             cell.imgViewCall.image = [UIImage imageNamed:@"Cinema"];
+             case 13:
+             cell.imgViewCall.image = [UIImage imageNamed:@"MOL"];
+             default:
+             break;
+             }
+             
+             */
+            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
+            
+            
+            if (flag1 ==-1)
             {
                 cell.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
                 
@@ -629,6 +876,8 @@
                 
                 cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             }
+            
+            
             cell.selectionStyle =UITableViewCellSelectionStyleNone;
             return  cell;
         }
@@ -642,110 +891,15 @@
   willDisplayCell:(CustomCellSelectedOrders *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
-    NSString * CollAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row]CollAddrTypeMenu];
-    switch ([CollAddrTypeMenu integerValue]) {
-        case 1:
-            cell.imgViewCall.image = [UIImage imageNamed:@"metro"];
-            break;
-        case 2:
-            cell.imgViewCall.image = [UIImage imageNamed:@"train"];
-        case 3:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport"];
-        case 4:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors"];
-        case 10:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital"];
-        case 11:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school"];
-        case 12:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema copy"];
-        case 13:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall"];
-        default:
-            break;
-    }
-    NSString * DeliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
-    switch ([DeliveryAddrTypeMenu integerValue]) {
-        case 1:
-            cell.imgViewDel.image = [UIImage imageNamed:@"metro"];
-            break;
-        case 2:
-            cell.imgViewDel.image = [UIImage imageNamed:@"train"];
-        case 3:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport"];
-        case 4:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors"];
-        case 10:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital"];
-        case 11:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school"];
-        case 12:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema copy"];
-        case 13:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall"];
-        default:
-            break;
-    }
-
-
     if (indexPath.row!=selectedRow) {
-        if ([[SingleDataProvider sharedKey].arrayOfIndexes containsObject:idhash])
+        
+        
+        if(deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==0)
         {
-            switch ([CollAddrTypeMenu integerValue]) {
-                case 1:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"metro_d"];
-                    break;
-                case 2:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"train_d"];
-                case 3:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport_viewed"];
-                case 4:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed"];
-                case 10:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed"];
-                case 11:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school_viewed"];
-                case 12:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed"];
-                case 13:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall_viewed"];
-                default:
-                    break;
-            }
-            switch ([DeliveryAddrTypeMenu integerValue]) {
-                case 1:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"metro_d"];
-                    break;
-                case 2:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"train_d"];
-                case 3:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport_viewed"];
-                case 4:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed"];
-                case 10:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed"];
-                case 11:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school_viewed"];
-                case 12:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed"];
-                case 13:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall_viewed"];
-                default:
-                break;
-            }
-
-            cell.labelCallMetroName0.font =[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
-            cell.labelCollMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
-            cell.labelDeliveryMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
             
-            
-        }
-       if(deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==0)
-        {
-                        CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
-            UIColor * gradColStart =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.f];
-            UIColor * gradColFin =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.f];
+            CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
+            UIColor * gradColStart =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];
+            UIColor * gradColFin =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.0f];
             if ([deviceType isEqualToString:@"iPhone Simulator"])
             {
          
@@ -769,8 +923,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
             
             CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
-            UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.f];
-            UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.f];
+            UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.0f];
+            UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.0f];
             if ([deviceType isEqualToString:@"iPhone Simulator"])
             {
                 if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
@@ -799,16 +953,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
     if(selectedRow==indexPath.row)
     {
         selectedRow =-1;
     }else{
         selectedRow =indexPath.row;
-    }
-    if (!([[SingleDataProvider sharedKey].arrayOfIndexes containsObject:idhash]))
-    {
-        [[SingleDataProvider sharedKey].arrayOfIndexes addObject:idhash];
     }
     [tableView reloadData];
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -982,20 +1131,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     else
     {
-
     
         if([deliveryAddrTypeMenu integerValue] ==0)
         {
             if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
                [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
-
             {
                 return 51;
             }
             
             else
             {
-
+                NSLog(@"%d",[[UIDevice currentDevice] orientation]);
                 return curentSelf.view.frame.size.height/6;
             }
             
@@ -1034,6 +1181,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
      atIndexPath:(NSInteger)index
       withLabel :(UILabel *)label
 {
+    
     UIImageView * imgView1;
     imgView1 = [[UIImageView alloc]initWithImage:nil];
     imgView1.translatesAutoresizingMaskIntoConstraints = NO;
