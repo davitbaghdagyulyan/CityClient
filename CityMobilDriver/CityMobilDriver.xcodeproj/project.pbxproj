@@ -157,6 +157,7 @@
 		ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC00181A0B8A3A0040EBC7 /* CustomTableView.m */; };
 		ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC001B1A0BBF900040EBC7 /* CustomLabel.m */; };
 		ECBD29D11A26121C00FBF051 /* GetMyOrdersJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBD29D01A26121C00FBF051 /* GetMyOrdersJson.m */; };
+		ECBD39471A2889EC00C28754 /* SelectedOrdersTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBD39461A2889EC00C28754 /* SelectedOrdersTableViewHandler.m */; };
 		ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFF24319F9106600DE8131 /* CardsElements.m */; };
 		ECC2BA561A10CD3B009A8CE4 /* DesignationCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC2BA551A10CD3B009A8CE4 /* DesignationCustomCell.xib */; };
 		ECC2BA591A10D2EF009A8CE4 /* DesignationCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC2BA581A10D2EF009A8CE4 /* DesignationCustomCell.m */; };
@@ -238,9 +239,7 @@
 		ECCD993C1A19DF93009D482C /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */; };
 		ECCD993D1A19DF93009D482C /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992B1A19DF93009D482C /* Roboto-Condensed.ttf */; };
 		ECCD993E1A19DF93009D482C /* Roboto-CondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992C1A19DF93009D482C /* Roboto-CondensedItalic.ttf */; };
-		ECCD993F1A19DF93009D482C /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992D1A19DF93009D482C /* Roboto-Italic.ttf */; };
 		ECCD99401A19DF93009D482C /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992E1A19DF93009D482C /* Roboto-Light.ttf */; };
-		ECCD99411A19DF93009D482C /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992F1A19DF93009D482C /* Roboto-LightItalic.ttf */; };
 		ECCD99421A19DF93009D482C /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99301A19DF93009D482C /* Roboto-Medium.ttf */; };
 		ECCD99431A19DF93009D482C /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99311A19DF93009D482C /* Roboto-MediumItalic.ttf */; };
 		ECCD99441A19DF93009D482C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99321A19DF93009D482C /* Roboto-Regular.ttf */; };
@@ -542,6 +541,8 @@
 		ECBC001B1A0BBF900040EBC7 /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 		ECBD29CF1A26121C00FBF051 /* GetMyOrdersJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMyOrdersJson.h; sourceTree = "<group>"; };
 		ECBD29D01A26121C00FBF051 /* GetMyOrdersJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMyOrdersJson.m; sourceTree = "<group>"; };
+		ECBD39451A2889EC00C28754 /* SelectedOrdersTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersTableViewHandler.h; sourceTree = SOURCE_ROOT; };
+		ECBD39461A2889EC00C28754 /* SelectedOrdersTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersTableViewHandler.m; sourceTree = SOURCE_ROOT; };
 		ECBFF24219F9106600DE8131 /* CardsElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsElements.h; sourceTree = "<group>"; };
 		ECBFF24319F9106600DE8131 /* CardsElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsElements.m; sourceTree = "<group>"; };
 		ECC2BA551A10CD3B009A8CE4 /* DesignationCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesignationCustomCell.xib; sourceTree = "<group>"; };
@@ -671,9 +672,7 @@
 		ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		ECCD992B1A19DF93009D482C /* Roboto-Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Condensed.ttf"; sourceTree = "<group>"; };
 		ECCD992C1A19DF93009D482C /* Roboto-CondensedItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-CondensedItalic.ttf"; sourceTree = "<group>"; };
-		ECCD992D1A19DF93009D482C /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		ECCD992E1A19DF93009D482C /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		ECCD992F1A19DF93009D482C /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		ECCD99301A19DF93009D482C /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		ECCD99311A19DF93009D482C /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		ECCD99321A19DF93009D482C /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -844,7 +843,6 @@
 				ECC471881A11F0790062803A /* SelectedOrdersViewController */,
 				ECC471871A11EF270062803A /* RootViewController */,
 				ECC471891A11F1AE0062803A /* OrdersHistoryViewController */,
-				D70428BF19D0071F00F5C38C /* Main.storyboard */,
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
 				D70428BF19D0071F00F5C38C /* Main.storyboard */,
@@ -1284,6 +1282,8 @@
 				ECF529B61A1229D300150931 /* CustomViewForMaps.xib */,
 				ECF529BC1A12366B00150931 /* CustomViewForMaps.h */,
 				ECF529BD1A12366B00150931 /* CustomViewForMaps.m */,
+				ECBD39451A2889EC00C28754 /* SelectedOrdersTableViewHandler.h */,
+				ECBD39461A2889EC00C28754 /* SelectedOrdersTableViewHandler.m */,
 				8F0A821A19EBAE2800A03D1B /* SelectedOrdersDetails */,
 			);
 			name = SelectedOrdersViewController;
@@ -1621,9 +1621,7 @@
 				ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */,
 				ECCD992B1A19DF93009D482C /* Roboto-Condensed.ttf */,
 				ECCD992C1A19DF93009D482C /* Roboto-CondensedItalic.ttf */,
-				ECCD992D1A19DF93009D482C /* Roboto-Italic.ttf */,
 				ECCD992E1A19DF93009D482C /* Roboto-Light.ttf */,
-				ECCD992F1A19DF93009D482C /* Roboto-LightItalic.ttf */,
 				ECCD99301A19DF93009D482C /* Roboto-Medium.ttf */,
 				ECCD99311A19DF93009D482C /* Roboto-MediumItalic.ttf */,
 				ECCD99321A19DF93009D482C /* Roboto-Regular.ttf */,
@@ -1878,11 +1876,9 @@
 				ECCC236C19E7D7EA0091C43E /* logo1@2x.png in Resources */,
 				8FCFF58819F5051D00C6E3A7 /* ic_baggage_small.png in Resources */,
 				8FCFF58C19F5052800C6E3A7 /* ic_credit_card_payment_small.png in Resources */,
-				ECCD99411A19DF93009D482C /* Roboto-LightItalic.ttf in Resources */,
 				ECB38B3B1A0D130B00DFBB77 /* 5@2x.png in Resources */,
 				8FCFF59019F5053600C6E3A7 /* ic_on_bonuses_payment_small.png in Resources */,
 				8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */,
-				ECCD993F1A19DF93009D482C /* Roboto-Italic.ttf in Resources */,
 				ECB38B3D1A0D130B00DFBB77 /* 7@2x.png in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
 				ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */,
@@ -2026,6 +2022,7 @@
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				ECC471861A11EC770062803A /* MessagesCell.m in Sources */,
 				ECB52E301A0776530091293F /* TransferClass.m in Sources */,
+				ECBD39471A2889EC00C28754 /* SelectedOrdersTableViewHandler.m in Sources */,
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,
 				8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */,
 				ECC965371A011F4700768E1F /* RequestGetModelList.m in Sources */,
