@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SelectedOrdersDetailsResponse.h"
 #import "MyOrdersViewController.h"
-#import "SingleDataProviderArrayForSelectedCells.h"
 //@protocol FooDelegate <NSObject>
 //@optional
 //-(void)toTakeAction;
@@ -58,12 +57,10 @@
        CGSize expectSizeForOurComment;
     CGFloat height2;
     CGFloat height1;
-
     
 }
 -(void)setResponseObject:(SelectedOrdersDetailsResponse*)object andStringforSroch:(NSString*)string andFlag1:(NSInteger)flag andCurentSelf:(UIViewController*)vc andNumberOfClass:(NSUInteger)number;
 
 -(void)setSelectedRow:(NSInteger)selectedRo;
-
 
 @end

@@ -62,8 +62,6 @@
     gradientLayer = [self greyGradient];
     gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.settingsView.frame), CGRectGetHeight(self.settingsView.frame)*9.f/46);
     [self.settingsView.layer insertSublayer:gradientLayer atIndex:0];
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -74,10 +72,10 @@
     flag = 0;
     
     [super viewDidAppear:animated];
-//    if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait && self.view.frame.size.height == 480)
-//    {
-//        self.scrolView.contentSize = self.view.frame.size;
-//    }
+    if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait && self.view.frame.size.height == 480)
+    {
+        self.scrolView.contentSize = self.view.frame.size;
+    }
     
     if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
     {

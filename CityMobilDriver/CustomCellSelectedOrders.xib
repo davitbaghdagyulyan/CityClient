@@ -223,14 +223,14 @@
                 <outlet property="View3" destination="LAA-pw-btG" id="RwQ-1i-gWG"/>
                 <outlet property="additionalView" destination="H1A-5c-Qvs" id="2no-hd-msX"/>
                 <outlet property="heightAdditionalView" destination="eWE-vS-dBk" id="L8h-Wh-axf"/>
-                <outlet property="imgViewCall" destination="GeX-TT-ZL8" id="6OG-ON-yYH"/>
-                <outlet property="imgViewDel" destination="r0k-LK-Hc2" id="XIj-Yy-3A1"/>
+                <outlet property="imgViewCall" destination="GeX-TT-ZL8" id="Gau-MH-gMg"/>
+                <outlet property="imgViewDel" destination="r0k-LK-Hc2" id="D72-z7-see"/>
                 <outlet property="labelCollMetroName" destination="0y7-rv-wBJ" id="tqq-RK-jck"/>
                 <outlet property="labelDeliveryMetroName" destination="XAE-lY-OMb" id="whp-iD-2pO"/>
                 <outlet property="labelPercent" destination="HZF-e4-752" id="OHc-aX-jvq"/>
                 <outlet property="labelShortName" destination="aGc-fZ-nhU" id="2uW-ax-fTS"/>
             </connections>
-            <point key="canvasLocation" x="693.5" y="371"/>
+            <point key="canvasLocation" x="680.5" y="275"/>
         </tableViewCell>
     </objects>
 </document>

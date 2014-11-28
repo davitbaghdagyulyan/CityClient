@@ -23,14 +23,6 @@
 
 @interface EditCarInfoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-
-
-@property (nonatomic,weak) IBOutlet UIView* infoView;
-@property (nonatomic,weak) IBOutlet UIView* bgView;
-
-
-
-
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 

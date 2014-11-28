@@ -157,6 +157,7 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="fXA-H2-Qg3"/>
                             <exclude reference="U9Z-CI-0jV"/>
                             <exclude reference="ZIg-Aa-FWC"/>
                             <exclude reference="cVE-bb-DgF"/>
@@ -165,7 +166,6 @@
                             <exclude reference="4r4-LR-pd6"/>
                             <exclude reference="yMZ-bu-7Qq"/>
                             <exclude reference="yW7-tI-1bP"/>
-                            <exclude reference="fXA-H2-Qg3"/>
                         </mask>
                     </variation>
                 </view>

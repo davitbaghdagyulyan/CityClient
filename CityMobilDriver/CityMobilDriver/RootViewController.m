@@ -40,7 +40,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     NSLog(@"%ld",[[UIDevice currentDevice] orientation]);
     timerCreated =NO;
     flag=0;
     self.tableViewOrdersPort.userInteractionEnabled=YES;

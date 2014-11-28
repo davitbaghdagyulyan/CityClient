@@ -12,4 +12,5 @@
 @property(nonatomic,strong) NSString* key;
 @property(nonatomic,strong)NSMutableArray * arrayOfIndexes;
 +(SingleDataProvider*)sharedKey;
+
 @end
