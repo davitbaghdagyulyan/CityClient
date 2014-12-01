@@ -71,8 +71,13 @@
     timerForTitleLabel = [NSTimer scheduledTimerWithTimeInterval:5
                                                           target:self selector:@selector(toggleTitleLabel) userInfo:nil repeats:YES];
     self.titleLabel.textColor =[UIColor redColor];
-    
+    self.stringForSrochno=@"СРОЧНО";
     }
+    else
+    {
+    self.stringForSrochno=@"";
+    }
+    
     flag=0;
     self.tableViewOrdersDetails.userInteractionEnabled = YES;
     leftMenu=[LeftMenu getLeftMenu:self];
