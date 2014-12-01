@@ -48,7 +48,6 @@
 		8FCFF59219F5053C00C6E3A7 /* ic_order_with_visiting_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */; };
 		8FCFF59419F5054200C6E3A7 /* ic_transportation_of_animals_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */; };
 		8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */; };
-		8FD011B71A03D55700E9363A /* SelectedOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD011B61A03D55700E9363A /* SelectedOrdersViewController.m */; };
 		8FD011BA1A03D65C00E9363A /* CustomCellSelectORDER.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD011B91A03D65C00E9363A /* CustomCellSelectORDER.m */; };
 		8FD011BC1A03DA1A00E9363A /* CustomCellSelectORDER.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD011BB1A03DA1A00E9363A /* CustomCellSelectORDER.xib */; };
 		8FD113831A0A097700E1A2B7 /* BuyDeliveryAddressJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113821A0A097700E1A2B7 /* BuyDeliveryAddressJson.m */; };
@@ -168,6 +167,9 @@
 		ECC2BA611A111B80009A8CE4 /* SelectedOrdersDetailsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A822219EBB74700A03D1B /* SelectedOrdersDetailsResponse.m */; };
 		ECC2BA621A111C18009A8CE4 /* SingleDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55988A19E5364900877CBC /* SingleDataProvider.m */; };
 		ECC2BA631A111C54009A8CE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428B719D0071F00F5C38C /* main.m */; };
+		ECC38D1C1A285A720065474B /* ResponseGetTachometer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC38D1B1A285A720065474B /* ResponseGetTachometer.m */; };
+		ECC38D1F1A285C1D0065474B /* Elements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC38D1E1A285C1D0065474B /* Elements.m */; };
+		ECC38D211A289D790065474B /* Time Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECC38D201A28967C0065474B /* Time Normal.ttf */; };
 		ECC39FEE1A25EB6100217A41 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC39FED1A25EB6100217A41 /* MyOrdersViewController.m */; };
 		ECC42DA81A1B3F750020F7C7 /* childYear.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC42DA71A1B3F750020F7C7 /* childYear.xib */; };
 		ECC471861A11EC770062803A /* MessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC471851A11EC770062803A /* MessagesCell.m */; };
@@ -237,9 +239,7 @@
 		ECCD993C1A19DF93009D482C /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */; };
 		ECCD993D1A19DF93009D482C /* Roboto-Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992B1A19DF93009D482C /* Roboto-Condensed.ttf */; };
 		ECCD993E1A19DF93009D482C /* Roboto-CondensedItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992C1A19DF93009D482C /* Roboto-CondensedItalic.ttf */; };
-		ECCD993F1A19DF93009D482C /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992D1A19DF93009D482C /* Roboto-Italic.ttf */; };
 		ECCD99401A19DF93009D482C /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992E1A19DF93009D482C /* Roboto-Light.ttf */; };
-		ECCD99411A19DF93009D482C /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD992F1A19DF93009D482C /* Roboto-LightItalic.ttf */; };
 		ECCD99421A19DF93009D482C /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99301A19DF93009D482C /* Roboto-Medium.ttf */; };
 		ECCD99431A19DF93009D482C /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99311A19DF93009D482C /* Roboto-MediumItalic.ttf */; };
 		ECCD99441A19DF93009D482C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99321A19DF93009D482C /* Roboto-Regular.ttf */; };
@@ -264,6 +264,8 @@
 		ECE25C8A19E56BE80044F6AD /* messages.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8319E56BE80044F6AD /* messages.m */; };
 		ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8519E56BE80044F6AD /* textResponse.m */; };
 		ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE3CFAC1A0918900053FF85 /* tachometer_arrow.png */; };
+		ECE405831A2707A200802559 /* SelectedOrdersTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE405821A2707A200802559 /* SelectedOrdersTableViewHandler.m */; };
+		ECE4058A1A270C7100802559 /* RequestGetTaximeter.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE405891A270C7100802559 /* RequestGetTaximeter.m */; };
 		ECEA963E19F54917001A6305 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEA963D19F54917001A6305 /* CustomView.m */; };
 		ECEADF911A1F29B300FBA389 /* tachometer_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEADF901A1F29B300FBA389 /* tachometer_bg.png */; };
 		ECEB634A19F63E4200E6F666 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEB634819F63E4200E6F666 /* photo.png */; };
@@ -545,6 +547,11 @@
 		ECC2BA571A10D2EF009A8CE4 /* DesignationCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignationCustomCell.h; sourceTree = "<group>"; };
 		ECC2BA581A10D2EF009A8CE4 /* DesignationCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignationCustomCell.m; sourceTree = "<group>"; };
 		ECC2BA5A1A10F801009A8CE4 /* 12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12@2x.png"; sourceTree = "<group>"; };
+		ECC38D1A1A285A720065474B /* ResponseGetTachometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetTachometer.h; sourceTree = "<group>"; };
+		ECC38D1B1A285A720065474B /* ResponseGetTachometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetTachometer.m; sourceTree = "<group>"; };
+		ECC38D1D1A285C1D0065474B /* Elements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Elements.h; sourceTree = "<group>"; };
+		ECC38D1E1A285C1D0065474B /* Elements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Elements.m; sourceTree = "<group>"; };
+		ECC38D201A28967C0065474B /* Time Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Time Normal.ttf"; sourceTree = "<group>"; };
 		ECC39FEC1A25EB6100217A41 /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
 		ECC39FED1A25EB6100217A41 /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
 		ECC42DA71A1B3F750020F7C7 /* childYear.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = childYear.xib; sourceTree = "<group>"; };
@@ -714,6 +721,10 @@
 		ECE25C8419E56BE80044F6AD /* textResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textResponse.h; sourceTree = "<group>"; };
 		ECE25C8519E56BE80044F6AD /* textResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textResponse.m; sourceTree = "<group>"; };
 		ECE3CFAC1A0918900053FF85 /* tachometer_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachometer_arrow.png; sourceTree = "<group>"; };
+		ECE405811A2707A200802559 /* SelectedOrdersTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectedOrdersTableViewHandler.h; path = CityMobilDriver/SelectedOrdersTableViewHandler.h; sourceTree = "<group>"; };
+		ECE405821A2707A200802559 /* SelectedOrdersTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectedOrdersTableViewHandler.m; path = CityMobilDriver/SelectedOrdersTableViewHandler.m; sourceTree = "<group>"; };
+		ECE405881A270C7100802559 /* RequestGetTaximeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestGetTaximeter.h; sourceTree = "<group>"; };
+		ECE405891A270C7100802559 /* RequestGetTaximeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestGetTaximeter.m; sourceTree = "<group>"; };
 		ECEA963C19F54917001A6305 /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
 		ECEA963D19F54917001A6305 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
 		ECEADF901A1F29B300FBA389 /* tachometer_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachometer_bg.png; sourceTree = "<group>"; };
@@ -797,6 +808,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECE405811A2707A200802559 /* SelectedOrdersTableViewHandler.h */,
+				ECE405821A2707A200802559 /* SelectedOrdersTableViewHandler.m */,
 				ECC39FEF1A25F1DD00217A41 /*  my Orders */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
@@ -1598,6 +1611,7 @@
 		ECCD99231A19DF93009D482C /* Roboto Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				ECC38D201A28967C0065474B /* Time Normal.ttf */,
 				ECCD99241A19DF93009D482C /* NOTICE.txt */,
 				ECCD99251A19DF93009D482C /* Roboto-Black.ttf */,
 				ECCD99261A19DF93009D482C /* Roboto-BlackItalic.ttf */,
@@ -1633,6 +1647,7 @@
 		ECD218901A1CE80600F38F7D /* TachometerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ECE4058B1A270DF000802559 /* Requests */,
 				ECD2188D1A1CE7E200F38F7D /* TachometerViewController.h */,
 				ECD2188E1A1CE7E200F38F7D /* TachometerViewController.m */,
 			);
@@ -1712,6 +1727,20 @@
 				ECE25C8519E56BE80044F6AD /* textResponse.m */,
 			);
 			name = info;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		ECE4058B1A270DF000802559 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				ECE405881A270C7100802559 /* RequestGetTaximeter.h */,
+				ECE405891A270C7100802559 /* RequestGetTaximeter.m */,
+				ECC38D1A1A285A720065474B /* ResponseGetTachometer.h */,
+				ECC38D1B1A285A720065474B /* ResponseGetTachometer.m */,
+				ECC38D1D1A285C1D0065474B /* Elements.h */,
+				ECC38D1E1A285C1D0065474B /* Elements.m */,
+			);
+			name = Requests;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -1824,6 +1853,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FC5D8ED1A14FFC600B33FA9 /* Roboto-LightItalic.ttf in Resources */,
+				ECC38D211A289D790065474B /* Time Normal.ttf in Resources */,
 				8FC5D8EB1A14FE5100B33FA9 /* Roboto-Italic.ttf in Resources */,
 				8FC5D8E91A14F5AD00B33FA9 /* Roboto-Bold.ttf in Resources */,
 				8FCB177E1A136EB200228F98 /* rublsi.ttf in Resources */,
@@ -1864,11 +1894,9 @@
 				ECCC236C19E7D7EA0091C43E /* logo1@2x.png in Resources */,
 				8FCFF58819F5051D00C6E3A7 /* ic_baggage_small.png in Resources */,
 				8FCFF58C19F5052800C6E3A7 /* ic_credit_card_payment_small.png in Resources */,
-				ECCD99411A19DF93009D482C /* Roboto-LightItalic.ttf in Resources */,
 				ECB38B3B1A0D130B00DFBB77 /* 5@2x.png in Resources */,
 				8FCFF59019F5053600C6E3A7 /* ic_on_bonuses_payment_small.png in Resources */,
 				8FCFF58619F5051400C6E3A7 /* ic_air_conditioning_small.png in Resources */,
-				ECCD993F1A19DF93009D482C /* Roboto-Italic.ttf in Resources */,
 				ECB38B3D1A0D130B00DFBB77 /* 7@2x.png in Resources */,
 				EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */,
 				ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */,
@@ -1947,6 +1975,7 @@
 			files = (
 				ECC2BA631A111C54009A8CE4 /* main.m in Sources */,
 				ECC2BA621A111C18009A8CE4 /* SingleDataProvider.m in Sources */,
+				ECC38D1F1A285C1D0065474B /* Elements.m in Sources */,
 				ECC2BA611A111B80009A8CE4 /* SelectedOrdersDetailsResponse.m in Sources */,
 				ECC2BA601A111B28009A8CE4 /* SelectedOrdersDetailsJson.m in Sources */,
 				ECC2BA5F1A111AA2009A8CE4 /* JSONKeyMapper.m in Sources */,
@@ -1967,6 +1996,7 @@
 				ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */,
 				EC40D44019E43258007BA02C /* MailResponse.m in Sources */,
 				ECB52E541A0781A10091293F /* IntervalClass.m in Sources */,
+				ECE4058A1A270C7100802559 /* RequestGetTaximeter.m in Sources */,
 				ECD218851A1CBCF100F38F7D /* SetStatusJson.m in Sources */,
 				ECB52E391A0776E80091293F /* CityClass.m in Sources */,
 				EC5AD4491A14FF1E00588DE6 /* GetOrderJson.m in Sources */,
@@ -2008,9 +2038,11 @@
 				EC5AD43B1A14D56500588DE6 /* AssignOrderResponse.m in Sources */,
 				ECCC238019E7FED20091C43E /* OrdersElements.m in Sources */,
 				ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */,
+				ECC38D1C1A285A720065474B /* ResponseGetTachometer.m in Sources */,
 				ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				ECC471861A11EC770062803A /* MessagesCell.m in Sources */,
+				ECE405831A2707A200802559 /* SelectedOrdersTableViewHandler.m in Sources */,
 				ECB52E301A0776530091293F /* TransferClass.m in Sources */,
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,
 				8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */,
@@ -2098,7 +2130,6 @@
 				EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */,
 				ECCA4CB01A0B5CE1007CEBC4 /* RegisterRequest.m in Sources */,
 				ECCA4CAD1A0B55F2007CEBC4 /* ActivateAccountViewController.m in Sources */,
-				8FD011B71A03D55700E9363A /* SelectedOrdersViewController.m in Sources */,
 				EC4CB40319F7D6B80028F219 /* ResponseGetDocScansUrl.m in Sources */,
 				ECCC12071A0CACA000AC94EE /* GetZonesResponse.m in Sources */,
 				ECF529BE1A12366B00150931 /* CustomViewForMaps.m in Sources */,
