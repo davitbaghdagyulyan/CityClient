@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SelectedOrdersDetailsResponse.h"
 #import "MyOrdersViewController.h"
+
 //@protocol FooDelegate <NSObject>
 //@optional
 //-(void)toTakeAction;
@@ -59,6 +60,7 @@
     CGFloat height1;
     
 }
+@property(nonatomic,strong)UIView*under;
 -(void)setResponseObject:(SelectedOrdersDetailsResponse*)object andStringforSroch:(NSString*)string andFlag1:(NSInteger)flag andCurentSelf:(UIViewController*)vc andNumberOfClass:(NSUInteger)number;
 
 -(void)setSelectedRow:(NSInteger)selectedRo;

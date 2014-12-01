@@ -10,7 +10,7 @@
 #import "SelectedOrdersDetailsResponse.h"
 #import "GetMyOrdersJson.h"
 #import "CustomViewForMaps.h"
-
+#import "TakenOrderViewController.h"
 @interface MyOrdersViewController ()
 {
     LeftMenu*leftMenu;
@@ -25,6 +25,7 @@
     UIView*underView;
      NSInteger selectedRow;
     CustomViewForMaps*viewMap;
+    NSString*idhash;
 }
 @end
 
@@ -129,7 +130,6 @@
         
         
         
-        
         if(getMyOrdersResponseObject.code!=nil)
         {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getMyOrdersResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
@@ -147,7 +147,7 @@
         }
         else
         {
-            [selectedOrdersTableViewHandlerObject setResponseObject:getMyOrdersResponseObject andStringforSroch:nil andFlag1:0 andCurentSelf:self andNumberOfClass:1];
+            [selectedOrdersTableViewHandlerObject setResponseObject:getMyOrdersResponseObject andStringforSroch:@"" andFlag1:0 andCurentSelf:self andNumberOfClass:1];
          
             
             [self.myOrdersTableView reloadData];
@@ -177,7 +177,10 @@
 }
 -(void)toOrderAction
 {
-    
+    TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
+    [self.navigationController pushViewController:tovc animated:NO];
+    idhash=[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] idhash];
+    [tovc setIdHash:idhash andUnderView:underView];
 }
 
 -(void)collMap

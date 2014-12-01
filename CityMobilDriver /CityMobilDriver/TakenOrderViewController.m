@@ -274,6 +274,13 @@
     {
         int i=-1;
 
+        if([view viewWithTag:111])
+        {
+            i++;
+            [buttonArray addObject:[view viewWithTag:61]];
+            [[view viewWithTag:111] removeFromSuperview];
+            
+        }
         for (UIView*viewsub in view.subviews )
         {
             

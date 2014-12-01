@@ -204,10 +204,17 @@
             cell = [nib objectAtIndex:0];
             if (numberOfClass==1 && height!=0)
             {
+                
+//                id copyOfView = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:cell.underView]];
+//                
+//                self.under = (UIView*)copyOfView;
+               
+                
                 [cell.Button removeFromSuperview];
                 
                 UIView*buttonView=[[UIView alloc]init];
                 buttonView.backgroundColor=[UIColor whiteColor];
+                buttonView.tag=111;
                 [cell.orangeView addSubview:buttonView];
                 buttonView.translatesAutoresizingMaskIntoConstraints=NO;
                 
@@ -217,6 +224,7 @@
                 closeButton.translatesAutoresizingMaskIntoConstraints=NO;
                 [closeButton setTitle:@"Закрыть" forState:UIControlStateNormal];
                 [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                closeButton.tag=61;
                 
                 UIButton*toOrderButton=[[UIButton alloc]init];
                 toOrderButton.backgroundColor=[UIColor orangeColor];
@@ -224,7 +232,7 @@
                 toOrderButton.translatesAutoresizingMaskIntoConstraints=NO;
                 [toOrderButton setTitle:@"К заказу" forState:UIControlStateNormal];
                 [toOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                
+                toOrderButton.tag=62;
                 [closeButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(closeOrderAction) forControlEvents:UIControlEventTouchUpInside];
                 
                 [toOrderButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(toOrderAction) forControlEvents:UIControlEventTouchUpInside];
@@ -510,6 +518,12 @@
             underView=cell.underView;
             [(SelectedOrdersViewController*)curentSelf setUnderView:underView];
         }
+        else
+        {
+             underView=cell.underView;
+             [(MyOrdersViewController*)curentSelf setUnderView:underView];
+        }
+        
         
         if (flag1 ==-1)
         {
@@ -679,7 +693,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     
-    if (indexPath.row!=selectedRow) {
+    if (indexPath.row!=selectedRow ) {
         if ([[SingleDataProvider sharedKey].arrayOfIndexes containsObject:idhash])
         {
             switch ([CollAddrTypeMenu integerValue]) {
