@@ -158,7 +158,10 @@
             break;
 
         case 13:
-            exit(0); //not recommended apple
+            //exit(0); //not recommended apple
+            myClass = NSClassFromString(@"TachometerViewController");
+            identity =@"TachometerViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
                     default:
             break;

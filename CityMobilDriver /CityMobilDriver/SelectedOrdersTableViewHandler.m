@@ -12,10 +12,10 @@
 #import "SelectedOrdersDetailsResponse.h"
 #import "SelectedOrdersViewController.h"
 #import "SingleDataProvider.h"
-#import "BuyDeliveryAddressJson.h"
 @implementation SelectedOrdersTableViewHandler
 -(instancetype)init
 {
+    
     self=[super init];
     if (self)
     {
@@ -40,8 +40,9 @@
     flag1=flag;
     curentSelf=vc;
     numberOfClass=number;
+    
+   
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return responseObject.orders.count;
@@ -103,24 +104,26 @@
         //CustomCellSelectedORDER2
         if ([[[responseObject.orders objectAtIndex:indexPath.row] CanBuyDeliveryAddress]integerValue]==1)
         {
-         NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelectedSecond%ld",(long)indexPath.row];
-         CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
-        if (cell == nil)
-        {
+            
+            NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDER2Selected%ld",(long)indexPath.row];
+            CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
+            if (cell == nil)
+            {
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectORDER2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
                 
-        }
+            }
             //******************************************Nareks Change*******************************************
-        indexOfCell=indexPath.row;
-        if (numberOfClass==0)
+            
+            indexOfCell=indexPath.row;
+            if (numberOfClass==0)
             {
                 [cell.Button addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
                 [cell.buttonMap1 addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
                 [cell.buttonMap2  addTarget:(SelectedOrdersViewController*)curentSelf action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
                 [(SelectedOrdersViewController*)curentSelf setIndexOfCell:indexOfCell];
             }
-        else
+            else
             {
                 
                 [cell.Button addTarget:(MyOrdersViewController*)curentSelf action:@selector(toTakeAction) forControlEvents:UIControlEventTouchUpInside];
@@ -158,6 +161,7 @@
                 labelCollAddressText.frame = CGRectMake(10, 30+5, curentSelf.view.frame.size.width-k-43-25, expectSizeForCollAddress.height+4);
                 [cell.View2 addSubview:labelCollAddressText];
             }
+            
             if(expectSizeForCallComment.height !=0)
             {
                 labelCallComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
@@ -173,13 +177,16 @@
                 }
                 [cell.View2 addSubview:labelCallComment];
             }
-            //idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+            idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
             [cell.showAddress  addTarget:curentSelf action:@selector(showAddress) forControlEvents:UIControlEventTouchUpInside];
             if (numberOfClass==0)
             {
                 underView=cell.underView;
                 [(SelectedOrdersViewController*)curentSelf setUnderView:underView];
             }
+            
+            
+            
             if (flag1 ==-1)
             {
                 cell.whiteLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
@@ -191,7 +198,7 @@
             cell.selectionStyle =UITableViewCellSelectionStyleNone;
             return cell;
         }
-        NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelectedFirst%ld",(long)indexPath.row];
+        NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableORDERSelected%ld",(long)indexPath.row];
         CustomCellSelectORDER * cell = (CustomCellSelectORDER *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
         if (cell == nil)
         {
@@ -206,6 +213,7 @@
                
                 
                 [cell.Button removeFromSuperview];
+                
                 UIView*buttonView=[[UIView alloc]init];
                 buttonView.backgroundColor=[UIColor whiteColor];
                 buttonView.tag=111;
@@ -226,12 +234,13 @@
                 toOrderButton.translatesAutoresizingMaskIntoConstraints=NO;
                 [toOrderButton setTitle:@"К заказу" forState:UIControlStateNormal];
                 [toOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-
                 toOrderButton.tag=62;
-
                 [closeButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(closeOrderAction) forControlEvents:UIControlEventTouchUpInside];
                 
                 [toOrderButton addTarget:(MyOrdersViewController*)curentSelf action:@selector(toOrderAction) forControlEvents:UIControlEventTouchUpInside];
+                
+                
+                
                 
                 [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
                                                                             attribute:NSLayoutAttributeLeading
@@ -240,6 +249,8 @@
                                                                             attribute:NSLayoutAttributeLeading
                                                                            multiplier:1.0
                                                                              constant:0]];
+                
+                
                 [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
                                                                             attribute:NSLayoutAttributeTop
                                                                             relatedBy:NSLayoutRelationEqual
@@ -247,6 +258,7 @@
                                                                             attribute:NSLayoutAttributeBottom
                                                                            multiplier:1.0
                                                                              constant:0]];
+                
                 [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:cell.orangeView
                                                                             attribute:NSLayoutAttributeBottom
                                                                             relatedBy:NSLayoutRelationEqual
@@ -254,6 +266,7 @@
                                                                             attribute:NSLayoutAttributeBottom
                                                                            multiplier:1.0
                                                                              constant:4]];
+                
                 [cell.orangeView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
                                                                             attribute:NSLayoutAttributeTrailing
                                                                             relatedBy:NSLayoutRelationEqual
@@ -261,6 +274,9 @@
                                                                             attribute:NSLayoutAttributeTrailing
                                                                            multiplier:1.0
                                                                              constant:0]];
+                
+                
+                
                 [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
                                                                        attribute: NSLayoutAttributeHeight
                                                                        relatedBy:NSLayoutRelationEqual
@@ -278,6 +294,8 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                       multiplier:1.0
                                                                         constant:0]];
+                
+                
                 [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
                                                                        attribute:NSLayoutAttributeTop
                                                                        relatedBy:NSLayoutRelationEqual
@@ -285,6 +303,7 @@
                                                                        attribute:NSLayoutAttributeTop
                                                                       multiplier:1.0
                                                                         constant:0]];
+                
                 [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
                                                                        attribute:NSLayoutAttributeBottom
                                                                        relatedBy:NSLayoutRelationEqual
@@ -292,6 +311,7 @@
                                                                        attribute:NSLayoutAttributeBottom
                                                                       multiplier:1.0
                                                                         constant:0]];
+                
                 [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
                                                                         attribute: NSLayoutAttributeWidth
                                                                         relatedBy:NSLayoutRelationEqual
@@ -299,6 +319,7 @@
                                                                         attribute: NSLayoutAttributeWidth
                                                                        multiplier:1.0
                                                                          constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                
                 [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
                                                                         attribute: NSLayoutAttributeHeight
                                                                         relatedBy:NSLayoutRelationEqual
@@ -325,6 +346,7 @@
                                                                        attribute:NSLayoutAttributeTop
                                                                       multiplier:1.0
                                                                         constant:0]];
+                
                 [buttonView addConstraint:[NSLayoutConstraint constraintWithItem:buttonView
                                                                        attribute:NSLayoutAttributeBottom
                                                                        relatedBy:NSLayoutRelationEqual
@@ -332,6 +354,7 @@
                                                                        attribute:NSLayoutAttributeBottom
                                                                       multiplier:1.0
                                                                         constant:0]];
+                
                 [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
                                                                           attribute: NSLayoutAttributeWidth
                                                                           relatedBy:NSLayoutRelationEqual
@@ -339,6 +362,7 @@
                                                                           attribute: NSLayoutAttributeWidth
                                                                          multiplier:1.0
                                                                            constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                
                 [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
                                                                           attribute: NSLayoutAttributeHeight
                                                                           relatedBy:NSLayoutRelationEqual
@@ -369,6 +393,8 @@
             
             [(MyOrdersViewController*)curentSelf setIndexOfCell:indexOfCell];
         }
+        
+        
         // VIEW1
         cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
         cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
@@ -394,6 +420,7 @@
         {
             cell.buttonMap2.hidden = YES;
         }
+        
         if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
         {
             cell.labelCallMetroName.text = [[responseObject.orders objectAtIndex:indexPath.row] CollMetroName];
@@ -402,6 +429,7 @@
         {
             cell.labelCallMetroName.text = @"";
         }
+        
         if (expectSizeForCollAddress.height !=0)
         {
             labelCollAddressText.backgroundColor=[UIColor whiteColor];
@@ -437,6 +465,7 @@
                     cell.labelDeliveryMetroName.text =@"";
                 }
             }
+            
             if(expectSizeForDeliveryAddress.height !=0)
             {
                 labelDeliveryAddressText.backgroundColor= [UIColor whiteColor];
@@ -618,14 +647,7 @@
   willDisplayCell:(CustomCellSelectedOrders *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[responseObject.orders objectAtIndex:indexPath.row] idhash])
-    {
-     idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
-    }
-    else
-    {
-        NSLog(@"There is no idhash");
-    }
+    idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
     NSString * CollAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row]CollAddrTypeMenu];
     if (CollAddrTypeMenu)
     {
@@ -785,6 +807,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    ((SelectedOrdersViewController*)curentSelf).idhash=[[responseObject.orders objectAtIndex:indexPath.row] idhash];
@@ -807,8 +831,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
-if(selectedRow==indexPath.row)
+    
+    
+    
+    
+    
+    deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
+    
+    if(selectedRow==indexPath.row)
     {
         height1 =35;
        //CALLADDRESS
