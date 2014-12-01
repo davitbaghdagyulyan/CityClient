@@ -16,11 +16,12 @@
     if(self)
     {
         self.ipass=@"o3XOFR7xpv";
-        self.key=[[SingleDataProvider sharedKey]key];
         self.ilog=@"cm-api";
-        self.method=@"GetOrderCategories";
+        self.key=[[SingleDataProvider sharedKey]key];
+        self.method=@"BuyDeliveryAddress";
         self.version=@"1.0.2";
         self.versionCode=@"17";
+        //self.idhash=;
     }
     return self;
 }

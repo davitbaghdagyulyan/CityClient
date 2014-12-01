@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "SelectedOrdersTableViewHandler.h"
-
-
 @interface SelectedOrdersViewController : UIViewController<UIAlertViewDelegate,CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;
