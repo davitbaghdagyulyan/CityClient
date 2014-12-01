@@ -21,7 +21,7 @@
         self.method=@"BuyDeliveryAddress";
         self.version=@"1.0.2";
         self.versionCode=@"17";
-        //self.idhash=;
+        self.idhash=nil;
     }
     return self;
 }

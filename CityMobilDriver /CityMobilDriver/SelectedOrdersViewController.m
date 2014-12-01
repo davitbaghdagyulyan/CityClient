@@ -19,6 +19,8 @@
 #import "AssignOrderJson.h"
 #import "AssignOrderResponse.h"
 #import "TakenOrderViewController.h"
+#import "BuyDeliveryAddressJson.h"
+#import "BuyDeliveryAddressResponse.h"
 
 @interface SelectedOrdersViewController ()
 {
@@ -47,7 +49,6 @@
 @implementation SelectedOrdersViewController
 {
     SelectedOrdersDetailsResponse * selectedOrdersDetailsResponseObject;
-    NSString * idhash;
     NSString * result;
     NSInteger selectedRow;
     NSTimer * timerForTitleLabel;
@@ -143,12 +144,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
 }
+
 -(void)requestOrder
 {
     flag1=-1;
@@ -338,29 +338,20 @@
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
      {
-         
-         
-         
          CGPoint point;
          
          NSLog(@"\n%f", 2*leftMenu.center.x);
          NSLog(@"\n%f",leftMenu.frame.size.width/2);
-         
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              flag=0;
              self.tableViewOrdersDetails.userInteractionEnabled=YES;
-             
-             
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
-         
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
-             
              self.tableViewOrdersDetails.userInteractionEnabled=NO;
-             
              flag=1;
          }
          point.y=leftMenu.center.y;
@@ -428,8 +419,6 @@
                                                       {
                                                           [self requestOrder];
                                                       }
-
-                                                      
                                                   }];
 
     [alertConfirmPurchaseVC addAction:cancel];
@@ -451,17 +440,14 @@
 
 -(void)requestBuyDeliveryAddress
 {
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setObject:@"o3XOFR7xpv" forKey:@"ipass"];
-    [dictionary setObject:@"cm-api"forKey:@"ilog"];
-    [dictionary setObject:[[SingleDataProvider sharedKey]key] forKey:@"key"];
-    [dictionary setObject:@"BuyDeliveryAddress" forKey:@"method"];
-    [dictionary setObject:@"1.0.2" forKey:@"version"];
-    [dictionary setObject:@"17" forKey:@"versionCode"];
-    [dictionary setObject:idhash forKey:@"idhash"];
-    NSError* error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+   BuyDeliveryAddressJson* buyAddressJsonObject=[[BuyDeliveryAddressJson alloc]init];
+   buyAddressJsonObject.idhash=self.idhash;
+   NSDictionary*jsonDictionary=[buyAddressJsonObject toDictionary];
+   NSString*jsons=[buyAddressJsonObject toJSONString];
+   NSLog(@"%@",jsons);
+   NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+   NSError* error;
+   NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
@@ -472,26 +458,33 @@
     [request setHTTPBody:jsonData];
     request.timeoutInterval = 10;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        //[activityIndicator stopAnimating];
-     if (!data) {
-            
-            
-         UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        if (!data)
+        {
+           UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                            [alertNoCon dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertNoCon addAction:cancel];
+            [self presentViewController:alertNoCon animated:YES completion:nil];
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"First Json String %@",jsonString);
+        NSError*err;
+       BuyDeliveryAddressResponse*buyDeliveryAddressResponseObject = [[BuyDeliveryAddressResponse alloc] initWithString:jsonString error:&err];
+        if(buyDeliveryAddressResponseObject.code!=nil)
+        {
+         UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:buyDeliveryAddressResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
          UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           [alertNoCon dismissViewControllerAnimated:YES completion:nil];
-                                                       }];
-         [alertNoCon addAction:cancel];
-         [self presentViewController:alertNoCon animated:YES completion:nil];
-     }
-        NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",newStr);
-        id detailData;
-        detailData  = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                          handler:^(UIAlertAction * action) {
+                                                              [alertServerErr dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+        [alertServerErr addAction:cancel];
+        [self presentViewController:alertServerErr animated:YES completion:nil];
+            
+        }
+        result=buyDeliveryAddressResponseObject.result;
         
-        NSLog(@"json2=%@",detailData);
-        NSLog(@"result is %@",[detailData objectForKey:@"result"]);
-        result = [detailData objectForKey:@"result"];
     }];
     
 }
@@ -500,8 +493,6 @@
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        
-        
         UIDeviceOrientation deviceOrientation   = [[UIDevice currentDevice] orientation];
         
       if (UIDeviceOrientationIsLandscape(deviceOrientation))

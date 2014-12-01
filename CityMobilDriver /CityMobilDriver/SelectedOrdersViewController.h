@@ -26,4 +26,5 @@
 -(void)setIndexOfCell:(NSUInteger)indexOf;
 -(void)setUnderView:(UIView*)under;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property(copy,nonatomic)NSString * idhash;
 @end
