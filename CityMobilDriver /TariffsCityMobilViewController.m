@@ -37,7 +37,9 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+ 
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     
     [self requestGetTariffsUrl];
     flag=0;
@@ -50,19 +52,7 @@
     shortLabelArray=[[NSMutableArray alloc]init];
      range=NSMakeRange(0,1);
     ctvObject=[[CustomTableView alloc] init];
-    
-//    CAGradientLayer *gradient = [CAGradientLayer layer];
-//
-//    //    CGColorRef darkColor = [[self.scrollView.backgroundColor colorWithAlphaComponent:0.5] CGColor];
-//    //    CGColorRef lightColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.6] CGColor];
-//   
-//    gradient.frame = CGRectMake(0, 0, self.tariffsSacrollView.frame.size.width, 60);
-//  
-//   
-//    [gradient setColors:[NSArray arrayWithObjects:(id)([UIColor lightGrayColor].CGColor), (id)([UIColor whiteColor].CGColor),nil]];
-//    [self.tariffsSacrollView.layer addSublayer:gradient];
-    
-  
+
 }
 
 - (void)viewDidLoad

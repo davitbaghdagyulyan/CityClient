@@ -852,9 +852,6 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
-				ECEC89C41A2CA76F0036781D /* my Orders */,
-				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController
- */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
@@ -877,6 +874,8 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
+				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */,
+				ECEC89C41A2CA76F0036781D /* my Orders */,
 				ECD218901A1CE80600F38F7D /* TachometerViewController */,
 				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
 				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
@@ -1770,8 +1769,7 @@
 			name = Requests;
 			sourceTree = "<group>";
 		};
-		ECEC89881A2CA0E40036781D /* SelectedOrdersViewController
- */ = {
+		ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECEC89B71A2CA2790036781D /* AssignOrder */,
@@ -1795,8 +1793,7 @@
 				ECEC89BA1A2CA3A90036781D /* SelectedOrdersTableViewHandler.m */,
 				ECEC89B81A2CA2AD0036781D /* SelectedOrdersDetails */,
 			);
-			name = "SelectedOrdersViewController\n";
-			path = CityMobilDriver;
+			name = SelectedOrdersViewController;
 			sourceTree = "<group>";
 		};
 		ECEC89B71A2CA2790036781D /* AssignOrder */ = {
@@ -1830,7 +1827,8 @@
 				ECEC89C81A2CA76F0036781D /* MyOrdersViewController.h */,
 				ECEC89C91A2CA76F0036781D /* MyOrdersViewController.m */,
 			);
-			path = "my Orders";
+			name = "my Orders";
+			path = "../my Orders";
 			sourceTree = "<group>";
 		};
 		ECEC89C51A2CA76F0036781D /* GetMyOrder */ = {

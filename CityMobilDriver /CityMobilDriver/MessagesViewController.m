@@ -27,6 +27,9 @@
     self.messagesTableView.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
     [self RequestGetMail];
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
 }
 
 - (void)viewDidLoad {

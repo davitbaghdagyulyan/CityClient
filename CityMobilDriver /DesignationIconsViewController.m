@@ -26,7 +26,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-  
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     

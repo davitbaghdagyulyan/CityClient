@@ -2336,7 +2336,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="B4S-Qa-ZGD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efq-c0-x6M">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efq-c0-x6M">
                                 <rect key="frame" x="16" y="553" width="542" height="32"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <state key="normal" title="Изменить региональные настройки">
@@ -2349,7 +2349,7 @@
                                     <segue destination="hpo-5l-gOZ" kind="show" id="Ifs-sI-hn6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gV4-Sy-z6S">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gV4-Sy-z6S">
                                 <rect key="frame" x="16" y="517" width="91" height="30"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <state key="normal" title="Регистрация">
@@ -2413,7 +2413,7 @@
                                     <rect key="frame" x="200" y="357" width="400" height="50"/>
                                 </variation>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Запомнить" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYA-P9-tXB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Запомнить" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYA-P9-tXB">
                                 <rect key="frame" x="493" y="522" width="91" height="20"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2440,7 +2440,7 @@
                                     <constraint firstAttribute="height" constant="64" id="nOY-Qk-Spj"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSF-bg-l98">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSF-bg-l98">
                                 <rect key="frame" x="469" y="525" width="16" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Ccb-jg-pCb"/>
@@ -2588,7 +2588,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mw8-Bt-iyH" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mw8-Bt-iyH" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Jhd-x6-0JE"/>
@@ -2601,7 +2601,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="uhW-un-Z29"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qv-zN-TOb" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qv-zN-TOb" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="FD1-BW-uOW"/>
@@ -2692,14 +2692,16 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="4Qv-zN-TOb" id="l3F-Jg-0tk"/>
                         <outlet property="messagesTableView" destination="83l-8j-f15" id="XS1-fL-ZZu"/>
                         <outlet property="navigationView" destination="EBG-QB-TXH" id="Z0X-xc-zF9"/>
                         <outlet property="theNewMessageButton" destination="CMi-uD-OqW" id="NdC-uA-JmY"/>
+                        <outlet property="yandexButton" destination="Mw8-Bt-iyH" id="CMH-8o-Qoe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA5-tz-jXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4266" y="-479"/>
+            <point key="canvasLocation" x="-4578" y="-383"/>
         </scene>
         <!--Sending Message View Controller-->
         <scene sceneID="7kF-fc-pTm">
@@ -2753,7 +2755,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWP-ak-15C" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWP-ak-15C" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="IzW-wy-cl5"/>
@@ -2766,7 +2768,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="Z1L-Ez-Cap"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dj-iX-PcR" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dj-iX-PcR" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="KF6-hs-4Fn"/>
@@ -2814,10 +2816,14 @@
                             <constraint firstItem="I7Y-8J-f15" firstAttribute="leading" secondItem="87K-qd-ox4" secondAttribute="leading" id="xrt-Gw-Aqg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityButton" destination="0Dj-iX-PcR" id="jsH-xG-10F"/>
+                        <outlet property="yandexButton" destination="VWP-ak-15C" id="sCv-J5-AEu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbj-6s-hpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1704" y="-299"/>
+            <point key="canvasLocation" x="-1871" y="-313"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="Oc1-bc-g6a">
@@ -2874,7 +2880,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4z-QU-4V7" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4z-QU-4V7" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="HFw-zx-nFM"/>
@@ -2887,7 +2893,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="Olt-oc-pDq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdq-Ed-aCw" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdq-Ed-aCw" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="DkW-pG-YAR"/>
@@ -2940,7 +2946,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="vdq-Ed-aCw" id="MfC-b2-41y"/>
                         <outlet property="statisticsScrollView" destination="v6N-Go-bIT" id="4NC-Ni-MyG"/>
+                        <outlet property="yandexButton" destination="x4z-QU-4V7" id="YCh-pb-ONZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnj-3v-p4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3012,7 +3020,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82o-cg-llH" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82o-cg-llH" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="2Ym-Re-RZM"/>
@@ -3025,7 +3033,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="6OX-CN-s5z"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXc-ny-BVe" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXc-ny-BVe" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="0Ku-yh-MiA"/>
@@ -3081,7 +3089,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="sXc-ny-BVe" id="WVD-Ef-l6v"/>
                         <outlet property="tariffsSacrollView" destination="yo3-ft-gjK" id="Kic-q6-EhB"/>
+                        <outlet property="yandexButton" destination="82o-cg-llH" id="M8X-7G-9L1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQZ-ob-6xY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3140,7 +3150,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YR7-Ta-l23" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YR7-Ta-l23" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Aqh-LH-MrM"/>
@@ -3150,7 +3160,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Get-um-dru" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Get-um-dru" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="5VN-Nl-4Nz"/>
@@ -3195,6 +3205,10 @@
                             <constraint firstItem="kIL-3Q-f9G" firstAttribute="leading" secondItem="rco-ES-Ow9" secondAttribute="leading" id="nrg-Yy-hAk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityButton" destination="Get-um-dru" id="BvX-Ae-oKT"/>
+                        <outlet property="yandexButton" destination="YR7-Ta-l23" id="pa7-lj-bGb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOK-xs-OLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3407,7 +3421,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-tv-Ts4" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-tv-Ts4" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="Imn-6Y-CFR"/>
@@ -3420,7 +3434,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="xJE-Oo-4Jf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD9-D2-Xd2" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD9-D2-Xd2" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="RAu-xG-j6Y"/>
@@ -3472,7 +3486,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="qD9-D2-Xd2" id="CVv-Q5-4DQ"/>
                         <outlet property="segmentedControl" destination="vmY-I1-Ltd" id="3rA-LL-oXV"/>
+                        <outlet property="yandexButton" destination="HQd-tv-Ts4" id="eXC-WN-OzB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QA9-9N-90l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3792,7 +3808,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ir4-Cw-5A2">
                                         <rect key="frame" x="0.0" y="238" width="584" height="239"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Позывной:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2x5-hm-EWz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Позывной:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2x5-hm-EWz">
                                                 <rect key="frame" x="8" y="8" width="88" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3801,7 +3817,7 @@
                                                     <rect key="frame" x="8" y="8" width="86" height="20"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Баланс:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0Z-3V-SAB">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Баланс:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0Z-3V-SAB">
                                                 <rect key="frame" x="8" y="36" width="62" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3810,7 +3826,7 @@
                                                     <rect key="frame" x="8" y="36" width="63" height="20"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Лимит:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAV-a9-zOm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лимит:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAV-a9-zOm">
                                                 <rect key="frame" x="8" y="64" width="57" height="20"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3819,7 +3835,7 @@
                                                     <rect key="frame" x="8" y="64" width="56" height="20"/>
                                                 </variation>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sud-9V-UtH">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sud-9V-UtH">
                                                 <rect key="frame" x="8" y="101" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="lzI-gN-OEo"/>
@@ -3833,9 +3849,8 @@
                                                     <action selector="nightModeAction:" destination="40C-gD-0cA" eventType="touchUpInside" id="HhP-uT-AzI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-3J-q3A">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-3J-q3A">
                                                 <rect key="frame" x="560" y="108" width="16" height="15"/>
-
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="niC-qW-7R9"/>
                                                     <constraint firstAttribute="width" constant="16" id="tsM-8v-uw4"/>
@@ -3852,7 +3867,7 @@
                                                     <action selector="remember:" destination="Poh-dO-P0e" eventType="touchUpInside" id="Gqr-XK-WuN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpC-MB-kcd">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpC-MB-kcd">
                                                 <rect key="frame" x="8" y="139" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="06q-aM-oAq"/>
@@ -3872,7 +3887,7 @@
                                                     <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="7La-sh-Wn1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Zb-3rM">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Zb-3rM">
                                                 <rect key="frame" x="565" y="145" width="11" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="1Aw-wx-4nz"/>
@@ -3893,7 +3908,7 @@
                                                     <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="Jg4-vg-bwH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-kz-TbG">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-kz-TbG">
                                                 <rect key="frame" x="8" y="177" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="77Q-ul-ZTi"/>
@@ -3913,7 +3928,7 @@
                                                     <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="3iP-K8-Ln2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-gB-u27">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-gB-u27">
                                                 <rect key="frame" x="565" y="183" width="11" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="bVZ-2Q-M8v"/>
@@ -3934,7 +3949,7 @@
                                                     <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="r5h-Pj-sx0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulw-Ml-TX4">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulw-Ml-TX4">
                                                 <rect key="frame" x="8" y="215" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="89k-k4-M4F"/>
@@ -3954,9 +3969,8 @@
                                                     <action selector="selectLanguage:" destination="40C-gD-0cA" eventType="touchUpInside" id="E5c-cE-AYb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-8A-wuG">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-8A-wuG">
                                                 <rect key="frame" x="565" y="220" width="11" height="19"/>
-
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="Fv6-N5-jSE"/>
                                                     <constraint firstAttribute="width" constant="11" id="Ygb-XZ-8yu"/>
@@ -5995,10 +6009,6 @@
                                         <exclude reference="AKW-EX-LqB"/>
                                         <exclude reference="cAg-kv-HVZ"/>
                                         <exclude reference="zzc-jx-M0X"/>
-                                        <exclude reference="61G-z0-MZH"/>
-                                        <exclude reference="QJd-l8-aQB"/>
-                                        <exclude reference="UFH-bh-Byx"/>
-                                        <exclude reference="hMf-yZ-kFm"/>
                                         <exclude reference="1fA-Jv-ArA"/>
                                         <exclude reference="35B-q7-xxS"/>
                                         <exclude reference="87B-5g-FZY"/>
@@ -6011,14 +6021,32 @@
                                         <exclude reference="tFn-OG-yC7"/>
                                         <exclude reference="ujH-j4-Qsr"/>
                                         <exclude reference="vKm-Wp-Pm3"/>
+                                        <exclude reference="61G-z0-MZH"/>
+                                        <exclude reference="QJd-l8-aQB"/>
+                                        <exclude reference="UFH-bh-Byx"/>
+                                        <exclude reference="hMf-yZ-kFm"/>
+                                        <exclude reference="1i4-Zm-eAJ"/>
+                                        <exclude reference="Lbu-fK-8cj"/>
+                                        <exclude reference="c5W-ET-F0Q"/>
+                                        <exclude reference="2dp-Bz-rbQ"/>
+                                        <exclude reference="60S-LB-9KH"/>
+                                        <exclude reference="DKZ-D3-Bdc"/>
+                                        <exclude reference="E9Z-wy-HUD"/>
+                                        <exclude reference="L16-tQ-Oo1"/>
+                                        <exclude reference="MIr-tZ-Isv"/>
+                                        <exclude reference="TNv-ae-Xjs"/>
+                                        <exclude reference="V7A-Wt-7Gv"/>
+                                        <exclude reference="idr-dL-Hzg"/>
+                                        <exclude reference="ilC-Ud-g0b"/>
+                                        <exclude reference="ksm-pV-OBr"/>
+                                        <exclude reference="qpX-M2-MAU"/>
+                                        <exclude reference="tHR-YR-5sj"/>
+                                        <exclude reference="tvU-W6-j83"/>
+                                        <exclude reference="Fuo-zc-BI9"/>
                                         <exclude reference="CZ8-vt-QPV"/>
                                         <exclude reference="eF4-q9-fJ0"/>
                                         <exclude reference="fY6-1I-mXj"/>
                                         <exclude reference="fqM-el-eot"/>
-                                        <exclude reference="1i4-Zm-eAJ"/>
-                                        <exclude reference="Lbu-fK-8cj"/>
-                                        <exclude reference="c5W-ET-F0Q"/>
-                                        <exclude reference="Fuo-zc-BI9"/>
                                         <exclude reference="8Xp-oF-ANL"/>
                                         <exclude reference="QNR-rD-Yzd"/>
                                         <exclude reference="llF-B7-Gri"/>
@@ -6038,12 +6066,12 @@
                                         <exclude reference="kwZ-A1-0lc"/>
                                         <exclude reference="lTV-pB-aCe"/>
                                         <exclude reference="y5X-cu-MnI"/>
+                                        <exclude reference="Zah-CT-73r"/>
+                                        <exclude reference="nSv-fK-2Hh"/>
                                         <exclude reference="CRh-Nx-4oz"/>
                                         <exclude reference="Czx-Rc-J6k"/>
                                         <exclude reference="a1h-1C-s4U"/>
                                         <exclude reference="by0-nE-7rG"/>
-                                        <exclude reference="Zah-CT-73r"/>
-                                        <exclude reference="nSv-fK-2Hh"/>
                                         <exclude reference="005-Q7-Ptk"/>
                                         <exclude reference="8J3-bh-RAk"/>
                                         <exclude reference="A0Z-30-e2N"/>
@@ -6051,20 +6079,6 @@
                                         <exclude reference="SZw-yC-6NI"/>
                                         <exclude reference="gj1-cu-dw4"/>
                                         <exclude reference="rTX-Gs-NbE"/>
-                                        <exclude reference="2dp-Bz-rbQ"/>
-                                        <exclude reference="60S-LB-9KH"/>
-                                        <exclude reference="DKZ-D3-Bdc"/>
-                                        <exclude reference="E9Z-wy-HUD"/>
-                                        <exclude reference="L16-tQ-Oo1"/>
-                                        <exclude reference="MIr-tZ-Isv"/>
-                                        <exclude reference="TNv-ae-Xjs"/>
-                                        <exclude reference="V7A-Wt-7Gv"/>
-                                        <exclude reference="idr-dL-Hzg"/>
-                                        <exclude reference="ilC-Ud-g0b"/>
-                                        <exclude reference="ksm-pV-OBr"/>
-                                        <exclude reference="qpX-M2-MAU"/>
-                                        <exclude reference="tHR-YR-5sj"/>
-                                        <exclude reference="tvU-W6-j83"/>
                                         <exclude reference="EXS-gc-he9"/>
                                         <exclude reference="PPT-oG-LEU"/>
                                         <exclude reference="RuL-7k-aYs"/>
@@ -6085,18 +6099,6 @@
                                         <exclude reference="TCG-NP-heI"/>
                                         <include reference="cAg-kv-HVZ"/>
                                         <include reference="zzc-jx-M0X"/>
-                                        <include reference="61G-z0-MZH"/>
-                                        <exclude reference="9cK-t1-lUi"/>
-                                        <include reference="QJd-l8-aQB"/>
-                                        <exclude reference="SRe-NS-nnU"/>
-                                        <include reference="UFH-bh-Byx"/>
-                                        <exclude reference="Xm1-0j-Lqq"/>
-                                        <exclude reference="f1K-wE-eCX"/>
-                                        <include reference="hMf-yZ-kFm"/>
-                                        <exclude reference="j4q-td-azj"/>
-                                        <exclude reference="n5V-y7-plr"/>
-                                        <exclude reference="xWm-Xv-Xmd"/>
-                                        <exclude reference="zi3-P6-eZf"/>
                                         <include reference="1fA-Jv-ArA"/>
                                         <exclude reference="35B-q7-xxS"/>
                                         <exclude reference="87B-5g-FZY"/>
@@ -6111,6 +6113,42 @@
                                         <exclude reference="tFn-OG-yC7"/>
                                         <exclude reference="ujH-j4-Qsr"/>
                                         <include reference="vKm-Wp-Pm3"/>
+                                        <include reference="61G-z0-MZH"/>
+                                        <exclude reference="9cK-t1-lUi"/>
+                                        <include reference="QJd-l8-aQB"/>
+                                        <exclude reference="SRe-NS-nnU"/>
+                                        <include reference="UFH-bh-Byx"/>
+                                        <exclude reference="Xm1-0j-Lqq"/>
+                                        <exclude reference="f1K-wE-eCX"/>
+                                        <include reference="hMf-yZ-kFm"/>
+                                        <exclude reference="j4q-td-azj"/>
+                                        <exclude reference="n5V-y7-plr"/>
+                                        <exclude reference="xWm-Xv-Xmd"/>
+                                        <exclude reference="zi3-P6-eZf"/>
+                                        <include reference="1i4-Zm-eAJ"/>
+                                        <exclude reference="4xd-4S-V3J"/>
+                                        <exclude reference="JfZ-XK-wSo"/>
+                                        <include reference="Lbu-fK-8cj"/>
+                                        <exclude reference="RoR-4q-tBA"/>
+                                        <include reference="c5W-ET-F0Q"/>
+                                        <exclude reference="g3I-X6-h4R"/>
+                                        <exclude reference="2Pe-dC-gj8"/>
+                                        <include reference="2dp-Bz-rbQ"/>
+                                        <include reference="60S-LB-9KH"/>
+                                        <exclude reference="BAY-6u-r5X"/>
+                                        <exclude reference="DKZ-D3-Bdc"/>
+                                        <exclude reference="E9Z-wy-HUD"/>
+                                        <exclude reference="IfP-WE-kE3"/>
+                                        <exclude reference="L16-tQ-Oo1"/>
+                                        <include reference="MIr-tZ-Isv"/>
+                                        <exclude reference="TNv-ae-Xjs"/>
+                                        <exclude reference="V7A-Wt-7Gv"/>
+                                        <exclude reference="idr-dL-Hzg"/>
+                                        <include reference="ilC-Ud-g0b"/>
+                                        <include reference="ksm-pV-OBr"/>
+                                        <exclude reference="qpX-M2-MAU"/>
+                                        <include reference="tHR-YR-5sj"/>
+                                        <include reference="tvU-W6-j83"/>
                                         <include reference="CZ8-vt-QPV"/>
                                         <exclude reference="Llp-hy-aJc"/>
                                         <exclude reference="MfO-on-4KS"/>
@@ -6119,13 +6157,6 @@
                                         <exclude reference="fX0-cj-y6Z"/>
                                         <include reference="fY6-1I-mXj"/>
                                         <include reference="fqM-el-eot"/>
-                                        <include reference="1i4-Zm-eAJ"/>
-                                        <exclude reference="4xd-4S-V3J"/>
-                                        <exclude reference="JfZ-XK-wSo"/>
-                                        <include reference="Lbu-fK-8cj"/>
-                                        <exclude reference="RoR-4q-tBA"/>
-                                        <include reference="c5W-ET-F0Q"/>
-                                        <exclude reference="g3I-X6-h4R"/>
                                         <exclude reference="ULg-Cv-lYF"/>
                                         <exclude reference="gLt-My-Gcv"/>
                                         <include reference="llF-B7-Gri"/>
@@ -6156,6 +6187,11 @@
                                         <include reference="lTV-pB-aCe"/>
                                         <exclude reference="mmu-QC-E1q"/>
                                         <exclude reference="y5X-cu-MnI"/>
+                                        <exclude reference="F7e-IH-iut"/>
+                                        <include reference="Zah-CT-73r"/>
+                                        <exclude reference="ezT-hD-ba9"/>
+                                        <include reference="nSv-fK-2Hh"/>
+                                        <exclude reference="sao-cc-ALz"/>
                                         <exclude reference="38s-ub-Cdm"/>
                                         <include reference="CRh-Nx-4oz"/>
                                         <include reference="Czx-Rc-J6k"/>
@@ -6165,11 +6201,6 @@
                                         <include reference="a1h-1C-s4U"/>
                                         <include reference="by0-nE-7rG"/>
                                         <exclude reference="v1p-Tc-Mkq"/>
-                                        <exclude reference="F7e-IH-iut"/>
-                                        <include reference="Zah-CT-73r"/>
-                                        <exclude reference="ezT-hD-ba9"/>
-                                        <include reference="nSv-fK-2Hh"/>
-                                        <exclude reference="sao-cc-ALz"/>
                                         <include reference="005-Q7-Ptk"/>
                                         <exclude reference="8J3-bh-RAk"/>
                                         <exclude reference="A0Z-30-e2N"/>
@@ -6181,23 +6212,6 @@
                                         <exclude reference="jlX-Z9-dqt"/>
                                         <exclude reference="kZM-nN-VUC"/>
                                         <include reference="rTX-Gs-NbE"/>
-                                        <exclude reference="2Pe-dC-gj8"/>
-                                        <include reference="2dp-Bz-rbQ"/>
-                                        <include reference="60S-LB-9KH"/>
-                                        <exclude reference="BAY-6u-r5X"/>
-                                        <exclude reference="DKZ-D3-Bdc"/>
-                                        <exclude reference="E9Z-wy-HUD"/>
-                                        <exclude reference="IfP-WE-kE3"/>
-                                        <exclude reference="L16-tQ-Oo1"/>
-                                        <include reference="MIr-tZ-Isv"/>
-                                        <exclude reference="TNv-ae-Xjs"/>
-                                        <exclude reference="V7A-Wt-7Gv"/>
-                                        <exclude reference="idr-dL-Hzg"/>
-                                        <include reference="ilC-Ud-g0b"/>
-                                        <include reference="ksm-pV-OBr"/>
-                                        <exclude reference="qpX-M2-MAU"/>
-                                        <include reference="tHR-YR-5sj"/>
-                                        <include reference="tvU-W6-j83"/>
                                         <exclude reference="8JI-jS-Zys"/>
                                         <exclude reference="DuC-wt-nVM"/>
                                         <exclude reference="EXS-gc-he9"/>
@@ -6269,24 +6283,6 @@
             </objects>
             <point key="canvasLocation" x="-6707" y="1092"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="TXz-Sq-eAV">
-            <objects>
-                <viewController id="LmB-8E-roR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="coe-Z2-Ja0"/>
-                        <viewControllerLayoutGuide type="bottom" id="acG-cB-2VA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ANS-Hs-ZCP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MHe-aa-ioc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-5755" y="1077"/>
-        </scene>
         <!--Taken Order View Controller-->
         <scene sceneID="TO2-No-bD5">
             <objects>
@@ -6350,7 +6346,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8V-2O-ZLd" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8V-2O-ZLd" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Ncf-Qv-4pW"/>
@@ -6363,7 +6359,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="ulh-Ga-Izo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1E9-AK-9jn" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1E9-AK-9jn" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="28w-wi-PZC"/>
@@ -6419,7 +6415,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="1E9-AK-9jn" id="ouj-I1-hop"/>
                         <outlet property="scrollView" destination="8Re-32-tYg" id="oDy-29-3y0"/>
+                        <outlet property="yandexButton" destination="B8V-2O-ZLd" id="xrl-AP-iHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nd8-9k-kma" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7015,29 +7013,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3W-dB-Tb5">
                                         <rect key="frame" x="0.0" y="0.0" width="584" height="313"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="модель" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMI-u4-zh0">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="модель" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMI-u4-zh0">
                                                 <rect key="frame" x="8" y="45" width="68" height="23"/>
-
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="45" width="67" height="23"/>
                                                 </variation>
-
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="93" width="76" height="27"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="гос.номер" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-fe-xNB">
-
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="гос.номер" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-fe-xNB">
                                                 <rect key="frame" x="8" y="156" width="91" height="26"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="158" width="91" height="23"/>
-
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="93" width="90" height="23"/>
@@ -7052,8 +7046,7 @@
                                                     <rect key="frame" x="8" y="191" width="91" height="26"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="год производства" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-0J-JhI">
-
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="год производства" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-0J-JhI">
                                                 <rect key="frame" x="8" y="81" width="268" height="26"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -7280,16 +7273,14 @@
                                                     <rect key="frame" x="384" y="284" width="115" height="43"/>
                                                 </variation>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="лицензия -" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrX-x0-3PX">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="лицензия -" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrX-x0-3PX">
                                                 <rect key="frame" x="8" y="237" width="99" height="23"/>
-
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="238" width="97" height="23"/>
                                                 </variation>
-
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="429" width="110" height="27"/>
                                                 </variation>
@@ -7297,23 +7288,20 @@
                                                     <rect key="frame" x="8" y="293" width="96" height="23"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="vin-код" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-G4-qkk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vin-код" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-G4-qkk">
                                                 <rect key="frame" x="8" y="197" width="67" height="23"/>
-
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="198" width="64" height="23"/>
                                                 </variation>
-
                                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="403" width="64" height="23"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="цвет" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYo-LH-mJh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="цвет" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYo-LH-mJh">
                                                 <rect key="frame" x="8" y="120" width="42" height="23"/>
-
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7330,16 +7318,14 @@
                                                     <rect key="frame" x="8" y="230" width="46" height="27"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="марка" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpe-L2-vVb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="марка" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpe-L2-vVb">
                                                 <rect key="frame" x="8" y="10" width="57" height="23"/>
-
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="10" width="55" height="23"/>
                                                 </variation>
-
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
@@ -8428,7 +8414,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNW-HY-oe9" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNW-HY-oe9" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Ey5-Yo-cnZ"/>
@@ -8441,7 +8427,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="o53-UE-w8R"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxF-eK-YHU" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxF-eK-YHU" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="0Ed-U3-ygp"/>
@@ -8510,7 +8496,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="hxF-eK-YHU" id="BcY-KL-pbN"/>
                         <outlet property="myOrdersTableView" destination="Nkm-9J-GsS" id="zwC-xz-yAm"/>
+                        <outlet property="yandexButton" destination="tNW-HY-oe9" id="HsA-6o-R5L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8by-bU-NoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -8539,8 +8527,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-
-        <segue reference="DTe-ng-hj0"/>
-
+        <segue reference="o53-UE-w8R"/>
     </inferredMetricsTieBreakers>
 </document>

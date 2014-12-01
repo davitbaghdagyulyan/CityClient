@@ -34,6 +34,9 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+    
     yCord=0;
     y1Cord=yCord;
     flag=0;

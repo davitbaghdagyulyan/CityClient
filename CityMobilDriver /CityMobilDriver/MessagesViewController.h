@@ -21,4 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *theNewMessageButton;
 @property (strong, nonatomic) IBOutlet UITableView *messagesTableView;
 - (IBAction)back:(id)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end

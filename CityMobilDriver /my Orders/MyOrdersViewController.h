@@ -26,4 +26,6 @@
 -(void)toTakeAction;
 -(void)closeOrderAction;
 -(void)toOrderAction;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end

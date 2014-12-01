@@ -35,6 +35,8 @@
 @implementation ReplenishmentViewController
 -(void)viewDidAppear:(BOOL)animated
 {
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     
     isPressedCloseButton=NO;
     [super viewDidAppear:animated];

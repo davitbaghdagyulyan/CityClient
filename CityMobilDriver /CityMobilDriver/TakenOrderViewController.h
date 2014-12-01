@@ -14,4 +14,6 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 -(void)setIdHash:(NSString*)idhash andUnderView:(UIView*)underView;
 - (IBAction)back:(id)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end

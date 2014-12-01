@@ -62,6 +62,9 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     setStatusJsonObject=[[SetStatusJson alloc]init];

@@ -15,4 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *statisticsScrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end
