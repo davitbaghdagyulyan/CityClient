@@ -1,5 +1,3 @@
-
-
 #import "RootViewController.h"
 #import "CustomCell.h"
 #import "OrdersJson.h"
@@ -13,20 +11,15 @@
 
 @interface RootViewController ()
 {
+    //ARUS
     NSInteger flag;
     NSInteger flag1;
     BOOL  timerCreated;
     BOOL alertNoConIsCreated;
     BOOL  cancelOfAlertNoConIsClicked;
     BOOL alertServErrIsCreated;
-    BOOL cancelOfAlertServErrIsCreated;
-    NSData * data1;
-    LeftMenu*leftMenu;
-    UISwipeGestureRecognizer*recognizerRight;
+    BOOL cancelOfAlertServErrIsClicked;
     OrdersResponse*ordersResponseObject;
-    RecallResponse*recallResponseObject;
-    UIAlertView *alertBack;
-    UIAlertView *callDispetcherAlert;
     LoginViewController*log;
     CAGradientLayer * gradLayerLabel1;
     CAGradientLayer * gradLayerLabel2;
@@ -34,6 +27,13 @@
     UILabel * label1;
     UILabel * label2;
     NSInteger selectedRow;
+    //NAREK
+    LeftMenu*leftMenu;
+    UISwipeGestureRecognizer*recognizerRight;
+    RecallResponse*recallResponseObject;
+    UIAlertView *callDispetcherAlert;
+   
+    
 }
 @end
 @implementation RootViewController
@@ -54,7 +54,7 @@
     {
        alertNoConIsCreated=YES;
     }
-    if (cancelOfAlertServErrIsCreated ==YES)
+    if (cancelOfAlertServErrIsClicked ==YES)
     {
         alertServErrIsCreated =NO;
     }
@@ -83,7 +83,7 @@
     self.titleLabelIpad.font =[UIFont fontWithName:@"Roboto-Regular" size:20];
     //Controlling AlertVCS
     cancelOfAlertNoConIsClicked =YES;
-    cancelOfAlertServErrIsCreated=YES;
+    cancelOfAlertServErrIsClicked=YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -112,7 +112,7 @@
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
     cell = [nib objectAtIndex:0];
     NSString * count = [[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
-    if ([count isEqualToString:@"0"])
+    if (count && [count isEqualToString:@"0"])
     {
         cell.hidden =YES;
     }
@@ -158,14 +158,21 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     [cell.View1 addConstraint:label1Butom];
     label1.font =[UIFont fontWithName:@"Roboto-Regular" size:16];
     label1.textColor = [UIColor blackColor];
-    label1.text =[NSString stringWithFormat:@"      %@",[[ordersResponseObject.categories objectAtIndex:indexPath.row] name]];
+    if ([[ordersResponseObject.categories objectAtIndex:indexPath.row] name])
+    {
+      label1.text =[NSString stringWithFormat:@"      %@",[[ordersResponseObject.categories objectAtIndex:indexPath.row] name]];
+    }
+    else
+    {
+    label1.text=@"";
+    }
     gradLayerLabel2 =[CAGradientLayer layer];
     UIColor * gradColStartLab2 =[UIColor colorWithRed:130/255.0f green:130/255.0f blue:130/255.0f alpha:1.0f];
     UIColor * gradColFinLab2 =[UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1.0f];
     gradLayerLabel2.frame =CGRectMake(0, 0, cell.bounds.size.width*0.141, self.view.frame.size.height/12-3);
     [gradLayerLabel2 setColors:[NSArray arrayWithObjects:(id)(gradColStartLab2.CGColor), (id)(gradColFinLab2.CGColor),nil]];
     [cell.View2.layer insertSublayer:gradLayerLabel2 atIndex:0];
-     label2 =[[UILabel alloc]init];
+    label2 =[[UILabel alloc]init];
     label2.translatesAutoresizingMaskIntoConstraints = NO;
     [cell.View2 addSubview:label2];
     NSLayoutConstraint * label2Tral = [NSLayoutConstraint constraintWithItem:label2 attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:cell.View2 attribute:NSLayoutAttributeTrailing multiplier:1.f constant:0];
@@ -180,7 +187,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     label2.textColor = [UIColor whiteColor];
     label2.textAlignment =NSTextAlignmentCenter;
     NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
+    if (currentCount)
+    {
     label2.text=[NSString stringWithFormat:@"%@",currentCount];
+    }
+    else
+    {
+    label2.text=@"";
+    }
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -195,19 +210,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [self.tableViewOrdersPort reloadData];
         [self.tableViewOrdersLand reloadData];
         [self.tableViewIpad reloadData];
-        [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
-        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
-        [self.navigationController pushViewController:selectedOrdersCont animated:YES];
-        selectedOrdersCont.titleString =[[ordersResponseObject.categories objectAtIndex:indexPath.row]name];
-        if (indexPath.row==0)
+        if ([[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter])
         {
-            selectedOrdersCont.stringForSrochno =@"СРОЧНО";
+          [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
         }
         else
         {
-         selectedOrdersCont.stringForSrochno =@"";
+            NSLog(@"There is no filter");
         }
-        [requestTimer invalidate];
+        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
+        [self.navigationController pushViewController:selectedOrdersCont animated:YES];
+        selectedOrdersCont.titleString =[[ordersResponseObject.categories objectAtIndex:indexPath.row]name];
+            
     }
 }
 
@@ -218,14 +232,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
                 return  44;
     }
-   else
+    else
     {
-        NSString * count = [[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
-        if ([count isEqualToString:@"0"])
-        {
+     NSString * count = [[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
+     if (count && [count isEqualToString:@"0"])
+     {
             return 0;
-        }
-
+     }
      return  self.view.frame.size.height/12;
     }
     
@@ -246,7 +259,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         alertNoConIsCreated=YES;
     }
     
-    if (cancelOfAlertServErrIsCreated ==YES)
+    if (cancelOfAlertServErrIsClicked ==YES)
     {
         alertServErrIsCreated =NO;
     }
@@ -585,7 +598,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data && alertNoConIsCreated ==NO)
         {
-            data1=data;
+           
             UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
             alertNoConIsCreated =YES;
             cancelOfAlertNoConIsClicked =NO;
@@ -612,7 +625,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             alertServErrIsCreated =YES;
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                              cancelOfAlertServErrIsCreated = YES;
+                                                              cancelOfAlertServErrIsClicked = YES;
                                                               [alertServerErr dismissViewControllerAnimated:YES completion:nil];
                                                           }];
             [alertServerErr addAction:cancel];
@@ -624,10 +637,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             alertServErrIsCreated=NO;
         }
         flag1=1;
-        
-        
-            
-     if (ordersResponseObject.code==nil && data)
+        if (ordersResponseObject.code==nil && data)
         {   self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             self.tableViewOrdersPort.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             self.tableViewOrdersLand.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
