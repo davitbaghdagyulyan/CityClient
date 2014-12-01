@@ -855,7 +855,6 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
-				ECC39FEF1A25F1DD00217A41 /*  my Orders */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
@@ -878,6 +877,7 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
+				ECC39FEF1A25F1DD00217A41 /*  my Orders */,
 				ECD218901A1CE80600F38F7D /* TachometerViewController */,
 				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
 				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
@@ -1302,6 +1302,7 @@
 				ECC39FED1A25EB6100217A41 /* MyOrdersViewController.m */,
 			);
 			name = " my Orders";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECC471871A11EF270062803A /* RootViewController */ = {
