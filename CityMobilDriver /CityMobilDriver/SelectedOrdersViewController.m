@@ -22,13 +22,13 @@
 
 @interface SelectedOrdersViewController ()
 {
+    //ARUS
     NSInteger flag;
     NSInteger flag1;
     BOOL alertNoConIsCreated;
     BOOL  cancelOfAlertNoConIsClicked;
     BOOL alertServErrIsCreated;
-    BOOL cancelOfAlertServErrIsCreated;
-    NSData * data1;
+    BOOL cancelOfAlertServErrIsClicked;
     LeftMenu*leftMenu;
     NSUInteger indexOfCell;
     CustomViewForMaps*viewMap;
@@ -49,12 +49,10 @@
     SelectedOrdersDetailsResponse * selectedOrdersDetailsResponseObject;
     NSString * idhash;
     NSString * result;
-    UIAlertView * alertConfirmPurchase;
     NSInteger selectedRow;
     NSTimer * timerForTitleLabel;
     NSTimer * requestTimer;
     bool timerCreated;
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -77,7 +75,6 @@
     {
     self.stringForSrochno=@"";
     }
-    
     flag=0;
     self.tableViewOrdersDetails.userInteractionEnabled = YES;
     leftMenu=[LeftMenu getLeftMenu:self];
@@ -90,7 +87,7 @@
     {
         alertNoConIsCreated=YES;
     }
-    if (cancelOfAlertServErrIsCreated ==YES)
+    if (cancelOfAlertServErrIsClicked ==YES)
     {
         alertServErrIsCreated =NO;
     }
@@ -137,7 +134,7 @@
     [super viewDidLoad];
     self.tableViewOrdersDetails.separatorStyle = UITableViewCellSeparatorStyleNone;
     cancelOfAlertNoConIsClicked =YES;
-    cancelOfAlertServErrIsCreated=YES;
+    cancelOfAlertServErrIsClicked=YES;
     // Do any additional setup after loading the view
 }
 
@@ -179,8 +176,7 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data && alertNoConIsCreated ==NO)
         {
-            data1=data;
-            UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
             alertNoConIsCreated =YES;
             cancelOfAlertNoConIsClicked =NO;
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -205,7 +201,7 @@
             alertServErrIsCreated =YES;
       UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                              cancelOfAlertServErrIsCreated = YES;
+                                                              cancelOfAlertServErrIsClicked = YES;
                                                               [alertServerErr dismissViewControllerAnimated:YES completion:nil];
                                                           }];
      [alertServerErr addAction:cancel];
@@ -213,9 +209,7 @@
      }
      else if(selectedOrdersDetailsResponseObject.code==nil)
      {
-        
-        
-         alertServErrIsCreated=NO;
+      alertServErrIsCreated=NO;
      }
      flag1=1;
     [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
@@ -262,7 +256,7 @@
         alertNoConIsCreated=YES;
     }
     
-    if (cancelOfAlertServErrIsCreated ==YES)
+    if (cancelOfAlertServErrIsClicked ==YES)
     {
         alertServErrIsCreated =NO;
     }
@@ -391,23 +385,9 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
-    
     CGPoint point;
-    
-    
-    
     point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
     point.y=leftMenu.center.y;
     if (point.x>leftMenu.frame.size.width/2)
@@ -415,24 +395,8 @@
         return;
     }
     leftMenu.center=point;
-    
-    
-    
-    
-    
-    
-    
-    
     self.tableViewOrdersDetails.userInteractionEnabled=NO;
-    
-    
     flag=1;
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -451,44 +415,38 @@
 
 -(void)showAddress
 {
-    alertConfirmPurchase = [[UIAlertView alloc] initWithTitle:@""
-                                           message:@"Подтвердите покупку"
-                                          delegate:self
-                                 cancelButtonTitle:@"Отмена"
-                                 otherButtonTitles:@"ОК",nil];
-    [alertConfirmPurchase show];
-    return ;
+    UIAlertController *alertConfirmPurchaseVC = [UIAlertController alertControllerWithTitle:@"Подтвердите покупку" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action) {
+                                                      [alertConfirmPurchaseVC dismissViewControllerAnimated:YES completion:nil];
+                                                      [self requestOrder];
+                                                  }];
+    UIAlertAction*confirmPurchase = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action) {
+                                                      [self requestBuyDeliveryAddress];
+                                                      if ([result integerValue]==1)
+                                                      {
+                                                          [self requestOrder];
+                                                      }
+
+                                                      
+                                                  }];
+
+    [alertConfirmPurchaseVC addAction:cancel];
+    [alertConfirmPurchaseVC addAction:confirmPurchase];
+    [self presentViewController:alertConfirmPurchaseVC animated:YES completion:nil];
+     return ;
 
 }
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if ([alertView isEqual:alertConfirmPurchase])
+    if (buttonIndex==0)
     {
-        
+    [self requestAssignOrder];
+    }
     
-        if (buttonIndex==0)
-        {
-            [self requestOrder];
-            
-        }
-        else
-        {
-            [self requestBuyDeliveryAddress];
-            if ([result integerValue]==1)
-            {
-                [self requestOrder];
-            }
-        }
-    }
-    else
-    {
-        if (buttonIndex==0)
-        {
-            [self requestAssignOrder];
-        }
-    }
 }
 
 -(void)requestBuyDeliveryAddress
@@ -560,17 +518,13 @@
             selectedRow = -1;
             [selectedOrdersTableViewHandlerObject setSelectedRow:selectedRow];
             [self requestOrder];
-          
             [self.tableViewOrdersDetails reloadData];
 
             }
         
         
     }
-             
-
-     
-      completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          viewMap.frame=self.view.frame;
          viewMap.center=self.view.center;
