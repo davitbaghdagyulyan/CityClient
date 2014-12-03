@@ -839,8 +839,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEC89C41A2CA76F0036781D /* my Orders */,
-				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController
- */,
+				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
@@ -1762,8 +1761,7 @@
 			name = Requests;
 			sourceTree = "<group>";
 		};
-		ECEC89881A2CA0E40036781D /* SelectedOrdersViewController
- */ = {
+		ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECEC89B71A2CA2790036781D /* AssignOrder */,
@@ -1787,7 +1785,7 @@
 				ECEC89BA1A2CA3A90036781D /* SelectedOrdersTableViewHandler.m */,
 				ECEC89B81A2CA2AD0036781D /* SelectedOrdersDetails */,
 			);
-			name = "SelectedOrdersViewController\n";
+			name = SelectedOrdersViewController;
 			path = CityMobilDriver;
 			sourceTree = "<group>";
 		};

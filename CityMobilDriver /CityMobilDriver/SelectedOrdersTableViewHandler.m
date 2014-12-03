@@ -67,22 +67,7 @@
     {
         shortName = @"";
     }
-    if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
-    {
-        callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
-    }
-    else
-    {
-        callDateFormat = @"";
-    }
-////    if (numberOfClass==1 && [stringforSrochno isEqualToString:@"СРОЧНО"])
-////    {
-//        [self TimeForUrgentOrders:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
-//    
-//  //  }
-    
-    stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
-    if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
+   if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
     {
         percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
     }
@@ -140,7 +125,10 @@
             NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
             [cell.whiteView addConstraint:view11Height];
             cell.labelPercent.text = stringForLabelPercent;
-            cell.labelShortName.text=stringForLabelShortName;
+            cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+            cell.stringForSrochno=stringforSrochno;
+            cell.shortName=shortName;
+            [cell updateLabelShortName];
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
             //VIEW2
             cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
@@ -401,7 +389,10 @@
         [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
         NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
         [cell.whiteView addConstraint:view11Height];
-        cell.labelShortName.text=[NSString stringWithFormat:@"%@", stringForLabelShortName];
+        cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+        cell.stringForSrochno=stringforSrochno;
+        cell.shortName=shortName;
+        [cell updateLabelShortName];
         cell.labelPercent.text = stringForLabelPercent;
         [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
         
@@ -558,7 +549,10 @@
             }
             cell.labelPercent0.textColor = [UIColor whiteColor];
             cell.labelPercent0.text =  stringForLabelPercent;
-            cell.labelShortName0.text =  stringForLabelShortName;
+            cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+            cell.stringForSrochno=stringforSrochno;
+            cell.shortName=shortName;
+            [cell updateLabelShortName];
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
             if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
@@ -597,7 +591,11 @@
             cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
             cell.labelPercent.textColor = [UIColor whiteColor];
             cell.labelPercent.text = stringForLabelPercent;
-            cell.labelShortName.text = stringForLabelShortName;
+            cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+            NSLog(@"Call Dates %@",cell.callDate);
+            cell.stringForSrochno=stringforSrochno;
+            cell.shortName=shortName;
+            [cell updateLabelShortName];
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
             if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
@@ -1493,6 +1491,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     else
         
     {
+        
+        
         for (int i =0; i<arrayOfImages.count; i++)
         {
             NSLayoutConstraint *constForXhide = [NSLayoutConstraint constraintWithItem:[arrayOfImages objectAtIndex:i] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:label attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:20];
@@ -1501,40 +1501,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
     }
-}
-
--(NSString*)TimeFormat:(NSString*)string
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
-    NSDate *date = [[NSDate alloc] init];
-    date = [dateFormatter dateFromString:string];
-    /////////convert nsdata To NSString////////////////////////////////////
-    [dateFormatter setDateFormat:@"HH:mm"];
-    if(date==nil) return @"00:00";
-    return [dateFormatter stringFromDate:date];
     
-}
+    if (arrayOfImages2.count >=5 && ([[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortrait || [[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown))
+    {
+       for (int i =5; i<arrayOfImages2.count; i++)
+        {
+        UIImageView * imgViewCurrentHid =[arrayOfImages2 objectAtIndex:i];
+        imgViewCurrentHid.hidden=YES;
+        }
+    }
+    
+   }
 
-//-(void)TimeForUrgentOrders:(NSString *)string
-//{
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
-//    NSDate *date1 = [[NSDate alloc] init];
-//    date1 = [dateFormatter dateFromString:string];
-//    NSTimeInterval diff = [date1 timeIntervalSinceNow];
-//    div_t h = div(diff, 3600);
-//    int hours = h.quot;
-//    // Divide the remainder by 60; the quotient is minutes, the remainder
-//    // is seconds.
-//    div_t m = div(h.rem, 60);
-//    int minutes = m.quot;
-//    int seconds = m.rem;
-//    
-//    // If you want to get the individual digits of the units, use div again
-//    // with a divisor of 10.
-//    
-//    NSLog(@"%d:%d:%d", hours, minutes, seconds);
-//   
-//}
+
+
 @end

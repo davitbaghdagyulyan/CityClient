@@ -83,6 +83,9 @@
 -(void)viewDidAppear:(BOOL)animated
 
 {
+    //Karen  Changing colours of icons
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     //Adding Gradient For self.view
     gradLayerForSelfView =[CAGradientLayer layer];
     UIColor * gradColStartSelView =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];

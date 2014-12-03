@@ -39,6 +39,8 @@
 @implementation RootViewController
 -(void)viewDidAppear:(BOOL)animated
 {
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     [super viewDidAppear:animated];
     timerCreated =NO;
     flag=0;

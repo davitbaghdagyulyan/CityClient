@@ -29,4 +29,7 @@
 -(void)setUnderView:(UIView*)under;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property(copy,nonatomic)NSString * idhash;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
 @end

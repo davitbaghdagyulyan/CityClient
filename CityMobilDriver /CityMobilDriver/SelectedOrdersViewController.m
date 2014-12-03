@@ -60,7 +60,9 @@
 {
     [super viewDidAppear:animated];
     //FONT TITLE LABEL
-    selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
     self.tableViewOrdersDetails.delegate=selectedOrdersTableViewHandlerObject;
     self.tableViewOrdersDetails.dataSource=selectedOrdersTableViewHandlerObject;
     self.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:20];

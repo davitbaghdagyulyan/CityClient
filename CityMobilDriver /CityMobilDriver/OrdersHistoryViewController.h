@@ -12,7 +12,8 @@
 
 
 
-
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 - (IBAction)actionGPS:(id)sender;
 
 - (IBAction)refresh:(id)sender;

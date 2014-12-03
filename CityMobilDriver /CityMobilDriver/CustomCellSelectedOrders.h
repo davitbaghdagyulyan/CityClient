@@ -24,4 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelPercent;
 @property (weak, nonatomic) IBOutlet UILabel *labelCollMetroName;
 @property (weak, nonatomic) IBOutlet UILabel *labelDeliveryMetroName;
+@property(strong,nonatomic)NSString * callDate;
+@property(strong,nonatomic)NSString * stringForSrochno;
+@property(strong,nonatomic)NSString * shortName;
+@property(assign,nonatomic)BOOL timerForUpdatingLabelShortNameIsCreated;
+-(void)updateLabelShortName;
 @end

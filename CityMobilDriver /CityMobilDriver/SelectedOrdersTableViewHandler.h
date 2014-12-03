@@ -25,7 +25,6 @@
     UIAlertView * alertConfirmPurchase;
     NSString *  deliveryAddrTypeMenu;
     NSString * deviceType;
-    NSString * callDateFormat;
     NSString * shortName;
     NSString * percent;
     NSString * NoSmoking;
@@ -58,6 +57,8 @@
        CGSize expectSizeForOurComment;
     CGFloat height2;
     CGFloat height1;
+    NSTimer * timerForCallDat;
+   
     
 }
 @property(nonatomic,strong)UIView*under;
