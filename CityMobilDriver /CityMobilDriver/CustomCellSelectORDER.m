@@ -29,17 +29,28 @@
         NSDate *callDate = [[NSDate alloc] init];
         callDate=[dateFormatter dateFromString:self.callDate];
         NSTimeInterval diff = [callDate timeIntervalSinceDate:[NSDate date]];
-        NSInteger k=(int)((diff+3600)/60);
-        NSInteger mnacord = (int)(diff+3600)%60;
+        NSInteger minutes=(int)((diff+3600)/60);
+        NSInteger seconds = (int)(diff+3600)%60;
         NSMutableString * stringForUrgent;
-        if (k<10)
+        NSString * minutesString;
+        NSString * secondsString;
+        if(minutes<10)
         {
-            stringForUrgent=[NSMutableString stringWithFormat:@"0%ld:%ld",k,mnacord];
+            minutesString=[NSString stringWithFormat:@"0%ld",minutes];
         }
         else
         {
-            stringForUrgent=[NSMutableString stringWithFormat:@"%ld:%ld",k,mnacord];
+            minutesString=[NSString stringWithFormat:@"%ld",minutes];
         }
+        if (seconds<10)
+        {
+            secondsString =[NSString stringWithFormat:@"0%ld",seconds];
+        }
+        else
+        {
+            secondsString =[NSString stringWithFormat:@"%ld",seconds];
+        }
+        stringForUrgent=[NSMutableString stringWithFormat:@"%@:%@",minutesString,secondsString];
       self.labelShortName.text=[NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,stringForUrgent,self.shortName];
                if (self.timerForUpdatingLabelShortNameIsCreated==NO)
         {

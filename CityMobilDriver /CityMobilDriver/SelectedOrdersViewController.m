@@ -74,7 +74,7 @@ selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init
     self.titleLabel.text = self.titleString;
     if ([self.titleString isEqualToString:@"СРОЧНЫЕ"])
     {
-    timerForTitleLabel = [NSTimer scheduledTimerWithTimeInterval:5
+    timerForTitleLabel = [NSTimer scheduledTimerWithTimeInterval:1
                                                           target:self selector:@selector(toggleTitleLabel) userInfo:nil repeats:YES];
     self.titleLabel.textColor =[UIColor redColor];
     self.stringForSrochno=@"СРОЧНО";
