@@ -809,7 +809,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(numberOfClass==0)
+    {
    ((SelectedOrdersViewController*)curentSelf).idhash=[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+    }
     idhash=[[responseObject.orders objectAtIndex:indexPath.row] idhash];
     if(selectedRow==indexPath.row)
     {

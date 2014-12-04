@@ -11,6 +11,12 @@
 		8F4EBB751A1F98820010F18B /* LabelUnderLineForOHVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EBB741A1F98820010F18B /* LabelUnderLineForOHVC.m */; };
 		8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5219E7DC1000585B40 /* metroAndroid.png */; };
 		8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */; };
+		8F6689B51A2F04F10062F3D7 /* PaymentHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6689B41A2F04F10062F3D7 /* PaymentHistoryViewController.m */; };
+		8F6689B91A2F2E330062F3D7 /* PaymentHistoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6689B81A2F2E330062F3D7 /* PaymentHistoryCustomCell.m */; };
+		8F6689BB1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F6689BA1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib */; };
+		8F6689BF1A2F34D80062F3D7 /* GetPaymentsJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6689BE1A2F34D80062F3D7 /* GetPaymentsJson.m */; };
+		8F6689C21A2F350B0062F3D7 /* GetPaymentElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6689C11A2F350B0062F3D7 /* GetPaymentElements.m */; };
+		8F6689C51A2F35230062F3D7 /* GetPaymentsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6689C41A2F35230062F3D7 /* GetPaymentsResponse.m */; };
 		8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */; };
 		8F8D322719E3BC57003232F7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */; };
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
@@ -323,6 +329,17 @@
 		8F52FB5219E7DC1000585B40 /* metroAndroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metroAndroid.png; sourceTree = "<group>"; };
 		8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForFilter.h; sourceTree = "<group>"; };
 		8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProviderForFilter.m; sourceTree = "<group>"; };
+		8F6689B31A2F04F10062F3D7 /* PaymentHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentHistoryViewController.h; sourceTree = "<group>"; };
+		8F6689B41A2F04F10062F3D7 /* PaymentHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentHistoryViewController.m; sourceTree = "<group>"; };
+		8F6689B71A2F2E330062F3D7 /* PaymentHistoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentHistoryCustomCell.h; path = ../PaymentHistoryCustomCell.h; sourceTree = "<group>"; };
+		8F6689B81A2F2E330062F3D7 /* PaymentHistoryCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentHistoryCustomCell.m; path = ../PaymentHistoryCustomCell.m; sourceTree = "<group>"; };
+		8F6689BA1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentHistoryCustomCell.xib; sourceTree = "<group>"; };
+		8F6689BD1A2F34D80062F3D7 /* GetPaymentsJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPaymentsJson.h; sourceTree = "<group>"; };
+		8F6689BE1A2F34D80062F3D7 /* GetPaymentsJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPaymentsJson.m; sourceTree = "<group>"; };
+		8F6689C01A2F350B0062F3D7 /* GetPaymentElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPaymentElements.h; sourceTree = "<group>"; };
+		8F6689C11A2F350B0062F3D7 /* GetPaymentElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPaymentElements.m; sourceTree = "<group>"; };
+		8F6689C31A2F35230062F3D7 /* GetPaymentsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPaymentsResponse.h; sourceTree = "<group>"; };
+		8F6689C41A2F35230062F3D7 /* GetPaymentsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPaymentsResponse.m; sourceTree = "<group>"; };
 		8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		8F8D322419E3BC34003232F7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
@@ -812,6 +829,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F6689B61A2F05000062F3D7 /* PaymentHistory */ = {
+			isa = PBXGroup;
+			children = (
+				8F6689BC1A2F34820062F3D7 /* PaymentJson */,
+				8F6689B31A2F04F10062F3D7 /* PaymentHistoryViewController.h */,
+				8F6689B41A2F04F10062F3D7 /* PaymentHistoryViewController.m */,
+				8F6689B71A2F2E330062F3D7 /* PaymentHistoryCustomCell.h */,
+				8F6689B81A2F2E330062F3D7 /* PaymentHistoryCustomCell.m */,
+				8F6689BA1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib */,
+			);
+			name = PaymentHistory;
+			sourceTree = "<group>";
+		};
+		8F6689BC1A2F34820062F3D7 /* PaymentJson */ = {
+			isa = PBXGroup;
+			children = (
+				8F6689BD1A2F34D80062F3D7 /* GetPaymentsJson.h */,
+				8F6689BE1A2F34D80062F3D7 /* GetPaymentsJson.m */,
+				8F6689C01A2F350B0062F3D7 /* GetPaymentElements.h */,
+				8F6689C11A2F350B0062F3D7 /* GetPaymentElements.m */,
+				8F6689C31A2F35230062F3D7 /* GetPaymentsResponse.h */,
+				8F6689C41A2F35230062F3D7 /* GetPaymentsResponse.m */,
+			);
+			name = PaymentJson;
+			sourceTree = "<group>";
+		};
 		8FB0F8901A28D9AE003A79E9 /* landmark */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,6 +930,7 @@
 				ECC471891A11F1AE0062803A /* OrdersHistoryViewController */,
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
+				8F6689B61A2F05000062F3D7 /* PaymentHistory */,
 				ECEC89CE1A2CA9170036781D /* Main.storyboard */,
 				D70428C219D0071F00F5C38C /* Images.xcassets */,
 				D70428C419D0071F00F5C38C /* LaunchScreen.xib */,
@@ -1912,6 +1956,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F6689BB1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib in Resources */,
 				8FB0F8AE1A28D9AE003A79E9 /* metro_d.png in Resources */,
 				8FC5D8ED1A14FFC600B33FA9 /* Roboto-LightItalic.ttf in Resources */,
 				ECC38D211A289D790065474B /* Time Normal.ttf in Resources */,
@@ -2164,10 +2209,12 @@
 				ECE25C8A19E56BE80044F6AD /* messages.m in Sources */,
 				ECD55D8F19F7EEE8002E182D /* BindCardJson.m in Sources */,
 				ECB52E3F1A0778D70091293F /* DriveMKADClass.m in Sources */,
+				8F6689B91A2F2E330062F3D7 /* PaymentHistoryCustomCell.m in Sources */,
 				ECB52E211A076BE00091293F /* IdClass.m in Sources */,
 				ECCD34501A03B224000444BF /* RequestSetCarInfoWidthPhoto.m in Sources */,
 				EC5AD44C1A14FF9400588DE6 /* GetOrderResponse.m in Sources */,
 				ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */,
+				8F6689C51A2F35230062F3D7 /* GetPaymentsResponse.m in Sources */,
 				EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */,
 				ECC978F91A00DDE800D77B80 /* GetInfoResponse.m in Sources */,
 				ECCA90A319DEE2060007831F /* JSONModel.m in Sources */,
@@ -2183,6 +2230,7 @@
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 				ECC9215E1A1204920012FBFA /* UserRegistrationInformation.m in Sources */,
 				ECB3D7641A03BBF60039DD3A /* GetTariffsUrlResponse.m in Sources */,
+				8F6689BF1A2F34D80062F3D7 /* GetPaymentsJson.m in Sources */,
 				ECB52E5D1A07853B0091293F /* CurrencyClass.m in Sources */,
 				ECC2BA591A10D2EF009A8CE4 /* DesignationCustomCell.m in Sources */,
 				ECC978FC1A00E11900D77B80 /* InfoElements.m in Sources */,
@@ -2198,11 +2246,13 @@
 				ECCD34471A039EA4000444BF /* CardsViewController.m in Sources */,
 				ECCD4F401A0A1CC5002456F6 /* RequestSetAutoget.m in Sources */,
 				ECC9652E1A00F85800768E1F /* RequestGetMarkList.m in Sources */,
+				8F6689B51A2F04F10062F3D7 /* PaymentHistoryViewController.m in Sources */,
 				ECCA4CB31A0B60E6007CEBC4 /* RegisterResponse.m in Sources */,
 				84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */,
 				ECB3D75B1A03B3FD0039DD3A /* TariffsCityMobilViewController.m in Sources */,
 				ECB52E601A0785820091293F /* MinPriceClass.m in Sources */,
 				EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */,
+				8F6689C21A2F350B0062F3D7 /* GetPaymentElements.m in Sources */,
 				ECEC89AF1A2CA1100036781D /* CustomCellSelectORDER.m in Sources */,
 				ECCA4CB01A0B5CE1007CEBC4 /* RegisterRequest.m in Sources */,
 				ECCA4CAD1A0B55F2007CEBC4 /* ActivateAccountViewController.m in Sources */,

@@ -103,18 +103,19 @@
             identity =@"ReplenishmentViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-            
-            
         case 4:
             myClass = NSClassFromString(@"RobotSettingsViewController");
             identity =@"RobotSettingsViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-
-
         case 5:
             myClass =NSClassFromString(@"OrdersHistoryViewController");
             identity =@"OrdersHistoryViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+        case 6:
+            myClass =NSClassFromString(@"PaymentHistoryViewController");
+            identity =@"PaymentHistoryViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
             
