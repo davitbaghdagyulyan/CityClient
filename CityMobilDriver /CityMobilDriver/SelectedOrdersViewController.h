@@ -31,5 +31,6 @@
 @property(copy,nonatomic)NSString * idhash;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
+-(void)setFilter:(NSDictionary *)filter;
 
 @end

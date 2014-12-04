@@ -9,7 +9,6 @@
 #import "SelectedOrdersViewController.h"
 #import "CustomCellSelectedOrders.h"
 #import "SingleDataProvider.h"
-#import "SingleDataProviderForFilter.h"
 #import "SelectedOrdersDetailsResponse.h"
 #import "SelectedOrdersDetailsJson.h"
 #import "JSONModel.h"
@@ -54,8 +53,14 @@
     NSTimer * timerForTitleLabel;
     NSTimer * requestTimer;
     bool timerCreated;
+    SelectedOrdersDetailsJson* detailsJsonObject;
 }
 
+-(void)setFilter:(NSDictionary *)filter
+{
+    detailsJsonObject=[[SelectedOrdersDetailsJson alloc]init];
+    detailsJsonObject.filter=filter;
+}
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -159,7 +164,6 @@ selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init
     self.tableViewOrdersDetails.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     self.titleLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     [self.tableViewOrdersDetails reloadData];
-    SelectedOrdersDetailsJson* detailsJsonObject=[[SelectedOrdersDetailsJson alloc]init];
     NSDictionary*jsonDictionary=[detailsJsonObject toDictionary];
     NSString*jsons=[detailsJsonObject toJSONString];
     NSLog(@"%@",jsons);

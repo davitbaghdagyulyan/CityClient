@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EDCB19E857D100EFFC54 /* LeftMenu.m */; };
-		8F4EBB751A1F98820010F18B /* LabelUnderLineForOHVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EBB741A1F98820010F18B /* LabelUnderLineForOHVC.m */; };
 		8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5219E7DC1000585B40 /* metroAndroid.png */; };
-		8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */; };
 		8F6689B51A2F04F10062F3D7 /* PaymentHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6689B41A2F04F10062F3D7 /* PaymentHistoryViewController.m */; };
 		8F6689B91A2F2E330062F3D7 /* PaymentHistoryCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6689B81A2F2E330062F3D7 /* PaymentHistoryCustomCell.m */; };
 		8F6689BB1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F6689BA1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib */; };
@@ -47,8 +45,6 @@
 		8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */; };
 		8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */; };
 		8FBD45181A0B62EB004CEF7D /* OrdersHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBD45171A0B62EB004CEF7D /* OrdersHistoryViewController.m */; };
-		8FC51A821A0CA8A400E13D03 /* SingleDataProviderForStartDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A811A0CA8A400E13D03 /* SingleDataProviderForStartDate.m */; };
-		8FC51A851A0CA93300E13D03 /* SingleDataProviderForEndDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */; };
 		8FC51A881A0CAA1100E13D03 /* OrdersHistoryJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */; };
 		8FC51A8B1A0CAD3000E13D03 /* OrdersHistoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */; };
 		8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */; };
@@ -324,11 +320,7 @@
 		84E6EDCA19E857D100EFFC54 /* LeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftMenu.h; path = ../LeftMenu.h; sourceTree = "<group>"; };
 		84E6EDCB19E857D100EFFC54 /* LeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftMenu.m; path = ../LeftMenu.m; sourceTree = "<group>"; };
 		8F0CAA0E19E80C6100C8ED56 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
-		8F4EBB731A1F98820010F18B /* LabelUnderLineForOHVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelUnderLineForOHVC.h; sourceTree = "<group>"; };
-		8F4EBB741A1F98820010F18B /* LabelUnderLineForOHVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelUnderLineForOHVC.m; sourceTree = "<group>"; };
 		8F52FB5219E7DC1000585B40 /* metroAndroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metroAndroid.png; sourceTree = "<group>"; };
-		8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForFilter.h; sourceTree = "<group>"; };
-		8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProviderForFilter.m; sourceTree = "<group>"; };
 		8F6689B31A2F04F10062F3D7 /* PaymentHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentHistoryViewController.h; sourceTree = "<group>"; };
 		8F6689B41A2F04F10062F3D7 /* PaymentHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentHistoryViewController.m; sourceTree = "<group>"; };
 		8F6689B71A2F2E330062F3D7 /* PaymentHistoryCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentHistoryCustomCell.h; path = ../PaymentHistoryCustomCell.h; sourceTree = "<group>"; };
@@ -346,7 +338,7 @@
 		8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyDeliveryAddressJson.h; sourceTree = "<group>"; };
-		8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDeliveryAddressJson.m; sourceTree = "<group>"; };
+		8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyDeliveryAddressJson.m; path = CityMobilDriver/BuyDeliveryAddressJson.m; sourceTree = "<group>"; };
 		8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BuyDeliveryAddressResponse.h; path = Orders/BuyDeliveryAddressResponse.h; sourceTree = "<group>"; };
 		8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyDeliveryAddressResponse.m; path = Orders/BuyDeliveryAddressResponse.m; sourceTree = "<group>"; };
 		8FA028F01A122B1700729054 /* star_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_none.png; path = CityMobilDriver/star_none.png; sourceTree = "<group>"; };
@@ -373,10 +365,6 @@
 		8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_smoking_lounge_small.png; sourceTree = "<group>"; };
 		8FBD45161A0B62EB004CEF7D /* OrdersHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersHistoryViewController.h; sourceTree = "<group>"; };
 		8FBD45171A0B62EB004CEF7D /* OrdersHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersHistoryViewController.m; sourceTree = "<group>"; };
-		8FC51A801A0CA8A400E13D03 /* SingleDataProviderForStartDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForStartDate.h; sourceTree = "<group>"; };
-		8FC51A811A0CA8A400E13D03 /* SingleDataProviderForStartDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProviderForStartDate.m; sourceTree = "<group>"; };
-		8FC51A831A0CA93300E13D03 /* SingleDataProviderForEndDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleDataProviderForEndDate.h; sourceTree = "<group>"; };
-		8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleDataProviderForEndDate.m; sourceTree = "<group>"; };
 		8FC51A861A0CAA1100E13D03 /* OrdersHistoryJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrdersHistoryJson.h; path = ../OrdersHistoryJson.h; sourceTree = "<group>"; };
 		8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrdersHistoryJson.m; path = ../OrdersHistoryJson.m; sourceTree = "<group>"; };
 		8FC51A891A0CAD3000E13D03 /* OrdersHistoryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrdersHistoryResponse.h; path = ../OrdersHistoryResponse.h; sourceTree = "<group>"; };
@@ -762,16 +750,16 @@
 		ECEC898A1A2CA1100036781D /* AssignOrderJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignOrderJson.m; sourceTree = "<group>"; };
 		ECEC898B1A2CA1100036781D /* AssignOrderResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignOrderResponse.h; sourceTree = "<group>"; };
 		ECEC898C1A2CA1100036781D /* AssignOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignOrderResponse.m; sourceTree = "<group>"; };
-		ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ECEC898E1A2CA1100036781D /* SelectedOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersViewController.h; sourceTree = "<group>"; };
 		ECEC898F1A2CA1100036781D /* SelectedOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersViewController.m; sourceTree = "<group>"; };
 		ECEC89901A2CA1100036781D /* CustomCellSelectORDER2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER2.xib; sourceTree = "<group>"; };
 		ECEC89911A2CA1100036781D /* CustomCellSelectedOrders2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders2.xib; sourceTree = "<group>"; };
-		ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		ECEC89931A2CA1100036781D /* CustomCellSelectedOrders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders.xib; sourceTree = "<group>"; };
 		ECEC89941A2CA1100036781D /* CustomCellSelectORDER.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER.xib; sourceTree = "<group>"; };
 		ECEC89951A2CA1100036781D /* CustomCellSelectORDER.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellSelectORDER.h; sourceTree = "<group>"; };
-		ECEC89961A2CA1100036781D /* rublsi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rublsi.ttf; sourceTree = "<group>"; };
+		ECEC89961A2CA1100036781D /* rublsi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = rublsi.ttf; path = ../rublsi.ttf; sourceTree = "<group>"; };
 		ECEC89971A2CA1100036781D /* CustomCellSelectORDER.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellSelectORDER.m; sourceTree = "<group>"; };
 		ECEC89981A2CA1100036781D /* CustomCellSelectedOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellSelectedOrders.h; sourceTree = "<group>"; };
 		ECEC89991A2CA1100036781D /* CustomCellSelectedOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellSelectedOrders.m; sourceTree = "<group>"; };
@@ -832,12 +820,12 @@
 		8F6689B61A2F05000062F3D7 /* PaymentHistory */ = {
 			isa = PBXGroup;
 			children = (
-				8F6689BC1A2F34820062F3D7 /* PaymentJson */,
 				8F6689B31A2F04F10062F3D7 /* PaymentHistoryViewController.h */,
 				8F6689B41A2F04F10062F3D7 /* PaymentHistoryViewController.m */,
 				8F6689B71A2F2E330062F3D7 /* PaymentHistoryCustomCell.h */,
 				8F6689B81A2F2E330062F3D7 /* PaymentHistoryCustomCell.m */,
 				8F6689BA1A2F2E7A0062F3D7 /* PaymentHistoryCustomCell.xib */,
+				8F6689BC1A2F34820062F3D7 /* PaymentJson */,
 			);
 			name = PaymentHistory;
 			sourceTree = "<group>";
@@ -878,6 +866,18 @@
 			path = landmark;
 			sourceTree = "<group>";
 		};
+		8FE09AE71A307CF60056C680 /* BuyDeliveryAddress */ = {
+			isa = PBXGroup;
+			children = (
+				8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */,
+				8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */,
+				8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */,
+				8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */,
+			);
+			name = BuyDeliveryAddress;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
@@ -890,9 +890,6 @@
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
 				D70428CE19D0072000F5C38C /* CityMobilDriverTests */,
 				D70428B319D0071F00F5C38C /* Products */,
-				8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */,
-				8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */,
-				8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -945,7 +942,6 @@
 				ECCD99231A19DF93009D482C /* Roboto Fonts */,
 				ECCD34511A03D422000444BF /* Images */,
 				D70428B619D0071F00F5C38C /* Info.plist */,
-				8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */,
 				D70428B719D0071F00F5C38C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1079,12 +1075,6 @@
 			isa = PBXGroup;
 			children = (
 				EC55988919E5364900877CBC /* SingleDataProvider.h */,
-				8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */,
-				8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */,
-				8FC51A801A0CA8A400E13D03 /* SingleDataProviderForStartDate.h */,
-				8FC51A811A0CA8A400E13D03 /* SingleDataProviderForStartDate.m */,
-				8FC51A831A0CA93300E13D03 /* SingleDataProviderForEndDate.h */,
-				8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */,
 				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
 				ECC9215C1A1204920012FBFA /* UserRegistrationInformation.h */,
 				ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */,
@@ -1336,8 +1326,6 @@
 		ECC4718A1A11F25D0062803A /* OrdersHistory */ = {
 			isa = PBXGroup;
 			children = (
-				8F4EBB731A1F98820010F18B /* LabelUnderLineForOHVC.h */,
-				8F4EBB741A1F98820010F18B /* LabelUnderLineForOHVC.m */,
 				8FC51A861A0CAA1100E13D03 /* OrdersHistoryJson.h */,
 				8FC51A871A0CAA1100E13D03 /* OrdersHistoryJson.m */,
 				8FC51A891A0CAD3000E13D03 /* OrdersHistoryResponse.h */,
@@ -1643,6 +1631,9 @@
 		ECCD99231A19DF93009D482C /* Roboto Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */,
+				ECEC89961A2CA1100036781D /* rublsi.ttf */,
+				ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */,
 				8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */,
 				ECC38D201A28967C0065474B /* Time Normal.ttf */,
 				ECCD99241A19DF93009D482C /* NOTICE.txt */,
@@ -1808,17 +1799,13 @@
 		ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ECEC89B71A2CA2790036781D /* AssignOrder */,
-				ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */,
 				ECEC898E1A2CA1100036781D /* SelectedOrdersViewController.h */,
 				ECEC898F1A2CA1100036781D /* SelectedOrdersViewController.m */,
 				ECEC89901A2CA1100036781D /* CustomCellSelectORDER2.xib */,
 				ECEC89911A2CA1100036781D /* CustomCellSelectedOrders2.xib */,
-				ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */,
 				ECEC89931A2CA1100036781D /* CustomCellSelectedOrders.xib */,
 				ECEC89941A2CA1100036781D /* CustomCellSelectORDER.xib */,
 				ECEC89951A2CA1100036781D /* CustomCellSelectORDER.h */,
-				ECEC89961A2CA1100036781D /* rublsi.ttf */,
 				ECEC89971A2CA1100036781D /* CustomCellSelectORDER.m */,
 				ECEC89981A2CA1100036781D /* CustomCellSelectedOrders.h */,
 				ECEC89991A2CA1100036781D /* CustomCellSelectedOrders.m */,
@@ -1827,6 +1814,8 @@
 				ECEC899C1A2CA1100036781D /* CustomViewForMaps.m */,
 				ECEC89B91A2CA3A90036781D /* SelectedOrdersTableViewHandler.h */,
 				ECEC89BA1A2CA3A90036781D /* SelectedOrdersTableViewHandler.m */,
+				ECEC89B71A2CA2790036781D /* AssignOrder */,
+				8FE09AE71A307CF60056C680 /* BuyDeliveryAddress */,
 				ECEC89B81A2CA2AD0036781D /* SelectedOrdersDetails */,
 			);
 			name = SelectedOrdersViewController;
@@ -2108,7 +2097,6 @@
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
 				ECCC237219E7F7930091C43E /* CustomCell.m in Sources */,
-				8F4EBB751A1F98820010F18B /* LabelUnderLineForOHVC.m in Sources */,
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
@@ -2151,7 +2139,6 @@
 				ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */,
 				ECB52E511A0780C00091293F /* WeekdayElements.m in Sources */,
 				ECCD344A1A039F44000444BF /* RequestStandart.m in Sources */,
-				8FC51A851A0CA93300E13D03 /* SingleDataProviderForEndDate.m in Sources */,
 				EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */,
 				ECEC89A61A2CA1100036781D /* AssignOrderResponse.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
@@ -2191,7 +2178,6 @@
 				EC0798D91A2331A10085E3F0 /* yandexIcon.m in Sources */,
 				8F9933181A2CB58A0040C97E /* BuyDeliveryAddressResponse.m in Sources */,
 				EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */,
-				8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
 				ECC978F21A00DD4700D77B80 /* StatisticsViewController.m in Sources */,
 				ECB52E4E1A077F620091293F /* SpanClass.m in Sources */,
@@ -2238,7 +2224,6 @@
 				EC5BF0981A022E69009EC444 /* RequestGetColorList.m in Sources */,
 				ECC9653A1A01255A00768E1F /* ResponseGetModelList.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
-				8FC51A821A0CA8A400E13D03 /* SingleDataProviderForStartDate.m in Sources */,
 				ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */,
 				EC4CB40919F7F6EF0028F219 /* DriverInfoResponse.m in Sources */,
 				8FC51A881A0CAA1100E13D03 /* OrdersHistoryJson.m in Sources */,

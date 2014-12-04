@@ -286,7 +286,7 @@
                 <outlet property="whiteLabel" destination="xJ3-4f-8hl" id="Zf9-5Q-e3H"/>
                 <outlet property="whiteView" destination="7M3-1E-lOl" id="gnG-Ae-s6k"/>
             </connections>
-            <point key="canvasLocation" x="454.5" y="337"/>
+            <point key="canvasLocation" x="430.5" y="304"/>
         </tableViewCell>
     </objects>
     <resources>

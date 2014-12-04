@@ -6,8 +6,17 @@
 #import "MessagesViewController.h"
 @interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
-@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
-@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
+
+@property (strong, nonatomic) IBOutlet UIButton *yandexButtonIpad;
+@property (strong, nonatomic) IBOutlet UIButton *yandexButtonLand;
+@property (strong, nonatomic) IBOutlet UIButton *yandexButtonPort;
+
+
+@property (nonatomic,weak) IBOutlet UIButton* cityButtonPort;
+@property (strong, nonatomic) IBOutlet UIButton *cityButtonLand;
+@property (strong, nonatomic) IBOutlet UIButton *cityButtonIpad;
+
 
 //UI for Iphones in Portrait
 @property (strong, nonatomic) IBOutlet UIView *navigationView;

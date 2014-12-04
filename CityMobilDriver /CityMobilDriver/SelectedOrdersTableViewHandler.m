@@ -832,11 +832,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-    
-    
     deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
     
     if(selectedRow==indexPath.row)

@@ -8,8 +8,6 @@
 
 #import "OrdersHistoryViewController.h"
 #import "CustomCellOrdersHistory.h"
-#import "SingleDataProviderForEndDate.h"
-#import "SingleDataProviderForStartDate.h"
 #import "OrdersHistoryResponse.h"
 #import "OrdersHistoryJson.h"
 #import "LeftMenu.h"
@@ -37,6 +35,7 @@
     //Objects For Date Formating and Request
     NSDateFormatter *df;
     NSString *stringEndDate;
+    OrdersHistoryJson * ordersHistoryJsonObject;
     OrdersHistoryResponse * ordersHistoryResponseObject;
     //Other
     UIAlertView *alertForNoInternetCon;
@@ -63,8 +62,9 @@
     df = [[NSDateFormatter alloc] init];
     df.dateStyle =NSDateFormatterMediumStyle;
     [df setDateFormat:@"yyyy-MM-dd"];
-    self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",[df stringFromDate:datePicker.date]];
-    intervalArray =[ [NSArray alloc]initWithObjects:@"один день",@"три дня",@"одна неделя",@"две недели",@"месяц", nil];
+    NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+    self.labelSelectedDate.attributedText =[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",[df stringFromDate:datePicker.date]]attributes:underlineAttribute];
+   intervalArray =[ [NSArray alloc]initWithObjects:@"один день",@"три дня",@"одна неделя",@"две недели",@"месяц", nil];
     self.tableViewOrdersHistory.hidden = YES;
     //FONTS VIEWDIDLOAD
     self.labelC.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
@@ -128,9 +128,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    height =38;
-    NSString * myString = @"jsdfjhfjhsfjkhsfj";
-    if (tableView==tableViewInterval)
+   if (tableView==tableViewInterval)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
         if (cell == nil)
@@ -141,38 +139,7 @@
         cell.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
         return cell;
     }
-    if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating] && [[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating]integerValue] != -1)
-    {
-       if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review] && [[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review].length !=0)
-        {
-            UILabel * labelDefiningSize;
-            CGSize  expectSize;
-            //NSString * myString =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
-            labelDefiningSize  = [[UILabel alloc] init];
-            labelDefiningSize.text =myString;
-            labelDefiningSize.numberOfLines = 0;
-            labelDefiningSize.lineBreakMode = NSLineBreakByWordWrapping;
-            CGSize maximumLabelSize = CGSizeMake(252,100);
-            expectSize = [labelDefiningSize sizeThatFits:maximumLabelSize];
-            if (expectSize.height<=20)
-            {
-                height =height+20;
-            }
-            else
-            {
-                height =height+expectSize.height;
-            }
-        }
-        else
-        {
-            height =height +20;
-        }
-    }
-    else
-    {
-        height = height +2;
-    }
-    NSString *simpleTableIdentifierIphone = @"SimpleTableCellIdentifier";
+       NSString *simpleTableIdentifierIphone = @"SimpleTableCellIdentifier";
     CustomCellOrdersHistory * cell = (CustomCellOrdersHistory *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
     {
@@ -184,7 +151,15 @@
     cell.labelYandexReview.numberOfLines = 0;
     cell.labelYandexReview.font=[UIFont fontWithName:@"Roboto-Regular" size:12];
     cell.labelYandexReview.lineBreakMode =  NSLineBreakByWordWrapping;
-    cell.labelYandexReview.text = myString;
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review])
+    {
+     cell.labelYandexReview.text = [[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
+    }
+    else
+    {
+     cell.labelYandexReview.text=@"";
+    }
+ 
     cell.labelCallMetroName.font =[UIFont fontWithName:@"Roboto-Regular" size:12];
     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName])
     {
@@ -260,7 +235,40 @@
          return 44;
     }
     else
-    {
+    { height =38;
+      NSString * myString;
+        if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating] && [[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating]integerValue] != -1)
+        {
+            if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review] && [[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review].length !=0)
+            {
+                UILabel * labelDefiningSize;
+                CGSize  expectSize;
+                myString =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
+                labelDefiningSize  = [[UILabel alloc] init];
+                labelDefiningSize.text =myString;
+                labelDefiningSize.numberOfLines = 0;
+                labelDefiningSize.lineBreakMode = NSLineBreakByWordWrapping;
+                CGSize maximumLabelSize = CGSizeMake(252,100);
+                expectSize = [labelDefiningSize sizeThatFits:maximumLabelSize];
+                if (expectSize.height<=20)
+                {
+                    height =height+20;
+                }
+                else
+                {
+                    height =height+expectSize.height;
+                }
+            }
+            else
+            {
+                height =height +20;
+            }
+        }
+        else
+        {
+            height = height +2;
+        }
+
      return height;
     }
 }
@@ -408,8 +416,8 @@ else
     [buttonCancell removeFromSuperview];
     [labelSettingTheDate removeFromSuperview];
     [designLabel1 removeFromSuperview];
-    self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",
-                                  [df stringFromDate:datePicker.date]];
+    NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+    self.labelSelectedDate.attributedText =[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",[df stringFromDate:datePicker.date]]attributes:underlineAttribute];
     self.tableViewOrdersHistory.userInteractionEnabled = YES;
 }
 
@@ -482,8 +490,9 @@ else
 }
 - (IBAction)findOrdersFromInterval:(id)sender
 {
-    [SingleDataProviderForStartDate sharedStartDate].startDate = self.labelSelectedDate.text;
-    [SingleDataProviderForEndDate sharedEndDate].endDate = stringEndDate;
+    ordersHistoryJsonObject = [[OrdersHistoryJson alloc]init];
+    ordersHistoryJsonObject.start=self.labelSelectedDate.text;
+    ordersHistoryJsonObject.end=stringEndDate;
     [self requestOrdersHistory];
 }
 
@@ -494,7 +503,6 @@ else
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
     [self.view addSubview:indicator];
-    OrdersHistoryJson * ordersHistoryJsonObject = [[OrdersHistoryJson alloc]init];
     NSDictionary*jsonDictionary=[ordersHistoryJsonObject  toDictionary];
     NSString*jsons=[ordersHistoryJsonObject  toJSONString];
     NSLog(@"%@",jsons);
@@ -513,15 +521,13 @@ else
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            alertForNoInternetCon = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            
-            
-            [alertForNoInternetCon show];
-            return ;
+            UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [alertNoCon dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertNoCon addAction:cancel];
+            [self presentViewController:alertNoCon animated:YES completion:nil];
         }
         NSString* jsonString1 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"selectedOrdersDetails =%@",jsonString1);
@@ -530,14 +536,13 @@ else
         if(ordersHistoryResponseObject.code!=nil)
         {
             
-            alertWrongData = [[UIAlertView alloc] initWithTitle:@"Ошибка"
-                                                            message:nil
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alertWrongData show];
-            return;
-            
+            UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:ordersHistoryResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                          [alertServerErr dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertServerErr addAction:cancel];
+            [self presentViewController:alertServerErr animated:YES completion:nil];
         }
         [indicator stopAnimating];
         [self.tableViewOrdersHistory reloadData];
@@ -757,6 +762,8 @@ else
 - (IBAction)actionGPS:(id)sender {
 }
 
-- (IBAction)refresh:(id)sender {
+- (IBAction)refresh:(id)sender
+{
+    [self requestOrdersHistory];
 }
 @end

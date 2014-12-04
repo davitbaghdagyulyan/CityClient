@@ -39,8 +39,12 @@
 @implementation RootViewController
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self.cityButton setNeedsDisplay];
-    [self.yandexButton setNeedsDisplay];
+    [self.cityButtonIpad setNeedsDisplay];
+    [self.cityButtonLand setNeedsDisplay];
+    [self.cityButtonPort setNeedsDisplay];
+    [self.yandexButtonIpad setNeedsDisplay];
+    [self.yandexButtonLand setNeedsDisplay];
+    [self.yandexButtonPort setNeedsDisplay];
     [super viewDidAppear:animated];
     timerCreated =NO;
     flag=0;
@@ -212,15 +216,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [self.tableViewOrdersPort reloadData];
         [self.tableViewOrdersLand reloadData];
         [self.tableViewIpad reloadData];
+        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         if ([[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter])
         {
-          [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+            [selectedOrdersCont setFilter:[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter]];
         }
         else
         {
             NSLog(@"There is no filter");
         }
-        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         [self.navigationController pushViewController:selectedOrdersCont animated:YES];
         selectedOrdersCont.titleString =[[ordersResponseObject.categories objectAtIndex:indexPath.row]name];
             

@@ -653,9 +653,6 @@
                                                 <include reference="hmU-nN-Ri3"/>
                                             </mask>
                                         </variation>
-                                        <connections>
-                                            <segue destination="40C-gD-0cA" kind="show" id="eDe-7k-62V"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zq8-mw-Gu9" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -2303,7 +2300,9 @@
                     <connections>
                         <outlet property="button1Port" destination="DUg-fB-wON" id="KNc-jM-cG3"/>
                         <outlet property="button2Port" destination="xni-0S-vY6" id="5VT-u9-J5V"/>
-                        <outlet property="cityButton" destination="Zq8-mw-Gu9" id="G7y-eg-amm"/>
+                        <outlet property="cityButtonIpad" destination="Zq8-mw-Gu9" id="SBS-qz-9Rb"/>
+                        <outlet property="cityButtonLand" destination="2qh-Z6-f0l" id="HaG-Yd-RWJ"/>
+                        <outlet property="cityButtonPort" destination="Zcd-OR-5rt" id="Pdd-bR-iI5"/>
                         <outlet property="helpViewPort" destination="Lv9-7q-wbI" id="xsm-xF-GCr"/>
                         <outlet property="labelCallToDispetcher" destination="2pB-r5-f2n" id="92h-1z-crd"/>
                         <outlet property="labelCallToDispetcherLand" destination="05A-tj-FHV" id="eaw-DT-bla"/>
@@ -2320,12 +2319,14 @@
                         <outlet property="titleLabelIpad" destination="HyF-yx-7wx" id="zE6-gM-ayG"/>
                         <outlet property="titleLabelLand" destination="wV4-VC-vmH" id="yFG-Xb-XxO"/>
                         <outlet property="titleLabelPort" destination="vPO-BX-J9g" id="jTp-Ff-RFw"/>
-                        <outlet property="yandexButton" destination="sgC-jk-bip" id="Nrk-Z0-hRH"/>
+                        <outlet property="yandexButtonIpad" destination="sgC-jk-bip" id="FZH-hb-13Y"/>
+                        <outlet property="yandexButtonLand" destination="3zs-EY-ttY" id="0iY-Ob-vIp"/>
+                        <outlet property="yandexButtonPort" destination="25i-0z-WSg" id="a1w-AL-2S8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2va-g9-Vtx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6707" y="-586.5"/>
+            <point key="canvasLocation" x="-6515" y="-729"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="PnA-f3-4L7">
@@ -5649,7 +5650,7 @@
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-2m-49u">
                                         <rect key="frame" x="5" y="50" width="590" height="479"/>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Ine-Yw-ufC" id="w9b-ZO-NYf"/>
                                             <outlet property="delegate" destination="Ine-Yw-ufC" id="6Wr-ht-a1X"/>
@@ -7246,6 +7247,9 @@
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="157" width="91" height="23"/>
+                                                </variation>
                                                 <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="93" width="90" height="23"/>
                                                 </variation>
@@ -8763,6 +8767,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wNr-2x-bCL"/>
+        <segue reference="pdf-nK-2Pg"/>
     </inferredMetricsTieBreakers>
 </document>
