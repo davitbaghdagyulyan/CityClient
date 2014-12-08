@@ -12,8 +12,11 @@
 #import "TariffCustomCell.h"
 #import "CustomTableView.h"
 #import "CustomLabel.h"
+#import "OpenMapButtonHandler.h"
+
 @interface TariffsCityMobilViewController ()
 {
+    UIScrollView*smallScrollView;
     LeftMenu*leftMenu;
     NSInteger flag;
     GetTariffsUrlResponse*getTariffsUrlResponseObject;
@@ -37,33 +40,40 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
- 
+
+    
+    for (UIScrollView* scroll in self.tariffsSacrollView.subviews)
+    {
+        [scroll removeFromSuperview];
+    }
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
-    
+//
     [self requestGetTariffsUrl];
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     contentWidth=0;
-     scrollViewArray=[[NSMutableArray alloc]init];
+// 
+    scrollViewArray=[[NSMutableArray alloc]init];
     daytimeLabelArray=[[NSMutableArray alloc]init];
     nightTimeLabelArray=[[NSMutableArray alloc]init];
     CustomViewArray=[[NSMutableArray alloc]init];
     shortLabelArray=[[NSMutableArray alloc]init];
-     range=NSMakeRange(0,1);
     ctvObject=[[CustomTableView alloc] init];
-
+     range=NSMakeRange(0,1);
+    
+    self.tariffsSacrollView.userInteractionEnabled=YES;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    NSLog(@"didReceiveMemoryWarning");
 
 }
 -(void)requestGetTariffsUrl
@@ -174,7 +184,7 @@
     
     for (int i=0; i<getTariffsUrlResponseXMLObject.Tariffs.Tariff.count; i++)
     {
-        UIScrollView*smallScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];
+       smallScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];
         smallScrollView.backgroundColor=[UIColor whiteColor];
         [self.tariffsSacrollView addSubview:smallScrollView];
         CGFloat contentHeight=0;
@@ -234,9 +244,11 @@
         contentHeight=contentHeight+10;
         for (int j=0; j<[[[[[[[getTariffsUrlResponseXMLObject.Tariffs.Tariff objectAtIndex:i]Description] Interval]objectAtIndex:0]Transfer] Destination]count]; j++)
         {
-           customView=[[TariffsCustomView alloc] init];
+           //customView=[[TariffsCustomView alloc] init];
+            //if(customView==nil)
+            
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TariffCustomView" owner:self options:nil];
-            customView = [[TariffsCustomView alloc] init];
+            //customView = [[TariffsCustomView alloc] init];
             customView=[nib objectAtIndex:0] ;
             
     
@@ -258,6 +270,7 @@
             customView.customTableView.userInteractionEnabled=NO;
             [smallScrollView addSubview:customView];
             [CustomViewArray addObject:customView];
+            //replace with tags
             customView.customTableView.delegate=(id)ctvObject;
             customView.customTableView.dataSource=(id)ctvObject;
             customView.customTableView.j=j;
@@ -447,5 +460,18 @@
     flag=1;
     self.tariffsSacrollView.userInteractionEnabled=NO;
 }
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+
 
 @end

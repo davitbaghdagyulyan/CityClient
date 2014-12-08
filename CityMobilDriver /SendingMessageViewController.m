@@ -8,6 +8,7 @@
 #import "WriteLetterJson.h"
 #import "WriteLetterResponse.h"
 #import "SendingMessageViewController.h"
+#import "OpenMapButtonHandler.h"
 
 @interface SendingMessageViewController ()
 {
@@ -133,6 +134,11 @@
     }
 }
 
+-(void)openMap:(UIButton *)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
 
 -(void)touchForCloseKeyboard
 {

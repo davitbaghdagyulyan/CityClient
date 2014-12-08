@@ -10,12 +10,30 @@
 #import "LeftMenu.h"
 #import "DesignationCustomCell.h"
 #import "CustomLabel.h"
+
+#import "OpenMapButtonHandler.h"
+////**********************  openMap *********************//
+//
+//#import "GetLastKnownLocationJson.h"
+//#import "GetLastKnownLocationResponse.h"
+//#import "CustomViewForMaps.h"
+//#import "SingleDataProvider.h"
+//
+////**********************  endOpenMap *********************//
+
 @interface DesignationIconsViewController ()
 {
     LeftMenu*leftMenu;
     NSInteger flag;
     CAGradientLayer *gradLayer;
     NSArray*textArray;
+////**********************  openMap *********************//
+//    
+//    CustomViewForMaps*viewMap;
+//    NSString* googleMapUrl;
+//    NSString* yandexMapUrl;
+//    
+////**********************  endOpenMap *********************//
 }
 @end
 
@@ -31,7 +49,28 @@
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     
-   
+//    //**********************  openMap *********************//
+//    
+//    viewMap=[[CustomViewForMaps alloc] init];
+//    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
+//    viewMap = [nib objectAtIndex:0];
+//    viewMap.frame=self.view.frame;
+//    viewMap.center=self.view.center;
+//    viewMap.smallMapView.layer.cornerRadius = 30;
+//    viewMap.smallMapView.layer.borderWidth = 2;
+//    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+//    viewMap.smallMapView.layer.masksToBounds = YES;
+//    [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+//    UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
+//    [singleTapYandex setNumberOfTapsRequired:1];
+//    UITapGestureRecognizer *singleTapGoogle =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openGoogleMap)];
+//    [singleTapYandex setNumberOfTapsRequired:1];
+//    viewMap.yandexImageView.userInteractionEnabled=YES;
+//    viewMap.googleImageView.userInteractionEnabled=YES;
+//    [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
+//    [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
+//
+//    //**********************  endOpenMap *********************//
     
 }
 
@@ -227,5 +266,15 @@
     flag=1;
     self.designationTableView.userInteractionEnabled=NO;
 }
+
+//**********************  openMap *********************//
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+
+}
+
 
 @end

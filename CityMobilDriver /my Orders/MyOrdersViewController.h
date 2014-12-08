@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 #import "LeftMenu.h"
 #import "SelectedOrdersTableViewHandler.h"
-
-@interface MyOrdersViewController : UIViewController<CLLocationManagerDelegate>
+#import "GetLastKnownLocationJson.h"
+#import "GetLastKnownLocationResponse.h"
+@interface MyOrdersViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *myOrdersTableView;
 
 - (IBAction)back:(id)sender;
@@ -23,9 +23,9 @@
 -(void)close;
 -(void)openYandexMap;
 -(void)openGoogleMap;
--(void)toTakeAction;
 -(void)closeOrderAction;
 -(void)toOrderAction;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
+- (IBAction)openMap:(UIButton*)sender;
 @end

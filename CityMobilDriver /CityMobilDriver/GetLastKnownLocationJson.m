@@ -1,15 +1,15 @@
 //
-//  BuyDeliveryAddressJson.m
+//  GetLastKnownLocationJson.m
 //  CityMobilDriver
 //
-//  Created by Arusyak Mikayelyan on 11/5/14.
+//  Created by Intern on 12/4/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
-#import "BuyDeliveryAddressJson.h"
+#import "GetLastKnownLocationJson.h"
 #import "SingleDataProvider.h"
 
-@implementation BuyDeliveryAddressJson
+@implementation GetLastKnownLocationJson
 -(instancetype)init
 {
     self=[super init];
@@ -17,13 +17,11 @@
     {
         self.ipass=@"o3XOFR7xpv";
         self.ilog=@"cm-api";
-        self.key=[[SingleDataProvider sharedKey]key];
-        self.method=@"BuyDeliveryAddress";
+        self.locale=@"ru";
+        self.method=@"getLastKnownLocation";
         self.version=@"1.0.2";
-        self.versionCode=@"17";
-        self.idhash=nil;
+        self.key=[[SingleDataProvider sharedKey]key];
     }
     return self;
 }
-
 @end

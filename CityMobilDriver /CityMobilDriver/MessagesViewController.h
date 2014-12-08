@@ -1,4 +1,4 @@
-///Users/intern/Documents/Projects/CityMobilDriver/CityMobilDriver/MessagesViewController.h
+///Users/intern/Documents/Projects/Cit/Users/intern/Documents/projects/CityMobilDriver /DesignationIconsViewController.hyMobilDriver/CityMobilDriver/MessagesViewController.h
 //  MessagesViewController.h
 //  CityMobilDriver
 //
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *theNewMessageButton;
 @property (strong, nonatomic) IBOutlet UITableView *messagesTableView;
 - (IBAction)back:(id)sender;
+- (IBAction)openMap:(UIButton*)sender;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end

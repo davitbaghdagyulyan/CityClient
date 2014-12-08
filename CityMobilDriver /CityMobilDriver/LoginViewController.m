@@ -407,6 +407,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         else
         {
             [[SingleDataProvider sharedKey]setKey:loginResponseObject.key];
+            [[SingleDataProvider sharedKey] startTimer];
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             if ([self image:self.rememberButton.imageView.image isEqualTo:[UIImage imageNamed:@"box2.png"]]) {
                 [defaults setObject:[NSNumber numberWithBool:YES] forKey:UserDefaultsIsRemember];

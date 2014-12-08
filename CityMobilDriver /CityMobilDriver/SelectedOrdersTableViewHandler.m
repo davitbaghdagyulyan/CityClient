@@ -45,14 +45,13 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        return responseObject.orders.count;
+  return responseObject.orders.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSInteger k=0;
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    if([[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortrait || [[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
     {
         k=36;
     }
@@ -76,6 +75,12 @@
     {
         callDateFormat = @"";
     }
+////    if (numberOfClass==1 && [stringforSrochno isEqualToString:@"СРОЧНО"])
+////    {
+//        [self TimeForUrgentOrders:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
+//    
+//  //  }
+    
     stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
     if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
     {
@@ -128,7 +133,6 @@
                 
                 
             }
-            
             //VIEW1
             cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
             cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
@@ -138,7 +142,6 @@
             cell.labelPercent.text = stringForLabelPercent;
             cell.labelShortName.text=stringForLabelShortName;
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
-            
             //VIEW2
             cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
             [cell.View2 removeConstraint:[cell.View2.constraints objectAtIndex:0]];
@@ -192,7 +195,6 @@
             {
                 cell.whiteLabel.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             }
-            
             cell.selectionStyle =UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -413,6 +415,7 @@
         [cell.View3 removeConstraint:[cell.View3.constraints objectAtIndex:0]];
         NSLayoutConstraint * view33Height =[NSLayoutConstraint constraintWithItem:cell.View3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height2];
         [cell.whiteView addConstraint:view33Height];
+        //When we don't have deliveryMetroName we don't show map button
         if (![[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]|| [[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]length]==0)
         {
             cell.buttonMap2.hidden = YES;
@@ -454,8 +457,7 @@
                 cell.labelDeliveryMetroName.text = @"По указанию";
             }else
             {
-                cell.labelDeliveryMetroName.backgroundColor =[UIColor whiteColor];
-                if ([[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName])
+               if ([[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName])
                 {
                     cell.labelDeliveryMetroName.text =[NSString stringWithFormat:@"%@",[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]];
                 }else
@@ -592,7 +594,6 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
-            
             cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
             cell.labelPercent.textColor = [UIColor whiteColor];
             cell.labelPercent.text = stringForLabelPercent;
@@ -648,7 +649,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
     NSString * CollAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row]CollAddrTypeMenu];
-    switch ([CollAddrTypeMenu integerValue]) {
+    if (CollAddrTypeMenu)
+    {
+      switch ([CollAddrTypeMenu integerValue]) {
         case 1:
             cell.imgViewCall.image = [UIImage imageNamed:@"metro"];
             break;
@@ -669,7 +672,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         default:
             break;
     }
+    }
     NSString * DeliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
+    if (DeliveryAddrTypeMenu)
+    {
     switch ([DeliveryAddrTypeMenu integerValue]) {
         case 1:
             cell.imgViewDel.image = [UIImage imageNamed:@"metro"];
@@ -691,10 +697,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         default:
             break;
     }
-    
+    }
     
     if (indexPath.row!=selectedRow ) {
         if ([[SingleDataProvider sharedKey].arrayOfIndexes containsObject:idhash])
+        {
+        if (CollAddrTypeMenu)
         {
             switch ([CollAddrTypeMenu integerValue]) {
                 case 1:
@@ -717,7 +725,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                 default:
                     break;
             }
-            switch ([DeliveryAddrTypeMenu integerValue]) {
+        }
+         if (DeliveryAddrTypeMenu)
+            {
+               switch ([DeliveryAddrTypeMenu integerValue]) {
                 case 1:
                     cell.imgViewDel.image = [UIImage imageNamed:@"metro_d"];
                     break;
@@ -738,7 +749,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                 default:
                     break;
             }
-            
+            }
             cell.labelCallMetroName0.font =[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
             cell.labelCollMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
             cell.labelDeliveryMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
@@ -752,7 +763,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             UIColor * gradColFin =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.f];
             if ([deviceType isEqualToString:@"iPhone Simulator"])
             {
-                
                 if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
                    [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
                 {
@@ -766,12 +776,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             }
             [gradLayerForCell setColors:[NSArray arrayWithObjects:(id)(gradColStart.CGColor), (id)(gradColFin.CGColor),nil]];
             [cell.additionalViewXib2.layer insertSublayer:gradLayerForCell atIndex:0];
-            
-            
-        }
+         }
         else
         {
-            
             CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
             UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.f];
             UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.f];
@@ -804,7 +811,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+   //((SelectedOrdersViewController*)curentSelf).idhash=[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+    idhash=[[responseObject.orders objectAtIndex:indexPath.row] idhash];
     if(selectedRow==indexPath.row)
     {
         selectedRow =-1;
@@ -833,9 +841,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     if(selectedRow==indexPath.row)
     {
         height1 =35;
-        
-        //CALLADDRESS
-        
+       //CALLADDRESS
         NSString * collAddress =[[responseObject.orders objectAtIndex:indexPath.row] CollAddressText];
         NSLog(@"CollAddress is %@",collAddress);
         if (collAddress && collAddress.length !=0)
@@ -999,7 +1005,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             
             else
             {
-                NSLog(@"%d",[[UIDevice currentDevice] orientation]);
+               
                 return curentSelf.view.frame.size.height/6;
             }
             
@@ -1510,4 +1516,25 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
 }
 
+//-(void)TimeForUrgentOrders:(NSString *)string
+//{
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
+//    NSDate *date1 = [[NSDate alloc] init];
+//    date1 = [dateFormatter dateFromString:string];
+//    NSTimeInterval diff = [date1 timeIntervalSinceNow];
+//    div_t h = div(diff, 3600);
+//    int hours = h.quot;
+//    // Divide the remainder by 60; the quotient is minutes, the remainder
+//    // is seconds.
+//    div_t m = div(h.rem, 60);
+//    int minutes = m.quot;
+//    int seconds = m.rem;
+//    
+//    // If you want to get the individual digits of the units, use div again
+//    // with a divisor of 10.
+//    
+//    NSLog(@"%d:%d:%d", hours, minutes, seconds);
+//   
+//}
 @end

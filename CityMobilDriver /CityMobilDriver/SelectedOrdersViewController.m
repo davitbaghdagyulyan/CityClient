@@ -19,6 +19,9 @@
 #import "AssignOrderJson.h"
 #import "AssignOrderResponse.h"
 #import "TakenOrderViewController.h"
+#import "BuyDeliveryAddressJson.h"
+#import "BuyDeliveryAddressResponse.h"
+#import "OpenMapButtonHandler.h"
 
 @interface SelectedOrdersViewController ()
 {
@@ -34,12 +37,14 @@
     CustomViewForMaps*viewMap;
     CGRect rect;
     NSUInteger number;
-    CLLocationManager *locationManager;
-    CLLocation* currentLocation;
+
+
     AssignOrderResponse*assignOrderResponseObject;
     UIAlertView*confirmOrdersTakenAlert;
     UIView*underView;
     SelectedOrdersTableViewHandler* selectedOrdersTableViewHandlerObject;
+    NSString *yandexMapUrl;
+    NSString*googleMapUrl;
 }
 
 @end
@@ -47,7 +52,6 @@
 @implementation SelectedOrdersViewController
 {
     SelectedOrdersDetailsResponse * selectedOrdersDetailsResponseObject;
-    NSString * idhash;
     NSString * result;
     NSInteger selectedRow;
     NSTimer * timerForTitleLabel;
@@ -116,13 +120,7 @@
     viewMap.googleImageView.userInteractionEnabled=YES;
     [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
     [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
-    }
-    [locationManager startUpdatingLocation];
-}
+  }
 
 -(void)toggleTitleLabel
 {
@@ -143,12 +141,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
 }
+
 -(void)requestOrder
 {
     flag1=-1;
@@ -338,29 +335,20 @@
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
      {
-         
-         
-         
          CGPoint point;
          
          NSLog(@"\n%f", 2*leftMenu.center.x);
          NSLog(@"\n%f",leftMenu.frame.size.width/2);
-         
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              flag=0;
              self.tableViewOrdersDetails.userInteractionEnabled=YES;
-             
-             
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
-         
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
-             
              self.tableViewOrdersDetails.userInteractionEnabled=NO;
-             
              flag=1;
          }
          point.y=leftMenu.center.y;
@@ -428,8 +416,6 @@
                                                       {
                                                           [self requestOrder];
                                                       }
-
-                                                      
                                                   }];
 
     [alertConfirmPurchaseVC addAction:cancel];
@@ -439,29 +425,16 @@
 
 }
 
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex==0)
-    {
-    [self requestAssignOrder];
-    }
-    
-}
-
 -(void)requestBuyDeliveryAddress
 {
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setObject:@"o3XOFR7xpv" forKey:@"ipass"];
-    [dictionary setObject:@"cm-api"forKey:@"ilog"];
-    [dictionary setObject:[[SingleDataProvider sharedKey]key] forKey:@"key"];
-    [dictionary setObject:@"BuyDeliveryAddress" forKey:@"method"];
-    [dictionary setObject:@"1.0.2" forKey:@"version"];
-    [dictionary setObject:@"17" forKey:@"versionCode"];
-    [dictionary setObject:idhash forKey:@"idhash"];
-    NSError* error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+   BuyDeliveryAddressJson* buyAddressJsonObject=[[BuyDeliveryAddressJson alloc]init];
+   buyAddressJsonObject.idhash=self.idhash;
+   NSDictionary*jsonDictionary=[buyAddressJsonObject toDictionary];
+   NSString*jsons=[buyAddressJsonObject toJSONString];
+   NSLog(@"%@",jsons);
+   NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+   NSError* error;
+   NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
@@ -472,26 +445,33 @@
     [request setHTTPBody:jsonData];
     request.timeoutInterval = 10;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        //[activityIndicator stopAnimating];
-     if (!data) {
-            
-            
-         UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        if (!data)
+        {
+           UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                            [alertNoCon dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertNoCon addAction:cancel];
+            [self presentViewController:alertNoCon animated:YES completion:nil];
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"First Json String %@",jsonString);
+        NSError*err;
+       BuyDeliveryAddressResponse*buyDeliveryAddressResponseObject = [[BuyDeliveryAddressResponse alloc] initWithString:jsonString error:&err];
+        if(buyDeliveryAddressResponseObject.code!=nil)
+        {
+         UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:buyDeliveryAddressResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
          UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           [alertNoCon dismissViewControllerAnimated:YES completion:nil];
-                                                       }];
-         [alertNoCon addAction:cancel];
-         [self presentViewController:alertNoCon animated:YES completion:nil];
-     }
-        NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",newStr);
-        id detailData;
-        detailData  = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                          handler:^(UIAlertAction * action) {
+                                                              [alertServerErr dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+        [alertServerErr addAction:cancel];
+        [self presentViewController:alertServerErr animated:YES completion:nil];
+            
+        }
+        result=buyDeliveryAddressResponseObject.result;
         
-        NSLog(@"json2=%@",detailData);
-        NSLog(@"result is %@",[detailData objectForKey:@"result"]);
-        result = [detailData objectForKey:@"result"];
     }];
     
 }
@@ -500,8 +480,6 @@
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        
-        
         UIDeviceOrientation deviceOrientation   = [[UIDevice currentDevice] orientation];
         
       if (UIDeviceOrientationIsLandscape(deviceOrientation))
@@ -546,19 +524,48 @@
     
     [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
 }
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
+
 -(void)collMap
 {
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=0;
+    googleMapUrl= [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+                   [SingleDataProvider sharedKey].lat,
+                    [SingleDataProvider sharedKey].lon,
+                   [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                   [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+   
+    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",
+                  [SingleDataProvider sharedKey].lat,
+                  [SingleDataProvider sharedKey].lon,
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
     [self animation];
 }
 
 -(void)deliveryMapp
 {
     [self.view addSubview:viewMap];
-     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
+    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=1;
+    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
+
+    
+    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                  [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
     [self animation];
 }
 -(void)close
@@ -568,13 +575,10 @@
 
 -(void)openYandexMap
 {
- 
+    
     if (number)
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
-                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
-                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
-                          [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
+        NSString* urlStr= yandexMapUrl;
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -584,15 +588,13 @@
             // Если не установлен - открываем страницу в App Store
             NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
             [[UIApplication sharedApplication] openURL:appStoreURL];
+            
         }
-
+        
     }
     else
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",currentLocation.coordinate.latitude,
-                            currentLocation.coordinate.longitude,
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+        NSString* urlStr=  yandexMapUrl;
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -603,36 +605,14 @@
             NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
             [[UIApplication sharedApplication] openURL:appStoreURL];
         }
-
+        
     }
 }
 -(void)openGoogleMap
 {
     if (number)
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
-        NSURL* naviURL = [NSURL URLWithString:urlStr];
-        NSLog(@"urlStr=%@",urlStr);
-        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
-            // Если Навигатор установлен - открываем его
-            [[UIApplication sharedApplication] openURL:naviURL];
-        } else {
-            // Если не установлен - открываем страницу в App Store
-            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
-            [[UIApplication sharedApplication] openURL:appStoreURL];
-        }
-
-    }
-    else
-    {
-        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
-                            currentLocation.coordinate.latitude,
-                            currentLocation.coordinate.longitude,
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
-                            [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+        NSString* urlStr= googleMapUrl;
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -644,9 +624,25 @@
             [[UIApplication sharedApplication] openURL:appStoreURL];
         }
         
-     
+    }
+    else
+    {
+        NSString* urlStr=  googleMapUrl;
+        NSURL* naviURL = [NSURL URLWithString:urlStr];
+        NSLog(@"urlStr=%@",urlStr);
+        if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
+            // Если Навигатор установлен - открываем его
+            [[UIApplication sharedApplication] openURL:naviURL];
+        } else {
+            // Если не установлен - открываем страницу в App Store
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/google-maps/id585027354?mt=8"];
+            [[UIApplication sharedApplication] openURL:appStoreURL];
+        }
+        
+        
     }
 }
+
 -(void)setIndexOfCell:(NSUInteger)indexOf
 {
     indexOfCell=indexOf;
@@ -656,11 +652,7 @@
 {
     underView=under;
 }
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    currentLocation = [locations lastObject];
-    NSLog(@"%f--- %f", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
-}
+
 -(void)animation
 {
     [UIView animateWithDuration:0.5
@@ -675,17 +667,32 @@
 
 -(void)toTakeAction
 {
-    confirmOrdersTakenAlert = [[UIAlertView alloc] initWithTitle:@"Подтверждение взятия заказа"
-                                          message:nil
-                                         delegate:self
-                                cancelButtonTitle:nil
-                                otherButtonTitles:@"ОК",@"Отмена", nil];
-    confirmOrdersTakenAlert.backgroundColor=[UIColor blackColor];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Подтверждение взятия заказа" preferredStyle:UIAlertControllerStyleAlert];
     
+    UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                            {
+                               
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                
+                            }];
+    [alert addAction:cancel];
+    
+    UIAlertAction*ok = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                            {
+                                
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                [self requestAssignOrder];
+                                
+                            }];
+    [alert addAction:ok];
 
-[confirmOrdersTakenAlert show];
-
-}
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+  }
 -(void)requestAssignOrder
 {
 UIActivityIndicatorView*indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -714,13 +721,13 @@ request.timeoutInterval = 10;
 [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     if (!data)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                        message:@"NO INTERNET CONECTION"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
+        UIAlertController *alert =[UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action) {
+                                                          [alert dismissViewControllerAnimated:YES completion:nil];
+                                                      }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
         [indicator stopAnimating];
         return ;
     }
@@ -734,13 +741,20 @@ request.timeoutInterval = 10;
     
     if(assignOrderResponseObject.code!=nil)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка запроса"
-                                                        message:assignOrderResponseObject.text
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:assignOrderResponseObject.text
+preferredStyle:UIAlertControllerStyleAlert];
         
-        [alert show];
+        UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                    
+                                }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+
+        
+       
         [indicator stopAnimating];
     }
     else
@@ -757,13 +771,6 @@ request.timeoutInterval = 10;
 
     }
     
-//   // ***** for test
-//    TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
-//    
-//    
-//    [self.navigationController pushViewController:tovc animated:NO];
-//    [tovc setIdHash:assignOrderJsonObject.idhash andUnderView:underView];
-//    //*** for test
 }];
 
 }

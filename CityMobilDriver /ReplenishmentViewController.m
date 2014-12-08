@@ -15,6 +15,8 @@
 #import "GetCardsResponse.h"
 #import "BindCardJson.h"
 #import "BindCardResponse.h"
+#import "OpenMapButtonHandler.h"
+
 
 @interface ReplenishmentViewController ()
 {
@@ -29,6 +31,7 @@
     LeftMenu*leftMenu;
     NSInteger flag;
     BOOL isPressedCloseButton;
+
 }
 @end
 
@@ -507,4 +510,11 @@
     
     [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
 }
+//**********************  openMap  add func your class (.m)*********************//
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
 @end

@@ -16,6 +16,8 @@
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
 		8F8D322A19E3C7D2003232F7 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */; };
 		8F8D322C19E3FA7F003232F7 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */; };
+		8F9933151A2CB5670040C97E /* BuyDeliveryAddressJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */; };
+		8F9933181A2CB58A0040C97E /* BuyDeliveryAddressResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */; };
 		8FA028F11A122B1700729054 /* star_none.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FA028F01A122B1700729054 /* star_none.png */; };
 		8FA028F31A122B2A00729054 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FA028F21A122B2A00729054 /* star.png */; };
 		8FB0F8A11A28D9AE003A79E9 /* ic_landmark_airport.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB0F8911A28D9AE003A79E9 /* ic_landmark_airport.png */; };
@@ -57,9 +59,6 @@
 		8FCFF59219F5053C00C6E3A7 /* ic_order_with_visiting_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */; };
 		8FCFF59419F5054200C6E3A7 /* ic_transportation_of_animals_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */; };
 		8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */; };
-		8FD113831A0A097700E1A2B7 /* BuyDeliveryAddressJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113821A0A097700E1A2B7 /* BuyDeliveryAddressJson.m */; };
-		8FD113861A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113851A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m */; };
-		8FD113891A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */; };
 		8FD25E921A0B88CD0056038C /* CustomCellOrdersHistory.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */; };
 		8FD25E951A0B892A0056038C /* CustomCellOrdersHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */; };
 		8FDF958219DE7E60005A468A /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF958119DE7E60005A468A /* logo@2x.png */; };
@@ -73,7 +72,6 @@
 		8FE4868E19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE4868D19EEB2CC00A6D539 /* ic_no_smoking_lounge_small.png */; };
 		D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BA19D0071F00F5C38C /* AppDelegate.m */; };
 		D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428BD19D0071F00F5C38C /* RootViewController.m */; };
-		D70428C319D0071F00F5C38C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70428C219D0071F00F5C38C /* Images.xcassets */; };
 		D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70428C419D0071F00F5C38C /* LaunchScreen.xib */; };
 		D70428D219D0072000F5C38C /* CityMobilDriverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428D119D0072000F5C38C /* CityMobilDriverTests.m */; };
 		EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC00342419F1620A0062A6DF /* ProfilViewController.m */; };
@@ -90,6 +88,7 @@
 		EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E4A6C19EC1C13007C77A2 /* pages_background.png */; };
 		EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2437191A0B9807005FC018 /* LoginViewController.m */; };
 		EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */; };
+		EC2A13FE1A31FBDA00CA8937 /* SelectedOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2A13FD1A31FBDA00CA8937 /* SelectedOrdersViewController.m */; };
 		EC40D43D19E4323C007BA02C /* MailJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43C19E4323C007BA02C /* MailJson.m */; };
 		EC40D44019E43258007BA02C /* MailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43F19E43258007BA02C /* MailResponse.m */; };
 		EC40D44419E436C5007BA02C /* MailElements.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D44319E436C5007BA02C /* MailElements.m */; };
@@ -104,7 +103,13 @@
 		EC5BF09E1A02300B009EC444 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF09D1A02300B009EC444 /* Colors.m */; };
 		EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF0A01A028AD1009EC444 /* RequestSetCarInfo.m */; };
 		EC896A7D19FE5C4700822D9E /* CustomView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC896A7C19FE5C4700822D9E /* CustomView2.xib */; };
+		ECAD78BB1A306048005C2468 /* AddGPSJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78BA1A306048005C2468 /* AddGPSJson.m */; };
+		ECAD78BE1A306070005C2468 /* AddGPSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78BD1A306070005C2468 /* AddGPSResponse.m */; };
+		ECAD78C21A30AADB005C2468 /* GetLastKnownLocationJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */; };
+		ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */; };
+		ECB063B61A31E814004633A6 /* OpenMapButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB063B51A31E814004633A6 /* OpenMapButtonHandler.m */; };
 		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
+		ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F2A31A2DAD06008A3D15 /* iconmap.png */; };
 		ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */; };
 		ECB38B231A0CFA7B00DFBB77 /* DesignationIconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B221A0CFA7B00DFBB77 /* DesignationIconsViewController.m */; };
 		ECB38B361A0D130B00DFBB77 /* 0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB38B291A0D130B00DFBB77 /* 0@2x.png */; };
@@ -246,6 +251,7 @@
 		ECCD99451A19DF93009D482C /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99331A19DF93009D482C /* Roboto-Thin.ttf */; };
 		ECCD99461A19DF93009D482C /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99341A19DF93009D482C /* Roboto-ThinItalic.ttf */; };
 		ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD99491A19E48A009D482C /* LabelUnderLine.m */; };
+		ECCDEA101A2F6A6800AF549F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCDEA0F1A2F6A6800AF549F /* Images.xcassets */; };
 		ECCEE4FA19EFF58000F07532 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCEE4F919EFF58000F07532 /* CustomTableViewCell.m */; };
 		ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCEE4FD19F0121400F07532 /* CustomTableViewCell.xib */; };
 		ECD218851A1CBCF100F38F7D /* SetStatusJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD218841A1CBCF100F38F7D /* SetStatusJson.m */; };
@@ -275,7 +281,6 @@
 		ECEC89A51A2CA1100036781D /* AssignOrderJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEC898A1A2CA1100036781D /* AssignOrderJson.m */; };
 		ECEC89A61A2CA1100036781D /* AssignOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEC898C1A2CA1100036781D /* AssignOrderResponse.m */; };
 		ECEC89A71A2CA1100036781D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */; };
-		ECEC89A81A2CA1100036781D /* SelectedOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEC898F1A2CA1100036781D /* SelectedOrdersViewController.m */; };
 		ECEC89A91A2CA1100036781D /* CustomCellSelectORDER2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEC89901A2CA1100036781D /* CustomCellSelectORDER2.xib */; };
 		ECEC89AA1A2CA1100036781D /* CustomCellSelectedOrders2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEC89911A2CA1100036781D /* CustomCellSelectedOrders2.xib */; };
 		ECEC89AB1A2CA1100036781D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */; };
@@ -315,6 +320,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		ECC013121A2F55D90086598F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		84E6EDCA19E857D100EFFC54 /* LeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftMenu.h; path = ../LeftMenu.h; sourceTree = "<group>"; };
 		84E6EDCB19E857D100EFFC54 /* LeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftMenu.m; path = ../LeftMenu.m; sourceTree = "<group>"; };
@@ -329,6 +347,10 @@
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
+		8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyDeliveryAddressJson.h; sourceTree = "<group>"; };
+		8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDeliveryAddressJson.m; sourceTree = "<group>"; };
+		8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BuyDeliveryAddressResponse.h; path = Orders/BuyDeliveryAddressResponse.h; sourceTree = "<group>"; };
+		8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyDeliveryAddressResponse.m; path = Orders/BuyDeliveryAddressResponse.m; sourceTree = "<group>"; };
 		8FA028F01A122B1700729054 /* star_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_none.png; path = CityMobilDriver/star_none.png; sourceTree = "<group>"; };
 		8FA028F21A122B2A00729054 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = CityMobilDriver/star.png; sourceTree = "<group>"; };
 		8FB0F8911A28D9AE003A79E9 /* ic_landmark_airport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_landmark_airport.png; sourceTree = "<group>"; };
@@ -363,7 +385,10 @@
 		8FC51A8A1A0CAD3000E13D03 /* OrdersHistoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrdersHistoryResponse.m; path = ../OrdersHistoryResponse.m; sourceTree = "<group>"; };
 		8FC51A8C1A0CAD6300E13D03 /* OrdersHistoryElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrdersHistoryElements.h; path = ../OrdersHistoryElements.h; sourceTree = "<group>"; };
 		8FC51A8D1A0CAD6300E13D03 /* OrdersHistoryElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrdersHistoryElements.m; path = ../OrdersHistoryElements.m; sourceTree = "<group>"; };
+		8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		8FCB177D1A136E9200228F98 /* rublsi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = rublsi.ttf; path = ../rublsi.ttf; sourceTree = "<group>"; };
 		8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat1@2x.png"; sourceTree = "<group>"; };
 		8FCCBBC119E2DE2600BD9BC1 /* ch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ch@2x.png"; sourceTree = "<group>"; };
 		8FCFF58519F5051400C6E3A7 /* ic_air_conditioning_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_air_conditioning_small.png; sourceTree = "<group>"; };
@@ -375,12 +400,6 @@
 		8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order_with_visiting_small.png; sourceTree = "<group>"; };
 		8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_transportation_of_animals_small.png; sourceTree = "<group>"; };
 		8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wifi_small.png; sourceTree = "<group>"; };
-		8FD113811A0A097700E1A2B7 /* BuyDeliveryAddressJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuyDeliveryAddressJson.h; path = ../BuyDeliveryAddressJson.h; sourceTree = "<group>"; };
-		8FD113821A0A097700E1A2B7 /* BuyDeliveryAddressJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyDeliveryAddressJson.m; path = ../BuyDeliveryAddressJson.m; sourceTree = "<group>"; };
-		8FD113841A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDeliveryAddressElements.h; sourceTree = "<group>"; };
-		8FD113851A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDeliveryAddressElements.m; sourceTree = "<group>"; };
-		8FD113871A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDeliveryAddressResponse.h; sourceTree = "<group>"; };
-		8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDeliveryAddressResponse.m; sourceTree = "<group>"; };
 		8FD25E911A0B88CD0056038C /* CustomCellOrdersHistory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellOrdersHistory.xib; path = ../CustomCellOrdersHistory.xib; sourceTree = "<group>"; };
 		8FD25E931A0B892A0056038C /* CustomCellOrdersHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCellOrdersHistory.h; path = ../CustomCellOrdersHistory.h; sourceTree = "<group>"; };
 		8FD25E941A0B892A0056038C /* CustomCellOrdersHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCellOrdersHistory.m; path = ../CustomCellOrdersHistory.m; sourceTree = "<group>"; };
@@ -400,7 +419,6 @@
 		D70428BA19D0071F00F5C38C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D70428BC19D0071F00F5C38C /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D70428BD19D0071F00F5C38C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		D70428C219D0071F00F5C38C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D70428C519D0071F00F5C38C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D70428CB19D0072000F5C38C /* CityMobilDriverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMobilDriverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70428D019D0072000F5C38C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -428,6 +446,7 @@
 		EC2437191A0B9807005FC018 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EC24371E1A0BA1DA005FC018 /* RegionalSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionalSettingsViewController.h; sourceTree = "<group>"; };
 		EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionalSettingsViewController.m; sourceTree = "<group>"; };
+		EC2A13FD1A31FBDA00CA8937 /* SelectedOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersViewController.m; sourceTree = "<group>"; };
 		EC40D43B19E4323C007BA02C /* MailJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailJson.h; sourceTree = "<group>"; };
 		EC40D43C19E4323C007BA02C /* MailJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailJson.m; sourceTree = "<group>"; };
 		EC40D43E19E43258007BA02C /* MailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailResponse.h; sourceTree = "<group>"; };
@@ -459,7 +478,18 @@
 		EC5BF09F1A028AD1009EC444 /* RequestSetCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSetCarInfo.h; sourceTree = "<group>"; };
 		EC5BF0A01A028AD1009EC444 /* RequestSetCarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestSetCarInfo.m; sourceTree = "<group>"; };
 		EC896A7C19FE5C4700822D9E /* CustomView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomView2.xib; sourceTree = "<group>"; };
+		ECAD78B91A306048005C2468 /* AddGPSJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGPSJson.h; sourceTree = "<group>"; };
+		ECAD78BA1A306048005C2468 /* AddGPSJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGPSJson.m; sourceTree = "<group>"; };
+		ECAD78BC1A306070005C2468 /* AddGPSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGPSResponse.h; sourceTree = "<group>"; };
+		ECAD78BD1A306070005C2468 /* AddGPSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGPSResponse.m; sourceTree = "<group>"; };
+		ECAD78C01A30AADB005C2468 /* GetLastKnownLocationJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLastKnownLocationJson.h; sourceTree = "<group>"; };
+		ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLastKnownLocationJson.m; sourceTree = "<group>"; };
+		ECAD78C31A30AAF1005C2468 /* GetLastKnownLocationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLastKnownLocationResponse.h; sourceTree = "<group>"; };
+		ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLastKnownLocationResponse.m; sourceTree = "<group>"; };
+		ECB063B41A31E814004633A6 /* OpenMapButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenMapButtonHandler.h; sourceTree = "<group>"; };
+		ECB063B51A31E814004633A6 /* OpenMapButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenMapButtonHandler.m; sourceTree = "<group>"; };
 		ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesCell.xib; path = ../MessagesCell.xib; sourceTree = "<group>"; };
+		ECB1F2A31A2DAD06008A3D15 /* iconmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmap.png; sourceTree = "<group>"; };
 		ECB38B1D1A0CDA0000DFBB77 /* TariffsYandexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffsYandexViewController.h; sourceTree = "<group>"; };
 		ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffsYandexViewController.m; sourceTree = "<group>"; };
 		ECB38B211A0CFA7B00DFBB77 /* DesignationIconsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignationIconsViewController.h; sourceTree = "<group>"; };
@@ -692,6 +722,7 @@
 		ECCD99341A19DF93009D482C /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		ECCD99481A19E48A009D482C /* LabelUnderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelUnderLine.h; sourceTree = "<group>"; };
 		ECCD99491A19E48A009D482C /* LabelUnderLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelUnderLine.m; sourceTree = "<group>"; };
+		ECCDEA0F1A2F6A6800AF549F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ECCEE4F819EFF58000F07532 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		ECCEE4F919EFF58000F07532 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		ECCEE4FD19F0121400F07532 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = ../CustomTableViewCell.xib; sourceTree = "<group>"; };
@@ -747,7 +778,6 @@
 		ECEC898C1A2CA1100036781D /* AssignOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignOrderResponse.m; sourceTree = "<group>"; };
 		ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ECEC898E1A2CA1100036781D /* SelectedOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersViewController.h; sourceTree = "<group>"; };
-		ECEC898F1A2CA1100036781D /* SelectedOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersViewController.m; sourceTree = "<group>"; };
 		ECEC89901A2CA1100036781D /* CustomCellSelectORDER2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectORDER2.xib; sourceTree = "<group>"; };
 		ECEC89911A2CA1100036781D /* CustomCellSelectedOrders2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellSelectedOrders2.xib; sourceTree = "<group>"; };
 		ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
@@ -835,23 +865,11 @@
 			path = landmark;
 			sourceTree = "<group>";
 		};
-		8FD113801A0A091600E1A2B7 /* BuyDeliveryAddress */ = {
-			isa = PBXGroup;
-			children = (
-				8FD113811A0A097700E1A2B7 /* BuyDeliveryAddressJson.h */,
-				8FD113821A0A097700E1A2B7 /* BuyDeliveryAddressJson.m */,
-				8FD113841A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.h */,
-				8FD113851A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m */,
-				8FD113871A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.h */,
-				8FD113881A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m */,
-			);
-			name = BuyDeliveryAddress;
-			path = Orders;
-			sourceTree = "<group>";
-		};
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECB063B31A31E7C5004633A6 /* openMapButtonHandler */,
+				ECAD78BF1A30AA7A005C2468 /* getLastKnownLocation */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
@@ -859,6 +877,9 @@
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
 				D70428CE19D0072000F5C38C /* CityMobilDriverTests */,
 				D70428B319D0071F00F5C38C /* Products */,
+				8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */,
+				8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */,
+				8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -899,7 +920,6 @@
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
 				ECEC89CE1A2CA9170036781D /* Main.storyboard */,
-				D70428C219D0071F00F5C38C /* Images.xcassets */,
 				D70428C419D0071F00F5C38C /* LaunchScreen.xib */,
 				D70428B519D0071F00F5C38C /* Supporting Files */,
 			);
@@ -912,6 +932,7 @@
 				ECCD99231A19DF93009D482C /* Roboto Fonts */,
 				ECCD34511A03D422000444BF /* Images */,
 				D70428B619D0071F00F5C38C /* Info.plist */,
+				8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */,
 				D70428B719D0071F00F5C38C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -930,6 +951,7 @@
 			isa = PBXGroup;
 			children = (
 				D70428D019D0072000F5C38C /* Info.plist */,
+				ECCDEA0F1A2F6A6800AF549F /* Images.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1044,14 +1066,15 @@
 		EC55988819E535D000877CBC /* Single Data Provider */ = {
 			isa = PBXGroup;
 			children = (
+				ECAD78B81A305FCA005C2468 /* AddGPS */,
 				EC55988919E5364900877CBC /* SingleDataProvider.h */,
+				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
 				8F53FE6C19EBCB89002906E4 /* SingleDataProviderForFilter.h */,
 				8F53FE6D19EBCB89002906E4 /* SingleDataProviderForFilter.m */,
 				8FC51A801A0CA8A400E13D03 /* SingleDataProviderForStartDate.h */,
 				8FC51A811A0CA8A400E13D03 /* SingleDataProviderForStartDate.m */,
 				8FC51A831A0CA93300E13D03 /* SingleDataProviderForEndDate.h */,
 				8FC51A841A0CA93300E13D03 /* SingleDataProviderForEndDate.m */,
-				EC55988A19E5364900877CBC /* SingleDataProvider.m */,
 				ECC9215C1A1204920012FBFA /* UserRegistrationInformation.h */,
 				ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */,
 			);
@@ -1081,6 +1104,38 @@
 				EC5AD44B1A14FF9400588DE6 /* GetOrderResponse.m */,
 			);
 			name = GetOrder;
+			sourceTree = "<group>";
+		};
+		ECAD78B81A305FCA005C2468 /* AddGPS */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD78B91A306048005C2468 /* AddGPSJson.h */,
+				ECAD78BA1A306048005C2468 /* AddGPSJson.m */,
+				ECAD78BC1A306070005C2468 /* AddGPSResponse.h */,
+				ECAD78BD1A306070005C2468 /* AddGPSResponse.m */,
+			);
+			name = AddGPS;
+			sourceTree = "<group>";
+		};
+		ECAD78BF1A30AA7A005C2468 /* getLastKnownLocation */ = {
+			isa = PBXGroup;
+			children = (
+				ECAD78C01A30AADB005C2468 /* GetLastKnownLocationJson.h */,
+				ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */,
+				ECAD78C31A30AAF1005C2468 /* GetLastKnownLocationResponse.h */,
+				ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */,
+			);
+			name = getLastKnownLocation;
+			path = CityMobilDriver;
+			sourceTree = "<group>";
+		};
+		ECB063B31A31E7C5004633A6 /* openMapButtonHandler */ = {
+			isa = PBXGroup;
+			children = (
+				ECB063B41A31E814004633A6 /* OpenMapButtonHandler.h */,
+				ECB063B51A31E814004633A6 /* OpenMapButtonHandler.m */,
+			);
+			name = openMapButtonHandler;
 			sourceTree = "<group>";
 		};
 		ECB38B1B1A0CD87F00DFBB77 /* TariffsYandexViewController */ = {
@@ -1370,7 +1425,6 @@
 		ECC71B8C19F00BBB00468D33 /* SendingMessageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8FD113801A0A091600E1A2B7 /* BuyDeliveryAddress */,
 				ECD4064319F145FC00EFE6B2 /* WriteLetter */,
 				ECC71B8D19F00BFB00468D33 /* SendingMessageViewController.h */,
 				ECC71B8E19F00BFB00468D33 /* SendingMessageViewController.m */,
@@ -1546,6 +1600,7 @@
 				8FB0F8901A28D9AE003A79E9 /* landmark */,
 				ECB38B281A0D12D400DFBB77 /* Designation Icons Images */,
 				ECC8CCE51A10E58400883CD1 /* box.png */,
+				ECB1F2A31A2DAD06008A3D15 /* iconmap.png */,
 				EC0798EB1A2349840085E3F0 /* icon_green.png */,
 				8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */,
 				ECE2553619DBF1E9000BD8C9 /* bg.png */,
@@ -1610,8 +1665,11 @@
 		ECCD99231A19DF93009D482C /* Roboto Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */,
 				ECC38D201A28967C0065474B /* Time Normal.ttf */,
 				ECCD99241A19DF93009D482C /* NOTICE.txt */,
+				8FCB177D1A136E9200228F98 /* rublsi.ttf */,
+				8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */,
 				ECCD99251A19DF93009D482C /* Roboto-Black.ttf */,
 				ECCD99261A19DF93009D482C /* Roboto-BlackItalic.ttf */,
 				ECCD99271A19DF93009D482C /* Roboto-Bold.ttf */,
@@ -1775,7 +1833,7 @@
 				ECEC89B71A2CA2790036781D /* AssignOrder */,
 				ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */,
 				ECEC898E1A2CA1100036781D /* SelectedOrdersViewController.h */,
-				ECEC898F1A2CA1100036781D /* SelectedOrdersViewController.m */,
+				EC2A13FD1A31FBDA00CA8937 /* SelectedOrdersViewController.m */,
 				ECEC89901A2CA1100036781D /* CustomCellSelectORDER2.xib */,
 				ECEC89911A2CA1100036781D /* CustomCellSelectedOrders2.xib */,
 				ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */,
@@ -1850,6 +1908,7 @@
 				D70428AE19D0071F00F5C38C /* Sources */,
 				D70428AF19D0071F00F5C38C /* Frameworks */,
 				D70428B019D0071F00F5C38C /* Resources */,
+				ECC013121A2F55D90086598F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1889,6 +1948,11 @@
 				TargetAttributes = {
 					D70428B119D0071F00F5C38C = {
 						CreatedOnToolsVersion = 6.0.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					D70428CA19D0072000F5C38C = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -1941,6 +2005,7 @@
 				ECC42DA81A1B3F750020F7C7 /* childYear.xib in Resources */,
 				ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */,
 				ECCD99391A19DF93009D482C /* Roboto-Bold.ttf in Resources */,
+				ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */,
 				ECCD99371A19DF93009D482C /* Roboto-Black.ttf in Resources */,
 				8FB453091A1CB19E0063336C /* CustomCellOrdersHistory2.xib in Resources */,
 				EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */,
@@ -2019,7 +2084,6 @@
 				8FB0F8AA1A28D9AE003A79E9 /* ic_landmark_outdoors_viewed.png in Resources */,
 				ECCD99401A19DF93009D482C /* Roboto-Light.ttf in Resources */,
 				8FB0F8A41A28D9AE003A79E9 /* ic_landmark_cinema_viewed.png in Resources */,
-				D70428C319D0071F00F5C38C /* Images.xcassets in Resources */,
 				EC896A7D19FE5C4700822D9E /* CustomView2.xib in Resources */,
 				ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */,
 				8FB0F8A81A28D9AE003A79E9 /* ic_landmark_mall_viewed.png in Resources */,
@@ -2046,6 +2110,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCDEA101A2F6A6800AF549F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2057,6 +2122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECC2BA631A111C54009A8CE4 /* main.m in Sources */,
+				ECAD78BE1A306070005C2468 /* AddGPSResponse.m in Sources */,
 				ECC2BA621A111C18009A8CE4 /* SingleDataProvider.m in Sources */,
 				ECC38D1F1A285C1D0065474B /* Elements.m in Sources */,
 				ECC2BA5F1A111AA2009A8CE4 /* JSONKeyMapper.m in Sources */,
@@ -2098,7 +2164,6 @@
 				ECB52E4B1A077CE00091293F /* SourceElements.m in Sources */,
 				ECB3D76E1A03D7B40039DD3A /* GetTariffsUrlResponseXML.m in Sources */,
 				ECB52E181A07675B0091293F /* TariffElements.m in Sources */,
-				8FD113831A0A097700E1A2B7 /* BuyDeliveryAddressJson.m in Sources */,
 				EC5BF09E1A02300B009EC444 /* Colors.m in Sources */,
 				ECD2188F1A1CE7E200F38F7D /* TachometerViewController.m in Sources */,
 				ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */,
@@ -2119,6 +2184,7 @@
 				EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */,
 				ECEC89A61A2CA1100036781D /* AssignOrderResponse.m in Sources */,
 				D70428BE19D0071F00F5C38C /* RootViewController.m in Sources */,
+				ECB063B61A31E814004633A6 /* OpenMapButtonHandler.m in Sources */,
 				EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */,
 				ECCC238019E7FED20091C43E /* OrdersElements.m in Sources */,
 				ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */,
@@ -2130,7 +2196,6 @@
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,
 				8FC51A8E1A0CAD6300E13D03 /* OrdersHistoryElements.m in Sources */,
 				ECC965371A011F4700768E1F /* RequestGetModelList.m in Sources */,
-				ECEC89A81A2CA1100036781D /* SelectedOrdersViewController.m in Sources */,
 				ECC965341A0102AE00768E1F /* Mark.m in Sources */,
 				ECD9742419E6B683008D23B9 /* RecallResponse.m in Sources */,
 				ECCB8AE419FFD6480012F2FD /* CreateProfilViewController.m in Sources */,
@@ -2153,6 +2218,7 @@
 				ECCD344D1A03AC49000444BF /* ResponseSetCarInfo.m in Sources */,
 				EC4CB40619F7E5E00028F219 /* RequestSetDriverInfo.m in Sources */,
 				EC0798D91A2331A10085E3F0 /* yandexIcon.m in Sources */,
+				8F9933181A2CB58A0040C97E /* BuyDeliveryAddressResponse.m in Sources */,
 				EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */,
 				8F53FE6E19EBCB89002906E4 /* SingleDataProviderForFilter.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
@@ -2168,6 +2234,7 @@
 				ECCC120D1A0CAD8B00AC94EE /* Sities.m in Sources */,
 				ECD4064919F146D200EFE6B2 /* WriteLetterResponse.m in Sources */,
 				ECB59E9719F6A36D00F69529 /* GetQiwiBillsUrlJson.m in Sources */,
+				EC2A13FE1A31FBDA00CA8937 /* SelectedOrdersViewController.m in Sources */,
 				ECB3D7711A03D95B0039DD3A /* NSDictionary+BVJSONString.m in Sources */,
 				ECE25C8A19E56BE80044F6AD /* messages.m in Sources */,
 				ECD55D8F19F7EEE8002E182D /* BindCardJson.m in Sources */,
@@ -2175,6 +2242,7 @@
 				ECB52E211A076BE00091293F /* IdClass.m in Sources */,
 				ECCD34501A03B224000444BF /* RequestSetCarInfoWidthPhoto.m in Sources */,
 				EC5AD44C1A14FF9400588DE6 /* GetOrderResponse.m in Sources */,
+				ECAD78C21A30AADB005C2468 /* GetLastKnownLocationJson.m in Sources */,
 				ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */,
 				EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */,
 				ECC978F91A00DDE800D77B80 /* GetInfoResponse.m in Sources */,
@@ -2199,7 +2267,6 @@
 				ECC9653A1A01255A00768E1F /* ResponseGetModelList.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 				8FC51A821A0CA8A400E13D03 /* SingleDataProviderForStartDate.m in Sources */,
-				8FD113891A0A0A3C00E1A2B7 /* BuyDeliveryAddressResponse.m in Sources */,
 				ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */,
 				EC4CB40919F7F6EF0028F219 /* DriverInfoResponse.m in Sources */,
 				8FC51A881A0CAA1100E13D03 /* OrdersHistoryJson.m in Sources */,
@@ -2211,7 +2278,6 @@
 				84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */,
 				ECB3D75B1A03B3FD0039DD3A /* TariffsCityMobilViewController.m in Sources */,
 				ECB52E601A0785820091293F /* MinPriceClass.m in Sources */,
-				8FD113861A0A0A2200E1A2B7 /* BuyDeliveryAddressElements.m in Sources */,
 				EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */,
 				ECEC89AF1A2CA1100036781D /* CustomCellSelectORDER.m in Sources */,
 				ECCA4CB01A0B5CE1007CEBC4 /* RegisterRequest.m in Sources */,
@@ -2220,12 +2286,15 @@
 				ECCC12071A0CACA000AC94EE /* GetZonesResponse.m in Sources */,
 				ECCD34441A036549000444BF /* RequestGetCarInfo.m in Sources */,
 				ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */,
+				ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */,
 				ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
 				ECD55D8819F7C755002E182D /* GetCardsJson.m in Sources */,
 				ECC978F61A00DDC900D77B80 /* GetInfoJson.m in Sources */,
 				ECB52E2A1A0773190091293F /* UnitElements.m in Sources */,
 				ECEC89BB1A2CA3A90036781D /* SelectedOrdersTableViewHandler.m in Sources */,
+				ECAD78BB1A306048005C2468 /* AddGPSJson.m in Sources */,
+				8F9933151A2CB5670040C97E /* BuyDeliveryAddressJson.m in Sources */,
 				EC0798EA1A2348DC0085E3F0 /* CityMobilIcon.m in Sources */,
 				ECEA963E19F54917001A6305 /* CustomView.m in Sources */,
 				ECB52E451A077A770091293F /* OtherClass.m in Sources */,
@@ -2348,6 +2417,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2360,6 +2430,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

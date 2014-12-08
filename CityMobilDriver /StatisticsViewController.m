@@ -8,6 +8,7 @@
 
 #import "StatisticsViewController.h"
 #import "LeftMenu.h"
+#import "OpenMapButtonHandler.h"
 
 @interface StatisticsViewController ()
 {
@@ -17,6 +18,7 @@
     CGFloat yCord,y1Cord;
     NSMutableArray*titleLabelArray;
     NSMutableArray*textsLabelArray;
+
 }
 @end
 
@@ -45,6 +47,9 @@
     titleLabelArray=[[NSMutableArray alloc]init];
     textsLabelArray=[[NSMutableArray alloc]init];
      self.statisticsScrollView.userInteractionEnabled=YES;
+    
+
+
    
 }
 - (IBAction)back:(id)sender
@@ -332,5 +337,11 @@
                                  }];
     
     [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+}
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 @end

@@ -89,7 +89,6 @@
    NSLog(@"viewControllers:%@",self.curentViewController.navigationController.viewControllers) ;
     switch (indexPath.row) {
         case 0:
-            
             myClass = NSClassFromString(@"RootViewController");
             identity =@"RootViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
@@ -191,7 +190,7 @@
     self.center=point;
     if ([self.curentViewController isKindOfClass:[aClass class]])
     {
-         //[(RootViewController*)self.curentViewController setSelectedRow];
+       //  [(RootViewController*)self.curentViewController setSelectedRow];
         [self.curentViewController viewDidAppear:NO];
         return;
     }
@@ -202,7 +201,9 @@
     {
         if ([controller isKindOfClass:[aClass class]])
         {
+            NSLog(@"aaaa");
             [self.curentViewController.navigationController popToViewController:controller animated:NO];
+            NSLog(@"bbbb");
 //            if ([controller isKindOfClass:[RootViewController class]])
 //            {
 //                [(RootViewController*)controller setSelectedRow];

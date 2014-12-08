@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+
 #import "SelectedOrdersTableViewHandler.h"
 
 
-@interface SelectedOrdersViewController : UIViewController<UIAlertViewDelegate,CLLocationManagerDelegate>
+@interface SelectedOrdersViewController : UIViewController
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;
 @property(strong,nonatomic)NSString * stringForSrochno;
@@ -27,5 +27,7 @@
 -(void)toTakeAction;
 -(void)setIndexOfCell:(NSUInteger)indexOf;
 -(void)setUnderView:(UIView*)under;
+- (IBAction)openMap:(UIButton*)sender;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property(copy,nonatomic)NSString * idhash;
 @end
