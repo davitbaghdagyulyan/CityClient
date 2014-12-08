@@ -42,6 +42,8 @@
     [super viewDidAppear:animated];
 
     
+    
+    
     for (UIScrollView* scroll in self.tariffsSacrollView.subviews)
     {
         [scroll removeFromSuperview];
