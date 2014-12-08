@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DEBAA85D-CA4A-4601-8C9C-A7796F2A33EB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CityMobilDriver</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DE1F1CCC5E9B07B55A7574B67F8BE552D95A2953</key>
+		<string>https://github.com/davitbaghdagyulyan/CityClient.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CityMobilDriver/CityMobilDriver.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DE1F1CCC5E9B07B55A7574B67F8BE552D95A2953</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/davitbaghdagyulyan/CityClient.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DE1F1CCC5E9B07B55A7574B67F8BE552D95A2953</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DE1F1CCC5E9B07B55A7574B67F8BE552D95A2953</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Driver</string>
+		</dict>
+	</array>
+</dict>
+</plist>
