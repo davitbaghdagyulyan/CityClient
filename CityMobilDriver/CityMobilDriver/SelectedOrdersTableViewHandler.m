@@ -23,26 +23,7 @@
     return self;
 }
 
--(void)initArrays
-{
-    selectedRow=-1;
-    deviceType= [UIDevice currentDevice].model;
-    if (numberOfClass==0)
-    {
-        if ([SingleDataProvider sharedKey].arrayOfIndexes1.count==0) {
-            NSMutableArray * arrayOfIndexes1 =[[NSMutableArray alloc]init];
-            [SingleDataProvider sharedKey].arrayOfIndexes1=arrayOfIndexes1;
-        }
-    }
-    if (numberOfClass==1)
-    {
-        if ([SingleDataProvider sharedKey].arrayOfIndexes2.count==0) {
-            NSMutableArray * arrayOfIndexes2 =[[NSMutableArray alloc]init];
-            [SingleDataProvider sharedKey].arrayOfIndexes2=arrayOfIndexes2;
-        }
-    }
 
-}
 -(void)setSelectedRow:(NSInteger)selectedRo
 {
     selectedRow=selectedRo;

@@ -63,5 +63,4 @@
 -(void)setResponseObject:(SelectedOrdersDetailsResponse*)object andStringforSroch:(NSString*)string andFlag1:(NSInteger)flag andCurentSelf:(UIViewController*)vc andNumberOfClass:(NSUInteger)number;
 
 -(void)setSelectedRow:(NSInteger)selectedRo;
--(void)initArrays;
 @end
