@@ -87,14 +87,20 @@
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     //Adding Gradient For self.view
-    gradLayerForSelfView =[CAGradientLayer layer];
+    if (!gradLayerForSelfView)
+    {
+     gradLayerForSelfView =[CAGradientLayer layer];
+    }
     UIColor * gradColStartSelView =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];
     UIColor * gradColFinSelView =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.0f];
     gradLayerForSelfView.frame =CGRectMake(0,65, self.view.frame.size.width,self.view.frame.size.height);
     [gradLayerForSelfView setColors:[NSArray arrayWithObjects:(id)(gradColStartSelView.CGColor), (id)(gradColFinSelView.CGColor),nil]];
     [self.view.layer insertSublayer:gradLayerForSelfView atIndex:0];
     //Adding Gradient For GreyView
+    if (!gradLayer)
+    {
     gradLayer=[CAGradientLayer layer];
+    }
     UIColor * graColStart = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
     UIColor * graColFin =[UIColor colorWithRed:233/255.0f green:233/255.0f blue:233/255.0f alpha:1.0f];
     gradLayer.frame = self.GreyView.bounds;
@@ -312,7 +318,10 @@
                 UILabel * labelDefiningSize;
                 CGSize  expectSize;
                 myString =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
-                labelDefiningSize  = [[UILabel alloc] init];
+                if (!labelDefiningSize)
+                {
+                 labelDefiningSize  = [[UILabel alloc] init];
+                }
                 labelDefiningSize.text =myString;
                 labelDefiningSize.numberOfLines = 0;
                 labelDefiningSize.lineBreakMode = NSLineBreakByWordWrapping;
@@ -383,7 +392,10 @@ else
 {
     self.tableViewOrdersHistory.userInteractionEnabled = NO;
     self.buttonDatePicker.userInteractionEnabled = NO;
-    transparentView = [[UIView alloc]initWithFrame:self.view.frame];
+    if (!transparentView)
+    {
+      transparentView = [[UIView alloc]initWithFrame:self.view.frame];
+    }
     transparentView.backgroundColor = [UIColor blackColor];
     transparentView.alpha =0.7;
     [self.view addSubview:transparentView];
@@ -404,7 +416,10 @@ else
     {
     datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x+self.tableViewOrdersHistory.frame.size.width/4 ,self.GreyView.frame.origin.y+20,self.tableViewOrdersHistory.frame.size.width/2,0);
     }
-    labelSettingTheDate = [[UILabel alloc]init];
+    if (!labelSettingTheDate)
+    {
+     labelSettingTheDate = [[UILabel alloc]init];
+    }
     if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
        [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
@@ -419,12 +434,18 @@ else
     labelSettingTheDate.backgroundColor=[UIColor whiteColor];
     labelSettingTheDate.text=@"Настройка даты";
     labelSettingTheDate.textAlignment=NSTextAlignmentCenter;
-    designLabel1=[[UILabel alloc]init];
+    if (! designLabel1)
+    {
+     designLabel1=[[UILabel alloc]init];
+    }
     designLabel1.frame=CGRectMake(datePicker.frame.origin.x, labelSettingTheDate.frame.origin.y + labelSettingTheDate.frame.size.height, datePicker.frame.size.width,1);
     designLabel1.backgroundColor=[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1];
     [self.view  addSubview:labelSettingTheDate];
     [self.view  addSubview:designLabel1];
-    buttonCancell = [[UIButton alloc]init];
+    if (!buttonCancell)
+    {
+     buttonCancell = [[UIButton alloc]init];
+    }
     if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
                         [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
@@ -442,8 +463,11 @@ else
     [buttonCancell  addTarget:self action:@selector(Cancell) forControlEvents:UIControlEventTouchUpInside];
     [buttonCancell setTitle:@"Отмена" forState:UIControlStateNormal];
     [self.view  addSubview:buttonCancell];
-    buttonSetStartDate = [[UIButton alloc]init];
-    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+    if (!buttonSetStartDate)
+    {
+     buttonSetStartDate = [[UIButton alloc]init];
+    }
+   if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
                          [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
       buttonSetStartDate.frame =CGRectMake(datePicker.frame.origin.x+buttonCancell.frame.size.width,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,50);
@@ -558,7 +582,10 @@ else
 }
 - (IBAction)findOrdersFromInterval:(id)sender
 {
-    ordersHistoryJsonObject = [[OrdersHistoryJson alloc]init];
+    if (!ordersHistoryJsonObject)
+    {
+      ordersHistoryJsonObject = [[OrdersHistoryJson alloc]init];
+    }
     ordersHistoryJsonObject.start=self.labelSelectedDate.text;
     ordersHistoryJsonObject.end=stringEndDate;
     [self requestOrdersHistory];
@@ -566,7 +593,10 @@ else
 
 -(void)requestOrdersHistory
 {
+    if (!indicator)
+    {
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    }
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];

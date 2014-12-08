@@ -15,13 +15,10 @@
 @implementation SelectedOrdersTableViewHandler
 -(instancetype)init
 {
-    
     self=[super init];
     if (self)
     {
-        
-        
-        count=1;
+    count=1;
     }
     return self;
 }
@@ -434,11 +431,28 @@
         NSLayoutConstraint * view22Height =[NSLayoutConstraint constraintWithItem:cell.View2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height1];
         [cell.whiteView addConstraint:view22Height];
         //VIEW3
-        cell.View3.translatesAutoresizingMaskIntoConstraints = NO;
+         cell.View3.translatesAutoresizingMaskIntoConstraints = NO;
         [cell.View3 removeConstraint:[cell.View3.constraints objectAtIndex:0]];
         NSLayoutConstraint * view33Height =[NSLayoutConstraint constraintWithItem:cell.View3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height2];
         [cell.whiteView addConstraint:view33Height];
         //When we don't have deliveryMetroName we don't show map button
+         if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0)
+         {
+             [cell.labelDeliveryMetroName removeFromSuperview];
+             cell.buttonMap2.hidden = YES;
+             labelOurComment.backgroundColor=[UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
+             labelDeliveryComment.backgroundColor=[UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
+             labelDeliveryComment.frame = CGRectMake(10, 5, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+             if (expectSizeDeliveryComment.height==0)
+             {
+              labelOurComment.frame = CGRectMake(10, 5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
+             }
+             labelOurComment.frame = CGRectMake(10, 5+expectSizeDeliveryComment.height +4+5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
+             [cell.View3 addSubview:labelDeliveryComment];
+             [cell.View3 addSubview:labelOurComment];
+         }
+        
+        
         if (![[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]|| [[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]length]==0)
         {
             cell.buttonMap2.hidden = YES;
@@ -473,7 +487,8 @@
             }
             [cell.View2 addSubview:labelCallComment];
         }
-        if (height2 !=0) {
+        if (height2 !=0 &&  [[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]!=0)
+ {
             NSString *deliveryAddressType =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
             if(deliveryAddressType && [deliveryAddressType integerValue]==50)
             {
@@ -1001,7 +1016,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         NSLog(@"CollAddress is %@",collAddress);
         if (collAddress && collAddress.length !=0)
         {
-            labelCollAddressText  = [[UILabel alloc] init];
+            if (!labelCollAddressText)
+            {
+                labelCollAddressText  = [[UILabel alloc] init];
+            }
             labelCollAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
             labelCollAddressText.text = collAddress;
             labelCollAddressText.numberOfLines = 0;
@@ -1027,7 +1045,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         NSLog(@"CallComment is %@",callComment);
         
         if(callComment && callComment.length !=0)       {
+            if (!labelCallComment)
+            {
             labelCallComment  = [[UILabel alloc] init];
+            }
             labelCallComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelCallComment.text =callComment;
             labelCallComment.numberOfLines = 0;
@@ -1053,7 +1074,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if(deliveryAddress && deliveryAddress.length !=0)
         {
+            if (!labelDeliveryAddressText)
+            {
             labelDeliveryAddressText  = [[UILabel alloc] init];
+            }
             labelDeliveryAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
             labelDeliveryAddressText.text =deliveryAddress;
             labelDeliveryAddressText.numberOfLines = 0;
@@ -1079,7 +1103,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if(deliveryComment && deliveryComment.length !=0)
         {
-            labelDeliveryComment  = [[UILabel alloc] init];
+            if (!labelDeliveryComment)
+            {
+                labelDeliveryComment  = [[UILabel alloc] init];
+            }
             labelDeliveryComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelDeliveryComment.text =deliveryComment;
             labelDeliveryComment.numberOfLines = 0;
@@ -1101,7 +1128,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if(ourComment && ourComment.length !=0)
         {
-            labelOurComment  = [[UILabel alloc] init];
+            if (!labelOurComment)
+            {
+             labelOurComment  = [[UILabel alloc] init];
+            }
             labelOurComment.font =  [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelOurComment.text = ourComment;
             labelOurComment.numberOfLines = 0;
@@ -1121,12 +1151,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
             height2 +=5;
         }
-        
-        //DEFINING HEGHT FOR VIEW3
-        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0)
+        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 && expectSizeDeliveryComment.height==0
+            && expectSizeForOurComment.height==0 )
         {
-            height2 = 0;
+            height2=0;
         }
+        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 &&(expectSizeDeliveryComment.height!=0 ||expectSizeForOurComment.height!=0 ))
+        {
+            height2=5+expectSizeDeliveryComment.height+4+5+expectSizeForOurComment.height+4+5;
+        }
+        
         //DEFINING HEIGHT FOR CELL
         height = 2+1+22+height1+height2+1+4+45+4;
         //CustomCellSelectedORDER2
@@ -1201,7 +1235,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     UIImageView * imgView1;
-    imgView1 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView1)
+    {
+     imgView1 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView1.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView1];
     NSLayoutConstraint * imgView1ConstraintWidth;
@@ -1257,7 +1294,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //Image2 construction and initializatio
     UIImageView * imgView2;
-    imgView2 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView2)
+    {
+        imgView2 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView2.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView2];
     NSLayoutConstraint * imgView2ConstraintWidth;
@@ -1316,7 +1356,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     //********Image3 construction and initialization
     UIImageView * imgView3;
-    imgView3 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView3)
+    {
+      imgView3 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView3.translatesAutoresizingMaskIntoConstraints = NO;
     [view  addSubview:imgView3];
     NSLayoutConstraint * imgView3ConstraintWidth;
@@ -1359,7 +1402,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image4 construction and initialization
     UIImageView * imgView4;
-    imgView4 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView4)
+    {
+     imgView4 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView4.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView4];
     NSLayoutConstraint * imgView4ConstraintWidth;
@@ -1401,7 +1447,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image5 construction and initialization
     UIImageView * imgView5;
-    imgView5 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView5)
+    {
+     imgView5 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView5.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView5];
     NSLayoutConstraint * imgView5ConstraintWidth;
@@ -1447,7 +1496,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image6 construction and initialization
     UIImageView * imgView6;
-    imgView6 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView6)
+    {
+     imgView6 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView6.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView6];
     NSLayoutConstraint * imgView6ConstraintWidth;
@@ -1485,7 +1537,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image7 construction and initialization
     UIImageView * imgView7;
-    imgView7 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView7)
+    {
+        imgView7 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView7.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView7];
     NSLayoutConstraint * imgView7ConstraintWidth;
@@ -1524,7 +1579,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image8 construction and initialization
     UIImageView * imgView8;
-    imgView8 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView8)
+    {
+        imgView8 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView8.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView8];
     NSLayoutConstraint * imgView8ConstraintWidth;
@@ -1565,7 +1623,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image9 construction and initialization
     UIImageView * imgView9;
-    imgView9 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView9)
+    {
+        imgView9 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView9.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView9];
     NSLayoutConstraint * imgView9ConstraintWidth;

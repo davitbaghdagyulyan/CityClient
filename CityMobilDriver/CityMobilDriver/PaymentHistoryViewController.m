@@ -91,7 +91,10 @@ GetPaymentsResponse * getPaymentsResponseObject;
     CGSize  expectSizeForHeight;
     if ([[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment])
     {
-        labelCalculateHeightOfCell =[[UILabel alloc]init];
+        if (! labelCalculateHeightOfCell)
+        {
+            labelCalculateHeightOfCell =[[UILabel alloc]init];
+        }
         labelCalculateHeightOfCell.text=[[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment];
         labelCalculateHeightOfCell.font=[UIFont fontWithName:@"Roboto-Regular" size:14];
         labelCalculateHeightOfCell.numberOfLines=0;
