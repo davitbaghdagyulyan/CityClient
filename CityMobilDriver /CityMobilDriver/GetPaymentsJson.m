@@ -1,15 +1,15 @@
 //
-//  SelectedOrdersDetailsJson.m
+//  GetPaymentsJson.m
 //  CityMobilDriver
 //
-//  Created by Arusyak Mikayelyan on 10/13/14.
+//  Created by Arusyak Mikayelyan on 12/3/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
-#import "SelectedOrdersDetailsJson.h"
-
+#import "GetPaymentsJson.h"
 #import "SingleDataProvider.h"
-@implementation SelectedOrdersDetailsJson
+
+@implementation GetPaymentsJson
 -(instancetype)init
 {
     self=[super init];
@@ -18,13 +18,10 @@
         self.ipass=@"o3XOFR7xpv";
         self.key=[[SingleDataProvider sharedKey]key];
         self.ilog=@"cm-api";
-        self.method=@"GetOrders";
+        self.method=@"GetPayments";
         self.version=@"1.0.2";
         self.versionCode=@"17";
-        self.filter =nil;
-       
     }
     return self;
 }
-
 @end

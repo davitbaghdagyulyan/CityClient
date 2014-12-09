@@ -23,4 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelOrderDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *deliveryMetroName;
+@property (strong, nonatomic) IBOutlet UIImageView *imgViewCall;
+@property (strong, nonatomic) IBOutlet UIImageView *imgViewDel;
 @end

@@ -21,8 +21,9 @@
     AddGPSResponse*addGPSResponseObject;
     NSOperationQueue *myQueue ;
 }
+@property(nonatomic,strong)NSMutableArray * arrayOfIndexes1;
+@property(nonatomic,strong)NSMutableArray * arrayOfIndexes2;
 @property(nonatomic,strong) NSString* key;
-@property(nonatomic,strong)NSMutableArray * arrayOfIndexes;
 @property(nonatomic,strong)NSTimer*timer;
 @property(nonatomic,assign)CGFloat lat;
 @property(nonatomic,assign)CGFloat lon;

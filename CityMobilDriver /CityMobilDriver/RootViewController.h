@@ -7,9 +7,20 @@
 @interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 
+
+@property (strong, nonatomic) IBOutlet UIButton *yandexButtonIpad;
+@property (strong, nonatomic) IBOutlet UIButton *yandexButtonLand;
+@property (strong, nonatomic) IBOutlet UIButton *yandexButtonPort;
+
+
+@property (nonatomic,weak) IBOutlet UIButton* cityButtonPort;
+@property (strong, nonatomic) IBOutlet UIButton *cityButtonLand;
+@property (strong, nonatomic) IBOutlet UIButton *cityButtonIpad;
+
+
 //UI for Iphones in Portrait
 @property (strong, nonatomic) IBOutlet UIView *navigationView;
-- (IBAction)actionGPS:(id)sender;
+
 - (IBAction)refreshPage:(id)sender;
 - (IBAction)back:(id)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
@@ -35,5 +46,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelMessagesIpad;
 @property (weak, nonatomic) IBOutlet UILabel *labelCallToDispethcerIpad;
 -(void)setSelectedRow;
+- (IBAction)openMap:(UIButton*)sender;
+
 @end
 

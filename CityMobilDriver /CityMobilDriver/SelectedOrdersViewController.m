@@ -9,7 +9,7 @@
 #import "SelectedOrdersViewController.h"
 #import "CustomCellSelectedOrders.h"
 #import "SingleDataProvider.h"
-#import "SingleDataProviderForFilter.h"
+
 #import "SelectedOrdersDetailsResponse.h"
 #import "SelectedOrdersDetailsJson.h"
 #import "JSONModel.h"
@@ -25,43 +25,60 @@
 
 @interface SelectedOrdersViewController ()
 {
-    //ARUS
+    //LEFT MUENU
     NSInteger flag;
+    LeftMenu*leftMenu;
+    //ARUS
     NSInteger flag1;
     BOOL alertNoConIsCreated;
     BOOL  cancelOfAlertNoConIsClicked;
     BOOL alertServErrIsCreated;
     BOOL cancelOfAlertServErrIsClicked;
-    LeftMenu*leftMenu;
+    //NAREK
     NSUInteger indexOfCell;
     CustomViewForMaps*viewMap;
     CGRect rect;
     NSUInteger number;
-
-
     AssignOrderResponse*assignOrderResponseObject;
     UIAlertView*confirmOrdersTakenAlert;
     UIView*underView;
-    SelectedOrdersTableViewHandler* selectedOrdersTableViewHandlerObject;
     NSString *yandexMapUrl;
     NSString*googleMapUrl;
-}
+    //HANDLER
+    SelectedOrdersTableViewHandler* selectedOrdersTableViewHandlerObject;
+   }
 
 @end
 
 @implementation SelectedOrdersViewController
 {
+    //requestORDER
     SelectedOrdersDetailsResponse * selectedOrdersDetailsResponseObject;
-    NSString * result;
-    NSInteger selectedRow;
-    NSTimer * timerForTitleLabel;
-    NSTimer * requestTimer;
+    SelectedOrdersDetailsJson* detailsJsonObject;
     bool timerCreated;
+    NSTimer * requestTimer;
+    //SelectionOfCell
+     NSInteger selectedRow;
+    //requestBuyDeliveryAddress
+    NSString * result;
+   //User Interface
+    NSTimer * timerForTitleLabel;
+   
+    
+}
+
+-(void)setFilter:(NSDictionary *)filter
+{
+    detailsJsonObject=[[SelectedOrdersDetailsJson alloc]init];
+    detailsJsonObject.filter=filter;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    //Buttons color change for SettingsVC
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     //FONT TITLE LABEL
     selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
     self.tableViewOrdersDetails.delegate=selectedOrdersTableViewHandlerObject;
@@ -77,7 +94,8 @@
     }
     else
     {
-    self.stringForSrochno=@"";
+        self.titleLabel.textColor=[UIColor blackColor];
+        self.stringForSrochno=@"";
     }
     flag=0;
     self.tableViewOrdersDetails.userInteractionEnabled = YES;
@@ -154,7 +172,6 @@
     self.tableViewOrdersDetails.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     self.titleLabel.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     [self.tableViewOrdersDetails reloadData];
-    SelectedOrdersDetailsJson* detailsJsonObject=[[SelectedOrdersDetailsJson alloc]init];
     NSDictionary*jsonDictionary=[detailsJsonObject toDictionary];
     NSString*jsons=[detailsJsonObject toJSONString];
     NSLog(@"%@",jsons);
@@ -173,7 +190,7 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data && alertNoConIsCreated ==NO)
         {
-           UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
             alertNoConIsCreated =YES;
             cancelOfAlertNoConIsClicked =NO;
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -187,38 +204,38 @@
         else if(data)
         {
             alertNoConIsCreated =NO;
+            NSString* jsonString1 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"selectedOrdersDetails =%@",jsonString1);
+            NSError*err;
+            selectedOrdersDetailsResponseObject = [[SelectedOrdersDetailsResponse alloc] initWithString:jsonString1 error:&err];
         }
-    NSString* jsonString1 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"selectedOrdersDetails =%@",jsonString1);
-    NSError*err;
-    selectedOrdersDetailsResponseObject = [[SelectedOrdersDetailsResponse alloc] initWithString:jsonString1 error:&err];
-    if(selectedOrdersDetailsResponseObject.code!=nil && alertServErrIsCreated==NO)
-    {
-      UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:selectedOrdersDetailsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+        if(selectedOrdersDetailsResponseObject.code!=nil && alertServErrIsCreated==NO)
+        {
+            UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:selectedOrdersDetailsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
             alertServErrIsCreated =YES;
-      UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               cancelOfAlertServErrIsClicked = YES;
                                                               [alertServerErr dismissViewControllerAnimated:YES completion:nil];
                                                           }];
-     [alertServerErr addAction:cancel];
-     [self presentViewController:alertServerErr animated:YES completion:nil];
-     }
-     else if(selectedOrdersDetailsResponseObject.code==nil)
-     {
-      alertServErrIsCreated=NO;
-     }
-     flag1=1;
-    [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
-     if (selectedOrdersDetailsResponseObject.code==nil && data)
-     {
-        self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-        self.tableViewOrdersDetails.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-        self.titleLabel.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            [alertServerErr addAction:cancel];
+            [self presentViewController:alertServerErr animated:YES completion:nil];
+        }
+        else if(selectedOrdersDetailsResponseObject.code==nil)
+        {
+            alertServErrIsCreated=NO;
+        }
+        flag1=1;
         [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
-         [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
-         [self.tableViewOrdersDetails reloadData];
-     }
+        if (selectedOrdersDetailsResponseObject.code==nil && data)
+        {
+            self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.tableViewOrdersDetails.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            self.titleLabel.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+            [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
+            [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
+            [self.tableViewOrdersDetails reloadData];
+        }
         if (timerCreated ==NO)
         {
             requestTimer= [NSTimer scheduledTimerWithTimeInterval:30
@@ -227,20 +244,20 @@
                                                          userInfo:nil
                                                           repeats:YES];
             timerCreated =YES;
-       }
+        }
         
     }];
     
     
 }
 
+
 -(void)viewDidDisappear:(BOOL)animated
 {
     [requestTimer invalidate];
 }
 
-- (IBAction)actionGPS:(id)sender {
-}
+
 
 - (IBAction)refresh:(id)sender
 {
@@ -427,14 +444,14 @@
 
 -(void)requestBuyDeliveryAddress
 {
-   BuyDeliveryAddressJson* buyAddressJsonObject=[[BuyDeliveryAddressJson alloc]init];
-   buyAddressJsonObject.idhash=self.idhash;
-   NSDictionary*jsonDictionary=[buyAddressJsonObject toDictionary];
-   NSString*jsons=[buyAddressJsonObject toJSONString];
-   NSLog(@"%@",jsons);
-   NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
-   NSError* error;
-   NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+    BuyDeliveryAddressJson* buyAddressJsonObject=[[BuyDeliveryAddressJson alloc]init];
+    buyAddressJsonObject.idhash=self.idhash;
+    NSDictionary*jsonDictionary=[buyAddressJsonObject toDictionary];
+    NSString*jsons=[buyAddressJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSError* error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
@@ -447,10 +464,10 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-           UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
-           UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+            UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                            [alertNoCon dismissViewControllerAnimated:YES completion:nil];
+                                                              [alertNoCon dismissViewControllerAnimated:YES completion:nil];
                                                           }];
             [alertNoCon addAction:cancel];
             [self presentViewController:alertNoCon animated:YES completion:nil];
@@ -458,16 +475,16 @@
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"First Json String %@",jsonString);
         NSError*err;
-       BuyDeliveryAddressResponse*buyDeliveryAddressResponseObject = [[BuyDeliveryAddressResponse alloc] initWithString:jsonString error:&err];
+        BuyDeliveryAddressResponse*buyDeliveryAddressResponseObject = [[BuyDeliveryAddressResponse alloc] initWithString:jsonString error:&err];
         if(buyDeliveryAddressResponseObject.code!=nil)
         {
-         UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:buyDeliveryAddressResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-         UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+            UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:buyDeliveryAddressResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [alertServerErr dismissViewControllerAnimated:YES completion:nil];
                                                           }];
-        [alertServerErr addAction:cancel];
-        [self presentViewController:alertServerErr animated:YES completion:nil];
+            [alertServerErr addAction:cancel];
+            [self presentViewController:alertServerErr animated:YES completion:nil];
             
         }
         result=buyDeliveryAddressResponseObject.result;

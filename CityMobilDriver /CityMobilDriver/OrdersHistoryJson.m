@@ -8,8 +8,7 @@
 
 #import "OrdersHistoryJson.h"
 #import "SingleDataProvider.h"
-#import "SingleDataProviderForEndDate.h"
-#import "SingleDataProviderForStartDate.h"
+
 
 @implementation OrdersHistoryJson
 -(instancetype)init
@@ -23,11 +22,11 @@
         [versionsDic setObject:@"2.9" forKey:@"versionName"];
         self.versions = versionsDic;
         self.ipass = @"o3XOFR7xpv";
-        self.start=[[SingleDataProviderForStartDate sharedStartDate]startDate];
+        self.start=nil;
         self.ilog=@"cm-api";
         self.locale = @"ru";
         self.method= @"GetCompleteOrders";
-        self.end =[[SingleDataProviderForEndDate sharedEndDate]endDate];
+        self.end =nil;
         self.key =[[SingleDataProvider sharedKey]key];
         self.version = @"1.0.2";
     }

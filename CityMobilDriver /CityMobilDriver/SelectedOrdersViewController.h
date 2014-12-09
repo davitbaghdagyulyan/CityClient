@@ -12,15 +12,9 @@
 
 
 @interface SelectedOrdersViewController : UIViewController
-
-
-
-
-
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;
 @property(strong,nonatomic)NSString * stringForSrochno;
-- (IBAction)actionGPS:(id)sender;
 - (IBAction)refresh:(id)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
@@ -35,4 +29,7 @@
 - (IBAction)openMap:(UIButton*)sender;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property(copy,nonatomic)NSString * idhash;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+-(void)setFilter:(NSDictionary *)filter;
 @end
