@@ -19,11 +19,39 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOM-Iw-Kua" userLabel="View2">
                                 <rect key="frame" x="275" y="0.0" width="45" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-gn-PH1">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZAS-gn-PH1" secondAttribute="trailing" id="7KI-eH-I05"/>
+                                    <constraint firstItem="ZAS-gn-PH1" firstAttribute="top" secondItem="iOM-Iw-Kua" secondAttribute="top" id="Edd-Th-uxL"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZAS-gn-PH1" secondAttribute="bottom" id="X55-Xb-p0G"/>
+                                    <constraint firstItem="ZAS-gn-PH1" firstAttribute="leading" secondItem="iOM-Iw-Kua" secondAttribute="leading" id="brR-O8-sHt"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1N-pg-vM0" userLabel="View1">
                                 <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ap-mh-oH4">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="5ap-mh-oH4" secondAttribute="trailing" id="N1e-fn-Vih"/>
+                                    <constraint firstItem="5ap-mh-oH4" firstAttribute="leading" secondItem="R1N-pg-vM0" secondAttribute="leading" id="Oi9-mo-GOy"/>
+                                    <constraint firstAttribute="bottom" secondItem="5ap-mh-oH4" secondAttribute="bottom" id="W0j-01-Fbb"/>
+                                    <constraint firstItem="5ap-mh-oH4" firstAttribute="top" secondItem="R1N-pg-vM0" secondAttribute="top" id="btV-wi-TYj"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -69,9 +97,11 @@
             <connections>
                 <outlet property="View1" destination="R1N-pg-vM0" id="Xtg-cc-G95"/>
                 <outlet property="View2" destination="iOM-Iw-Kua" id="4ID-Yi-HDc"/>
+                <outlet property="label1" destination="5ap-mh-oH4" id="Wai-IU-yFM"/>
+                <outlet property="label2" destination="ZAS-gn-PH1" id="Nzg-Fy-m97"/>
                 <outlet property="underView" destination="gbR-QR-phX" id="TfD-0c-vlM"/>
             </connections>
-            <point key="canvasLocation" x="416" y="193"/>
+            <point key="canvasLocation" x="476" y="183"/>
         </tableViewCell>
     </objects>
 </document>
