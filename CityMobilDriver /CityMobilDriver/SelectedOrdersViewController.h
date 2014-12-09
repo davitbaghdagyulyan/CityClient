@@ -12,6 +12,11 @@
 
 
 @interface SelectedOrdersViewController : UIViewController
+
+
+
+
+
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;
 @property(strong,nonatomic)NSString * stringForSrochno;
