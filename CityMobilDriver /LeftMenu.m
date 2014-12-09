@@ -103,21 +103,22 @@
             identity =@"ReplenishmentViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-            
-            
         case 4:
             myClass = NSClassFromString(@"RobotSettingsViewController");
             identity =@"RobotSettingsViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-
-
         case 5:
             myClass =NSClassFromString(@"OrdersHistoryViewController");
             identity =@"OrdersHistoryViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-            
+        case 6:
+            myClass =NSClassFromString(@"PaymentHistoryViewController");
+            identity =@"PaymentHistoryViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+   
             
             
 
@@ -190,7 +191,10 @@
     self.center=point;
     if ([self.curentViewController isKindOfClass:[aClass class]])
     {
-       //  [(RootViewController*)self.curentViewController setSelectedRow];
+        if([self.curentViewController isKindOfClass:[RootViewController class]])
+        {
+            [(RootViewController*)self.curentViewController setSelectedRow];
+        }
         [self.curentViewController viewDidAppear:NO];
         return;
     }
@@ -201,13 +205,11 @@
     {
         if ([controller isKindOfClass:[aClass class]])
         {
-            NSLog(@"aaaa");
             [self.curentViewController.navigationController popToViewController:controller animated:NO];
-            NSLog(@"bbbb");
-//            if ([controller isKindOfClass:[RootViewController class]])
-//            {
-//                [(RootViewController*)controller setSelectedRow];
-//            }
+            if ([controller isKindOfClass:[RootViewController class]])
+            {
+                [(RootViewController*)controller setSelectedRow];
+            }
             isFirstloadViewController=NO;
             break;
             

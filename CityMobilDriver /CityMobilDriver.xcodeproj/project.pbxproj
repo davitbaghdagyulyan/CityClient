@@ -62,6 +62,7 @@
 		8FC222801A36E9500003CAAF /* GetPaymentsJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC2227B1A36E9500003CAAF /* GetPaymentsJson.m */; };
 		8FC222811A36E9500003CAAF /* GetPaymentElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC2227D1A36E9500003CAAF /* GetPaymentElements.m */; };
 		8FC222821A36E9500003CAAF /* GetPaymentsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC2227F1A36E9500003CAAF /* GetPaymentsResponse.m */; };
+		8FC222851A37207C0003CAAF /* n_color copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FC222841A37207C0003CAAF /* n_color copy.png */; };
 		8FC5D8ED1A14FFC600B33FA9 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */; };
 		8FCCBBC019E2DDC400BD9BC1 /* chat1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */; };
 		8FCCBBC219E2DE2600BD9BC1 /* ch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCCBBC119E2DE2600BD9BC1 /* ch@2x.png */; };
@@ -71,7 +72,6 @@
 		8FCFF58C19F5052800C6E3A7 /* ic_credit_card_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF58B19F5052800C6E3A7 /* ic_credit_card_payment_small.png */; };
 		8FCFF58E19F5053000C6E3A7 /* ic_non_cash_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF58D19F5053000C6E3A7 /* ic_non_cash_payment_small.png */; };
 		8FCFF59019F5053600C6E3A7 /* ic_on_bonuses_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF58F19F5053600C6E3A7 /* ic_on_bonuses_payment_small.png */; };
-		8FCFF59219F5053C00C6E3A7 /* ic_order_with_visiting_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */; };
 		8FCFF59419F5054200C6E3A7 /* ic_transportation_of_animals_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */; };
 		8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */; };
 		8FDF958219DE7E60005A468A /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDF958119DE7E60005A468A /* logo@2x.png */; };
@@ -344,10 +344,10 @@
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		8F8D322B19E3FA73003232F7 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
-		8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyDeliveryAddressJson.h; sourceTree = "<group>"; };
+		8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BuyDeliveryAddressJson.h; path = ../BuyDeliveryAddressJson.h; sourceTree = "<group>"; };
 		8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDeliveryAddressJson.m; sourceTree = "<group>"; };
-		8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BuyDeliveryAddressResponse.h; path = Orders/BuyDeliveryAddressResponse.h; sourceTree = "<group>"; };
-		8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyDeliveryAddressResponse.m; path = Orders/BuyDeliveryAddressResponse.m; sourceTree = "<group>"; };
+		8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BuyDeliveryAddressResponse.h; path = ../Orders/BuyDeliveryAddressResponse.h; sourceTree = "<group>"; };
+		8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuyDeliveryAddressResponse.m; path = ../Orders/BuyDeliveryAddressResponse.m; sourceTree = "<group>"; };
 		8FA028F01A122B1700729054 /* star_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_none.png; path = CityMobilDriver/star_none.png; sourceTree = "<group>"; };
 		8FA028F21A122B2A00729054 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = CityMobilDriver/star.png; sourceTree = "<group>"; };
 		8FB0F8911A28D9AE003A79E9 /* ic_landmark_airport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_landmark_airport.png; sourceTree = "<group>"; };
@@ -411,6 +411,7 @@
 		8FC2227D1A36E9500003CAAF /* GetPaymentElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPaymentElements.m; sourceTree = "<group>"; };
 		8FC2227E1A36E9500003CAAF /* GetPaymentsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPaymentsResponse.h; sourceTree = "<group>"; };
 		8FC2227F1A36E9500003CAAF /* GetPaymentsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPaymentsResponse.m; sourceTree = "<group>"; };
+		8FC222841A37207C0003CAAF /* n_color copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n_color copy.png"; sourceTree = "<group>"; };
 		8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -423,7 +424,6 @@
 		8FCFF58B19F5052800C6E3A7 /* ic_credit_card_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_credit_card_payment_small.png; sourceTree = "<group>"; };
 		8FCFF58D19F5053000C6E3A7 /* ic_non_cash_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_non_cash_payment_small.png; sourceTree = "<group>"; };
 		8FCFF58F19F5053600C6E3A7 /* ic_on_bonuses_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_on_bonuses_payment_small.png; sourceTree = "<group>"; };
-		8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_order_with_visiting_small.png; sourceTree = "<group>"; };
 		8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_transportation_of_animals_small.png; sourceTree = "<group>"; };
 		8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wifi_small.png; sourceTree = "<group>"; };
 		8FDF958119DE7E60005A468A /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
@@ -934,6 +934,17 @@
 			name = PaymentJson;
 			sourceTree = "<group>";
 		};
+		8FC222831A370CE10003CAAF /* BuyDeliveryAddress */ = {
+			isa = PBXGroup;
+			children = (
+				8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */,
+				8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */,
+				8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */,
+				8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */,
+			);
+			name = BuyDeliveryAddress;
+			sourceTree = "<group>";
+		};
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
@@ -946,9 +957,6 @@
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
 				D70428CE19D0072000F5C38C /* CityMobilDriverTests */,
 				D70428B319D0071F00F5C38C /* Products */,
-				8F9933131A2CB55C0040C97E /* BuyDeliveryAddressJson.h */,
-				8F9933161A2CB5820040C97E /* BuyDeliveryAddressResponse.h */,
-				8F9933171A2CB58A0040C97E /* BuyDeliveryAddressResponse.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1002,7 +1010,6 @@
 				ECCD99231A19DF93009D482C /* Roboto Fonts */,
 				ECCD34511A03D422000444BF /* Images */,
 				D70428B619D0071F00F5C38C /* Info.plist */,
-				8F9933141A2CB5670040C97E /* BuyDeliveryAddressJson.m */,
 				D70428B719D0071F00F5C38C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1651,9 +1658,9 @@
 				8FE032EB19DEC80600B17C09 /* ya@2x.png */,
 				8FE032ED19DEC80D00B17C09 /* phone@2x.png */,
 				8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */,
+				8FC222841A37207C0003CAAF /* n_color copy.png */,
 				8FE032EF19DEC81B00B17C09 /* gps@2x.png */,
 				8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */,
-				8FCFF59119F5053C00C6E3A7 /* ic_order_with_visiting_small.png */,
 				8FCFF58D19F5053000C6E3A7 /* ic_non_cash_payment_small.png */,
 				8FE032F119DEC83B00B17C09 /* icon@2x.png */,
 				8FCFF59319F5054200C6E3A7 /* ic_transportation_of_animals_small.png */,
@@ -1871,6 +1878,7 @@
 				ECEC899C1A2CA1100036781D /* CustomViewForMaps.m */,
 				ECEC89B91A2CA3A90036781D /* SelectedOrdersTableViewHandler.h */,
 				ECEC89BA1A2CA3A90036781D /* SelectedOrdersTableViewHandler.m */,
+				8FC222831A370CE10003CAAF /* BuyDeliveryAddress */,
 				ECEC89B81A2CA2AD0036781D /* SelectedOrdersDetails */,
 			);
 			name = SelectedOrdersViewController;
@@ -2069,7 +2077,6 @@
 				ECEC89AE1A2CA1100036781D /* rublsi.ttf in Resources */,
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */,
-				8FCFF59219F5053C00C6E3A7 /* ic_order_with_visiting_small.png in Resources */,
 				ECCD34531A03D454000444BF /* arrow.png in Resources */,
 				ECCD993C1A19DF93009D482C /* Roboto-BoldItalic.ttf in Resources */,
 				8FCFF59419F5054200C6E3A7 /* ic_transportation_of_animals_small.png in Resources */,
@@ -2089,6 +2096,7 @@
 				8FB0F8AF1A28D9AE003A79E9 /* train.png in Resources */,
 				ECB38B3C1A0D130B00DFBB77 /* 6@2x.png in Resources */,
 				8FE032F219DEC83B00B17C09 /* icon@2x.png in Resources */,
+				8FC222851A37207C0003CAAF /* n_color copy.png in Resources */,
 				ECB38B361A0D130B00DFBB77 /* 0@2x.png in Resources */,
 				8FB0F8A11A28D9AE003A79E9 /* ic_landmark_airport.png in Resources */,
 				8FE032F419DEC84A00B17C09 /* icon2@2x.png in Resources */,

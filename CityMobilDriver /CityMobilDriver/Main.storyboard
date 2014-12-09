@@ -8135,8 +8135,8 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="Yre-LJ-76X"/>
                                                 <exclude reference="BvB-y4-FVu"/>
+                                                <exclude reference="Yre-LJ-76X"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -8172,8 +8172,8 @@
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="QJ0-Xj-EgO"/>
                                                 <exclude reference="L24-wx-tGa"/>
+                                                <exclude reference="QJ0-Xj-EgO"/>
                                             </mask>
                                         </variation>
                                     </label>
@@ -8235,8 +8235,8 @@
                                         <exclude reference="8iX-cF-454"/>
                                         <exclude reference="Ed2-2T-a0e"/>
                                         <exclude reference="fhO-dS-Opi"/>
-                                        <exclude reference="U8w-E2-wM1"/>
                                         <exclude reference="Gmg-bj-fLp"/>
+                                        <exclude reference="U8w-E2-wM1"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
@@ -8418,10 +8418,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="qpX-pr-guY"/>
                                 <exclude reference="TU4-85-KH2"/>
-                                <exclude reference="oXl-Nv-dxv"/>
+                                <exclude reference="qpX-pr-guY"/>
                                 <exclude reference="ceH-60-Yft"/>
+                                <exclude reference="oXl-Nv-dxv"/>
                                 <exclude reference="njf-w8-wou"/>
                             </mask>
                         </variation>
@@ -8665,6 +8665,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pdf-nK-2Pg"/>
+        <segue reference="YDn-LL-Zjh"/>
     </inferredMetricsTieBreakers>
 </document>

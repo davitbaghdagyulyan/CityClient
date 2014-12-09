@@ -417,18 +417,36 @@
         NSLayoutConstraint * view33Height =[NSLayoutConstraint constraintWithItem:cell.View3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height2];
         [cell.whiteView addConstraint:view33Height];
         //When we don't have deliveryMetroName we don't show map button
-        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0)
+        /*
+         if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 && expectSizeDeliveryComment.height==0
+         && expectSizeForOurComment.height==0 )
+         {
+         height2=0;
+         }
+         if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 &&(expectSizeDeliveryComment.height!=0 ||expectSizeForOurComment.height!=0 ))
+         {
+         height2=5+expectSizeDeliveryComment.height+4+5+expectSizeForOurComment.height+4+5;
+         }
+        */
+        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 &&(expectSizeDeliveryComment.height!=0 ||expectSizeForOurComment.height!=0 ))
+
         {
             [cell.labelDeliveryMetroName removeFromSuperview];
-            cell.buttonMap2.hidden = YES;
+            [cell.buttonMap2 removeFromSuperview];
             labelOurComment.backgroundColor=[UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
             labelDeliveryComment.backgroundColor=[UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
-            labelDeliveryComment.frame = CGRectMake(10, 5, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+            if (expectSizeDeliveryComment.height!=0)
+            {
+                labelDeliveryComment.frame = CGRectMake(10, 5, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+            }
             if (expectSizeDeliveryComment.height==0)
             {
                 labelOurComment.frame = CGRectMake(10, 5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
             }
+            else
+            {
             labelOurComment.frame = CGRectMake(10, 5+expectSizeDeliveryComment.height +4+5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
+            }
             [cell.View3 addSubview:labelDeliveryComment];
             [cell.View3 addSubview:labelOurComment];
         }
@@ -469,7 +487,7 @@
             }
             [cell.View2 addSubview:labelCallComment];
         }
-        if (height2 !=0) {
+        if (height2 !=0 && [[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]!=0) {
             NSString *deliveryAddressType =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
             if(deliveryAddressType && [deliveryAddressType integerValue]==50)
             {
