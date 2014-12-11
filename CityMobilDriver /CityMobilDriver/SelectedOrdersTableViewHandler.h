@@ -25,9 +25,8 @@
     UIAlertView * alertConfirmPurchase;
     NSString *  deliveryAddrTypeMenu;
     NSString * deviceType;
-    NSString * callDateFormat;
     NSString * shortName;
-    NSString * percent;
+    NSInteger percent;
     NSString * NoSmoking;
     NSString * G_Width;
     NSString * payment_method;
@@ -36,14 +35,20 @@
     NSString * stringForLabelShortName;
     NSString * stringForLabelPercent;
     NSInteger selectedRow;
+    //Variables For Defining Height
     float height;
-    UILabel * labelCallMetroName;
+    CGFloat height2;
+    CGFloat height1;
     UILabel *labelCollAddressText;
+    CGSize expectSizeForCollAddress;
     UILabel *labelCallComment;
-    UILabel * labelDeliveryMetroName;
+    CGSize expectSizeForCallComment;
     UILabel * labelDeliveryAddressText;
+    CGSize  expectSizeForDeliveryAddress;
     UILabel *labelDeliveryComment;
+    CGSize expectSizeDeliveryComment;
     UILabel *labelOurComment;
+    CGSize expectSizeForOurComment;
     SelectedOrdersDetailsResponse*responseObject;
     NSUInteger indexOfCell;
     NSString*stringforSrochno;
@@ -51,13 +56,8 @@
     UIView*underView;
     UIViewController*curentSelf;
     NSUInteger numberOfClass;
-    CGSize expectSizeForCollAddress;
-    CGSize expectSizeForCallComment;
-     CGSize  expectSizeForDeliveryAddress;
-        CGSize expectSizeDeliveryComment;
-       CGSize expectSizeForOurComment;
-    CGFloat height2;
-    CGFloat height1;
+    NSTimer * timerForCallDat;
+    NSUInteger count;
     
 }
 @property(nonatomic,strong)UIView*under;

@@ -7,9 +7,8 @@
 //
 
 #import "JSONModel.h"
-#import "BuyDeliveryAddressElements.h"
-
 @interface BuyDeliveryAddressResponse : JSONModel
-//@property (nonatomic,strong)NSMutableArray<BuyDeliveryAddressElements>*lalala;
+@property(nonatomic,strong)NSString*result;
 @property(nonatomic,strong)NSString*code;
+@property(nonatomic,strong)NSString *text;
 @end

@@ -59,7 +59,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-Eh-oCf" userLabel="CALL">
                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="19"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metro.png" translatesAutoresizingMaskIntoConstraints="NO" id="X5d-so-CQX">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X5d-so-CQX">
                                                                 <rect key="frame" x="5" y="4" width="14" height="11"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="14" id="ZcU-Tl-Fk8"/>
@@ -88,7 +88,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CyA-K9-xjO" userLabel="DELIV">
                                                         <rect key="frame" x="0.0" y="19" width="130" height="19"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metro.png" translatesAutoresizingMaskIntoConstraints="NO" id="aMC-K1-H16">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aMC-K1-H16">
                                                                 <rect key="frame" x="5" y="4" width="14" height="11"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="PLk-gw-8k3"/>
@@ -271,6 +271,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="deliveryMetroName" destination="5g3-Qs-Ugq" id="79H-nm-qIJ"/>
+                <outlet property="imgViewCall" destination="X5d-so-CQX" id="Xdb-9b-Y4U"/>
+                <outlet property="imgViewDel" destination="aMC-K1-H16" id="rwi-F5-F3k"/>
                 <outlet property="labelCallMetroName" destination="teX-pQ-5pc" id="zMe-Lk-czw"/>
                 <outlet property="labelDate" destination="Xnz-Pw-K3q" id="HKB-1n-2p1"/>
                 <outlet property="labelPrice" destination="naU-EC-EJq" id="bGC-jT-eOK"/>
@@ -284,10 +286,7 @@
                 <outlet property="redView" destination="MrG-KU-AGS" id="eKP-tW-NU2"/>
                 <outlet property="underView" destination="Wxj-KK-rMM" id="Be0-GC-bt0"/>
             </connections>
-            <point key="canvasLocation" x="337" y="560"/>
+            <point key="canvasLocation" x="425" y="339"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="metro.png" width="28" height="21"/>
-    </resources>
 </document>

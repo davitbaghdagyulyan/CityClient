@@ -21,4 +21,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (strong, nonatomic) UILabel *writeLetterLabel;
 - (IBAction)back:(id)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+- (IBAction)openMap:(UIButton*)sender;
 @end

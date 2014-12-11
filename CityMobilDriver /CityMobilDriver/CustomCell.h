@@ -12,4 +12,10 @@
 @property (weak, nonatomic) IBOutlet UIView *underView;
 @property (weak, nonatomic) IBOutlet UIView *View2;
 @property (weak, nonatomic) IBOutlet UIView *View1;
+
+@property (strong, nonatomic) IBOutlet UILabel *label1;
+
+
+@property (strong, nonatomic) IBOutlet UILabel *label2;
+
 @end

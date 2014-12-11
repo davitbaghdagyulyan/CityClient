@@ -9,7 +9,6 @@
 #import "JSONModel.h"
 
 @protocol OrdersHistoryElements @end
-#import "JSONModel.h"
 @interface OrdersHistoryElements : JSONModel
 @property(nonatomic,strong)NSString* yandex_rating;
 @property(nonatomic,strong)NSString * yandex_review;
@@ -18,8 +17,8 @@
 @property(nonatomic,strong)NSString *  tariff;
 @property(nonatomic,strong)NSString * status;
 @property(nonatomic,strong)NSString *OrderedDate;
-@property(nonatomic,strong)NSString *CollAddrTypeMenu;
-@property(nonatomic,strong)NSString *DeliveryAddrTypeMenu;
+@property(nonatomic,assign)NSInteger CollAddrTypeMenu;
+@property(nonatomic,assign)NSInteger DeliveryAddrTypeMenu;
 @property(nonatomic,strong)NSString *CollMetro;
 @property(nonatomic,strong)NSString *DeliveryMetro;
 @property(nonatomic,strong)NSString * price;

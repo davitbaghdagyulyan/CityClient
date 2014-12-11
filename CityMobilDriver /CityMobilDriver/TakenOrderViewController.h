@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 
-@interface TakenOrderViewController : UIViewController<CLLocationManagerDelegate>
+
+@interface TakenOrderViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 -(void)setIdHash:(NSString*)idhash andUnderView:(UIView*)underView;
 - (IBAction)back:(id)sender;
+
+- (IBAction)openMap:(UIButton*)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end

@@ -14,6 +14,7 @@
 #import "SetStatusJson.h"
 #import "SetStatusResponse.h"
 #import "LeftMenu.h"
+#import "SingleDataProvider.h"
 
 @interface EndUpViewController ()
 {
@@ -211,6 +212,7 @@
 
 -(void)priceButtonAction:(UIButton*)sender{
     billTextField.text = sender.titleLabel.text;
+    billDifference.text=@"0";
 }
 
 #pragma mark - UITextFieldDelegate
@@ -301,6 +303,8 @@
         NSLog(@"%@",jsonString);
         NSError* err;
         billResponse = [[ResponseSetBill alloc] initWithString:jsonString error:&err];
+        setStatusObject.lat=[[NSString stringWithFormat:[[SingleDataProvider sharedKey].lat]] ];
+        
         setStatusObject.idhash=self.orderResponse.idhash;
         setStatusObject.bill=self.bill;
         setStatusObject.creditlimit=billResponse.creditlimit;
@@ -469,7 +473,8 @@
     setStatusObject.bonus=@"0";
     setStatusObject.received=billTextField.text;
     
-    if ((([billTextField.text intValue]-[priceButton.titleLabel.text intValue]) < 0) || [billDifference.text isEqualToString:@""]||(billDifference.text==nil)) {
+    if ((([billTextField.text intValue]<[priceButton.titleLabel.text intValue])) || [billDifference.text isEqualToString:@""]||(billDifference.text==nil))
+    {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Операция невозможна" message:@"Полученная сумма меньше стоимости поездки" preferredStyle:UIAlertControllerStyleAlert];
         
             UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault

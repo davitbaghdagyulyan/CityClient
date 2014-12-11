@@ -7,7 +7,7 @@
 //
 
 #import "SelectedOrdersDetailsJson.h"
-#import "SingleDataProviderForFilter.h"
+
 #import "SingleDataProvider.h"
 @implementation SelectedOrdersDetailsJson
 -(instancetype)init
@@ -21,8 +21,8 @@
         self.method=@"GetOrders";
         self.version=@"1.0.2";
         self.versionCode=@"17";
-        self.filter =
-        [[SingleDataProviderForFilter sharedFilter]filter];
+        self.filter =nil;
+       
     }
     return self;
 }

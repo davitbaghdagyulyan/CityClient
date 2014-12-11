@@ -8,6 +8,7 @@
 #import "WriteLetterJson.h"
 #import "WriteLetterResponse.h"
 #import "SendingMessageViewController.h"
+#import "OpenMapButtonHandler.h"
 
 @interface SendingMessageViewController ()
 {
@@ -20,6 +21,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+    
     self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116)];
     self.writeLetterLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, 50)];
     self.underView=[[UIView alloc]initWithFrame:CGRectMake(0, 50, self.scrollView.frame.size.width, self.scrollView.frame.size.height-50)];
@@ -130,6 +134,11 @@
     }
 }
 
+-(void)openMap:(UIButton *)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
 
 -(void)touchForCloseKeyboard
 {

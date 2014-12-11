@@ -10,6 +10,7 @@
 #import "MailJson.h"
 #import "MailResponse.h"
 #import "SendingMessageViewController.h"
+#import "OpenMapButtonHandler.h"
 
 @interface MessagesViewController ()
 {
@@ -27,6 +28,11 @@
     self.messagesTableView.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
     [self RequestGetMail];
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+    
+  
 }
 
 - (void)viewDidLoad {
@@ -41,6 +47,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -59,6 +66,7 @@
     
     cell.titLabel.text=[[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
     cell.dateLabel.text=[self TimeFormat:[[mailResponseObject.mail objectAtIndex:indexPath.row] getDate]];
+    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,6 +81,13 @@
 {
     return  44;
 }
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
 - (IBAction)theNewMessage:(UIButton *)sender
 {
     SendingMessageViewController* smvc = [self.storyboard instantiateViewControllerWithIdentifier:@"SendingMessageViewController"];

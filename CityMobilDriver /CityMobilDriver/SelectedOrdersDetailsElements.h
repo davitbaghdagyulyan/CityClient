@@ -17,7 +17,7 @@
 @property(nonatomic,strong)NSString*DeliveryMetroName;
 @property(nonatomic,strong,getter=getCollDateText)NSString*CollDateText;
 @property(nonatomic,strong)NSString * CollDate;
-@property(nonatomic,strong)NSString * percent;
+@property(nonatomic,assign)NSInteger percent;
 @property(nonatomic,strong)NSString * DeliveryAddrTypeMenu;
 @property(nonatomic,strong)NSString * CollAddrTypeMenu;
 @property(nonatomic,strong)NSString * CanBuyDeliveryAddress;

@@ -19,13 +19,7 @@
     self=[super init];
     if (self)
     {
-        selectedRow=-1;
-        deviceType= [UIDevice currentDevice].model;
-        if ([SingleDataProvider sharedKey].arrayOfIndexes.count==0) {
-            NSMutableArray * arrayOfIndexes =[[NSMutableArray alloc]init];
-            [SingleDataProvider sharedKey].arrayOfIndexes=arrayOfIndexes;
-        }
-       
+        count=1;
     }
     return self;
 }
@@ -40,19 +34,40 @@
     flag1=flag;
     curentSelf=vc;
     numberOfClass=number;
+    if (count)
+    {
+        selectedRow=-1;
+        deviceType= [UIDevice currentDevice].model;
+        if (numberOfClass==0)
+        {
+            if ([SingleDataProvider sharedKey].arrayOfIndexes1.count==0) {
+                NSMutableArray * arrayOfIndexes1 =[[NSMutableArray alloc]init];
+                [SingleDataProvider sharedKey].arrayOfIndexes1=arrayOfIndexes1;
+            }
+        }
+        if (numberOfClass==1)
+        {
+            if ([SingleDataProvider sharedKey].arrayOfIndexes2.count==0)
+            {
+                NSMutableArray * arrayOfIndexes2 =[[NSMutableArray alloc]init];
+                [SingleDataProvider sharedKey].arrayOfIndexes2=arrayOfIndexes2;
+            }
+        }
+    }
+    count=0;
+
     
    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        return responseObject.orders.count;
+  return responseObject.orders.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSInteger k=0;
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    if([[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortrait || [[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
     {
         k=36;
     }
@@ -68,32 +83,17 @@
     {
         shortName = @"";
     }
-    if ([[responseObject.orders objectAtIndex:indexPath.row] CollDate])
-    {
-        callDateFormat = [self TimeFormat:[[responseObject.orders objectAtIndex:indexPath.row] CollDate]];
-    }
-    else
-    {
-        callDateFormat = @"";
-    }
-    stringForLabelShortName = [NSString stringWithFormat:@"  %@ %@ %@",stringforSrochno,callDateFormat,shortName];
     if ([[responseObject.orders objectAtIndex:indexPath.row]percent])
     {
         percent =[[responseObject.orders objectAtIndex:indexPath.row] percent];
+        NSInteger intValue = (NSInteger)roundf(percent);
+        stringForLabelPercent=[NSString stringWithFormat:@"%ld%%",(long)intValue];
     }
     else
     {
-        percent = @"";
+        stringForLabelPercent=@"";
     }
-    if([percent length]>3)
-    {
-        stringForLabelPercent= [percent substringToIndex:2];
-    }
-    else
-    {
-        stringForLabelPercent = percent;
-    }
-    stringForLabelPercent = [stringForLabelPercent stringByAppendingString:@"%"];
+
     if(selectedRow==indexPath.row)
     {
         //CustomCellSelectedORDER2
@@ -128,7 +128,6 @@
                 
                 
             }
-            
             //VIEW1
             cell.whiteView.translatesAutoresizingMaskIntoConstraints = NO;
             cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
@@ -136,9 +135,11 @@
             NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
             [cell.whiteView addConstraint:view11Height];
             cell.labelPercent.text = stringForLabelPercent;
-            cell.labelShortName.text=stringForLabelShortName;
+            cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+            cell.stringForSrochno=stringforSrochno;
+            cell.shortName=shortName;
+            [cell updateLabelShortName];
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
-            
             //VIEW2
             cell.View2.translatesAutoresizingMaskIntoConstraints = NO;
             [cell.View2 removeConstraint:[cell.View2.constraints objectAtIndex:0]];
@@ -192,7 +193,6 @@
             {
                 cell.whiteLabel.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             }
-            
             cell.selectionStyle =UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -399,7 +399,10 @@
         [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
         NSLayoutConstraint * view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
         [cell.whiteView addConstraint:view11Height];
-        cell.labelShortName.text=[NSString stringWithFormat:@"%@", stringForLabelShortName];
+        cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+        cell.stringForSrochno=stringforSrochno;
+        cell.shortName=shortName;
+        [cell updateLabelShortName];
         cell.labelPercent.text = stringForLabelPercent;
         [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
         
@@ -413,10 +416,47 @@
         [cell.View3 removeConstraint:[cell.View3.constraints objectAtIndex:0]];
         NSLayoutConstraint * view33Height =[NSLayoutConstraint constraintWithItem:cell.View3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height2];
         [cell.whiteView addConstraint:view33Height];
+        //When we don't have deliveryMetroName we don't show map button
+        /*
+         if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 && expectSizeDeliveryComment.height==0
+         && expectSizeForOurComment.height==0 )
+         {
+         height2=0;
+         }
+         if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 &&(expectSizeDeliveryComment.height!=0 ||expectSizeForOurComment.height!=0 ))
+         {
+         height2=5+expectSizeDeliveryComment.height+4+5+expectSizeForOurComment.height+4+5;
+         }
+        */
+        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 &&(expectSizeDeliveryComment.height!=0 ||expectSizeForOurComment.height!=0 ))
+
+        {
+            [cell.labelDeliveryMetroName removeFromSuperview];
+            [cell.buttonMap2 removeFromSuperview];
+            labelOurComment.backgroundColor=[UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
+            labelDeliveryComment.backgroundColor=[UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
+            if (expectSizeDeliveryComment.height!=0)
+            {
+                labelDeliveryComment.frame = CGRectMake(10, 5, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+            }
+            if (expectSizeDeliveryComment.height==0)
+            {
+                labelOurComment.frame = CGRectMake(10, 5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
+            }
+            else
+            {
+            labelOurComment.frame = CGRectMake(10, 5+expectSizeDeliveryComment.height +4+5, curentSelf.view.frame.size.width-k-15, expectSizeForOurComment.height);
+            }
+            [cell.View3 addSubview:labelDeliveryComment];
+            [cell.View3 addSubview:labelOurComment];
+        }
+        
+        
         if (![[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]|| [[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]length]==0)
         {
             cell.buttonMap2.hidden = YES;
         }
+
         
         if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
         {
@@ -447,15 +487,14 @@
             }
             [cell.View2 addSubview:labelCallComment];
         }
-        if (height2 !=0) {
+        if (height2 !=0 && [[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]!=0) {
             NSString *deliveryAddressType =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
             if(deliveryAddressType && [deliveryAddressType integerValue]==50)
             {
                 cell.labelDeliveryMetroName.text = @"По указанию";
             }else
             {
-                cell.labelDeliveryMetroName.backgroundColor =[UIColor whiteColor];
-                if ([[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName])
+               if ([[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName])
                 {
                     cell.labelDeliveryMetroName.text =[NSString stringWithFormat:@"%@",[[responseObject.orders objectAtIndex:indexPath.row] DeliveryMetroName]];
                 }else
@@ -556,7 +595,10 @@
             }
             cell.labelPercent0.textColor = [UIColor whiteColor];
             cell.labelPercent0.text =  stringForLabelPercent;
-            cell.labelShortName0.text =  stringForLabelShortName;
+            cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+            cell.stringForSrochno=stringforSrochno;
+            cell.shortName=shortName;
+            [cell updateLabelShortName];
             [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
             if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
@@ -592,13 +634,15 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCellSelectedOrders" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
-            
             cell.labelPercent.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:19];
             cell.labelPercent.textColor = [UIColor whiteColor];
             cell.labelPercent.text = stringForLabelPercent;
-            cell.labelShortName.text = stringForLabelShortName;
-            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];
-            if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
+            cell.callDate=[[responseObject.orders objectAtIndex:indexPath.row] CollDate];
+            NSLog(@"Call Dates %@",cell.callDate);
+            cell.stringForSrochno=stringforSrochno;
+            cell.shortName=shortName;
+            [cell updateLabelShortName];
+            [self addImages:cell.View1 atIndexPath:indexPath.row withLabel:cell.labelPercent];            if ([[responseObject.orders objectAtIndex:indexPath.row] CollMetroName])
             {
                 cell.labelCollMetroName.text = [NSString stringWithFormat:@"  %@",[[responseObject.orders objectAtIndex:indexPath.row] CollMetroName]];
             }
@@ -646,105 +690,231 @@
   willDisplayCell:(CustomCellSelectedOrders *)cell
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
     NSString * CollAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row]CollAddrTypeMenu];
-    switch ([CollAddrTypeMenu integerValue]) {
-        case 1:
-            cell.imgViewCall.image = [UIImage imageNamed:@"metro"];
-            break;
-        case 2:
-            cell.imgViewCall.image = [UIImage imageNamed:@"train"];
-        case 3:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport"];
-        case 4:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors"];
-        case 10:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital"];
-        case 11:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school"];
-        case 12:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema copy"];
-        case 13:
-            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall"];
-        default:
-            break;
+    if (CollAddrTypeMenu)
+    {
+        switch ([CollAddrTypeMenu integerValue]) {
+            case 1:
+                cell.imgViewCall.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 2:
+                cell.imgViewCall.image = [UIImage imageNamed:@"train.png"];
+                break;
+            case 3:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport.png"];
+                break;
+            case 4:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors.png"];
+                break;
+            case 10:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital.png"];
+                break;
+            case 11:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school.png"];
+                break;
+            case 12:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema copy.png"];
+                break;
+            case 13:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall.png"];
+                break;
+            default:
+                break;
+        }
     }
     NSString * DeliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu];
-    switch ([DeliveryAddrTypeMenu integerValue]) {
-        case 1:
-            cell.imgViewDel.image = [UIImage imageNamed:@"metro"];
-            break;
-        case 2:
-            cell.imgViewDel.image = [UIImage imageNamed:@"train"];
-        case 3:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport"];
-        case 4:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors"];
-        case 10:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital"];
-        case 11:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school"];
-        case 12:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema copy"];
-        case 13:
-            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall"];
-        default:
-            break;
+    if (DeliveryAddrTypeMenu)
+    {
+        switch ([DeliveryAddrTypeMenu integerValue]) {
+            case 1:
+                cell.imgViewDel.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 50:
+                cell.imgViewDel.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 2:
+                cell.imgViewDel.image = [UIImage imageNamed:@"train.png"];
+                break;
+            case 3:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport.png"];
+                break;
+            case 4:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors.png"];
+                break;
+            case 10:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital.png"];
+                break;
+            case 11:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school.png"];
+                break;
+            case 12:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema copy.png"];
+                break;
+            case 13:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall.png"];
+                break;
+            default:
+                break;
+        }
     }
-    
-    
-    if (indexPath.row!=selectedRow ) {
-        if ([[SingleDataProvider sharedKey].arrayOfIndexes containsObject:idhash])
+    idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+    if (indexPath.row!=selectedRow )
+    {
+        if (numberOfClass==0)
         {
-            switch ([CollAddrTypeMenu integerValue]) {
-                case 1:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"metro_d"];
-                    break;
-                case 2:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"train_d"];
-                case 3:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport_viewed"];
-                case 4:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed"];
-                case 10:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed"];
-                case 11:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school_viewed"];
-                case 12:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed"];
-                case 13:
-                    cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall_viewed"];
-                default:
-                    break;
+            if (idhash && [[SingleDataProvider sharedKey].arrayOfIndexes1 containsObject:idhash])
+            {
+                if (CollAddrTypeMenu)
+                {
+                    switch ([CollAddrTypeMenu integerValue]) {
+                        case 1:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"metro_d.png"];
+                            break;
+                        case 2:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"train_d.png"];
+                            break;
+                        case 3:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport_viewed.png"];
+                            break;
+                        case 4:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed.png"];
+                            break;
+                        case 10:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed.png"];
+                            break;
+                        case 11:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school_viewed.png"];
+                            break;
+                        case 12:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed.png"];
+                            break;
+                        case 13:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall_viewed.png"];
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (DeliveryAddrTypeMenu)
+                {
+                    switch ([DeliveryAddrTypeMenu integerValue]) {
+                        case 1:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"metro_d.png"];
+                            break;
+                        case 50:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"metro_d.png"];
+                            break;
+                        case 2:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"train_d.png"];
+                            break;
+                        case 3:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport_viewed.png"];
+                            break;
+                        case 4:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed.png"];
+                            break;
+                        case 10:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed.png"];
+                            break;
+                        case 11:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school_viewed.png"];
+                            break;
+                        case 12:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed.png"];
+                            break;
+                        case 13:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall_viewed.png"];
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                cell.labelCallMetroName0.font =[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
+                cell.labelCollMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
+                cell.labelDeliveryMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
+                
+                
             }
-            switch ([DeliveryAddrTypeMenu integerValue]) {
-                case 1:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"metro_d"];
-                    break;
-                case 2:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"train_d"];
-                case 3:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport_viewed"];
-                case 4:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed"];
-                case 10:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed"];
-                case 11:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school_viewed"];
-                case 12:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed"];
-                case 13:
-                    cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall_viewed"];
-                default:
-                    break;
+        }
+        else
+        {
+            
+            if (idhash && [[SingleDataProvider sharedKey].arrayOfIndexes2 containsObject:idhash])
+            {
+                if (CollAddrTypeMenu)
+                {
+                    switch ([CollAddrTypeMenu integerValue]) {
+                        case 1:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"metro_d.png"];
+                            break;
+                        case 2:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"train_d.png"];
+                            break;
+                        case 3:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport_viewed.png"];
+                            break;
+                        case 4:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed.png"];
+                            break;
+                        case 10:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed.png"];
+                            break;
+                        case 11:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school_viewed.png"];
+                            break;
+                        case 12:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed.png"];
+                            break;
+                        case 13:
+                            cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall_viewed.png"];
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (DeliveryAddrTypeMenu)
+                {
+                    switch ([DeliveryAddrTypeMenu integerValue]) {
+                        case 1:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"metro_d.png"];
+                            break;
+                        case 50:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"metro_d.png"];
+                            break;
+                        case 2:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"train_d.png"];
+                            break;
+                        case 3:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport_viewed.png"];
+                            break;
+                        case 4:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors_viewed.png"];
+                            break;
+                        case 10:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital_viewed.png"];
+                            break;
+                        case 11:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school_viewed.png"];
+                            break;
+                        case 12:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema_viewed.png"];
+                            break;
+                        case 13:
+                            cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall_viewed.png"];
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                cell.labelCallMetroName0.font =[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
+                cell.labelCollMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
+                cell.labelDeliveryMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
+                
+                
             }
-            
-            cell.labelCallMetroName0.font =[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
-            cell.labelCollMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
-            cell.labelDeliveryMetroName.font=[UIFont fontWithName:@"RobotoCondensed-Light" size:14];
-            
             
         }
+        
         if(deliveryAddrTypeMenu && [deliveryAddrTypeMenu integerValue] ==0)
         {
             CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
@@ -752,7 +922,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             UIColor * gradColFin =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.f];
             if ([deviceType isEqualToString:@"iPhone Simulator"])
             {
-                
                 if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
                    [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
                 {
@@ -766,12 +935,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             }
             [gradLayerForCell setColors:[NSArray arrayWithObjects:(id)(gradColStart.CGColor), (id)(gradColFin.CGColor),nil]];
             [cell.additionalViewXib2.layer insertSublayer:gradLayerForCell atIndex:0];
-            
-            
         }
         else
         {
-            
             CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
             UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.f];
             UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.f];
@@ -804,43 +970,53 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    idhash =[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+    idhash=[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+    if(numberOfClass==0)
+    {
+        ((SelectedOrdersViewController*)curentSelf).idhash=[[responseObject.orders objectAtIndex:indexPath.row] idhash];
+        if (idhash &&!([[SingleDataProvider sharedKey].arrayOfIndexes1 containsObject:idhash]))
+        {
+            [[SingleDataProvider sharedKey].arrayOfIndexes1 addObject:idhash];
+        }
+    }
+    else
+    {
+        if (idhash &&!([[SingleDataProvider sharedKey].arrayOfIndexes2 containsObject:idhash]))
+        {
+            [[SingleDataProvider sharedKey].arrayOfIndexes2 addObject:idhash];
+        }
+    }
+    
     if(selectedRow==indexPath.row)
     {
         selectedRow =-1;
     }else{
         selectedRow =indexPath.row;
     }
-    if (!([[SingleDataProvider sharedKey].arrayOfIndexes containsObject:idhash]))
-    {
-        [[SingleDataProvider sharedKey].arrayOfIndexes addObject:idhash];
-    }
     [tableView reloadData];
-    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    if (idhash)
+    {
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-    
-    
     deliveryAddrTypeMenu =[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu];
     
     if(selectedRow==indexPath.row)
     {
         height1 =35;
-        
         //CALLADDRESS
-        
         NSString * collAddress =[[responseObject.orders objectAtIndex:indexPath.row] CollAddressText];
         NSLog(@"CollAddress is %@",collAddress);
         if (collAddress && collAddress.length !=0)
         {
-            labelCollAddressText  = [[UILabel alloc] init];
+            if (!labelCollAddressText)
+            {
+                labelCollAddressText  = [[UILabel alloc] init];
+            }
             labelCollAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
             labelCollAddressText.text = collAddress;
             labelCollAddressText.numberOfLines = 0;
@@ -866,7 +1042,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         NSLog(@"CallComment is %@",callComment);
         
         if(callComment && callComment.length !=0)       {
-            labelCallComment  = [[UILabel alloc] init];
+            if (!labelCallComment)
+            {
+                labelCallComment  = [[UILabel alloc] init];
+            }
             labelCallComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelCallComment.text =callComment;
             labelCallComment.numberOfLines = 0;
@@ -892,7 +1071,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if(deliveryAddress && deliveryAddress.length !=0)
         {
-            labelDeliveryAddressText  = [[UILabel alloc] init];
+            if (!labelDeliveryAddressText)
+            {
+                labelDeliveryAddressText  = [[UILabel alloc] init];
+            }
             labelDeliveryAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
             labelDeliveryAddressText.text =deliveryAddress;
             labelDeliveryAddressText.numberOfLines = 0;
@@ -918,7 +1100,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if(deliveryComment && deliveryComment.length !=0)
         {
-            labelDeliveryComment  = [[UILabel alloc] init];
+            if (!labelDeliveryComment)
+            {
+                labelDeliveryComment  = [[UILabel alloc] init];
+            }
             labelDeliveryComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelDeliveryComment.text =deliveryComment;
             labelDeliveryComment.numberOfLines = 0;
@@ -940,7 +1125,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if(ourComment && ourComment.length !=0)
         {
-            labelOurComment  = [[UILabel alloc] init];
+            if (!labelOurComment)
+            {
+                labelOurComment  = [[UILabel alloc] init];
+            }
             labelOurComment.font =  [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelOurComment.text = ourComment;
             labelOurComment.numberOfLines = 0;
@@ -960,12 +1148,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
             height2 +=5;
         }
-        
-        //DEFINING HEGHT FOR VIEW3
-        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0)
+        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 && expectSizeDeliveryComment.height==0
+            && expectSizeForOurComment.height==0 )
         {
-            height2 = 0;
+            height2=0;
         }
+        if ([[[responseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]integerValue]==0 &&(expectSizeDeliveryComment.height!=0 ||expectSizeForOurComment.height!=0 ))
+        {
+            height2=5+expectSizeDeliveryComment.height+4+5+expectSizeForOurComment.height+4+5;
+        }
+        
         //DEFINING HEIGHT FOR CELL
         height = 2+1+22+height1+height2+1+4+45+4;
         //CustomCellSelectedORDER2
@@ -978,17 +1170,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         
     }
-//    else if (selectedRow==indexPath.row && numberOfClass==1)
-//    {
-//        heightOfMyOrderCell=height+45;
-//       
-//        return height+45;
-//       
-//    }
+    //    else if (selectedRow==indexPath.row && numberOfClass==1)
+    //    {
+    //        heightOfMyOrderCell=height+45;
+    //
+    //        return height+45;
+    //
+    //    }
     
     else
     {
-    
+        
         if([deliveryAddrTypeMenu integerValue] ==0)
         {
             if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
@@ -999,7 +1191,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             
             else
             {
-                NSLog(@"%d",[[UIDevice currentDevice] orientation]);
+                
                 return curentSelf.view.frame.size.height/6;
             }
             
@@ -1040,7 +1232,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     UIImageView * imgView1;
-    imgView1 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView1)
+    {
+        imgView1 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView1.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView1];
     NSLayoutConstraint * imgView1ConstraintWidth;
@@ -1096,7 +1291,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //Image2 construction and initializatio
     UIImageView * imgView2;
-    imgView2 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView2)
+    {
+        imgView2 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView2.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView2];
     NSLayoutConstraint * imgView2ConstraintWidth;
@@ -1155,7 +1353,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     //********Image3 construction and initialization
     UIImageView * imgView3;
-    imgView3 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView3)
+    {
+        imgView3 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView3.translatesAutoresizingMaskIntoConstraints = NO;
     [view  addSubview:imgView3];
     NSLayoutConstraint * imgView3ConstraintWidth;
@@ -1198,7 +1399,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image4 construction and initialization
     UIImageView * imgView4;
-    imgView4 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView4)
+    {
+        imgView4 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView4.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView4];
     NSLayoutConstraint * imgView4ConstraintWidth;
@@ -1240,7 +1444,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image5 construction and initialization
     UIImageView * imgView5;
-    imgView5 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView5)
+    {
+        imgView5 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView5.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView5];
     NSLayoutConstraint * imgView5ConstraintWidth;
@@ -1286,7 +1493,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image6 construction and initialization
     UIImageView * imgView6;
-    imgView6 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView6)
+    {
+        imgView6 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView6.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView6];
     NSLayoutConstraint * imgView6ConstraintWidth;
@@ -1324,7 +1534,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image7 construction and initialization
     UIImageView * imgView7;
-    imgView7 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView7)
+    {
+        imgView7 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView7.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView7];
     NSLayoutConstraint * imgView7ConstraintWidth;
@@ -1363,7 +1576,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image8 construction and initialization
     UIImageView * imgView8;
-    imgView8 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView8)
+    {
+        imgView8 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView8.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView8];
     NSLayoutConstraint * imgView8ConstraintWidth;
@@ -1404,7 +1620,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     //********Image9 construction and initialization
     UIImageView * imgView9;
-    imgView9 = [[UIImageView alloc]initWithImage:nil];
+    if (!imgView9)
+    {
+        imgView9 = [[UIImageView alloc]initWithImage:nil];
+    }
     imgView9.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:imgView9];
     NSLayoutConstraint * imgView9ConstraintWidth;
@@ -1430,7 +1649,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         yellowNumber =[[responseObject.orders objectAtIndex:index] getYellow_reg_num];
         if ([yellowNumber integerValue]==1)
         {
-            imgView9.image = [UIImage imageNamed:@"ic_order_with_visiting_small.png"];
+            imgView9.image = [UIImage imageNamed:@"n_color copy.png"];
             imgView9ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
             imgView9ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
             [view addConstraint:imgView9ConstraintHeight];
@@ -1487,6 +1706,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     else
         
     {
+        
+        
         for (int i =0; i<arrayOfImages.count; i++)
         {
             NSLayoutConstraint *constForXhide = [NSLayoutConstraint constraintWithItem:[arrayOfImages objectAtIndex:i] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:label attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:20];
@@ -1495,18 +1716,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
     }
-}
-
--(NSString*)TimeFormat:(NSString*)string
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
-    NSDate *date = [[NSDate alloc] init];
-    date = [dateFormatter dateFromString:string];
-    /////////convert nsdata To NSString////////////////////////////////////
-    [dateFormatter setDateFormat:@"HH:mm"];
-    if(date==nil) return @"00:00";
-    return [dateFormatter stringFromDate:date];
+    
+    if (arrayOfImages2.count >=5 && ([[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortrait || [[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown))
+    {
+        for (int i =5; i<arrayOfImages2.count; i++)
+        {
+            UIImageView * imgViewCurrentHid =[arrayOfImages2 objectAtIndex:i];
+            imgViewCurrentHid.hidden=YES;
+        }
+    }
     
 }
 

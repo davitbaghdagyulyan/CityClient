@@ -8,11 +8,10 @@
 
 #import "OrdersHistoryViewController.h"
 #import "CustomCellOrdersHistory.h"
-#import "SingleDataProviderForEndDate.h"
-#import "SingleDataProviderForStartDate.h"
 #import "OrdersHistoryResponse.h"
 #import "OrdersHistoryJson.h"
 #import "LeftMenu.h"
+#import "OpenMapButtonHandler.h"
 @interface OrdersHistoryViewController ()
 {
  LeftMenu*leftMenu;
@@ -37,6 +36,7 @@
     //Objects For Date Formating and Request
     NSDateFormatter *df;
     NSString *stringEndDate;
+    OrdersHistoryJson * ordersHistoryJsonObject;
     OrdersHistoryResponse * ordersHistoryResponseObject;
     //Other
     UIAlertView *alertForNoInternetCon;
@@ -55,7 +55,6 @@
     self.labelSelectedDate.backgroundColor=[UIColor clearColor];
     self.labelC.backgroundColor =[UIColor clearColor];
     self.labelPo.backgroundColor =[UIColor clearColor];
-    self.designLabel.backgroundColor = [UIColor clearColor];
     //DatePickerPart
     stringEndDate = nil;
     datePicker =[[UIDatePicker alloc]init];
@@ -63,8 +62,9 @@
     df = [[NSDateFormatter alloc] init];
     df.dateStyle =NSDateFormatterMediumStyle;
     [df setDateFormat:@"yyyy-MM-dd"];
-    self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",[df stringFromDate:datePicker.date]];
-    intervalArray =[ [NSArray alloc]initWithObjects:@"один день",@"три дня",@"одна неделя",@"две недели",@"месяц", nil];
+    NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+    self.labelSelectedDate.attributedText =[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",[df stringFromDate:datePicker.date]]attributes:underlineAttribute];
+   intervalArray =[ [NSArray alloc]initWithObjects:@"один день",@"три дня",@"одна неделя",@"две недели",@"месяц", nil];
     self.tableViewOrdersHistory.hidden = YES;
     //FONTS VIEWDIDLOAD
     self.labelC.font =[UIFont fontWithName:@"Roboto-Regular" size:15];
@@ -83,15 +83,24 @@
 -(void)viewDidAppear:(BOOL)animated
 
 {
+    //Karen  Changing colours of icons
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     //Adding Gradient For self.view
-    gradLayerForSelfView =[CAGradientLayer layer];
+    if (!gradLayerForSelfView)
+    {
+     gradLayerForSelfView =[CAGradientLayer layer];
+    }
     UIColor * gradColStartSelView =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.0f];
     UIColor * gradColFinSelView =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.0f];
     gradLayerForSelfView.frame =CGRectMake(0,65, self.view.frame.size.width,self.view.frame.size.height);
     [gradLayerForSelfView setColors:[NSArray arrayWithObjects:(id)(gradColStartSelView.CGColor), (id)(gradColFinSelView.CGColor),nil]];
     [self.view.layer insertSublayer:gradLayerForSelfView atIndex:0];
     //Adding Gradient For GreyView
+    if (!gradLayer)
+    {
     gradLayer=[CAGradientLayer layer];
+    }
     UIColor * graColStart = [UIColor colorWithRed:212/255.0f green:212/255.0f blue:212/255.0f alpha:1.0f];
     UIColor * graColFin =[UIColor colorWithRed:233/255.0f green:233/255.0f blue:233/255.0f alpha:1.0f];
     gradLayer.frame = self.GreyView.bounds;
@@ -125,9 +134,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    height =38;
-    NSString * myString = @"jsdfjhfjhsfjkhsfj";
-    if (tableView==tableViewInterval)
+   if (tableView==tableViewInterval)
     {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
         if (cell == nil)
@@ -138,38 +145,7 @@
         cell.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
         return cell;
     }
-    if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating] && [[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating]integerValue] != -1)
-    {
-       if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review] && [[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review].length !=0)
-        {
-            UILabel * labelDefiningSize;
-            CGSize  expectSize;
-            //NSString * myString =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
-            labelDefiningSize  = [[UILabel alloc] init];
-            labelDefiningSize.text =myString;
-            labelDefiningSize.numberOfLines = 0;
-            labelDefiningSize.lineBreakMode = NSLineBreakByWordWrapping;
-            CGSize maximumLabelSize = CGSizeMake(252,100);
-            expectSize = [labelDefiningSize sizeThatFits:maximumLabelSize];
-            if (expectSize.height<=20)
-            {
-                height =height+20;
-            }
-            else
-            {
-                height =height+expectSize.height;
-            }
-        }
-        else
-        {
-            height =height +20;
-        }
-    }
-    else
-    {
-        height = height +2;
-    }
-    NSString *simpleTableIdentifierIphone = @"SimpleTableCellIdentifier";
+       NSString *simpleTableIdentifierIphone = @"SimpleTableCellIdentifier";
     CustomCellOrdersHistory * cell = (CustomCellOrdersHistory *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
     {
@@ -181,7 +157,15 @@
     cell.labelYandexReview.numberOfLines = 0;
     cell.labelYandexReview.font=[UIFont fontWithName:@"Roboto-Regular" size:12];
     cell.labelYandexReview.lineBreakMode =  NSLineBreakByWordWrapping;
-    cell.labelYandexReview.text = myString;
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review])
+    {
+     cell.labelYandexReview.text = [[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
+    }
+    else
+    {
+     cell.labelYandexReview.text=@"";
+    }
+ 
     cell.labelCallMetroName.font =[UIFont fontWithName:@"Roboto-Regular" size:12];
     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollMetroName])
     {
@@ -201,9 +185,9 @@
         cell.deliveryMetroName.text= @"";
     }
     cell.labelDate.textColor =[UIColor whiteColor];
-    cell.labelDate.font = [UIFont fontWithName:@"RobotoCondensed-Regular" size:12];
+    cell.labelDate.font = [UIFont fontWithName:@"Roboto-Regular" size:12];
     cell.labelDate.numberOfLines =2;
-    NSString * collDate =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]CollDate];
+    NSString * collDate =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]OrderedDate];
     if (collDate)
     {
     NSString *collDate1 =[collDate substringToIndex:16];
@@ -230,11 +214,78 @@
     if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]price])
     {
         cell.labelPrice.text =[NSString stringWithFormat:@"%@ b",[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]price]];
+        
     }
     else
     {
-        cell.labelPrice.text =@"";
+        cell.labelPrice.text =@"0b";
     }
+   
+
+
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row] CollAddrTypeMenu])
+    {
+        switch ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row] CollAddrTypeMenu]) {
+            case 1:
+                cell.imgViewCall.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 2:
+                cell.imgViewCall.image = [UIImage imageNamed:@"train.png"];
+                break;
+            case 3:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_airport.png"];
+                break;
+            case 4:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_outdoors.png"];
+                break;
+            case 10:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_hospital.png"];
+                break;
+            case 11:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_school.png"];
+                break;
+            case 12:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_cinema.png"];
+                break;
+            case 13:
+                cell.imgViewCall.image = [UIImage imageNamed:@"ic_landmark_mall.png"];
+                break;
+            default:
+                break;
+        }
+    }
+    if ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]DeliveryAddrTypeMenu])
+    {
+        switch ([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row] DeliveryAddrTypeMenu]) {
+            case 1:
+                cell.imgViewDel.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 2:
+                cell.imgViewDel.image = [UIImage imageNamed:@"train.png"];
+                break;
+            case 3:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_airport.png"];
+                break;
+            case 4:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_outdoors.png"];
+                break;
+            case 10:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_hospital.png"];
+                break;
+            case 11:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_school.png"];
+                break;
+            case 12:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_cinema.png"];
+                break;
+            case 13:
+                cell.imgViewDel.image = [UIImage imageNamed:@"ic_landmark_mall.png"];
+                break;
+            default:
+                break;
+        }
+    }
+
     if (height ==40)
     {
         cell.labelYandexReview.text = @"";
@@ -245,6 +296,7 @@
         cell.rateImgView5.hidden = YES;
     }
     [self addYandexRate:3];
+    cell.selectionStyle =UITableViewCellSelectionStyleNone;
     return  cell;
     
     
@@ -257,7 +309,43 @@
          return 44;
     }
     else
-    {
+    { height =38;
+      NSString * myString;
+        if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating] && [[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_rating]integerValue] != -1)
+        {
+            if([[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review] && [[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review].length !=0)
+            {
+                UILabel * labelDefiningSize;
+                CGSize  expectSize;
+                myString =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]yandex_review];
+                if (!labelDefiningSize)
+                {
+                 labelDefiningSize  = [[UILabel alloc] init];
+                }
+                labelDefiningSize.text =myString;
+                labelDefiningSize.numberOfLines = 0;
+                labelDefiningSize.lineBreakMode = NSLineBreakByWordWrapping;
+                CGSize maximumLabelSize = CGSizeMake(252,100);
+                expectSize = [labelDefiningSize sizeThatFits:maximumLabelSize];
+                if (expectSize.height<=20)
+                {
+                    height =height+20;
+                }
+                else
+                {
+                    height =height+expectSize.height;
+                }
+            }
+            else
+            {
+                height =height +20;
+            }
+        }
+        else
+        {
+            height = height +2;
+        }
+
      return height;
     }
 }
@@ -304,7 +392,10 @@ else
 {
     self.tableViewOrdersHistory.userInteractionEnabled = NO;
     self.buttonDatePicker.userInteractionEnabled = NO;
-    transparentView = [[UIView alloc]initWithFrame:self.view.frame];
+    if (!transparentView)
+    {
+      transparentView = [[UIView alloc]initWithFrame:self.view.frame];
+    }
     transparentView.backgroundColor = [UIColor blackColor];
     transparentView.alpha =0.7;
     [self.view addSubview:transparentView];
@@ -316,8 +407,8 @@ else
     datePicker.hidden = NO;
     [datePicker addTarget:self action:@selector(changeDateInLabel:)forControlEvents:UIControlEventValueChanged];
     datePicker.backgroundColor = [UIColor whiteColor];
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
         datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y+50,self.tableViewOrdersHistory.frame.size.width,0);
     }
@@ -325,9 +416,12 @@ else
     {
     datePicker.frame =CGRectMake(self.tableViewOrdersHistory.frame.origin.x+self.tableViewOrdersHistory.frame.size.width/4 ,self.GreyView.frame.origin.y+20,self.tableViewOrdersHistory.frame.size.width/2,0);
     }
-    labelSettingTheDate = [[UILabel alloc]init];
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-       [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    if (!labelSettingTheDate)
+    {
+     labelSettingTheDate = [[UILabel alloc]init];
+    }
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+       [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
         labelSettingTheDate.frame  = CGRectMake(datePicker.frame.origin.x ,datePicker.frame.origin.y-50,datePicker.frame.size.width,50);
     }
@@ -340,14 +434,20 @@ else
     labelSettingTheDate.backgroundColor=[UIColor whiteColor];
     labelSettingTheDate.text=@"Настройка даты";
     labelSettingTheDate.textAlignment=NSTextAlignmentCenter;
-    designLabel1=[[UILabel alloc]init];
+    if (! designLabel1)
+    {
+     designLabel1=[[UILabel alloc]init];
+    }
     designLabel1.frame=CGRectMake(datePicker.frame.origin.x, labelSettingTheDate.frame.origin.y + labelSettingTheDate.frame.size.height, datePicker.frame.size.width,1);
     designLabel1.backgroundColor=[UIColor colorWithRed:44/255.0 green:203/255.0 blue:251/255.0 alpha:1];
     [self.view  addSubview:labelSettingTheDate];
     [self.view  addSubview:designLabel1];
-    buttonCancell = [[UIButton alloc]init];
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-                        [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    if (!buttonCancell)
+    {
+     buttonCancell = [[UIButton alloc]init];
+    }
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                        [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
         buttonCancell.frame =CGRectMake(datePicker.frame.origin.x,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,50);
     }
@@ -363,9 +463,12 @@ else
     [buttonCancell  addTarget:self action:@selector(Cancell) forControlEvents:UIControlEventTouchUpInside];
     [buttonCancell setTitle:@"Отмена" forState:UIControlStateNormal];
     [self.view  addSubview:buttonCancell];
-    buttonSetStartDate = [[UIButton alloc]init];
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-                             [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    if (!buttonSetStartDate)
+    {
+     buttonSetStartDate = [[UIButton alloc]init];
+    }
+   if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+                         [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
       buttonSetStartDate.frame =CGRectMake(datePicker.frame.origin.x+buttonCancell.frame.size.width,datePicker.frame.origin.y+datePicker.frame.size.height, datePicker.frame.size.width/2,50);
     }
@@ -405,8 +508,8 @@ else
     [buttonCancell removeFromSuperview];
     [labelSettingTheDate removeFromSuperview];
     [designLabel1 removeFromSuperview];
-    self.labelSelectedDate.text = [NSString stringWithFormat:@"%@",
-                                  [df stringFromDate:datePicker.date]];
+    NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+    self.labelSelectedDate.attributedText =[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",[df stringFromDate:datePicker.date]]attributes:underlineAttribute];
     self.tableViewOrdersHistory.userInteractionEnabled = YES;
 }
 
@@ -441,8 +544,8 @@ else
     letterTapRecognizer.numberOfTapsRequired = 1;
     [transparentView addGestureRecognizer:letterTapRecognizer];
     [self.view addSubview:transparentView];
-    if([[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortrait ||
-    [[UIDevice currentDevice] orientation]==UIInterfaceOrientationPortraitUpsideDown)
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+    [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
     {
         tableViewInterval = [[UITableView alloc]initWithFrame:CGRectMake(self.tableViewOrdersHistory.frame.origin.x ,self.GreyView.frame.origin.y,self.tableViewOrdersHistory.frame.size.width,5*44)];
         self.buttonIntervalTableView.userInteractionEnabled = NO;
@@ -479,19 +582,25 @@ else
 }
 - (IBAction)findOrdersFromInterval:(id)sender
 {
-    [SingleDataProviderForStartDate sharedStartDate].startDate = self.labelSelectedDate.text;
-    [SingleDataProviderForEndDate sharedEndDate].endDate = stringEndDate;
+    if (!ordersHistoryJsonObject)
+    {
+      ordersHistoryJsonObject = [[OrdersHistoryJson alloc]init];
+    }
+    ordersHistoryJsonObject.start=self.labelSelectedDate.text;
+    ordersHistoryJsonObject.end=stringEndDate;
     [self requestOrdersHistory];
 }
 
 -(void)requestOrdersHistory
 {
+    if (!indicator)
+    {
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    }
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
     [self.view addSubview:indicator];
-    OrdersHistoryJson * ordersHistoryJsonObject = [[OrdersHistoryJson alloc]init];
     NSDictionary*jsonDictionary=[ordersHistoryJsonObject  toDictionary];
     NSString*jsons=[ordersHistoryJsonObject  toJSONString];
     NSLog(@"%@",jsons);
@@ -510,15 +619,13 @@ else
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            alertForNoInternetCon = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            
-            
-            [alertForNoInternetCon show];
-            return ;
+            UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [alertNoCon dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertNoCon addAction:cancel];
+            [self presentViewController:alertNoCon animated:YES completion:nil];
         }
         NSString* jsonString1 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"selectedOrdersDetails =%@",jsonString1);
@@ -527,14 +634,13 @@ else
         if(ordersHistoryResponseObject.code!=nil)
         {
             
-            alertWrongData = [[UIAlertView alloc] initWithTitle:@"Ошибка"
-                                                            message:nil
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alertWrongData show];
-            return;
-            
+            UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:ordersHistoryResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                          [alertServerErr dismissViewControllerAnimated:YES completion:nil];
+                                                          }];
+            [alertServerErr addAction:cancel];
+            [self presentViewController:alertServerErr animated:YES completion:nil];
         }
         [indicator stopAnimating];
         [self.tableViewOrdersHistory reloadData];
@@ -754,6 +860,14 @@ else
 - (IBAction)actionGPS:(id)sender {
 }
 
-- (IBAction)refresh:(id)sender {
+- (IBAction)refresh:(id)sender
+{
+    [self requestOrdersHistory];
 }
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
 @end

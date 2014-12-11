@@ -11,8 +11,14 @@
 #import "GetMyOrdersJson.h"
 #import "CustomViewForMaps.h"
 #import "TakenOrderViewController.h"
+#import "SingleDataProvider.h"
+#import "OpenMapButtonHandler.h"
+
 @interface MyOrdersViewController ()
 {
+    NSString*yandexMapUrl;
+    NSString*googleMapUrl;
+    
     LeftMenu*leftMenu;
     NSInteger flag;
     SelectedOrdersDetailsResponse*getMyOrdersResponseObject;
@@ -20,19 +26,20 @@
     
     NSUInteger indexOfCell;
     NSUInteger number;
-    CLLocationManager *locationManager;
-    CLLocation* currentLocation;
     UIView*underView;
      NSInteger selectedRow;
     CustomViewForMaps*viewMap;
     NSString*idhash;
+
 }
 @end
 
 @implementation MyOrdersViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -43,11 +50,15 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    flag=0;
-    leftMenu=[LeftMenu getLeftMenu:self];
-   selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+    selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
     self.myOrdersTableView.delegate=selectedOrdersTableViewHandlerObject;
     self.myOrdersTableView.dataSource=selectedOrdersTableViewHandlerObject;
+    
+    flag=0;
+    leftMenu=[LeftMenu getLeftMenu:self];
+   
     [self requestGetMyOrders];
     
     viewMap=[[CustomViewForMaps alloc] init];
@@ -68,14 +79,19 @@
     viewMap.googleImageView.userInteractionEnabled=YES;
     [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
     [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
-    }
-    [locationManager startUpdatingLocation];
+    self.myOrdersTableView.userInteractionEnabled=YES;
+     self.myOrdersTableView.hidden=NO;
+  
 
 }
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
+    
+
 
 -(void)requestGetMyOrders
 {
@@ -128,6 +144,12 @@
         
         getMyOrdersResponseObject = [[SelectedOrdersDetailsResponse alloc] initWithString:jsonString error:&err];
         
+        if (!getMyOrdersResponseObject.orders.count)
+        {
+            self.myOrdersTableView.hidden=YES;
+             [indicator stopAnimating];
+            return;
+        }
         
         
         if(getMyOrdersResponseObject.code!=nil)
@@ -188,6 +210,16 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=0;
+    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+                  [SingleDataProvider sharedKey].lat,
+                  [SingleDataProvider sharedKey].lon,
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",
+                 [SingleDataProvider sharedKey].lat,
+                 [SingleDataProvider sharedKey].lon,
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
     [self animation];
 }
 
@@ -196,6 +228,15 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=1;
+    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
+
+    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
+                  [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
     [self animation];
 }
 -(void)close
@@ -208,10 +249,7 @@
     
     if (number)
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
+        NSString* urlStr= yandexMapUrl;
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -227,10 +265,7 @@
     }
     else
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",currentLocation.coordinate.latitude,
-                            currentLocation.coordinate.longitude,
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+        NSString* urlStr=  yandexMapUrl;
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -248,10 +283,7 @@
 {
     if (number)
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
+        NSString* urlStr= googleMapUrl;
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -259,18 +291,14 @@
             [[UIApplication sharedApplication] openURL:naviURL];
         } else {
             // Если не установлен - открываем страницу в App Store
-            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/yandex.navigator/id474500851?mt=8"];
+            NSURL* appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/google-maps/id585027354?mt=8"];
             [[UIApplication sharedApplication] openURL:appStoreURL];
         }
         
     }
     else
     {
-        NSString* urlStr=  [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
-                            currentLocation.coordinate.latitude,
-                            currentLocation.coordinate.longitude,
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
-                            [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue]];
+        NSString* urlStr=  googleMapUrl;
         NSURL* naviURL = [NSURL URLWithString:urlStr];
         NSLog(@"urlStr=%@",urlStr);
         if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
@@ -285,11 +313,7 @@
         
     }
 }
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    currentLocation = [locations lastObject];
-    NSLog(@"%f--- %f", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
-}
+
 -(void)animation
 {
     [UIView animateWithDuration:0.5

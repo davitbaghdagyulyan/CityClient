@@ -3,11 +3,10 @@
 #import "OrdersJson.h"
 #import "OrdersResponse.h"
 #import "SelectedOrdersViewController.h"
-#import "SingleDataProviderForFilter.h"
 #import "RecallJson.h"
 #import "RecallResponse.h"
 #import "LeftMenu.h"
-
+#import "OpenMapButtonHandler.h"
 
 @interface RootViewController ()
 {
@@ -24,13 +23,14 @@
     CAGradientLayer * gradLayerLabel1;
     CAGradientLayer * gradLayerLabel2;
     NSTimer * requestTimer;
-    UILabel * label1;
-    UILabel * label2;
+//    UILabel * label1;
+//    UILabel * label2;
     NSInteger selectedRow;
     //NAREK
     LeftMenu*leftMenu;
     UISwipeGestureRecognizer*recognizerRight;
     RecallResponse*recallResponseObject;
+    NSMutableArray *categories;
     UIAlertView *callDispetcherAlert;
    
     
@@ -39,6 +39,12 @@
 @implementation RootViewController
 -(void)viewDidAppear:(BOOL)animated
 {
+    [self.cityButtonIpad setNeedsDisplay];
+    [self.cityButtonLand setNeedsDisplay];
+    [self.cityButtonPort setNeedsDisplay];
+    [self.yandexButtonIpad setNeedsDisplay];
+    [self.yandexButtonLand setNeedsDisplay];
+    [self.yandexButtonPort setNeedsDisplay];
     [super viewDidAppear:animated];
     timerCreated =NO;
     flag=0;
@@ -103,18 +109,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return ordersResponseObject.categories.count;
+    return categories.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    CustomCell * cell = [[CustomCell alloc]init];
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
-    cell = [nib objectAtIndex:0];
-    NSString * count = [[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
-    if (count && [count isEqualToString:@"0"])
+    NSString *simpleTableIdentifierIphone = [NSString stringWithFormat: @"SimpleTableViewCell%ld",(long)indexPath.row];
+    CustomCell * cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
+    if (cell == nil)
     {
-        cell.hidden =YES;
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
     if (flag1 ==-1)
     {
@@ -125,6 +131,30 @@
     cell.contentView.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
     
     }
+    cell.label1.font =[UIFont fontWithName:@"Roboto-Regular" size:16];
+    cell.label1.textColor = [UIColor blackColor];
+    if ([[categories objectAtIndex:indexPath.row] name])
+    {
+        cell.label1.text =[NSString stringWithFormat:@"      %@",[[categories objectAtIndex:indexPath.row] name]];
+    }
+    else
+    {
+        cell.label1.text=@"";
+    }
+    cell.label2.font =[UIFont fontWithName:@"Roboto-Regular" size:23];
+    cell.label2.textColor = [UIColor whiteColor];
+    cell.label2.textAlignment =NSTextAlignmentCenter;
+    NSString * currentCount =[[categories objectAtIndex:indexPath.row]getCount];
+    if (currentCount)
+    {
+        cell.label2.text=[NSString stringWithFormat:@"%@",currentCount];
+    }
+    else
+    {
+        cell.label2.text=@"";
+    }
+    
+
     return  cell;
 }
 
@@ -145,58 +175,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     [gradLayerLabel1 setColors:[NSArray arrayWithObjects:(id)(gradColStart.CGColor), (id)(gradColFin.CGColor),nil]];
     [cell.View1.layer insertSublayer:gradLayerLabel1 atIndex:0];
     }
-    label1 =[[UILabel alloc]init];
-    label1.translatesAutoresizingMaskIntoConstraints = NO;
-    [cell.View1 addSubview:label1];
-    NSLayoutConstraint * label1Tral = [NSLayoutConstraint constraintWithItem:label1 attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:cell.View1 attribute:NSLayoutAttributeTrailing multiplier:1.f constant:0];
-    NSLayoutConstraint * label1Top = [NSLayoutConstraint constraintWithItem:label1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:cell.View1 attribute:NSLayoutAttributeTop multiplier:1.f constant:0];
-    NSLayoutConstraint * label1Lead = [NSLayoutConstraint constraintWithItem:label1 attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:cell.View1 attribute:NSLayoutAttributeLeading multiplier:1.f constant:0];
-    NSLayoutConstraint * label1Butom = [NSLayoutConstraint constraintWithItem:label1 attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:cell.View1 attribute:NSLayoutAttributeBottom multiplier:1.f constant:0];
-    [cell.View1 addConstraint:label1Tral];
-    [cell.View1 addConstraint:label1Top];
-    [cell.View1 addConstraint:label1Lead];
-    [cell.View1 addConstraint:label1Butom];
-    label1.font =[UIFont fontWithName:@"Roboto-Regular" size:16];
-    label1.textColor = [UIColor blackColor];
-    if ([[ordersResponseObject.categories objectAtIndex:indexPath.row] name])
-    {
-      label1.text =[NSString stringWithFormat:@"      %@",[[ordersResponseObject.categories objectAtIndex:indexPath.row] name]];
-    }
-    else
-    {
-    label1.text=@"";
-    }
-    gradLayerLabel2 =[CAGradientLayer layer];
+        gradLayerLabel2 =[CAGradientLayer layer];
     UIColor * gradColStartLab2 =[UIColor colorWithRed:130/255.0f green:130/255.0f blue:130/255.0f alpha:1.0f];
     UIColor * gradColFinLab2 =[UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1.0f];
     gradLayerLabel2.frame =CGRectMake(0, 0, cell.bounds.size.width*0.141, self.view.frame.size.height/12-3);
     [gradLayerLabel2 setColors:[NSArray arrayWithObjects:(id)(gradColStartLab2.CGColor), (id)(gradColFinLab2.CGColor),nil]];
     [cell.View2.layer insertSublayer:gradLayerLabel2 atIndex:0];
-    label2 =[[UILabel alloc]init];
-    label2.translatesAutoresizingMaskIntoConstraints = NO;
-    [cell.View2 addSubview:label2];
-    NSLayoutConstraint * label2Tral = [NSLayoutConstraint constraintWithItem:label2 attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:cell.View2 attribute:NSLayoutAttributeTrailing multiplier:1.f constant:0];
-    NSLayoutConstraint * label2Top = [NSLayoutConstraint constraintWithItem:label2 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:cell.View2 attribute:NSLayoutAttributeTop multiplier:1.f constant:0];
-    NSLayoutConstraint * label2Lead = [NSLayoutConstraint constraintWithItem:label2 attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:cell.View2 attribute:NSLayoutAttributeLeading multiplier:1.f constant:0];
-    NSLayoutConstraint * label2Butom = [NSLayoutConstraint constraintWithItem:label2 attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:cell.View2 attribute:NSLayoutAttributeBottom multiplier:1.f constant:0];
-    [cell.View2 addConstraint:label2Tral];
-    [cell.View2 addConstraint:label2Top];
-    [cell.View2 addConstraint:label2Lead];
-    [cell.View2 addConstraint:label2Butom];
-    label2.font =[UIFont fontWithName:@"Roboto-Regular" size:23];
-    label2.textColor = [UIColor whiteColor];
-    label2.textAlignment =NSTextAlignmentCenter;
-    NSString * currentCount =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
-    if (currentCount)
-    {
-    label2.text=[NSString stringWithFormat:@"%@",currentCount];
     }
-    else
-    {
-    label2.text=@"";
-    }
-    
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -210,17 +195,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [self.tableViewOrdersPort reloadData];
         [self.tableViewOrdersLand reloadData];
         [self.tableViewIpad reloadData];
+        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         if ([[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter])
         {
-          [SingleDataProviderForFilter sharedFilter].filter =[[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter];
+            [selectedOrdersCont setFilter:[[categories objectAtIndex:indexPath.row] getFilter]];
         }
         else
         {
             NSLog(@"There is no filter");
+            [selectedOrdersCont setFilter:nil];
         }
-        SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         [self.navigationController pushViewController:selectedOrdersCont animated:YES];
-        selectedOrdersCont.titleString =[[ordersResponseObject.categories objectAtIndex:indexPath.row]name];
+        selectedOrdersCont.titleString =[[categories objectAtIndex:indexPath.row]name];
             
     }
 }
@@ -230,15 +216,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == leftMenu)
     {
-                return  44;
+     return  44;
     }
     else
     {
-     NSString * count = [[ordersResponseObject.categories objectAtIndex:indexPath.row] getCount];
-     if (count && [count isEqualToString:@"0"])
-     {
-            return 0;
-     }
      return  self.view.frame.size.height/12;
     }
     
@@ -578,7 +559,6 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     [self.tableViewOrdersPort reloadData];
     [self.tableViewOrdersLand reloadData];
     [self.tableViewIpad reloadData];
-    
     OrdersJson* ordersJsonObject=[[OrdersJson alloc]init];
     NSDictionary*jsonDictionary=[ordersJsonObject toDictionary];
     NSString*jsons=[ordersJsonObject toJSONString];
@@ -613,12 +593,23 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
         else if(data)
         {
             alertNoConIsCreated =NO;
+            NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"First Json String %@",jsonString);
+            NSError*err;
+            ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
+            categories=[[NSMutableArray alloc]init];
+            for (int i=0; i<ordersResponseObject.categories.count; i++)
+            {
+                if ([[[ordersResponseObject.categories objectAtIndex:i]getCount]integerValue] !=0)
+                {
+                    [categories addObject:[ordersResponseObject.categories objectAtIndex:i]];
+                }
+
         }
         
-        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"First Json String %@",jsonString);
-        NSError*err;
-        ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
+        
+            
+        }
         if(ordersResponseObject.code!=nil && alertServErrIsCreated==NO)
         {
             UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:ordersResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
@@ -666,6 +657,12 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 -(void)viewDidDisappear:(BOOL)animated
 {
     [requestTimer invalidate];
+}
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 
 

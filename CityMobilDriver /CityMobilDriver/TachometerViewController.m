@@ -33,7 +33,7 @@
     
     UILabel* additionalServices;
     UIButton* additionalServicesButton;
-    
+    BOOL isLoad;
     
     UILabel* metroNamesLabel;
     UILabel* ourCommentLabel;
@@ -54,25 +54,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+   
+}
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    //narek change
+    isLoad=YES;
     [self initPropertys];
-    
-    
-    
-    //[self getTaximeter];
-    
-  
-    
-    
-//    
-//    NSMutableArray* numberArray = [[NSMutableArray alloc]init];
-//    for (int i = 0; i < 5; ++i) {
-//        [numberArray addObject:@"0"];
-//    }
-//    [self settachoelements:numberArray];
-//
-
-    
     
     metroNamesLabel = [[UILabel alloc]init];
     ourCommentLabel = [[UILabel alloc]init];
@@ -80,31 +70,13 @@
     additionalServices = [[UILabel alloc]init];
     additionalServicesButton = [[UIButton alloc]init];
     
-    
-
-    
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     [self getOrSetTaximeter:0 value:@"a" isSet:NO];
     idArray = [[NSMutableArray alloc]init];
     
-    
+    //end narek change
 
-    
-}
-
-
--(void) viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    
-}
-
-
-
-
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:10.f target: self
                                            selector: @selector(animateTachometer)
@@ -113,7 +85,8 @@
     
     
     NSMutableArray* numberArray = [[NSMutableArray alloc]init];
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 5; ++i)
+    {
         [numberArray addObject:@"0"];
     }
     [self settachoelements:numberArray];
@@ -121,18 +94,18 @@
 }
 
 
--(void) settachoelements:(NSArray*)numbers{
+-(void) settachoelements:(NSArray*)numbers
+{
     static int x = 0;
     for (int i = 0; i < 5; ++i) {
         UIImageView* tachoView = self.tachoElements[i];
         
-        if (x == 0) {
+        if (YES)//x == 0)
+        {
             upLabel = [[UILabel alloc]init];
             underLabel = [[UILabel alloc]init];
         }
-        
-        
-        
+
         upLabel.frame = tachoView.bounds;
         upLabel.tag = 150 + i;
         upLabel.text = @"0";
@@ -152,14 +125,6 @@
         [tachoView addSubview:underLabel];
     }
     ++x;
-}
-
-
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    
-    [additionalServices removeFromSuperview];
 }
 
 -(void)initPropertys{
@@ -355,6 +320,7 @@
      {
          
          [label removeFromSuperview];
+        
      }
      ];
 }
@@ -466,7 +432,7 @@
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [self.elements[i] setTitle:[tachometerResponse.elements[i] name] forState:UIControlStateNormal];
-        NSString* str = [[tachometerResponse.elements[0] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",[tachometerResponse.elements[i] getValue]]];
+    NSString* str = [[tachometerResponse.elements[0] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",[tachometerResponse.elements[i] getValue]]];
         [self.elements[i] setTitle:str forState:UIControlStateNormal];
     }
     
@@ -896,6 +862,32 @@
     
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    tachometerResponse=nil;
+ 
+    tachoSubViews1=nil;
+    tachoSubViews2=nil;
+    scrollViewContentHeight=0;
+    idArray=nil;
+    flag=0;
+    leftMenu=nil;
+    [additionalServices removeFromSuperview];
+    additionalServices=nil;
+    additionalServicesButton=nil;
+ 
+    
+   metroNamesLabel=nil;
+    ourCommentLabel=nil;
+  lineView=nil;
+    for (int i = 0; i < 5; ++i)
+    {
+        [[self.view viewWithTag:(150+i)] removeFromSuperview];
+        [[self.view viewWithTag:(200+i)] removeFromSuperview];
+    }
+   upLabel=nil;
+   underLabel=nil;
+   timer=nil;
+}
 
 @end

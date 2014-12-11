@@ -15,4 +15,4 @@
 @property (nonatomic,strong) NSString* price;
 @property (nonatomic,assign) NSInteger step;
 @property (nonatomic,strong,getter=getValue) NSString* value;
-@end///
+@end

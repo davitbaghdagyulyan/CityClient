@@ -12,4 +12,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *designationTableView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+- (IBAction)openMap:(UIButton*)sender;
 @end

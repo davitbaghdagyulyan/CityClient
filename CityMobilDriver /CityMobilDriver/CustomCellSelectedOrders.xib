@@ -6,8 +6,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
         </mutableArray>
         <mutableArray key="RobotoCondensed-Regular.ttf">
@@ -33,7 +35,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGc-fZ-nhU">
                                         <rect key="frame" x="0.0" y="0.0" width="247" height="101"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -230,7 +232,7 @@
                 <outlet property="labelPercent" destination="HZF-e4-752" id="OHc-aX-jvq"/>
                 <outlet property="labelShortName" destination="aGc-fZ-nhU" id="2uW-ax-fTS"/>
             </connections>
-            <point key="canvasLocation" x="438.5" y="265"/>
+            <point key="canvasLocation" x="487.5" y="194"/>
         </tableViewCell>
     </objects>
 </document>
