@@ -177,7 +177,6 @@
 //            //***************************test
             
             getOrderResponseObject = [[GetOrderResponse alloc] initWithString:jsonString error:&err];
-            
            
             
           
@@ -674,6 +673,9 @@
             {
                 TachometerViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TachometerViewController"];
                 [self.navigationController pushViewController:tvc animated:NO];
+                ////Karen change////
+                tvc.orderResponse = getOrderResponseObject;
+                //// end Karen change ////
             }
             else
             {
@@ -702,8 +704,9 @@
 {
     TachometerViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TachometerViewController"];
     [self.navigationController pushViewController:tvc animated:NO];
-    
-    
+    ////Karen change////
+    tvc.orderResponse = getOrderResponseObject;
+    //// end Karen change ////
 }
 
 -(void)foodToTheCustomerAction

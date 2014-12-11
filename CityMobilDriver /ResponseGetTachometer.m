@@ -9,5 +9,8 @@
 #import "ResponseGetTachometer.h"
 
 @implementation ResponseGetTachometer
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end

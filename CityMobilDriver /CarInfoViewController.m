@@ -34,8 +34,7 @@
     
     self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
     
-    gradientLayer1 = [self greyGradient:self.bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19)];
-    [self.bgView.layer insertSublayer:gradientLayer1 atIndex:0];
+
     
     
     
@@ -55,6 +54,9 @@
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
+    
+    gradientLayer1 = [self greyGradient:self.bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19)];
+    [self.bgView.layer insertSublayer:gradientLayer1 atIndex:0];
 }
 
 
@@ -133,10 +135,10 @@
         case 0:
             cell.textLabel.text = @"марка ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.mark];
-            
-            
-            gradientLayer2 = [self greyGradient:cell.contentView widthFrame:CGRectMake(0, 0, CGRectGetWidth(cell.contentView.frame), CGRectGetHeight(cell.contentView.frame))];
-            [cell.contentView.layer insertSublayer:gradientLayer2 atIndex:0];
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            cell.tag = 100;
+            gradientLayer2 = [self greyGradient:cell widthFrame:CGRectMake(0, 0, CGRectGetWidth(cell.frame), CGRectGetHeight(cell.frame))];
+            [cell.layer insertSublayer:gradientLayer2 atIndex:0];
             
             break;
         case 1:
@@ -236,6 +238,7 @@
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19);
+         gradientLayer2.frame = CGRectMake(0, 0, CGRectGetWidth([self.carInfoTable viewWithTag:100].frame), CGRectGetHeight([self.carInfoTable viewWithTag:100].frame));
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {

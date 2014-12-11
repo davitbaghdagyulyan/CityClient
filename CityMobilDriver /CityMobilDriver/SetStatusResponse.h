@@ -12,4 +12,9 @@
 @property(nonatomic,strong)NSString*code;
 @property(nonatomic,strong)NSString*text;
 @property(nonatomic,strong)NSString*result;
+
+@property(nonatomic,strong)NSString*message;
+@property(nonatomic,strong)NSArray*statuses;
+
+
 @end
