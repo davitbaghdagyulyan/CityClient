@@ -118,10 +118,7 @@
             identity =@"PaymentHistoryViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-   
-            
-            
-
+ 
         case 3:
         
             myClass = NSClassFromString(@"MessagesViewController");
@@ -160,8 +157,9 @@
 
         case 13:
             //exit(0); //not recommended apple
-            myClass = NSClassFromString(@"TachometerViewController");
-            identity =@"TachometerViewController";
+            myClass = NSClassFromString(@"LoginViewController");
+            identity =@"LoginViewController";
+            [[SingleDataProvider sharedKey]stopTimer];
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
                     default:

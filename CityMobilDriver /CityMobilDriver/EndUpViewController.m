@@ -303,7 +303,14 @@
         NSLog(@"%@",jsonString);
         NSError* err;
         billResponse = [[ResponseSetBill alloc] initWithString:jsonString error:&err];
-        setStatusObject.lat=[[NSString stringWithFormat:[[SingleDataProvider sharedKey].lat]] ];
+       
+        
+        setStatusObject.time=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].time];
+        setStatusObject.direction=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].direction];
+        setStatusObject.speed=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].speed];
+        
+        setStatusObject.lat=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].lat];
+        setStatusObject.lon=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].lon];
         
         setStatusObject.idhash=self.orderResponse.idhash;
         setStatusObject.bill=self.bill;
@@ -381,10 +388,7 @@
                 [self.navigationController popToRootViewControllerAnimated:NO];
             }
         }
-        
-        
 
-        
     }];
     
 }
@@ -421,19 +425,19 @@
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          
-//         
-//         CGFloat xx;
-//         
-//         if(flag==0)
-//         {
-//             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
-//         }
-//         else
-//         {
-//             xx=0;
-//         }
-//         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
-//         
+         
+         CGFloat xx;
+         
+         if(flag==0)
+         {
+             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+         }
+         else
+         {
+             xx=0;
+         }
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+//
 //         additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
 //         
 //
@@ -501,6 +505,15 @@
                                        
                                    }];
         [alert addAction:okAction];
+        
+        UIAlertAction* cancel =[UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action)
+                                   {
+                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                                   }];
+        [alert addAction:cancel];
+        
         [self presentViewController:alert animated:YES completion:nil];
     }
     else{

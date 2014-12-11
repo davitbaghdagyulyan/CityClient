@@ -45,7 +45,7 @@
     }
     [locationManager startUpdatingLocation];
     self.timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addGPSaction) userInfo:nil repeats:YES];
-    [NSThread detachNewThreadSelector:@selector(addGPSaction) toTarget:self withObject:nil];
+//    [NSThread detachNewThreadSelector:@selector(addGPSaction) toTarget:self withObject:nil];
      myQueue = [[NSOperationQueue alloc] init];
 
 }
@@ -56,6 +56,12 @@
 }
 
 -(void)addGPSaction
+{
+    
+    [self performSelectorInBackground:@selector(fff) withObject:nil];
+}
+
+-(void)fff
 {
     addGPSJsonObject.lat=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].lat];
     addGPSJsonObject.lon=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].lon];
@@ -87,7 +93,7 @@
         NSLog(@"responseString:%@",jsonString);
         NSError*err;
         
-       
+        
         
         addGPSResponseObject = [[AddGPSResponse alloc] initWithString:jsonString error:&err];
         
@@ -102,6 +108,7 @@
             [IconsColorSingltone sharedColor].cityMobilColor = [addGPSResponseObject.autoget integerValue];
         }
     }];
+
 }
 
 @end

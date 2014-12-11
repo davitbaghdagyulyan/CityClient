@@ -761,13 +761,13 @@
          if (flag==0)
          {
              flag=1;
-             self.scrollView.userInteractionEnabled = NO;
+             self.bgView.userInteractionEnabled = NO;
              //self.segmentedControll.userInteractionEnabled = NO;
          }
          else
          {
              flag=0;
-             self.scrollView.userInteractionEnabled = YES;
+             self.bgView.userInteractionEnabled = YES;
              //self.segmentedControll.userInteractionEnabled = YES;
          }
          
@@ -801,7 +801,7 @@
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              flag=0;
-             self.scrollView.userInteractionEnabled = YES;
+             self.bgView.userInteractionEnabled = YES;
              //self.segmentedControll.userInteractionEnabled = YES;
              
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -811,7 +811,7 @@
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              
-             self.scrollView.userInteractionEnabled = NO;
+             self.bgView.userInteractionEnabled = NO;
              //self.segmentedControll.userInteractionEnabled = NO;
              flag=1;
          }
@@ -841,7 +841,7 @@
     }
     leftMenu.center=point;
     
-    self.scrollView.userInteractionEnabled = NO;
+    self.bgView.userInteractionEnabled = NO;
     //self.segmentedControll.userInteractionEnabled = NO;
     
     flag=1;
