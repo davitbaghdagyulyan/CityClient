@@ -113,12 +113,12 @@
 		EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF09A1A022F85009EC444 /* ResponseGetColorList.m */; };
 		EC5BF09E1A02300B009EC444 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF09D1A02300B009EC444 /* Colors.m */; };
 		EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF0A01A028AD1009EC444 /* RequestSetCarInfo.m */; };
+		EC84D9AF1A3EDB1700ECC915 /* OpenMapButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */; };
 		EC896A7D19FE5C4700822D9E /* CustomView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC896A7C19FE5C4700822D9E /* CustomView2.xib */; };
 		ECAD78BB1A306048005C2468 /* AddGPSJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78BA1A306048005C2468 /* AddGPSJson.m */; };
 		ECAD78BE1A306070005C2468 /* AddGPSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78BD1A306070005C2468 /* AddGPSResponse.m */; };
 		ECAD78C21A30AADB005C2468 /* GetLastKnownLocationJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */; };
 		ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */; };
-		ECB063B61A31E814004633A6 /* OpenMapButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB063B51A31E814004633A6 /* OpenMapButtonHandler.m */; };
 		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
 		ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F2A31A2DAD06008A3D15 /* iconmap.png */; };
 		ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */; };
@@ -508,6 +508,8 @@
 		EC5BF09D1A02300B009EC444 /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
 		EC5BF09F1A028AD1009EC444 /* RequestSetCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSetCarInfo.h; sourceTree = "<group>"; };
 		EC5BF0A01A028AD1009EC444 /* RequestSetCarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestSetCarInfo.m; sourceTree = "<group>"; };
+		EC84D9AD1A3EDB1700ECC915 /* OpenMapButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenMapButtonHandler.h; sourceTree = "<group>"; };
+		EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenMapButtonHandler.m; sourceTree = "<group>"; };
 		EC896A7C19FE5C4700822D9E /* CustomView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomView2.xib; sourceTree = "<group>"; };
 		ECAD78B91A306048005C2468 /* AddGPSJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGPSJson.h; sourceTree = "<group>"; };
 		ECAD78BA1A306048005C2468 /* AddGPSJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGPSJson.m; sourceTree = "<group>"; };
@@ -517,8 +519,6 @@
 		ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLastKnownLocationJson.m; sourceTree = "<group>"; };
 		ECAD78C31A30AAF1005C2468 /* GetLastKnownLocationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLastKnownLocationResponse.h; sourceTree = "<group>"; };
 		ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLastKnownLocationResponse.m; sourceTree = "<group>"; };
-		ECB063B41A31E814004633A6 /* OpenMapButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenMapButtonHandler.h; sourceTree = "<group>"; };
-		ECB063B51A31E814004633A6 /* OpenMapButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenMapButtonHandler.m; sourceTree = "<group>"; };
 		ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesCell.xib; path = ../MessagesCell.xib; sourceTree = "<group>"; };
 		ECB1F2A31A2DAD06008A3D15 /* iconmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmap.png; sourceTree = "<group>"; };
 		ECB38B1D1A0CDA0000DFBB77 /* TariffsYandexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffsYandexViewController.h; sourceTree = "<group>"; };
@@ -1237,8 +1237,8 @@
 		ECB063B31A31E7C5004633A6 /* openMapButtonHandler */ = {
 			isa = PBXGroup;
 			children = (
-				ECB063B41A31E814004633A6 /* OpenMapButtonHandler.h */,
-				ECB063B51A31E814004633A6 /* OpenMapButtonHandler.m */,
+				EC84D9AD1A3EDB1700ECC915 /* OpenMapButtonHandler.h */,
+				EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */,
 			);
 			name = openMapButtonHandler;
 			sourceTree = "<group>";
@@ -2267,6 +2267,7 @@
 				ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */,
 				EC40D44019E43258007BA02C /* MailResponse.m in Sources */,
 				ECB52E541A0781A10091293F /* IntervalClass.m in Sources */,
+				EC84D9AF1A3EDB1700ECC915 /* OpenMapButtonHandler.m in Sources */,
 				ECE4058A1A270C7100802559 /* RequestGetTaximeter.m in Sources */,
 				ECD218851A1CBCF100F38F7D /* SetStatusJson.m in Sources */,
 				ECEC89B21A2CA1100036781D /* CustomViewForMaps.m in Sources */,
@@ -2310,7 +2311,6 @@
 				ECCD344A1A039F44000444BF /* RequestStandart.m in Sources */,
 				EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */,
 				ECEC89A61A2CA1100036781D /* AssignOrderResponse.m in Sources */,
-				ECB063B61A31E814004633A6 /* OpenMapButtonHandler.m in Sources */,
 				EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */,
 				ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */,
 				ECF4A4171A31A6B90057BE10 /* ServicesResponseArray.m in Sources */,

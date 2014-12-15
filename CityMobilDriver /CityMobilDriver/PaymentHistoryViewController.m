@@ -19,6 +19,7 @@
     NSInteger flag;
     UISwipeGestureRecognizer*recognizerRight;
     UIAlertView *callDispetcherAlert;
+     OpenMapButtonHandler*openMapButtonHandlerObject;
 
 }
 @end
@@ -331,7 +332,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
 */
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

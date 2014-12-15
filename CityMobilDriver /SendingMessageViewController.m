@@ -15,6 +15,7 @@
     WriteLetterResponse*writeLetterResponseObject;
     LeftMenu*leftMenu;
     NSInteger flag;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 @implementation SendingMessageViewController
@@ -136,7 +137,7 @@
 
 -(void)openMap:(UIButton *)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

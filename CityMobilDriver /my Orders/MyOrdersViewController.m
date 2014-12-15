@@ -18,7 +18,7 @@
 {
     NSString*yandexMapUrl;
     NSString*googleMapUrl;
-    
+     OpenMapButtonHandler*openMapButtonHandlerObject;
     LeftMenu*leftMenu;
     NSInteger flag;
     SelectedOrdersDetailsResponse*getMyOrdersResponseObject;
@@ -86,7 +86,7 @@
 }
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

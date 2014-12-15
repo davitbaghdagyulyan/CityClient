@@ -22,6 +22,7 @@
 @interface TakenOrderViewController ()
 
 {
+     OpenMapButtonHandler*openMapButtonHandlerObject;
     LeftMenu*leftMenu;
     NSInteger flag;
     GetOrderResponse*getOrderResponseObject;
@@ -71,6 +72,7 @@
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     setStatusJsonObject=[[SetStatusJson alloc]init];
+    [self requestGetOrder];
     
 }
 -(void)setIdHash:(NSString*)idhash andUnderView:(UIView*)underView
@@ -79,7 +81,7 @@
     getOrderJsonObject.idhash=idhash;
     cellUnderView=underView;
     count=0;
-     [self requestGetOrder];
+    
     
     viewMap=[[CustomViewForMaps alloc] init];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
@@ -721,6 +723,7 @@
     [self.navigationController pushViewController:tvc animated:NO];
     ////Karen change////
     tvc.orderResponse = getOrderResponseObject;
+   
     //// end Karen change ////
 }
 
@@ -765,7 +768,7 @@
 
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+  openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

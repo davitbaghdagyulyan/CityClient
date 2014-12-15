@@ -32,6 +32,7 @@
     RecallResponse*recallResponseObject;
     NSMutableArray *categories;
     UIAlertView *callDispetcherAlert;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
    
     
 }
@@ -708,7 +709,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

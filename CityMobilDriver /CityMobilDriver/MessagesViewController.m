@@ -17,6 +17,7 @@
     LeftMenu*leftMenu;
     NSInteger flag;
     MailResponse*mailResponseObject;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -84,7 +85,7 @@
 
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

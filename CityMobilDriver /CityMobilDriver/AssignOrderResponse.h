@@ -12,4 +12,5 @@
 @property(nonatomic,strong)NSString*code;
 @property(strong,nonatomic)NSString*text;
 @property(strong,nonatomic)NSNumber*result;
+@property(strong,nonatomic)NSString*desc;
 @end

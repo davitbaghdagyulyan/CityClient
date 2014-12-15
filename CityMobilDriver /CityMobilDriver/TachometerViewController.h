@@ -11,8 +11,10 @@
 
 @interface TachometerViewController : UIViewController
 
+
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
 
 
 

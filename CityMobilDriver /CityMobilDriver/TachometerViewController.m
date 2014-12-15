@@ -12,7 +12,7 @@
 #import "ServicesViewController.h"
 #import "LeftMenu.h"
 #import "EndUpViewController.h"
-
+#import "TakenOrderViewController.h"
 
 //@property (weak, nonatomic) IBOutlet UIButton *additionalServices;
 //@property (weak, nonatomic) IBOutlet UILabel *metroNames;
@@ -673,8 +673,11 @@
 
 
 #pragma mark - button actions
-- (IBAction)goingToOrder:(UIButton *)sender {
+- (IBAction)goingToOrder:(UIButton *)sender
+{
+
     [self.navigationController popViewControllerAnimated:NO];
+   
 }
 
 - (IBAction)endOrderAction:(UIButton *)sender {
