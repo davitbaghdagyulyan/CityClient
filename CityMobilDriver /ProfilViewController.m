@@ -93,6 +93,22 @@
     NSError* err;
     NSURLResponse *response = [[NSURLResponse alloc]init];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if (!data)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return ;
+    }
+    
     NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"------------======= = = == -%@",jsonString);
     jsonResponseObject = [[DriverAllInfoResponse alloc]initWithString:jsonString error:&err];
@@ -174,6 +190,20 @@
     NSError* err;
     NSURLResponse *response = [[NSURLResponse alloc]init];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (!data)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return @"";
+    }
     NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     //NSLog(@"--%@",jsonString);
     ResponseGetDocScansUrl* jsonResponseGetUrlObject = [[ResponseGetDocScansUrl alloc]initWithString:jsonString error:&err];

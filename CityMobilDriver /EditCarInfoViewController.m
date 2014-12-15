@@ -121,14 +121,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -179,15 +181,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
-            [indicator stopAnimating];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -235,12 +238,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -570,6 +577,13 @@
 
 -(void)RequestSetCarInfo
 {
+    
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
     RequestSetCarInfo* jsonObject=[[RequestSetCarInfo alloc]init];
     jsonObject.key = [SingleDataProvider sharedKey].key;
     jsonObject.VIN = self.vinCode.text;
@@ -613,14 +627,34 @@
             NSError* err;
             ResponseSetCarInfo* jsonResponseObject = [[ResponseSetCarInfo alloc]initWithString:jsonString error:&err];
             
-            sucsedAlert = [[UIAlertView alloc]initWithTitle:nil message:jsonResponseObject.msg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [sucsedAlert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.msg preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
+                                         [self pushOrPopViewController:carInfoController];
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+
         }
         
         else
         {
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"NO INTERNET CONECTION" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            return ;
         }
         
     }];
@@ -630,6 +664,13 @@
 
 -(void)RequestSetCarInfoWidthPhoto
 {
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    
     RequestSetCarInfoWidthPhoto* jsonObject=[[RequestSetCarInfoWidthPhoto alloc]init];
     jsonObject.key = [SingleDataProvider sharedKey].key;
     jsonObject.VIN = self.vinCode.text;
@@ -676,26 +717,47 @@
             NSError* err;
             ResponseSetCarInfo* jsonResponseObject = [[ResponseSetCarInfo alloc]initWithString:jsonString error:&err];
             
-            sucsedAlert = [[UIAlertView alloc]initWithTitle:nil message:jsonResponseObject.msg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [sucsedAlert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.msg preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
+                                        [self pushOrPopViewController:carInfoController];
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+
         }
         
         else
         {
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"NO INTERNET CONECTION" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+            return ;
         }
         
     }];
     
 }
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (alertView == sucsedAlert) {
-        CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
-        [self pushOrPopViewController:carInfoController];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+//{
+//    if (alertView == sucsedAlert) {
+//        CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
+//        [self pushOrPopViewController:carInfoController];
+//    }
+//}
 
 
 #pragma mark - rotation

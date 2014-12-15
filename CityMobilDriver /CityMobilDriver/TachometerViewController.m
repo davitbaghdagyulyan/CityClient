@@ -72,7 +72,7 @@
     
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
-    [self getOrSetTaximeter:0 value:@"a" isSet:NO];
+    [self getOrSetTaximeter:0 value:@"a" isSet:YES];
     idArray = [[NSMutableArray alloc]init];
     
     //end narek change
@@ -91,6 +91,9 @@
     }
     [self settachoelements:numberArray];
     
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
 }
 
 
@@ -181,7 +184,7 @@
                                        NSString* str = [[tachometerResponse.elements[0] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
                                        [self.elements[0] setTitle:str forState:UIControlStateNormal];
                                        
-                                       [self getOrSetTaximeter:11 value:textLabel.text isSet:YES];
+                                       [self getOrSetTaximeter:11 value:textLabel.text isSet:NO];
                                    }
                                    
                                    if (button.tag == 101) {
@@ -190,7 +193,7 @@
                                        [self.elements[1] setTitle:str forState:UIControlStateNormal];
                                        
                                        
-                                       [self getOrSetTaximeter:12 value:textLabel.text isSet:YES];
+                                       [self getOrSetTaximeter:12 value:textLabel.text isSet:NO];
                                    }
                                    
                                    if (button.tag == 102) {
@@ -198,7 +201,7 @@
                                        NSString* str = [[tachometerResponse.elements[2] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
                                        [self.elements[2] setTitle:str forState:UIControlStateNormal];
                                        
-                                       [self getOrSetTaximeter:10 value:textLabel.text isSet:YES];
+                                       [self getOrSetTaximeter:10 value:textLabel.text isSet:NO];
                                    }
                                    
                                }];
@@ -250,14 +253,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -285,7 +290,7 @@
             [self presentViewController:alertController animated:YES completion:nil];
         }
         else{
-            if (!isSet) {
+            if (isSet) {
                 [self setTachometerViews];
             }
 
@@ -483,6 +488,7 @@
     
     
     ourCommentLabel.frame = CGRectMake(8, CGRectGetMaxY(metroNamesLabel.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/10);
+    ourCommentLabel.numberOfLines = 2;
     if (self.ourComment.length) {
         ourCommentLabel.backgroundColor = [UIColor whiteColor];
         ourCommentLabel.text = self.ourComment;
@@ -506,7 +512,6 @@
     
 
     
-//    additionalServices = [[UILabel alloc]init];
     additionalServices.text = str;
     additionalServices.numberOfLines = tachometerResponse.services.count;
     
@@ -522,18 +527,18 @@
     if (tachometerResponse.services.count == 0) {
         additionalServices.text = @"Дополнительные услуги";
         additionalServices.frame = CGRectMake(8, CGRectGetMaxY(ourCommentLabel.frame), CGRectGetWidth(self.scrollView.frame) - 16, 40);
+        
     }
     else{
         
         CGRect rect = additionalServices.frame;
-        rect.size.width = CGRectGetWidth(self.scrollView.frame);
+        rect.size.width = CGRectGetWidth(self.scrollView.frame) - 16;
+        rect.origin.x = 8;
         rect.origin.y = self.scrollView.contentSize.height - 8 - CGRectGetHeight(additionalServices.frame);
         additionalServices.frame = rect;
 
         
     }
-    
-
 
     
     [self.scrollView addSubview:additionalServices];
@@ -691,10 +696,41 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
+
+         
+        metroNamesLabel.frame = CGRectMake(8, CGRectGetMaxY(self.informationView.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/5);
+         
+        ourCommentLabel.frame = CGRectMake(8, CGRectGetMaxY(metroNamesLabel.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/10);
+
+         lineView.frame = CGRectMake(8, CGRectGetMinY(ourCommentLabel.frame) - 8, CGRectGetWidth(self.scrollView.frame) - 16, 2);
+         
+
+         [additionalServices sizeToFit];
+
          CGSize rect = self.scrollView.contentSize;
-         rect.height = scrollViewContentHeight;
+         if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
+             rect.height = scrollViewContentHeight - 30;
+         }
+         else{
+             rect.height = scrollViewContentHeight;
+         }
          self.scrollView.contentSize = rect;
          
+
+         if (tachometerResponse.services.count == 0) {
+             additionalServices.frame = CGRectMake(8, CGRectGetMaxY(ourCommentLabel.frame), CGRectGetWidth(self.scrollView.frame) - 16, 40);
+         }
+         else{
+             
+             CGRect rect = additionalServices.frame;
+             rect.size.width = CGRectGetWidth(self.scrollView.frame) - 16;
+             rect.origin.y = self.scrollView.contentSize.height - 8 - CGRectGetHeight(additionalServices.frame);
+             rect.origin.x = 8;
+             additionalServices.frame = rect;
+         }
+         
+         
+        additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
          
          
          for (int i=0 ; i<self.tachoElements.count; ++i)
@@ -727,10 +763,6 @@
                                          xx=0;
                                      }
                                      leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
-                                     
-                                     additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
-                                     
-
         
                                  }];
     

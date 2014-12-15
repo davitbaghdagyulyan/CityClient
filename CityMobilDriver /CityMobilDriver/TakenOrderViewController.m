@@ -723,7 +723,7 @@
     [self.navigationController pushViewController:tvc animated:NO];
     ////Karen change////
     tvc.orderResponse = getOrderResponseObject;
-    tvc.underView=cellUnderView;
+   
     //// end Karen change ////
 }
 

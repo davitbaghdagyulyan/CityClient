@@ -226,14 +226,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -306,14 +308,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
