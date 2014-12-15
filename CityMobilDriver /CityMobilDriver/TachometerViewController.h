@@ -11,6 +11,11 @@
 
 @interface TachometerViewController : UIViewController
 
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
+
+
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *tachoElements;
 
 @property (weak, nonatomic) IBOutlet UILabel *shortLabel;

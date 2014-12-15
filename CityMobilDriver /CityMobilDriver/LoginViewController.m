@@ -317,13 +317,6 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
 
     //loginJsonObject.bankid=@"6666";//login.text;
     //loginJsonObject.pass=@"6666";//password.text;
-
-
-    
-
-    
-
-    
     
     if (self.login.text.length > 0) {
         loginJsonObject.bankid = self.login.text;
@@ -361,15 +354,16 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
-            [indicator stopAnimating];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         

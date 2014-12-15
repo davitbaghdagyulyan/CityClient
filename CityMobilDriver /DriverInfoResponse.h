@@ -11,4 +11,6 @@
 @interface DriverInfoResponse : JSONModel
 @property(nonatomic,strong) NSString* msg;
 @property(nonatomic,strong) NSString* result;//not required
+@property(nonatomic,strong) NSString* code;
+@property(nonatomic,strong) NSString* text;
 @end

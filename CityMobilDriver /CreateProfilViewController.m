@@ -327,11 +327,16 @@
 - (IBAction)seveUserInformation:(UIButton *)sender
 {
 
-    if (![self image:self.createPhotoImageView.image isEqualTo:self.profilImage])
-    {
+//    if (![self image:self.createPhotoImageView.image isEqualTo:self.profilImage])
+//    {
+//        
+//
+//    }
+    
+    if (![self.createPhotoImageView.image isEqual:self.profilImage]) {
         [self RequestSetDriverInfoWithPoto];
-
     }
+    
     else
     {
         [self RequestSetDriverInfo];
@@ -352,6 +357,13 @@
 
 -(void)RequestSetDriverInfoWithPoto
 {
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    
     RequestSetDriverInfoWithPhoto* request = [[RequestSetDriverInfoWithPhoto alloc]init];
     request.driver_license_class = self.driverLicenseClass.text;
     request.passport_date = self.passportDate.text;
@@ -383,39 +395,85 @@
     requestInfo.timeoutInterval = 10;
     
     
+//    
+//    NSURLResponse *response = [[NSURLResponse alloc]init];
+//    NSData* data = [NSURLConnection sendSynchronousRequest:requestInfo returningResponse:&response error:&error];
+//    
     
-    NSURLResponse *response = [[NSURLResponse alloc]init];
-    NSData* data = [NSURLConnection sendSynchronousRequest:requestInfo returningResponse:&response error:&error];
-    
-    if (data)
-    {
+    [NSURLConnection sendAsynchronousRequest:requestInfo queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+            return ;
+        }
+        
+        
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"- = = == = = == = = == -%@",jsonString);
         NSError* err;
         DriverInfoResponse* jsonResponseObject = [[DriverInfoResponse alloc]initWithString:jsonString error:&err];
+        if (jsonResponseObject.code) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+        }
         
-        succeedAlert = [[UIAlertView alloc]initWithTitle:nil message:jsonResponseObject.msg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [succeedAlert show];
-    }
+        else
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.msg preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         ProfilViewController* profilController=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilViewController"];
+                                         [self pushOrPopViewController:profilController];
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+        }
+
+    }];
+
     
-    else
-    {
-        UIAlertView* sucsedAlert = [[UIAlertView alloc]initWithTitle:nil message:@"NO INTERNET CONECTION" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [sucsedAlert show];
-    }
     
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (alertView == succeedAlert) {
-        ProfilViewController* profilController=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilViewController"];
-        [self pushOrPopViewController:profilController];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+//{
+//    if (alertView == succeedAlert) {
+//
+//    }
+//}
 
 -(void)RequestSetDriverInfo
 {
+    
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
     RequestSetDriverInfo* request = [[RequestSetDriverInfo alloc]init];
     request.driver_license_class = self.driverLicenseClass.text;
     request.passport_date = self.passportDate.text;
@@ -446,25 +504,84 @@
     
     
     
-    NSURLResponse *response = [[NSURLResponse alloc]init];
-    NSData* data = [NSURLConnection sendSynchronousRequest:requestInfo returningResponse:&response error:&error];
+//    NSURLResponse *response = [[NSURLResponse alloc]init];
+//    NSData* data = [NSURLConnection sendSynchronousRequest:requestInfo returningResponse:&response error:&error];
+//    
+//    if (data)
+//    {
+//        NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"- = = == = = == = = == -%@",jsonString);
+//        NSError* err;
+//        DriverInfoResponse* jsonResponseObject = [[DriverInfoResponse alloc]initWithString:jsonString error:&err];
+//        
+//        succeedAlert = [[UIAlertView alloc]initWithTitle:nil message:jsonResponseObject.msg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+//        [succeedAlert show];
+//    }
+//    
+//    else
+//    {
+//        succeedAlert = [[UIAlertView alloc]initWithTitle:nil message:@"NO INTERNET CONECTION" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+//        [succeedAlert show];
+//    }
     
-    if (data)
-    {
+    [NSURLConnection sendAsynchronousRequest:requestInfo queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+            return ;
+
+        }
+        
+        
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"- = = == = = == = = == -%@",jsonString);
         NSError* err;
         DriverInfoResponse* jsonResponseObject = [[DriverInfoResponse alloc]initWithString:jsonString error:&err];
+        if (jsonResponseObject.code) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+        }
         
-        succeedAlert = [[UIAlertView alloc]initWithTitle:nil message:jsonResponseObject.msg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [succeedAlert show];
-    }
+        else
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.msg preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         ProfilViewController* profilController=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilViewController"];
+                                         [self pushOrPopViewController:profilController];
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
+        }
+        
+
+    }];
     
-    else
-    {
-        succeedAlert = [[UIAlertView alloc]initWithTitle:nil message:@"NO INTERNET CONECTION" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [succeedAlert show];
-    }
+    
+    
 }
 
 #pragma mark - gradient
