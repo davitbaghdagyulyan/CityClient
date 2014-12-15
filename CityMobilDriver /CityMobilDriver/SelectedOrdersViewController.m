@@ -46,6 +46,7 @@
     NSString*googleMapUrl;
     //HANDLER
     SelectedOrdersTableViewHandler* selectedOrdersTableViewHandlerObject;
+    CustomCellSelectORDER*cell;
    }
 
 @end
@@ -660,9 +661,11 @@
     }
 }
 
--(void)setIndexOfCell:(NSUInteger)indexOf
+-(void)setIndexOfCell:(NSUInteger)indexOf andCell:(CustomCellSelectORDER*)cel
 {
     indexOfCell=indexOf;
+    cell=cel;
+    
     
 };
 -(void)setUnderView:(UIView*)under
@@ -776,8 +779,9 @@ preferredStyle:UIAlertControllerStyleAlert];
     }
     else
     {
-        
-        
+      
+      
+        [cell.updateLabelTimer invalidate];
         TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
         
         

@@ -25,13 +25,14 @@
 @property(nonatomic,strong)NSString*longitude;
 @property(nonatomic,strong)NSString*del_longitude;
 @property(nonatomic,strong)NSString*idhash;
-
+@property(nonatomic,strong)NSString*CollDate;
+@property(nonatomic,strong)NSString*shortname;
 
 ////// Karen change //////
 @property(nonatomic,strong) NSString* CollMetroName;
 @property(nonatomic,strong) NSString* DeliveryMetroName;
 @property(nonatomic,strong) NSString* DeliveryComment;
-@property(nonatomic,strong) NSString* shortname;
+
 @property(nonatomic,strong) NSString* CollComment;
 @property(nonatomic,strong) NSString* OurComment;
 @property(nonatomic,strong) NSString* collDate;
