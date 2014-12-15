@@ -8,6 +8,7 @@
 
 #import "JSONModel.h"
 
+
 @interface RequestGetTaximeter : JSONModel
 @property(nonatomic,strong)NSString* method;
 @property(nonatomic,strong)NSString* ipass;
@@ -16,7 +17,8 @@
 @property(nonatomic,strong)NSString* locale;
 @property(nonatomic,strong)NSString* version;
 @property(nonatomic,strong)NSString* idhash;
-@property(nonatomic,assign)NSInteger elements;
+
+@property(nonatomic,assign) NSInteger elements;
 
 @end
 

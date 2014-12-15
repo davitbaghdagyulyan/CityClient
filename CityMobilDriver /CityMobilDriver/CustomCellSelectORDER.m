@@ -9,9 +9,7 @@
 #import "CustomCellSelectORDER.h"
 
 @implementation CustomCellSelectORDER
-{
-    NSTimer * updateLabelTimer;
-}
+
 
 - (void)awakeFromNib {
     self.timerForUpdatingLabelShortNameIsCreated=NO;
@@ -62,7 +60,7 @@
         self.labelShortName.text=[NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,stringForUrgent,self.shortName];
         if (self.timerForUpdatingLabelShortNameIsCreated==NO)
         {
-            updateLabelTimer= [NSTimer scheduledTimerWithTimeInterval:1
+            self.updateLabelTimer= [NSTimer scheduledTimerWithTimeInterval:1
                                                                target:self
                                                              selector:@selector(updateLabelShortName)
                                                              userInfo:nil
@@ -77,7 +75,7 @@
     }
     if ([stringForUrgent isEqualToString:@"00:00"])
     {
-        [updateLabelTimer invalidate];
+        [self.updateLabelTimer invalidate];
     }
     
 }

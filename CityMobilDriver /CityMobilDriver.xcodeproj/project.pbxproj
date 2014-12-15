@@ -183,9 +183,6 @@
 		ECC2BA5F1A111AA2009A8CE4 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA90A019DEE2060007831F /* JSONKeyMapper.m */; };
 		ECC2BA621A111C18009A8CE4 /* SingleDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC55988A19E5364900877CBC /* SingleDataProvider.m */; };
 		ECC2BA631A111C54009A8CE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D70428B719D0071F00F5C38C /* main.m */; };
-		ECC38D1C1A285A720065474B /* ResponseGetTachometer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC38D1B1A285A720065474B /* ResponseGetTachometer.m */; };
-		ECC38D1F1A285C1D0065474B /* Elements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC38D1E1A285C1D0065474B /* Elements.m */; };
-		ECC38D211A289D790065474B /* Time Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECC38D201A28967C0065474B /* Time Normal.ttf */; };
 		ECC42DA81A1B3F750020F7C7 /* childYear.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC42DA71A1B3F750020F7C7 /* childYear.xib */; };
 		ECC471861A11EC770062803A /* MessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC471851A11EC770062803A /* MessagesCell.m */; };
 		ECC6A27619F791F700F85E02 /* CreateProfil.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC6A27519F791F700F85E02 /* CreateProfil.xib */; };
@@ -195,6 +192,9 @@
 		ECC7B82C19F52D3A0045CBCE /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC7B82B19F52D3A0045CBCE /* FirstView.xib */; };
 		ECC8CCE61A10E58400883CD1 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE51A10E58400883CD1 /* box.png */; };
 		ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE71A10E7D800883CD1 /* box2.png */; };
+		ECC8F6E61A373FDC00D93B07 /* EndUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F6E51A373FDC00D93B07 /* EndUpViewController.m */; };
+		ECC8F6EB1A374FD700D93B07 /* RequestSetBill.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F6EA1A374FD700D93B07 /* RequestSetBill.m */; };
+		ECC8F6EE1A37511400D93B07 /* ResponseSetBill.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F6ED1A37511400D93B07 /* ResponseSetBill.m */; };
 		ECC9215E1A1204920012FBFA /* UserRegistrationInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */; };
 		ECC929F51A19CAA80047E84C /* RobotSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC929F41A19CAA80047E84C /* RobotSettingsViewController.m */; };
 		ECC929FC1A1A11CB0047E84C /* ResponseGetAutoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC929FB1A1A11CB0047E84C /* ResponseGetAutoSettings.m */; };
@@ -263,7 +263,7 @@
 		ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCEE4FD19F0121400F07532 /* CustomTableViewCell.xib */; };
 		ECD218851A1CBCF100F38F7D /* SetStatusJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD218841A1CBCF100F38F7D /* SetStatusJson.m */; };
 		ECD218881A1CBD0E00F38F7D /* SetStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD218871A1CBD0E00F38F7D /* SetStatusResponse.m */; };
-		ECD2188F1A1CE7E200F38F7D /* TachometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD2188E1A1CE7E200F38F7D /* TachometerViewController.m */; };
+		ECD2EDD81A39BE9600060F26 /* ResponseGetTachometer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD2EDD71A39BE9600060F26 /* ResponseGetTachometer.m */; };
 		ECD4064619F1467D00EFE6B2 /* WriteLetterJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD4064519F1467D00EFE6B2 /* WriteLetterJson.m */; };
 		ECD4064919F146D200EFE6B2 /* WriteLetterResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD4064819F146D200EFE6B2 /* WriteLetterResponse.m */; };
 		ECD55D8819F7C755002E182D /* GetCardsJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD55D8719F7C755002E182D /* GetCardsJson.m */; };
@@ -271,6 +271,8 @@
 		ECD55D8F19F7EEE8002E182D /* BindCardJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD55D8E19F7EEE8002E182D /* BindCardJson.m */; };
 		ECDD399D1A0A1601007F3C3C /* TariffCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDD399C1A0A1601007F3C3C /* TariffCustomCell.xib */; };
 		ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD399F1A0A1DD4007F3C3C /* TariffCustomCell.m */; };
+		ECDEBF0D1A2EEDB5000D0C5E /* Elements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEBF0C1A2EEDB5000D0C5E /* Elements.m */; };
+		ECDEBF101A2F2C90000D0C5E /* Services.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDEBF0F1A2F2C90000D0C5E /* Services.m */; };
 		ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECE2553619DBF1E9000BD8C9 /* bg.png */; };
 		ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8119E56BE80044F6AD /* textRequest.m */; };
 		ECE25C8A19E56BE80044F6AD /* messages.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE25C8319E56BE80044F6AD /* messages.m */; };
@@ -303,13 +305,22 @@
 		ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC62B1A1C7215000F5776 /* Tariffs.m */; };
 		ECEEC62F1A1C873A000F5776 /* RequestUpdateAutoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC62E1A1C873A000F5776 /* RequestUpdateAutoSettings.m */; };
 		ECEEC6321A1C8967000F5776 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC6311A1C8967000F5776 /* Settings.m */; };
+		ECF35CD51A2DF2700005E2A6 /* Time Normal.TTF in Resources */ = {isa = PBXBuildFile; fileRef = ECF35CD41A2DF2700005E2A6 /* Time Normal.TTF */; };
+		ECF35CD91A2DFF500005E2A6 /* TachometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF35CD81A2DFF500005E2A6 /* TachometerViewController.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
 		ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4822B1A08D29B00415270 /* ResponseGetCarInfo.m */; };
+		ECF4A4131A31A56B0057BE10 /* GetServicesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4A4121A31A56B0057BE10 /* GetServicesResponse.m */; };
+		ECF4A4171A31A6B90057BE10 /* ServicesResponseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4A4161A31A6B90057BE10 /* ServicesResponseArray.m */; };
+		ECF4A41A1A31A8E30057BE10 /* IntervalsArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4A4191A31A8E30057BE10 /* IntervalsArray.m */; };
+		ECF4A4201A31ABF20057BE10 /* ServicesArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4A41F1A31ABF20057BE10 /* ServicesArray.m */; };
+		ECF4A4261A31DB260057BE10 /* ServicesTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF4A4251A31DB260057BE10 /* ServicesTableCell.m */; };
 		ECF529BA1A122BC500150931 /* yandex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B81A122BC500150931 /* yandex@2x.png */; };
 		ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B91A122BC500150931 /* gmap@2x.png */; };
 		ECF529C41A124AA000150931 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529C31A124AA000150931 /* CustomWebView.m */; };
 		ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */; };
 		ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */; };
+		ECFF3A9A1A30B7C0009A88E0 /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFF3A991A30B7C0009A88E0 /* ServicesViewController.m */; };
+		ECFF3A9C1A30B8DE009A88E0 /* ServicesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFF3A9B1A30B8DE009A88E0 /* ServicesTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -608,11 +619,6 @@
 		ECC2BA571A10D2EF009A8CE4 /* DesignationCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignationCustomCell.h; sourceTree = "<group>"; };
 		ECC2BA581A10D2EF009A8CE4 /* DesignationCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignationCustomCell.m; sourceTree = "<group>"; };
 		ECC2BA5A1A10F801009A8CE4 /* 12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12@2x.png"; sourceTree = "<group>"; };
-		ECC38D1A1A285A720065474B /* ResponseGetTachometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetTachometer.h; sourceTree = "<group>"; };
-		ECC38D1B1A285A720065474B /* ResponseGetTachometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetTachometer.m; sourceTree = "<group>"; };
-		ECC38D1D1A285C1D0065474B /* Elements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Elements.h; sourceTree = "<group>"; };
-		ECC38D1E1A285C1D0065474B /* Elements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Elements.m; sourceTree = "<group>"; };
-		ECC38D201A28967C0065474B /* Time Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Time Normal.ttf"; sourceTree = "<group>"; };
 		ECC42DA71A1B3F750020F7C7 /* childYear.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = childYear.xib; sourceTree = "<group>"; };
 		ECC471841A11EC770062803A /* MessagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesCell.h; sourceTree = "<group>"; };
 		ECC471851A11EC770062803A /* MessagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesCell.m; sourceTree = "<group>"; };
@@ -624,6 +630,12 @@
 		ECC7B82B19F52D3A0045CBCE /* FirstView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
 		ECC8CCE51A10E58400883CD1 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		ECC8CCE71A10E7D800883CD1 /* box2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box2.png; sourceTree = "<group>"; };
+		ECC8F6E41A373FDC00D93B07 /* EndUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndUpViewController.h; sourceTree = "<group>"; };
+		ECC8F6E51A373FDC00D93B07 /* EndUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndUpViewController.m; sourceTree = "<group>"; };
+		ECC8F6E91A374FD700D93B07 /* RequestSetBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSetBill.h; sourceTree = "<group>"; };
+		ECC8F6EA1A374FD700D93B07 /* RequestSetBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestSetBill.m; sourceTree = "<group>"; };
+		ECC8F6EC1A37511400D93B07 /* ResponseSetBill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseSetBill.h; sourceTree = "<group>"; };
+		ECC8F6ED1A37511400D93B07 /* ResponseSetBill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseSetBill.m; sourceTree = "<group>"; };
 		ECC9215C1A1204920012FBFA /* UserRegistrationInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegistrationInformation.h; sourceTree = "<group>"; };
 		ECC9215D1A1204920012FBFA /* UserRegistrationInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegistrationInformation.m; sourceTree = "<group>"; };
 		ECC929F31A19CAA80047E84C /* RobotSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotSettingsViewController.h; sourceTree = "<group>"; };
@@ -744,7 +756,7 @@
 		ECD218861A1CBD0E00F38F7D /* SetStatusResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetStatusResponse.h; sourceTree = "<group>"; };
 		ECD218871A1CBD0E00F38F7D /* SetStatusResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetStatusResponse.m; sourceTree = "<group>"; };
 		ECD2188D1A1CE7E200F38F7D /* TachometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TachometerViewController.h; sourceTree = "<group>"; };
-		ECD2188E1A1CE7E200F38F7D /* TachometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TachometerViewController.m; sourceTree = "<group>"; };
+		ECD2EDD71A39BE9600060F26 /* ResponseGetTachometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseGetTachometer.m; path = CityMobilDriver/ResponseGetTachometer.m; sourceTree = "<group>"; };
 		ECD4064419F1467D00EFE6B2 /* WriteLetterJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteLetterJson.h; sourceTree = "<group>"; };
 		ECD4064519F1467D00EFE6B2 /* WriteLetterJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteLetterJson.m; sourceTree = "<group>"; };
 		ECD4064719F146D200EFE6B2 /* WriteLetterResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteLetterResponse.h; sourceTree = "<group>"; };
@@ -760,6 +772,10 @@
 		ECDD399C1A0A1601007F3C3C /* TariffCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TariffCustomCell.xib; sourceTree = "<group>"; };
 		ECDD399E1A0A1DD4007F3C3C /* TariffCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffCustomCell.h; sourceTree = "<group>"; };
 		ECDD399F1A0A1DD4007F3C3C /* TariffCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffCustomCell.m; sourceTree = "<group>"; };
+		ECDEBF0B1A2EEDB5000D0C5E /* Elements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Elements.h; sourceTree = "<group>"; };
+		ECDEBF0C1A2EEDB5000D0C5E /* Elements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Elements.m; sourceTree = "<group>"; };
+		ECDEBF0E1A2F2C90000D0C5E /* Services.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Services.h; sourceTree = "<group>"; };
+		ECDEBF0F1A2F2C90000D0C5E /* Services.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Services.m; sourceTree = "<group>"; };
 		ECE2553619DBF1E9000BD8C9 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = CityMobilDriver/bg.png; sourceTree = "<group>"; };
 		ECE25C8019E56BE80044F6AD /* textRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textRequest.h; sourceTree = "<group>"; };
 		ECE25C8119E56BE80044F6AD /* textRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textRequest.m; sourceTree = "<group>"; };
@@ -815,10 +831,24 @@
 		ECEEC62E1A1C873A000F5776 /* RequestUpdateAutoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUpdateAutoSettings.m; sourceTree = "<group>"; };
 		ECEEC6301A1C8967000F5776 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		ECEEC6311A1C8967000F5776 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		ECF35CD31A2DF2280005E2A6 /* Time Normal.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Time Normal.TTF"; sourceTree = "<group>"; };
+		ECF35CD41A2DF2700005E2A6 /* Time Normal.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Time Normal.TTF"; path = "../../Time Normal.TTF"; sourceTree = "<group>"; };
+		ECF35CD81A2DFF500005E2A6 /* TachometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TachometerViewController.m; sourceTree = "<group>"; };
+		ECF35CDA1A2DFF980005E2A6 /* ResponseGetTachometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ResponseGetTachometer.h; path = CityMobilDriver/ResponseGetTachometer.h; sourceTree = "<group>"; };
 		ECF40D5719D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+UINavigationController_shouldAutorotate.h"; path = "../UINavigationController+UINavigationController_shouldAutorotate.h"; sourceTree = "<group>"; };
 		ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+UINavigationController_shouldAutorotate.m"; path = "../UINavigationController+UINavigationController_shouldAutorotate.m"; sourceTree = "<group>"; };
 		ECF4822A1A08D29B00415270 /* ResponseGetCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetCarInfo.h; sourceTree = "<group>"; };
 		ECF4822B1A08D29B00415270 /* ResponseGetCarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetCarInfo.m; sourceTree = "<group>"; };
+		ECF4A4111A31A56B0057BE10 /* GetServicesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetServicesResponse.h; sourceTree = "<group>"; };
+		ECF4A4121A31A56B0057BE10 /* GetServicesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetServicesResponse.m; sourceTree = "<group>"; };
+		ECF4A4151A31A6B90057BE10 /* ServicesResponseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesResponseArray.h; sourceTree = "<group>"; };
+		ECF4A4161A31A6B90057BE10 /* ServicesResponseArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesResponseArray.m; sourceTree = "<group>"; };
+		ECF4A4181A31A8E30057BE10 /* IntervalsArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntervalsArray.h; sourceTree = "<group>"; };
+		ECF4A4191A31A8E30057BE10 /* IntervalsArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntervalsArray.m; sourceTree = "<group>"; };
+		ECF4A41E1A31ABF20057BE10 /* ServicesArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesArray.h; sourceTree = "<group>"; };
+		ECF4A41F1A31ABF20057BE10 /* ServicesArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesArray.m; sourceTree = "<group>"; };
+		ECF4A4241A31DB260057BE10 /* ServicesTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesTableCell.h; sourceTree = "<group>"; };
+		ECF4A4251A31DB260057BE10 /* ServicesTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesTableCell.m; sourceTree = "<group>"; };
 		ECF529B81A122BC500150931 /* yandex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yandex@2x.png"; sourceTree = "<group>"; };
 		ECF529B91A122BC500150931 /* gmap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gmap@2x.png"; sourceTree = "<group>"; };
 		ECF529C21A124AA000150931 /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
@@ -827,6 +857,9 @@
 		ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandartResponse.m; sourceTree = "<group>"; };
 		ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingDocumentsViewController.h; sourceTree = "<group>"; };
 		ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingDocumentsViewController.m; sourceTree = "<group>"; };
+		ECFF3A981A30B7C0009A88E0 /* ServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesViewController.h; sourceTree = "<group>"; };
+		ECFF3A991A30B7C0009A88E0 /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesViewController.m; sourceTree = "<group>"; };
+		ECFF3A9B1A30B8DE009A88E0 /* ServicesTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesTableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -972,6 +1005,7 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
+				ECC8F6E31A373F9100D93B07 /* EndUpViewController */,
 				8FC222701A36E9120003CAAF /* PaymentHistory */,
 				8FC222431A36E7270003CAAF /* RootViewController */,
 				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */,
@@ -1488,6 +1522,35 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		ECC8F6E31A373F9100D93B07 /* EndUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8F6E71A374F7F00D93B07 /* Requests */,
+				ECC8F6E41A373FDC00D93B07 /* EndUpViewController.h */,
+				ECC8F6E51A373FDC00D93B07 /* EndUpViewController.m */,
+			);
+			name = EndUpViewController;
+			sourceTree = "<group>";
+		};
+		ECC8F6E71A374F7F00D93B07 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8F6E81A374F9C00D93B07 /* SetBill */,
+			);
+			name = Requests;
+			sourceTree = "<group>";
+		};
+		ECC8F6E81A374F9C00D93B07 /* SetBill */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8F6E91A374FD700D93B07 /* RequestSetBill.h */,
+				ECC8F6EA1A374FD700D93B07 /* RequestSetBill.m */,
+				ECC8F6EC1A37511400D93B07 /* ResponseSetBill.h */,
+				ECC8F6ED1A37511400D93B07 /* ResponseSetBill.m */,
+			);
+			name = SetBill;
+			sourceTree = "<group>";
+		};
 		ECC929F21A19CA840047E84C /* Robot Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1706,14 +1769,15 @@
 		ECCD99231A19DF93009D482C /* Roboto Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				ECF35CD41A2DF2700005E2A6 /* Time Normal.TTF */,
 				8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */,
-				ECC38D201A28967C0065474B /* Time Normal.ttf */,
 				ECCD99241A19DF93009D482C /* NOTICE.txt */,
 				8FCB177D1A136E9200228F98 /* rublsi.ttf */,
 				8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */,
 				ECCD99251A19DF93009D482C /* Roboto-Black.ttf */,
 				ECCD99261A19DF93009D482C /* Roboto-BlackItalic.ttf */,
 				ECCD99271A19DF93009D482C /* Roboto-Bold.ttf */,
+				ECF35CD31A2DF2280005E2A6 /* Time Normal.TTF */,
 				ECCD99281A19DF93009D482C /* Roboto-BoldCondensed.ttf */,
 				ECCD99291A19DF93009D482C /* Roboto-BoldCondensedItalic.ttf */,
 				ECCD992A1A19DF93009D482C /* Roboto-BoldItalic.ttf */,
@@ -1745,7 +1809,12 @@
 			children = (
 				ECE4058B1A270DF000802559 /* Requests */,
 				ECD2188D1A1CE7E200F38F7D /* TachometerViewController.h */,
-				ECD2188E1A1CE7E200F38F7D /* TachometerViewController.m */,
+				ECF35CD81A2DFF500005E2A6 /* TachometerViewController.m */,
+				ECFF3A981A30B7C0009A88E0 /* ServicesViewController.h */,
+				ECFF3A991A30B7C0009A88E0 /* ServicesViewController.m */,
+				ECFF3A9B1A30B8DE009A88E0 /* ServicesTableCell.xib */,
+				ECF4A4241A31DB260057BE10 /* ServicesTableCell.h */,
+				ECF4A4251A31DB260057BE10 /* ServicesTableCell.m */,
 			);
 			name = TachometerViewController;
 			sourceTree = "<group>";
@@ -1817,12 +1886,15 @@
 		ECE4058B1A270DF000802559 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				ECF4A4141A31A6480057BE10 /* get Services requests */,
 				ECE405881A270C7100802559 /* RequestGetTaximeter.h */,
 				ECE405891A270C7100802559 /* RequestGetTaximeter.m */,
-				ECC38D1A1A285A720065474B /* ResponseGetTachometer.h */,
-				ECC38D1B1A285A720065474B /* ResponseGetTachometer.m */,
-				ECC38D1D1A285C1D0065474B /* Elements.h */,
-				ECC38D1E1A285C1D0065474B /* Elements.m */,
+				ECF35CDA1A2DFF980005E2A6 /* ResponseGetTachometer.h */,
+				ECD2EDD71A39BE9600060F26 /* ResponseGetTachometer.m */,
+				ECDEBF0B1A2EEDB5000D0C5E /* Elements.h */,
+				ECDEBF0C1A2EEDB5000D0C5E /* Elements.m */,
+				ECDEBF0E1A2F2C90000D0C5E /* Services.h */,
+				ECDEBF0F1A2F2C90000D0C5E /* Services.m */,
 			);
 			name = Requests;
 			path = ..;
@@ -1928,6 +2000,21 @@
 			path = GetMyOrder;
 			sourceTree = "<group>";
 		};
+		ECF4A4141A31A6480057BE10 /* get Services requests */ = {
+			isa = PBXGroup;
+			children = (
+				ECF4A4111A31A56B0057BE10 /* GetServicesResponse.h */,
+				ECF4A4121A31A56B0057BE10 /* GetServicesResponse.m */,
+				ECF4A4151A31A6B90057BE10 /* ServicesResponseArray.h */,
+				ECF4A4161A31A6B90057BE10 /* ServicesResponseArray.m */,
+				ECF4A4181A31A8E30057BE10 /* IntervalsArray.h */,
+				ECF4A4191A31A8E30057BE10 /* IntervalsArray.m */,
+				ECF4A41E1A31ABF20057BE10 /* ServicesArray.h */,
+				ECF4A41F1A31ABF20057BE10 /* ServicesArray.m */,
+			);
+			name = "get Services requests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2017,7 +2104,6 @@
 				8FC222791A36E9360003CAAF /* PaymentHistoryCustomCell.xib in Resources */,
 				8FB0F8AE1A28D9AE003A79E9 /* metro_d.png in Resources */,
 				8FC5D8ED1A14FFC600B33FA9 /* Roboto-LightItalic.ttf in Resources */,
-				ECC38D211A289D790065474B /* Time Normal.ttf in Resources */,
 				8FB0F8A31A28D9AE003A79E9 /* ic_landmark_cinema copy.png in Resources */,
 				ECB38B3E1A0D130B00DFBB77 /* 8@2x.png in Resources */,
 				ECB38B391A0D130B00DFBB77 /* 3@2x.png in Resources */,
@@ -2036,6 +2122,7 @@
 				ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */,
 				ECC42DA81A1B3F750020F7C7 /* childYear.xib in Resources */,
 				ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */,
+				ECF35CD51A2DF2700005E2A6 /* Time Normal.TTF in Resources */,
 				ECCD99391A19DF93009D482C /* Roboto-Bold.ttf in Resources */,
 				ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */,
 				ECCD99371A19DF93009D482C /* Roboto-Black.ttf in Resources */,
@@ -2102,6 +2189,7 @@
 				8FE032F419DEC84A00B17C09 /* icon2@2x.png in Resources */,
 				8FCFF58E19F5053000C6E3A7 /* ic_non_cash_payment_small.png in Resources */,
 				8FB0F8A51A28D9AE003A79E9 /* ic_landmark_hospital.png in Resources */,
+				ECFF3A9C1A30B8DE009A88E0 /* ServicesTableCell.xib in Resources */,
 				ECEC89B11A2CA1100036781D /* CustomViewForMaps.xib in Resources */,
 				ECEC89CF1A2CA9170036781D /* Main.storyboard in Resources */,
 				ECCD99441A19DF93009D482C /* Roboto-Regular.ttf in Resources */,
@@ -2157,7 +2245,7 @@
 				8FC222811A36E9500003CAAF /* GetPaymentElements.m in Sources */,
 				ECAD78BE1A306070005C2468 /* AddGPSResponse.m in Sources */,
 				ECC2BA621A111C18009A8CE4 /* SingleDataProvider.m in Sources */,
-				ECC38D1F1A285C1D0065474B /* Elements.m in Sources */,
+				ECDEBF0D1A2EEDB5000D0C5E /* Elements.m in Sources */,
 				ECC2BA5F1A111AA2009A8CE4 /* JSONKeyMapper.m in Sources */,
 				ECC2BA5E1A1119E3009A8CE4 /* BindCardResponse.m in Sources */,
 				8FC222771A36E9360003CAAF /* PaymentHistoryViewController.m in Sources */,
@@ -2188,12 +2276,16 @@
 				8FC222801A36E9500003CAAF /* GetPaymentsJson.m in Sources */,
 				EC40D43D19E4323C007BA02C /* MailJson.m in Sources */,
 				ECD218881A1CBD0E00F38F7D /* SetStatusResponse.m in Sources */,
+				ECF4A4131A31A56B0057BE10 /* GetServicesResponse.m in Sources */,
 				ECCA90A619DEE2060007831F /* JSONModelError.m in Sources */,
+				ECF4A4261A31DB260057BE10 /* ServicesTableCell.m in Sources */,
 				ECB52E141A0764F60091293F /* TariffsClass.m in Sources */,
 				8FC2224D1A36E76D0003CAAF /* OrdersJson.m in Sources */,
 				ECC965281A00C23800768E1F /* CarInfoViewController.m in Sources */,
+				ECC8F6EE1A37511400D93B07 /* ResponseSetBill.m in Sources */,
 				ECB49FCC19F5294D0022EB28 /* ReplenishmentViewController.m in Sources */,
 				ECB52E481A077AD30091293F /* DestinationElements.m in Sources */,
+				ECD2EDD81A39BE9600060F26 /* ResponseGetTachometer.m in Sources */,
 				ECCA90B219DEE3B90007831F /* LoginJson.m in Sources */,
 				ECEC89B41A2CA1100036781D /* SelectedOrdersDetailsElements.m in Sources */,
 				ECD55D8B19F7C776002E182D /* GetCardsResponse.m in Sources */,
@@ -2201,7 +2293,6 @@
 				ECB3D76E1A03D7B40039DD3A /* GetTariffsUrlResponseXML.m in Sources */,
 				ECB52E181A07675B0091293F /* TariffElements.m in Sources */,
 				EC5BF09E1A02300B009EC444 /* Colors.m in Sources */,
-				ECD2188F1A1CE7E200F38F7D /* TachometerViewController.m in Sources */,
 				ECEBD8851A0A781700118466 /* GetActivationCodeResponse.m in Sources */,
 				ECB52E421A0779020091293F /* DriveAfterMKADClass.m in Sources */,
 				ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */,
@@ -2222,19 +2313,22 @@
 				ECB063B61A31E814004633A6 /* OpenMapButtonHandler.m in Sources */,
 				EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */,
 				ECCA300C19F94FC100BE48E0 /* RequestSetDriverInfoWithPoto.m in Sources */,
-				ECC38D1C1A285A720065474B /* ResponseGetTachometer.m in Sources */,
+				ECF4A4171A31A6B90057BE10 /* ServicesResponseArray.m in Sources */,
+				ECF4A4201A31ABF20057BE10 /* ServicesArray.m in Sources */,
 				ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				ECC471861A11EC770062803A /* MessagesCell.m in Sources */,
 				ECB52E301A0776530091293F /* TransferClass.m in Sources */,
 				EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */,
 				ECC965371A011F4700768E1F /* RequestGetModelList.m in Sources */,
+				ECC8F6EB1A374FD700D93B07 /* RequestSetBill.m in Sources */,
 				ECC965341A0102AE00768E1F /* Mark.m in Sources */,
 				ECCB8AE419FFD6480012F2FD /* CreateProfilViewController.m in Sources */,
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
 				ECB52E1B1A076B090091293F /* DescriptionClass.m in Sources */,
 				8FC2224E1A36E76D0003CAAF /* OrdersResponse.m in Sources */,
 				EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */,
+				ECF35CD91A2DFF500005E2A6 /* TachometerViewController.m in Sources */,
 				ECEC89B01A2CA1100036781D /* CustomCellSelectedOrders.m in Sources */,
 				ECCA300619F8F36100BE48E0 /* DriverAllInfoResponse.m in Sources */,
 				ECB38B231A0CFA7B00DFBB77 /* DesignationIconsViewController.m in Sources */,
@@ -2246,6 +2340,7 @@
 				8FC2226D1A36E88D0003CAAF /* OrdersHistoryJson.m in Sources */,
 				ECB3D7611A03BB680039DD3A /* GetTariffsUrlJson.m in Sources */,
 				ECC9653D1A0128E400768E1F /* Models.m in Sources */,
+				ECDEBF101A2F2C90000D0C5E /* Services.m in Sources */,
 				EC5AD4421A14FA2800588DE6 /* TakenOrderViewController.m in Sources */,
 				ECCD344D1A03AC49000444BF /* ResponseSetCarInfo.m in Sources */,
 				EC4CB40619F7E5E00028F219 /* RequestSetDriverInfo.m in Sources */,
@@ -2298,6 +2393,8 @@
 				ECC9653A1A01255A00768E1F /* ResponseGetModelList.m in Sources */,
 				8FC2225B1A36E7990003CAAF /* CustomCell.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
+				ECC8F6E61A373FDC00D93B07 /* EndUpViewController.m in Sources */,
+				ECF4A41A1A31A8E30057BE10 /* IntervalsArray.m in Sources */,
 				ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */,
 				EC4CB40919F7F6EF0028F219 /* DriverInfoResponse.m in Sources */,
 				ECCC236F19E7F58A0091C43E /* infoViewController.m in Sources */,
@@ -2311,6 +2408,7 @@
 				ECB52E601A0785820091293F /* MinPriceClass.m in Sources */,
 				EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */,
 				ECEC89AF1A2CA1100036781D /* CustomCellSelectORDER.m in Sources */,
+				ECFF3A9A1A30B7C0009A88E0 /* ServicesViewController.m in Sources */,
 				ECCA4CB01A0B5CE1007CEBC4 /* RegisterRequest.m in Sources */,
 				ECCA4CAD1A0B55F2007CEBC4 /* ActivateAccountViewController.m in Sources */,
 				EC4CB40319F7D6B80028F219 /* ResponseGetDocScansUrl.m in Sources */,

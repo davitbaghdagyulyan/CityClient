@@ -27,6 +27,9 @@
     
     NSInteger flag;
     LeftMenu*leftMenu;
+    
+    CAGradientLayer* gradientLayer1;
+    CAGradientLayer* gradientLayer2;
 }
 @end
 
@@ -63,6 +66,11 @@
     [singleTap setNumberOfTapsRequired:1];
     self.carImageView.userInteractionEnabled = YES;
     [self.carImageView addGestureRecognizer:singleTap];
+    
+    
+//    
+    gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
+    [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
 }
 
 
@@ -695,7 +703,7 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         
+             gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310);
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
@@ -713,6 +721,19 @@
                                  }];
     
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
+
+#pragma mark - gradient
+- (CAGradientLayer*) greyGradient:(UIView*)view widthFrame:(CGRect) rect{
+    UIColor *colorOne = [UIColor colorWithRed:198.f/255 green:198.f/255 blue:198.f/255 alpha:1.f];
+    UIColor *colorTwo = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1.f];
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
+    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    headerLayer.frame = rect;
+    
+    return headerLayer;
 }
 
 

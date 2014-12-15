@@ -8,8 +8,9 @@
 
 #import "JSONModel.h"
 #import "Elements.h"
+#import "Services.h"
 @interface ResponseGetTachometer : JSONModel
-@property (nonatomic,strong) NSArray* services;//?
+@property (nonatomic,strong) NSArray<Services>* services;
 @property (nonatomic,strong) NSArray<Elements>* elements;
 
 
@@ -23,6 +24,10 @@
 @property (nonatomic,assign) NSString* ReadyForCollection;
 @property (nonatomic,assign) NSString* ClientCollected;
 @property (nonatomic,assign) NSString* GoodArrived;
+
+
+@property (nonatomic,strong) NSString* text;
+@property (nonatomic,strong) NSString* code;
 @end
 
 

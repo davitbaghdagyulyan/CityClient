@@ -1,14 +1,14 @@
 //
-//  Elements.m
+//  ResponseSetBill.m
 //  CityMobilDriver
 //
-//  Created by Intern on 11/28/14.
+//  Created by Intern on 12/9/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
-#import "Elements.h"
+#import "ResponseSetBill.h"
 
-@implementation Elements
+@implementation ResponseSetBill
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {
     return YES;

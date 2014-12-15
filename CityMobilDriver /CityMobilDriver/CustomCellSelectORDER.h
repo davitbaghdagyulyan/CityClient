@@ -34,5 +34,6 @@
 @property(strong,nonatomic)NSString * stringForSrochno;
 @property(strong,nonatomic)NSString * shortName;
 @property(assign,nonatomic)BOOL timerForUpdatingLabelShortNameIsCreated;
+@property(nonatomic,strong) NSTimer * updateLabelTimer;
 -(void)updateLabelShortName;
 @end

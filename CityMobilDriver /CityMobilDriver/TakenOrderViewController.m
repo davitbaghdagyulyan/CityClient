@@ -175,7 +175,6 @@
 //            //***************************test
             
             getOrderResponseObject = [[GetOrderResponse alloc] initWithString:jsonString error:&err];
-            
            
             
           
@@ -195,6 +194,9 @@
             }
             else
             {
+                UILabel*label=(UILabel*)[cellUnderView viewWithTag:250];
+               label.text=[self TimeFormat:getOrderResponseObject.CollDate];
+                label.text=[NSString stringWithFormat:@" %@ %@",label.text,getOrderResponseObject.shortname];
               if(count==1)
                 [self drawPage];
                 else
@@ -205,7 +207,19 @@
         }];
         
 }
-
+-(NSString*)TimeFormat:(NSString*)string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    NSDate *date = [[NSDate alloc] init];
+    date = [dateFormatter dateFromString:string];
+    /////////convert nsdata To NSString////////////////////////////////////
+    [dateFormatter setDateFormat:@"HH:mm"];
+    if(date==nil) return @"00:00";
+    return [dateFormatter stringFromDate:date];
+    
+}
 -(void)drawPage
 {
     
@@ -674,6 +688,9 @@
             {
                 TachometerViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TachometerViewController"];
                 [self.navigationController pushViewController:tvc animated:NO];
+                ////Karen change////
+                tvc.orderResponse = getOrderResponseObject;
+                //// end Karen change ////
             }
             else
             {
@@ -702,8 +719,9 @@
 {
     TachometerViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TachometerViewController"];
     [self.navigationController pushViewController:tvc animated:NO];
-    
-    
+    ////Karen change////
+    tvc.orderResponse = getOrderResponseObject;
+    //// end Karen change ////
 }
 
 -(void)foodToTheCustomerAction

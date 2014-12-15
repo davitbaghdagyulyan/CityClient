@@ -5,7 +5,7 @@
 //  Created by Intern on 11/19/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
-
+#import "Elements.h"
 #import "JSONModel.h"
 
 @interface SetStatusJson : JSONModel
@@ -22,4 +22,13 @@
 @property(nonatomic,strong)NSString*time;
 @property(nonatomic,strong)NSString*lat;
 @property(nonatomic,strong)NSString*idhash;
+
+@property(nonatomic,strong) NSString* creditlimit;
+@property(nonatomic,strong) NSString* commision;
+@property(nonatomic,strong) NSString* balance;
+@property(nonatomic,strong)NSString*bill;
+@property(nonatomic,strong)NSString*received;
+@property(nonatomic,strong)NSString*bonus;
+@property(nonatomic,strong)NSArray<Elements>*elements;
+
 @end

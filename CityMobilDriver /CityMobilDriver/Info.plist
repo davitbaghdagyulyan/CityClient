@@ -30,7 +30,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Time Normal.ttf</string>
+		<string>Time Normal.TTF</string>
 		<string>Roboto-LightItalic.ttf</string>
 		<string>RobotoCondensed-Light.ttf</string>
 		<string>Roboto-Bold.ttf</string>

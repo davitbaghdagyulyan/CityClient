@@ -15,13 +15,14 @@
     self=[super init];
     if(self)
     {
-        self.idhash = @"9fd8d79078b835b82c6b3c388def167a";
+        self.idhash = @"41c9fe3612ac496e26a738f8a3d22b8a";
         self.method = @"GetTaximeter";
         self.ipass = @"o3XOFR7xpv";
         self.ilog = @"cm-api";
         self.locale = @"ru";
         self.version = @"1.0.2";
         self.elements = -1;
+        
         self.key = [SingleDataProvider sharedKey].key;
     }
     return self;

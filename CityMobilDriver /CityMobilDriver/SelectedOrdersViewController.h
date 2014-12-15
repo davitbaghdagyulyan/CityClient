@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "SelectedOrdersTableViewHandler.h"
-
+#import "CustomCellSelectORDER.h"
 
 @interface SelectedOrdersViewController : UIViewController
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
@@ -24,7 +24,7 @@
 -(void)openYandexMap;
 -(void)openGoogleMap;
 -(void)toTakeAction;
--(void)setIndexOfCell:(NSUInteger)indexOf;
+-(void)setIndexOfCell:(NSUInteger)indexOf andCell:(CustomCellSelectORDER*)cel;
 -(void)setUnderView:(UIView*)under;
 - (IBAction)openMap:(UIButton*)sender;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

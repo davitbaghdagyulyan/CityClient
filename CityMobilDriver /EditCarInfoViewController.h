@@ -66,6 +66,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *carImageView;
 
 
