@@ -171,14 +171,30 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     gradLayerLabel1 =[CAGradientLayer layer];
     UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.0f];
     UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.0f];
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+           [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
+    {
     gradLayerLabel1.frame =CGRectMake(0, 0, cell.bounds.size.width*0.859, self.view.frame.size.height/12-3);
+    }
+    else
+    {
+    gradLayerLabel1.frame =CGRectMake(0, 0, cell.bounds.size.width*0.859,46-3);
+    }
     [gradLayerLabel1 setColors:[NSArray arrayWithObjects:(id)(gradColStart.CGColor), (id)(gradColFin.CGColor),nil]];
     [cell.View1.layer insertSublayer:gradLayerLabel1 atIndex:0];
     }
         gradLayerLabel2 =[CAGradientLayer layer];
     UIColor * gradColStartLab2 =[UIColor colorWithRed:130/255.0f green:130/255.0f blue:130/255.0f alpha:1.0f];
     UIColor * gradColFinLab2 =[UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1.0f];
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+       [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
+    {
     gradLayerLabel2.frame =CGRectMake(0, 0, cell.bounds.size.width*0.141, self.view.frame.size.height/12-3);
+    }
+    else
+    {
+     gradLayerLabel2.frame =CGRectMake(0, 0, cell.bounds.size.width*0.141, 46-3);
+    }
     [gradLayerLabel2 setColors:[NSArray arrayWithObjects:(id)(gradColStartLab2.CGColor), (id)(gradColFinLab2.CGColor),nil]];
     [cell.View2.layer insertSublayer:gradLayerLabel2 atIndex:0];
     }
@@ -220,7 +236,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     else
     {
-     return  self.view.frame.size.height/12;
+        if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+           [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
+        {
+         return self.view.frame.size.height/12;
+        }
+        
+        else
+        {
+        return 46;
+        }
+
     }
     
 }
@@ -377,13 +403,34 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-
-    [coordinator animateAlongsideTransition:nil
+     [coordinator animateAlongsideTransition:nil
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          
+         UIDeviceOrientation deviceOrientation   = [[UIDevice currentDevice] orientation];
          
+         if (UIDeviceOrientationIsLandscape(deviceOrientation))
+         {
+             NSLog(@"Will change to Landscape");
+             [self.tableViewIpad reloadData];
+             [self.tableViewOrdersLand reloadData];
+             [self.tableViewIpad reloadData];
+             
+         }
+         
+         else
+         {
+             NSLog(@"Will change to Landscape");
+             [self.tableViewIpad reloadData];
+             [self.tableViewOrdersLand reloadData];
+             [self.tableViewIpad reloadData];
+
+            
+             
+         }
+         
+
        
          CGFloat xx;
          
