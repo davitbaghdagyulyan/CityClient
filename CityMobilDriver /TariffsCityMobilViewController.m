@@ -32,6 +32,7 @@
     TariffsCustomView*customView;
     CustomTableView*ctvObject;
     CAGradientLayer *gradient;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -296,9 +297,13 @@
 {
     [coordinator animateAlongsideTransition:nil
      
-                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+                             completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-          gradient.frame = CGRectMake(0, 0, self.tariffsSacrollView.frame.size.width*getTariffsUrlResponseXMLObject.Tariffs.Tariff.count, self.tariffsSacrollView.frame.size.height);
+        
+         
+         [self.tariffsSacrollView setContentOffset:CGPointMake(0, 0)];
+         
+         gradient.frame = CGRectMake(0, 0, self.tariffsSacrollView.frame.size.width*getTariffsUrlResponseXMLObject.Tariffs.Tariff.count, self.tariffsSacrollView.frame.size.height);
          
          for (int i=0;i<scrollViewArray.count;i++)
          {
@@ -465,7 +470,7 @@
 
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+   openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

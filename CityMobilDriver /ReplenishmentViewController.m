@@ -20,7 +20,7 @@
 
 @interface ReplenishmentViewController ()
 {
-    
+    OpenMapButtonHandler*openMapButtonHandlerObject;
     CustomWebView*view2;
     CustomView*view1;
     UIActivityIndicatorView* indicator;
@@ -513,7 +513,7 @@
 //**********************  openMap  add func your class (.m)*********************//
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

@@ -18,7 +18,7 @@
     CGFloat yCord,y1Cord;
     NSMutableArray*titleLabelArray;
     NSMutableArray*textsLabelArray;
-
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -341,7 +341,7 @@
 
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 @end

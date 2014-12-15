@@ -16,6 +16,7 @@
 {
  LeftMenu*leftMenu;
  NSInteger flag;
+ OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 @implementation OrdersHistoryViewController
@@ -866,7 +867,7 @@ else
 }
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 

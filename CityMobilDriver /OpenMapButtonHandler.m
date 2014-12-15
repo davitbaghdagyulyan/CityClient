@@ -2,23 +2,74 @@
 //  OpenMapButtonHandler.m
 //  CityMobilDriver
 //
-//  Created by Intern on 12/5/14.
+//  Created by Intern on 12/15/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
 
 #import "OpenMapButtonHandler.h"
 
 @implementation OpenMapButtonHandler
-
+-(instancetype)init
+{
+    viewMap=nil;
+  googleMapUrl=nil;
+  yandexMapUrl=nil;
+    curentSelf=nil;
+    return self;
+}
 -(void)setCurentSelf:(UIViewController*)cSelf
 {
     curentSelf=cSelf;
     
-    viewMap=[[CustomViewForMaps alloc] init];
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:curentSelf options:nil];
     viewMap = [nib objectAtIndex:0];
-    viewMap.frame=curentSelf.view.frame;
-    viewMap.center=curentSelf.view.center;
+    
+    
+    //    viewMap.frame=curentSelf.view.frame;
+    
+    [curentSelf.view addSubview:viewMap];
+    
+    viewMap.translatesAutoresizingMaskIntoConstraints=NO;
+    
+    [curentSelf.view addConstraint:[NSLayoutConstraint constraintWithItem:viewMap
+                                                                attribute:NSLayoutAttributeLeading
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:curentSelf.view
+                                                                attribute:NSLayoutAttributeLeading
+                                                               multiplier:1.0
+                                                                 constant:0]];
+    
+    
+    [curentSelf.view addConstraint:[NSLayoutConstraint constraintWithItem:viewMap
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:curentSelf.view
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:0]];
+    
+    [curentSelf.view addConstraint:[NSLayoutConstraint constraintWithItem:viewMap
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:curentSelf.view
+                                                                attribute:NSLayoutAttributeTop
+                                                               multiplier:1.0
+                                                                 constant:0]];
+    
+    [curentSelf.view addConstraint:[NSLayoutConstraint constraintWithItem:viewMap
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:curentSelf.view
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1.0
+                                                                 constant:0]];
+    
+    
+    
+    
+    
+    
     viewMap.smallMapView.layer.cornerRadius = 30;
     viewMap.smallMapView.layer.borderWidth = 2;
     viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
@@ -38,7 +89,7 @@
 
 - (void)openMap
 {
-    [curentSelf.view addSubview:viewMap];
+    
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     GetLastKnownLocationJson*getLastKnownLocationJson=[[GetLastKnownLocationJson alloc] init];
     
@@ -214,5 +265,9 @@
 -(void)close
 {
     [viewMap removeFromSuperview];
+}
+-(void)dealloc
+{
+
 }
 @end

@@ -11,6 +11,7 @@
 
 @interface TachometerViewController : UIViewController
 
+@property(nonatomic,strong)UIView*underView;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *tachoElements;
 
 @property (weak, nonatomic) IBOutlet UILabel *shortLabel;

@@ -47,6 +47,7 @@
     //HANDLER
     SelectedOrdersTableViewHandler* selectedOrdersTableViewHandlerObject;
     CustomCellSelectORDER*cell;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
    }
 
 @end
@@ -545,7 +546,7 @@
 
 - (IBAction)openMap:(UIButton*)sender
 {
-    OpenMapButtonHandler*openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
 
@@ -761,7 +762,8 @@ request.timeoutInterval = 10;
     
     if(assignOrderResponseObject.code!=nil)
     {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:assignOrderResponseObject.text
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:
+                                   [NSString stringWithFormat:@"%@\n%@",assignOrderResponseObject.text,assignOrderResponseObject.desc]
 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
