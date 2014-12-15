@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBarHidden = YES;
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     

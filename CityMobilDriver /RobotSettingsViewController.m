@@ -644,6 +644,12 @@
         [backgroundView removeFromSuperview];
         [indicator removeFromSuperview];
     }];
+    
+    
+    
+
+    
+    
 }
 
 
