@@ -13,6 +13,13 @@
 {
     Class myClass;
     NSString*identity;
+    BOOL k;
+    BOOL p;
+    //UITouch *oldTouch;
+    CGPoint oldTouchLocation;
+//    UITouch *touch;
+    CGPoint touchLocation;
+
 }
 
 +(LeftMenu*)getLeftMenu:(id)curentSelf
@@ -36,6 +43,10 @@
     self=[super init];
           if(self)
           {
+             [self setSeparatorColor:[UIColor whiteColor]];
+              self.flag=0;
+              k=YES;
+              p=YES;
               self.frame=CGRectMake(-1*self.curentViewController.view.frame.size.width*(CGFloat)5/6, 64, self.curentViewController.view.frame.size.width*(CGFloat)5/6, self.curentViewController.view.frame.size.height-64);
             
               self.delegate=self;
@@ -77,16 +88,26 @@
         cell.textLabel.text = [self.nameArray objectAtIndex:indexPath.row];
     cell.textLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:17];
     
-        cell.backgroundColor=[UIColor colorWithRed:(CGFloat)111/255 green:(CGFloat)111/255 blue:(CGFloat)111/255 alpha:1];
+        cell.backgroundColor=[UIColor colorWithRed:223.f/255 green:223.f/255 blue:223.f/255 alpha:1];
         cell.textLabel.textColor=[UIColor blackColor];
-        tableView.backgroundColor=[UIColor colorWithRed:(CGFloat)111/255 green:(CGFloat)111/255 blue:(CGFloat)111/255 alpha:1];
+        tableView.backgroundColor=[UIColor colorWithRed:223.f/255 green:223.f/255 blue:223.f/255 alpha:1];
         
         return cell;
     }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   NSLog(@"viewControllers:%@",self.curentViewController.navigationController.viewControllers) ;
+    if (!k)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        oldTouchLocation.x=0;
+        k=YES;
+        p=YES;
+        self.scrollEnabled=YES;
+        [self animation];
+        return;
+    }
+    NSLog(@"viewControllers:%@",self.curentViewController.navigationController.viewControllers) ;
     switch (indexPath.row) {
         case 0:
             myClass = NSClassFromString(@"RootViewController");
@@ -174,8 +195,37 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+ 
 
+}
 
+-(void)viewDidLayoutSubviews
+{
+    [self viewDidLayoutSubviews];
+    
+    if ([self respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self setLayoutMargins:UIEdgeInsetsZero];
+    }
+
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return  44;
@@ -187,6 +237,7 @@
     point.x=self.center.x-self.frame.size.width;
     point.y=self.center.y;
     self.center=point;
+    self.flag=0;
     if ([self.curentViewController isKindOfClass:[aClass class]])
     {
         if([self.curentViewController isKindOfClass:[RootViewController class]])
@@ -221,5 +272,71 @@
     }
  
 }
+
+
+
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    k=NO;
+    if (p)
+    {
+        UITouch* touch1 = [[event allTouches] anyObject];
+        oldTouchLocation = [touch1 locationInView:touch1.view];
+    }
+    self.scrollEnabled=NO;
+    UITouch* touch = [[event allTouches] anyObject];
+    touchLocation = [touch locationInView:touch.view];
+
+    if (oldTouchLocation.x)
+    {
+        CGRect rect = self.frame;
+        CGPoint point = self.frame.origin;
+        point.x -= (oldTouchLocation.x-touchLocation.x);
+        if (point.x>0)
+        {
+            p=NO;
+            UITouch* touch1 = [[event allTouches] anyObject];
+            oldTouchLocation = [touch1 locationInView:touch1.view];
+            return;
+        }
+        rect.origin = point;
+        self.frame = rect;
+    }
+    p=NO;
+}
+
+
+-(void)animation
+{
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         CGPoint point;
+        
+         if (CGRectGetMaxX(self.frame)<=self.frame.size.width/2)
+         {
+             self.flag=0;
+            
+             point.x=(CGFloat)self.frame.size.width/2*(-1);
+         }
+         else if (CGRectGetMaxX(self.frame)>self.frame.size.width/2)
+         {
+             point.x=(CGFloat)self.frame.size.width/2;
+             self.flag=1;
+            
+         }
+         point.y=self.center.y;
+         self.center=point;
+         
+         
+     }
+                     completion:nil
+     ];
+
+}
+
 
 @end

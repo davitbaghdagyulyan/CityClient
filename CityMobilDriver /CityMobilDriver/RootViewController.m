@@ -11,7 +11,7 @@
 @interface RootViewController ()
 {
     //ARUS
-    NSInteger flag;
+  
     NSInteger flag1;
     BOOL  timerCreated;
     BOOL alertNoConIsCreated;
@@ -48,7 +48,7 @@
     [self.yandexButtonPort setNeedsDisplay];
     [super viewDidAppear:animated];
     timerCreated =NO;
-    flag=0;
+//    leftMenu.flag=0;
     self.tableViewOrdersPort.userInteractionEnabled=YES;
     self.tableViewOrdersLand.userInteractionEnabled=YES;
     self.tableViewIpad.userInteractionEnabled=YES;
@@ -307,7 +307,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
                      animations:^(void)
      {
          CGPoint point;
-         if (flag==0)
+         if (leftMenu.flag==0)
                point.x=(CGFloat)leftMenu.frame.size.width/2;
          else
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -318,16 +318,16 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
                      completion:^(BOOL finished)
      {
          
-         if (flag==0)
+         if (leftMenu.flag==0)
          {
-           flag=1;
+           leftMenu.flag=1;
              self.tableViewOrdersPort.userInteractionEnabled=NO;
              self.tableViewOrdersLand.userInteractionEnabled=NO;
              self.tableViewIpad.userInteractionEnabled=NO;
          }
          else
          {
-           flag=0;
+           leftMenu.flag=0;
              self.tableViewOrdersPort.userInteractionEnabled=YES;
              self.tableViewOrdersLand.userInteractionEnabled=YES;
              self.tableViewIpad.userInteractionEnabled=YES;
@@ -346,7 +346,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
     return;
    [UIView animateWithDuration:0.5
                                       delay:0.0
@@ -358,7 +358,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
                   NSLog(@"\n%f",leftMenu.frame.size.width/2);
                   if (touchLocation.x<=leftMenu.frame.size.width/2)
                       {
-                          flag=0;
+                          leftMenu.flag=0;
                           self.tableViewOrdersPort.userInteractionEnabled=YES;
                           self.tableViewOrdersLand.userInteractionEnabled=YES;
                           self.tableViewIpad.userInteractionEnabled=YES;
@@ -371,7 +371,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
                          self.tableViewOrdersPort.userInteractionEnabled=NO;
                          self.tableViewOrdersLand.userInteractionEnabled=NO;
                          self.tableViewIpad.userInteractionEnabled=NO;
-                          flag=1;
+                          leftMenu.flag=1;
                      }
                   point.y=leftMenu.center.y;
                   leftMenu.center=point;
@@ -387,7 +387,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
             return;
     CGPoint point;
     point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
@@ -400,7 +400,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     self.tableViewOrdersPort.userInteractionEnabled=NO;
     self.tableViewOrdersLand.userInteractionEnabled=NO;
     self.tableViewIpad.userInteractionEnabled=NO;
-    flag=1;
+    leftMenu.flag=1;
     
 }
 
@@ -437,7 +437,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
        
          CGFloat xx;
          
-         if(flag==0)
+         if(leftMenu.flag==0)
          {
              xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
          }
@@ -446,7 +446,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
              xx=0;
          }
          
-         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
 
          
      }];

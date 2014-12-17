@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -11,6 +11,7 @@
             <string>Roboto-Condensed</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -2798,7 +2799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbj-6s-hpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1871" y="-313"/>
+            <point key="canvasLocation" x="-2040" y="-394"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="Oc1-bc-g6a">
@@ -3082,7 +3083,7 @@
         <!--Tariffs Yandex View Controller-->
         <scene sceneID="FIi-lk-N1e">
             <objects>
-                <viewController id="UKQ-LS-hs2" customClass="TariffsYandexViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TariffsYandexViewController" id="UKQ-LS-hs2" customClass="TariffsYandexViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5E5-PG-4JO"/>
                         <viewControllerLayoutGuide type="bottom" id="I0b-Ok-dns"/>
@@ -3178,12 +3179,24 @@
                                     <constraint firstAttribute="height" constant="64" id="wJg-uf-Nfn"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ТАРИФЫ ЯНДЕКС" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpn-05-Sfy">
+                                <rect key="frame" x="10" y="66" width="580" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iWP-dw-a5S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gpn-05-Sfy" firstAttribute="leading" secondItem="rco-ES-Ow9" secondAttribute="leading" constant="10" id="7qe-8h-vkX"/>
+                            <constraint firstItem="gpn-05-Sfy" firstAttribute="top" secondItem="kIL-3Q-f9G" secondAttribute="bottom" constant="2" id="UKx-GS-XuU"/>
                             <constraint firstAttribute="trailing" secondItem="kIL-3Q-f9G" secondAttribute="trailing" id="YQg-6X-3ae"/>
                             <constraint firstItem="kIL-3Q-f9G" firstAttribute="top" secondItem="rco-ES-Ow9" secondAttribute="top" id="mwF-pq-bkc"/>
                             <constraint firstItem="kIL-3Q-f9G" firstAttribute="leading" secondItem="rco-ES-Ow9" secondAttribute="leading" id="nrg-Yy-hAk"/>
+                            <constraint firstAttribute="trailing" secondItem="gpn-05-Sfy" secondAttribute="trailing" constant="10" id="zEO-B5-lW0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3193,7 +3206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOK-xs-OLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1744" y="1077"/>
+            <point key="canvasLocation" x="-1874" y="1022"/>
         </scene>
         <!--Designation Icons View Controller-->
         <scene sceneID="rTt-hU-r9Q">

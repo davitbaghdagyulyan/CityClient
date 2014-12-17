@@ -14,7 +14,7 @@
 {
     WriteLetterResponse*writeLetterResponseObject;
     LeftMenu*leftMenu;
-    NSInteger flag;
+    CGFloat yCord;
     OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
@@ -30,13 +30,14 @@
     self.underView=[[UIView alloc]initWithFrame:CGRectMake(0, 50, self.scrollView.frame.size.width, self.scrollView.frame.size.height-50)];
      self.titleTextView=[[UITextView alloc] initWithFrame:CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40)];
      self.messageTextView=[[UITextView alloc] initWithFrame:CGRectMake(10, 60, self.scrollView.frame.size.width-20, 80)];
+    yCord=CGRectGetMaxY(self.messageTextView.frame);
     self.sendButton=[[UIButton alloc]initWithFrame:CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40)];
     [self.view addSubview:self.scrollView];
     
  
     self.writeLetterLabel.text=@"Написать письмо";
     self.writeLetterLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:17];
-    self.writeLetterLabel.textColor=[UIColor orangeColor];
+    self.writeLetterLabel.textColor=[UIColor blackColor];
     self.writeLetterLabel.textAlignment=NSTextAlignmentCenter;
     
     
@@ -61,15 +62,16 @@
     [self.scrollView addSubview:self.underView];
     self.titleTextView.delegate=self;
     self.messageTextView.delegate=self;
-    self.titleTextView.text = @"Заголовок";
-    self.messageTextView.text = @"Текст сообщения";
+    self.messageTextView.scrollEnabled=NO;
+    self.titleTextView.text = @" Заголовок";
+    self.messageTextView.text = @" Текст сообщения";
     self.titleTextView.textColor = [UIColor lightGrayColor];
     self.messageTextView.textColor = [UIColor lightGrayColor];
     UITapGestureRecognizer*recognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchForCloseKeyboard)];
     recognizer.numberOfTapsRequired=1;
     self.writeLetterLabel.userInteractionEnabled=YES;
     [(UIView*)self.writeLetterLabel addGestureRecognizer:recognizer];
-    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord);
     [self registerForKeyboardNotifications];
     // Do any additional setup after loading the view.
     
@@ -87,7 +89,7 @@
 {
     [super viewDidAppear:animated];
     
-    flag=0;
+    leftMenu.flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     
     //self.titleTextView.userInteractionEnabled=YES;
@@ -97,7 +99,7 @@
 
 - (IBAction)back:(id)sender
     {
-        if (flag)
+        if (leftMenu.flag)
         {
             CGPoint point;
             point.x=leftMenu.center.x-leftMenu.frame.size.width;
@@ -108,11 +110,35 @@
         
     
 }
+- (void)textViewDidChange:(UITextView *)textView
+{
+    
+    if ([textView isEqual:self.messageTextView])
+         {
+
+    CGSize maximumLabelSize = CGSizeMake(self.messageTextView.frame.size.width,800);
+    CGSize expectSize = [self.messageTextView sizeThatFits:maximumLabelSize];
+             
+             NSLog(@"%f",CGRectGetMaxY(self.underView.frame));
+             if (expectSize.height>80 && (expectSize.height)<CGRectGetMaxY(self.underView.bounds)-60)
+             {
+                 self.messageTextView.frame=CGRectMake(self.messageTextView.frame.origin.x, self.messageTextView.frame.origin.y, self.messageTextView.frame.size.width,expectSize.height);
+                 yCord=CGRectGetMaxY(self.messageTextView.frame);
+             }
+             else if( CGRectGetMaxY(self.messageTextView.frame
+                                    )>=CGRectGetMaxY(self.underView.bounds)-20)
+             {
+                 self.messageTextView.scrollEnabled=YES;
+             }
+   
+         }
+}
+
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
    
-     if([textView.text isEqualToString:@"Заголовок"]||[textView.text isEqualToString:@"Текст сообщения"])
+     if([textView.text isEqualToString:@" Заголовок"]||[textView.text isEqualToString:@" Текст сообщения"])
      {
        textView.text = @"";
        textView.textColor = [UIColor blackColor];
@@ -125,11 +151,11 @@
         textView.textColor = [UIColor lightGrayColor];
         if (textView==self.titleTextView)
         {
-             textView.text = @"Заголовок";
+             textView.text = @" Заголовок";
         }
         else
         {
-            textView.text = @"Текст сообщения";
+            textView.text = @" Текст сообщения";
         }
        
     }
@@ -154,7 +180,7 @@
     [indicator startAnimating];
     [self.view addSubview:indicator];
     WriteLetterJson* writeLetterJsonObject=[[WriteLetterJson alloc]init];
-    if((![self.titleTextView.text isEqualToString:@"Заголовок"])&&(![self.messageTextView.text isEqualToString:@"Текст сообщения"]))
+    if((![self.titleTextView.text isEqualToString:@" Заголовок"])&&(![self.messageTextView.text isEqualToString:@" Текст сообщения"]))
     {
         if (self.isPushWidthInfoController) {
             writeLetterJsonObject.title=self.titleText;
@@ -257,7 +283,7 @@ NSDictionary* info = [aNotification userInfo];
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-  self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+  self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
 }
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
@@ -268,7 +294,7 @@ NSDictionary* info = [aNotification userInfo];
                      animations:^(void)
      {
          CGPoint point;
-         if (flag==0)
+         if (leftMenu.flag==0)
              point.x=(CGFloat)leftMenu.frame.size.width/2;
          else
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -278,9 +304,9 @@ NSDictionary* info = [aNotification userInfo];
      }
                      completion:^(BOOL finished)
      {
-         if (flag==0)
+         if (leftMenu.flag==0)
          {
-             flag=1;
+             leftMenu.flag=1;
              self.titleTextView.userInteractionEnabled=NO;
              self.messageTextView.userInteractionEnabled=NO;
          }
@@ -288,7 +314,7 @@ NSDictionary* info = [aNotification userInfo];
          {
              self.titleTextView.userInteractionEnabled=YES;
              self.messageTextView.userInteractionEnabled=YES;
-             flag=0;
+             leftMenu.flag=0;
          }
      }
      ];
@@ -298,7 +324,7 @@ NSDictionary* info = [aNotification userInfo];
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     [UIView animateWithDuration:0.5
                           delay:0.0
@@ -310,7 +336,7 @@ NSDictionary* info = [aNotification userInfo];
          NSLog(@"\n%f",leftMenu.frame.size.width/2);
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
-             flag=0;
+             leftMenu.flag=0;
              self.titleTextView.userInteractionEnabled=YES;
              self.messageTextView.userInteractionEnabled=YES;
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -318,7 +344,7 @@ NSDictionary* info = [aNotification userInfo];
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
-             flag=1;
+             leftMenu.flag=1;
              self.titleTextView.userInteractionEnabled=NO;
              self.messageTextView.userInteractionEnabled=NO;
          }
@@ -334,7 +360,7 @@ NSDictionary* info = [aNotification userInfo];
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
     {
         return;
     }
@@ -346,7 +372,7 @@ NSDictionary* info = [aNotification userInfo];
         return;
     }
     leftMenu.center=point;
-    flag=1;
+    leftMenu.flag=1;
     self.titleTextView.userInteractionEnabled=NO;
     self.messageTextView.userInteractionEnabled=NO;
 }
@@ -360,14 +386,24 @@ NSDictionary* info = [aNotification userInfo];
          
          self.scrollView.frame=CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116);
          self.writeLetterLabel.frame=CGRectMake(0, 0, self.scrollView.frame.size.width, 50);
-         self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width, self.scrollView.frame.size.height-50);
+         
+         if ((yCord+60<self.scrollView.frame.size.height-50))
+         {
+             self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width,self.scrollView.frame.size.height-50);
+         }
+         else
+         {
+             self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width, yCord+60); 
+         }
+        
+         
          self.titleTextView.frame=CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40);
-         self.messageTextView.frame=CGRectMake(10, 60, self.scrollView.frame.size.width-20, 80);
+         self.messageTextView.frame=CGRectMake(10, 60, self.scrollView.frame.size.width-20, self.messageTextView.frame.size.height);
          self.sendButton.frame=CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40);
-     self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+     self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
          CGFloat xx;
          
-         if(flag==0)
+         if(leftMenu.flag==0)
          {
              xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
          }
@@ -376,7 +412,7 @@ NSDictionary* info = [aNotification userInfo];
              xx=0;
          }
          
-         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y,leftMenu.frame.size.width, self.view.frame.size.height-64);
          
      }];
     
