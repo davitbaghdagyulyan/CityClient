@@ -8,6 +8,8 @@
 
 #import "CreateProfilViewController.h"
 #import "ProfilViewController.h"
+#import "OpenMapButtonHandler.h"
+#import "CardsViewController.h"
 
 @interface CreateProfilViewController ()
 {
@@ -22,6 +24,7 @@
     CAGradientLayer* gradientLaye1;
     CAGradientLayer* gradientLaye2;
     CAGradientLayer* gradientLaye3;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -43,47 +46,58 @@
     
     self.lastName.returnKeyType = UIReturnKeyNext;
     self.lastName.delegate = self;
-    self.lastName.placeholder = self.lastNameText;
+    self.lastName.text = self.lastNameText;
+    self.lastName.textColor = [UIColor lightGrayColor];
     
     self.name.returnKeyType = UIReturnKeyNext;
     self.name.delegate = self;
-    self.name.placeholder = self.nameText;
+    self.name.text = self.nameText;
+    self.name.textColor = [UIColor lightGrayColor];
     
     self.middleName.returnKeyType = UIReturnKeyNext;
     self.middleName.delegate = self;
-    self.middleName.placeholder = self.middleNameText;
+    self.middleName.text = self.middleNameText;
+    self.middleName.textColor = [UIColor lightGrayColor];
     
     self.pasportSer.returnKeyType = UIReturnKeyNext;
     self.pasportSer.delegate = self;
-    self.pasportSer.placeholder = self.pasportSerText;
+    self.pasportSer.text = self.pasportSerText;
+    self.pasportSer.textColor = [UIColor lightGrayColor];
     
     self.pasportNum.returnKeyType = UIReturnKeyNext;
     self.pasportNum.delegate = self;
-    self.pasportNum.placeholder = self.pasportNumText;
+    self.pasportNum.text = self.pasportNumText;
+    self.pasportNum.textColor = [UIColor lightGrayColor];
     
     self.pasportWho.returnKeyType = UIReturnKeyNext;
     self.pasportWho.delegate = self;
-    self.pasportWho.placeholder = self.pasportWhoText;
+    self.pasportWho.text = self.pasportWhoText;
+    self.pasportWho.textColor = [UIColor lightGrayColor];
     
     self.pasportAdress.returnKeyType = UIReturnKeyNext;
     self.pasportAdress.delegate = self;
-    self.pasportAdress.placeholder = self.pasportAdressText;
+    self.pasportAdress.text = self.pasportAdressText;
+    self.pasportAdress.textColor = [UIColor lightGrayColor];
     
     self.passportDate.returnKeyType = UIReturnKeyNext;
     self.passportDate.delegate = self;
-    self.passportDate.placeholder = self.passportDateText;
+    self.passportDate.text = self.passportDateText;
+    self.passportDate.textColor = [UIColor lightGrayColor];
     
     self.driverLicenseSerial.returnKeyType = UIReturnKeyNext;
     self.driverLicenseSerial.delegate = self;
-    self.driverLicenseSerial.placeholder = self.driverLicenseSerialText;
+    self.driverLicenseSerial.text = self.driverLicenseSerialText;
+    self.driverLicenseSerial.textColor = [UIColor lightGrayColor];
     
     self.driverLicenseNumber.returnKeyType = UIReturnKeyNext;
     self.driverLicenseNumber.delegate = self;
-    self.driverLicenseNumber.placeholder = self.driverLicenseNumberText;
+    self.driverLicenseNumber.text = self.driverLicenseNumberText;
+    self.driverLicenseNumber.textColor = [UIColor lightGrayColor];
     
     self.driverLicenseClass.returnKeyType = UIReturnKeyDone;
     self.driverLicenseClass.delegate = self;
-    self.driverLicenseClass.placeholder = self.driverLicenseClassText;
+    self.driverLicenseClass.text = self.driverLicenseClassText;
+    self.driverLicenseClass.textColor = [UIColor lightGrayColor];
     
     [self registerForKeyboardNotifications];
     UITapGestureRecognizer* tapBeganFirstView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchRecognizer)];
@@ -126,6 +140,10 @@
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
+    
+    
+    
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
@@ -180,9 +198,6 @@
     
     return newImage;
 }
-
-
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -288,11 +303,6 @@
 }
 
 
-
-
-
-
-
 -(void)pushOrPopViewController:(UIViewController*)controller
 {
     NSArray *viewControlles = self.navigationController.viewControllers;
@@ -312,8 +322,6 @@
 {
     if (sender.selectedSegmentIndex == 0)
     {
-//        ProfilViewController* profilViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilViewController"];
-//        [self.navigationController pushViewController:profilViewController animated:NO];
     }
     if (sender.selectedSegmentIndex == 1)
     {
@@ -322,16 +330,14 @@
         [self pushOrPopViewController:carInfoController];
     }
     
+    if (sender.selectedSegmentIndex == 2) {
+        CardsViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
+        [self pushOrPopViewController:carInfoController];
+    }
 }
 
 - (IBAction)seveUserInformation:(UIButton *)sender
 {
-
-//    if (![self image:self.createPhotoImageView.image isEqualTo:self.profilImage])
-//    {
-//        
-//
-//    }
     
     if (![self.createPhotoImageView.image isEqual:self.profilImage]) {
         [self RequestSetDriverInfoWithPoto];
@@ -385,6 +391,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
+    
     
     NSMutableURLRequest* requestInfo = [NSMutableURLRequest requestWithURL:url];
     [requestInfo setURL:url];
@@ -488,6 +495,7 @@
     request.passport_who = self.pasportWho.text;
     
     NSDictionary* jsonDictionary = [request toDictionary];
+    NSLog(@"%@",jsonDictionary);
     NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
@@ -748,6 +756,12 @@
     }
     [self.navigationController popViewControllerAnimated:NO];
     
+}
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 
 

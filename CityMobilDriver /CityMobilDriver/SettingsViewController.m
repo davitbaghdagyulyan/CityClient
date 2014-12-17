@@ -10,12 +10,12 @@
 #import "SucceedResponse.h"
 #import "yandexIcon.h"
 #import "IconsColorSingltone.h"
-
+#import "OpenMapButtonHandler.h"
 @interface SettingsViewController ()
 {
     NSInteger flag;
     LeftMenu*leftMenu;
-    
+    OpenMapButtonHandler*openMapButtonHandlerObject;
     
     UIView* backgroundView;
     UIView* fontSizeView;
@@ -58,10 +58,7 @@
     backgroundLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:backgroundLayer atIndex:0];
     
-    self.settingsView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    gradientLayer = [self greyGradient];
-    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.settingsView.frame), CGRectGetHeight(self.settingsView.frame)*9.f/46);
-    [self.settingsView.layer insertSublayer:gradientLayer atIndex:0];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -157,9 +154,27 @@
         [self.yandexOff setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     }
     
+    self.scrolView.showsHorizontalScrollIndicator = NO;
+    self.scrolView.delegate = self;
     
+    self.settingsView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    gradientLayer = [self greyGradient];
+    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.settingsView.frame), CGRectGetHeight(self.settingsView.frame)*9.f/46);
+    [self.settingsView.layer insertSublayer:gradientLayer atIndex:0];
 }
 
+#pragma mark - scrollView horizontal scroll
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender
+{
+    
+    if (sender.contentOffset.x != 0)
+    {
+        CGPoint offset = sender.contentOffset;
+        offset.x = 0;
+        sender.contentOffset = offset;
+    }
+}
 
 -(void) replaceString:(UILabel*)label widthString:(NSString*) newString{
     NSRange range = [label.text rangeOfString:@":"];
@@ -482,6 +497,7 @@
     titleView.backgroundColor = [UIColor whiteColor];
     
     UILabel* titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 310, 48)];
+    titleLabel.textColor = [UIColor colorWithRed:19.f/255 green:146.f/255 blue:200.f/255 alpha:1];
     if (tableView == fontSizeTableView) {
         titleLabel.text = @"   Размер шрифта";
     }
@@ -912,5 +928,9 @@
      }
      [self.navigationController popToRootViewControllerAnimated:NO];
 }
-
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "EditCarInfoViewController.h"
+#import "OpenMapButtonHandler.h"
+#import "CardsViewController.h"
 
 @interface EditCarInfoViewController ()
 {
@@ -30,6 +32,7 @@
     
     CAGradientLayer* gradientLayer1;
     CAGradientLayer* gradientLayer2;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -89,6 +92,17 @@
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
+    
+    
+//    NSString *string = self.text;
+//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
+//    
+//    //NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc]init];
+//    float spacing = 0.8f;
+//    [attributedString addAttribute:NSKernAttributeName
+//                             value:@(spacing)
+//                             range:NSMakeRange(0, [self.text length])];
+//    self.attributedText = attributedString;
 }
 
 -(void)requestGetColorList
@@ -292,6 +306,10 @@
     {
 //        CarInfoViewController* createProfilController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
 //        [self.navigationController pushViewController:createProfilController animated:NO];
+    }
+    if (sender.selectedSegmentIndex == 2) {
+        CardsViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
+        [self pushOrPopViewController:carInfoController];
     }
 }
 
@@ -896,7 +914,11 @@
 - (IBAction)back:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:NO];
 }
-
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
 
 
 

@@ -8,6 +8,8 @@
 
 #import "ProfilViewController.h"
 #import "SendingDocumentsViewController.h"
+#import "OpenMapButtonHandler.h"
+#import "CardsViewController.h"
 
 @interface ProfilViewController ()
 {
@@ -20,6 +22,7 @@
     DriverAllInfoResponse* jsonResponseObject;
     
     CAGradientLayer* gradientLayer;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -37,6 +40,10 @@
     gradientLayer = [self greyGradient];
     gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
     [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
+    
+    
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -235,6 +242,10 @@
         CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
         [self pushOrPopViewController:carInfoController];
         
+    }
+    if (sender.selectedSegmentIndex == 2) {
+        CardsViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
+        [self pushOrPopViewController:carInfoController];
     }
 }
 
@@ -439,6 +450,13 @@
     }
     [self.navigationController popToRootViewControllerAnimated:NO];
     
+}
+
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 
 @end

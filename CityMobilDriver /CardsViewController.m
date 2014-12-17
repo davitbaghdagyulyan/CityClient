@@ -8,10 +8,14 @@
 
 #import "CardsViewController.h"
 #import "RequestStandart.h"
+#import "OpenMapButtonHandler.h"
+#import "ProfilViewController.h"
+#import "CardsViewController.h"
 
 @interface CardsViewController ()
 {
     RequestStandart* object;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -19,21 +23,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self getCarInfo];
+    self.segmentControll.selectedSegmentIndex = 2;
 }
 
+- (IBAction)segmentControllAction:(UISegmentedControl*)sender
+{
+    if (sender.selectedSegmentIndex == 0)
+    {
+        ProfilViewController* profilViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilViewController"];
+        //[self.navigationController pushViewController:profilViewController animated:NO];
+        [self pushOrPopViewController:profilViewController];
+    }
+    if (sender.selectedSegmentIndex == 1)
+    {
+        CarInfoViewController* createProfilController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
+        [self.navigationController pushViewController:createProfilController animated:NO];
+    }
+    if (sender.selectedSegmentIndex == 2) {
+    }
+}
 
+-(void)pushOrPopViewController:(UIViewController*)controller
+{
+    NSArray *viewControlles = self.navigationController.viewControllers;
+    
+    for (UIViewController* currentController in viewControlles) {
+        if ([controller isKindOfClass:currentController.class]) {
+            [self.navigationController popToViewController:currentController animated:NO];
+            return;
+        }
+    }
+    [self.navigationController pushViewController:controller animated:NO];
+}
 
 -(void)getCarInfo
 {
@@ -112,6 +143,12 @@
         [indicator stopAnimating];
     }];
     
+}
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 
 

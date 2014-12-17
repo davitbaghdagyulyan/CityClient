@@ -7,6 +7,8 @@
 //
 
 #import "CarInfoViewController.h"
+#import "OpenMapButtonHandler.h"
+#import "CardsViewController.h"
 
 @interface CarInfoViewController ()
 {
@@ -19,6 +21,8 @@
     
     CAGradientLayer* gradientLayer1;
     CAGradientLayer* gradientLayer2;
+    CAGradientLayer* gradientLayer3;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -33,11 +37,7 @@
     
     
     self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    
-
-    
-    
-    
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
 }
 
 
@@ -57,6 +57,9 @@
     
     gradientLayer1 = [self greyGradient:self.bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19)];
     [self.bgView.layer insertSublayer:gradientLayer1 atIndex:0];
+    
+    gradientLayer3 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(CGRectGetMaxX(self.carInfoTable.frame), 0, CGRectGetWidth(self.backgroundView.frame) - CGRectGetWidth(self.carInfoTable.frame), 44)];
+    [self.backgroundView.layer insertSublayer:gradientLayer3 atIndex:0];
 }
 
 
@@ -177,9 +180,12 @@
 
 -(void)setAtributedString:(UILabel*)label  :(NSString*)appendingString
 {
+    NSString* labelText = label.text;
     label.text = [label.text stringByAppendingString:appendingString];//
     NSRange range1 = [label.text rangeOfString:appendingString];
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
+    float spacing = 0.1f;
+    [attributedText addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [labelText length])];
     [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:17]} range:range1];
     label.attributedText=attributedText;
 }
@@ -208,6 +214,10 @@
     }
     if (sender.selectedSegmentIndex == 1)
     {
+    }
+    if (sender.selectedSegmentIndex == 2) {
+        CardsViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
+        [self pushOrPopViewController:carInfoController];
     }
 }
 
@@ -239,6 +249,7 @@
      {
          gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19);
          gradientLayer2.frame = CGRectMake(0, 0, CGRectGetWidth([self.carInfoTable viewWithTag:100].frame), CGRectGetHeight([self.carInfoTable viewWithTag:100].frame));
+         gradientLayer3.frame = CGRectMake(CGRectGetMaxX(self.carInfoTable.frame), 0, CGRectGetWidth(self.backgroundView.frame) - CGRectGetWidth(self.carInfoTable.frame), 44);
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
@@ -355,6 +366,12 @@
 
 - (IBAction)back:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 
 

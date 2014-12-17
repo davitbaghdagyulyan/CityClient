@@ -16,6 +16,7 @@
 @interface CarInfoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,weak) IBOutlet UIView* bgView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
 
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
@@ -34,4 +35,5 @@
 #pragma mark - left Menu
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(UIButton *)sender;
+- (IBAction)openMap:(UIButton*)sender;
 @end

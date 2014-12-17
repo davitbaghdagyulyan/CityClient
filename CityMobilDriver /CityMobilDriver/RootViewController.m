@@ -70,12 +70,14 @@
         alertServErrIsCreated =YES;
     }
     [self requestGetOrders];
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     selectedRow = -1;
+
     log=[self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self.navigationController pushViewController:log animated:NO];
     //RootViewController Interface

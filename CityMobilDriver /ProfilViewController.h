@@ -67,4 +67,5 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 - (IBAction)back:(UIButton *)sender;
+- (IBAction)openMap:(UIButton*)sender;
 @end

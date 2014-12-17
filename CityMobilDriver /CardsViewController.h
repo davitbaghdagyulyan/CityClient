@@ -9,4 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface CardsViewController : UIViewController
+- (IBAction)openMap:(UIButton*)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControll;
+- (IBAction)segmentControllAction:(UISegmentedControl*)sender;
+
 @end

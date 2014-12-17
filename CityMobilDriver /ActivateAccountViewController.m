@@ -22,6 +22,7 @@
     [super viewDidLoad];
     [self registerForKeyboardNotifications];
     self.pinCode.keyboardType = UIKeyboardTypePhonePad;
+    self.getPassword.titleLabel.numberOfLines = 2;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +40,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField keyboard:(CGSize)keyBoardSize
 {
     if (textField == self.pinCode) {
-        self.buttomSpace.constant = keyBoardSize.height - self.getPassword.frame.size.height - 8;
+        self.buttomSpace.constant = keyBoardSize.height - self.getPassword.frame.size.height - 4;
     }
     return YES;
 }

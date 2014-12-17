@@ -8,6 +8,7 @@
 
 #import "infoViewController.h"
 #import "SendingMessageViewController.h"
+#import "OpenMapButtonHandler.h"
 @interface infoViewController ()
 {
     NSInteger flag;
@@ -17,6 +18,7 @@
     NSString* HTMLString;
     
     textResponse* jsonResponseObject;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -328,6 +330,13 @@
     answerButton.userInteractionEnabled=NO;
     flag=1;
 }
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
 
 
 @end

@@ -24,4 +24,5 @@
 ///**** left Menu ****///
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
+- (IBAction)openMap:(UIButton*)sender;
 @end

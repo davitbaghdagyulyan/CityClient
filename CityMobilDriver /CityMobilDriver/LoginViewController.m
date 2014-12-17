@@ -10,6 +10,7 @@
 #import "SingleDataProvider.h"
 #import "UserRegistrationInformation.h"
 #import "IconsColorSingltone.h"
+#import "RegionalSettingsViewController.h"
 
 NSString* const UserDefaultsBankId = @"bankid";
 NSString* const UserDefaultsPassword = @"password";
@@ -44,6 +45,14 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     password.placeholder = @"Пароль";
     password.returnKeyType = UIReturnKeyDone;
     password.delegate = self;
+    
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![[defaults stringForKey:@"login"] isEqualToString:@"firstLogin"]) {
+        RegionalSettingsViewController* rsvc = [self.storyboard instantiateViewControllerWithIdentifier:@"RegionalSettingsViewController"];
+        [self.navigationController pushViewController:rsvc animated:NO];
+    }
+    [defaults setObject:@"firstLogin" forKey:@"login"];
     
 }
 
@@ -122,8 +131,6 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         login.text = [UserRegistrationInformation sharedInformation].bankId;
         password.text = [UserRegistrationInformation sharedInformation].password;
     }
-    
-
 }
 
 
@@ -414,13 +421,13 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
                 [defaults setObject:@"логин" forKey:UserDefaultsBankId];
                 [defaults setObject:@"Пароль" forKey:UserDefaultsPassword];
             }
-            [self.navigationController popViewControllerAnimated:NO];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
         
         [indicator stopAnimating];
     }];
     
-    
+
 }
 
 - (IBAction)remember:(UIButton*)sender {
