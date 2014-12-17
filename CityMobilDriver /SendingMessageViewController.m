@@ -120,13 +120,12 @@
     CGSize expectSize = [self.messageTextView sizeThatFits:maximumLabelSize];
              
              NSLog(@"%f",CGRectGetMaxY(self.underView.frame));
-             if (expectSize.height>80 && (expectSize.height)<CGRectGetMaxY(self.underView.bounds)-60)
+             if (expectSize.height>80 && (expectSize.height+60)<CGRectGetMaxY(self.underView.bounds))
              {
                  self.messageTextView.frame=CGRectMake(self.messageTextView.frame.origin.x, self.messageTextView.frame.origin.y, self.messageTextView.frame.size.width,expectSize.height);
                  yCord=CGRectGetMaxY(self.messageTextView.frame);
              }
-             else if( CGRectGetMaxY(self.messageTextView.frame
-                                    )>=CGRectGetMaxY(self.underView.bounds)-20)
+             else if( (expectSize.height+60)>=CGRectGetMaxY(self.underView.bounds))
              {
                  self.messageTextView.scrollEnabled=YES;
              }
@@ -386,7 +385,8 @@ NSDictionary* info = [aNotification userInfo];
          
          self.scrollView.frame=CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116);
          self.writeLetterLabel.frame=CGRectMake(0, 0, self.scrollView.frame.size.width, 50);
-         
+         self.messageTextView.frame=CGRectMake(10, 60, self.scrollView.frame.size.width-20, self.messageTextView.frame.size.height);
+         yCord=(CGRectGetMaxY(self.messageTextView.frame));
          if ((yCord+60<self.scrollView.frame.size.height-50))
          {
              self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width,self.scrollView.frame.size.height-50);
@@ -398,9 +398,9 @@ NSDictionary* info = [aNotification userInfo];
         
          
          self.titleTextView.frame=CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40);
-         self.messageTextView.frame=CGRectMake(10, 60, self.scrollView.frame.size.width-20, self.messageTextView.frame.size.height);
+         
          self.sendButton.frame=CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40);
-     self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
+     self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width,yCord+60);
          CGFloat xx;
          
          if(leftMenu.flag==0)
