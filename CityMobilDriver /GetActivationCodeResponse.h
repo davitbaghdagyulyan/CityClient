@@ -14,5 +14,4 @@
 @property (nonatomic,assign) NSInteger result;
 @property (nonatomic,strong) NSString* code;
 @property (nonatomic,strong) NSString* text;
-@property (nonatomic, weak) RegistrationViewController* delegate;
 @end

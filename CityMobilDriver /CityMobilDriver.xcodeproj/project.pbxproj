@@ -305,6 +305,11 @@
 		ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC62B1A1C7215000F5776 /* Tariffs.m */; };
 		ECEEC62F1A1C873A000F5776 /* RequestUpdateAutoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC62E1A1C873A000F5776 /* RequestUpdateAutoSettings.m */; };
 		ECEEC6321A1C8967000F5776 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEEC6311A1C8967000F5776 /* Settings.m */; };
+		ECF2FFF11A4019D100C8A269 /* UnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF2FFF01A4019D100C8A269 /* UnderlinedButton.m */; };
+		ECF2FFF41A401B8200C8A269 /* LeftPaddingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF2FFF31A401B8200C8A269 /* LeftPaddingButton.m */; };
+		ECF2FFF71A40240B00C8A269 /* LeftPaddingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF2FFF61A40240B00C8A269 /* LeftPaddingTextField.m */; };
+		ECF2FFFA1A40628A00C8A269 /* ScaleStringLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF2FFF91A40628A00C8A269 /* ScaleStringLabel.m */; };
+		ECF2FFFC1A406BCF00C8A269 /* ic_launcher-copy.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF2FFFB1A406BCF00C8A269 /* ic_launcher-copy.png */; };
 		ECF35CD51A2DF2700005E2A6 /* Time Normal.TTF in Resources */ = {isa = PBXBuildFile; fileRef = ECF35CD41A2DF2700005E2A6 /* Time Normal.TTF */; };
 		ECF35CD91A2DFF500005E2A6 /* TachometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF35CD81A2DFF500005E2A6 /* TachometerViewController.m */; };
 		ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF40D5819D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m */; };
@@ -831,6 +836,15 @@
 		ECEEC62E1A1C873A000F5776 /* RequestUpdateAutoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestUpdateAutoSettings.m; sourceTree = "<group>"; };
 		ECEEC6301A1C8967000F5776 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		ECEEC6311A1C8967000F5776 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		ECF2FFEF1A4019D100C8A269 /* UnderlinedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderlinedButton.h; sourceTree = "<group>"; };
+		ECF2FFF01A4019D100C8A269 /* UnderlinedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderlinedButton.m; sourceTree = "<group>"; };
+		ECF2FFF21A401B8200C8A269 /* LeftPaddingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftPaddingButton.h; sourceTree = "<group>"; };
+		ECF2FFF31A401B8200C8A269 /* LeftPaddingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftPaddingButton.m; sourceTree = "<group>"; };
+		ECF2FFF51A40240B00C8A269 /* LeftPaddingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftPaddingTextField.h; sourceTree = "<group>"; };
+		ECF2FFF61A40240B00C8A269 /* LeftPaddingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftPaddingTextField.m; sourceTree = "<group>"; };
+		ECF2FFF81A40628A00C8A269 /* ScaleStringLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleStringLabel.h; sourceTree = "<group>"; };
+		ECF2FFF91A40628A00C8A269 /* ScaleStringLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleStringLabel.m; sourceTree = "<group>"; };
+		ECF2FFFB1A406BCF00C8A269 /* ic_launcher-copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_launcher-copy.png"; sourceTree = "<group>"; };
 		ECF35CD31A2DF2280005E2A6 /* Time Normal.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Time Normal.TTF"; sourceTree = "<group>"; };
 		ECF35CD41A2DF2700005E2A6 /* Time Normal.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Time Normal.TTF"; path = "../../Time Normal.TTF"; sourceTree = "<group>"; };
 		ECF35CD81A2DFF500005E2A6 /* TachometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TachometerViewController.m; sourceTree = "<group>"; };
@@ -1083,6 +1097,8 @@
 				ECCD34461A039EA4000444BF /* CardsViewController.m */,
 				ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */,
 				ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */,
+				ECF2FFF81A40628A00C8A269 /* ScaleStringLabel.h */,
+				ECF2FFF91A40628A00C8A269 /* ScaleStringLabel.m */,
 			);
 			name = Profil;
 			path = ..;
@@ -1277,6 +1293,7 @@
 		ECB38B281A0D12D400DFBB77 /* Designation Icons Images */ = {
 			isa = PBXGroup;
 			children = (
+				ECF2FFFB1A406BCF00C8A269 /* ic_launcher-copy.png */,
 				EC0798ED1A2379C90085E3F0 /* set3_orange.png */,
 				EC0798DA1A23327F0085E3F0 /* ya_green.png */,
 				ECEADF901A1F29B300FBA389 /* tachometer_bg.png */,
@@ -1484,9 +1501,11 @@
 		ECC4718D1A11F3C50062803A /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ECCA90AD19DEE3920007831F /* Login */,
 				EC2437181A0B9807005FC018 /* LoginViewController.h */,
 				EC2437191A0B9807005FC018 /* LoginViewController.m */,
-				ECCA90AD19DEE3920007831F /* Login */,
+				ECF2FFEF1A4019D100C8A269 /* UnderlinedButton.h */,
+				ECF2FFF01A4019D100C8A269 /* UnderlinedButton.m */,
 			);
 			name = LoginViewController;
 			sourceTree = "<group>";
@@ -1908,6 +1927,10 @@
 				ECEBD87D1A0A664E00118466 /* RegistrationViewController.m */,
 				ECCA4CAB1A0B55F2007CEBC4 /* ActivateAccountViewController.h */,
 				ECCA4CAC1A0B55F2007CEBC4 /* ActivateAccountViewController.m */,
+				ECF2FFF21A401B8200C8A269 /* LeftPaddingButton.h */,
+				ECF2FFF31A401B8200C8A269 /* LeftPaddingButton.m */,
+				ECF2FFF51A40240B00C8A269 /* LeftPaddingTextField.h */,
+				ECF2FFF61A40240B00C8A269 /* LeftPaddingTextField.m */,
 			);
 			name = Registration;
 			path = ..;
@@ -2181,6 +2204,7 @@
 				ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */,
 				ECB38B3A1A0D130B00DFBB77 /* 4@2x.png in Resources */,
 				8FB0F8AF1A28D9AE003A79E9 /* train.png in Resources */,
+				ECF2FFFC1A406BCF00C8A269 /* ic_launcher-copy.png in Resources */,
 				ECB38B3C1A0D130B00DFBB77 /* 6@2x.png in Resources */,
 				8FE032F219DEC83B00B17C09 /* icon@2x.png in Resources */,
 				8FC222851A37207C0003CAAF /* n_color copy.png in Resources */,
@@ -2268,6 +2292,7 @@
 				EC40D44019E43258007BA02C /* MailResponse.m in Sources */,
 				ECB52E541A0781A10091293F /* IntervalClass.m in Sources */,
 				EC84D9AF1A3EDB1700ECC915 /* OpenMapButtonHandler.m in Sources */,
+				ECF2FFF41A401B8200C8A269 /* LeftPaddingButton.m in Sources */,
 				ECE4058A1A270C7100802559 /* RequestGetTaximeter.m in Sources */,
 				ECD218851A1CBCF100F38F7D /* SetStatusJson.m in Sources */,
 				ECEC89B21A2CA1100036781D /* CustomViewForMaps.m in Sources */,
@@ -2275,6 +2300,7 @@
 				EC5AD4491A14FF1E00588DE6 /* GetOrderJson.m in Sources */,
 				ECB52E271A07720C0091293F /* CommonOverPriceClass.m in Sources */,
 				8FC222801A36E9500003CAAF /* GetPaymentsJson.m in Sources */,
+				ECF2FFFA1A40628A00C8A269 /* ScaleStringLabel.m in Sources */,
 				EC40D43D19E4323C007BA02C /* MailJson.m in Sources */,
 				ECD218881A1CBD0E00F38F7D /* SetStatusResponse.m in Sources */,
 				ECF4A4131A31A56B0057BE10 /* GetServicesResponse.m in Sources */,
@@ -2307,6 +2333,7 @@
 				ECCC237519E7F82F0091C43E /* MessagesViewController.m in Sources */,
 				ECB52E1E1A076B620091293F /* NameClass.m in Sources */,
 				ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */,
+				ECF2FFF11A4019D100C8A269 /* UnderlinedButton.m in Sources */,
 				ECB52E511A0780C00091293F /* WeekdayElements.m in Sources */,
 				ECCD344A1A039F44000444BF /* RequestStandart.m in Sources */,
 				EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */,
@@ -2418,6 +2445,7 @@
 				ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */,
 				ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
+				ECF2FFF71A40240B00C8A269 /* LeftPaddingTextField.m in Sources */,
 				ECD55D8819F7C755002E182D /* GetCardsJson.m in Sources */,
 				ECC978F61A00DDC900D77B80 /* GetInfoJson.m in Sources */,
 				ECB52E2A1A0773190091293F /* UnitElements.m in Sources */,
@@ -2545,12 +2573,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -2558,6 +2588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

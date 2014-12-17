@@ -13,6 +13,7 @@
 #import "LeftMenu.h"
 #import "EndUpViewController.h"
 #import "TakenOrderViewController.h"
+#import "OpenMapButtonHandler.h"
 
 //@property (weak, nonatomic) IBOutlet UIButton *additionalServices;
 //@property (weak, nonatomic) IBOutlet UILabel *metroNames;
@@ -42,7 +43,7 @@
     
     UILabel* upLabel;
     UILabel* underLabel;
-    
+    OpenMapButtonHandler*openMapButtonHandlerObject;
     
     NSTimer* timer;
 }
@@ -72,7 +73,7 @@
     
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
-    [self getOrSetTaximeter:0 value:@"a" isSet:YES];
+    [self getOrSetTaximeter:0 value:@"a" isSet:YES isSetElements:NO];
     idArray = [[NSMutableArray alloc]init];
     
     //end narek change
@@ -137,14 +138,14 @@
     self.collComment = self.orderResponse.CollComment;
     self.idHash = self.orderResponse.idhash;
     self.ourComment = self.orderResponse.OurComment;
-    self.collDate = self.orderResponse.collDate;
+    self.collDate = self.orderResponse.CollDate;
     self.tariff = self.orderResponse.tariff;
 }
 
 
 
 -(void) animateTachometer{
-    [self getOrSetTaximeter:0 value:@"" isSet:NO];
+    [self getOrSetTaximeter:0 value:@"" isSet:NO isSetElements:NO];
     
 }
 
@@ -184,7 +185,7 @@
                                        NSString* str = [[tachometerResponse.elements[0] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
                                        [self.elements[0] setTitle:str forState:UIControlStateNormal];
                                        
-                                       [self getOrSetTaximeter:11 value:textLabel.text isSet:NO];
+                                       [self getOrSetTaximeter:11 value:textLabel.text isSet:NO isSetElements:YES];
                                    }
                                    
                                    if (button.tag == 101) {
@@ -193,7 +194,7 @@
                                        [self.elements[1] setTitle:str forState:UIControlStateNormal];
                                        
                                        
-                                       [self getOrSetTaximeter:12 value:textLabel.text isSet:NO];
+                                       [self getOrSetTaximeter:12 value:textLabel.text isSet:NO isSetElements:YES];
                                    }
                                    
                                    if (button.tag == 102) {
@@ -201,7 +202,7 @@
                                        NSString* str = [[tachometerResponse.elements[2] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
                                        [self.elements[2] setTitle:str forState:UIControlStateNormal];
                                        
-                                       [self getOrSetTaximeter:10 value:textLabel.text isSet:NO];
+                                       [self getOrSetTaximeter:10 value:textLabel.text isSet:NO isSetElements:YES];
                                    }
                                    
                                }];
@@ -214,7 +215,7 @@
 
 #pragma mark - Requests
 
--(void)getOrSetTaximeter:(NSInteger)ID  value:(NSString*)value isSet:(BOOL)isSet{
+-(void)getOrSetTaximeter:(NSInteger)ID  value:(NSString*)value isSet:(BOOL)isSet isSetElements:(BOOL) isSetElements{
     RequestGetTaximeter* requestObject = [[RequestGetTaximeter alloc]init];
     requestObject.idhash = self.idHash;
     NSDictionary* jsonDictionary=[requestObject toDictionary];
@@ -226,7 +227,7 @@
     
     
 
-    if (isSet) {
+    if (isSetElements) {
         NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:jsonDictionary];
         [dict removeObjectForKey:@"elements"];
         [dict setObject:[NSMutableDictionary dictionaryWithObject:value forKey:[NSString stringWithFormat:@"%li",(long)ID]] forKey:@"elements"];
@@ -248,7 +249,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
@@ -263,7 +264,7 @@
                                     }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
-            return ;
+           
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
@@ -289,8 +290,10 @@
             
             [self presentViewController:alertController animated:YES completion:nil];
         }
-        else{
-            if (isSet) {
+        else
+        {
+            if (isSet)
+            {
                 [self setTachometerViews];
             }
 
@@ -441,35 +444,25 @@
         [self.elements[i] setTitle:str forState:UIControlStateNormal];
     }
     
-
-    NSMutableArray* array = [[NSMutableArray alloc]init];
-    
-    [array addObject:[self timeFormat:self.orderResponse.collDate]];
-    [array addObject:[self timeFormat:tachometerResponse.ClientCollected]];
-    [array addObject:[NSString stringWithFormat:@"%li",(long)tachometerResponse.waitTime]];
-    [array addObject:[self timeFormat:tachometerResponse.ReadyForCollection]];
-    [array addObject:[self timeFormat:tachometerResponse.GoodArrived]];
-    [array addObject:[NSString stringWithFormat:@"%li",(long)tachometerResponse.wayPrice]];
-    
-    [self cutStringsInArray:array];
+//    [self cutStringsInArray:array];
     
     UILabel* label0 = self.labelsColoection[0];
-    label0.text = array[0];//[self timeFormat:self.orderResponse.collDate];
+    label0.text = [self timeFormat:self.orderResponse.CollDate];
     
     UILabel* label1 = self.labelsColoection[1];
-    label1.text = array[1];//[self timeFormat:tachometerResponse.ClientCollected];
+    label1.text = [self timeFormat:tachometerResponse.ClientCollected];
     
     UILabel* label2 = self.labelsColoection[2];
-    label2.text = array[2];//[NSString stringWithFormat:@"%li",(long)tachometerResponse.waitTime];
+    label2.text = [NSString stringWithFormat:@"%li",(long)tachometerResponse.waitTime];
     
     UILabel* label3 = self.labelsColoection[3];
-    label3.text = array[3];//[self timeFormat:tachometerResponse.ReadyForCollection];
+    label3.text = [self timeFormat:tachometerResponse.ReadyForCollection];
     
     UILabel* label4 = self.labelsColoection[4];
-    label4.text = array[4];//[self timeFormat:tachometerResponse.GoodArrived];
+    label4.text = [self timeFormat:tachometerResponse.GoodArrived];
     
     UILabel* label5 = self.labelsColoection[5];
-    label5.text = array[5];//[NSString stringWithFormat:@"%li",(long)tachometerResponse.wayPrice];
+    label5.text = [NSString stringWithFormat:@"%li",(long)tachometerResponse.wayPrice];
     NSLog(@"%li",(long)tachometerResponse.wayPrice);
     
     
@@ -495,11 +488,6 @@
         [self.scrollView addSubview:ourCommentLabel];
     }
     
-    
-    
-    lineView.frame = CGRectMake(8, CGRectGetMinY(ourCommentLabel.frame) - 8, CGRectGetWidth(self.scrollView.frame) - 16, 2);
-    lineView.backgroundColor = [UIColor grayColor];
-    [self.scrollView addSubview:lineView];
     
     
     
@@ -542,6 +530,15 @@
 
     
     [self.scrollView addSubview:additionalServices];
+    
+    
+    
+    lineView.frame = CGRectMake(8, CGRectGetMinY(additionalServices.frame), CGRectGetWidth(self.scrollView.frame) - 16, 2);
+    lineView.backgroundColor = [UIColor grayColor];
+    [self.scrollView addSubview:lineView];
+    
+    
+    
     
     additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
     [additionalServicesButton setBackgroundImage:[UIImage imageNamed:@"tachometer_arrow.png"] forState:UIControlStateNormal];
@@ -610,13 +607,9 @@
             str = [NSString stringWithFormat:@"0%li,0",(long)number];
         }
             break;
-        case 3:
-        {
-            str = [NSString stringWithFormat:@"%li,0",(long)number];
-        }
-            break;
             
         default:
+            str = [NSString stringWithFormat:@"%li,0",(long)number];
             break;
     }
     
@@ -701,8 +694,6 @@
         metroNamesLabel.frame = CGRectMake(8, CGRectGetMaxY(self.informationView.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/5);
          
         ourCommentLabel.frame = CGRectMake(8, CGRectGetMaxY(metroNamesLabel.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/10);
-
-         lineView.frame = CGRectMake(8, CGRectGetMinY(ourCommentLabel.frame) - 8, CGRectGetWidth(self.scrollView.frame) - 16, 2);
          
 
          [additionalServices sizeToFit];
@@ -731,6 +722,8 @@
          
          
         additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
+         
+        lineView.frame = CGRectMake(8, CGRectGetMinY(additionalServices.frame), CGRectGetWidth(self.scrollView.frame) - 16, 2);
          
          
          for (int i=0 ; i<self.tachoElements.count; ++i)
@@ -899,6 +892,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+    
+    [timer invalidate];
     tachometerResponse=nil;
  
     tachoSubViews1=nil;
@@ -924,5 +919,9 @@
    underLabel=nil;
    timer=nil;
 }
-
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
 @end

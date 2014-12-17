@@ -75,5 +75,6 @@
 #pragma mark - left Menu
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(UIButton *)sender;
+- (IBAction)openMap:(UIButton*)sender;;
 
 @end

@@ -15,7 +15,7 @@
 #import "SetStatusResponse.h"
 #import "LeftMenu.h"
 #import "SingleDataProvider.h"
-
+#import "OpenMapButtonHandler.h"
 @interface EndUpViewController ()
 {
     ResponseSetBill* billResponse;
@@ -36,9 +36,12 @@
     UIButton* continueToOrder;
     UIButton* cashPaymentButton;
     CAGradientLayer* gradientLayer;
-    
+    OpenMapButtonHandler*openMapButtonHandlerObject;
     NSInteger flag;
     LeftMenu* leftMenu;
+    
+    
+
     
 }
 
@@ -56,6 +59,9 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     
     bgViewHeigth = 0.f;
     [bgView removeFromSuperview];
@@ -519,7 +525,7 @@
     else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Операция невозможна"
                                                                        message:
-                                    [NSString stringWithFormat:@"Лимит превышон\nна:%ld\nСтоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@\nКомиссия с заказа:%@\nМин. необходимы остаток:%@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
+                                    [NSString stringWithFormat:@"Лимит превышен\nна:%ld\nСтоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@\nКомиссия с заказа:%@\nМин. необходимый остаток:%@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
                                      self.bill,billTextField.text,billDifference.text,billResponse.commision,billResponse.creditlimit,billResponse.balance]
                                     
                                                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -740,6 +746,10 @@
     [self.navigationController popViewControllerAnimated:NO];
     
 }
-
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
 
 @end

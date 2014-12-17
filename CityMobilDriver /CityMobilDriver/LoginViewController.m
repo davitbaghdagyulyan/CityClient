@@ -421,7 +421,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
                 [defaults setObject:@"логин" forKey:UserDefaultsBankId];
                 [defaults setObject:@"Пароль" forKey:UserDefaultsPassword];
             }
-            [self.navigationController popViewControllerAnimated:NO];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
         
         [indicator stopAnimating];

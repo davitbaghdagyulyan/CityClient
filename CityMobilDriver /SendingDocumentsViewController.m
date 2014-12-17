@@ -8,6 +8,7 @@
 
 #import "SendingDocumentsViewController.h"
 #import "LeftMenu.h"
+#import "OpenMapButtonHandler.h"
 
 @interface SendingDocumentsViewController ()
 {
@@ -15,6 +16,7 @@
     LeftMenu*leftMenu;
     
     UIActivityIndicatorView* indicator;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -156,6 +158,12 @@
 
 - (IBAction)back:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 
 @end

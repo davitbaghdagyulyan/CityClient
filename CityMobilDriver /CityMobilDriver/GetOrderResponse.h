@@ -35,7 +35,6 @@
 
 @property(nonatomic,strong) NSString* CollComment;
 @property(nonatomic,strong) NSString* OurComment;
-@property(nonatomic,strong) NSString* collDate;
 @property(nonatomic,strong) NSString* tariff;
 
 

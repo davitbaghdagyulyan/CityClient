@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *elements;
 
 - (IBAction)elementAction:(id)sender;
+- (IBAction)openMap:(UIButton*)sender;
 
 
 
@@ -65,7 +66,6 @@
 //// left Menu /////
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
-
 @end
 
 

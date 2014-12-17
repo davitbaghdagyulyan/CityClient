@@ -26,6 +26,7 @@
     [super viewDidLoad];
     [self registerForKeyboardNotifications];
     self.phoneNumber.keyboardType = UIKeyboardTypePhonePad;
+//    self.phoneNumber.textAlignment
 }
 
 - (IBAction)region:(id)sender {
@@ -57,7 +58,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField keyboard:(CGSize)keyBoardSize
 {
     if (textField == self.phoneNumber) {
-        self.spaceTobuttom.constant = keyBoardSize.height - self.getPinCode.frame.size.height - self.region.frame.size.height - 16;
+        self.spaceTobuttom.constant = keyBoardSize.height - self.getPinCode.frame.size.height - self.region.frame.size.height - 12;
     }
     return YES;
 }
@@ -125,10 +126,10 @@
 //    CustomTableViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil] objectAtIndex:0];
     UITableViewCell* cell = [[UITableViewCell alloc]init];
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"  Москва";
+        cell.textLabel.text = @"Москва";
     }
     if (indexPath.row == 1) {
-        cell.textLabel.text = @"  Краснодар";
+        cell.textLabel.text = @"Краснодар";
     }
     return cell;
 }
@@ -210,14 +211,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -225,12 +228,19 @@
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",jsonString);
         GetActivationCodeResponse* responseObject = [[GetActivationCodeResponse alloc]initWithString:jsonString error:&err];
-        responseObject.delegate = self;
-        
-//        if (responseObject.code != nil) {
-//            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:responseObject.text delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
+        if (responseObject.code != nil) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:responseObject.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            return ;
+        }
         if (responseObject.result == 1) {
             ActivateAccountViewController* activationController=[self.storyboard instantiateViewControllerWithIdentifier:@"ActivateAccountViewController"];
             activationController.phone = self.phoneNumber.text;

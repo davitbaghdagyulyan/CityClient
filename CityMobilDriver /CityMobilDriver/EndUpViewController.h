@@ -21,4 +21,8 @@
 @property (nonatomic,strong) NSArray<Elements>* elements;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
+- (IBAction)openMap:(UIButton*)sender;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+
 @end

@@ -29,5 +29,5 @@
 ///// left Menu
 - (IBAction)back:(id)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
-
+- (IBAction)openMap:(UIButton*)sender;
 @end

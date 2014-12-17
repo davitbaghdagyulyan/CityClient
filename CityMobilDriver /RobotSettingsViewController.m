@@ -12,6 +12,7 @@
 #import "RequestUpdateAutoSettings.h"
 #import "LeftMenu.h"
 #import "StandartResponse.h"
+#import "OpenMapButtonHandler.h"
 
 
 @interface RobotSettingsViewController ()
@@ -44,6 +45,11 @@
     
     UILabel* childSeatLabel;
     
+    OpenMapButtonHandler*openMapButtonHandlerObject;
+    
+    
+    UITableViewCell* childSeatCell;
+    
 }
 @end
 
@@ -65,11 +71,7 @@
     [scrollView addSubview:descriptionLabel];
     
     
-    robotTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, scrollView.frame.size.width, 450)];
-    robotTable.scrollEnabled = NO;
-    robotTable.delegate = self;
-    robotTable.dataSource = self;
-    [scrollView addSubview:robotTable];
+
     
     
     saveButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 508, scrollView.frame.size.width, 35)];
@@ -86,6 +88,18 @@
     [self.view addSubview:backgroundView];
     
     
+
+    
+    
+//    
+//    controllViewsArray = [[NSMutableArray alloc]init];
+//    carCheckBoxArray = [[NSMutableArray alloc]init];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    tag = 102;
+    
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
@@ -94,33 +108,50 @@
     
     
     isDefaultTable = YES;
-    
     controllViewsArray = [[NSMutableArray alloc]init];
-    
     carCheckBoxArray = [[NSMutableArray alloc]init];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
     scrollView.userInteractionEnabled=YES;
-    [self RequestGetAutoSettings];
-    
     flag = 0;
     leftMenu=[LeftMenu getLeftMenu:self];
+    
+    
+    robotTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, scrollView.frame.size.width, 450)];
+    robotTable.scrollEnabled = NO;
+    robotTable.delegate = self;
+    robotTable.dataSource = self;
+    [scrollView addSubview:robotTable];
+    
+    [self RequestGetAutoSettings];
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    robotTable = nil;
+    controllViewsArray = nil;
+    carCheckBoxArray = nil;
+}
 
 
 #pragma mark - separators
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
+    if (tableView == robotTable) {
+        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, 5, 0, 0)];
+        }
+        
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsMake(0, 5, 0, 0)];
+        }
     }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
+    else{
+        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+            [cell setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
     }
 }
 
@@ -205,34 +236,34 @@
             break;
         case 2:
             textLabel.text = @" Некурящий салон";
-            [self setSwitch:cell isSelected:NO];
+            [self setSwitch:cell isSelected:NO switchTag:2];
             break;
         case 3:
             textLabel.text = @" В машине есть кондиционер";
-            [self setSwitch:cell isSelected:NO];
+            [self setSwitch:cell isSelected:NO switchTag:3];
             break;
         case 4:
             textLabel.text = @" Перевезу животных";
-            [self setSwitch:cell isSelected:NO];
+            [self setSwitch:cell isSelected:NO switchTag:4];
             break;
         case 5:
             textLabel.text = @" Есть квитанция";
-            [self setSwitch:cell isSelected:NO];
+            [self setSwitch:cell isSelected:NO switchTag:5];
             break;
         case 6:
             textLabel.text = @" В машине есть Wi-Fi";
-            [self setSwitch:cell isSelected:NO];
+            [self setSwitch:cell isSelected:NO switchTag:6];
             break;
         case 7:
             textLabel.text = @" Оплата пластиковыми картами";
-            [self setSwitch:cell isSelected:NO];
+            [self setSwitch:cell isSelected:NO switchTag:7];
             break;
         case 8:
             textLabel.text = @" Класс машины";
             break;
         case 9:
             textLabel.text = @" Детские кресла";
-            [self setSwitch:cell isSelected:NO];
+            [self setSwitch:cell isSelected:NO switchTag:8];
             break;
   default:
 
@@ -253,27 +284,27 @@
                 break;
             case 2:
                 textLabel.text = @" Некурящий салон";
-                [self setSwitch:cell isSelected:!responseObject.smoking];
+                [self setSwitch:cell isSelected:!responseObject.smoking switchTag:2];
                 break;
             case 3:
                 textLabel.text = @" В машине есть кондиционер";
-                [self setSwitch:cell isSelected:responseObject.conditioner];
+                [self setSwitch:cell isSelected:responseObject.conditioner switchTag:3];
                 break;
             case 4:
                 textLabel.text = @" Перевезу животных";
-                [self setSwitch:cell isSelected:responseObject.animal];
+                [self setSwitch:cell isSelected:responseObject.animal switchTag:4];
                 break;
             case 5:
                 textLabel.text = @" Есть квитанция";
-                [self setSwitch:cell isSelected:responseObject.has_check];
+                [self setSwitch:cell isSelected:responseObject.has_check switchTag:5];
                 break;
             case 6:
                 textLabel.text = @" В машине есть Wi-Fi";
-                [self setSwitch:cell isSelected:responseObject.has_wifi];
+                [self setSwitch:cell isSelected:responseObject.has_wifi switchTag:6];
                 break;
             case 7:
                 textLabel.text = @" Оплата пластиковыми картами";
-                [self setSwitch:cell isSelected:responseObject.has_card];
+                [self setSwitch:cell isSelected:responseObject.has_card switchTag:7];
                 break;
             case 8:
             {
@@ -289,24 +320,27 @@
                     [checkBox addTarget:self action:@selector(checkBoxAction:) forControlEvents:UIControlEventTouchUpInside];
                     
                     if ([responseObject.tariffs containsObject:[responseObject.possible_tariffs[i] getId]]) {
-                        [checkBox setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateSelected];
+                        //[checkBox setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateSelected];
                         [checkBox setSelected:YES];
                     }
                     
                     else{
-                        [checkBox setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
-//                        [checkBox setSelected:NO];
+                        //[checkBox setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+                        [checkBox setSelected:NO];
                     }
                     [cell.contentView addSubview:checkBox];
                     
                     
-                    UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(8 + 16 + 10, 45 + i*(8+15) - 4, 200, 15 + 8)];
-                    label.text = [responseObject.possible_tariffs[i] name];
-                    [cell addSubview:label];
+                    UIButton* button = [[UIButton alloc]initWithFrame:CGRectMake(8 + 16 + 10, 45 + i*(8+15) - 4, 200, 15 + 8)];
+                    button.tag = i;
+                    [button setTitle:[responseObject.possible_tariffs[i] name] forState:UIControlStateNormal];
+                    [button addTarget:self action:@selector(setCheckBox:) forControlEvents:UIControlEventTouchUpInside];
+                    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+                    [cell addSubview:button];
                     
                     [carCheckBoxArray addObject:checkBox];
                 }
-                
             }
                 break;
             case 9:{
@@ -314,7 +348,7 @@
                 textLabel.text = @" Детские кресла";
                 childSeatLabel = textLabel;
                 if ([responseObject.child_seat count] > 0) {
-                    [self setSwitch:cell isSelected:YES];
+                    [self setSwitch:cell isSelected:YES switchTag:8];
                     
                     textLabel.text = [textLabel.text stringByAppendingString:@" ["];
                     for (int i = 0; i < [responseObject.child_seat count]; ++i) {
@@ -328,8 +362,9 @@
                     textLabel.text = [textLabel.text stringByAppendingString:@"]"];
                 }
                 else{
-                    [self setSwitch:cell isSelected:NO];
+                    [self setSwitch:cell isSelected:NO switchTag:8];
                 }
+                childSeatCell = cell;
             }
                 break;
             default:
@@ -354,11 +389,23 @@
 }
 
 
--(void)setSwitch: (UITableViewCell*)cell isSelected:(BOOL)isSelected{
-    static NSInteger tag = 102;
+-(void)setCheckBox:(UIButton*)sender{
+    UIButton* checkBox = (UIButton*)carCheckBoxArray[sender.tag];
+
+    if (checkBox.isSelected) {
+            [checkBox setSelected:NO];
+    }
+    else{
+        [checkBox setSelected:YES];
+    }
+}
+
+//static NSInteger tag = 102;
+-(void)setSwitch: (UITableViewCell*)cell isSelected:(BOOL)isSelected switchTag:(NSInteger)tag{
+    NSLog(@"%li",(long)tag);
     UISwitch* Switch = [[UISwitch alloc]init];
     Switch.onTintColor = [UIColor orangeColor];
-    Switch.tag = tag;
+    Switch.tag = tag + 100;
     Switch.on = isSelected;
 
     Switch.translatesAutoresizingMaskIntoConstraints = NO;
@@ -375,7 +422,7 @@
     if (!isDefaultTable) {
         [controllViewsArray addObject:Switch];
         [Switch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventTouchUpInside];
-        ++tag;
+//        ++tag;
     }
 }
 
@@ -512,7 +559,9 @@
 -(void)switchAction:(UISwitch*)sender{
     
     
-    NSLog(@"%li",(long)sender.tag);
+    UISwitch* s = sender;
+    NSLog(@"sender.tag = %li",(long)sender.tag);
+    //NSLog(@"tag = %ld",(long)tag);
     
     switch (sender.tag) {
         case 102:
@@ -575,6 +624,11 @@
             ++count;
         }
     }
+    if (count == 0) {
+        UISwitch* swith = (UISwitch*)[childSeatCell viewWithTag:108];
+        swith.on = NO;
+        return;
+    }
     if (count) {
         childSeatLabel.text = [childSeatLabel.text stringByAppendingString:@" ["];
     }
@@ -615,7 +669,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -645,11 +699,6 @@
         [indicator removeFromSuperview];
     }];
     
-    
-    
-
-    
-    
 }
 
 
@@ -662,6 +711,7 @@
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
+    [self.view addSubview:indicator];
     
     
     RequestUpdateAutoSettings* requestObject=[[RequestUpdateAutoSettings alloc]init];
@@ -676,25 +726,30 @@
     requestObject.settings.has_wifi = [controllViewsArray[6] isOn];
     requestObject.settings.has_card = [controllViewsArray[7] isOn];
     
-    
     NSMutableArray* array = [[NSMutableArray alloc]init];
+    for (int i = 0; i < [carCheckBoxArray count]; ++i) {
+        [array addObject:[NSNumber numberWithInt:-1]];
+    }
+    
     for (int i = 0; i < [carCheckBoxArray count]; ++i) {
         if ([carCheckBoxArray[i] isSelected]) {
             [array addObject:[responseObject.possible_tariffs[i] getId]];
         }
     }
-    
     requestObject.settings.tariffs = array;
     
-    
-    
     NSMutableArray* arr = [[NSMutableArray alloc]init];
-    for (int i = 0; i < [self.checkBoxes count]; ++i) {
-        if ([self.checkBoxes[i] isSelected]) {
-            [arr addObject:[NSNumber numberWithInt:i+1]];
+    if ([controllViewsArray[8] isOn]) {
+        for (int i = 0; i < [self.checkBoxes count]; ++i) {
+            if ([self.checkBoxes[i] isSelected]) {
+                [arr addObject:[NSNumber numberWithInt:i+1]];
+            }
         }
     }
     requestObject.settings.child_seat = arr;
+    
+    
+    
     requestObject.settings.possible_tariffs = nil;
     requestObject.settings.max_collminute = 0;
     requestObject.settings.max_radius = 0;
@@ -724,14 +779,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -742,14 +799,30 @@
         
         
         if (obj.code != nil) {
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"" message:obj.text delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:obj.text preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            
         }
         else{
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"" message:@"настройки успешно сохранены" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"настройки успешно сохранены" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
         }
-        
         [indicator stopAnimating];
     }];
 }
@@ -940,6 +1013,12 @@
     }
     [self.navigationController popViewControllerAnimated:NO];
     
+}
+
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
 }
 
 @end

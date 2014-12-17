@@ -13,7 +13,7 @@
 #import "LeftMenu.h"
 #import "StandartResponse.h"
 #import "TachometerViewController.h"
-
+#import "OpenMapButtonHandler.h"
 
 @interface ServicesViewController ()
 {
@@ -25,7 +25,7 @@
     
     NSInteger flag;
     LeftMenu*leftMenu;
-    
+    OpenMapButtonHandler*openMapButtonHandlerObject;
 }
 @end
 
@@ -40,6 +40,10 @@
     [super viewDidAppear:animated];
     flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+
+    
 }
 
 
@@ -146,13 +150,26 @@
     
     
     
-    NSError* err;
-    NSURLResponse *response = [[NSURLResponse alloc]init];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"------------======= = = == -%@",jsonString);
-    
-    StandartResponse* standatrRespons = [[StandartResponse alloc]initWithString:jsonString error:&err];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSError* err;
+        NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"------------======= = = == -%@",jsonString);
+        StandartResponse* standatrRespons = [[StandartResponse alloc]initWithString:jsonString error:&err];
+
+        if (!data)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     
     if (standatrRespons.code) {
         UIAlertController *alertController = [UIAlertController
@@ -173,11 +190,10 @@
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
-
     else{
         [self.navigationController popViewControllerAnimated:NO];
     }
-
+    }];
 }
 
 
@@ -186,6 +202,7 @@
 
 - (IBAction)okAction:(UIButton *)sender {
     [self setElementsRequest];
+    
 }
 
 
@@ -443,6 +460,11 @@
     
 }
 
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
 
 
 @end
