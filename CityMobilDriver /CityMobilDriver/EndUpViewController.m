@@ -43,7 +43,8 @@
     LeftMenu* leftMenu;
     
     
-
+    UIImageView* cashImage;
+    UIImageView* bonusImage;
     
 }
 
@@ -79,6 +80,7 @@
     [priceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [priceButton.titleLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:30]];
     [bgView addSubview:priceButton];
+
     bgViewHeigth += CGRectGetHeight(priceButton.frame);
     
     
@@ -138,6 +140,13 @@
 {
     if ([self.orderResponse.useBonus isEqualToString:@"Y"]) {
         PaymentOnBonusesButton = [[UIButton alloc]initWithFrame:CGRectMake(8, bgViewHeigth , CGRectGetWidth(self.endUpScrollView.frame) - 16, 40)];
+        
+        
+        bonusImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetWidth(PaymentOnBonusesButton.frame)- 44 - 5, (CGRectGetHeight(PaymentOnBonusesButton.frame) - 38)/2, 44, 38)];
+        [bonusImage setImage:[UIImage imageNamed:@"on_bonuses_payment.png"]];
+        [PaymentOnBonusesButton addSubview:bonusImage];
+        
+        
         [PaymentOnBonusesButton setTitle:@"Оплата по бонусам" forState:UIControlStateNormal];
         PaymentOnBonusesButton.backgroundColor = [UIColor orangeColor];
         [PaymentOnBonusesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -206,6 +215,12 @@
 
 -(void)drowCashButton{
     cashPaymentButton = [[UIButton alloc]initWithFrame:CGRectMake(8, bgViewHeigth , CGRectGetWidth(self.endUpScrollView.frame) - 16, 40)];
+    
+    
+    cashImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetWidth(cashPaymentButton.frame)- 44 - 5, (CGRectGetHeight(cashPaymentButton.frame) - 38)/2, 44, 38)];
+    [cashImage setImage:[UIImage imageNamed:@"cash.png"]];
+    [cashPaymentButton addSubview:cashImage];
+    
     [cashPaymentButton setTitle:@"Оплата за наличный расчет" forState:UIControlStateNormal];
     cashPaymentButton.backgroundColor = [UIColor orangeColor];
     [cashPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -427,6 +442,10 @@
          bgView.frame = CGRectMake(0, 0, CGRectGetWidth(self.endUpScrollView.frame), bgViewHeigth);
          self.endUpScrollView.contentSize=CGSizeMake(CGRectGetWidth(self.endUpScrollView.frame), bgViewHeigth);
          gradientLayer.frame = priceButton.frame;
+         
+         
+        bonusImage.frame = CGRectMake(CGRectGetWidth(PaymentOnBonusesButton.frame)- 44 - 5, (CGRectGetHeight(PaymentOnBonusesButton.frame) - 38)/2, 44, 38);
+        cashImage.frame = CGRectMake(CGRectGetWidth(cashPaymentButton.frame)- 44 - 5, (CGRectGetHeight(cashPaymentButton.frame) - 38)/2, 44, 38);
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)

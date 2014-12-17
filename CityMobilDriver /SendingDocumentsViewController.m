@@ -12,7 +12,6 @@
 
 @interface SendingDocumentsViewController ()
 {
-    NSInteger flag;
     LeftMenu*leftMenu;
     
     UIActivityIndicatorView* indicator;
@@ -36,7 +35,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
 }
 
@@ -59,7 +57,7 @@
                      animations:^(void)
      {
          CGPoint point;
-         if (flag==0)
+         if (leftMenu.flag==0)
              point.x=(CGFloat)leftMenu.frame.size.width/2;
          else
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -70,14 +68,14 @@
                      completion:^(BOOL finished)
      {
          
-         if (flag==0)
+         if (leftMenu.flag==0)
          {
-             flag=1;
+             leftMenu.flag=1;
              self.webView.userInteractionEnabled = NO;
          }
          else
          {
-             flag=0;
+             leftMenu.flag=0;
              self.webView.userInteractionEnabled = YES;
          }
          
@@ -92,7 +90,7 @@
     CGPoint touchLocation = [touch locationInView:touch.view];
     
     
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     
     [UIView animateWithDuration:0.5
@@ -110,7 +108,7 @@
          
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
-             flag=0;
+             leftMenu.flag=0;
              self.webView.userInteractionEnabled = YES;
              
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -121,7 +119,7 @@
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              
              self.webView.userInteractionEnabled = NO;
-             flag=1;
+             leftMenu.flag=1;
          }
          point.y=leftMenu.center.y;
          leftMenu.center=point;
@@ -137,7 +135,7 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     
     CGPoint point;
@@ -151,7 +149,7 @@
     
     self.webView.userInteractionEnabled = NO;
     
-    flag=1;
+    leftMenu.flag=1;
     
     
 }

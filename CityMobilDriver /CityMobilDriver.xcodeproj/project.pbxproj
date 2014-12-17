@@ -113,6 +113,8 @@
 		EC5BF09B1A022F85009EC444 /* ResponseGetColorList.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF09A1A022F85009EC444 /* ResponseGetColorList.m */; };
 		EC5BF09E1A02300B009EC444 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF09D1A02300B009EC444 /* Colors.m */; };
 		EC5BF0A11A028AD1009EC444 /* RequestSetCarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF0A01A028AD1009EC444 /* RequestSetCarInfo.m */; };
+		EC80D4131A41CFAA007885B6 /* cash.png in Resources */ = {isa = PBXBuildFile; fileRef = EC80D4111A41CFAA007885B6 /* cash.png */; };
+		EC80D4141A41CFAA007885B6 /* on_bonuses_payment.png in Resources */ = {isa = PBXBuildFile; fileRef = EC80D4121A41CFAA007885B6 /* on_bonuses_payment.png */; };
 		EC84D9AF1A3EDB1700ECC915 /* OpenMapButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */; };
 		EC896A7D19FE5C4700822D9E /* CustomView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC896A7C19FE5C4700822D9E /* CustomView2.xib */; };
 		ECAD78BB1A306048005C2468 /* AddGPSJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78BA1A306048005C2468 /* AddGPSJson.m */; };
@@ -513,6 +515,8 @@
 		EC5BF09D1A02300B009EC444 /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
 		EC5BF09F1A028AD1009EC444 /* RequestSetCarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSetCarInfo.h; sourceTree = "<group>"; };
 		EC5BF0A01A028AD1009EC444 /* RequestSetCarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestSetCarInfo.m; sourceTree = "<group>"; };
+		EC80D4111A41CFAA007885B6 /* cash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cash.png; sourceTree = "<group>"; };
+		EC80D4121A41CFAA007885B6 /* on_bonuses_payment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = on_bonuses_payment.png; sourceTree = "<group>"; };
 		EC84D9AD1A3EDB1700ECC915 /* OpenMapButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenMapButtonHandler.h; sourceTree = "<group>"; };
 		EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenMapButtonHandler.m; sourceTree = "<group>"; };
 		EC896A7C19FE5C4700822D9E /* CustomView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomView2.xib; sourceTree = "<group>"; };
@@ -1293,6 +1297,8 @@
 		ECB38B281A0D12D400DFBB77 /* Designation Icons Images */ = {
 			isa = PBXGroup;
 			children = (
+				EC80D4111A41CFAA007885B6 /* cash.png */,
+				EC80D4121A41CFAA007885B6 /* on_bonuses_payment.png */,
 				ECF2FFFB1A406BCF00C8A269 /* ic_launcher-copy.png */,
 				EC0798ED1A2379C90085E3F0 /* set3_orange.png */,
 				EC0798DA1A23327F0085E3F0 /* ya_green.png */,
@@ -2125,6 +2131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FC222791A36E9360003CAAF /* PaymentHistoryCustomCell.xib in Resources */,
+				EC80D4141A41CFAA007885B6 /* on_bonuses_payment.png in Resources */,
 				8FB0F8AE1A28D9AE003A79E9 /* metro_d.png in Resources */,
 				8FC5D8ED1A14FFC600B33FA9 /* Roboto-LightItalic.ttf in Resources */,
 				8FB0F8A31A28D9AE003A79E9 /* ic_landmark_cinema copy.png in Resources */,
@@ -2225,6 +2232,7 @@
 				ECCD99401A19DF93009D482C /* Roboto-Light.ttf in Resources */,
 				8FB0F8A41A28D9AE003A79E9 /* ic_landmark_cinema_viewed.png in Resources */,
 				8FC222651A36E8550003CAAF /* CustomCellOrdersHistory.xib in Resources */,
+				EC80D4131A41CFAA007885B6 /* cash.png in Resources */,
 				EC896A7D19FE5C4700822D9E /* CustomView2.xib in Resources */,
 				ECCEE4FE19F0121400F07532 /* CustomTableViewCell.xib in Resources */,
 				8FB0F8A81A28D9AE003A79E9 /* ic_landmark_mall_viewed.png in Resources */,

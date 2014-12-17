@@ -27,7 +27,6 @@
     UIAlertView* sucsedAlert;
     
     
-    NSInteger flag;
     LeftMenu*leftMenu;
     
     CAGradientLayer* gradientLayer1;
@@ -84,7 +83,6 @@
     [self requestGetColorList];
     
     
-    flag=0;
     leftMenu=[LeftMenu getLeftMenu:self];
     self.scrollView.userInteractionEnabled=YES;
     self.segmentControll.userInteractionEnabled=YES;
@@ -789,7 +787,7 @@
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
                                      CGFloat xx;
                                      
-                                     if(flag==0)
+                                     if(leftMenu.flag==0)
                                      {
                                          xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
                                      }
@@ -797,7 +795,7 @@
                                      {
                                          xx=0;
                                      }
-                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
                                  }];
     
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
@@ -828,7 +826,7 @@
                      animations:^(void)
      {
          CGPoint point;
-         if (flag==0)
+         if (leftMenu.flag==0)
              point.x=(CGFloat)leftMenu.frame.size.width/2;
          else
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -839,15 +837,15 @@
                      completion:^(BOOL finished)
      {
          
-         if (flag==0)
+         if (leftMenu.flag==0)
          {
-             flag=1;
+             leftMenu.flag=1;
              self.scrollView.userInteractionEnabled = NO;
              self.segmentControll.userInteractionEnabled = NO;
          }
          else
          {
-             flag=0;
+             leftMenu.flag=0;
              self.scrollView.userInteractionEnabled = YES;
              self.segmentControll.userInteractionEnabled = YES;
          }
@@ -861,7 +859,7 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     [UIView animateWithDuration:0.5
                           delay:0.0
@@ -873,7 +871,7 @@
          NSLog(@"\n%f",leftMenu.frame.size.width/2);
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
-             flag=0;
+             leftMenu.flag=0;
              self.scrollView.userInteractionEnabled = YES;
              self.segmentControll.userInteractionEnabled = YES;
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -883,7 +881,7 @@
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              self.scrollView.userInteractionEnabled = NO;
              self.segmentControll.userInteractionEnabled = NO;
-             flag=1;
+             leftMenu.flag=1;
          }
          point.y=leftMenu.center.y;
          leftMenu.center=point;
@@ -896,7 +894,7 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     CGPoint point;
     point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
@@ -908,7 +906,7 @@
     leftMenu.center=point;
     self.scrollView.userInteractionEnabled = NO;
     self.segmentControll.userInteractionEnabled = NO;
-    flag=1;
+    leftMenu.flag=1;
 }
 
 - (IBAction)back:(UIButton *)sender {

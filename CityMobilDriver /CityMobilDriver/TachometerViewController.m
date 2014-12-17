@@ -29,7 +29,7 @@
     
     NSMutableArray* idArray;
     
-    NSInteger flag;
+ 
     LeftMenu*leftMenu;
     
     UILabel* additionalServices;
@@ -71,7 +71,7 @@
     additionalServices = [[UILabel alloc]init];
     additionalServicesButton = [[UIButton alloc]init];
     
-    flag=0;
+   
     leftMenu=[LeftMenu getLeftMenu:self];
     [self getOrSetTaximeter:0 value:@"a" isSet:YES isSetElements:NO];
     idArray = [[NSMutableArray alloc]init];
@@ -754,7 +754,7 @@
         
                                      CGFloat xx;
                                      
-                                     if(flag==0)
+                                     if(leftMenu.flag==0)
                                      {
                                          xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
                                      }
@@ -762,7 +762,7 @@
                                      {
                                          xx=0;
                                      }
-                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+                                     leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
         
                                  }];
     
@@ -782,7 +782,7 @@
                      animations:^(void)
      {
          CGPoint point;
-         if (flag==0)
+         if (leftMenu.flag==0)
              point.x=(CGFloat)leftMenu.frame.size.width/2;
          else
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -793,15 +793,15 @@
                      completion:^(BOOL finished)
      {
          
-         if (flag==0)
+         if (leftMenu.flag == 0)
          {
-             flag=1;
+             leftMenu.flag=1;
              self.bgView.userInteractionEnabled = NO;
              //self.segmentedControll.userInteractionEnabled = NO;
          }
          else
          {
-             flag=0;
+             leftMenu.flag=0;
              self.bgView.userInteractionEnabled = YES;
              //self.segmentedControll.userInteractionEnabled = YES;
          }
@@ -817,7 +817,7 @@
     CGPoint touchLocation = [touch locationInView:touch.view];
     
     
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     
     [UIView animateWithDuration:0.5
@@ -835,7 +835,7 @@
          
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
-             flag=0;
+             leftMenu.flag=0;
              self.bgView.userInteractionEnabled = YES;
              //self.segmentedControll.userInteractionEnabled = YES;
              
@@ -848,7 +848,7 @@
              
              self.bgView.userInteractionEnabled = NO;
              //self.segmentedControll.userInteractionEnabled = NO;
-             flag=1;
+             leftMenu.flag=1;
          }
          point.y=leftMenu.center.y;
          leftMenu.center=point;
@@ -864,7 +864,7 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     
     CGPoint point;
@@ -879,14 +879,14 @@
     self.bgView.userInteractionEnabled = NO;
     //self.segmentedControll.userInteractionEnabled = NO;
     
-    flag=1;
+    leftMenu.flag=1;
     
     
 }
 
 - (IBAction)back:(id)sender
 {
-    if (flag)
+    if (leftMenu.flag)
     {
         CGPoint point;
         point.x=leftMenu.center.x-leftMenu.frame.size.width;
@@ -907,23 +907,26 @@
     tachoSubViews2=nil;
     scrollViewContentHeight=0;
     idArray=nil;
-    flag=0;
+    leftMenu.flag=0;
     leftMenu=nil;
     [additionalServices removeFromSuperview];
-    additionalServices=nil;
-    additionalServicesButton=nil;
- 
     [ourCommentLabel removeFromSuperview];
     [metroNamesLabel removeFromSuperview];
     [lineView removeFromSuperview];
-   metroNamesLabel=nil;
+    
+    
+    metroNamesLabel=nil;
     ourCommentLabel=nil;
+    additionalServices=nil;
+    additionalServicesButton=nil;
   lineView=nil;
     for (int i = 0; i < 5; ++i)
     {
         [[self.view viewWithTag:(150+i)] removeFromSuperview];
         [[self.view viewWithTag:(200+i)] removeFromSuperview];
     }
+    [upLabel removeFromSuperview];
+    [underLabel removeFromSuperview];
    upLabel=nil;
    underLabel=nil;
    timer=nil;
@@ -933,4 +936,5 @@
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
+
 @end
