@@ -20,7 +20,7 @@
     NSString*googleMapUrl;
      OpenMapButtonHandler*openMapButtonHandlerObject;
     LeftMenu*leftMenu;
-    NSInteger flag;
+    
     SelectedOrdersDetailsResponse*getMyOrdersResponseObject;
     SelectedOrdersTableViewHandler*selectedOrdersTableViewHandlerObject;
     
@@ -56,7 +56,7 @@
     self.myOrdersTableView.delegate=selectedOrdersTableViewHandlerObject;
     self.myOrdersTableView.dataSource=selectedOrdersTableViewHandlerObject;
     
-    flag=0;
+
     leftMenu=[LeftMenu getLeftMenu:self];
    
     [self requestGetMyOrders];
@@ -328,14 +328,14 @@
 
 - (IBAction)back:(id)sender
 {
-    if (flag)
+    if (leftMenu.flag)
     {
         CGPoint point;
         point.x=leftMenu.center.x-leftMenu.frame.size.width;
         point.y=leftMenu.center.y;
         leftMenu.center=point;
     }
-    [self.navigationController popViewControllerAnimated:NO];
+   [self.navigationController popToRootViewControllerAnimated:NO];
     
     
 }
@@ -347,7 +347,7 @@
                      animations:^(void)
      {
          CGPoint point;
-         if (flag==0)
+         if (leftMenu.flag==0)
              point.x=(CGFloat)leftMenu.frame.size.width/2;
          else
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -358,15 +358,15 @@
                      completion:^(BOOL finished)
      {
          
-         if (flag==0)
+         if (leftMenu.flag==0)
          {
-             flag=1;
+             leftMenu.flag=1;
              self.myOrdersTableView.userInteractionEnabled=NO;
          }
          else
          {
              self.myOrdersTableView.userInteractionEnabled=YES;
-             flag=0;
+             leftMenu.flag=0;
          }
          
      }
@@ -376,7 +376,7 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     [UIView animateWithDuration:0.5
                           delay:0.0
@@ -388,7 +388,7 @@
          NSLog(@"\n%f",leftMenu.frame.size.width/2);
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
-             flag=0;
+             leftMenu.flag=0;
              self.myOrdersTableView.userInteractionEnabled=YES;
            
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -396,7 +396,7 @@
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
-             flag=1;
+             leftMenu.flag=1;
              self.myOrdersTableView.userInteractionEnabled=NO;
          
          }
@@ -412,7 +412,7 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
     {
         return;
     }
@@ -424,7 +424,7 @@
         return;
     }
     leftMenu.center=point;
-    flag=1;
+    leftMenu.flag=1;
     self.myOrdersTableView.userInteractionEnabled=NO;
 
 }
@@ -441,7 +441,7 @@
          CGFloat xx;
          
          
-         if(flag==0)
+         if(leftMenu.flag==0)
          {
              xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
          }
@@ -450,7 +450,7 @@
              xx=0;
          }
          
-         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
          
      }];
     

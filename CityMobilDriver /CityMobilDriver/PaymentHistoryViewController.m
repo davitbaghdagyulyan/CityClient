@@ -16,7 +16,7 @@
 {
     //NAREK
     LeftMenu*leftMenu;
-    NSInteger flag;
+
     UISwipeGestureRecognizer*recognizerRight;
     UIAlertView *callDispetcherAlert;
      OpenMapButtonHandler*openMapButtonHandlerObject;
@@ -49,7 +49,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     //Left Menu
-    flag=0;
+    leftMenu.flag=0;
     self.PaymentsHistoryTableView.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
     //Payments
@@ -178,7 +178,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
                      animations:^(void)
      {
          CGPoint point;
-         if (flag==0)
+         if (leftMenu.flag==0)
              point.x=(CGFloat)leftMenu.frame.size.width/2;
          else
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -189,14 +189,14 @@ GetPaymentsResponse * getPaymentsResponseObject;
                      completion:^(BOOL finished)
      {
          
-         if (flag==0)
+         if (leftMenu.flag==0)
          {
-             flag=1;
+             leftMenu.flag=1;
              self.PaymentsHistoryTableView.userInteractionEnabled=NO;
          }
          else
          {
-             flag=0;
+             leftMenu.flag=0;
              self.PaymentsHistoryTableView.userInteractionEnabled=YES;
              
          }
@@ -210,14 +210,14 @@ GetPaymentsResponse * getPaymentsResponseObject;
 
 - (IBAction)back:(id)sender
 {
-    if (flag)
+    if (leftMenu.flag)
     {
         CGPoint point;
         point.x=leftMenu.center.x-leftMenu.frame.size.width;
         point.y=leftMenu.center.y;
         leftMenu.center=point;
     }
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (IBAction)refresh:(id)sender
@@ -229,7 +229,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     [UIView animateWithDuration:0.5
                           delay:0.0
@@ -241,7 +241,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
          NSLog(@"\n%f",leftMenu.frame.size.width/2);
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
-             flag=0;
+             leftMenu.flag=0;
              self.PaymentsHistoryTableView.userInteractionEnabled=YES;
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
@@ -249,7 +249,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              self.PaymentsHistoryTableView.userInteractionEnabled=NO;
-             flag=1;
+             leftMenu.flag=1;
          }
          point.y=leftMenu.center.y;
          leftMenu.center=point;
@@ -265,7 +265,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
-    if (flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
         return;
     CGPoint point;
     point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
@@ -276,7 +276,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
     }
     leftMenu.center=point;
     self.PaymentsHistoryTableView.userInteractionEnabled=NO;
-    flag=1;
+    leftMenu.flag=1;
     
 }
 
@@ -304,7 +304,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
      completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          CGFloat xx;
-         if(flag==0)
+         if(leftMenu.flag==0)
          {
              xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
          }
@@ -312,7 +312,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
          {
              xx=0;
          }
-         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
          
      }];
  [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];

@@ -12,4 +12,5 @@
 @property(strong,nonatomic)UIViewController* curentViewController;
 @property(strong,nonatomic)NSMutableArray*nameArray;
 +(LeftMenu*)getLeftMenu:(id)curentSelf;
+@property(nonatomic,assign)NSUInteger flag;
 @end
