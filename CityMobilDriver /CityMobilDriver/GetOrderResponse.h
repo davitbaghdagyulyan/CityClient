@@ -37,7 +37,8 @@
 @property(nonatomic,strong) NSString* OurComment;
 @property(nonatomic,strong) NSString* tariff;
 
-
+@property(nonatomic,strong)NSString* CollAddressText;
+@property(nonatomic,strong)NSString* DeliveryAddressText;
 
 @property (nonatomic,strong) NSString* payment_method;
 @property (nonatomic,strong) NSString* useBonus;

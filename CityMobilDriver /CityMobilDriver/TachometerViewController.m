@@ -462,7 +462,12 @@
     label4.text = [self timeFormat:tachometerResponse.GoodArrived];
     
     UILabel* label5 = self.labelsColoection[5];
-    label5.text = [NSString stringWithFormat:@"%li",(long)tachometerResponse.wayPrice];
+    
+    NSInteger sum = 0;
+    for (int i = 0; i < tachometerResponse.services.count; ++i) {
+        sum += [[tachometerResponse.services[i] prices] integerValue];
+    }
+    label5.text = [NSString stringWithFormat:@"%li",(long)sum];
     NSLog(@"%li",(long)tachometerResponse.wayPrice);
     
     
@@ -471,9 +476,12 @@
     if (self.collMetroName.length) {
         metroNamesLabel.frame = CGRectMake(8, CGRectGetMaxY(self.informationView.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/5);
         metroNamesLabel.numberOfLines = 2;
-        NSString* str = self.collMetroName;
-        if (self.deliveryMetroName) {
-            str = [str stringByAppendingFormat:@"\n%@",self.deliveryMetroName];
+//        NSString* str = self.collMetroName;
+        NSString* str = self.orderResponse.CollAddressText;
+//        if (self.deliveryMetroName) {
+        if (self.orderResponse.DeliveryAddressText) {
+//            str = [str stringByAppendingFormat:@"\n%@",self.deliveryMetroName];
+             str = [str stringByAppendingFormat:@"\n%@",self.orderResponse.DeliveryAddressText];
         }
         metroNamesLabel.text = str;
         [self.scrollView addSubview:metroNamesLabel];
@@ -481,6 +489,7 @@
     
     
     ourCommentLabel.frame = CGRectMake(8, CGRectGetMaxY(metroNamesLabel.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/10);
+    ourCommentLabel.font = [UIFont fontWithName:@"Roboto-Italic" size:15];
     ourCommentLabel.numberOfLines = 2;
     if (self.ourComment.length) {
         ourCommentLabel.backgroundColor = [UIColor whiteColor];
@@ -489,12 +498,16 @@
     }
     
     
-    
+    NSLog(@"///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
     
     NSString* str = [[NSString alloc]init];
     for (int i = 0; i < tachometerResponse.services.count; ++i) {
-        str = [str stringByAppendingFormat:@" %@ - %@ \n",[tachometerResponse.services[i] name],[tachometerResponse.services[i] prices]];
+        NSMutableArray* arr = [NSMutableArray arrayWithObject:[tachometerResponse.services[i] prices]];
+        
+        [self cutStringsInArray:arr];
+        NSString* price = arr[0];
+        str = [str stringByAppendingFormat:@" %@ - %@ \n",[tachometerResponse.services[i] name],price];//[tachometerResponse.services[i] prices]
         [idArray addObject:[tachometerResponse.services[i] name]];
     }
     
@@ -502,8 +515,7 @@
     
     additionalServices.text = str;
     additionalServices.numberOfLines = tachometerResponse.services.count;
-    
-    
+    [additionalServices setLineBreakMode:NSLineBreakByWordWrapping];
     [additionalServices sizeToFit];
     
     self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.informationView.frame) + 8 + CGRectGetHeight(metroNamesLabel.frame) + 8 + CGRectGetHeight(ourCommentLabel.frame) + 8 + 2 + 8 + CGRectGetHeight(additionalServices.frame));
@@ -524,21 +536,16 @@
         rect.origin.x = 8;
         rect.origin.y = self.scrollView.contentSize.height - 8 - CGRectGetHeight(additionalServices.frame);
         additionalServices.frame = rect;
-
-        
     }
 
     
     [self.scrollView addSubview:additionalServices];
     
-    
-    
     lineView.frame = CGRectMake(8, CGRectGetMinY(additionalServices.frame), CGRectGetWidth(self.scrollView.frame) - 16, 2);
     lineView.backgroundColor = [UIColor grayColor];
     [self.scrollView addSubview:lineView];
     
-    
-    
+
     
     additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
     [additionalServicesButton setBackgroundImage:[UIImage imageNamed:@"tachometer_arrow.png"] forState:UIControlStateNormal];
@@ -906,7 +913,9 @@
     additionalServices=nil;
     additionalServicesButton=nil;
  
-    
+    [ourCommentLabel removeFromSuperview];
+    [metroNamesLabel removeFromSuperview];
+    [lineView removeFromSuperview];
    metroNamesLabel=nil;
     ourCommentLabel=nil;
   lineView=nil;
