@@ -131,6 +131,9 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         login.text = [UserRegistrationInformation sharedInformation].bankId;
         password.text = [UserRegistrationInformation sharedInformation].password;
     }
+    
+    
+    //NSInteger count = self.navigationController.viewControllers.count;
 }
 
 

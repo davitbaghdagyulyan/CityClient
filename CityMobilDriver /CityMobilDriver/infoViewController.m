@@ -91,6 +91,10 @@
         NSLog(@"%@",jsonString);
         jsonResponseObject = [[textResponse alloc]initWithString:jsonString error:&err];
         
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:jsonResponseObject.text code:jsonResponseObject.code];
+        
         NSURL* url = [[NSURL alloc]init];
         
         NSString *str = [[NSString alloc]init];

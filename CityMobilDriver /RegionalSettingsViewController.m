@@ -115,6 +115,10 @@
         
         responseObject = [[GetZonesResponse alloc]initWithString:jsonString error:&err];
         
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:responseObject.text code:responseObject.code];
+        
         //NSLog(@"%@",[responseObject description]);
         isRegionFound = [self isCircleContainsPoint];
         if (isRegionFound) {

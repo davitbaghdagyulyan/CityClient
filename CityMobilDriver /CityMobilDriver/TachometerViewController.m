@@ -271,27 +271,10 @@
         NSError*err;
         tachometerResponse = [[ResponseGetTachometer alloc]initWithString:jsonString error:&err];
         
-        if (tachometerResponse.code) {
-            UIAlertController *alertController = [UIAlertController
-                                                  alertControllerWithTitle:@""
-                                                  message:tachometerResponse.text
-                                                  preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* ok = [UIAlertAction
-                                 actionWithTitle:@"OK"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alertController dismissViewControllerAnimated:YES completion:nil];
-                                     
-                                 }];
-            
-            [alertController addAction:ok];
-            
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
-        else
-        {
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:tachometerResponse.text code:tachometerResponse.code];
+        
             if (isSet)
             {
                 [self setTachometerViews];
@@ -309,8 +292,6 @@
                 }
                 
             }
-            
-        }
     }];
 }
 

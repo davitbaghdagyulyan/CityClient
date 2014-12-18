@@ -326,6 +326,7 @@
 		ECF529C41A124AA000150931 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529C31A124AA000150931 /* CustomWebView.m */; };
 		ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */; };
 		ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */; };
+		ECFD3E4B1A42C5400066B55A /* BadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E4A1A42C5400066B55A /* BadRequest.m */; };
 		ECFF3A9A1A30B7C0009A88E0 /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFF3A991A30B7C0009A88E0 /* ServicesViewController.m */; };
 		ECFF3A9C1A30B8DE009A88E0 /* ServicesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFF3A9B1A30B8DE009A88E0 /* ServicesTableCell.xib */; };
 /* End PBXBuildFile section */
@@ -875,6 +876,9 @@
 		ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandartResponse.m; sourceTree = "<group>"; };
 		ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingDocumentsViewController.h; sourceTree = "<group>"; };
 		ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingDocumentsViewController.m; sourceTree = "<group>"; };
+		ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		ECFD3E491A42C5400066B55A /* BadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadRequest.h; sourceTree = "<group>"; };
+		ECFD3E4A1A42C5400066B55A /* BadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadRequest.m; sourceTree = "<group>"; };
 		ECFF3A981A30B7C0009A88E0 /* ServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesViewController.h; sourceTree = "<group>"; };
 		ECFF3A991A30B7C0009A88E0 /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesViewController.m; sourceTree = "<group>"; };
 		ECFF3A9B1A30B8DE009A88E0 /* ServicesTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesTableCell.xib; sourceTree = "<group>"; };
@@ -999,6 +1003,9 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECFD3E491A42C5400066B55A /* BadRequest.h */,
+				ECFD3E4A1A42C5400066B55A /* BadRequest.m */,
+				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
 				ECB063B31A31E7C5004633A6 /* openMapButtonHandler */,
 				ECAD78BF1A30AA7A005C2468 /* getLastKnownLocation */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
@@ -2439,6 +2446,7 @@
 				ECCA4CB31A0B60E6007CEBC4 /* RegisterResponse.m in Sources */,
 				8FC222631A36E8550003CAAF /* OrdersHistoryViewController.m in Sources */,
 				84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */,
+				ECFD3E4B1A42C5400066B55A /* BadRequest.m in Sources */,
 				ECB3D75B1A03B3FD0039DD3A /* TariffsCityMobilViewController.m in Sources */,
 				ECB52E601A0785820091293F /* MinPriceClass.m in Sources */,
 				EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */,
@@ -2583,6 +2591,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2598,6 +2609,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				INFOPLIST_FILE = CityMobilDriver/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

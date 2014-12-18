@@ -11,4 +11,7 @@
 
 @interface ResponseGetMarkList : JSONModel
 @property(nonatomic,strong) NSArray<Mark>* marks;
+
+@property(nonatomic,strong) NSString* text;
+@property(nonatomic,strong) NSString* code;
 @end

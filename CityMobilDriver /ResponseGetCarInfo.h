@@ -21,4 +21,8 @@
 @property(nonatomic,strong) NSString* VIN;
 @property(nonatomic,strong) NSString* car_license_pref;
 @property(nonatomic,strong) NSString* car_license_number;
+
+
+@property(nonatomic,strong) NSString* text;
+@property(nonatomic,strong) NSString* code;
 @end

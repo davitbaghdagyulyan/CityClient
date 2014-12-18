@@ -114,7 +114,12 @@
         
         if (jsonString.length > 5) {
             getCarInfoResponse = [[ResponseGetCarInfo alloc] initWithString:jsonString error:&err];
+            
+            BadRequest* badRequest = [[BadRequest alloc]init];
+            badRequest.delegate = self;
+            [badRequest showErrorAlertMessage:getCarInfoResponse.text code:getCarInfoResponse.code];
         }
+        
         [self.carInfoTable reloadData];
         [indicator stopAnimating];
     }];

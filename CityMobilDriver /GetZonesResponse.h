@@ -12,5 +12,7 @@
 @interface GetZonesResponse : JSONModel
 @property (nonatomic,strong) NSArray<Sities>* zones;
 
+@property(nonatomic,strong) NSString* text;
+@property(nonatomic,strong) NSString* code;
 
 @end

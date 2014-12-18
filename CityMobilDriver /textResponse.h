@@ -12,4 +12,7 @@
 @property(nonatomic,strong) NSArray<messages>* messages;
 @property(nonatomic,assign) NSInteger can_answer;
 
+
+@property(nonatomic,strong) NSString* text;
+@property(nonatomic,strong) NSString* code;
 @end

@@ -117,7 +117,10 @@
     NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"------------======= = = == -%@",jsonString);
     jsonResponseObject = [[DriverAllInfoResponse alloc]initWithString:jsonString error:&err];
-    jsonResponseObject.delegate = self;
+    
+    BadRequest* badRequest = [[BadRequest alloc]init];
+    badRequest.delegate = self;
+    [badRequest showErrorAlertMessage:jsonResponseObject.text code:jsonResponseObject.code];
 
 }
 
@@ -212,6 +215,9 @@
     NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     //NSLog(@"--%@",jsonString);
     ResponseGetDocScansUrl* jsonResponseGetUrlObject = [[ResponseGetDocScansUrl alloc]initWithString:jsonString error:&err];
+    BadRequest* badRequest = [[BadRequest alloc]init];
+    badRequest.delegate = self;
+    [badRequest showErrorAlertMessage:jsonResponseGetUrlObject.text code:jsonResponseGetUrlObject.code];
     //NSLog(@"******* %@",jsonResponseObject.doc_scans_url);
     [indicator stopAnimating];
     return jsonResponseGetUrlObject.doc_scans_url;

@@ -10,4 +10,7 @@
 
 @interface SucceedResponse : JSONModel
 @property(nonatomic,assign) NSInteger result;
+
+@property(nonatomic,strong)NSString* text;
+@property(nonatomic,strong)NSString* code;
 @end

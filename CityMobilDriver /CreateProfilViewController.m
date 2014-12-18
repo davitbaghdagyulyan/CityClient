@@ -427,22 +427,26 @@
         NSLog(@"- = = == = = == = = == -%@",jsonString);
         NSError* err;
         DriverInfoResponse* jsonResponseObject = [[DriverInfoResponse alloc]initWithString:jsonString error:&err];
-        if (jsonResponseObject.code) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                           handler:^(UIAlertAction * action)
-                                     {
-                                         [alert dismissViewControllerAnimated:YES completion:nil];
-                                         
-                                     }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-            [indicator stopAnimating];
-        }
+//        if (jsonResponseObject.code) {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                           handler:^(UIAlertAction * action)
+//                                     {
+//                                         [alert dismissViewControllerAnimated:YES completion:nil];
+//                                         
+//                                     }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//            [indicator stopAnimating];
+//        }
+//        
+//        else
+//        {
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:jsonResponseObject.text code:jsonResponseObject.code];
         
-        else
-        {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.msg preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -455,7 +459,7 @@
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
             [indicator stopAnimating];
-        }
+//        }
 
     }];
 
@@ -553,22 +557,26 @@
         NSLog(@"- = = == = = == = = == -%@",jsonString);
         NSError* err;
         DriverInfoResponse* jsonResponseObject = [[DriverInfoResponse alloc]initWithString:jsonString error:&err];
-        if (jsonResponseObject.code) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                           handler:^(UIAlertAction * action)
-                                     {
-                                         [alert dismissViewControllerAnimated:YES completion:nil];
-                                         
-                                     }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-            [indicator stopAnimating];
-        }
+//        if (jsonResponseObject.code) {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                           handler:^(UIAlertAction * action)
+//                                     {
+//                                         [alert dismissViewControllerAnimated:YES completion:nil];
+//                                         
+//                                     }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//            [indicator stopAnimating];
+//        }
         
-        else
-        {
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:jsonResponseObject.text code:jsonResponseObject.code];
+        
+//        else
+//        {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.msg preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -581,7 +589,7 @@
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
             [indicator stopAnimating];
-        }
+//        }
         
 
     }];

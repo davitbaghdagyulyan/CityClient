@@ -213,6 +213,7 @@
     [self setYandexAutoAssign:0];
 }
 
+#pragma mark - Requests
 -(void)setAutoAssign:(NSInteger)state
 {
     RequestSetAutoget* RequestObject=[[RequestSetAutoget alloc]init];
@@ -255,6 +256,11 @@
         NSError* err;
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         SucceedResponse* responseObject = [[SucceedResponse alloc]initWithString:jsonString error:&err];
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:responseObject.text code:responseObject.code];
+        
         if (responseObject.result == 1) {
             switch (state) {
                 case 0:
@@ -337,6 +343,11 @@
         NSError* err;
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         SucceedResponse* responseObject = [[SucceedResponse alloc]initWithString:jsonString error:&err];
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:responseObject.text code:responseObject.code];
+        
         if (responseObject.result == 1) {
         switch (y_state) {
             case 0:

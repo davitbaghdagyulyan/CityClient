@@ -11,4 +11,7 @@
 
 @interface ResponseGetModelList : JSONModel
 @property(nonatomic,strong) NSArray<Models>* models;
+
+@property(nonatomic,strong) NSString* text;
+@property(nonatomic,strong) NSString* code;
 @end

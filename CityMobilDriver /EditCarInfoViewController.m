@@ -151,6 +151,12 @@
         NSError* err;
         
         getColorListObject = [[ResponseGetColorList alloc] initWithString:jsonString error:&err];
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getColorListObject.text code:getColorListObject.code];
+        
+        
         [self.color setTitle:[getColorListObject.colors[0] getColor] forState:UIControlStateNormal];
     }];
     
@@ -211,6 +217,11 @@
         NSError* err;
         
         getMarkResponseObject = [[ResponseGetMarkList alloc] initWithString:jsonString error:&err];
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getMarkResponseObject.text code:getMarkResponseObject.code];
+        
         [self.mark setTitle:[getMarkResponseObject.marks[0] mark] forState:UIControlStateNormal];
         [indicator stopAnimating];
         [self requestGetModelInfo:[getMarkResponseObject.marks[0] getId]];
@@ -268,6 +279,10 @@
         NSError*err;
         
         modelResponseObject = [[ResponseGetModelList alloc] initWithString:jsonString error:&err];
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:modelResponseObject.text code:modelResponseObject.code];
         
         if ([modelResponseObject.models count]) {
             [self.model setTitle:[modelResponseObject.models[0] model] forState:UIControlStateNormal];
