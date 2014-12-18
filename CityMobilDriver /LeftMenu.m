@@ -8,6 +8,7 @@
 
 #import "LeftMenu.h"
 #import "RootViewController.h"
+#import "NavigationView.h"
 @implementation LeftMenu
 
 {
@@ -311,7 +312,7 @@
 {
     [UIView animateWithDuration:0.5
                           delay:0.0
-                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                        options:UIViewAnimationOptionCurveLinear
                      animations:^(void)
      {
          CGPoint point;
@@ -319,13 +320,17 @@
          if (CGRectGetMaxX(self.frame)<=self.frame.size.width/2)
          {
              self.flag=0;
-            
-             point.x=(CGFloat)self.frame.size.width/2*(-1);
+          point.x=(CGFloat)self.frame.size.width/2*(-1);
+             NSMutableArray*array=[[NSMutableArray alloc]initWithArray:self.curentViewController.view.subviews];
+             
+             [self setEnableUserInteraction:array];
          }
          else if (CGRectGetMaxX(self.frame)>self.frame.size.width/2)
          {
              point.x=(CGFloat)self.frame.size.width/2;
              self.flag=1;
+            
+            
             
          }
          point.y=self.center.y;
@@ -333,10 +338,35 @@
          
          
      }
-                     completion:nil
+                     completion:^(BOOL finished)
+    {
+        
+                     }
      ];
 
 }
+-(void)setEnableUserInteraction:(NSMutableArray *)arr
+{
+    
+    for (int i=0;i<arr.count;i++)
+    {
+        if ([arr[i] isKindOfClass:[NavigationView class]])
+        {
+            continue;
+        }
+        
+        UIView* v = (UIView*)arr[i];
+        v.userInteractionEnabled = YES;
+        
+        if (v.subviews.count)
+        {
+            [self setEnableUserInteraction:(NSMutableArray*)v.subviews];
+        }
+}
+  
+    
+    
 
+}
 
 @end
