@@ -122,6 +122,7 @@
 		ECAD78C21A30AADB005C2468 /* GetLastKnownLocationJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */; };
 		ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */; };
 		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
+		ECB1EC1F1A42D06D008CC239 /* NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1EC1E1A42D06D008CC239 /* NavigationView.m */; };
 		ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F2A31A2DAD06008A3D15 /* iconmap.png */; };
 		ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */; };
 		ECB38B231A0CFA7B00DFBB77 /* DesignationIconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B221A0CFA7B00DFBB77 /* DesignationIconsViewController.m */; };
@@ -529,6 +530,8 @@
 		ECAD78C31A30AAF1005C2468 /* GetLastKnownLocationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLastKnownLocationResponse.h; sourceTree = "<group>"; };
 		ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLastKnownLocationResponse.m; sourceTree = "<group>"; };
 		ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesCell.xib; path = ../MessagesCell.xib; sourceTree = "<group>"; };
+		ECB1EC1D1A42D06D008CC239 /* NavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationView.h; sourceTree = "<group>"; };
+		ECB1EC1E1A42D06D008CC239 /* NavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationView.m; sourceTree = "<group>"; };
 		ECB1F2A31A2DAD06008A3D15 /* iconmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmap.png; sourceTree = "<group>"; };
 		ECB38B1D1A0CDA0000DFBB77 /* TariffsYandexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffsYandexViewController.h; sourceTree = "<group>"; };
 		ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffsYandexViewController.m; sourceTree = "<group>"; };
@@ -1117,6 +1120,8 @@
 				EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */,
 				EC0798E51A2342B00085E3F0 /* IconsColorSingltone.h */,
 				EC0798E61A2342B00085E3F0 /* IconsColorSingltone.m */,
+				ECB1EC1D1A42D06D008CC239 /* NavigationView.h */,
+				ECB1EC1E1A42D06D008CC239 /* NavigationView.m */,
 			);
 			name = "Navigation view";
 			sourceTree = "<group>";
@@ -2372,6 +2377,7 @@
 				EC03D0E61A091F1B00D90F72 /* TariffsCustomView.m in Sources */,
 				ECEC89B51A2CA1100036781D /* SelectedOrdersDetailsResponse.m in Sources */,
 				ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */,
+				ECB1EC1F1A42D06D008CC239 /* NavigationView.m in Sources */,
 				8FC2226D1A36E88D0003CAAF /* OrdersHistoryJson.m in Sources */,
 				ECB3D7611A03BB680039DD3A /* GetTariffsUrlJson.m in Sources */,
 				ECC9653D1A0128E400768E1F /* Models.m in Sources */,

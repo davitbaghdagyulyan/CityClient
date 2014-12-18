@@ -16,12 +16,16 @@
     LeftMenu*leftMenu;
     CGFloat yCord;
     OpenMapButtonHandler*openMapButtonHandlerObject;
+    CGSize expectSize;
+    BOOL isOpenKeyboard;
+    CGSize keyboardSize ;
 }
 @end
 @implementation SendingMessageViewController
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isOpenKeyboard=NO;
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
@@ -75,7 +79,8 @@
     [self registerForKeyboardNotifications];
     // Do any additional setup after loading the view.
     
-    if (self.isPushWidthInfoController) {
+    if (self.isPushWidthInfoController)
+    {
         self.titleTextView.text = [NSString stringWithFormat:@"Re: %@",self.titleText];
         self.titleTextView.userInteractionEnabled = NO;
     }
@@ -117,18 +122,31 @@
          {
 
     CGSize maximumLabelSize = CGSizeMake(self.messageTextView.frame.size.width,800);
-    CGSize expectSize = [self.messageTextView sizeThatFits:maximumLabelSize];
+    expectSize = [self.messageTextView sizeThatFits:maximumLabelSize];
              
              NSLog(@"%f",CGRectGetMaxY(self.underView.frame));
-             if (expectSize.height>80 && (expectSize.height+60)<CGRectGetMaxY(self.underView.bounds))
+             if (expectSize.height>80)
              {
                  self.messageTextView.frame=CGRectMake(self.messageTextView.frame.origin.x, self.messageTextView.frame.origin.y, self.messageTextView.frame.size.width,expectSize.height);
                  yCord=CGRectGetMaxY(self.messageTextView.frame);
+                 
+                 if ((yCord+60>self.scrollView.frame.size.height))
+                 {
+                 self.underView.frame=CGRectMake(self.underView.frame.origin.x, self.underView.frame.origin.y, self.underView.bounds.size.width, yCord+10);
+                 }
              }
-             else if( (expectSize.height+60)>=CGRectGetMaxY(self.underView.bounds))
+             if (isOpenKeyboard)
              {
-                 self.messageTextView.scrollEnabled=YES;
+                 self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height+keyboardSize.height-(self.scrollView.frame.size.height-(self.messageTextView.frame.origin.y+self.messageTextView.frame.size.height))+10);
+
              }
+             else
+             {
+             self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
+             }
+             
+             CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
+             [self.scrollView setContentOffset:bottomOffset animated:YES];
    
          }
 }
@@ -274,15 +292,17 @@
 
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-NSDictionary* info = [aNotification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height+keyboardSize.height-(self.scrollView.frame.size.height-(self.messageTextView.frame.origin.y+self.messageTextView.frame.size.height)));
+    isOpenKeyboard=YES;
+    NSDictionary* info = [aNotification userInfo];
+   keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height+keyboardSize.height-(self.scrollView.frame.size.height-(self.messageTextView.frame.origin.y+self.messageTextView.frame.size.height))+10);
     
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-  self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
+    isOpenKeyboard=NO;
+    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
 }
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
@@ -386,16 +406,16 @@ NSDictionary* info = [aNotification userInfo];
          self.scrollView.frame=CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116);
          self.writeLetterLabel.frame=CGRectMake(0, 0, self.scrollView.frame.size.width, 50);
          self.messageTextView.frame=CGRectMake(10, 60, self.scrollView.frame.size.width-20, self.messageTextView.frame.size.height);
-         yCord=(CGRectGetMaxY(self.messageTextView.frame));
+//         yCord=(CGRectGetMaxY(self.messageTextView.frame));
          if ((yCord+60<self.scrollView.frame.size.height-50))
          {
              self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width,self.scrollView.frame.size.height-50);
          }
          else
          {
-             self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width, yCord+60); 
+             self.underView.frame=CGRectMake(0, 50, self.scrollView.frame.size.width, yCord+60);
          }
-        
+    
          
          self.titleTextView.frame=CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40);
          
