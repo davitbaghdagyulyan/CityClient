@@ -178,11 +178,27 @@
             break;
 
         case 13:
+        {
             //exit(0); //not recommended apple
             myClass = NSClassFromString(@"LoginViewController");
             identity =@"LoginViewController";
             [[SingleDataProvider sharedKey]stopTimer];
-            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                                          {
+                                                              [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+                                                          }];
+            UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * action) {
+                                                                    
+                                                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                                                 }];
+            [alert addAction:cancel];
+            [alert addAction:cancellation];
+            [self.curentViewController presentViewController:alert animated:YES completion:nil];
+    }
+
             break;
                     default:
             break;
