@@ -376,6 +376,7 @@
         point.x=leftMenu.center.x-leftMenu.frame.size.width;
         point.y=leftMenu.center.y;
         leftMenu.center=point;
+          leftMenu.flag=0;
     }
     [self.navigationController popToRootViewControllerAnimated:NO];
     

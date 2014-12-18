@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LeftMenu.h"
-@interface SendingMessageViewController : UIViewController<UITextViewDelegate>
+@interface SendingMessageViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate>
 @property (strong, nonatomic)  UIScrollView *scrollView;
 
 @property (nonatomic, assign) BOOL isPushWidthInfoController;
@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString* id_mail;
 @property(nonatomic,strong)UIButton*sendButton;
 @property (strong, nonatomic) UITextView *messageTextView;
-@property (strong, nonatomic) UITextView *titleTextView;
+@property (strong, nonatomic) UITextField *titleTextView;
 @property (strong,nonatomic)UIView*underView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (strong, nonatomic) UILabel *writeLetterLabel;

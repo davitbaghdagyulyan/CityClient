@@ -32,8 +32,9 @@
     self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116)];
     self.writeLetterLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, 50)];
     self.underView=[[UIView alloc]initWithFrame:CGRectMake(0, 50, self.scrollView.frame.size.width, self.scrollView.frame.size.height-50)];
-     self.titleTextView=[[UITextView alloc] initWithFrame:CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40)];
+     self.titleTextView=[[UITextField alloc] initWithFrame:CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40)];
      self.messageTextView=[[UITextView alloc] initWithFrame:CGRectMake(10, 60, self.scrollView.frame.size.width-20, 80)];
+    self.titleTextView.backgroundColor=[UIColor whiteColor];
     yCord=CGRectGetMaxY(self.messageTextView.frame);
     self.sendButton=[[UIButton alloc]initWithFrame:CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40)];
     [self.view addSubview:self.scrollView];
@@ -46,7 +47,7 @@
     
     
     self.underView.backgroundColor=[UIColor colorWithRed:(float)217/255 green:(float)217/255 blue:(float)217/255 alpha:1];
-    
+  
     
    
     
@@ -67,10 +68,12 @@
     self.titleTextView.delegate=self;
     self.messageTextView.delegate=self;
     self.messageTextView.scrollEnabled=NO;
-    self.titleTextView.text = @" Заголовок";
+    self.titleTextView.text = @"  Заголовок";
     self.messageTextView.text = @" Текст сообщения";
+    self.titleTextView.font=self.messageTextView.font;
     self.titleTextView.textColor = [UIColor lightGrayColor];
     self.messageTextView.textColor = [UIColor lightGrayColor];
+   
     UITapGestureRecognizer*recognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchForCloseKeyboard)];
     recognizer.numberOfTapsRequired=1;
     self.writeLetterLabel.userInteractionEnabled=YES;
@@ -110,6 +113,7 @@
             point.x=leftMenu.center.x-leftMenu.frame.size.width;
             point.y=leftMenu.center.y;
             leftMenu.center=point;
+              leftMenu.flag=0;
         }
         [self.navigationController popViewControllerAnimated:NO];
         
@@ -145,8 +149,7 @@
              self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
              }
              
-             CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
-             [self.scrollView setContentOffset:bottomOffset animated:YES];
+
    
          }
 }
@@ -155,7 +158,7 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
    
-     if([textView.text isEqualToString:@" Заголовок"]||[textView.text isEqualToString:@" Текст сообщения"])
+     if([textView.text isEqualToString:@" Текст сообщения"])
      {
        textView.text = @"";
        textView.textColor = [UIColor blackColor];
@@ -166,18 +169,29 @@
     if(textView.text.length == 0)
     {
         textView.textColor = [UIColor lightGrayColor];
-        if (textView==self.titleTextView)
-        {
-             textView.text = @" Заголовок";
-        }
-        else
-        {
-            textView.text = @" Текст сообщения";
-        }
+        
        
+        
+            textView.text = @" Текст сообщения";
+
     }
 }
-
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if([textField.text isEqualToString:@"  Заголовок"])
+    {
+        textField.text = @"";
+        textField.textColor = [UIColor blackColor];
+    }
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField.text.length == 0)
+    {
+       textField.textColor= [UIColor lightGrayColor];
+        textField.text = @"  Заголовок";
+    }
+}
 -(void)openMap:(UIButton *)sender
 {
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
@@ -197,7 +211,7 @@
     [indicator startAnimating];
     [self.view addSubview:indicator];
     WriteLetterJson* writeLetterJsonObject=[[WriteLetterJson alloc]init];
-    if((![self.titleTextView.text isEqualToString:@" Заголовок"])&&(![self.messageTextView.text isEqualToString:@" Текст сообщения"]))
+    if((![self.titleTextView.text isEqualToString:@"  Заголовок"])&&(![self.messageTextView.text isEqualToString:@" Текст сообщения"]))
     {
         if (self.isPushWidthInfoController) {
             writeLetterJsonObject.title=self.titleText;
