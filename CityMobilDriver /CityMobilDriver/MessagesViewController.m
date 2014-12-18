@@ -265,22 +265,27 @@
         NSLog(@"MessagesString%@",jsonString);
         NSError*err;
         mailResponseObject = [[MailResponse alloc] initWithString:jsonString error:&err];
-        if(mailResponseObject.code!=nil)
-        {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:mailResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                        
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-            [indicator stopAnimating];
-            return;
-            
-        }
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:mailResponseObject.text code:mailResponseObject.code];
+        
+//        if(mailResponseObject.code!=nil)
+//        {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:mailResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                        
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//            [indicator stopAnimating];
+//            return;
+//            
+//        }
         [indicator stopAnimating];
         [self.messagesTableView reloadData];
     }];

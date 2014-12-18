@@ -13,11 +13,4 @@
 {
     return YES;
 }
-
-//-(void)dealloc{
-//    if (self.code) {
-//        UIAlertView* errorAlert = [[UIAlertView alloc]initWithTitle:nil message:self.text delegate:self.delegate cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
-//        [errorAlert show];
-//    }
-//}
 @end

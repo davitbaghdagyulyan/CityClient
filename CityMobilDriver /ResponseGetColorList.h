@@ -11,4 +11,8 @@
 
 @interface ResponseGetColorList : JSONModel
 @property(nonatomic,strong) NSArray<Colors>* colors;
+
+
+@property(nonatomic,strong) NSString* text;
+@property(nonatomic,strong) NSString* code;
 @end

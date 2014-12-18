@@ -1,0 +1,18 @@
+//
+//  PrefixHeader.pch
+//  CityMobilDriver
+//
+//  Created by Intern on 12/18/14.
+//  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
+//
+//#import <UIKit/UIKit.h>
+//#import <Foundation/Foundation.h>
+#ifndef CityMobilDriver_PrefixHeader_pch
+#define CityMobilDriver_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "BadRequest.h"
+
+#endif

@@ -30,69 +30,7 @@
 
 @property (nonatomic,strong) NSArray<Tariffs>* possible_tariffs;
 
-@end
-/*
- {
- "smoking": 0,
- "conditioner": 1,
- "animal": 1,
- "has_check": "1",
- "has_wifi": 1,
- "has_card": "1",
- "child_seat": [
- 1,
- 2,
- 3,
- 4,
- 5,
- 6,
- 7,
- 8,
- 9,
- 10
- ],
- "radius": 5,
- "collminute": 30,
- "tariffs": [],
- "max_radius": 5,
- "max_collminute": 60,
- "possible_tariffs": []
- 
- 
- 
- "possible_tariffs": [
- {
- "id": "2",
- "name": "Комфорт от 249 руб."
- },
- {
- "id": "13",
- "name": "Эконом от 199 руб"
- },
- {
- "id": "1",
- "name": "Трезвый водитель"
- },
- {
- "id": "112",
- "name": "Комфорт Яндекс"
- },
- {
- "id": "110",
- "name": "Эконом Яндекс"
- }
- ]
- 
- 
- 
- 
- 
- }
- 
- 
- 
- 
- 
- 
+@property(nonatomic,strong) NSString* code;
+@property(nonatomic,strong) NSString* text;
 
-*/
+@end

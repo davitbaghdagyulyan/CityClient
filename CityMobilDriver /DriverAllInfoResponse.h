@@ -33,7 +33,4 @@
 @property (nonatomic,strong) NSString* code;
 @property (nonatomic,strong) NSString* text;
 
-@property (nonatomic, weak) ProfilViewController* delegate;
-
-
 @end

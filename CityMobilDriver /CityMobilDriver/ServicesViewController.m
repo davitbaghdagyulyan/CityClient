@@ -169,28 +169,33 @@
             [self presentViewController:alert animated:YES completion:nil];
         }
     
-    if (standatrRespons.code) {
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:@""
-                                              message:standatrRespons.text
-                                              preferredStyle:UIAlertControllerStyleAlert];
+//    if (standatrRespons.code) {
+//        UIAlertController *alertController = [UIAlertController
+//                                              alertControllerWithTitle:@""
+//                                              message:standatrRespons.text
+//                                              preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction* ok = [UIAlertAction
+//                             actionWithTitle:@"OK"
+//                             style:UIAlertActionStyleDefault
+//                             handler:^(UIAlertAction * action)
+//                             {
+//                                 [alertController dismissViewControllerAnimated:YES completion:nil];
+//                                 
+//                             }];
+//        
+//        [alertController addAction:ok];
+//        
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
+//    else{
         
-        UIAlertAction* ok = [UIAlertAction
-                             actionWithTitle:@"OK"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [alertController dismissViewControllerAnimated:YES completion:nil];
-                                 
-                             }];
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:standatrRespons.text code:standatrRespons.code];
         
-        [alertController addAction:ok];
         
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    else{
         [self.navigationController popViewControllerAnimated:NO];
-    }
     }];
 }
 

@@ -14,4 +14,8 @@
 @property(nonatomic,strong) NSString* creditlimit;
 @property(nonatomic,strong) NSString* commision;
 @property(nonatomic,strong) NSString* balance;
+
+
+@property(nonatomic,strong) NSString* code;
+@property(nonatomic,strong) NSString* text;
 @end

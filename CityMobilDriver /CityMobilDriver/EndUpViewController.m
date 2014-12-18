@@ -326,6 +326,9 @@
         NSError* err;
         billResponse = [[ResponseSetBill alloc] initWithString:jsonString error:&err];
        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:billResponse.text code:billResponse.code];
         
         setStatusObject.time=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].time];
         setStatusObject.direction=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].direction];
@@ -404,6 +407,11 @@
         }
         else
         {
+            
+            BadRequest* badRequest = [[BadRequest alloc]init];
+            badRequest.delegate = self;
+            [badRequest showErrorAlertMessage:getOrderResponseObject.text code:getOrderResponseObject.code];
+            
             if ([getOrderResponseObject.status isEqualToString:@"CP"]) {
                 [alertController dismissViewControllerAnimated:NO completion:nil];
                 [myTimer invalidate];

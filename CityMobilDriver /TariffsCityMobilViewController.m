@@ -126,28 +126,30 @@
         NSError*err;
         getTariffsUrlResponseObject = [[GetTariffsUrlResponse alloc] initWithString:jsonString error:&err];
         
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getTariffsUrlResponseObject.text code:getTariffsUrlResponseObject.code];
         
         
-        
-        if(getTariffsUrlResponseObject.code!=nil)
-        {
-           
-            
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getTariffsUrlResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                        
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-           
-            [indicator stopAnimating];
-            
-        }
+//        if(getTariffsUrlResponseObject.code!=nil)
+//        {
+//           
+//            
+//            
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getTariffsUrlResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                        
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//           
+//            [indicator stopAnimating];
+//            
+//        }
         
         [indicator stopAnimating];
         

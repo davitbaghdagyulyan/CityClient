@@ -144,6 +144,10 @@
         
         getMyOrdersResponseObject = [[SelectedOrdersDetailsResponse alloc] initWithString:jsonString error:&err];
         
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getMyOrdersResponseObject.text code:getMyOrdersResponseObject.code];
+        
         if (!getMyOrdersResponseObject.orders.count)
         {
             self.myOrdersTableView.hidden=YES;
@@ -152,23 +156,23 @@
         }
         
         
-        if(getMyOrdersResponseObject.code!=nil)
-        {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getMyOrdersResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                        
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-            [indicator stopAnimating];
-            
-        }
-        else
-        {
+//        if(getMyOrdersResponseObject.code!=nil)
+//        {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getMyOrdersResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                        
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//            [indicator stopAnimating];
+//            
+//        }
+//        else
+//        {
             [selectedOrdersTableViewHandlerObject setResponseObject:getMyOrdersResponseObject andStringforSroch:@"" andFlag1:0 andCurentSelf:self andNumberOfClass:1];
          
             
@@ -178,7 +182,7 @@
             
             
             
-        }
+//        }
         [indicator stopAnimating];
  }];
 }
