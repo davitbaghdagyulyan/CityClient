@@ -113,12 +113,15 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     
     
     if ([defaults boolForKey:UserDefaultsIsRemember]) {
-        [self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
+        //[self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
+        
+        [self.rememberButton setSelected:YES];
         login.text = [defaults stringForKey:UserDefaultsBankId];
         password.text = [defaults stringForKey:UserDefaultsPassword];
     }
     else{
-        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+//        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+        [self.rememberButton setSelected:NO];
         login.placeholder = @"логин";
         password.placeholder = @"Пароль";
         
@@ -374,6 +377,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
@@ -436,11 +440,28 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
 - (IBAction)remember:(UIButton*)sender {
     
     
-    if ([self image:sender.imageView.image isEqualTo:[UIImage imageNamed:@"box.png"]]) {
-        [self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
+//    if ([self image:sender.imageView.image isEqualTo:[UIImage imageNamed:@"box.png"]]) {
+//        [self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
+//    }
+//    else{
+//        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+//    }
+    
+    if ([self.rememberButton isSelected]) {
+        [self.rememberButton setSelected:NO];
     }
     else{
-        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
+        [self.rememberButton setSelected:YES];
+    }
+    
+}
+
+- (IBAction)rememberButton:(UIButton*)sender{
+    if ([self.rememberButton isSelected]) {
+        [self.rememberButton setSelected:NO];
+    }
+    else{
+        [self.rememberButton setSelected:YES];
     }
 }
 

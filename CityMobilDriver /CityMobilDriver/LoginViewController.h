@@ -24,6 +24,7 @@ extern NSString* const UserDefaultsIsRemember;
 @property(nonatomic,strong) NSString* passwordText;
 
 - (IBAction)remember:(UIButton*)sender;
+- (IBAction)rememberButton:(UIButton*)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *rememberButton;
 

@@ -242,7 +242,7 @@
             [self setSwitch:cell isSelected:NO switchTag:3];
             break;
         case 4:
-            textLabel.text = @" Перевезу животных";
+            textLabel.text = @" Перевожу животных";
             [self setSwitch:cell isSelected:NO switchTag:4];
             break;
         case 5:
@@ -801,7 +801,7 @@
         [badRequest showErrorAlertMessage:obj.text code:obj.code];
         
         if (obj.code == nil) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"настройки успешно сохранены" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Настройки успешно сохранены" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * action)

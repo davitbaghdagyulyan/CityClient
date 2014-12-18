@@ -7,6 +7,8 @@
 #import "RecallResponse.h"
 #import "LeftMenu.h"
 #import "OpenMapButtonHandler.h"
+#import "InternetConectionViewController.h"
+#import "Reachability.h"
 
 @interface RootViewController ()
 {
@@ -77,9 +79,22 @@
 {
     [super viewDidLoad];
     selectedRow = -1;
-
-    log=[self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self.navigationController pushViewController:log animated:NO];
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    
+    if(status == NotReachable)
+    {
+        InternetConectionViewController* icvc =[self.storyboard instantiateViewControllerWithIdentifier:@"InternetConectionViewController"];
+        [self.navigationController pushViewController:icvc animated:NO];
+    }
+    else{
+        log=[self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self.navigationController pushViewController:log animated:NO];
+    }
+    
     //RootViewController Interface
     self.labelMessages.font =[UIFont fontWithName:@"Roboto-Regular" size:16];
     self.labelCallToDispetcher.font =[UIFont fontWithName:@"Roboto-Regular" size:15];

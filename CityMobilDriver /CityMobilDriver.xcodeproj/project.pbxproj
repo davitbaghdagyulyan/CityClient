@@ -328,6 +328,8 @@
 		ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */; };
 		ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */; };
 		ECFD3E4B1A42C5400066B55A /* BadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E4A1A42C5400066B55A /* BadRequest.m */; };
+		ECFD3E521A431B350066B55A /* InternetConectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E511A431B350066B55A /* InternetConectionViewController.m */; };
+		ECFD3E551A431CC20066B55A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E541A431CC20066B55A /* Reachability.m */; };
 		ECFF3A9A1A30B7C0009A88E0 /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFF3A991A30B7C0009A88E0 /* ServicesViewController.m */; };
 		ECFF3A9C1A30B8DE009A88E0 /* ServicesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFF3A9B1A30B8DE009A88E0 /* ServicesTableCell.xib */; };
 /* End PBXBuildFile section */
@@ -882,6 +884,10 @@
 		ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		ECFD3E491A42C5400066B55A /* BadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadRequest.h; sourceTree = "<group>"; };
 		ECFD3E4A1A42C5400066B55A /* BadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadRequest.m; sourceTree = "<group>"; };
+		ECFD3E501A431B350066B55A /* InternetConectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetConectionViewController.h; sourceTree = "<group>"; };
+		ECFD3E511A431B350066B55A /* InternetConectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetConectionViewController.m; sourceTree = "<group>"; };
+		ECFD3E531A431CC20066B55A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		ECFD3E541A431CC20066B55A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		ECFF3A981A30B7C0009A88E0 /* ServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesViewController.h; sourceTree = "<group>"; };
 		ECFF3A991A30B7C0009A88E0 /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesViewController.m; sourceTree = "<group>"; };
 		ECFF3A9B1A30B8DE009A88E0 /* ServicesTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesTableCell.xib; sourceTree = "<group>"; };
@@ -1033,6 +1039,7 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
+				ECFD3E4C1A431A5C0066B55A /* internet Conection */,
 				ECC8F6E31A373F9100D93B07 /* EndUpViewController */,
 				8FC222701A36E9120003CAAF /* PaymentHistory */,
 				8FC222431A36E7270003CAAF /* RootViewController */,
@@ -2056,6 +2063,17 @@
 			name = "get Services requests";
 			sourceTree = "<group>";
 		};
+		ECFD3E4C1A431A5C0066B55A /* internet Conection */ = {
+			isa = PBXGroup;
+			children = (
+				ECFD3E531A431CC20066B55A /* Reachability.h */,
+				ECFD3E541A431CC20066B55A /* Reachability.m */,
+				ECFD3E501A431B350066B55A /* InternetConectionViewController.h */,
+				ECFD3E511A431B350066B55A /* InternetConectionViewController.m */,
+			);
+			name = "internet Conection";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2406,6 +2424,7 @@
 				ECC9652B1A00D91A00768E1F /* EditCarInfoViewController.m in Sources */,
 				ECC965311A0101D900768E1F /* ResponseGetMarkList.m in Sources */,
 				ECCC120D1A0CAD8B00AC94EE /* Sities.m in Sources */,
+				ECFD3E521A431B350066B55A /* InternetConectionViewController.m in Sources */,
 				ECD4064919F146D200EFE6B2 /* WriteLetterResponse.m in Sources */,
 				ECB59E9719F6A36D00F69529 /* GetQiwiBillsUrlJson.m in Sources */,
 				EC2A13FE1A31FBDA00CA8937 /* SelectedOrdersViewController.m in Sources */,
@@ -2437,6 +2456,7 @@
 				ECC2BA591A10D2EF009A8CE4 /* DesignationCustomCell.m in Sources */,
 				ECC978FC1A00E11900D77B80 /* InfoElements.m in Sources */,
 				8FC2226E1A36E88D0003CAAF /* OrdersHistoryResponse.m in Sources */,
+				ECFD3E551A431CC20066B55A /* Reachability.m in Sources */,
 				EC5BF0981A022E69009EC444 /* RequestGetColorList.m in Sources */,
 				ECC9653A1A01255A00768E1F /* ResponseGetModelList.m in Sources */,
 				8FC2225B1A36E7990003CAAF /* CustomCell.m in Sources */,
