@@ -570,8 +570,6 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             return;
         }
         
-       
-        
         UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -647,6 +645,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             NSLog(@"First Json String %@",jsonString);
             NSError*err;
             ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
+            
             categories=[[NSMutableArray alloc]init];
             for (int i=0; i<ordersResponseObject.categories.count; i++)
             {

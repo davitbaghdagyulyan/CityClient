@@ -209,23 +209,27 @@
         NSError*err;
         bindCardResponseObject = [[BindCardResponse alloc] initWithString:jsonString error:&err];
 
-        if(bindCardResponseObject.code!=nil)
-        {
-           
-            [indicator stopAnimating];
-            
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:bindCardResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                        
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:bindCardResponseObject.text code:bindCardResponseObject.code];
+        
+//        if(bindCardResponseObject.code!=nil)
+//        {
+//           
+//            [indicator stopAnimating];
+//            
+//            
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:bindCardResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                        
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//        }
         
         [view1.customView bringSubviewToFront:view1.webView];
         [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:bindCardResponseObject.link]]];
@@ -281,21 +285,26 @@
         NSError*err;
         getCardsResponseObject = [[GetCardsResponse alloc] initWithString:jsonString error:&err];
 
-        if(getCardsResponseObject.code!=nil)
-        {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getCardsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                        
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-
-            [indicator stopAnimating];
-        }
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getCardsResponseObject.text code:getCardsResponseObject.code];
+        
+        
+//        if(getCardsResponseObject.code!=nil)
+//        {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getCardsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                        
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//
+//            [indicator stopAnimating];
+//        }
 
         [indicator stopAnimating];
         
@@ -367,25 +376,27 @@
         NSError*err;
         getQiwiBillsUrlResponseObject = [[GetQiwiBillsUrlResponse alloc] initWithString:jsonString error:&err];
         
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getQiwiBillsUrlResponseObject.text code:getQiwiBillsUrlResponseObject.code];
         
         
-        
-        if(getQiwiBillsUrlResponseObject.code!=nil)
-        {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getQiwiBillsUrlResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                        
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-            
-
-            [indicator stopAnimating];
-        }
+//        if(getQiwiBillsUrlResponseObject.code!=nil)
+//        {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getQiwiBillsUrlResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                        
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//            
+//
+//            [indicator stopAnimating];
+//        }
         
         
         [view2.customWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:getQiwiBillsUrlResponseObject.qiwi_bills_url]]];

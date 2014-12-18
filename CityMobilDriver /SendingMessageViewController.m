@@ -247,6 +247,9 @@
         writeLetterResponseObject = [[WriteLetterResponse alloc] initWithString:jsonString error:&err];
         
 
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:writeLetterResponseObject.text code:writeLetterResponseObject.code];
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
         

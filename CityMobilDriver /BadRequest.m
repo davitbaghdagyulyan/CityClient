@@ -43,30 +43,3 @@
     }
 }
 @end
-
-
-
-
-
-//if (obj.code != nil) {
-//    if ([responseObject.code isEqualToString:@"400"]) {
-//        BadRequest* badRequest = [[BadRequest alloc]init];
-//        badRequest.delegate = self;
-//        [badRequest showErrorAlertMessage:responseObject.text];
-//        
-//    }
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:obj.text preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                   handler:^(UIAlertAction * action)
-//                             {
-//                                 [alert dismissViewControllerAnimated:YES completion:nil];
-//                                 
-//                             }];
-//    [alert addAction:cancel];
-//    [self presentViewController:alert animated:YES completion:nil];
-//    
-//    
-//    
-//    
-//}

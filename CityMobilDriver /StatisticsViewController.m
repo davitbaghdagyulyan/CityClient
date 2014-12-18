@@ -112,29 +112,31 @@
         NSError*err;
         getInfoResponseObject = [[GetInfoResponse alloc] initWithString:jsonString error:&err];
         
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getInfoResponseObject.text code:getInfoResponseObject.code];
         
         
-        
-        if(getInfoResponseObject.code!=nil)
-        {
-       
-            
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getInfoResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                        
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-            
-
-     
-            [indicator stopAnimating];
-        }
+//        if(getInfoResponseObject.code!=nil)
+//        {
+//       
+//            
+//            
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getInfoResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                        
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//            
+//
+//     
+//            [indicator stopAnimating];
+//        }
         [indicator stopAnimating];
        
         for (int i=0;i<getInfoResponseObject.info.count; i++)

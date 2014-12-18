@@ -178,24 +178,26 @@
             
             getOrderResponseObject = [[GetOrderResponse alloc] initWithString:jsonString error:&err];
            
-            
+            BadRequest* badRequest = [[BadRequest alloc]init];
+            badRequest.delegate = self;
+            [badRequest showErrorAlertMessage:getOrderResponseObject.text code:getOrderResponseObject.code];
           
 
-            if(getOrderResponseObject.code!=nil)
-            {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getOrderResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action)
-                                        {
-                                            [alert dismissViewControllerAnimated:YES completion:nil];
-                                            
-                                        }];
-                [alert addAction:cancel];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-            else
-            {
+//            if(getOrderResponseObject.code!=nil)
+//            {
+//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getOrderResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                              handler:^(UIAlertAction * action)
+//                                        {
+//                                            [alert dismissViewControllerAnimated:YES completion:nil];
+//                                            
+//                                        }];
+//                [alert addAction:cancel];
+//                [self presentViewController:alert animated:YES completion:nil];
+//            }
+//            else
+//            {
                 UILabel*label=(UILabel*)[cellUnderView viewWithTag:250];
                label.text=[self TimeFormat:getOrderResponseObject.CollDate];
                 label.text=[NSString stringWithFormat:@" %@ %@",label.text,getOrderResponseObject.shortname];
@@ -203,7 +205,7 @@
                 [self drawPage];
                 else
                     [self drawButtons];
-            }
+//            }
              [indicator stopAnimating];
            
         }];
@@ -686,24 +688,27 @@
         
         setStatusResponseObject = [[SetStatusResponse alloc] initWithString:jsonString error:&err];
         
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getOrderResponseObject.text code:getOrderResponseObject.code];
         
         
         
-        if(setStatusResponseObject.code!=nil)
-        {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:setStatusResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action)
-                                    {
-                                        [alert dismissViewControllerAnimated:YES completion:nil];
-                                       
-                                    }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
-            
-        }
-        else if ([setStatusResponseObject.result isEqualToString:@"1"])
+//        if(setStatusResponseObject.code!=nil)
+//        {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:setStatusResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action)
+//                                    {
+//                                        [alert dismissViewControllerAnimated:YES completion:nil];
+//                                       
+//                                    }];
+//            [alert addAction:cancel];
+//            [self presentViewController:alert animated:YES completion:nil];
+//            
+//        }
+        if ([setStatusResponseObject.result isEqualToString:@"1"])
         {
             if(isRefuseTheOrderButtonPressed)
             {

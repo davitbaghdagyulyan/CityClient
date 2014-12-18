@@ -149,17 +149,25 @@ GetPaymentsResponse * getPaymentsResponseObject;
         NSLog(@"First Json String %@",jsonString);
         NSError*err;
         getPaymentsResponseObject = [[GetPaymentsResponse alloc] initWithString:jsonString error:&err];
-        if( getPaymentsResponseObject.code!=nil)
-        {
-            UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getPaymentsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {
-                                                              [alertServerErr dismissViewControllerAnimated:YES completion:nil];
-                                                          }];
-            [alertServerErr addAction:cancel];
-            [self presentViewController:alertServerErr animated:YES completion:nil];
-        }
+        
+       
+        
+//        if( getPaymentsResponseObject.code!=nil)
+//        {
+//            UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getPaymentsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action) {
+//                                                              [alertServerErr dismissViewControllerAnimated:YES completion:nil];
+//                                                          }];
+//            [alertServerErr addAction:cancel];
+//            [self presentViewController:alertServerErr animated:YES completion:nil];
+//        }
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getPaymentsResponseObject.text code:getPaymentsResponseObject.code];
+        
         [self.PaymentsHistoryTableView reloadData];
         
         
