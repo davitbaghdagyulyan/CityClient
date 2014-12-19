@@ -12,7 +12,7 @@
 
 @interface EditCarInfoViewController ()
 {
-    UIView* backgroundView;
+    UIView* backgroundView1;
     UITableView* markTableView;
     UITableView* modelTableView;
     UITableView* colorTableView;
@@ -327,14 +327,12 @@
 }
 
 
-
-
 - (IBAction)markAction:(id)sender
 {
-    backgroundView = [[UIView alloc]initWithFrame:self.view.frame];
-    backgroundView.alpha = 0.5;
-    backgroundView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:backgroundView];
+    backgroundView1 = [[UIView alloc]initWithFrame:self.view.frame];
+    backgroundView1.alpha = 0.5;
+    backgroundView1.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:backgroundView1];
 
     
     markTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
@@ -347,10 +345,10 @@
 - (IBAction)modelAction:(id)sender
 {
     if ([modelResponseObject.models count]) {
-        backgroundView = [[UIView alloc]initWithFrame:self.view.frame];
-        backgroundView.alpha = 0.5;
-        backgroundView.backgroundColor = [UIColor grayColor];
-        [self.view addSubview:backgroundView];
+        backgroundView1 = [[UIView alloc]initWithFrame:self.view.frame];
+        backgroundView1.alpha = 0.5;
+        backgroundView1.backgroundColor = [UIColor grayColor];
+        [self.view addSubview:backgroundView1];
         
         
         if ([modelResponseObject.models count] * 40 >= self.view.frame.size.height - 40) {
@@ -373,10 +371,10 @@
 }
 
 - (IBAction)colorAction:(id)sender {
-    backgroundView = [[UIView alloc]initWithFrame:self.view.frame];
-    backgroundView.alpha = 0.5;
-    backgroundView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:backgroundView];
+    backgroundView1 = [[UIView alloc]initWithFrame:self.view.frame];
+    backgroundView1.alpha = 0.5;
+    backgroundView1.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:backgroundView1];
     
     colorTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
     
@@ -436,7 +434,7 @@
 {
     if (tableView == markTableView) {
         [markTableView removeFromSuperview];
-        [backgroundView removeFromSuperview];
+        [backgroundView1 removeFromSuperview];
         [self.mark setTitle:[getMarkResponseObject.marks[indexPath.row] mark] forState:UIControlStateNormal];
         [self requestGetModelInfo:[getMarkResponseObject.marks[indexPath.row] getId]];
         //[modelTableView reloadData];
@@ -444,13 +442,13 @@
     
     if (tableView == modelTableView) {
         [modelTableView removeFromSuperview];
-        [backgroundView removeFromSuperview];
+        [backgroundView1 removeFromSuperview];
         [self.model setTitle:[modelResponseObject.models[indexPath.row] model] forState:UIControlStateNormal];
     }
     
     if (tableView == colorTableView) {
         [colorTableView removeFromSuperview];
-        [backgroundView removeFromSuperview];
+        [backgroundView1 removeFromSuperview];
         [self.color setTitle:[getColorListObject.colors[indexPath.row] getColor] forState:UIControlStateNormal];
     }
 }
