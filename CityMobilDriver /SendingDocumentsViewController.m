@@ -35,6 +35,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
 }
 

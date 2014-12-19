@@ -61,6 +61,8 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+     [GPSConection showGPSConection:self];
+    
     //narek change
     isLoad=YES;
     [self initPropertys];

@@ -1020,10 +1020,11 @@
 				ECFD3E491A42C5400066B55A /* BadRequest.h */,
 				ECFD3E4A1A42C5400066B55A /* BadRequest.m */,
 				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
+				ECC4718E1A11F4800062803A /* LeftMenu */,
+				ECFD3E4C1A431A5C0066B55A /* internet Conection */,
 				ECB063B31A31E7C5004633A6 /* openMapButtonHandler */,
 				ECAD78BF1A30AA7A005C2468 /* getLastKnownLocation */,
 				EC0798D31A232E290085E3F0 /* Navigation view */,
-				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
 				ECCA908919DEE2050007831F /* JSONModel */,
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
@@ -1044,7 +1045,7 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
-				ECFD3E4C1A431A5C0066B55A /* internet Conection */,
+				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECC8F6E31A373F9100D93B07 /* EndUpViewController */,
 				8FC222701A36E9120003CAAF /* PaymentHistory */,
 				8FC222431A36E7270003CAAF /* RootViewController */,
@@ -1064,7 +1065,6 @@
 				ECC71B8C19F00BBB00468D33 /* SendingMessageViewController */,
 				EC55988819E535D000877CBC /* Single Data Provider */,
 				ECC4718F1A11F62D0062803A /* Categories */,
-				ECC4718E1A11F4800062803A /* LeftMenu */,
 				ECC4718D1A11F3C50062803A /* LoginViewController */,
 				ECC4718C1A11F30E0062803A /* infoViewController */,
 				ECC4718B1A11F2920062803A /* MessagesViewController */,
@@ -1547,6 +1547,7 @@
 				84E6EDCB19E857D100EFFC54 /* LeftMenu.m */,
 			);
 			name = LeftMenu;
+			path = CityMobilDriver;
 			sourceTree = "<group>";
 		};
 		ECC4718F1A11F62D0062803A /* Categories */ = {
@@ -1609,6 +1610,7 @@
 				ECC42DA71A1B3F750020F7C7 /* childYear.xib */,
 			);
 			name = "Robot Settings";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECC929F61A1A115E0047E84C /* Requests */ = {
@@ -2077,6 +2079,7 @@
 				ECFD3E511A431B350066B55A /* InternetConectionViewController.m */,
 			);
 			name = "internet Conection";
+			path = CityMobilDriver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

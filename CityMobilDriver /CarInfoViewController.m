@@ -44,7 +44,7 @@
 {
     [super viewDidAppear:animated];
     self.segmentControll.selectedSegmentIndex = 1;
-    
+     [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
     self.scrollView.userInteractionEnabled=YES;
     self.segmentControll.userInteractionEnabled=YES;

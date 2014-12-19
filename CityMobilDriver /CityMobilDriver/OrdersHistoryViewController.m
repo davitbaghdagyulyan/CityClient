@@ -83,6 +83,8 @@
 -(void)viewDidAppear:(BOOL)animated
 
 {
+    [super viewDidAppear:NO];
+     [GPSConection showGPSConection:self];
     //Karen  Changing colours of icons
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];

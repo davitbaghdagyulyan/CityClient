@@ -132,6 +132,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     leftMenu=[LeftMenu getLeftMenu:self];
+     [GPSConection showGPSConection:self];
     self.scrollView.userInteractionEnabled=YES;
     self.segmentControll.userInteractionEnabled=YES;
     self.scrollView.userInteractionEnabled=YES;

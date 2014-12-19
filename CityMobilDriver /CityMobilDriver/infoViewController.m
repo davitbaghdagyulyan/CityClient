@@ -34,7 +34,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+     [GPSConection showGPSConection:self];
     self.web.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
 }
