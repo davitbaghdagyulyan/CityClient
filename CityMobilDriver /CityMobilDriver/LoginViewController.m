@@ -39,8 +39,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     
     login.placeholder = @"логин";
     login.returnKeyType = UIReturnKeyNext;
-    [login setTranslatesAutoresizingMaskIntoConstraints:NO];
-    login.delegate = self;
+   
     
     password.placeholder = @"Пароль";
     password.returnKeyType = UIReturnKeyDone;
@@ -64,6 +63,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
 {
     [super viewDidAppear:animated];
     
+    [login setTranslatesAutoresizingMaskIntoConstraints:NO];
+    login.delegate = self;
     
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
     {
