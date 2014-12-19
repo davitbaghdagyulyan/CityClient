@@ -92,8 +92,12 @@
         cell.backgroundColor=[UIColor colorWithRed:223.f/255 green:223.f/255 blue:223.f/255 alpha:1];
         cell.textLabel.textColor=[UIColor blackColor];
         tableView.backgroundColor=[UIColor colorWithRed:223.f/255 green:223.f/255 blue:223.f/255 alpha:1];
-        
-        return cell;
+    
+    UIView *selectedView = [[UIView alloc]initWithFrame:cell.frame];
+    selectedView.backgroundColor = [UIColor orangeColor];
+    cell.selectedBackgroundView =  selectedView;
+    
+    return cell;
     }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
