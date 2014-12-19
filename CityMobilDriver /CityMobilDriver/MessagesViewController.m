@@ -25,7 +25,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+     [GPSConection showGPSConection:self];
     self.messagesTableView.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
     [self RequestGetMail];

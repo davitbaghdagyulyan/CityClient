@@ -42,6 +42,8 @@
 @implementation RootViewController
 -(void)viewDidAppear:(BOOL)animated
 {
+     [GPSConection showGPSConection:self];
+    
     [self.cityButtonIpad setNeedsDisplay];
     [self.cityButtonLand setNeedsDisplay];
     [self.cityButtonPort setNeedsDisplay];

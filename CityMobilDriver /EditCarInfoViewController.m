@@ -82,7 +82,7 @@
     [self requestGetMarkInfo];
     [self requestGetColorList];
     
-    
+     [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
     self.scrollView.userInteractionEnabled=YES;
     self.segmentControll.userInteractionEnabled=YES;

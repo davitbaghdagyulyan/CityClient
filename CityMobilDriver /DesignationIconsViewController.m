@@ -36,7 +36,7 @@
     [self.yandexButton setNeedsDisplay];
     
     leftMenu=[LeftMenu getLeftMenu:self];
-    
+     [GPSConection showGPSConection:self];
 
     
 }

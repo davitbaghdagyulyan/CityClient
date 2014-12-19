@@ -42,7 +42,7 @@
 {
     [super viewDidAppear:animated];
 
-    
+     [GPSConection showGPSConection:self];
     
     
     for (UIScrollView* scroll in self.tariffsSacrollView.subviews)

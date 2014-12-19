@@ -45,6 +45,8 @@ GetPaymentsResponse * getPaymentsResponseObject;
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
+    [GPSConection showGPSConection:self];
+    
     //Settings Buttons
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];

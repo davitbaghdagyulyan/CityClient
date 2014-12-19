@@ -63,6 +63,8 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+     [GPSConection showGPSConection:self];
+    
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
