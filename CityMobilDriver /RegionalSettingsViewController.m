@@ -57,8 +57,7 @@
     //NSLog(@" class = %@",[[locations lastObject] class]);
     
     currentLocation = [locations lastObject];
-    //NSLog(@"%f--- %f", location.coordinate.latitude,location.coordinate.longitude);
-    //NSLog(@"%@", [[locations lastObject] class]);
+    NSLog(@"%f--- %f", currentLocation.coordinate.latitude,currentLocation.coordinate.longitude);
 }
 
 #pragma mark Requests
@@ -111,7 +110,7 @@
         
         NSError* err;
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        //NSLog(@"%@",jsonString);
+        NSLog(@"%@",jsonString);
         
         responseObject = [[GetZonesResponse alloc]initWithString:jsonString error:&err];
         
