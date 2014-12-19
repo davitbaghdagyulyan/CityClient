@@ -30,8 +30,9 @@
 //                              [[UIApplication sharedApplication] openURL:url];
                                [[UIApplication sharedApplication] openURL: [NSURL URLWithString: UIApplicationOpenSettingsURLString]];
                           }];
-    [gpsNotEnabled addAction:no];
     [gpsNotEnabled addAction:yes];
+    [gpsNotEnabled addAction:no];
+    
     [viewController presentViewController:gpsNotEnabled animated:NO completion:nil];
     }
 }

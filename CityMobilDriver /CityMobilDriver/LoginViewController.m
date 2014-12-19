@@ -48,6 +48,9 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSLog(@"%@",[defaults objectForKey:@"login"]);
+    
     if (![[defaults stringForKey:@"login"] isEqualToString:@"firstLogin"]) {
         RegionalSettingsViewController* rsvc = [self.storyboard instantiateViewControllerWithIdentifier:@"RegionalSettingsViewController"];
         [self.navigationController pushViewController:rsvc animated:NO];
