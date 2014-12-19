@@ -133,7 +133,8 @@
              {
                  self.messageTextView.frame=CGRectMake(self.messageTextView.frame.origin.x, self.messageTextView.frame.origin.y, self.messageTextView.frame.size.width,expectSize.height);
                  yCord=CGRectGetMaxY(self.messageTextView.frame);
-                 
+                 CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
+                 [self.scrollView setContentOffset:bottomOffset animated:YES];
                  if ((yCord+60>self.scrollView.frame.size.height))
                  {
                  self.underView.frame=CGRectMake(self.underView.frame.origin.x, self.underView.frame.origin.y, self.underView.bounds.size.width, yCord+10);
