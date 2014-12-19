@@ -125,8 +125,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         login.placeholder = @"логин";
         password.placeholder = @"Пароль";
         
-        login.text=@"110314";
-        password.text=@"52750";
+//        login.text=@"110314";
+//        password.text=@"52750";
     }
     
     
@@ -335,11 +335,11 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         loginJsonObject.bankid = self.login.text;
         loginJsonObject.pass = self.password.text;
     }
-    else{
-        loginJsonObject.bankid=@"110314";
-        loginJsonObject.pass=@"52750";
-    }
-    
+//    else{
+//        loginJsonObject.bankid=@"110314";
+//        loginJsonObject.pass=@"52750";
+//    }
+//    
 
     
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
