@@ -121,6 +121,9 @@
     [scrollView addSubview:robotTable];
     
     [self RequestGetAutoSettings];
+    
+    
+    [GPSConection showGPSConection:self];
 }
 
 

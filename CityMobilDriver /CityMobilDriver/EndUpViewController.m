@@ -531,7 +531,7 @@
                                     [NSString stringWithFormat:@"Стоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@",self.bill,billTextField.text,billDifference.text]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+        UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"Подвердить" style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * action)
                                    {
                                        [alert dismissViewControllerAnimated:YES completion:nil];

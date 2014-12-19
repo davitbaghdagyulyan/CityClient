@@ -88,6 +88,7 @@
 		EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC00342419F1620A0062A6DF /* ProfilViewController.m */; };
 		EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC03D0E21A091D0900D90F72 /* TariffCustomView.xib */; };
 		EC03D0E61A091F1B00D90F72 /* TariffsCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC03D0E51A091F1B00D90F72 /* TariffsCustomView.m */; };
+		EC0662BD1A440CFB007F2126 /* GPSConection.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662BC1A440CFB007F2126 /* GPSConection.m */; };
 		EC0798D91A2331A10085E3F0 /* yandexIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798D81A2331A10085E3F0 /* yandexIcon.m */; };
 		EC0798DB1A23327F0085E3F0 /* ya_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798DA1A23327F0085E3F0 /* ya_green.png */; };
 		EC0798E71A2342B00085E3F0 /* IconsColorSingltone.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798E61A2342B00085E3F0 /* IconsColorSingltone.m */; };
@@ -470,6 +471,8 @@
 		EC03D0E21A091D0900D90F72 /* TariffCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TariffCustomView.xib; sourceTree = "<group>"; };
 		EC03D0E41A091F1B00D90F72 /* TariffsCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffsCustomView.h; sourceTree = "<group>"; };
 		EC03D0E51A091F1B00D90F72 /* TariffsCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffsCustomView.m; sourceTree = "<group>"; };
+		EC0662BB1A440CFB007F2126 /* GPSConection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSConection.h; sourceTree = "<group>"; };
+		EC0662BC1A440CFB007F2126 /* GPSConection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSConection.m; sourceTree = "<group>"; };
 		EC0798D71A2331A10085E3F0 /* yandexIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yandexIcon.h; sourceTree = "<group>"; };
 		EC0798D81A2331A10085E3F0 /* yandexIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yandexIcon.m; sourceTree = "<group>"; };
 		EC0798DA1A23327F0085E3F0 /* ya_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ya_green.png; sourceTree = "<group>"; };
@@ -1012,6 +1015,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				EC0662BB1A440CFB007F2126 /* GPSConection.h */,
+				EC0662BC1A440CFB007F2126 /* GPSConection.m */,
 				ECFD3E491A42C5400066B55A /* BadRequest.h */,
 				ECFD3E4A1A42C5400066B55A /* BadRequest.m */,
 				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
@@ -2322,6 +2327,7 @@
 				8FC2225A1A36E7990003CAAF /* RootViewController.m in Sources */,
 				8FC2224C1A36E76D0003CAAF /* OrdersElements.m in Sources */,
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
+				EC0662BD1A440CFB007F2126 /* GPSConection.m in Sources */,
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
 				ECB52E3C1A0778BD0091293F /* StartAfterMKADClass.m in Sources */,
