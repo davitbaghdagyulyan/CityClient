@@ -61,6 +61,9 @@
 
 - (IBAction)endOrderAction:(UIButton *)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *endOrder;
+
+@property (weak, nonatomic) IBOutlet UIButton *goingToOrder;
 
 
 //// left Menu /////

@@ -872,6 +872,8 @@
         backgroundView.frame = self.view.frame;
         indicator.center = self.view.center;
         
+        
+        childYearView.frame = CGRectMake((self.view.frame.size.width - 262)/2, (self.view.frame.size.height - 240)/2, 262, 240);
    
         
 

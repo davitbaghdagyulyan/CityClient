@@ -27,8 +27,12 @@
 {
     [super viewDidLoad];
     self.web.scrollView.delegate = self;
+    self.web.delegate = self;
     self.web.scrollView.showsHorizontalScrollIndicator = NO;
     [self textJsonRequest];
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    self.web.scrollView.scrollEnabled = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -38,6 +42,18 @@
     self.web.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
 }
+
+//- (void)scrollViewDidScroll:(UIScrollView *)sender
+//{
+//    
+//    if (sender.contentOffset.x != 0)
+//    {
+//        CGPoint offset = sender.contentOffset;
+//        offset.x = 0;
+//        sender.contentOffset = offset;
+//    }
+//}
+
 -(void)textJsonRequest
 {
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -98,6 +114,7 @@
         NSURL* url = [[NSURL alloc]init];
         
         NSString *str = [[NSString alloc]init];
+        NSString* a = self.titleText;
         self.descriptionLabel.text = [NSString stringWithFormat:@" %@", self.titleText];
         self.web.opaque = NO;//????
         for (int i = 0; i < [jsonResponseObject.messages count]; ++i) {
@@ -150,16 +167,7 @@
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)sender
-{
-    
-    if (sender.contentOffset.x != 0)
-    {
-        CGPoint offset = sender.contentOffset;
-        offset.x = 0;
-        sender.contentOffset = offset;
-    }
-}
+
 
 -(void)pushSendingMessage{
     SendingMessageViewController* contorller = [self.storyboard instantiateViewControllerWithIdentifier:@"SendingMessageViewController"];

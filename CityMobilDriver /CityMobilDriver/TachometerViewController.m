@@ -94,6 +94,8 @@
     }
     [self settachoelements:numberArray];
     
+    self.goingToOrder.titleLabel.numberOfLines = 2;
+    self.endOrder.titleLabel.numberOfLines = 2;
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
@@ -458,6 +460,8 @@
 
     if (self.collMetroName.length) {
         metroNamesLabel.frame = CGRectMake(8, CGRectGetMaxY(self.informationView.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/5);
+        [metroNamesLabel setLineBreakMode:NSLineBreakByWordWrapping];
+        [metroNamesLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:13]];
         metroNamesLabel.numberOfLines = 2;
 //        NSString* str = self.collMetroName;
         NSString* str = self.orderResponse.CollAddressText;
@@ -472,17 +476,30 @@
     
     
     ourCommentLabel.frame = CGRectMake(8, CGRectGetMaxY(metroNamesLabel.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/10);
-    ourCommentLabel.font = [UIFont fontWithName:@"Roboto-Italic" size:15];
-    ourCommentLabel.numberOfLines = 2;
+    
+    
+    [ourCommentLabel setFont:[UIFont fontWithName:@"Roboto-Italic" size:14]];
     if (self.ourComment.length) {
         ourCommentLabel.backgroundColor = [UIColor whiteColor];
         ourCommentLabel.text = self.ourComment;
+        ourCommentLabel.numberOfLines = 4;
+        CGSize maximumLabelSize = CGSizeMake(ourCommentLabel.frame.size.width,200);
+        CGSize expectSize = [ourCommentLabel sizeThatFits:maximumLabelSize];
+        if (expectSize.height > ourCommentLabel.frame.size.height) {
+            CGRect rect = ourCommentLabel.frame;
+            rect.size = expectSize;
+            rect.size.width = CGRectGetWidth(self.scrollView.frame) - 16;
+            ourCommentLabel.frame = rect;
+        }
+        
         [self.scrollView addSubview:ourCommentLabel];
     }
     
     
-    NSLog(@"///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     
+    lineView.frame = CGRectMake(8, CGRectGetMaxY(ourCommentLabel.frame), CGRectGetWidth(self.scrollView.frame) - 16, 2);
+    lineView.backgroundColor = [UIColor grayColor];
+    [self.scrollView addSubview:lineView];
     
     NSString* str = [[NSString alloc]init];
     for (int i = 0; i < tachometerResponse.services.count; ++i) {
@@ -499,13 +516,11 @@
     additionalServices.text = str;
     additionalServices.numberOfLines = tachometerResponse.services.count;
     [additionalServices setLineBreakMode:NSLineBreakByWordWrapping];
+    [additionalServices setFont:[UIFont fontWithName:@"Roboto-Regular" size:15]];
     [additionalServices sizeToFit];
-    
-    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.informationView.frame) + 8 + CGRectGetHeight(metroNamesLabel.frame) + 8 + CGRectGetHeight(ourCommentLabel.frame) + 8 + 2 + 8 + CGRectGetHeight(additionalServices.frame));
     
 
     
-    scrollViewContentHeight = self.scrollView.contentSize.height;
     
     if (tachometerResponse.services.count == 0) {
         additionalServices.text = @"Дополнительные услуги";
@@ -517,16 +532,28 @@
         CGRect rect = additionalServices.frame;
         rect.size.width = CGRectGetWidth(self.scrollView.frame) - 16;
         rect.origin.x = 8;
-        rect.origin.y = self.scrollView.contentSize.height - 8 - CGRectGetHeight(additionalServices.frame);
+//        rect.origin.y = self.scrollView.contentSize.height - 8 - CGRectGetHeight(additionalServices.frame);
+        rect.origin.y = CGRectGetMaxY(lineView.frame);
         additionalServices.frame = rect;
     }
 
     
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.frame),
+                                             CGRectGetHeight(self.informationView.frame)
+                                             + 8 + CGRectGetHeight(metroNamesLabel.frame)
+                                             + 8 + CGRectGetHeight(ourCommentLabel.frame)
+                                             + 8 + 2 + 8 + CGRectGetHeight(additionalServices.frame));
+
+    
+
+    
+    scrollViewContentHeight = self.scrollView.contentSize.height;
+    
+
+    
     [self.scrollView addSubview:additionalServices];
     
-    lineView.frame = CGRectMake(8, CGRectGetMinY(additionalServices.frame), CGRectGetWidth(self.scrollView.frame) - 16, 2);
-    lineView.backgroundColor = [UIColor grayColor];
-    [self.scrollView addSubview:lineView];
+
     
 
     
@@ -684,18 +711,19 @@
         metroNamesLabel.frame = CGRectMake(8, CGRectGetMaxY(self.informationView.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/5);
          
         ourCommentLabel.frame = CGRectMake(8, CGRectGetMaxY(metroNamesLabel.frame) + 8, CGRectGetWidth(self.scrollView.frame) - 16, CGRectGetHeight(self.scrollView.frame)/10);
+         CGSize maximumLabelSize = CGSizeMake(ourCommentLabel.frame.size.width,150);
+         CGSize expectSize = [ourCommentLabel sizeThatFits:maximumLabelSize];
+         if (expectSize.height > ourCommentLabel.frame.size.height) {
+             CGRect rect = ourCommentLabel.frame;
+             rect.size = expectSize;
+             rect.size.width = CGRectGetWidth(self.scrollView.frame) - 16;
+             ourCommentLabel.frame = rect;
+         }
+
          
+         lineView.frame = CGRectMake(8, CGRectGetMaxY(ourCommentLabel.frame), CGRectGetWidth(self.scrollView.frame) - 16, 2);
 
          [additionalServices sizeToFit];
-
-         CGSize rect = self.scrollView.contentSize;
-         if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
-             rect.height = scrollViewContentHeight - 30;
-         }
-         else{
-             rect.height = scrollViewContentHeight;
-         }
-         self.scrollView.contentSize = rect;
          
 
          if (tachometerResponse.services.count == 0) {
@@ -705,7 +733,7 @@
              
              CGRect rect = additionalServices.frame;
              rect.size.width = CGRectGetWidth(self.scrollView.frame) - 16;
-             rect.origin.y = self.scrollView.contentSize.height - 8 - CGRectGetHeight(additionalServices.frame);
+             rect.origin.y = rect.origin.y = CGRectGetMaxY(lineView.frame);
              rect.origin.x = 8;
              additionalServices.frame = rect;
          }
@@ -713,7 +741,11 @@
          
         additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
          
-        lineView.frame = CGRectMake(8, CGRectGetMinY(additionalServices.frame), CGRectGetWidth(self.scrollView.frame) - 16, 2);
+         self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.frame),
+                                                  CGRectGetHeight(self.informationView.frame)
+                                                  + 8 + CGRectGetHeight(metroNamesLabel.frame)
+                                                  + 8 + CGRectGetHeight(ourCommentLabel.frame)
+                                                  + 8 + 2 + 8 + CGRectGetHeight(additionalServices.frame));
          
          
          for (int i=0 ; i<self.tachoElements.count; ++i)

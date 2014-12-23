@@ -89,6 +89,8 @@
 		EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC03D0E21A091D0900D90F72 /* TariffCustomView.xib */; };
 		EC03D0E61A091F1B00D90F72 /* TariffsCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC03D0E51A091F1B00D90F72 /* TariffsCustomView.m */; };
 		EC0662BD1A440CFB007F2126 /* GPSConection.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0662BC1A440CFB007F2126 /* GPSConection.m */; };
+		EC0662D41A44757B007F2126 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC0662D31A44757B007F2126 /* Roboto-Italic.ttf */; };
+		EC0662D51A448297007F2126 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCDEA0F1A2F6A6800AF549F /* Images.xcassets */; };
 		EC0798D91A2331A10085E3F0 /* yandexIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798D81A2331A10085E3F0 /* yandexIcon.m */; };
 		EC0798DB1A23327F0085E3F0 /* ya_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798DA1A23327F0085E3F0 /* ya_green.png */; };
 		EC0798E71A2342B00085E3F0 /* IconsColorSingltone.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798E61A2342B00085E3F0 /* IconsColorSingltone.m */; };
@@ -293,7 +295,6 @@
 		ECEC89A51A2CA1100036781D /* AssignOrderJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEC898A1A2CA1100036781D /* AssignOrderJson.m */; };
 		ECEC89A61A2CA1100036781D /* AssignOrderResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEC898C1A2CA1100036781D /* AssignOrderResponse.m */; };
 		ECEC89A71A2CA1100036781D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */; };
-		ECEC89AB1A2CA1100036781D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */; };
 		ECEC89AE1A2CA1100036781D /* rublsi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECEC89961A2CA1100036781D /* rublsi.ttf */; };
 		ECEC89AF1A2CA1100036781D /* CustomCellSelectORDER.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEC89971A2CA1100036781D /* CustomCellSelectORDER.m */; };
 		ECEC89B01A2CA1100036781D /* CustomCellSelectedOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEC89991A2CA1100036781D /* CustomCellSelectedOrders.m */; };
@@ -436,7 +437,6 @@
 		8FC2227F1A36E9500003CAAF /* GetPaymentsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPaymentsResponse.m; sourceTree = "<group>"; };
 		8FC222841A37207C0003CAAF /* n_color copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n_color copy.png"; sourceTree = "<group>"; };
 		8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		8FCB177D1A136E9200228F98 /* rublsi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = rublsi.ttf; path = ../rublsi.ttf; sourceTree = "<group>"; };
 		8FCCBBBF19E2DDC400BD9BC1 /* chat1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat1@2x.png"; sourceTree = "<group>"; };
@@ -473,6 +473,7 @@
 		EC03D0E51A091F1B00D90F72 /* TariffsCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffsCustomView.m; sourceTree = "<group>"; };
 		EC0662BB1A440CFB007F2126 /* GPSConection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSConection.h; sourceTree = "<group>"; };
 		EC0662BC1A440CFB007F2126 /* GPSConection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSConection.m; sourceTree = "<group>"; };
+		EC0662D31A44757B007F2126 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../../Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		EC0798D71A2331A10085E3F0 /* yandexIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yandexIcon.h; sourceTree = "<group>"; };
 		EC0798D81A2331A10085E3F0 /* yandexIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yandexIcon.m; sourceTree = "<group>"; };
 		EC0798DA1A23327F0085E3F0 /* ya_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ya_green.png; sourceTree = "<group>"; };
@@ -821,7 +822,6 @@
 		ECEC898C1A2CA1100036781D /* AssignOrderResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignOrderResponse.m; sourceTree = "<group>"; };
 		ECEC898D1A2CA1100036781D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ECEC898E1A2CA1100036781D /* SelectedOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedOrdersViewController.h; sourceTree = "<group>"; };
-		ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		ECEC89951A2CA1100036781D /* CustomCellSelectORDER.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellSelectORDER.h; sourceTree = "<group>"; };
 		ECEC89961A2CA1100036781D /* rublsi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rublsi.ttf; sourceTree = "<group>"; };
 		ECEC89971A2CA1100036781D /* CustomCellSelectORDER.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellSelectORDER.m; sourceTree = "<group>"; };
@@ -1821,8 +1821,8 @@
 			isa = PBXGroup;
 			children = (
 				ECF35CD41A2DF2700005E2A6 /* Time Normal.TTF */,
-				8FC5D8EA1A14FE4600B33FA9 /* Roboto-Italic.ttf */,
 				ECCD99241A19DF93009D482C /* NOTICE.txt */,
+				EC0662D31A44757B007F2126 /* Roboto-Italic.ttf */,
 				8FCB177D1A136E9200228F98 /* rublsi.ttf */,
 				8FC5D8E81A14F59F00B33FA9 /* Roboto-Bold.ttf */,
 				ECCD99251A19DF93009D482C /* Roboto-Black.ttf */,
@@ -1994,7 +1994,6 @@
 				8FC2223F1A36DEE20003CAAF /* CustomCellSelectedOrders.xib */,
 				8FC222411A36DEFB0003CAAF /* CustomCellSelectedOrders2.xib */,
 				8FC2223D1A36DEC80003CAAF /* CustomCellSelectORDER.xib */,
-				ECEC89921A2CA1100036781D /* Roboto-Italic.ttf */,
 				ECEC89951A2CA1100036781D /* CustomCellSelectORDER.h */,
 				ECEC89961A2CA1100036781D /* rublsi.ttf */,
 				ECEC89971A2CA1100036781D /* CustomCellSelectORDER.m */,
@@ -2168,6 +2167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC0662D51A448297007F2126 /* Images.xcassets in Resources */,
 				8FC222791A36E9360003CAAF /* PaymentHistoryCustomCell.xib in Resources */,
 				EC80D4141A41CFAA007885B6 /* on_bonuses_payment.png in Resources */,
 				8FB0F8AE1A28D9AE003A79E9 /* metro_d.png in Resources */,
@@ -2193,6 +2193,7 @@
 				ECF35CD51A2DF2700005E2A6 /* Time Normal.TTF in Resources */,
 				ECCD99391A19DF93009D482C /* Roboto-Bold.ttf in Resources */,
 				ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */,
+				EC0662D41A44757B007F2126 /* Roboto-Italic.ttf in Resources */,
 				ECCD99371A19DF93009D482C /* Roboto-Black.ttf in Resources */,
 				EC03D0E31A091D0900D90F72 /* TariffCustomView.xib in Resources */,
 				ECCD993B1A19DF93009D482C /* Roboto-BoldCondensedItalic.ttf in Resources */,
@@ -2205,7 +2206,6 @@
 				ECCD993A1A19DF93009D482C /* Roboto-BoldCondensed.ttf in Resources */,
 				8FE032F019DEC81B00B17C09 /* gps@2x.png in Resources */,
 				ECC7862E1A109F8600DAD7A6 /* rb.png in Resources */,
-				ECEC89AB1A2CA1100036781D /* Roboto-Italic.ttf in Resources */,
 				8FB0F8A71A28D9AE003A79E9 /* ic_landmark_mall.png in Resources */,
 				8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */,
 				8FA028F11A122B1700729054 /* star_none.png in Resources */,

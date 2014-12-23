@@ -32,8 +32,18 @@
     CAGradientLayer* gradientLayer1;
     CAGradientLayer* gradientLayer2;
     OpenMapButtonHandler*openMapButtonHandlerObject;
+    
+    
+    BOOL keyboardIsShown;
+    CGRect activeTextFeildFrame;
 }
 @end
+
+
+
+#define kTabBarHeight 64
+
+
 
 @implementation EditCarInfoViewController
 
@@ -55,7 +65,6 @@
     self.lastLicense.delegate = self;
     
     
-    [self registerForKeyboardNotifications];
     
     UITapGestureRecognizer* tapBegan = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchRecognizer)];
     [self.backgroundView addGestureRecognizer:tapBegan];
@@ -70,9 +79,12 @@
     [self.carImageView addGestureRecognizer:singleTap];
     
     
-//    
     gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
     [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
+    
+    
+    [self registerForKeyboardNotifications];
+    
 }
 
 
@@ -91,16 +103,6 @@
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
-    
-//    NSString *string = self.text;
-//    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
-//    
-//    //NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc]init];
-//    float spacing = 0.8f;
-//    [attributedString addAttribute:NSKernAttributeName
-//                             value:@(spacing)
-//                             range:NSMakeRange(0, [self.text length])];
-//    self.attributedText = attributedString;
 }
 
 -(void)requestGetColorList
@@ -453,26 +455,45 @@
     }
 }
 
+
+
+-(void)touchRecognizer{
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    
+    [activeTextFeild resignFirstResponder];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [textField resignFirstResponder];
+    
     if (textField == self.year) {
         [self.gosNumber becomeFirstResponder];
+//        activeTextFeild = self.gosNumber;
     }
     if (textField == self.gosNumber) {
         [self.vinCode becomeFirstResponder];
+//        [self.scrollView scrollRectToVisible:self.vinCode.frame animated:NO];
+//        activeTextFeild = self.vinCode;
     }
     if (textField == self.vinCode) {
         [self.firstLicense becomeFirstResponder];
+//        [self.scrollView scrollRectToVisible:self.firstLicense.frame animated:NO];
+//        activeTextFeild = self.firstLicense;
     }
     if (textField == self.firstLicense) {
         [self.lastLicense becomeFirstResponder];
+//        [self.scrollView scrollRectToVisible:self.lastLicense.frame animated:NO];
+//        activeTextFeild = self.lastLicense;
     }
     if (textField == self.lastLicense) {
         [self.lastLicense resignFirstResponder];
+//        [self.scrollView scrollRectToVisible:self.lastLicense.frame animated:NO];
+//        activeTextFeild = self.lastLicense;
     }
+    
     return YES;
 }
-
 
 - (void)registerForKeyboardNotifications
 {
@@ -488,33 +509,15 @@
 
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-//    NSDictionary* info = [aNotification userInfo];
-//    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    
-//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
-//    self.scrollView.contentInset = contentInsets;
-//    self.scrollView.scrollIndicatorInsets = contentInsets;
-//    CGRect aRect = self.view.frame;
-//    aRect.size.height -= keyboardSize.height;
-//    
-//    NSLog(@"--->>> %@",NSStringFromCGPoint(activeTextFeild.frame.origin));
-//    
-//   // CGPoint point = [activeTextFeild convertPoint:activeTextFeild.frame.origin fromView:self.view];
-//    
-//    
-//    
-//    CGPoint point = [activeTextFeild convertPoint:activeTextFeild.frame.origin toView:self.view];
-//    //point.y += 30;
-//    
-//    CGRect rect = [activeTextFeild convertRect:activeTextFeild.frame toView:self.view];
-//    
-//    NSLog(@"point = %@",NSStringFromCGPoint(point));
-//    NSLog(@"aRect = %@",NSStringFromCGRect(aRect));
-//    NSLog(@"aRect = %@",NSStringFromCGRect(rect));
-//    
-//    if (!CGRectContainsPoint(aRect, point) ) {
-//        [self.scrollView scrollRectToVisible:rect animated:YES];
-//    }
+    NSDictionary* info = [aNotification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height + 20, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= keyboardSize.height;
+    NSLog(@"%@",NSStringFromCGRect(activeTextFeild.frame));
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
@@ -524,16 +527,14 @@
     self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
+
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField;
 {
     activeTextFeild = textField;
 }
 
 
--(void)touchRecognizer
-{
-    [activeTextFeild resignFirstResponder];
-}
 
 
 -(void)actionHandleTapOnCreateImageView
@@ -780,13 +781,6 @@
     }];
     
 }
-//- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-//{
-//    if (alertView == sucsedAlert) {
-//        CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
-//        [self pushOrPopViewController:carInfoController];
-//    }
-//}
 
 
 #pragma mark - rotation

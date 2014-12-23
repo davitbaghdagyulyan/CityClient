@@ -9,5 +9,8 @@
 #import "textResponse.h"
 
 @implementation textResponse
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end
