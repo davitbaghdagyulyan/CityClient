@@ -34,6 +34,8 @@
 {
     [super viewDidAppear:animated];
     self.segmentControll.selectedSegmentIndex = 2;
+    [self.yandexButton setNeedsDisplay];
+    [self.cityButton setNeedsDisplay];
 }
 
 - (IBAction)segmentControllAction:(UISegmentedControl*)sender

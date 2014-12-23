@@ -20,4 +20,8 @@
 
 - (IBAction)back:(UIButton *)sender;
 - (IBAction)openMap:(UIButton*)sender;
+
+
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @end

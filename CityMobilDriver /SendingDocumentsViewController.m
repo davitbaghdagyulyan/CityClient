@@ -37,6 +37,9 @@
     [super viewDidAppear:animated];
     [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
+    
+    [self.yandexButton setNeedsDisplay];
+    [self.cityButton setNeedsDisplay];
 }
 
 

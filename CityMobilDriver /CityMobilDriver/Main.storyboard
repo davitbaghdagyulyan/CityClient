@@ -4840,6 +4840,7 @@
                         <outlet property="profilImageView" destination="zy5-Qz-OC2" id="Dq3-aH-9S5"/>
                         <outlet property="scrollView" destination="rNj-e2-dCg" id="Ngm-5q-aXo"/>
                         <outlet property="segmentedControll" destination="wc0-no-C67" id="uBp-K8-kXC"/>
+                        <outlet property="yandexButton" destination="C8s-rp-NWZ" id="mEQ-gF-XZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ap5-8p-DUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5869,7 +5870,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkg-vW-RLY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkg-vW-RLY">
                                         <rect key="frame" x="258" y="98" width="126" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="126" id="Evu-gw-5ef"/>
@@ -8606,7 +8607,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="P7i-et-H3Y" id="OC1-wm-xze"/>
                         <outlet property="webView" destination="mzK-44-m7P" id="HBW-o8-VtS"/>
+                        <outlet property="yandexButton" destination="TqV-1H-icA" id="8rw-bK-t1x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQx-1E-gED" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -9632,6 +9635,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H6G-Qj-NO6"/>
+        <segue reference="msl-7q-yJU"/>
     </inferredMetricsTieBreakers>
 </document>
