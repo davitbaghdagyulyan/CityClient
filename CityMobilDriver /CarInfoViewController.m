@@ -386,7 +386,7 @@
         leftMenu.center=point;
         leftMenu.flag=0;
     }
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (IBAction)openMap:(UIButton*)sender
