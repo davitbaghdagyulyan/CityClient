@@ -244,12 +244,6 @@
     return YES;
 }
 
-//-(void)setScrollViewContentOffSet
-//{
-//    CGPoint offset = self.scrollView.contentOffset;
-//    offset.y+=48;
-//    [self.scrollView setContentOffset:offset animated:YES];
-//}
 
 
 
@@ -270,15 +264,15 @@
     NSDictionary* info = [aNotification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height + 20, 0.0);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
     CGRect aRect = self.view.frame;
     aRect.size.height -= keyboardSize.height;
     NSLog(@"%@",NSStringFromCGRect(activeTextFeild.frame));
-    if (!CGRectContainsPoint(aRect, activeTextFeild.frame.origin) ) {
-        [self.scrollView scrollRectToVisible:activeTextFeild.frame animated:YES];
-    }
+////    if (!CGRectContainsPoint(aRect, activeTextFeild.frame.origin) ) {
+//        [self.scrollView scrollRectToVisible:activeTextFeild.frame animated:YES];
+////    }
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification

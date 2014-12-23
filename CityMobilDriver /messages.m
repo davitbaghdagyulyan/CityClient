@@ -9,5 +9,8 @@
 #import "messages.h"
 
 @implementation messages
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end

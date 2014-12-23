@@ -137,6 +137,7 @@
 {
     UITableViewCell* cell = [[UITableViewCell alloc]init];
     cell.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14]];
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"марка ";
@@ -161,7 +162,7 @@
             break;
         case 4:
             cell.textLabel.text = @"гос.номер ";
-            [self setAtributedString:cell.textLabel :getCarInfoResponse.car_license_pref];
+            [self setAtributedString:cell.textLabel :getCarInfoResponse.reg_num];
             break;
         case 5:
             cell.textLabel.text = @"vin-код ";
@@ -169,12 +170,13 @@
             break;
         case 6:
             cell.textLabel.text = @"лицензия - ";
-            [self setAtributedString:cell.textLabel :getCarInfoResponse.car_license_number];
+            [self setAtributedString:cell.textLabel :[NSString stringWithFormat:@"%@ - %@",getCarInfoResponse.car_license_pref,getCarInfoResponse.car_license_number]];
             break;
             
         default:
             break;
     }
+    
     
     
     return cell;
@@ -189,7 +191,7 @@
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
     float spacing = 0.1f;
     [attributedText addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [labelText length])];
-    [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:17]} range:range1];
+    [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:14]} range:range1];
     label.attributedText=attributedText;
 }
 

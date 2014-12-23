@@ -29,7 +29,7 @@
         self.VIN = @"";
         self.car_license_pref = @"";
         self.car_license_number = @"";
-        
+        self.reg_num = @"";
     }
     return self;
 }
