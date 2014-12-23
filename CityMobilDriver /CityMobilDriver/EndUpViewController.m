@@ -142,7 +142,7 @@
 {
     if ([self.orderResponse.useBonus isEqualToString:@"Y"]) {
         PaymentOnBonusesButton = [[UIButton alloc]initWithFrame:CGRectMake(8, bgViewHeigth , CGRectGetWidth(self.endUpScrollView.frame) - 16, 40)];
-        
+        PaymentOnBonusesButton.titleLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:15];
         
         bonusImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetWidth(PaymentOnBonusesButton.frame)- 44 - 5, (CGRectGetHeight(PaymentOnBonusesButton.frame) - 38)/2, 44, 38)];
         [bonusImage setImage:[UIImage imageNamed:@"on_bonuses_payment.png"]];
@@ -162,6 +162,7 @@
     
     
     continueToOrder = [[UIButton alloc]initWithFrame:CGRectMake(8, bgViewHeigth , CGRectGetWidth(self.endUpScrollView.frame) - 16, 40)];
+    continueToOrder.titleLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:15];
     [continueToOrder setTitle:@"Продолжить  заказ" forState:UIControlStateNormal];
     continueToOrder.backgroundColor = [UIColor grayColor];
     [continueToOrder setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -217,13 +218,17 @@
 
 -(void)drowCashButton{
     cashPaymentButton = [[UIButton alloc]initWithFrame:CGRectMake(8, bgViewHeigth , CGRectGetWidth(self.endUpScrollView.frame) - 16, 40)];
-    
+   
     
     cashImage = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetWidth(cashPaymentButton.frame)- 44 - 5, (CGRectGetHeight(cashPaymentButton.frame) - 38)/2, 44, 38)];
     [cashImage setImage:[UIImage imageNamed:@"cash.png"]];
     [cashPaymentButton addSubview:cashImage];
     
+    
     [cashPaymentButton setTitle:@"Оплата за наличный расчет" forState:UIControlStateNormal];
+    
+    cashPaymentButton.titleLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:15];
+    
     cashPaymentButton.backgroundColor = [UIColor orangeColor];
     [cashPaymentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [bgView addSubview:cashPaymentButton];
@@ -555,7 +560,7 @@
     else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Операция невозможна"
                                                                        message:
-                                    [NSString stringWithFormat:@"Лимит превышен\nна:%ld\nСтоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@\nКомиссия с заказа:%@\nМин. необходимый остаток:%@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
+                                    [NSString stringWithFormat:@"Лимит превышен\nна:%d\nСтоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@\nКомиссия с заказа:%@\nМин. необходимый остаток:%@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
                                      self.bill,billTextField.text,billDifference.text,billResponse.commision,billResponse.creditlimit,billResponse.balance]
                                     
                                                                 preferredStyle:UIAlertControllerStyleAlert];
