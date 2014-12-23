@@ -203,6 +203,11 @@ GetPaymentsResponse * getPaymentsResponseObject;
          {
              leftMenu.flag=1;
              self.PaymentsHistoryTableView.userInteractionEnabled=NO;
+             
+             self.PaymentsHistoryTableView.tag=1;
+             [leftMenu.disabledViewsArray removeAllObjects];
+             
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong: self.PaymentsHistoryTableView.tag]];
          }
          else
          {

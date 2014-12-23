@@ -36,7 +36,13 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     [GPSConection showGPSConection:self];
+    for (UIView*view in self.statisticsScrollView.subviews)
+    {
+        [view removeFromSuperview];
+    }
+   
+    
+    [GPSConection showGPSConection:self];
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
@@ -215,6 +221,12 @@
          {
              leftMenu.flag=1;
              self.statisticsScrollView.userInteractionEnabled=NO;
+             
+             self.statisticsScrollView.tag=1;
+             
+             [leftMenu.disabledViewsArray removeAllObjects];
+             
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.statisticsScrollView.tag]];
          }
          else
          {

@@ -431,6 +431,13 @@
              leftMenu.flag=1;
              view1.userInteractionEnabled=NO;
              view2.userInteractionEnabled=NO;
+             
+             view1.tag=1;
+             view2.tag=2;
+             [leftMenu.disabledViewsArray removeAllObjects];
+          
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:view1.tag]];
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:view2.tag]];
          }
          else
          {

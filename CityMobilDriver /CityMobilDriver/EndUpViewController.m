@@ -690,6 +690,10 @@
          {
              leftMenu.flag=1;
              self.endUpScrollView.userInteractionEnabled=NO;
+             self.endUpScrollView.tag=1;
+             [leftMenu.disabledViewsArray removeAllObjects];
+            
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong: self.endUpScrollView.tag]];
              
          }
          else

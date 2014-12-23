@@ -341,6 +341,19 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
              self.tableViewOrdersPort.userInteractionEnabled=NO;
              self.tableViewOrdersLand.userInteractionEnabled=NO;
              self.tableViewIpad.userInteractionEnabled=NO;
+             
+             self.tableViewOrdersPort.tag=1;
+             self.tableViewOrdersLand.tag=2;
+             self.tableViewIpad.tag=3;
+             
+             
+             [leftMenu.disabledViewsArray removeAllObjects];
+            
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc]initWithLong:self.tableViewOrdersPort.tag]];
+             
+               [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.tableViewOrdersLand.tag]];
+          
+              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.tableViewIpad.tag]];
          }
          else
          {

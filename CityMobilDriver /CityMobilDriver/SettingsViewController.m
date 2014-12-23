@@ -867,6 +867,11 @@
          {
              leftMenu.flag=1;
              self.scrolView.userInteractionEnabled=NO;
+             
+             self.scrolView.tag=1;
+             [leftMenu.disabledViewsArray removeAllObjects];
+           
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.scrolView.tag]];
           
          }
          else

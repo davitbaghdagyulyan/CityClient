@@ -675,6 +675,13 @@ else
              leftMenu.flag=1;
              self.tableViewOrdersHistory.userInteractionEnabled=NO;
              
+             self.tableViewOrdersHistory.tag=1;
+             
+             
+             [leftMenu.disabledViewsArray removeAllObjects];
+   
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.tableViewOrdersHistory.tag]];
+             
          }
          else
          {
@@ -821,7 +828,7 @@ else
          {
              xx=0;
          }
-         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
          
      }];
     

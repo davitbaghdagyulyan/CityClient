@@ -13,11 +13,12 @@
 #import "XMLReader.h"
 #import "NSDictionary+BVJSONString.h"
 
-@interface TariffsCityMobilViewController : UIViewController
+@interface TariffsCityMobilViewController : UIViewController<UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *tariffsSacrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 - (IBAction)openMap:(UIButton*)sender;
+@property (nonatomic, assign) CGFloat lastContentOffset;
 @end

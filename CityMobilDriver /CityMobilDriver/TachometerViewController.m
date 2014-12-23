@@ -781,6 +781,11 @@
              leftMenu.flag=1;
              self.bgView.userInteractionEnabled = NO;
              //self.segmentedControll.userInteractionEnabled = NO;
+             
+             self.bgView.tag=1;
+             [leftMenu.disabledViewsArray removeAllObjects];
+      
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.bgView.tag]];
          }
          else
          {

@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TariffsYandexViewController : UIViewController
-- (IBAction)back:(id)sender;
+@property (weak, nonatomic) IBOutlet UIScrollView *tarifsYandexScrollView;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
+- (IBAction)back:(id)sender;
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)openMap:(UIButton*)sender;
 @end

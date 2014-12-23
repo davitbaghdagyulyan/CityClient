@@ -300,6 +300,14 @@
              leftMenu.flag=1;
              self.scrollView.userInteractionEnabled = NO;
              self.segmentControll.userInteractionEnabled = NO;
+             
+             self.scrollView.tag=1;
+             self.segmentControll.tag=2;
+             [leftMenu.disabledViewsArray removeAllObjects];
+          
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.scrollView.tag]];
+         
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.segmentControll.tag]];
          }
          else
          {

@@ -133,23 +133,37 @@
              {
                  self.messageTextView.frame=CGRectMake(self.messageTextView.frame.origin.x, self.messageTextView.frame.origin.y, self.messageTextView.frame.size.width,expectSize.height);
                  yCord=CGRectGetMaxY(self.messageTextView.frame);
-                 CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
-                 [self.scrollView setContentOffset:bottomOffset animated:YES];
+                 
+                 
+                 
+                
+                 
                  if ((yCord+60>self.scrollView.frame.size.height))
                  {
-                 self.underView.frame=CGRectMake(self.underView.frame.origin.x, self.underView.frame.origin.y, self.underView.bounds.size.width, yCord+10);
+                 
+                     
+                     self.underView.frame=CGRectMake(self.underView.frame.origin.x, self.underView.frame.origin.y, self.underView.bounds.size.width, yCord+10);
+                     
+                    
                  }
              }
              if (isOpenKeyboard)
              {
                  self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height+keyboardSize.height-(self.scrollView.frame.size.height-(self.messageTextView.frame.origin.y+self.messageTextView.frame.size.height))+10);
-
+                
+               
              }
              else
              {
              self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width, yCord+60);
              }
              
+             CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
+             
+             if (self.scrollView.contentSize.height>self.scrollView.bounds.size.height)
+             {
+                 [self.scrollView setContentOffset:bottomOffset animated:YES];
+             }
 
    
          }
@@ -344,13 +358,19 @@
          if (leftMenu.flag==0)
          {
              leftMenu.flag=1;
-             self.titleTextView.userInteractionEnabled=NO;
-             self.messageTextView.userInteractionEnabled=NO;
+             self.scrollView.userInteractionEnabled=NO;
+             
+             self.scrollView.tag=1;
+            
+             [leftMenu.disabledViewsArray removeAllObjects];
+           
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.scrollView.tag]];
+             
          }
          else
          {
-             self.titleTextView.userInteractionEnabled=YES;
-             self.messageTextView.userInteractionEnabled=YES;
+             self.scrollView.userInteractionEnabled=YES;
+            
              leftMenu.flag=0;
          }
      }
@@ -374,16 +394,16 @@
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              leftMenu.flag=0;
-             self.titleTextView.userInteractionEnabled=YES;
-             self.messageTextView.userInteractionEnabled=YES;
+             self.scrollView.userInteractionEnabled=YES;
+          
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              leftMenu.flag=1;
-             self.titleTextView.userInteractionEnabled=NO;
-             self.messageTextView.userInteractionEnabled=NO;
+          self.scrollView.userInteractionEnabled=NO;
+           
          }
          point.y=leftMenu.center.y;
          leftMenu.center=point;
@@ -410,8 +430,8 @@
     }
     leftMenu.center=point;
     leftMenu.flag=1;
-    self.titleTextView.userInteractionEnabled=NO;
-    self.messageTextView.userInteractionEnabled=NO;
+    self.scrollView.userInteractionEnabled=NO;
+ 
 }
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator

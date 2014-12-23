@@ -260,6 +260,14 @@
              self.web.userInteractionEnabled=NO;
              answerButton.userInteractionEnabled=NO;
              
+             self.web.tag=1;
+             answerButton.tag=2;
+             
+             [leftMenu.disabledViewsArray removeAllObjects];
+        
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.web.tag]];
+              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:answerButton.tag]];
+             
          }
          else
          {

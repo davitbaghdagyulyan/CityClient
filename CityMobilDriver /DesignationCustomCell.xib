@@ -6,53 +6,55 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="98" id="Olo-Em-1gl" customClass="DesignationCustomCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="114" id="Olo-Em-1gl" customClass="DesignationCustomCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Olo-Em-1gl" id="etc-1L-7Kd">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38f-zg-TEq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HDq-9M-mzE">
-                                <rect key="frame" x="0.0" y="0.0" width="257" height="57"/>
+                                <rect key="frame" x="0.0" y="0.0" width="269" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="car-11-EmH"/>
+                                    <constraint firstAttribute="height" constant="45" id="WQh-Od-KmV"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxi-FK-yn5">
-                                <rect key="frame" x="257" y="0.0" width="63" height="57"/>
+                                <rect key="frame" x="269" y="0.0" width="51" height="45"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mni-ed-VwK">
-                                        <rect key="frame" x="10" y="10" width="43" height="37"/>
+                                        <rect key="frame" x="4" y="4" width="43" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43" id="5fi-xt-3b4"/>
+                                            <constraint firstAttribute="height" constant="37" id="iRN-oB-Tgf"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.70221259124087587" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.56640625" green="0.56478102189781021" blue="0.5628706660583942" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="74Q-1d-HhB"/>
-                                    <constraint firstItem="mni-ed-VwK" firstAttribute="leading" secondItem="Rxi-FK-yn5" secondAttribute="leading" constant="10" id="Dgg-Mc-C5m"/>
-                                    <constraint firstItem="mni-ed-VwK" firstAttribute="top" secondItem="Rxi-FK-yn5" secondAttribute="top" constant="10" id="EmX-zX-awf"/>
-                                    <constraint firstAttribute="width" constant="63" id="JaO-fO-nO8"/>
-                                    <constraint firstAttribute="bottom" secondItem="mni-ed-VwK" secondAttribute="bottom" constant="10" id="JbP-wR-g3d"/>
-                                    <constraint firstAttribute="trailing" secondItem="mni-ed-VwK" secondAttribute="trailing" constant="10" id="nCb-Rm-TNx"/>
+                                    <constraint firstAttribute="height" constant="45" id="25f-EU-mSv"/>
+                                    <constraint firstItem="mni-ed-VwK" firstAttribute="top" secondItem="Rxi-FK-yn5" secondAttribute="top" constant="4" id="5HM-7y-wq4"/>
+                                    <constraint firstItem="mni-ed-VwK" firstAttribute="leading" secondItem="Rxi-FK-yn5" secondAttribute="leading" constant="4" id="hcf-Kc-mBt"/>
+                                    <constraint firstAttribute="width" constant="51" id="p5L-we-Ny9"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="HDq-9M-mzE" firstAttribute="top" secondItem="38f-zg-TEq" secondAttribute="top" id="8C9-aa-nJv"/>
-                            <constraint firstItem="Rxi-FK-yn5" firstAttribute="top" secondItem="38f-zg-TEq" secondAttribute="top" id="UUA-wN-z1H"/>
-                            <constraint firstItem="Rxi-FK-yn5" firstAttribute="leading" secondItem="HDq-9M-mzE" secondAttribute="trailing" id="Uzo-cZ-fIV"/>
-                            <constraint firstItem="HDq-9M-mzE" firstAttribute="leading" secondItem="38f-zg-TEq" secondAttribute="leading" id="oqC-cP-fJJ"/>
-                            <constraint firstAttribute="trailing" secondItem="Rxi-FK-yn5" secondAttribute="trailing" id="pZr-KQ-Mle"/>
+                            <constraint firstAttribute="height" constant="45" id="KNb-cL-ona"/>
+                            <constraint firstItem="Rxi-FK-yn5" firstAttribute="top" secondItem="38f-zg-TEq" secondAttribute="top" id="WEM-kI-Aj8"/>
+                            <constraint firstAttribute="trailing" secondItem="Rxi-FK-yn5" secondAttribute="trailing" id="b55-a1-zd3"/>
+                            <constraint firstItem="Rxi-FK-yn5" firstAttribute="leading" secondItem="HDq-9M-mzE" secondAttribute="trailing" id="eWC-S6-jxz"/>
+                            <constraint firstItem="HDq-9M-mzE" firstAttribute="top" secondItem="38f-zg-TEq" secondAttribute="top" id="n98-4g-2Wu"/>
+                            <constraint firstItem="HDq-9M-mzE" firstAttribute="leading" secondItem="38f-zg-TEq" secondAttribute="leading" id="o9a-D7-U3K"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="38f-zg-TEq" firstAttribute="leading" secondItem="etc-1L-7Kd" secondAttribute="leading" id="3Yo-GL-GwI"/>
-                    <constraint firstAttribute="trailing" secondItem="38f-zg-TEq" secondAttribute="trailing" id="Jkr-Dd-8We"/>
-                    <constraint firstAttribute="bottom" secondItem="38f-zg-TEq" secondAttribute="bottom" id="LUz-ki-1oc"/>
-                    <constraint firstItem="38f-zg-TEq" firstAttribute="top" secondItem="etc-1L-7Kd" secondAttribute="top" id="ece-NM-XGC"/>
+                    <constraint firstItem="38f-zg-TEq" firstAttribute="leading" secondItem="etc-1L-7Kd" secondAttribute="leading" id="46G-KU-zeV"/>
+                    <constraint firstItem="38f-zg-TEq" firstAttribute="top" secondItem="etc-1L-7Kd" secondAttribute="top" id="4sz-n3-wk7"/>
+                    <constraint firstItem="38f-zg-TEq" firstAttribute="trailing" secondItem="etc-1L-7Kd" secondAttribute="trailing" id="c6e-hE-feK"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -60,7 +62,7 @@
                 <outlet property="designationView" destination="HDq-9M-mzE" id="2qu-2t-8kA"/>
                 <outlet property="viewForImage" destination="Rxi-FK-yn5" id="7Eo-vu-qVI"/>
             </connections>
-            <point key="canvasLocation" x="503" y="220"/>
+            <point key="canvasLocation" x="503" y="227"/>
         </tableViewCell>
     </objects>
 </document>

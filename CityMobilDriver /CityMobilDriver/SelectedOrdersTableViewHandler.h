@@ -58,6 +58,7 @@
     NSUInteger numberOfClass;
     NSTimer * timerForCallDat;
     NSUInteger count;
+    NSString*diviceType;
     
 }
 @property(nonatomic,strong)UIView*under;
