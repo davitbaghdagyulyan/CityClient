@@ -76,6 +76,13 @@
          {
              leftMenu.flag=1;
              self.webView.userInteractionEnabled = NO;
+             
+             self.webView.tag=1;
+            
+             [leftMenu.disabledViewsArray removeAllObjects];
+            
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.webView.tag]];
+          
          }
          else
          {

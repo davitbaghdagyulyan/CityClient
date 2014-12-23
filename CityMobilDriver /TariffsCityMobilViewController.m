@@ -14,11 +14,20 @@
 #import "CustomLabel.h"
 #import "OpenMapButtonHandler.h"
 
+typedef enum ScrollDirection {
+    ScrollDirectionNone,
+    ScrollDirectionRight,
+    ScrollDirectionLeft,
+    ScrollDirectionUp,
+    ScrollDirectionDown,
+    ScrollDirectionCrazy,
+} ScrollDirection;
+
 @interface TariffsCityMobilViewController ()
 {
     UIScrollView*smallScrollView;
     LeftMenu*leftMenu;
-  
+    NSUInteger position;
     GetTariffsUrlResponse*getTariffsUrlResponseObject;
     GetTariffsUrlResponseXML*getTariffsUrlResponseXMLObject;
     CGFloat contentWidth;
@@ -43,8 +52,8 @@
     [super viewDidAppear:animated];
 
      [GPSConection showGPSConection:self];
-    
-    
+    position=0;
+    self.tariffsSacrollView.delegate=self;
     for (UIScrollView* scroll in self.tariffsSacrollView.subviews)
     {
         [scroll removeFromSuperview];
@@ -189,8 +198,9 @@
     
     for (int i=0; i<getTariffsUrlResponseXMLObject.Tariffs.Tariff.count; i++)
     {
-       smallScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];
-        smallScrollView.backgroundColor=[UIColor whiteColor];
+      
+        smallScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];
+        smallScrollView.backgroundColor=[UIColor clearColor];
         [self.tariffsSacrollView addSubview:smallScrollView];
         CGFloat contentHeight=0;
         contentWidth=contentWidth+self.tariffsSacrollView.frame.size.width;
@@ -297,13 +307,17 @@
 }
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
+    ;
+    
     [coordinator animateAlongsideTransition:nil
      
                              completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
         
          
-         [self.tariffsSacrollView setContentOffset:CGPointMake(0, 0)];
+         
+         [self.tariffsSacrollView setContentOffset:CGPointMake(self.tariffsSacrollView.bounds.size.width*position, 0)];
+         self.lastContentOffset = self.tariffsSacrollView.contentOffset.x;
          
          gradient.frame = CGRectMake(0, 0, self.tariffsSacrollView.frame.size.width*getTariffsUrlResponseXMLObject.Tariffs.Tariff.count, self.tariffsSacrollView.frame.size.height);
          
@@ -405,6 +419,13 @@
          {
              leftMenu.flag=1;
              self.tariffsSacrollView.userInteractionEnabled=NO;
+             
+             self.tariffsSacrollView.tag=1;
+        
+             [leftMenu.disabledViewsArray removeAllObjects];
+             
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.tariffsSacrollView.tag]];
+          
          }
          else
          {
@@ -482,6 +503,28 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    ScrollDirection scrollDirection;
+    if (self.lastContentOffset > scrollView.contentOffset.x)
+    {
+        scrollDirection = ScrollDirectionRight;
+    
+             position-=1;
+ 
+       
+       
+    }
+    else if (self.lastContentOffset < scrollView.contentOffset.x)
+    {
+        scrollDirection = ScrollDirectionLeft;
+        position+=1;
+    }
+  
+    self.lastContentOffset = scrollView.contentOffset.x;
+    
+    // do whatever you need to with scrollDirection here.
+}
 
 
 @end

@@ -923,7 +923,11 @@
          if (leftMenu.flag==0)
          {
              leftMenu.flag=1;
+             scrollView.tag=1;
              scrollView.userInteractionEnabled=NO;
+             [leftMenu.disabledViewsArray removeAllObjects];
+          
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:scrollView.tag]];
              
          }
          else

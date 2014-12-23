@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -24,6 +24,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gygyg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="252-3P-liu" customClass="CustomLabel">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="14"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="Naj-9l-jdr"/>
                                 </constraints>
@@ -32,11 +33,12 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hhhh" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGl-7V-kuR" customClass="CustomLabel">
                                 <rect key="frame" x="200" y="0.0" width="120" height="14"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.94944685218978098" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="252-3P-liu" firstAttribute="top" secondItem="OCp-hc-kNN" secondAttribute="top" id="7Xu-Qz-aba"/>
                             <constraint firstItem="252-3P-liu" firstAttribute="width" secondItem="OCp-hc-kNN" secondAttribute="width" multiplier="200/320" id="8uq-Cg-qQk"/>
@@ -48,7 +50,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.94525547445255476" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="OCp-hc-kNN" secondAttribute="trailing" id="Cw1-5X-XNz"/>
                     <constraint firstAttribute="bottom" secondItem="OCp-hc-kNN" secondAttribute="bottom" id="GHL-lJ-8Wq"/>
@@ -56,6 +58,7 @@
                     <constraint firstItem="OCp-hc-kNN" firstAttribute="leading" secondItem="WI6-we-nX6" secondAttribute="leading" id="gGa-ck-vmV"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="priceLabel" destination="zGl-7V-kuR" id="CBP-QV-vU0"/>
                 <outlet property="txtLabel" destination="252-3P-liu" id="tHx-zh-ERL"/>

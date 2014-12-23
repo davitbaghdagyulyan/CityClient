@@ -311,6 +311,12 @@
              leftMenu.flag=1;
              self.tableViewOrdersDetails.userInteractionEnabled=NO;
              
+             self.tableViewOrdersDetails.tag=1;
+             [leftMenu.disabledViewsArray removeAllObjects];
+             NSNumber*num;
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.tableViewOrdersDetails.tag]];
+           
+             
          }
          else
          {

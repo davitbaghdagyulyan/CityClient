@@ -394,6 +394,11 @@
          {
              leftMenu.flag=1;
              self.servicesTable.userInteractionEnabled = NO;
+             
+             self.servicesTable.tag=1;
+             [leftMenu.disabledViewsArray removeAllObjects];
+             
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.servicesTable.tag]];
          }
          else
          {

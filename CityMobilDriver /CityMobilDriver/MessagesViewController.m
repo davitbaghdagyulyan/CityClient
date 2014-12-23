@@ -32,8 +32,7 @@
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
-    
-  
+
 }
 
 - (void)viewDidLoad {
@@ -48,7 +47,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -80,7 +78,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  44;
+    return  42;
 }
 
 - (IBAction)openMap:(UIButton*)sender
@@ -117,6 +115,14 @@
          {
              leftMenu.flag=1;
              self.messagesTableView.userInteractionEnabled=NO;
+             
+             self.messagesTableView.tag=1;
+  
+             
+             [leftMenu.disabledViewsArray removeAllObjects];
+          
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.messagesTableView.tag]];
+           
          }
          else
          {
@@ -297,7 +303,7 @@
     NSDate *date = [[NSDate alloc] init];
     date = [dateFormatter dateFromString:string];
     /////////convert nsdata To NSString////////////////////////////////////
-    [dateFormatter setDateFormat:@"dd-MM-yyy"];
+    [dateFormatter setDateFormat:@"dd.MM.yy"];
     if(date==nil) return @"";
     return [dateFormatter stringFromDate:date];
     

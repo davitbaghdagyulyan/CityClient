@@ -3187,8 +3187,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="openAndCloseLeftMenu:" destination="40C-gD-0cA" eventType="touchUpInside" id="OaY-ky-DUP"/>
-                                            <action selector="openAndCloseLeftMenu:" destination="koY-fA-tde" eventType="touchUpInside" id="ing-7C-HcE"/>
+                                            <action selector="openAndCloseLeftMenu:" destination="UKQ-LS-hs2" eventType="touchUpInside" id="taY-Nq-W4m"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ng-pE-Fdz" userLabel="Button1">
@@ -3201,7 +3200,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="back:" destination="koY-fA-tde" eventType="touchUpInside" id="b09-Vm-MPv"/>
+                                            <action selector="back:" destination="UKQ-LS-hs2" eventType="touchUpInside" id="rCS-cI-yKn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9am-5i-0mZ" userLabel="GPS">
@@ -3213,6 +3212,9 @@
                                         <state key="normal" title="Button" image="gps.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="openMap:" destination="UKQ-LS-hs2" eventType="touchUpInside" id="T8u-6F-qdc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YR7-Ta-l23" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="411" y="30" width="25" height="25"/>
@@ -3223,6 +3225,9 @@
                                         <state key="normal" title="Button" image="ya.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="40C-gD-0cA" kind="show" id="ecP-za-fIL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Get-um-dru" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="461" y="30" width="25" height="25"/>
@@ -3233,6 +3238,9 @@
                                         <state key="normal" title="Button" image="icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="40C-gD-0cA" kind="show" id="7Jr-KW-I8Q"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3270,12 +3278,20 @@
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="25" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7v3-ek-ikI">
+                                <rect key="frame" x="10" y="116" width="580" height="484"/>
+                                <color key="backgroundColor" white="0.89954949819999996" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gpn-05-Sfy" firstAttribute="leading" secondItem="rco-ES-Ow9" secondAttribute="leading" constant="10" id="7qe-8h-vkX"/>
+                            <constraint firstItem="7v3-ek-ikI" firstAttribute="leading" secondItem="rco-ES-Ow9" secondAttribute="leading" constant="10" id="PFR-cH-cAU"/>
+                            <constraint firstAttribute="trailing" secondItem="7v3-ek-ikI" secondAttribute="trailing" constant="10" id="QQU-Qg-RKq"/>
                             <constraint firstItem="gpn-05-Sfy" firstAttribute="top" secondItem="kIL-3Q-f9G" secondAttribute="bottom" constant="2" id="UKx-GS-XuU"/>
                             <constraint firstAttribute="trailing" secondItem="kIL-3Q-f9G" secondAttribute="trailing" id="YQg-6X-3ae"/>
+                            <constraint firstItem="I0b-Ok-dns" firstAttribute="top" secondItem="7v3-ek-ikI" secondAttribute="bottom" id="g22-W4-nOd"/>
+                            <constraint firstItem="7v3-ek-ikI" firstAttribute="top" secondItem="gpn-05-Sfy" secondAttribute="bottom" id="j80-VN-b6Z"/>
                             <constraint firstItem="kIL-3Q-f9G" firstAttribute="top" secondItem="rco-ES-Ow9" secondAttribute="top" id="mwF-pq-bkc"/>
                             <constraint firstItem="kIL-3Q-f9G" firstAttribute="leading" secondItem="rco-ES-Ow9" secondAttribute="leading" id="nrg-Yy-hAk"/>
                             <constraint firstAttribute="trailing" secondItem="gpn-05-Sfy" secondAttribute="trailing" constant="10" id="zEO-B5-lW0"/>
@@ -3283,12 +3299,13 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="Get-um-dru" id="BvX-Ae-oKT"/>
+                        <outlet property="tarifsYandexScrollView" destination="7v3-ek-ikI" id="mAZ-sT-bUA"/>
                         <outlet property="yandexButton" destination="YR7-Ta-l23" id="pa7-lj-bGb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOK-xs-OLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1874" y="1022"/>
+            <point key="canvasLocation" x="-1972" y="1144"/>
         </scene>
         <!--Designation Icons View Controller-->
         <scene sceneID="rTt-hU-r9Q">
@@ -3449,7 +3466,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vmY-I1-Ltd">
-                                <rect key="frame" x="0.0" y="64" width="600" height="29"/>
+                                <rect key="frame" x="10" y="64" width="580" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="uuA-Ko-ymg"/>
@@ -3561,10 +3578,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vmY-I1-Ltd" firstAttribute="leading" secondItem="856-PN-XO2" secondAttribute="leading" id="Un2-TG-K0q"/>
+                            <constraint firstItem="vmY-I1-Ltd" firstAttribute="leading" secondItem="856-PN-XO2" secondAttribute="leading" constant="10" id="Un2-TG-K0q"/>
                             <constraint firstItem="vmY-I1-Ltd" firstAttribute="top" secondItem="856-PN-XO2" secondAttribute="top" constant="64" id="WIL-Zz-A5K"/>
                             <constraint firstAttribute="trailing" secondItem="jS3-Sl-LRh" secondAttribute="trailing" id="cYG-0M-OJj"/>
-                            <constraint firstAttribute="trailing" secondItem="vmY-I1-Ltd" secondAttribute="trailing" id="gj5-dK-o1Q"/>
+                            <constraint firstAttribute="trailing" secondItem="vmY-I1-Ltd" secondAttribute="trailing" constant="10" id="gj5-dK-o1Q"/>
                             <constraint firstItem="jS3-Sl-LRh" firstAttribute="top" secondItem="856-PN-XO2" secondAttribute="top" id="i8N-L7-C5L"/>
                             <constraint firstItem="jS3-Sl-LRh" firstAttribute="leading" secondItem="856-PN-XO2" secondAttribute="leading" id="yV1-8L-S2S"/>
                         </constraints>
@@ -3577,7 +3594,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QA9-9N-90l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1484" y="-416"/>
+            <point key="canvasLocation" x="-1598" y="-383"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="6rJ-Lf-Yec">
@@ -8844,8 +8861,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет закрепленных заказов!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
-                                <rect key="frame" x="10" y="294" width="580" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
+                                <rect key="frame" x="10" y="296" width="580" height="20"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -9635,6 +9652,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="msl-7q-yJU"/>
+        <segue reference="UMa-B8-LRQ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,4 +13,5 @@
 @property(strong,nonatomic)NSMutableArray*nameArray;
 +(LeftMenu*)getLeftMenu:(id)curentSelf;
 @property(nonatomic,assign)NSUInteger flag;
+@property(nonatomic,strong)NSMutableArray*disabledViewsArray;
 @end

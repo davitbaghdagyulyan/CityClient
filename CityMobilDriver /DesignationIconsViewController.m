@@ -37,16 +37,17 @@
     
     leftMenu=[LeftMenu getLeftMenu:self];
      [GPSConection showGPSConection:self];
-
+    
+    self.designationTableView.delegate=self;
+    self.designationTableView.dataSource=self;
+    textArray=[NSArray arrayWithObjects:@"курящий салон",@"не курящий салон",@"наличный расчет",@"безналичный расчет",@"оплата по бонусам",@"оплата по карте",@"Wi-Fi",@"детское кресло",@"перевозка животного",@"багаж",@"заказ с заездом",@"кондиционер",@"желтые номера", nil];
     
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.designationTableView.delegate=self;
-    self.designationTableView.dataSource=self;
-    textArray=[NSArray arrayWithObjects:@"курящий салон",@"не курящий салон",@"наличный расчет",@"безналичный расчет",@"оплата по бонусам",@"оплата по карте",@"Wi-Fi",@"детское кресло",@"перевозка животного",@"багаж",@"заказ с заездом",@"кондиционер",@"желтые номера", nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +93,7 @@
         cell = [nib objectAtIndex:0];
        
         gradLayer=[CAGradientLayer layer];
-        gradLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, 57);
+        gradLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, 45);
        
         [gradLayer setColors:[NSArray arrayWithObjects:(id)([UIColor lightGrayColor].CGColor), (id)([UIColor whiteColor].CGColor),nil]];
         label=[[CustomLabel alloc]initWithFrame:cell.designationView.frame];
@@ -118,7 +119,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  60;
+    return  46;
 }
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
@@ -169,6 +170,13 @@
          {
              leftMenu.flag=1;
              self.designationTableView.userInteractionEnabled=NO;
+             
+             self.designationTableView.tag=1;
+ 
+             [leftMenu.disabledViewsArray removeAllObjects];
+             
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.designationTableView.tag]];
+       
          }
          else
          {

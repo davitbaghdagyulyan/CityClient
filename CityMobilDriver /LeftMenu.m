@@ -44,7 +44,8 @@
     self=[super init];
           if(self)
           {
-             [self setSeparatorColor:[UIColor whiteColor]];
+              self.disabledViewsArray=[[NSMutableArray alloc] init];
+              [self setSeparatorColor:[UIColor whiteColor]];
               self.flag=0;
               k=YES;
               p=YES;
@@ -173,6 +174,11 @@
         case 7:
             myClass = NSClassFromString(@"TariffsCityMobilViewController");
             identity =@"TariffsCityMobilViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+        case 8:
+            myClass = NSClassFromString(@"TariffsYandexViewController");
+            identity =@"TariffsYandexViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
         case 9:
@@ -341,9 +347,8 @@
          {
              self.flag=0;
           point.x=(CGFloat)self.frame.size.width/2*(-1);
-             NSMutableArray*array=[[NSMutableArray alloc]initWithArray:self.curentViewController.view.subviews];
              
-             [self setEnableUserInteraction:array];
+             [self setEnableUserInteraction];
          }
          else if (CGRectGetMaxX(self.frame)>self.frame.size.width/2)
          {
@@ -365,28 +370,12 @@
      ];
 
 }
--(void)setEnableUserInteraction:(NSMutableArray *)arr
+-(void)setEnableUserInteraction
 {
-    
-    for (int i=0;i<arr.count;i++)
+    for (NSNumber*tagIndex in self.disabledViewsArray)
     {
-        if ([arr[i] isKindOfClass:[NavigationView class]])
-        {
-            continue;
-        }
-        
-        UIView* v = (UIView*)arr[i];
-        v.userInteractionEnabled = YES;
-        
-        if (v.subviews.count)
-        {
-            [self setEnableUserInteraction:(NSMutableArray*)v.subviews];
-        }
-}
-  
-    
-    
-
+        [self.curentViewController.view viewWithTag:[tagIndex intValue]].userInteractionEnabled=YES;
+    }
 }
 
 @end
