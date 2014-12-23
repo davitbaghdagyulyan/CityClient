@@ -319,7 +319,6 @@
     if (sender.selectedSegmentIndex == 1)
     {
         CarInfoViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
-        //[self.navigationController pushViewController:createProfilController animated:NO];
         [self pushOrPopViewController:carInfoController];
     }
     

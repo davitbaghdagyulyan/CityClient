@@ -32,10 +32,7 @@
     CAGradientLayer* gradientLayer1;
     CAGradientLayer* gradientLayer2;
     OpenMapButtonHandler*openMapButtonHandlerObject;
-    
-    
-    BOOL keyboardIsShown;
-    CGRect activeTextFeildFrame;
+
 }
 @end
 
@@ -211,6 +208,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
@@ -314,13 +312,10 @@
     if (sender.selectedSegmentIndex == 0)
     {
         ProfilViewController* profilViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"ProfilViewController"];
-        //[self.navigationController pushViewController:profilViewController animated:NO];
         [self pushOrPopViewController:profilViewController];
     }
     if (sender.selectedSegmentIndex == 1)
     {
-//        CarInfoViewController* createProfilController=[self.storyboard instantiateViewControllerWithIdentifier:@"CarInfoViewController"];
-//        [self.navigationController pushViewController:createProfilController animated:NO];
     }
     if (sender.selectedSegmentIndex == 2) {
         CardsViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];

@@ -17,4 +17,11 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControll;
 - (IBAction)segmentControllAction:(UISegmentedControl*)sender;
 
+
+
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+
+- (IBAction)back:(UIButton *)sender;
+
 @end

@@ -169,7 +169,7 @@
             [self setAtributedString:cell.textLabel :getCarInfoResponse.VIN];
             break;
         case 6:
-            cell.textLabel.text = @"лицензия - ";
+            cell.textLabel.text = @"лицензия ";
             [self setAtributedString:cell.textLabel :[NSString stringWithFormat:@"%@ - %@",getCarInfoResponse.car_license_pref,getCarInfoResponse.car_license_number]];
             break;
             
