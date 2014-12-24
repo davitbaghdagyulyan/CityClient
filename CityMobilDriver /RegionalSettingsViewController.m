@@ -104,6 +104,7 @@
                                          
                                      }];
             [alert addAction:cancel];
+            [indicator stopAnimating];
             [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
