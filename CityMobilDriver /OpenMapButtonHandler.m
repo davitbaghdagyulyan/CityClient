@@ -184,7 +184,7 @@
                                                       [SingleDataProvider sharedKey].lat,
                                                       [SingleDataProvider sharedKey].lon];
                                         
-                                        yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=4&no-balloon=1",
+                                        yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=4&no-balloon=0",
                                                       [SingleDataProvider sharedKey].lat,
                                                       [SingleDataProvider sharedKey].lon];
                                         
@@ -199,7 +199,7 @@
                               [getLastKnownLocationResponseObject.latitude doubleValue],
                               [getLastKnownLocationResponseObject.longitude doubleValue]];
                 
-                yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=4&no-balloon=1",
+                yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=4&no-balloon=0",
                               [getLastKnownLocationResponseObject.latitude doubleValue],
                               [getLastKnownLocationResponseObject.longitude doubleValue]];
                 
