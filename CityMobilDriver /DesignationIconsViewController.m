@@ -38,16 +38,17 @@
     leftMenu=[LeftMenu getLeftMenu:self];
      [GPSConection showGPSConection:self];
     
-    self.designationTableView.delegate=self;
-    self.designationTableView.dataSource=self;
-    textArray=[NSArray arrayWithObjects:@"курящий салон",@"не курящий салон",@"наличный расчет",@"безналичный расчет",@"оплата по бонусам",@"оплата по карте",@"Wi-Fi",@"детское кресло",@"перевозка животного",@"багаж",@"заказ с заездом",@"кондиционер",@"желтые номера", nil];
+  
+   
     
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    textArray=[NSArray arrayWithObjects:@"курящий салон",@"не курящий салон",@"наличный расчет",@"безналичный расчет",@"оплата по бонусам",@"оплата по карте",@"Wi-Fi",@"детское кресло",@"перевозка животного",@"багаж",@"заказ с заездом",@"кондиционер",@"желтые номера", nil];
+    self.designationTableView.delegate=self;
+    self.designationTableView.dataSource=self;
 }
 
 - (void)didReceiveMemoryWarning

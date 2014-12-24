@@ -271,6 +271,7 @@
         {
             [(RootViewController*)self.curentViewController setSelectedRow];
         }
+        [self setEnableUserInteraction];
         [self.curentViewController viewDidAppear:NO];
         return;
     }

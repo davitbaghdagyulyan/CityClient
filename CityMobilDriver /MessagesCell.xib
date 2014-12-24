@@ -20,17 +20,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQM-RZ-8O2">
-                        <rect key="frame" x="0.0" y="-1" width="580" height="43"/>
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejl-ox-VvU" userLabel="Label1" customClass="CustomLabel">
-                                <rect key="frame" x="0.0" y="0.0" width="452" height="39"/>
+                                <rect key="frame" x="0.0" y="0.0" width="452" height="38"/>
                                 <color key="backgroundColor" white="0.85472741788321172" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8H-lG-ZDT" userLabel="Label2">
-                                <rect key="frame" x="452" y="0.0" width="128" height="39"/>
+                                <rect key="frame" x="452" y="0.0" width="128" height="38"/>
                                 <color key="backgroundColor" red="0.5646669708029185" green="0.56597855839416056" blue="0.56435333029197077" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,20 +39,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o8H-lG-ZDT" firstAttribute="height" secondItem="jQM-RZ-8O2" secondAttribute="height" multiplier="39/43" id="73Z-0S-i12"/>
+                            <constraint firstItem="o8H-lG-ZDT" firstAttribute="height" secondItem="jQM-RZ-8O2" secondAttribute="height" multiplier="39/43" constant="1.720930232558139" id="73Z-0S-i12"/>
                             <constraint firstItem="ejl-ox-VvU" firstAttribute="leading" secondItem="jQM-RZ-8O2" secondAttribute="leading" id="7z0-5C-uhF"/>
                             <constraint firstItem="ejl-ox-VvU" firstAttribute="top" secondItem="jQM-RZ-8O2" secondAttribute="top" id="J5s-OP-sgB"/>
                             <constraint firstItem="o8H-lG-ZDT" firstAttribute="top" secondItem="jQM-RZ-8O2" secondAttribute="top" id="fxU-7W-hX4"/>
                             <constraint firstItem="ejl-ox-VvU" firstAttribute="width" secondItem="jQM-RZ-8O2" secondAttribute="width" multiplier="452/580" id="jx3-mY-vYA"/>
                             <constraint firstItem="o8H-lG-ZDT" firstAttribute="leading" secondItem="jQM-RZ-8O2" secondAttribute="trailing" multiplier="452/580" id="rei-KQ-cFJ"/>
-                            <constraint firstItem="ejl-ox-VvU" firstAttribute="height" secondItem="jQM-RZ-8O2" secondAttribute="height" multiplier="39/43" id="slM-he-54l"/>
+                            <constraint firstItem="ejl-ox-VvU" firstAttribute="height" secondItem="jQM-RZ-8O2" secondAttribute="height" multiplier="39/43" constant="1.720930232558139" id="slM-he-54l"/>
                             <constraint firstItem="o8H-lG-ZDT" firstAttribute="width" secondItem="jQM-RZ-8O2" secondAttribute="width" multiplier="128/580" id="viU-OU-eqa"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="jQM-RZ-8O2" secondAttribute="bottom" constant="-3" id="MbF-zL-rKq"/>
-                    <constraint firstItem="jQM-RZ-8O2" firstAttribute="top" secondItem="vWh-VF-ayG" secondAttribute="top" constant="-1" id="PRR-0e-XEr"/>
+                    <constraint firstAttribute="bottom" secondItem="jQM-RZ-8O2" secondAttribute="bottom" constant="-1" id="MbF-zL-rKq"/>
+                    <constraint firstItem="jQM-RZ-8O2" firstAttribute="top" secondItem="vWh-VF-ayG" secondAttribute="top" id="PRR-0e-XEr"/>
                     <constraint firstAttribute="trailing" secondItem="jQM-RZ-8O2" secondAttribute="trailing" id="aWJ-ua-AJ2"/>
                     <constraint firstItem="jQM-RZ-8O2" firstAttribute="leading" secondItem="vWh-VF-ayG" secondAttribute="leading" id="lxl-yk-661"/>
                 </constraints>

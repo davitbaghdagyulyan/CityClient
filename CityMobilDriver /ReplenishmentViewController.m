@@ -118,7 +118,7 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomWebView" owner:self options:nil];
                 view2 = [nib objectAtIndex:0];
                
-                view2.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height - 93);
+                view2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
                 [self.view addSubview:view2];
                 
                 [self requestGetQiwiBillsUrl];
@@ -315,7 +315,7 @@
         view1 = [nib objectAtIndex:0];
         view1.delegate=self;
         
-        view1.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height - 93);
+        view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
 
        [self.view addSubview:view1];
          view1.checkCardLabel.text=@"нет привязанных карт";
@@ -512,8 +512,8 @@
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context){
                                     
-                                             view1.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height - 93);
-                                              view2.frame = CGRectMake(0,93, self.view.frame.size.width, self.view.frame.size.height-93);
+                                             view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+                                              view2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height-98);
                                      CGFloat x;
                                     
                                          if(leftMenu.flag==0)

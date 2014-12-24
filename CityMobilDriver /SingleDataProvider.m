@@ -22,17 +22,15 @@
     }
     return obj;
 }
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations lastObject];
-    
     [SingleDataProvider sharedKey].lat= currentLocation.coordinate.latitude;
     [SingleDataProvider sharedKey].lon= currentLocation.coordinate.longitude;
     [SingleDataProvider sharedKey].time=currentLocation.timestamp.timeIntervalSince1970;
     [SingleDataProvider sharedKey].direction= currentLocation.horizontalAccuracy;
     [SingleDataProvider sharedKey].speed=currentLocation.speed;
-    
-    
 }
 -(void)startTimer
 {
@@ -45,7 +43,6 @@
     }
     [locationManager startUpdatingLocation];
     self.timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addGPSaction) userInfo:nil repeats:YES];
-//    [NSThread detachNewThreadSelector:@selector(addGPSaction) toTarget:self withObject:nil];
      myQueue = [[NSOperationQueue alloc] init];
 
 }

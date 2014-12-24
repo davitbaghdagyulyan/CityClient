@@ -65,7 +65,7 @@
     
     cell.titLabel.text=[[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
     cell.dateLabel.text=[self TimeFormat:[[mailResponseObject.mail objectAtIndex:indexPath.row] getDate]];
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

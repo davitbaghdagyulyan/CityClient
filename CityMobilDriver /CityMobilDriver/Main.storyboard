@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -14,6 +14,9 @@
             <string>Roboto-Condensed</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -3466,7 +3469,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vmY-I1-Ltd">
-                                <rect key="frame" x="10" y="64" width="580" height="29"/>
+                                <rect key="frame" x="10" y="69" width="580" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="uuA-Ko-ymg"/>
@@ -3579,7 +3582,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vmY-I1-Ltd" firstAttribute="leading" secondItem="856-PN-XO2" secondAttribute="leading" constant="10" id="Un2-TG-K0q"/>
-                            <constraint firstItem="vmY-I1-Ltd" firstAttribute="top" secondItem="856-PN-XO2" secondAttribute="top" constant="64" id="WIL-Zz-A5K"/>
+                            <constraint firstItem="vmY-I1-Ltd" firstAttribute="top" secondItem="856-PN-XO2" secondAttribute="top" constant="69" id="WIL-Zz-A5K"/>
                             <constraint firstAttribute="trailing" secondItem="jS3-Sl-LRh" secondAttribute="trailing" id="cYG-0M-OJj"/>
                             <constraint firstAttribute="trailing" secondItem="vmY-I1-Ltd" secondAttribute="trailing" constant="10" id="gj5-dK-o1Q"/>
                             <constraint firstItem="jS3-Sl-LRh" firstAttribute="top" secondItem="856-PN-XO2" secondAttribute="top" id="i8N-L7-C5L"/>
@@ -5931,6 +5934,7 @@
                                             <constraint firstAttribute="height" constant="60" id="GN6-9m-yDB"/>
                                             <constraint firstAttribute="height" constant="60" id="VJT-3O-AYh"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <state key="normal" title="">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -5969,6 +5973,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="1XB-vQ-mJF"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <state key="normal">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -5993,6 +5998,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="3OK-9C-ygd"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <state key="normal">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -9673,6 +9679,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xvk-rX-c1W"/>
+        <segue reference="msl-7q-yJU"/>
     </inferredMetricsTieBreakers>
 </document>
