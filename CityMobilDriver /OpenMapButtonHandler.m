@@ -130,6 +130,7 @@
                                     {
                                         [alert dismissViewControllerAnimated:YES completion:nil];
                                         [indicator1 stopAnimating];
+                                        [viewMap removeFromSuperview];
                                         return ;
                                     }];
             [alert addAction:cancel];
