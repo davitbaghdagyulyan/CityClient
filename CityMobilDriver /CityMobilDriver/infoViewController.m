@@ -114,7 +114,6 @@
         NSURL* url = [[NSURL alloc]init];
         
         NSString *str = [[NSString alloc]init];
-        NSString* a = self.titleText;
         self.descriptionLabel.text = [NSString stringWithFormat:@" %@", self.titleText];
         self.web.opaque = NO;//????
         for (int i = 0; i < [jsonResponseObject.messages count]; ++i) {
