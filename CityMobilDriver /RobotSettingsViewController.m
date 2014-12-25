@@ -99,7 +99,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 //    tag = 102;
-    
+    [self.gpsButton setNeedsDisplay];
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
@@ -775,7 +775,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {

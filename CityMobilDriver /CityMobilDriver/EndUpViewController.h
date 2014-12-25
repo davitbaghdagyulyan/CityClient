@@ -11,6 +11,7 @@
 #import "Elements.h"
 
 @interface EndUpViewController : UIViewController <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *endUpScrollView;
 
 

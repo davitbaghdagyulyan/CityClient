@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CardsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 - (IBAction)openMap:(UIButton*)sender;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;

@@ -10,6 +10,7 @@
 
 
 @interface TakenOrderViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 -(void)setIdHash:(NSString*)idhash andUnderView:(UIView*)underView;

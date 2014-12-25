@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DesignationIconsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UITableView *designationTableView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;

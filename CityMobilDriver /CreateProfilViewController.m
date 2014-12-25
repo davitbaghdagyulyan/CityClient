@@ -131,6 +131,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self.gpsButton setNeedsDisplay];
     leftMenu=[LeftMenu getLeftMenu:self];
      [GPSConection showGPSConection:self];
     self.scrollView.userInteractionEnabled=YES;

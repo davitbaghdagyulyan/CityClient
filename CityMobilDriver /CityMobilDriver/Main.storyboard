@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -359,7 +359,7 @@
                                             <action selector="back:" destination="dd6-TD-lTL" eventType="touchUpInside" id="njv-3J-Emj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcZ-ca-nVo" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcZ-ca-nVo" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="J0K-2r-TQ8"/>
@@ -435,12 +435,13 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="1pE-go-86j" id="CWE-6i-llB"/>
+                        <outlet property="gpsButton" destination="wcZ-ca-nVo" id="l5j-Tr-XXW"/>
                         <outlet property="yandexButton" destination="Bu8-09-Mvw" id="z0Z-G3-qt7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qec-zS-jT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5913" y="394"/>
+            <point key="canvasLocation" x="-6038" y="321"/>
         </scene>
         <!--Activate Account View Controller-->
         <scene sceneID="boe-vb-D4m">
@@ -653,7 +654,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="ST0-Vs-fo1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDp-Qh-AH6" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDp-Qh-AH6" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Heo-al-VOh">
@@ -798,7 +799,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="RGN-cv-BWl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nv-wc-xf8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Nv-wc-xf8" customClass="GPSIcon">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="DbB-Cx-p0N">
@@ -935,7 +936,7 @@
                                             <segue destination="40C-gD-0cA" kind="show" id="8W6-6s-Zax"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZK-Tt-ayt" userLabel="B3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZK-Tt-ayt" userLabel="B3" customClass="GPSIcon">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="10g-7O-R4P"/>
@@ -2276,6 +2277,9 @@
                         <outlet property="cityButtonIpad" destination="Zq8-mw-Gu9" id="8c6-yE-qNN"/>
                         <outlet property="cityButtonLand" destination="2qh-Z6-f0l" id="px7-Ns-yTK"/>
                         <outlet property="cityButtonPort" destination="Zcd-OR-5rt" id="J51-LT-EeO"/>
+                        <outlet property="gpsButtonIpad" destination="XDp-Qh-AH6" id="War-Aw-HNa"/>
+                        <outlet property="gpsButtonLand" destination="8Nv-wc-xf8" id="MCb-di-QxT"/>
+                        <outlet property="gpsButtonPort" destination="qZK-Tt-ayt" id="Odu-FV-oBz"/>
                         <outlet property="helpViewPort" destination="Lv9-7q-wbI" id="xsm-xF-GCr"/>
                         <outlet property="labelCallToDispetcher" destination="2pB-r5-f2n" id="92h-1z-crd"/>
                         <outlet property="labelCallToDispetcherLand" destination="05A-tj-FHV" id="eaw-DT-bla"/>
@@ -2299,7 +2303,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2va-g9-Vtx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6852" y="-618"/>
+            <point key="canvasLocation" x="-6603" y="-732.75"/>
         </scene>
         <!--Internet Conection View Controller-->
         <scene sceneID="wbE-Ou-BG1">
@@ -2615,7 +2619,7 @@
                                             <action selector="back:" destination="2zj-ev-RRD" eventType="touchUpInside" id="pKi-tE-br5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKY-pL-8r2" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKY-pL-8r2" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="6JZ-rf-cM5"/>
@@ -2733,6 +2737,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="4Qv-zN-TOb" id="l3F-Jg-0tk"/>
+                        <outlet property="gpsButton" destination="OKY-pL-8r2" id="N51-U8-IQb"/>
                         <outlet property="messagesTableView" destination="83l-8j-f15" id="XS1-fL-ZZu"/>
                         <outlet property="navigationView" destination="EBG-QB-TXH" id="Z0X-xc-zF9"/>
                         <outlet property="theNewMessageButton" destination="CMi-uD-OqW" id="NdC-uA-JmY"/>
@@ -2785,7 +2790,7 @@
                                             <action selector="back:" destination="koY-fA-tde" eventType="touchUpInside" id="iXf-M4-1pu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uK-1v-TWO" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uK-1v-TWO" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="Gql-MN-lfn"/>
@@ -2861,6 +2866,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="0Dj-iX-PcR" id="jsH-xG-10F"/>
+                        <outlet property="gpsButton" destination="6uK-1v-TWO" id="kKq-jG-EbU"/>
                         <outlet property="yandexButton" destination="VWP-ak-15C" id="sCv-J5-AEu"/>
                     </connections>
                 </viewController>
@@ -2913,7 +2919,7 @@
                                             <action selector="back:" destination="koY-fA-tde" eventType="touchUpInside" id="H4M-Nc-qvr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtO-Ku-qKV" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtO-Ku-qKV" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="Crw-hy-FCw"/>
@@ -2993,6 +2999,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="vdq-Ed-aCw" id="MfC-b2-41y"/>
+                        <outlet property="gpsButton" destination="FtO-Ku-qKV" id="02F-Ca-m4p"/>
                         <outlet property="statisticsScrollView" destination="v6N-Go-bIT" id="4NC-Ni-MyG"/>
                         <outlet property="yandexButton" destination="x4z-QU-4V7" id="YCh-pb-ONZ"/>
                     </connections>
@@ -3056,7 +3063,7 @@
                                             <action selector="back:" destination="koY-fA-tde" eventType="touchUpInside" id="wFD-pf-B26"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJv-UV-5na" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJv-UV-5na" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="AlZ-qQ-Tod"/>
@@ -3139,6 +3146,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="sXc-ny-BVe" id="WVD-Ef-l6v"/>
+                        <outlet property="gpsButton" destination="VJv-UV-5na" id="7L9-s5-8Dg"/>
                         <outlet property="tariffsSacrollView" destination="yo3-ft-gjK" id="Kic-q6-EhB"/>
                         <outlet property="yandexButton" destination="82o-cg-llH" id="M8X-7G-9L1"/>
                     </connections>
@@ -3188,7 +3196,7 @@
                                             <action selector="back:" destination="UKQ-LS-hs2" eventType="touchUpInside" id="rCS-cI-yKn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9am-5i-0mZ" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9am-5i-0mZ" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="AMH-ky-Heo"/>
@@ -3284,6 +3292,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="Get-um-dru" id="BvX-Ae-oKT"/>
+                        <outlet property="gpsButton" destination="9am-5i-0mZ" id="j8s-An-41P"/>
                         <outlet property="tarifsYandexScrollView" destination="7v3-ek-ikI" id="mAZ-sT-bUA"/>
                         <outlet property="yandexButton" destination="YR7-Ta-l23" id="pa7-lj-bGb"/>
                     </connections>
@@ -3347,7 +3356,7 @@
                                             <action selector="back:" destination="VVV-UW-ZC0" eventType="touchUpInside" id="EZw-ZK-AR2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2t-om-3PD" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2t-om-3PD" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="W4c-jH-QqJ"/>
@@ -3431,6 +3440,7 @@
                     <connections>
                         <outlet property="cityButton" destination="92x-RC-Rmc" id="4KX-2G-xuX"/>
                         <outlet property="designationTableView" destination="cIS-OM-8q1" id="JZY-SN-Sxm"/>
+                        <outlet property="gpsButton" destination="l2t-om-3PD" id="Crh-h0-ugN"/>
                         <outlet property="yandexButton" destination="OZS-Ee-4Wx" id="gS8-se-NCq"/>
                     </connections>
                 </viewController>
@@ -3494,7 +3504,7 @@
                                             <action selector="back:" destination="Xdg-X0-9WC" eventType="touchUpInside" id="Pkb-qa-F1Q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-SW-aFB" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-SW-aFB" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="0wc-UM-gVB"/>
@@ -3573,6 +3583,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="qD9-D2-Xd2" id="CVv-Q5-4DQ"/>
+                        <outlet property="gpsButton" destination="Ebh-SW-aFB" id="ImM-d9-0S3"/>
                         <outlet property="segmentedControl" destination="vmY-I1-Ltd" id="3rA-LL-oXV"/>
                         <outlet property="yandexButton" destination="HQd-tv-Ts4" id="eXC-WN-OzB"/>
                     </connections>
@@ -3622,7 +3633,7 @@
                                             <action selector="back:" destination="XBe-nq-8cO" eventType="touchUpInside" id="EWN-4G-b5f"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Br-TK-NLu" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Br-TK-NLu" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="3QR-mL-GPT"/>
@@ -3745,6 +3756,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="aiX-CX-4Wh" id="Cfl-e3-cqX"/>
+                        <outlet property="gpsButton" destination="9Br-TK-NLu" id="O4U-0Z-Rbr"/>
                         <outlet property="web" destination="JoS-gE-Cny" id="XUm-3A-lMX"/>
                     </connections>
                 </viewController>
@@ -4151,7 +4163,7 @@
                                             <action selector="back:" destination="40C-gD-0cA" eventType="touchUpInside" id="SMl-Cs-6xV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3F-u0-BgI" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3F-u0-BgI" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="kzw-eS-ifo"/>
@@ -4234,6 +4246,7 @@
                         <outlet property="checkBox" destination="Dks-3J-q3A" id="Qav-ow-XPa"/>
                         <outlet property="cityIcon" destination="8LP-Lg-Yez" id="zCc-qR-qu2"/>
                         <outlet property="fontSize" destination="fpC-MB-kcd" id="QBP-nm-IAk"/>
+                        <outlet property="gpsButton" destination="P3F-u0-BgI" id="rHf-vi-Hn9"/>
                         <outlet property="limit" destination="lAV-a9-zOm" id="xZV-aW-ItA"/>
                         <outlet property="notRequired" destination="AJt-pH-UYP" id="hlQ-cn-Amb"/>
                         <outlet property="off" destination="FRT-GK-xcN" id="ihg-cj-Re4"/>
@@ -4295,7 +4308,7 @@
                                             <action selector="back:" destination="Nnd-3r-9g0" eventType="touchUpInside" id="Iq3-sG-GXF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xM-YI-sHP" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xM-YI-sHP" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="ObM-m3-xcz"/>
@@ -4749,6 +4762,7 @@
                         <outlet property="driverLicenseClass" destination="yas-kn-9ew" id="8cU-Rv-fkF"/>
                         <outlet property="driverLicenseNumber" destination="u6O-h1-ehF" id="ZDm-gs-Dia"/>
                         <outlet property="driverLicenseSerial" destination="Hp8-Pl-vUA" id="WwH-va-wIC"/>
+                        <outlet property="gpsButton" destination="3xM-YI-sHP" id="gmU-d7-qzW"/>
                         <outlet property="lastName" destination="klx-kN-1sx" id="sqj-lU-qGg"/>
                         <outlet property="middleName" destination="xjN-fx-qhk" id="dIC-vQ-KJ7"/>
                         <outlet property="name" destination="bxU-0Z-dVL" id="ddW-tw-0VA"/>
@@ -4810,7 +4824,7 @@
                                             <action selector="back:" destination="fy8-iH-TeM" eventType="touchUpInside" id="iXB-b5-yFF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y97-Sa-cN5" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y97-Sa-cN5" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="pjM-Hl-aC7"/>
@@ -5443,6 +5457,7 @@
                         <outlet property="driverLicenseNumber" destination="90y-7x-eLi" id="yyJ-V1-lAR"/>
                         <outlet property="driverLicenseSerial" destination="6lq-J8-Fc1" id="RKt-0O-Cme"/>
                         <outlet property="firstView" destination="r7F-QM-tcC" id="3GZ-Jd-9yk"/>
+                        <outlet property="gpsButton" destination="Y97-Sa-cN5" id="UjI-uw-Ore"/>
                         <outlet property="lastName" destination="kBF-5u-H1Z" id="k47-D5-5HH"/>
                         <outlet property="middleName" destination="YQb-X3-Wbe" id="2xy-fT-kGk"/>
                         <outlet property="name" destination="0xT-u7-sC0" id="wbd-JU-17h"/>
@@ -5506,7 +5521,7 @@
                                             <action selector="back:" destination="fYt-YD-dFT" eventType="touchUpInside" id="UfE-9C-Y0q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXb-Ua-0ed" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXb-Ua-0ed" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="8W6-bO-Jxf"/>
@@ -5644,6 +5659,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="7KA-Pm-Iaq" id="NVb-is-ore"/>
+                        <outlet property="gpsButton" destination="MXb-Ua-0ed" id="jST-NH-2uX"/>
                         <outlet property="segmentControll" destination="nQO-Tv-6X8" id="rMs-wC-zKo"/>
                         <outlet property="yandexButton" destination="RkR-mQ-tpB" id="vTO-t5-AiA"/>
                     </connections>
@@ -5738,6 +5754,12 @@
                                                 <exclude reference="yRD-AK-QaP"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="165" y="8" width="36" height="92"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="315" y="8" width="76" height="92"/>
+                                        </variation>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D54-K1-Psi">
                                         <rect key="frame" x="8" y="477" width="280" height="35"/>
@@ -5792,6 +5814,12 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="108" y="266" width="93" height="54"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="204" y="266" width="187" height="54"/>
+                                        </variation>
                                         <connections>
                                             <action selector="goingToOrder:" destination="6Zc-x9-ACd" eventType="touchUpInside" id="tlh-Ei-ZPG"/>
                                         </connections>
@@ -5823,6 +5851,12 @@
                                                 <exclude reference="G8v-Ly-gAd"/>
                                                 <exclude reference="ahf-l9-zhZ"/>
                                             </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="102" width="126" height="44"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="134" y="102" width="126" height="44"/>
                                         </variation>
                                     </label>
                                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP3-Vz-Qf7">
@@ -5864,6 +5898,12 @@
                                                 <exclude reference="HEc-XO-tFL"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="136" y="102" width="65" height="44"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="262" y="102" width="129" height="44"/>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69x-l3-6lc">
                                         <rect key="frame" x="386" y="143" width="189" height="60"/>
@@ -5885,6 +5925,12 @@
                                             <mask key="constraints">
                                                 <include reference="1XB-vQ-mJF"/>
                                             </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="137" y="146" width="63" height="60"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="263" y="146" width="127" height="60"/>
                                         </variation>
                                         <connections>
                                             <action selector="elementAction:" destination="6Zc-x9-ACd" eventType="touchUpInside" id="nKQ-hg-WS8"/>
@@ -5911,6 +5957,12 @@
                                                 <include reference="3OK-9C-ygd"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="72" y="146" width="64" height="60"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="136" y="146" width="126" height="60"/>
+                                        </variation>
                                         <connections>
                                             <action selector="elementAction:" destination="6Zc-x9-ACd" eventType="touchUpInside" id="WqM-pO-Mwf"/>
                                         </connections>
@@ -5927,6 +5979,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="2" id="rae-cY-pPn"/>
                                                         </constraints>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="91" y="8" width="2" height="25"/>
+                                                        </variation>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJz-zo-oke">
                                                         <rect key="frame" x="283" y="57" width="2" height="26"/>
@@ -5934,6 +5989,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="2" id="oDG-X9-r0m"/>
                                                         </constraints>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="91" y="57" width="2" height="26"/>
+                                                        </variation>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWI-Gt-cl8">
                                                         <rect key="frame" x="283" y="106" width="2" height="26"/>
@@ -5941,6 +5999,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="2" id="p8P-zY-6Cv"/>
                                                         </constraints>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="91" y="106" width="2" height="26"/>
+                                                        </variation>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВРЕМЯ ОЖИДАНИЯ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phB-vd-4zP">
                                                         <rect key="frame" x="8" y="97" width="189" height="40"/>
@@ -5971,6 +6032,9 @@
                                                                 <exclude reference="T0g-nW-oZh"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="56" y="7" width="27" height="28"/>
+                                                        </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYc-q8-QCJ">
                                                         <rect key="frame" x="197" y="56" width="78" height="28"/>
@@ -5988,6 +6052,9 @@
                                                                 <exclude reference="ZQx-en-EwO"/>
                                                                 <exclude reference="ZjE-HH-Upx"/>
                                                             </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="56" y="56" width="27" height="28"/>
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ2-1I-wMt">
@@ -6009,6 +6076,9 @@
                                                                 <exclude reference="QV4-tz-O76"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="56" y="103" width="27" height="28"/>
+                                                        </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zu9-1l-xsC">
                                                         <rect key="frame" x="481" y="7" width="78" height="28"/>
@@ -6025,6 +6095,12 @@
                                                                 <exclude reference="hHg-wB-NCl"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="148" y="7" width="26" height="28"/>
+                                                        </variation>
+                                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="329" y="7" width="55" height="28"/>
+                                                        </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ДОП. УСЛУГИ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPb-l3-flD">
                                                         <rect key="frame" x="292" y="97" width="189" height="40"/>
@@ -6039,6 +6115,9 @@
                                                                 <exclude reference="Ty2-Ct-FHI"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="100" y="97" width="48" height="40"/>
+                                                        </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЗАВЕРШЕНИЯ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzA-BO-XlL">
                                                         <rect key="frame" x="293" y="50" width="189" height="40"/>
@@ -6052,6 +6131,9 @@
                                                             <mask key="constraints">
                                                                 <exclude reference="2jp-Lh-Rhu"/>
                                                             </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="101" y="50" width="48" height="40"/>
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6X-Tf-fCe">
@@ -6068,6 +6150,12 @@
                                                                 <exclude reference="1ER-aP-Due"/>
                                                                 <exclude reference="UkS-oE-5k2"/>
                                                             </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="149" y="56" width="26" height="28"/>
+                                                        </variation>
+                                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="330" y="56" width="55" height="28"/>
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВРЕМЯ ЗАКАЗА" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fh7-AJ-iW6">
@@ -6113,6 +6201,12 @@
                                                                 <exclude reference="TUk-AV-d33"/>
                                                             </mask>
                                                         </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="148" y="103" width="26" height="28"/>
+                                                        </variation>
+                                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                            <rect key="frame" x="329" y="103" width="55" height="28"/>
+                                                        </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВРЕМЯ ПОДАЧИ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8t-xj-Mk8">
                                                         <rect key="frame" x="292" y="1" width="189" height="40"/>
@@ -6126,6 +6220,9 @@
                                                             <mask key="constraints">
                                                                 <exclude reference="ePE-Qu-Kqd"/>
                                                             </mask>
+                                                        </variation>
+                                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="100" y="1" width="48" height="40"/>
                                                         </variation>
                                                     </label>
                                                 </subviews>
@@ -6326,6 +6423,12 @@
                                                         <exclude reference="q2P-fs-i55"/>
                                                     </mask>
                                                 </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="140"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
@@ -6351,6 +6454,12 @@
                                                 <exclude reference="DjS-D5-WhP"/>
                                                 <include reference="zV4-Iw-iem"/>
                                             </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="209" y="8" width="183" height="312"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="399" y="8" width="393" height="312"/>
                                         </variation>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wms-e7-Ter">
@@ -6791,7 +6900,7 @@
                                             <action selector="back:" destination="6Zc-x9-ACd" eventType="touchUpInside" id="8cz-u5-MC0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh4-jY-q1R" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh4-jY-q1R" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="cnb-jA-hoC"/>
@@ -6895,6 +7004,7 @@
                         <outlet property="distance" destination="bkg-vW-RLY" id="Vgk-ry-CVi"/>
                         <outlet property="endOrder" destination="D54-K1-Psi" id="PXV-M4-ac4"/>
                         <outlet property="goingToOrder" destination="v9H-8T-x5h" id="Kne-5Q-3gj"/>
+                        <outlet property="gpsButton" destination="eh4-jY-q1R" id="VLe-rt-Yuw"/>
                         <outlet property="informationView" destination="kbc-v7-kCN" id="iII-6R-GRB"/>
                         <outlet property="navigationView" destination="Lnu-ej-jJd" id="LnH-mu-ZwF"/>
                         <outlet property="scrollView" destination="Dhx-vR-qwA" id="S4T-pL-o3H"/>
@@ -6967,7 +7077,7 @@
                                             <action selector="back:" destination="KrU-e6-rVW" eventType="touchUpInside" id="SWK-M1-yxj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHT-MI-y6d" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHT-MI-y6d" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="Gih-MG-dEC"/>
@@ -7063,6 +7173,7 @@
                     <connections>
                         <outlet property="cityButton" destination="GTc-oC-9hs" id="P72-Wn-25A"/>
                         <outlet property="endUpScrollView" destination="EcM-YN-mBb" id="5j8-BP-Vrh"/>
+                        <outlet property="gpsButton" destination="rHT-MI-y6d" id="DE1-6j-DrX"/>
                         <outlet property="yandexButton" destination="7Tv-VQ-b2E" id="XJZ-94-dab"/>
                     </connections>
                 </viewController>
@@ -7114,7 +7225,7 @@
                                             <action selector="back:" destination="QCv-f1-6Es" eventType="touchUpInside" id="kgF-VX-jCc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-av-c2a" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-av-c2a" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="1dh-Y4-ZQE"/>
@@ -7241,6 +7352,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="13t-tU-3Nb" id="fzG-5q-AFP"/>
+                        <outlet property="gpsButton" destination="cpt-av-c2a" id="8RB-S8-mst"/>
                         <outlet property="servicesTable" destination="xR0-en-Cbc" id="fPy-xG-oMS"/>
                         <outlet property="yandexButton" destination="2Qi-Hh-AnC" id="YTE-lX-Yx0"/>
                     </connections>
@@ -7302,7 +7414,7 @@
                                             <action selector="back:" destination="4Ht-P7-Pt4" eventType="touchUpInside" id="LMJ-pT-95q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQN-Gz-D3D" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQN-Gz-D3D" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="B7a-2a-x92"/>
@@ -7385,6 +7497,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="1E9-AK-9jn" id="ouj-I1-hop"/>
+                        <outlet property="gpsButton" destination="aQN-Gz-D3D" id="gFM-UY-JZw"/>
                         <outlet property="scrollView" destination="8Re-32-tYg" id="oDy-29-3y0"/>
                         <outlet property="yandexButton" destination="B8V-2O-ZLd" id="xrl-AP-iHl"/>
                     </connections>
@@ -7435,7 +7548,7 @@
                                             <action selector="back:" destination="Inq-TG-GO1" eventType="touchUpInside" id="epV-74-Bkt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J13-8Y-9Ia" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J13-8Y-9Ia" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="BnV-sV-ueb"/>
@@ -7661,6 +7774,7 @@
                         <outlet property="carImage" destination="M7c-TZ-ZHn" id="lMW-aK-vGf"/>
                         <outlet property="carInfoTable" destination="8I8-jY-nVC" id="2Zn-Hf-SkQ"/>
                         <outlet property="cityButton" destination="bc8-C7-7oy" id="d4E-az-o13"/>
+                        <outlet property="gpsButton" destination="J13-8Y-9Ia" id="OvF-8t-yKB"/>
                         <outlet property="scrollView" destination="qk1-tV-1qM" id="AHw-b7-rEC"/>
                         <outlet property="segmentControll" destination="oFy-Ww-x0y" id="Idg-Jq-38U"/>
                         <outlet property="yandexButton" destination="mLq-et-oUp" id="bLr-sk-hht"/>
@@ -7712,7 +7826,7 @@
                                             <action selector="back:" destination="Gip-7t-RIc" eventType="touchUpInside" id="CRe-JY-GO9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vit-Ek-NHI" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vit-Ek-NHI" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="8Oz-cP-vNw"/>
@@ -7817,6 +7931,9 @@
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="160" width="72" height="20"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="8" y="192" width="72" height="20"/>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="год производства" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-0J-JhI" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="86" width="268" height="20"/>
@@ -7834,6 +7951,12 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="246" y="234" width="130" height="32"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="510" y="234" width="266" height="32"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="510" y="284" width="266" height="42"/>
                                                 </variation>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4E6-8f-wsh">
@@ -7865,8 +7988,17 @@
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="owZ-YU-79B">
                                                 <rect key="frame" x="560" y="56" width="8" height="4"/>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="560" y="75" width="8" height="5"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="362" y="56" width="6" height="4"/>
+                                                </variation>
+                                                <variation key="widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="757" y="55" width="11" height="3"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="362" y="75" width="6" height="5"/>
                                                 </variation>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-4P-u8D">
@@ -7877,8 +8009,17 @@
                                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="284" y="119" width="292" height="27"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="184" y="119" width="192" height="28"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="184" y="119" width="192" height="27"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="119" width="392" height="27"/>
                                                 </variation>
                                                 <connections>
                                                     <action selector="colorAction:" destination="Gip-7t-RIc" eventType="touchUpInside" id="WeJ-Rr-rm5"/>
@@ -7886,8 +8027,17 @@
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="LsD-LG-NTB">
                                                 <rect key="frame" x="560" y="129" width="8" height="4"/>
+                                                <variation key="heightClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="560" y="186" width="8" height="6"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="362" y="129" width="6" height="4"/>
+                                                </variation>
+                                                <variation key="widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="757" y="128" width="11" height="3"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="362" y="186" width="6" height="6"/>
                                                 </variation>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9WK-rF-Exl" customClass="LeftPaddingTextField">
@@ -7895,8 +8045,17 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="284" y="154" width="292" height="32"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="184" y="155" width="192" height="32"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="184" y="154" width="192" height="32"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="154" width="392" height="32"/>
                                                 </variation>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4l-68-xId">
@@ -7906,8 +8065,17 @@
                                                 <state key="normal" title="Сохранить">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="284" y="274" width="292" height="33"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="184" y="274" width="192" height="31"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="184" y="274" width="192" height="33"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="274" width="392" height="33"/>
                                                 </variation>
                                                 <connections>
                                                     <action selector="saveAction:" destination="Gip-7t-RIc" eventType="touchUpInside" id="ze6-r2-IjR"/>
@@ -7921,14 +8089,26 @@
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="184" y="195" width="192" height="31"/>
                                                 </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="233" width="392" height="43"/>
+                                                </variation>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6SI-aX-8uC" customClass="LeftPaddingTextField">
                                                 <rect key="frame" x="284" y="80" width="292" height="31"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="284" y="78" width="292" height="33"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="184" y="80" width="192" height="31"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="184" y="78" width="192" height="33"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="78" width="392" height="33"/>
                                                 </variation>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ET6-O1-7KL">
@@ -7941,6 +8121,12 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <variation key="widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="184" y="234" width="57" height="32"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="234" width="115" height="32"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="284" width="115" height="42"/>
                                                 </variation>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="лицензия -" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrX-x0-3PX" customClass="ScaleStringLabel">
@@ -7963,7 +8149,16 @@
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="122" width="33" height="20"/>
+                                                </variation>
                                                 <variation key="widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="123" width="33" height="20"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="8" y="122" width="33" height="20"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
                                                     <rect key="frame" x="8" y="123" width="33" height="20"/>
                                                 </variation>
                                             </label>
@@ -8238,6 +8433,7 @@
                         <outlet property="color" destination="b2W-4P-u8D" id="0nj-jw-e7X"/>
                         <outlet property="firstLicense" destination="DBa-3o-Zve" id="v7w-9k-uWO"/>
                         <outlet property="gosNumber" destination="9WK-rF-Exl" id="nOR-Iy-cbh"/>
+                        <outlet property="gpsButton" destination="Vit-Ek-NHI" id="WEE-p6-OMT"/>
                         <outlet property="lastLicense" destination="4gz-oB-Wcd" id="lUy-Xx-qK5"/>
                         <outlet property="mark" destination="4E6-8f-wsh" id="Ybl-Os-0Uc"/>
                         <outlet property="model" destination="Hkv-oh-ADn" id="PKR-sG-Nem"/>
@@ -8293,7 +8489,7 @@
                                             <action selector="back:" destination="egV-Dx-ILq" eventType="touchUpInside" id="5o1-zj-da5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W46-r0-Zyr" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W46-r0-Zyr" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="Fyi-PV-odR"/>
@@ -8374,6 +8570,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="P7i-et-H3Y" id="OC1-wm-xze"/>
+                        <outlet property="gpsButton" destination="W46-r0-Zyr" id="3e6-E4-dbP"/>
                         <outlet property="webView" destination="mzK-44-m7P" id="HBW-o8-VtS"/>
                         <outlet property="yandexButton" destination="TqV-1H-icA" id="8rw-bK-t1x"/>
                     </connections>
@@ -8436,7 +8633,7 @@
                                             <action selector="back:" destination="4oQ-U1-EA0" eventType="touchUpInside" id="IiO-eo-Fd7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxf-0w-E8a" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxf-0w-E8a" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="469" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="VAB-fR-Zgm"/>
@@ -8589,6 +8786,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="IEV-6J-WDw" id="K9E-6k-DeE"/>
+                        <outlet property="gpsButton" destination="bxf-0w-E8a" id="t1x-xA-r3Z"/>
                         <outlet property="tableViewOrdersDetails" destination="LKi-Xp-RbK" id="HtO-KL-V1x"/>
                         <outlet property="titleLabel" destination="33o-AB-MbA" id="ihB-gj-flk"/>
                         <outlet property="yandexButton" destination="Abx-tP-Wf8" id="MAu-KZ-6mF"/>
@@ -8610,8 +8808,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
-                                <rect key="frame" x="10" y="295" width="580" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
+                                <rect key="frame" x="10" y="294" width="580" height="23"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -8645,7 +8843,7 @@
                                             <action selector="back:" destination="koY-fA-tde" eventType="touchUpInside" id="rsd-8t-gnz"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBf-pa-mZZ" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBf-pa-mZZ" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="511" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="OYI-Oq-JKP"/>
@@ -8752,6 +8950,7 @@
                     </view>
                     <connections>
                         <outlet property="cityButton" destination="hxF-eK-YHU" id="BcY-KL-pbN"/>
+                        <outlet property="gpsButton" destination="TBf-pa-mZZ" id="YMQ-1n-DJO"/>
                         <outlet property="myOrdersTableView" destination="Nkm-9J-GsS" id="zwC-xz-yAm"/>
                         <outlet property="yandexButton" destination="tNW-HY-oe9" id="HsA-6o-R5L"/>
                     </connections>
@@ -9033,7 +9232,7 @@
                                             <action selector="back:" destination="Mdo-if-CUv" eventType="touchUpInside" id="dFZ-9b-jqS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-pL-47T" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEG-pL-47T" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="469" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="Orr-Qs-Wm8"/>
@@ -9159,6 +9358,7 @@
                         <outlet property="buttonFind" destination="CJU-N0-acG" id="iRr-QU-AQQ"/>
                         <outlet property="buttonIntervalTableView" destination="djk-bJ-F9T" id="74z-Bb-EXU"/>
                         <outlet property="cityButton" destination="dV4-iG-RPU" id="Mgx-UE-L3J"/>
+                        <outlet property="gpsButton" destination="eEG-pL-47T" id="uAS-UU-rUt"/>
                         <outlet property="labelC" destination="sym-VQ-QLL" id="cVQ-31-NA6"/>
                         <outlet property="labelInterval" destination="UfH-RR-hhl" id="fYS-js-87D"/>
                         <outlet property="labelPo" destination="7JY-Qg-CgR" id="uKh-H3-DWl"/>
@@ -9226,7 +9426,7 @@
                                             <action selector="back:" destination="nlX-BC-NnB" eventType="touchUpInside" id="16d-VG-u8I"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFU-m4-Rqt" userLabel="GPS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFU-m4-Rqt" userLabel="GPS" customClass="GPSIcon">
                                         <rect key="frame" x="469" y="30" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="LWi-E5-grx"/>
@@ -9362,6 +9562,7 @@
                     <connections>
                         <outlet property="PaymentsHistoryTableView" destination="xG7-By-Wde" id="sZH-aw-Fra"/>
                         <outlet property="cityButton" destination="oFk-RK-Q7q" id="YtP-0Z-xKK"/>
+                        <outlet property="gpsButton" destination="IFU-m4-Rqt" id="oUb-u0-xfw"/>
                         <outlet property="viewForGradient" destination="rK8-xr-Z6l" id="gnD-Yb-rYg"/>
                         <outlet property="yandexButton" destination="d7i-xR-7rI" id="wpE-Tu-FRr"/>
                     </connections>
@@ -9392,6 +9593,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H6G-Qj-NO6"/>
+        <segue reference="pdf-nK-2Pg"/>
     </inferredMetricsTieBreakers>
 </document>

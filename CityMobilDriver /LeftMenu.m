@@ -44,12 +44,27 @@
     self=[super init];
           if(self)
           {
+              CGFloat h;
+              CGFloat w;
               self.disabledViewsArray=[[NSMutableArray alloc] init];
               [self setSeparatorColor:[UIColor whiteColor]];
               self.flag=0;
               k=YES;
               p=YES;
-              self.frame=CGRectMake(-1*self.curentViewController.view.frame.size.width*(CGFloat)5/6, 64, self.curentViewController.view.frame.size.width*(CGFloat)5/6, self.curentViewController.view.frame.size.height-64);
+              if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+                 [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
+              {
+                  w=self.curentViewController.view.frame.size.width*(CGFloat)5/6;
+                  h=self.curentViewController.view.frame.size.height-64;
+                  
+              }
+              else
+              {
+                  w=self.curentViewController.view.frame.size.height*(CGFloat)5/6;
+                  h=self.curentViewController.view.frame.size.height-64;
+              }
+              
+              self.frame=CGRectMake(-1*self.curentViewController.view.frame.size.width*(CGFloat)5/6, 64,w, h);
             
               self.delegate=self;
               self.dataSource=self;

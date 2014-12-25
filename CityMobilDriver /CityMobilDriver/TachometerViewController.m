@@ -62,7 +62,7 @@
     [super viewDidAppear:animated];
     
      [GPSConection showGPSConection:self];
-    
+    [self.gpsButton setNeedsDisplay];
     //narek change
     isLoad=YES;
     [self initPropertys];

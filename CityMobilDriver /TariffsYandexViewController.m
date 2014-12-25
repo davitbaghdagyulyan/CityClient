@@ -24,7 +24,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
-    
+    [self.gpsButton setNeedsDisplay];
     [GPSConection showGPSConection:self];
     for (UIScrollView* scroll in self.tarifsYandexScrollView.subviews)
     {

@@ -67,7 +67,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
-    
+    [self.gpsButton setNeedsDisplay];
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
  
@@ -151,7 +151,7 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setHTTPBody:jsonData];
-        request.timeoutInterval = 10;
+        request.timeoutInterval = 30;
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (!data)
             {
@@ -664,7 +664,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -810,7 +810,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=0;
-    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=transit",
                   [SingleDataProvider sharedKey].lat,
                   [SingleDataProvider sharedKey].lon,
                   [getOrderResponseObject.latitude doubleValue],
@@ -830,7 +830,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=1;
-    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=transit",
                   [getOrderResponseObject.latitude doubleValue],
                   [getOrderResponseObject.longitude doubleValue],
                   [getOrderResponseObject.del_latitude doubleValue],

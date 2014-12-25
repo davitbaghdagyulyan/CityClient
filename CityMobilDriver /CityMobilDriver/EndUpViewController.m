@@ -67,7 +67,7 @@
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
-    
+    [self.gpsButton setNeedsDisplay];
     bgViewHeigth = 0.f;
     [bgView removeFromSuperview];
      bgView = [[UIView alloc]init];
@@ -310,7 +310,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -377,7 +377,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -608,7 +608,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {

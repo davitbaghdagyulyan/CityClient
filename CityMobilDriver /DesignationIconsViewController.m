@@ -32,6 +32,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.gpsButton setNeedsDisplay];
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     

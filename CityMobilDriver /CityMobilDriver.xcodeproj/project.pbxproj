@@ -126,6 +126,8 @@
 		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
 		ECB1EC1F1A42D06D008CC239 /* NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1EC1E1A42D06D008CC239 /* NavigationView.m */; };
 		ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F2A31A2DAD06008A3D15 /* iconmap.png */; };
+		ECB24B781A4C02DF0001C6F0 /* gps_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB24B771A4C02DF0001C6F0 /* gps_green@2x.png */; };
+		ECB24B7C1A4C05E10001C6F0 /* GPSIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB24B7B1A4C05E10001C6F0 /* GPSIcon.m */; };
 		ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */; };
 		ECB38B231A0CFA7B00DFBB77 /* DesignationIconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B221A0CFA7B00DFBB77 /* DesignationIconsViewController.m */; };
 		ECB38B361A0D130B00DFBB77 /* 0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB38B291A0D130B00DFBB77 /* 0@2x.png */; };
@@ -536,6 +538,9 @@
 		ECB1EC1D1A42D06D008CC239 /* NavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationView.h; sourceTree = "<group>"; };
 		ECB1EC1E1A42D06D008CC239 /* NavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationView.m; sourceTree = "<group>"; };
 		ECB1F2A31A2DAD06008A3D15 /* iconmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconmap.png; sourceTree = "<group>"; };
+		ECB24B771A4C02DF0001C6F0 /* gps_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps_green@2x.png"; sourceTree = "<group>"; };
+		ECB24B7A1A4C05E10001C6F0 /* GPSIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSIcon.h; sourceTree = "<group>"; };
+		ECB24B7B1A4C05E10001C6F0 /* GPSIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSIcon.m; sourceTree = "<group>"; };
 		ECB38B1D1A0CDA0000DFBB77 /* TariffsYandexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffsYandexViewController.h; sourceTree = "<group>"; };
 		ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffsYandexViewController.m; sourceTree = "<group>"; };
 		ECB38B211A0CFA7B00DFBB77 /* DesignationIconsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignationIconsViewController.h; sourceTree = "<group>"; };
@@ -1010,6 +1015,7 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECB24B791A4C05AA0001C6F0 /* GPSIcon */,
 				EC0662BB1A440CFB007F2126 /* GPSConection.h */,
 				EC0662BC1A440CFB007F2126 /* GPSConection.m */,
 				ECFD3E491A42C5400066B55A /* BadRequest.h */,
@@ -1280,6 +1286,15 @@
 				EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */,
 			);
 			name = openMapButtonHandler;
+			sourceTree = "<group>";
+		};
+		ECB24B791A4C05AA0001C6F0 /* GPSIcon */ = {
+			isa = PBXGroup;
+			children = (
+				ECB24B7A1A4C05E10001C6F0 /* GPSIcon.h */,
+				ECB24B7B1A4C05E10001C6F0 /* GPSIcon.m */,
+			);
+			name = GPSIcon;
 			sourceTree = "<group>";
 		};
 		ECB38B1B1A0CD87F00DFBB77 /* TariffsYandexViewController */ = {
@@ -1769,6 +1784,7 @@
 				8FCFF59519F5054700C6E3A7 /* ic_wifi_small.png */,
 				8FC222841A37207C0003CAAF /* n_color copy.png */,
 				8FE032EF19DEC81B00B17C09 /* gps@2x.png */,
+				ECB24B771A4C02DF0001C6F0 /* gps_green@2x.png */,
 				8F8D322919E3C7C2003232F7 /* RobotoCondensed-Regular.ttf */,
 				8FCFF58D19F5053000C6E3A7 /* ic_non_cash_payment_small.png */,
 				8FE032F119DEC83B00B17C09 /* icon@2x.png */,
@@ -2230,6 +2246,7 @@
 				ECCD993E1A19DF93009D482C /* Roboto-CondensedItalic.ttf in Resources */,
 				ECCD993D1A19DF93009D482C /* Roboto-Condensed.ttf in Resources */,
 				8FB64FB319F9221F005AAF2A /* map.png in Resources */,
+				ECB24B781A4C02DF0001C6F0 /* gps_green@2x.png in Resources */,
 				ECDD399D1A0A1601007F3C3C /* TariffCustomCell.xib in Resources */,
 				ECE2553719DBF1E9000BD8C9 /* bg.png in Resources */,
 				ECB38B3F1A0D130B00DFBB77 /* 9@2x.png in Resources */,
@@ -2393,6 +2410,7 @@
 				8FC2224E1A36E76D0003CAAF /* OrdersResponse.m in Sources */,
 				EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */,
 				ECF35CD91A2DFF500005E2A6 /* TachometerViewController.m in Sources */,
+				ECB24B7C1A4C05E10001C6F0 /* GPSIcon.m in Sources */,
 				ECEC89B01A2CA1100036781D /* CustomCellSelectedOrders.m in Sources */,
 				ECCA300619F8F36100BE48E0 /* DriverAllInfoResponse.m in Sources */,
 				ECB38B231A0CFA7B00DFBB77 /* DesignationIconsViewController.m in Sources */,

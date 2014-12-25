@@ -10,6 +10,7 @@
 #import "GetOrderResponse.h"
 
 @interface TachometerViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;

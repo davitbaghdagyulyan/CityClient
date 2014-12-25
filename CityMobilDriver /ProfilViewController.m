@@ -48,7 +48,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     [GPSConection showGPSConection:self];
+    [self.gpsButton setNeedsDisplay];
+    [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
     
     self.segmentedControll.selectedSegmentIndex = 0;
@@ -92,7 +93,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     
@@ -192,7 +193,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     

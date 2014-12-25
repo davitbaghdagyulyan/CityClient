@@ -39,7 +39,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
-    
+      [self.gpsButton setNeedsDisplay];
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
@@ -187,7 +187,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -265,7 +265,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -355,7 +355,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
