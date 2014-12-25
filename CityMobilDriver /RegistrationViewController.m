@@ -17,6 +17,7 @@
     UIView* regionBackgroundView;
     UITableView* regionTable;
     NSInteger idLocalityNumber;
+    UIActivityIndicatorView* indicator;
 }
 @end
 
@@ -106,6 +107,7 @@
          else{
              regionTable.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 80)/2, 300, 80);
          }
+         indicator.center = self.view.center;
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
@@ -180,6 +182,13 @@
 
 -(void)getActivationCode
 {
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    
     GetActivationCodeRequest* RequestObject=[[GetActivationCodeRequest alloc]init];
     RequestObject.phone = self.phoneNumber.text;
     if (idLocalityNumber == 0) {
@@ -221,6 +230,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
@@ -239,6 +249,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         if (responseObject.result == 1) {
@@ -246,6 +257,8 @@
             activationController.phone = self.phoneNumber.text;
             [self.navigationController pushViewController:activationController animated:NO];
         }
+        
+        [indicator stopAnimating];
         
     }];
 }

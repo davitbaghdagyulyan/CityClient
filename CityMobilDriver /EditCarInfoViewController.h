@@ -72,6 +72,19 @@
 
 
 
+@property (weak, nonatomic)  NSString* markString;
+@property (weak, nonatomic)  NSString* modelString;
+@property (weak, nonatomic)  NSString* colorString;
+
+@property (weak, nonatomic)  NSString* yearString;
+@property (weak, nonatomic)  NSString* gosNumberString;
+@property (weak, nonatomic)  NSString* vinCodeString;
+@property (weak, nonatomic)  NSString* firstLicenseString;
+@property (weak, nonatomic)  NSString* lastLicenseString;
+
+
+
+
 #pragma mark - left Menu
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(UIButton *)sender;

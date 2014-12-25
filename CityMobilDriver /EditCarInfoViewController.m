@@ -37,11 +37,6 @@
 @end
 
 
-
-#define kTabBarHeight 64
-
-
-
 @implementation EditCarInfoViewController
 
 - (void)viewDidLoad {
@@ -75,13 +70,10 @@
     self.carImageView.userInteractionEnabled = YES;
     [self.carImageView addGestureRecognizer:singleTap];
     
-    
-    gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
-    [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
-    
-    
     [self registerForKeyboardNotifications];
     
+    
+
 }
 
 
@@ -100,10 +92,59 @@
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
+    
+    gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
+    [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
+    
+    
+    
+//    NSRange range;
+//    range.location = 0;
+//    range.length = 2;
+//   
+//    NSMutableString* str = [[NSMutableString alloc]initWithString:self.modelString];
+//    if (str.length > 0) {
+//        [str deleteCharactersInRange:range];
+//    }
+    [self.model setTitle:self.modelString forState:UIControlStateNormal];
+
+    [self.color setTitle:self.colorString forState:UIControlStateNormal];
+
+    [self.mark setTitle:self.markString forState:UIControlStateNormal];
+    
+    
+    
+    
+    self.year.text = self.yearString;
+    self.gosNumber.text = self.gosNumberString;
+    self.vinCode.text = self.vinCodeString;
+    self.firstLicense.text = self.firstLicenseString;
+    self.lastLicense.text = self.lastLicenseString;
+    
+    
+    [self.model setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self.color setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self.mark setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    
+    
+    
+    self.year.textColor = [UIColor lightGrayColor];
+    self.gosNumber.textColor = [UIColor lightGrayColor];
+    self.vinCode.textColor = [UIColor lightGrayColor];
+    self.firstLicense.textColor = [UIColor lightGrayColor];
+    self.lastLicense.textColor = [UIColor lightGrayColor];
+    
 }
 
 -(void)requestGetColorList
 {
+    
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
     RequestGetColorList* jsonObject=[[RequestGetColorList alloc]init];
     jsonObject.key = [SingleDataProvider sharedKey].key;
     
@@ -142,6 +183,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
@@ -155,8 +197,12 @@
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:getColorListObject.text code:getColorListObject.code];
         
+        if (self.color.titleLabel.text.length == 0) {
+            [self.color setTitle:[getColorListObject.colors[0] getColor] forState:UIControlStateNormal];
+        }
         
-        [self.color setTitle:[getColorListObject.colors[0] getColor] forState:UIControlStateNormal];
+        [indicator stopAnimating];
+
     }];
     
 }
@@ -222,7 +268,11 @@
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:getMarkResponseObject.text code:getMarkResponseObject.code];
         
-        [self.mark setTitle:[getMarkResponseObject.marks[0] mark] forState:UIControlStateNormal];
+        if (self.mark.titleLabel.text.length == 0) {
+            [self.mark setTitle:[getMarkResponseObject.marks[0] mark] forState:UIControlStateNormal];
+        }
+        
+        
         [indicator stopAnimating];
         [self requestGetModelInfo:[getMarkResponseObject.marks[0] getId]];
     }];
@@ -284,11 +334,8 @@
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:modelResponseObject.text code:modelResponseObject.code];
         
-        if ([modelResponseObject.models count]) {
+        if ([modelResponseObject.models count] && self.model.titleLabel.text.length == 0) {
             [self.model setTitle:[modelResponseObject.models[0] model] forState:UIControlStateNormal];
-        }
-        else{
-            [self.model setTitle:@"" forState:UIControlStateNormal];
         }
     }];
     

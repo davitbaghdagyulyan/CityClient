@@ -8,6 +8,7 @@
 
 #import "RequestSetDriverInfo.h"
 #import "SingleDataProvider.h"
+#import "UserInformationProvider.h"
 @implementation RequestSetDriverInfo
 -(instancetype)init
 {
@@ -20,7 +21,12 @@
         self.version = @"1.0.2";
         self.ilog = @"cm-api";
         self.locale = @"ru";
-        self.bankid = @"110314";
+        self.bankid = [UserInformationProvider sharedInformation].bankid;
+        
+        self.versions =[[NSMutableDictionary alloc]init];
+        [self.versions setObject:@"19" forKey:@"versionCode"];
+        [self.versions setObject:@"17" forKey:@"sdkVersion"];
+        [self.versions setObject:@"2.9" forKey:@"versionName"];
     }
     return self;
 }

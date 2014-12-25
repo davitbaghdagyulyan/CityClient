@@ -33,16 +33,6 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self setDriverInfoRequest];
     [self setDriverInfo];
-    
-    
-    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    gradientLayer = [self greyGradient];
-    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
-    [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
-    
-    
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -57,6 +47,12 @@
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
+    
+    
+    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    gradientLayer = [self greyGradient];
+    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
+    [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
@@ -132,7 +128,11 @@
     [self setAtributedString:self.name :jsonResponseObject.name];
     [self setAtributedString:self.middleName :jsonResponseObject.middle_name];
     
-    [self setAtributedString:self.percentToCharge :jsonResponseObject.percenttocharge];
+    double percent = [jsonResponseObject.percenttocharge doubleValue];
+    NSInteger aaa = round(percent);
+    NSString* str = [NSString stringWithFormat:@"%ld",(long)aaa];
+    
+    [self setAtributedString:self.percentToCharge :[str stringByAppendingString:@"%"]];
     [self setAtributedString:self.passportSer :jsonResponseObject.passport_ser];
     
     [self setAtributedString:self.passportNum :jsonResponseObject.passport_num];

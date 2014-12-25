@@ -48,9 +48,9 @@
     [super viewDidLoad];
     
     
-    self.balance.text =[self.balance.text stringByAppendingString:[UserInformationProvider sharedInformation].balance];
-    self.limit.text =[self.limit.text stringByAppendingString:[UserInformationProvider sharedInformation].credit_limit];
-    self.callsign.text =[self.callsign.text stringByAppendingString:[UserInformationProvider sharedInformation].bankid];
+    self.balance.text =[self.balance.text stringByAppendingString:[NSString stringWithFormat:@"  %@",[UserInformationProvider sharedInformation].balance]];
+    self.limit.text =[self.limit.text stringByAppendingString:[NSString stringWithFormat:@"  %@",[UserInformationProvider sharedInformation].credit_limit]];
+    self.callsign.text =[self.callsign.text stringByAppendingString:[NSString stringWithFormat:@"  %@",[UserInformationProvider sharedInformation].bankid]];
     self.buttonTextColor = self.required.titleLabel.textColor;
     
     
@@ -80,17 +80,17 @@
     /////////////////
     
     [super viewDidAppear:animated];
-    if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait && self.view.frame.size.height == 480)
-    {
-        self.scrolView.contentSize = self.view.frame.size;
-    }
-    
-    if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
-    {
-        CGSize scrolViewSize = self.view.frame.size;
-        scrolViewSize.height = self.view.frame.size.width;
-        self.scrolView.contentSize = scrolViewSize;
-    }
+//    if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait && self.view.frame.size.height == 480)
+//    {
+//        self.scrolView.contentSize = self.view.frame.size;
+//    }
+//    
+//    if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
+//    {
+//        CGSize scrolViewSize = self.view.frame.size;
+//        scrolViewSize.height = self.view.frame.size.width;
+//        self.scrolView.contentSize = scrolViewSize;
+//    }
     
     NSInteger fontNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"fontSize"];
     
@@ -574,7 +574,7 @@
                 cell.cellText.text = @"   Крупный";
                 break;
             case 3:
-                okCell.textLabel.text = @"ok";
+                okCell.textLabel.text = @"Ok";
                 okCell.tag = 150;
                 [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
                 return okCell;
@@ -606,7 +606,7 @@
                 cell.cellText.text = @"   Черный";
                 break;
             case 2:
-                okCell.textLabel.text = @"ok";
+                okCell.textLabel.text = @"Ok";
                 okCell.tag = 151;
                 [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
                 return okCell;
@@ -635,7 +635,7 @@
                 cell.cellText.text = @"   English";
                 break;
             case 2:
-                okCell.textLabel.text = @"ok";
+                okCell.textLabel.text = @"Ok";
                 okCell.tag = 152;
                 [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
                 return okCell;

@@ -124,6 +124,9 @@
     
     
     [GPSConection showGPSConection:self];
+    
+    [self.yandexButton setNeedsDisplay];
+    [self.cityButton setNeedsDisplay];
 }
 
 
@@ -791,6 +794,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
