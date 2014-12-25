@@ -92,10 +92,10 @@
     viewMap.frame=self.view.frame;
     viewMap.center=self.view.center;
     
-    viewMap.smallMapView.layer.cornerRadius = 30;
-    viewMap.smallMapView.layer.borderWidth = 2;
-    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
-    viewMap.smallMapView.layer.masksToBounds = YES;
+//    viewMap.smallMapView.layer.cornerRadius = 30;
+//    viewMap.smallMapView.layer.borderWidth = 2;
+//    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+//    viewMap.smallMapView.layer.masksToBounds = YES;
     
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
