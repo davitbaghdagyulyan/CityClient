@@ -102,6 +102,7 @@
 		EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2437191A0B9807005FC018 /* LoginViewController.m */; };
 		EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */; };
 		EC2A13FE1A31FBDA00CA8937 /* SelectedOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2A13FD1A31FBDA00CA8937 /* SelectedOrdersViewController.m */; };
+		EC3E53931A4C43C4002D7C9A /* Versions.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E53921A4C43C4002D7C9A /* Versions.m */; };
 		EC40D43D19E4323C007BA02C /* MailJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43C19E4323C007BA02C /* MailJson.m */; };
 		EC40D44019E43258007BA02C /* MailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D43F19E43258007BA02C /* MailResponse.m */; };
 		EC40D44419E436C5007BA02C /* MailElements.m in Sources */ = {isa = PBXBuildFile; fileRef = EC40D44319E436C5007BA02C /* MailElements.m */; };
@@ -491,6 +492,8 @@
 		EC24371E1A0BA1DA005FC018 /* RegionalSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionalSettingsViewController.h; sourceTree = "<group>"; };
 		EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionalSettingsViewController.m; sourceTree = "<group>"; };
 		EC2A13FD1A31FBDA00CA8937 /* SelectedOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedOrdersViewController.m; sourceTree = "<group>"; };
+		EC3E53911A4C43C4002D7C9A /* Versions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Versions.h; sourceTree = "<group>"; };
+		EC3E53921A4C43C4002D7C9A /* Versions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Versions.m; sourceTree = "<group>"; };
 		EC40D43B19E4323C007BA02C /* MailJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailJson.h; sourceTree = "<group>"; };
 		EC40D43C19E4323C007BA02C /* MailJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailJson.m; sourceTree = "<group>"; };
 		EC40D43E19E43258007BA02C /* MailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailResponse.h; sourceTree = "<group>"; };
@@ -1252,6 +1255,8 @@
 				EC5AD4481A14FF1E00588DE6 /* GetOrderJson.m */,
 				EC5AD44A1A14FF9400588DE6 /* GetOrderResponse.h */,
 				EC5AD44B1A14FF9400588DE6 /* GetOrderResponse.m */,
+				EC3E53911A4C43C4002D7C9A /* Versions.h */,
+				EC3E53921A4C43C4002D7C9A /* Versions.m */,
 			);
 			name = GetOrder;
 			sourceTree = "<group>";
@@ -2451,6 +2456,7 @@
 				ECB52E3F1A0778D70091293F /* DriveMKADClass.m in Sources */,
 				ECB52E211A076BE00091293F /* IdClass.m in Sources */,
 				ECCD34501A03B224000444BF /* RequestSetCarInfoWidthPhoto.m in Sources */,
+				EC3E53931A4C43C4002D7C9A /* Versions.m in Sources */,
 				EC5AD44C1A14FF9400588DE6 /* GetOrderResponse.m in Sources */,
 				ECAD78C21A30AADB005C2468 /* GetLastKnownLocationJson.m in Sources */,
 				ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */,

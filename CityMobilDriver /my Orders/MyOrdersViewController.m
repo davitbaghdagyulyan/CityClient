@@ -103,6 +103,7 @@
     [indicator startAnimating];
     [self.view addSubview:indicator];
     GetMyOrdersJson* getMyOrdersJsonObject=[[GetMyOrdersJson alloc]init];
+    getMyOrdersJsonObject.versions=[[Versions alloc] init];
     
     
     NSDictionary*jsonDictionary=[getMyOrdersJsonObject toDictionary];
@@ -209,6 +210,7 @@
     [self.navigationController pushViewController:tovc animated:NO];
     idhash=[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] idhash];
     [tovc setIdHash:idhash andUnderView:underView];
+    tovc.payment_method=[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] getPayment_method];
 }
 
 -(void)collMap

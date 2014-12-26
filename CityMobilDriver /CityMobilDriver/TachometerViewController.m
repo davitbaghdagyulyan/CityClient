@@ -696,6 +696,7 @@
     euvc.orderResponse = self.orderResponse;
     euvc.bill = [NSString stringWithFormat:@"%ld",(long)tachometerResponse.calcOrderPrice];
     euvc.elements = tachometerResponse.elements;
+    euvc.payment_method=self.payment_method;
     [self.navigationController pushViewController:euvc animated:NO];
 }
 

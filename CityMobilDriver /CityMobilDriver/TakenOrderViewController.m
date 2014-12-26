@@ -80,7 +80,9 @@
 {
     getOrderJsonObject=[[GetOrderJson alloc]init];
     getOrderJsonObject.idhash=idhash;
+    getOrderJsonObject.versions=[[Versions alloc]init];
     cellUnderView=underView;
+    
     count=0;
     
     
@@ -722,7 +724,9 @@
             {
                 TachometerViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TachometerViewController"];
                 [self.navigationController pushViewController:tvc animated:NO];
+                 tvc.payment_method=self.payment_method;
                 ////Karen change////
+                
                 tvc.orderResponse = getOrderResponseObject;
                 //// end Karen change ////
             }
@@ -755,7 +759,7 @@
     [self.navigationController pushViewController:tvc animated:NO];
     ////Karen change////
     tvc.orderResponse = getOrderResponseObject;
-   
+    tvc.payment_method=self.payment_method;
     //// end Karen change ////
 }
 
