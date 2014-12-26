@@ -129,7 +129,6 @@
 		ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F2A31A2DAD06008A3D15 /* iconmap.png */; };
 		ECB24B781A4C02DF0001C6F0 /* gps_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB24B771A4C02DF0001C6F0 /* gps_green@2x.png */; };
 		ECB24B7C1A4C05E10001C6F0 /* GPSIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB24B7B1A4C05E10001C6F0 /* GPSIcon.m */; };
-		ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */; };
 		ECB38B231A0CFA7B00DFBB77 /* DesignationIconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB38B221A0CFA7B00DFBB77 /* DesignationIconsViewController.m */; };
 		ECB38B361A0D130B00DFBB77 /* 0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB38B291A0D130B00DFBB77 /* 0@2x.png */; };
 		ECB38B371A0D130B00DFBB77 /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB38B2A1A0D130B00DFBB77 /* 1@2x.png */; };
@@ -544,8 +543,6 @@
 		ECB24B771A4C02DF0001C6F0 /* gps_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps_green@2x.png"; sourceTree = "<group>"; };
 		ECB24B7A1A4C05E10001C6F0 /* GPSIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSIcon.h; sourceTree = "<group>"; };
 		ECB24B7B1A4C05E10001C6F0 /* GPSIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSIcon.m; sourceTree = "<group>"; };
-		ECB38B1D1A0CDA0000DFBB77 /* TariffsYandexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TariffsYandexViewController.h; sourceTree = "<group>"; };
-		ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TariffsYandexViewController.m; sourceTree = "<group>"; };
 		ECB38B211A0CFA7B00DFBB77 /* DesignationIconsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignationIconsViewController.h; sourceTree = "<group>"; };
 		ECB38B221A0CFA7B00DFBB77 /* DesignationIconsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignationIconsViewController.m; sourceTree = "<group>"; };
 		ECB38B291A0D130B00DFBB77 /* 0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0@2x.png"; sourceTree = "<group>"; };
@@ -1061,7 +1058,6 @@
 				EC00342219F15DCA0062A6DF /* Driver Profil */,
 				ECEBD87B1A0A661600118466 /* Registration */,
 				ECB38B201A0CFA3600DFBB77 /* DesignationIconsViewController */,
-				ECB38B1B1A0CD87F00DFBB77 /* TariffsYandexViewController */,
 				ECCC12091A0CACDE00AC94EE /* Regional Settings */,
 				ECB3D7581A03B35C0039DD3A /* TariffsCityMobilViewController */,
 				ECC978EF1A00DCE800D77B80 /* StatisticsViewController */,
@@ -1300,24 +1296,6 @@
 				ECB24B7B1A4C05E10001C6F0 /* GPSIcon.m */,
 			);
 			name = GPSIcon;
-			sourceTree = "<group>";
-		};
-		ECB38B1B1A0CD87F00DFBB77 /* TariffsYandexViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ECB38B1C1A0CD96800DFBB77 /* TariffsYandexResponseXML */,
-				ECB38B1D1A0CDA0000DFBB77 /* TariffsYandexViewController.h */,
-				ECB38B1E1A0CDA0000DFBB77 /* TariffsYandexViewController.m */,
-			);
-			name = TariffsYandexViewController;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		ECB38B1C1A0CD96800DFBB77 /* TariffsYandexResponseXML */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TariffsYandexResponseXML;
 			sourceTree = "<group>";
 		};
 		ECB38B201A0CFA3600DFBB77 /* DesignationIconsViewController */ = {
@@ -2391,7 +2369,6 @@
 				ECB52E331A07767B0091293F /* ScheduleClass.m in Sources */,
 				ECCC237519E7F82F0091C43E /* MessagesViewController.m in Sources */,
 				ECB52E1E1A076B620091293F /* NameClass.m in Sources */,
-				ECB38B1F1A0CDA0000DFBB77 /* TariffsYandexViewController.m in Sources */,
 				ECF2FFF11A4019D100C8A269 /* UnderlinedButton.m in Sources */,
 				ECB52E511A0780C00091293F /* WeekdayElements.m in Sources */,
 				ECCD344A1A039F44000444BF /* RequestStandart.m in Sources */,
