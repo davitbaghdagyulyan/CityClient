@@ -31,12 +31,6 @@
     [super viewDidLoad];
     [self getCarInfo];
     getCarInfoResponse = [[ResponseGetCarInfo alloc]init];
-    self.carInfoTable.delegate = self;
-    self.carInfoTable.dataSource = self;
-    
-    
-    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
 }
 
 
@@ -59,6 +53,12 @@
     
     gradientLayer3 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(CGRectGetMaxX(self.carInfoTable.frame), 0, CGRectGetWidth(self.backgroundView.frame) - CGRectGetWidth(self.carInfoTable.frame), 44)];
     [self.backgroundView.layer insertSublayer:gradientLayer3 atIndex:0];
+    
+    
+    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    self.carInfoTable.delegate = self;
+    self.carInfoTable.dataSource = self;
 }
 
 
@@ -145,7 +145,7 @@
             [self setAtributedString:cell.textLabel :getCarInfoResponse.mark];
             cell.textLabel.backgroundColor = [UIColor clearColor];
             cell.tag = 100;
-            gradientLayer2 = [self greyGradient:cell widthFrame:CGRectMake(0, 0, CGRectGetWidth(cell.frame), CGRectGetHeight(cell.frame))];
+            gradientLayer2 = [self greyGradient:cell widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.carInfoTable.frame), CGRectGetHeight(cell.frame))];
             [cell.layer insertSublayer:gradientLayer2 atIndex:0];
             
             break;
@@ -222,14 +222,26 @@
     {
     }
     if (sender.selectedSegmentIndex == 2) {
-        CardsViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
-        [self pushOrPopViewController:carInfoController];
+        CardsViewController* cvc =[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
+        [self pushOrPopViewController:cvc];
     }
 }
 
 - (IBAction)edit:(UIButton *)sender {
     EditCarInfoViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCarInfoViewController"];
     controller.carImage = self.carImage.image;
+    
+    
+    controller.markString = getCarInfoResponse.mark;
+    controller.modelString = getCarInfoResponse.model;
+    controller.colorString = getCarInfoResponse.color;
+    controller.yearString = getCarInfoResponse.year;
+    controller.gosNumberString = getCarInfoResponse.reg_num;
+    controller.vinCodeString = getCarInfoResponse.VIN;
+    controller.firstLicenseString = getCarInfoResponse.car_license_pref;
+    controller.lastLicenseString = getCarInfoResponse.car_license_number;
+    
+    
     [self pushOrPopViewController:controller];
 }
 

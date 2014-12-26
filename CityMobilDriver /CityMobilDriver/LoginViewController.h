@@ -46,6 +46,7 @@ extern NSString* const UserDefaultsIsRemember;
 
 //- (IBAction)backAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
 
 @end

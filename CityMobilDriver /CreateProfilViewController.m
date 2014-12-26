@@ -70,7 +70,7 @@
     
     self.pasportWho.returnKeyType = UIReturnKeyNext;
     self.pasportWho.delegate = self;
-    self.pasportWho.text = self.pasportWhoText;
+    self.pasportWho.text = self.passportDateText;
     self.pasportWho.textColor = [UIColor lightGrayColor];
     
     self.pasportAdress.returnKeyType = UIReturnKeyNext;
@@ -80,7 +80,7 @@
     
     self.passportDate.returnKeyType = UIReturnKeyNext;
     self.passportDate.delegate = self;
-    self.passportDate.text = self.passportDateText;
+    self.passportDate.text = self.pasportWhoText;
     self.passportDate.textColor = [UIColor lightGrayColor];
     
     self.driverLicenseSerial.returnKeyType = UIReturnKeyNext;
@@ -106,6 +106,22 @@
     UITapGestureRecognizer* tapBeganSecondView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchRecognizer)];
     [self.secondView addGestureRecognizer:tapBeganSecondView];
  
+
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    leftMenu=[LeftMenu getLeftMenu:self];
+     [GPSConection showGPSConection:self];
+    self.scrollView.userInteractionEnabled=YES;
+    self.segmentControll.userInteractionEnabled=YES;
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+    
+    
     /// gradients ////
     for (int  i = 0; i < self.bgViews.count; ++i) {
         
@@ -125,25 +141,10 @@
             [bgView.layer insertSublayer:gradientLaye3 atIndex:0];
         }
     }
+
     
-}
-
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
     [self.gpsButton setNeedsDisplay];
-    leftMenu=[LeftMenu getLeftMenu:self];
-     [GPSConection showGPSConection:self];
-    self.scrollView.userInteractionEnabled=YES;
-    self.segmentControll.userInteractionEnabled=YES;
-    self.scrollView.userInteractionEnabled=YES;
-    
-    [self.cityButton setNeedsDisplay];
-    [self.yandexButton setNeedsDisplay];
-    
-    
-    
-
+    [GPSConection showGPSConection:self];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
@@ -185,6 +186,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self.createPhotoImageView setImage:[self imageWithImage:info[UIImagePickerControllerOriginalImage] scaledToSize:CGRectMake(0, y, min, min)]];
+    
+    NSString *model = [[UIDevice currentDevice] model];
+    if (![model isEqualToString:@"iPhone Simulator"]) {
+        self.createPhotoImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
+
     self.createPhotoImageView.layer.cornerRadius = self.createPhotoImageView.frame.size.height /2;
     self.createPhotoImageView.layer.masksToBounds = YES;
     self.createPhotoImageView.layer.borderWidth = 0;
@@ -507,28 +514,6 @@
     [requestInfo setHTTPBody:jsonData];
     requestInfo.timeoutInterval = 10;
     
-    
-    
-//    NSURLResponse *response = [[NSURLResponse alloc]init];
-//    NSData* data = [NSURLConnection sendSynchronousRequest:requestInfo returningResponse:&response error:&error];
-//    
-//    if (data)
-//    {
-//        NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//        NSLog(@"- = = == = = == = = == -%@",jsonString);
-//        NSError* err;
-//        DriverInfoResponse* jsonResponseObject = [[DriverInfoResponse alloc]initWithString:jsonString error:&err];
-//        
-//        succeedAlert = [[UIAlertView alloc]initWithTitle:nil message:jsonResponseObject.msg delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-//        [succeedAlert show];
-//    }
-//    
-//    else
-//    {
-//        succeedAlert = [[UIAlertView alloc]initWithTitle:nil message:@"NO INTERNET CONECTION" delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-//        [succeedAlert show];
-//    }
-    
     [NSURLConnection sendAsynchronousRequest:requestInfo queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -552,26 +537,10 @@
         NSLog(@"- = = == = = == = = == -%@",jsonString);
         NSError* err;
         DriverInfoResponse* jsonResponseObject = [[DriverInfoResponse alloc]initWithString:jsonString error:&err];
-//        if (jsonResponseObject.code) {
-//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                           handler:^(UIAlertAction * action)
-//                                     {
-//                                         [alert dismissViewControllerAnimated:YES completion:nil];
-//                                         
-//                                     }];
-//            [alert addAction:cancel];
-//            [self presentViewController:alert animated:YES completion:nil];
-//            [indicator stopAnimating];
-//        }
-        
         BadRequest* badRequest = [[BadRequest alloc]init];
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:jsonResponseObject.text code:jsonResponseObject.code];
-        
-//        else
-//        {
+
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:jsonResponseObject.msg preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -584,7 +553,6 @@
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
             [indicator stopAnimating];
-//        }
         
 
     }];

@@ -29,4 +29,5 @@
 @property(nonatomic,strong) NSString* passport_who;
 @property(nonatomic,strong) NSString* key;
 @property(nonatomic,strong) NSString* photo;
+@property(nonatomic,strong) NSMutableDictionary* versions;
 @end

@@ -18,5 +18,5 @@
 @property(nonatomic,strong)NSString*balance;
 @property(nonatomic,strong)NSString*code;
 @property(nonatomic,strong)NSString*text;
-
+@property(nonatomic,assign)NSInteger gpsError;
 @end

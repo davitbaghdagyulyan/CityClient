@@ -1058,7 +1058,7 @@
 				ECD218901A1CE80600F38F7D /* TachometerViewController */,
 				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
 				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
-				EC00342219F15DCA0062A6DF /* Profil */,
+				EC00342219F15DCA0062A6DF /* Driver Profil */,
 				ECEBD87B1A0A661600118466 /* Registration */,
 				ECB38B201A0CFA3600DFBB77 /* DesignationIconsViewController */,
 				ECB38B1B1A0CD87F00DFBB77 /* TariffsYandexViewController */,
@@ -1111,7 +1111,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EC00342219F15DCA0062A6DF /* Profil */ = {
+		EC00342219F15DCA0062A6DF /* Driver Profil */ = {
 			isa = PBXGroup;
 			children = (
 				EC4CB40019F7D18A0028F219 /* requests */,
@@ -1130,7 +1130,7 @@
 				ECF2FFF81A40628A00C8A269 /* ScaleStringLabel.h */,
 				ECF2FFF91A40628A00C8A269 /* ScaleStringLabel.m */,
 			);
-			name = Profil;
+			name = "Driver Profil";
 			path = ..;
 			sourceTree = "<group>";
 		};
