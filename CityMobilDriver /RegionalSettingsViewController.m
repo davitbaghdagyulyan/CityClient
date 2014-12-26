@@ -39,8 +39,9 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
+    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [locationManager requestAlwaysAuthorization];
     }
     
     [locationManager startUpdatingLocation];
