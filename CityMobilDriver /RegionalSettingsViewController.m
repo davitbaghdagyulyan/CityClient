@@ -184,7 +184,7 @@
     
     UIButton* okButton = [[UIButton alloc]initWithFrame:CGRectMake(buttomView.frame.size.width/2 + 1, buttomView.frame.size.height/2 + 1, buttomView.frame.size.width/2 - 1, buttomView.frame.size.height/2)];
     okButton.backgroundColor = [UIColor whiteColor];
-    [okButton setTitle:@"ok" forState:UIControlStateNormal];
+    [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(okButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [buttomView addSubview:okButton];
@@ -251,7 +251,7 @@
     
     UIButton* okButton = [[UIButton alloc]initWithFrame:CGRectMake(2*buttomView.frame.size.width/3 + 1, 211, buttomView.frame.size.width/3 - 1, 40)];
     okButton.backgroundColor = [UIColor whiteColor];
-    [okButton setTitle:@"ok" forState:UIControlStateNormal];
+    [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(okButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [buttomView addSubview:okButton];

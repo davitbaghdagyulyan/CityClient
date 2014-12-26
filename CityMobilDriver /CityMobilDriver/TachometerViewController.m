@@ -15,10 +15,6 @@
 #import "TakenOrderViewController.h"
 #import "OpenMapButtonHandler.h"
 
-//@property (weak, nonatomic) IBOutlet UIButton *additionalServices;
-//@property (weak, nonatomic) IBOutlet UILabel *metroNames;
-//@property (weak, nonatomic) IBOutlet UILabel *delliveryComments;
-
 
 @interface TachometerViewController ()
 {
@@ -176,6 +172,7 @@
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
      {
+         textField.keyboardType = UIKeyboardTypePhonePad;
          textLabel = textField;
      }];
     
@@ -185,28 +182,64 @@
                                handler:^(UIAlertAction *action)
                                {
                                    if (button.tag == 100) {
-                                       [self.elements[0] setTitle:[tachometerResponse.elements[0] name] forState:UIControlStateNormal];
-                                       NSString* str = [[tachometerResponse.elements[0] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
+//                                       [self.elements[0] setTitle:[tachometerResponse.elements[0] name] forState:UIControlStateNormal];
+                                       NSString* str = nil;
+                                       if (textLabel.text.length == 0) {
+                                        str = [[tachometerResponse.elements[0] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",@"0"]];
+                                       }
+                                       else{
+                                           str = [[tachometerResponse.elements[0] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
+                                       }
+
                                        [self.elements[0] setTitle:str forState:UIControlStateNormal];
-                                       
-                                       [self getOrSetTaximeter:11 value:textLabel.text isSet:NO isSetElements:YES];
+                                       if (textLabel.text.length == 0) {
+                                           [self getOrSetTaximeter:11 value:@"0" isSet:NO isSetElements:YES];
+                                       }
+                                       else{
+                                           [self getOrSetTaximeter:11 value:textLabel.text isSet:NO isSetElements:YES];
+                                       }
                                    }
                                    
                                    if (button.tag == 101) {
-                                       [self.elements[1] setTitle:[tachometerResponse.elements[1] name] forState:UIControlStateNormal];
-                                       NSString* str = [[tachometerResponse.elements[1] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
+//                                       [self.elements[1] setTitle:[tachometerResponse.elements[1] name] forState:UIControlStateNormal];
+                                       
+                                       NSString* str = nil;
+                                       if (textLabel.text.length == 0) {
+                                           str = [[tachometerResponse.elements[1] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",@"0"]];
+                                       }
+                                       else{
+                                           str = [[tachometerResponse.elements[1] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
+                                       }
+                                       
                                        [self.elements[1] setTitle:str forState:UIControlStateNormal];
                                        
+                                       if (textLabel.text.length == 0) {
+                                           [self getOrSetTaximeter:12 value:@"0" isSet:NO isSetElements:YES];
+                                       }
+                                       else{
+                                           [self getOrSetTaximeter:12 value:textLabel.text isSet:NO isSetElements:YES];
+                                       }
                                        
-                                       [self getOrSetTaximeter:12 value:textLabel.text isSet:NO isSetElements:YES];
                                    }
                                    
                                    if (button.tag == 102) {
-                                       [self.elements[2] setTitle:[tachometerResponse.elements[2] name] forState:UIControlStateNormal];
-                                       NSString* str = [[tachometerResponse.elements[2] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
+//                                       [self.elements[2] setTitle:[tachometerResponse.elements[2] name] forState:UIControlStateNormal];
+                                       NSString* str = nil;
+                                       if (textLabel.text.length == 0) {
+                                        str = [[tachometerResponse.elements[2] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",@"0"]];
+                                       }
+                                       else{
+                                          str = [[tachometerResponse.elements[2] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",textLabel.text]];
+                                       }
+                                       
                                        [self.elements[2] setTitle:str forState:UIControlStateNormal];
                                        
-                                       [self getOrSetTaximeter:10 value:textLabel.text isSet:NO isSetElements:YES];
+                                       if (textLabel.text.length == 0) {
+                                           [self getOrSetTaximeter:10 value:@"0" isSet:NO isSetElements:YES];
+                                       }
+                                       else{
+                                           [self getOrSetTaximeter:10 value:textLabel.text isSet:NO isSetElements:YES];
+                                       }
                                    }
                                    
                                }];
@@ -417,6 +450,9 @@
 
 -(void)setTachometerViews{
     self.shortLabel.text = self.shortname;
+    
+    float aaa = tachometerResponse.distance;
+    
     self.distance.text = [self setAtributedString:tachometerResponse.distance];
     
     for (int i = 0; i < self.elements.count; ++i) {
@@ -598,35 +634,40 @@
     
 }
 
--(NSString*)setAtributedString:(NSInteger)number{
+-(NSString*)setAtributedString:(float)number{
     NSInteger count = 0;
     
-    NSInteger newNumber = number;
+    
+    NSInteger additionNumber = (int)(number * 10) % 10;
+    
+    int newNumber = number;
     
     BOOL b = YES;
     while (b) {
         newNumber /= 10;
         ++count;
-        if (!newNumber) {
+        if (newNumber == 0) {
             b = NO;
         }
     }
+    
+    NSInteger aaa = count;
     NSString* str = [[NSString alloc]init];
     switch (count) {
         case 1:
         {
-            str = [NSString stringWithFormat:@"00%li,0",(long)number];
+            str = [NSString stringWithFormat:@"00%li,%ld",(long)number,(long)additionNumber];
         }
             break;
             
         case 2:
         {
-            str = [NSString stringWithFormat:@"0%li,0",(long)number];
+            str = [NSString stringWithFormat:@"0%li,%ld",(long)number,(long)additionNumber];
         }
             break;
             
         default:
-            str = [NSString stringWithFormat:@"%li,0",(long)number];
+            str = [NSString stringWithFormat:@"%li,%ld",(long)number,(long)additionNumber];
             break;
     }
     

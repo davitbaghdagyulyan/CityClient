@@ -131,7 +131,7 @@
         RegisterResponse* responseObject = [[RegisterResponse alloc]initWithString:jsonString error:&err];
         
         if (responseObject.code != nil) {
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:responseObject.text delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:responseObject.text delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
         if (responseObject.result == 1) {

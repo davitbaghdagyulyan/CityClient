@@ -574,7 +574,7 @@
                 cell.cellText.text = @"   Крупный";
                 break;
             case 3:
-                okCell.textLabel.text = @"Ok";
+                okCell.textLabel.text = @"OK";
                 okCell.tag = 150;
                 [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
                 return okCell;
@@ -606,7 +606,7 @@
                 cell.cellText.text = @"   Черный";
                 break;
             case 2:
-                okCell.textLabel.text = @"Ok";
+                okCell.textLabel.text = @"OK";
                 okCell.tag = 151;
                 [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
                 return okCell;
@@ -635,7 +635,7 @@
                 cell.cellText.text = @"   English";
                 break;
             case 2:
-                okCell.textLabel.text = @"Ok";
+                okCell.textLabel.text = @"OK";
                 okCell.tag = 152;
                 [okCell.textLabel setTextAlignment:NSTextAlignmentCenter];
                 return okCell;

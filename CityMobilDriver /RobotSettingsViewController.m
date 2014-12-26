@@ -49,6 +49,7 @@
     
     
     UITableViewCell* childSeatCell;
+    UIButton* cancelButton;
     
 }
 @end
@@ -87,18 +88,10 @@
     backgroundView.alpha = 0.6;
     [self.view addSubview:backgroundView];
     
-    
-
-    
-    
-//    
-//    controllViewsArray = [[NSMutableArray alloc]init];
-//    carCheckBoxArray = [[NSMutableArray alloc]init];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    tag = 102;
     
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
@@ -209,7 +202,7 @@
         return 10;
     }
     if (tableView == radiusSettingsTable) {
-        return 5;
+        return 6;
     }
     if (tableView == timeSettingsTable) {
         return 12;
@@ -325,12 +318,10 @@
                     [checkBox addTarget:self action:@selector(checkBoxAction:) forControlEvents:UIControlEventTouchUpInside];
                     
                     if ([responseObject.tariffs containsObject:[responseObject.possible_tariffs[i] getId]]) {
-                        //[checkBox setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateSelected];
                         [checkBox setSelected:YES];
                     }
                     
                     else{
-                        //[checkBox setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
                         [checkBox setSelected:NO];
                     }
                     [cell.contentView addSubview:checkBox];
@@ -380,19 +371,42 @@
     }
     
     if (tableView == radiusSettingsTable) {
-        [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
-        cell.textLabel.text = [NSString stringWithFormat:@"%li",indexPath.row + 1];
+        if (indexPath.row == 5) {
+            cell.backgroundColor = [UIColor orangeColor];
+            cell.textLabel.text = @"Отмена";
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.textColor = [UIColor whiteColor];
+        }
+        else{
+            [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
+            cell.textLabel.text = [NSString stringWithFormat:@"%i",indexPath.row + 1];
+        }
     }
     
     if (tableView == timeSettingsTable) {
-        [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
-        cell.textLabel.text = [NSString stringWithFormat:@"%li",(indexPath.row + 1) * 5];
+        if (indexPath.row == 12) {
+            cell.backgroundColor = [UIColor orangeColor];
+            cell.textLabel.text = @"Отмена";
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.textColor = [UIColor whiteColor];
+        }
+        else{
+            [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
+            cell.textLabel.text = [NSString stringWithFormat:@"%i",(indexPath.row + 1) * 5];
+        }
     }
     
     
     return cell;
 }
 
+
+
+-(void)cancelButton:(UIButton*)sender{
+    [cancelButton removeFromSuperview];
+    [timeSettingsTable removeFromSuperview];
+    [backgroundView removeFromSuperview];
+}
 
 -(void)setCheckBox:(UIButton*)sender{
     UIButton* checkBox = (UIButton*)carCheckBoxArray[sender.tag];
@@ -405,7 +419,6 @@
     }
 }
 
-//static NSInteger tag = 102;
 -(void)setSwitch: (UITableViewCell*)cell isSelected:(BOOL)isSelected switchTag:(NSInteger)tag{
     NSLog(@"%li",(long)tag);
     UISwitch* Switch = [[UISwitch alloc]init];
@@ -427,7 +440,6 @@
     if (!isDefaultTable) {
         [controllViewsArray addObject:Switch];
         [Switch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventTouchUpInside];
-//        ++tag;
     }
 }
 
@@ -499,30 +511,27 @@
         }
     }
     if (tableView == timeSettingsTable || tableView == radiusSettingsTable) {
-        if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
-            return 35;
-        }
-        
-        else{
-            NSLog(@"---???? %f",self.view.frame.size.height*5/72);
-            return self.view.frame.size.height*5/72;
-            }
+        return 40;
     }
     return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == timeSettingsTable) {
+            UIButton* button = controllViewsArray[1];
+            [button setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text forState:UIControlStateNormal];
+        [cancelButton removeFromSuperview];
         [timeSettingsTable removeFromSuperview];
         [backgroundView removeFromSuperview];
-        UIButton* button = controllViewsArray[1];
-        [button setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text forState:UIControlStateNormal];
     }
     if (tableView == radiusSettingsTable) {
+        
+        if (indexPath.row != 5) {
+            UIButton* button = controllViewsArray[0];
+            [button setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text forState:UIControlStateNormal];
+        }
         [radiusSettingsTable removeFromSuperview];
         [backgroundView removeFromSuperview];
-        UIButton* button = controllViewsArray[0];
-        [button setTitle:[tableView cellForRowAtIndexPath:indexPath].textLabel.text forState:UIControlStateNormal];
     }
 }
 
@@ -530,13 +539,15 @@
 -(void)radiusTimeSettings:(UIButton*)sender{
     [self.view addSubview:backgroundView];
     if (sender.tag == 100) {
-        if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
-            radiusSettingsTable = [[UITableView alloc]initWithFrame:CGRectMake(self.view.frame.size.width*7/64, (self.view.frame.size.height - 175)/2, self.view.frame.size.width*25/32, 175)];
-            radiusSettingsTable.scrollEnabled = YES;
+        if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationLandscapeLeft ||
+           [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationLandscapeRight)
+        {
+            radiusSettingsTable = [[UITableView alloc]initWithFrame:CGRectMake(self.view.frame.size.width*7/64, (self.view.frame.size.height - 240)/2, self.view.frame.size.width*25/32, 240)];
+            radiusSettingsTable.scrollEnabled = NO;
 
         }
         else{
-            radiusSettingsTable = [[UITableView alloc]initWithFrame:CGRectMake(self.view.frame.size.width*7/64, self.view.frame.size.height*43/144, self.view.frame.size.width*25/32, self.view.frame.size.height*25/72)];
+            radiusSettingsTable = [[UITableView alloc]initWithFrame:CGRectMake(self.view.frame.size.width*7/64,  (self.view.frame.size.height - 240)/2, self.view.frame.size.width*25/32, 240)];
             radiusSettingsTable.scrollEnabled = NO;
         }
         
@@ -546,17 +557,17 @@
 
     }
     else if(sender.tag == 101){
-        timeSettingsTable = [[UITableView alloc]initWithFrame:CGRectMake(self.view.frame.size.width*7/64, self.view.frame.size.height*1/12, self.view.frame.size.width*25/32, self.view.frame.size.height*5/6)];
+    timeSettingsTable = [[UITableView alloc]initWithFrame:CGRectMake(self.view.frame.size.width*7/64, (self.view.frame.size.height - 240)/2 - 20, self.view.frame.size.width*25/32, 240)];
+        cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMinX(timeSettingsTable.frame), CGRectGetMaxY(timeSettingsTable.frame), CGRectGetWidth(timeSettingsTable.frame), 40)];
+        [cancelButton addTarget:self action:@selector(cancelButton:) forControlEvents:UIControlEventTouchUpInside];
+        cancelButton.backgroundColor = [UIColor orangeColor];
+        [cancelButton setTitle:@"Отмена" forState:UIControlStateNormal];
+        [self.view addSubview:cancelButton];
+        
         
         timeSettingsTable.delegate = self;
         timeSettingsTable.dataSource = self;
         [self.view addSubview:timeSettingsTable];
-        if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
-            timeSettingsTable.scrollEnabled = YES;
-        }
-        else{
-            timeSettingsTable.scrollEnabled = NO;
-        }
     }
 }
 
@@ -826,21 +837,6 @@
 
 
 
-
-
-#pragma mark - UIResponder
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(radiusSettingsTable.superview == self.view){
-        [backgroundView removeFromSuperview];
-        [radiusSettingsTable removeFromSuperview];
-    }
-    if(timeSettingsTable.superview == self.view){
-        [backgroundView removeFromSuperview];
-        [timeSettingsTable removeFromSuperview];
-    }
-}
-
-
 #pragma mark - rotation
 
 
@@ -858,20 +854,12 @@
         saveButton.frame = CGRectMake(0, 508 + (15 + 8)*[responseObject.possible_tariffs count], scrollView.frame.size.width, 35);
         }
         
-        UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+            radiusSettingsTable.frame = CGRectMake(self.view.frame.size.width*7/64, (self.view.frame.size.height - 240)/2, self.view.frame.size.width*25/32, 240);
         
-        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
-            radiusSettingsTable.frame = CGRectMake(self.view.frame.size.width*7/64, self.view.frame.size.height*43/144, self.view.frame.size.width*25/32, self.view.frame.size.height*25/72);
-            timeSettingsTable.scrollEnabled = NO;
-            timeSettingsTable.frame = CGRectMake(self.view.frame.size.width*7/64, self.view.frame.size.height*1/12, self.view.frame.size.width*25/32, self.view.frame.size.height*5/6);
-        }
-        else{
-            radiusSettingsTable.frame = CGRectMake(self.view.frame.size.width*7/64, (self.view.frame.size.height - 175)/2, self.view.frame.size.width*25/32, 175);
-            
-            timeSettingsTable.frame = CGRectMake(self.view.frame.size.width*7/64, self.view.frame.size.height*1/12, self.view.frame.size.width*25/32, self.view.frame.size.height*5/6);
-            timeSettingsTable.scrollEnabled = YES;
-            radiusSettingsTable.scrollEnabled = YES;
-        }
+        
+        timeSettingsTable.frame = CGRectMake(self.view.frame.size.width*7/64, (self.view.frame.size.height - 240)/2 - 20, self.view.frame.size.width*25/32, 240);
+        cancelButton.frame = CGRectMake(CGRectGetMinX(timeSettingsTable.frame), CGRectGetMaxY(timeSettingsTable.frame), CGRectGetWidth(timeSettingsTable.frame), 40);
+        
 
         backgroundView.frame = self.view.frame;
         indicator.center = self.view.center;
