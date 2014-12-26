@@ -190,11 +190,17 @@
             myClass = NSClassFromString(@"TariffsCityMobilViewController");
             identity =@"TariffsCityMobilViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            self.tariffName=@"City";
             break;
         case 8:
-            myClass = NSClassFromString(@"TariffsYandexViewController");
-            identity =@"TariffsYandexViewController";
+            myClass = NSClassFromString(@"TariffsCityMobilViewController");
+            identity =@"TariffsCityMobilViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            self.tariffName=@"Yandex";
+            
+//            myClass = NSClassFromString(@"TariffsYandexViewController");
+//            identity =@"TariffsYandexViewController";
+//            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
         case 9:
             myClass = NSClassFromString(@"DesignationIconsViewController");

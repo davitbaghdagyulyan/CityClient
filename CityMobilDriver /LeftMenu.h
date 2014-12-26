@@ -14,4 +14,5 @@
 +(LeftMenu*)getLeftMenu:(id)curentSelf;
 @property(nonatomic,assign)NSUInteger flag;
 @property(nonatomic,strong)NSMutableArray*disabledViewsArray;
+@property(nonatomic,strong)NSString*tariffName;
 @end
