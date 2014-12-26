@@ -59,7 +59,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [[SingleDataProvider sharedKey]stopTimer];
+    [[[SingleDataProvider sharedKey]locationManager]stopUpdatingLocation];
     [self.login setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.login.delegate = self;
     
