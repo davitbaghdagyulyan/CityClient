@@ -140,6 +140,7 @@ typedef enum ScrollDirection {
         [badRequest showErrorAlertMessage:getTariffsUrlResponseObject.text code:getTariffsUrlResponseObject.code];
         
         
+        
 //        if(getTariffsUrlResponseObject.code!=nil)
 //        {
 //           
