@@ -218,7 +218,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=0;
-    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=transit",
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
                   [SingleDataProvider sharedKey].lat,
                   [SingleDataProvider sharedKey].lon,
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
@@ -236,7 +236,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=1;
-    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=transit",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
