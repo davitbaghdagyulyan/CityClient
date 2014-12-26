@@ -213,7 +213,7 @@
             //exit(0); //not recommended apple
             myClass = NSClassFromString(@"LoginViewController");
             identity =@"LoginViewController";
-            [[SingleDataProvider sharedKey]stopTimer];
+          
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action)

@@ -339,6 +339,9 @@ typedef enum ScrollDirection {
          for (int i=0;i<scrollViewArray.count;i++)
          {
              [[scrollViewArray objectAtIndex:i]setFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];
+             UIScrollView *scrollV = (UIScrollView*)[scrollViewArray objectAtIndex:i];
+             CGFloat y = scrollV.contentSize.height;
+             [(UIScrollView*)[scrollViewArray objectAtIndex:i]setContentSize:CGSizeMake(self.tariffsSacrollView.frame.size.width-10, y)];
          }
          
          for (int i=0;i<daytimeLabelArray.count;i++)
@@ -379,7 +382,13 @@ typedef enum ScrollDirection {
              shortLabel.center=point;
             
          }
-             self.tariffsSacrollView.contentSize=CGSizeMake(self.tariffsSacrollView.frame.size.width*getTariffsUrlResponseXMLObject.Tariffs.Tariff.count, self.tariffsSacrollView.frame.size.height);
+       
+         
+
+         self.tariffsSacrollView.contentSize=CGSizeMake(self.tariffsSacrollView.frame.size.width*(getTariffsUrlResponseXMLObject.Tariffs.Tariff.count), self.tariffsSacrollView.frame.size.height);
+         
+         NSLog(@"widh==%f",self.tariffsSacrollView.frame.size.width);
+        
                   CGFloat xx;
          
          if(leftMenu.flag==0)

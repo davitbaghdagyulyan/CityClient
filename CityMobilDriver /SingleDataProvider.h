@@ -16,7 +16,7 @@
 @interface SingleDataProvider : NSObject<CLLocationManagerDelegate>
 {
     CLLocation* currentLocation;
-    CLLocationManager *locationManager;
+   
     AddGPSJson*addGPSJsonObject;
     AddGPSResponse*addGPSResponseObject;
     NSOperationQueue *myQueue ;
@@ -30,6 +30,7 @@
 @property(nonatomic,assign)CGFloat time;
 @property(nonatomic,assign)CGFloat direction;
 @property(nonatomic,assign)CGFloat speed;
+@property(nonatomic,strong) CLLocationManager *locationManager;
 +(SingleDataProvider*)sharedKey;
 -(void)startTimer;
 -(void)stopTimer;
