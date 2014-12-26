@@ -186,6 +186,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self.createPhotoImageView setImage:[self imageWithImage:info[UIImagePickerControllerOriginalImage] scaledToSize:CGRectMake(0, y, min, min)]];
+    
+    NSString *model = [[UIDevice currentDevice] model];
+    if (![model isEqualToString:@"iPhone Simulator"]) {
+        self.createPhotoImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
+
     self.createPhotoImageView.layer.cornerRadius = self.createPhotoImageView.frame.size.height /2;
     self.createPhotoImageView.layer.masksToBounds = YES;
     self.createPhotoImageView.layer.borderWidth = 0;

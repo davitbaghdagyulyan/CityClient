@@ -98,7 +98,7 @@
         
         
         
-        if(addGPSResponseObject.code==nil)
+        if(addGPSResponseObject.code==nil && addGPSResponseObject.gpsError!=1)
         {
             [UserInformationProvider sharedInformation].balance = addGPSResponseObject.balance;
             [IconsColorSingltone sharedColor].yandexColor = [addGPSResponseObject.y_autoget integerValue];
