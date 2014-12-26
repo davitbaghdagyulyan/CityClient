@@ -12,6 +12,7 @@
 #import "CustomCellSelectORDER.h"
 
 @interface SelectedOrdersViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;
 @property(strong,nonatomic)NSString * stringForSrochno;

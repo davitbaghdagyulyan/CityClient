@@ -11,6 +11,7 @@
 #import "GetInfoResponse.h"
 
 @interface StatisticsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *statisticsScrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;

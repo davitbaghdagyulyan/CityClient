@@ -14,6 +14,7 @@
 #import "LeftMenu.h"
 
 @interface MessagesViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 - (IBAction)theNewMessage:(UIButton *)sender;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;

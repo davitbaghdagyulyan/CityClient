@@ -14,6 +14,7 @@
 #import "LeftMenu.h"
 
 @interface infoViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property(nonatomic,strong)NSString* key;

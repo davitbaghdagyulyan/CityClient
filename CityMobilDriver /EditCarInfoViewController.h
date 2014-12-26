@@ -22,6 +22,7 @@
 #import "RequestSetCarInfoWidthPhoto.h"
 
 @interface EditCarInfoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;

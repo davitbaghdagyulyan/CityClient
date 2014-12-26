@@ -117,7 +117,6 @@
      [GPSConection showGPSConection:self];
     self.scrollView.userInteractionEnabled=YES;
     self.segmentControll.userInteractionEnabled=YES;
-    self.scrollView.userInteractionEnabled=YES;
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
@@ -143,6 +142,9 @@
         }
     }
 
+    
+    [self.gpsButton setNeedsDisplay];
+    [GPSConection showGPSConection:self];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender

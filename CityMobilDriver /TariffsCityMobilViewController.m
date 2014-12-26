@@ -50,7 +50,7 @@ typedef enum ScrollDirection {
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+    [self.gpsButton setNeedsDisplay];
      [GPSConection showGPSConection:self];
     position=0;
     self.tariffsSacrollView.delegate=self;
@@ -112,7 +112,7 @@ typedef enum ScrollDirection {
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -163,11 +163,25 @@ typedef enum ScrollDirection {
         [indicator stopAnimating];
         
         NSError *error;
-
+        NSString* contentsString;
         NSLog(@"%@",getTariffsUrlResponseObject.yandex_tariffs_url);
-        NSString* contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.tariffs_url]
-                                                      encoding:NSUTF8StringEncoding
-                                                         error:&error];
+
+        if ([leftMenu.tariffName isEqualToString:@"City"])
+        {
+            contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.tariffs_url]
+                                                                encoding:NSUTF8StringEncoding
+                                                                   error:&error];
+           self.titleOfPage.text=@"ТАРИФЫ СитиМобил";
+        }
+
+        else if([leftMenu.tariffName isEqualToString:@"Yandex"])
+        {
+            contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.yandex_tariffs_url]
+                                                                encoding:NSUTF8StringEncoding
+                                                                   error:&error];
+            self.titleOfPage.text= @"ТАРИФЫ Яндекс";
+        }
+
         NSLog(@"%@",contentsString);
         NSError*parseError=nil;
        // NSData* xmlData = [contentsString dataUsingEncoding:NSUTF8StringEncoding];

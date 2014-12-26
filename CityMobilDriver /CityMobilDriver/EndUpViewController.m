@@ -16,6 +16,7 @@
 #import "LeftMenu.h"
 #import "SingleDataProvider.h"
 #import "OpenMapButtonHandler.h"
+
 @interface EndUpViewController ()
 {
     ResponseSetBill* billResponse;
@@ -64,11 +65,13 @@
     [super viewDidAppear:animated];
     
      [GPSConection showGPSConection:self];
-    
+
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
-    
+    [self.gpsButton setNeedsDisplay];
     bgViewHeigth = 0.f;
+    
+    
     [bgView removeFromSuperview];
      bgView = [[UIView alloc]init];
     leftMenu=[LeftMenu getLeftMenu:self];
@@ -114,10 +117,12 @@
     
     
     
-    if ([self.orderResponse.payment_method isEqualToString:@"cash"]) {
+    if ([self.payment_method isEqualToString:@"cash"])
+    {
         [self drowCashButton];
     }
-    else if ([self.orderResponse.payment_method isEqualToString:@"card"]) {
+    else if ([self.payment_method isEqualToString:@"card"])
+    {
         myTimer = [NSTimer scheduledTimerWithTimeInterval:1.f
                                                    target:self
                                                  selector:@selector(requestGetOrder)
@@ -127,7 +132,8 @@
         [self addAlertView:@"Выполняется оплата по карте"];
     }
     
-    else if ([self.orderResponse.payment_method isEqualToString:@"corporate"]) {
+    else if ([self.payment_method isEqualToString:@"corporate"])
+    {
         myTimer = [NSTimer scheduledTimerWithTimeInterval:1.f
                                                    target:self
                                                  selector:@selector(requestGetOrder)
@@ -182,7 +188,7 @@
     
     [self.endUpScrollView addSubview:bgView];
     
-    [self.view addGestureRecognizer:tapGasture];
+    [self.endUpScrollView addGestureRecognizer:tapGasture];
 }
 
 -(void)addAlertView:(NSString*)titleString{
@@ -310,7 +316,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -377,7 +383,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -608,7 +614,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -773,6 +779,107 @@
    
     leftMenu.flag=1;
 }
+
+/////////vvv//////
+//- (IBAction)openAndCloseLeftMenu:(UIButton *)sender
+//{
+//    [UIView animateWithDuration:0.5
+//                          delay:0.0
+//                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+//                     animations:^(void)
+//     {
+//         CGPoint point;
+//         if (leftMenu.flag==0)
+//             point.x=(CGFloat)leftMenu.frame.size.width/2;
+//         else
+//             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+//         point.y=leftMenu.center.y;
+//         leftMenu.center=point;
+//         
+//     }
+//                     completion:^(BOOL finished)
+//     {
+//         
+//         if (leftMenu.flag==0)
+//         {
+//             leftMenu.flag=1;
+//             self.myOrdersTableView.userInteractionEnabled=NO;
+//             
+//             self.myOrdersTableView.tag=1;
+//             [leftMenu.disabledViewsArray removeAllObjects];
+//             
+//             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.myOrdersTableView.tag]];
+//         }
+//         else
+//         {
+//             self.myOrdersTableView.userInteractionEnabled=YES;
+//             leftMenu.flag=0;
+//         }
+//         
+//     }
+//     ];
+//}
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [[event allTouches] anyObject];
+//    CGPoint touchLocation = [touch locationInView:touch.view];
+//    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+//        return;
+//    [UIView animateWithDuration:0.5
+//                          delay:0.0
+//                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+//                     animations:^(void)
+//     {
+//         CGPoint point;
+//         NSLog(@"\n%f", 2*leftMenu.center.x);
+//         NSLog(@"\n%f",leftMenu.frame.size.width/2);
+//         if (touchLocation.x<=leftMenu.frame.size.width/2)
+//         {
+//             leftMenu.flag=0;
+//             self.myOrdersTableView.userInteractionEnabled=YES;
+//             
+//             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+//         }
+//         else if (touchLocation.x>leftMenu.frame.size.width/2)
+//         {
+//             point.x=(CGFloat)leftMenu.frame.size.width/2;
+//             leftMenu.flag=1;
+//             self.myOrdersTableView.userInteractionEnabled=NO;
+//             
+//         }
+//         point.y=leftMenu.center.y;
+//         leftMenu.center=point;
+//         NSLog(@"\n%f",leftMenu.frame.size.width);
+//         
+//     }
+//                     completion:nil
+//     ];
+//}
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [[event allTouches] anyObject];
+//    CGPoint touchLocation = [touch locationInView:touch.view];
+//    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+//    {
+//        return;
+//    }
+//    CGPoint point;
+//    point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
+//    point.y=leftMenu.center.y;
+//    if (point.x>leftMenu.frame.size.width/2)
+//    {
+//        return;
+//    }
+//    leftMenu.center=point;
+//    leftMenu.flag=1;
+//    self.myOrdersTableView.userInteractionEnabled=NO;
+//    
+//}
+//
+//////vvv end////
+
+
+
 - (IBAction)back:(id)sender
 {
     if (leftMenu.flag)

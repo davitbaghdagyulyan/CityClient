@@ -14,6 +14,7 @@
 #import "ResponseGetCarInfo.h"
 
 @interface CarInfoViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property(nonatomic,weak) IBOutlet UIView* bgView;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;

@@ -43,6 +43,9 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
+    [self.gpsButtonIpad setNeedsDisplay];
+    [self.gpsButtonPort setNeedsDisplay];
+    [self.gpsButtonLand setNeedsDisplay];
     
     [self.cityButtonIpad setNeedsDisplay];
     [self.cityButtonLand setNeedsDisplay];
@@ -56,7 +59,9 @@
     self.tableViewOrdersPort.userInteractionEnabled=YES;
     self.tableViewOrdersLand.userInteractionEnabled=YES;
     self.tableViewIpad.userInteractionEnabled=YES;
+    
     leftMenu=[LeftMenu getLeftMenu:self];
+    
     if (cancelOfAlertNoConIsClicked ==YES)
     {
         alertNoConIsCreated=NO;
@@ -564,7 +569,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -652,7 +657,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data && alertNoConIsCreated ==NO)
         {

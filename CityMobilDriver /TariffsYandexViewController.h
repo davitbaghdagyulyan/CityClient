@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TariffsYandexViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *tarifsYandexScrollView;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;

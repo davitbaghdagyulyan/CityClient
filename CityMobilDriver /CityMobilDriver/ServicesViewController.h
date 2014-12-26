@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @interface ServicesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property (nonatomic,strong) NSString* idHash;
 @property (nonatomic,strong) NSArray* selectedID;

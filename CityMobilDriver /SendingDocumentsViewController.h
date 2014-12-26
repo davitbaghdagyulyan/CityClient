@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SendingDocumentsViewController : UIViewController<UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @property (nonatomic, strong) NSString* urlString;

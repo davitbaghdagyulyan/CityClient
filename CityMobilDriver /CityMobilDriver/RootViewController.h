@@ -8,6 +8,14 @@
 
 
 
+@property (weak, nonatomic) IBOutlet UIButton *gpsButtonPort;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *gpsButtonLand;
+
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButtonIpad;
+
+
 @property (strong, nonatomic) IBOutlet UIButton *yandexButtonIpad;
 @property (strong, nonatomic) IBOutlet UIButton *yandexButtonLand;
 @property (strong, nonatomic) IBOutlet UIButton *yandexButtonPort;

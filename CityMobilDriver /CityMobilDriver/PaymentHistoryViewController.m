@@ -45,6 +45,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
+    [self.gpsButton setNeedsDisplay];
     [GPSConection showGPSConection:self];
     
     //Settings Buttons
@@ -134,7 +135,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {

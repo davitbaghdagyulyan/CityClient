@@ -70,10 +70,10 @@
     
     
     
-    viewMap.smallMapView.layer.cornerRadius = 30;
-    viewMap.smallMapView.layer.borderWidth = 2;
-    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
-    viewMap.smallMapView.layer.masksToBounds = YES;
+//    viewMap.smallMapView.layer.cornerRadius = 30;
+//    viewMap.smallMapView.layer.borderWidth = 2;
+//    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+//    viewMap.smallMapView.layer.masksToBounds = YES;
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
     [singleTapYandex setNumberOfTapsRequired:1];
@@ -116,7 +116,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -130,6 +130,7 @@
                                     {
                                         [alert dismissViewControllerAnimated:YES completion:nil];
                                         [indicator1 stopAnimating];
+                                        [viewMap removeFromSuperview];
                                         return ;
                                     }];
             [alert addAction:cancel];
@@ -180,11 +181,14 @@
                                     {
                                         [alert dismissViewControllerAnimated:YES completion:nil];
                                         [self animation];
-                                        googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?z=4&t=m&q=loc:%f+%f",
+                                
+                                        
+                                        
+                                        googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?q=%f,%f&zoom=15&views=transit",
                                                       [SingleDataProvider sharedKey].lat,
                                                       [SingleDataProvider sharedKey].lon];
                                         
-                                        yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=12",
+                                yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=15",
                                                       [SingleDataProvider sharedKey].lat,
                                                       [SingleDataProvider sharedKey].lon];
                                         
@@ -195,11 +199,11 @@
             }
             else
             {
-                googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?z=4&t=m&q=loc:%f+%f",
+                googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?q=%f,%f&zoom=15&views=transit",
                               [getLastKnownLocationResponseObject.latitude doubleValue],
                               [getLastKnownLocationResponseObject.longitude doubleValue]];
                 
-                yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=12",
+                yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://show_point_on_map?lat=%f&lon=%f&zoom=15",
                               [getLastKnownLocationResponseObject.latitude doubleValue],
                               [getLastKnownLocationResponseObject.longitude doubleValue]];
                 
