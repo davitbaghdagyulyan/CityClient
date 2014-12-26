@@ -184,7 +184,7 @@
                                 
                                         
                                         
-                                        googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?q=%f,%f&zoom=15&views=transit",
+                                        googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?q=%f,%f&zoom=15",
                                                       [SingleDataProvider sharedKey].lat,
                                                       [SingleDataProvider sharedKey].lon];
                                         
@@ -199,7 +199,7 @@
             }
             else
             {
-                googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?q=%f,%f&zoom=15&views=transit",
+                googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?q=%f,%f&zoom=15",
                               [getLastKnownLocationResponseObject.latitude doubleValue],
                               [getLastKnownLocationResponseObject.longitude doubleValue]];
                 

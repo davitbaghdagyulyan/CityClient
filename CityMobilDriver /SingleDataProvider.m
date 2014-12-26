@@ -38,8 +38,11 @@
     addGPSJsonObject=[[AddGPSJson alloc] init];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = [SingleDataProvider sharedKey];
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
+    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [locationManager requestAlwaysAuthorization];
+    
+       
     }
     [locationManager startUpdatingLocation];
     self.timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addGPSaction) userInfo:nil repeats:YES];
@@ -107,5 +110,8 @@
     }];
 
 }
-
+- (void)dealloc
+{
+    
+}
 @end
