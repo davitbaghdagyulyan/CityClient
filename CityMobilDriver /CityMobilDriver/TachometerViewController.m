@@ -629,7 +629,6 @@
         }
     }
     
-    NSInteger aaa = count;
     NSString* str = [[NSString alloc]init];
     switch (count) {
         case 1:
