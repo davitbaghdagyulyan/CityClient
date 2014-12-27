@@ -103,15 +103,6 @@
     [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
     
     
-    
-//    NSRange range;
-//    range.location = 0;
-//    range.length = 2;
-//   
-//    NSMutableString* str = [[NSMutableString alloc]initWithString:self.modelString];
-//    if (str.length > 0) {
-//        [str deleteCharactersInRange:range];
-//    }
     [self.model setTitle:self.modelString forState:UIControlStateNormal];
 
     [self.color setTitle:self.colorString forState:UIControlStateNormal];

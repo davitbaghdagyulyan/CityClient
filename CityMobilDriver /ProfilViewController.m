@@ -33,6 +33,8 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self setDriverInfoRequest];
     [self setDriverInfo];
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -161,7 +163,7 @@
         label.text = [label.text stringByAppendingString:appendingString];
         NSRange range1 = [label.text rangeOfString:appendingString];
         NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
-        [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:17]} range:range1];
+        [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:13]} range:range1];
         label.attributedText=attributedText;
     }
 }
