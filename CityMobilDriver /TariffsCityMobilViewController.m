@@ -50,7 +50,7 @@ typedef enum ScrollDirection {
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    leftMenu=[LeftMenu getLeftMenu:self];
+        leftMenu=[LeftMenu getLeftMenu:self];
     if ([leftMenu.tariffName isEqualToString:@"City"])
     {
         self.titleOfPage.text=@"ТАРИФЫ СитиМобил";
@@ -69,7 +69,8 @@ typedef enum ScrollDirection {
     {
         [scroll removeFromSuperview];
     }
-    
+    [self.tariffsSacrollView setContentOffset:CGPointMake(0, 0)];
+
    
     
     
