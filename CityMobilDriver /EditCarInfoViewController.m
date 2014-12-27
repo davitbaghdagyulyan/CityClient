@@ -32,6 +32,11 @@
     CAGradientLayer* gradientLayer1;
     CAGradientLayer* gradientLayer2;
     OpenMapButtonHandler*openMapButtonHandlerObject;
+    
+    
+    UIButton* cancelMarkButton;
+    UIButton* cancelModelButton;
+    UIButton* cancelColorButton;
 
 }
 @end
@@ -380,12 +385,30 @@
     [self.view addSubview:backgroundView1];
 
     
-    markTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+//    markTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+        markTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80)];
+    cancelMarkButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40)];
+    [cancelMarkButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    cancelMarkButton.backgroundColor = [UIColor orangeColor];
+    [cancelMarkButton setTitle:@"Отмена" forState:UIControlStateNormal];
+    [self.view addSubview:cancelMarkButton];
+    
+    
     markTableView.delegate = self;
     markTableView.dataSource = self;
     [self.view addSubview:markTableView];
 }
 
+
+-(void)cancelAction:(UIButton*)sender{
+    [backgroundView1 removeFromSuperview];
+    [cancelMarkButton removeFromSuperview];
+    [cancelModelButton removeFromSuperview];
+    [cancelColorButton removeFromSuperview];
+    [markTableView removeFromSuperview];
+    [modelTableView removeFromSuperview];
+    [colorTableView removeFromSuperview];
+}
 
 - (IBAction)modelAction:(id)sender
 {
@@ -396,17 +419,27 @@
         [self.view addSubview:backgroundView1];
         
         
+        cancelModelButton = [[UIButton alloc]init];
+        [cancelModelButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+        cancelModelButton.backgroundColor = [UIColor orangeColor];
+        [cancelModelButton setTitle:@"Отмена" forState:UIControlStateNormal];
+        
+        
+        
         if ([modelResponseObject.models count] * 40 >= self.view.frame.size.height - 40) {
-            modelTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+            modelTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80)];
         }
         else{
             CGRect tableRect;
             tableRect.origin = self.view.center;
             modelTableView = [[UITableView alloc]init];
             
-            modelTableView.frame = CGRectMake(20, (self.view.frame.size.height - 40 * [modelResponseObject.models count])/2, self.view.frame.size.width - 40, 40 * [modelResponseObject.models count]);
+            modelTableView.frame = CGRectMake(20, (self.view.frame.size.height - 40 * [modelResponseObject.models count])/2 - 20, self.view.frame.size.width - 40, 40 * [modelResponseObject.models count]);
+            
             modelTableView.scrollEnabled = NO;
         }
+        cancelModelButton.frame = CGRectMake(CGRectGetMinX(modelTableView.frame), CGRectGetMaxY(modelTableView.frame), CGRectGetWidth(modelTableView.frame), 40);
+        [self.view addSubview:cancelModelButton];
         
         
         modelTableView.delegate = self;
@@ -421,7 +454,14 @@
     backgroundView1.backgroundColor = [UIColor grayColor];
     [self.view addSubview:backgroundView1];
     
-    colorTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+    colorTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80)];
+    
+    cancelColorButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMinX(colorTableView.frame), CGRectGetMaxY(colorTableView.frame), CGRectGetWidth(colorTableView.frame), 40)];
+    [cancelColorButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    cancelColorButton.backgroundColor = [UIColor orangeColor];
+    [cancelColorButton setTitle:@"Отмена" forState:UIControlStateNormal];
+    [self.view addSubview:cancelColorButton];
+
     
     colorTableView.delegate = self;
     colorTableView.dataSource = self;
@@ -482,6 +522,7 @@
         [backgroundView1 removeFromSuperview];
         [self.mark setTitle:[getMarkResponseObject.marks[indexPath.row] mark] forState:UIControlStateNormal];
         [self requestGetModelInfo:[getMarkResponseObject.marks[indexPath.row] getId]];
+        [cancelMarkButton removeFromSuperview];
         //[modelTableView reloadData];
     }
     
@@ -489,15 +530,16 @@
         [modelTableView removeFromSuperview];
         [backgroundView1 removeFromSuperview];
         [self.model setTitle:[modelResponseObject.models[indexPath.row] model] forState:UIControlStateNormal];
+        [cancelModelButton removeFromSuperview];
     }
     
     if (tableView == colorTableView) {
         [colorTableView removeFromSuperview];
         [backgroundView1 removeFromSuperview];
         [self.color setTitle:[getColorListObject.colors[indexPath.row] getColor] forState:UIControlStateNormal];
+        [cancelColorButton removeFromSuperview];
     }
 }
-
 
 
 -(void)touchRecognizer{
@@ -836,6 +878,32 @@
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
              gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310);
+         
+                 markTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
+             cancelMarkButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40);
+         backgroundView1.frame = self.view.frame;
+         
+         
+         
+         
+         colorTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
+         
+         cancelColorButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40);
+         
+         
+         
+         if ([modelResponseObject.models count] * 40 >= self.view.frame.size.height - 40) {
+             modelTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
+         }
+         else{
+             CGRect tableRect;
+             tableRect.origin = self.view.center;
+             modelTableView.frame = CGRectMake(20, (self.view.frame.size.height - 40 * [modelResponseObject.models count])/2 - 20, self.view.frame.size.width - 40, 40 * [modelResponseObject.models count]);
+             
+             modelTableView.scrollEnabled = NO;
+         }
+         cancelModelButton.frame = CGRectMake(CGRectGetMinX(modelTableView.frame), CGRectGetMaxY(modelTableView.frame), CGRectGetWidth(modelTableView.frame), 40);
+         
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
@@ -868,6 +936,21 @@
     return headerLayer;
 }
 
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.firstLicense) {
+        if (textField.text.length >= 3 && range.length == 0)
+        {
+            return NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    return YES;
+}
 
 #pragma mark - left Menu
 
