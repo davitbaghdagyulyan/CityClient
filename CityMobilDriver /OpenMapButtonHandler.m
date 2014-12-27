@@ -270,8 +270,5 @@
 {
     [viewMap removeFromSuperview];
 }
--(void)dealloc
-{
 
-}
 @end
