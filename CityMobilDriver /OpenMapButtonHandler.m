@@ -165,9 +165,9 @@
         {
             if ((getLastKnownLocationResponseObject.latitude ==nil)||(getLastKnownLocationResponseObject.longitude==nil))
             {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка сервера" message:@"взять gps данные из iPhone/iPad?" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка сервера" message:@"Взять gps данные из устройства?" preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action)
                                         {
                                             [viewMap removeFromSuperview];
