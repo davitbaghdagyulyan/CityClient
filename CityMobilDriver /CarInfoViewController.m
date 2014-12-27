@@ -56,7 +56,7 @@
     
     
     self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    //self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
     self.carInfoTable.delegate = self;
     self.carInfoTable.dataSource = self;
 }
@@ -107,6 +107,7 @@
             
             [alert show];
             [indicator stopAnimating];
+            [self.carInfoTable reloadData];
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -138,10 +139,10 @@
 {
     UITableViewCell* cell = [[UITableViewCell alloc]init];
     cell.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    [cell.textLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14]];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:13]];
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"марка ";
+            cell.textLabel.text = @"Марка ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.mark];
             cell.textLabel.backgroundColor = [UIColor clearColor];
             cell.tag = 100;
@@ -150,27 +151,27 @@
             
             break;
         case 1:
-            cell.textLabel.text = @"модель ";
+            cell.textLabel.text = @"Модель ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.model];
             break;
         case 2:
-            cell.textLabel.text = @"год производства ";
+            cell.textLabel.text = @"Год производства ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.year];
             break;
         case 3:
-            cell.textLabel.text = @"цвет ";
+            cell.textLabel.text = @"Цвет ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.color];
             break;
         case 4:
-            cell.textLabel.text = @"гос.номер ";
+            cell.textLabel.text = @"Гос.номер ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.reg_num];
             break;
         case 5:
-            cell.textLabel.text = @"vin-код ";
+            cell.textLabel.text = @"Vin-код ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.VIN];
             break;
         case 6:
-            cell.textLabel.text = @"лицензия ";
+            cell.textLabel.text = @"Лицензия ";
             [self setAtributedString:cell.textLabel :[NSString stringWithFormat:@"%@ - %@",getCarInfoResponse.car_license_pref,getCarInfoResponse.car_license_number]];
             break;
             
@@ -192,7 +193,7 @@
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
     float spacing = 0.1f;
     [attributedText addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [labelText length])];
-    [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:14]} range:range1];
+    [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:13]} range:range1];
     label.attributedText=attributedText;
 }
 

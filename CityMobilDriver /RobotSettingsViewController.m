@@ -15,7 +15,6 @@
 #import "OpenMapButtonHandler.h"
 #import "LoginViewController.h"
 
-
 @interface RobotSettingsViewController ()
 {
     LeftMenu*leftMenu;
@@ -218,6 +217,7 @@
     
     UILabel* textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width - 60, 45)];
     textLabel.numberOfLines = 2;
+        
     [cell.contentView addSubview:textLabel];
     
     cell.textLabel.numberOfLines = 2;
@@ -380,7 +380,7 @@
         }
         else{
             [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
-            cell.textLabel.text = [NSString stringWithFormat:@"%i",indexPath.row + 1];
+            cell.textLabel.text = [NSString stringWithFormat:@"%li",indexPath.row + 1];
         }
     }
     
@@ -393,7 +393,7 @@
         }
         else{
             [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
-            cell.textLabel.text = [NSString stringWithFormat:@"%i",(indexPath.row + 1) * 5];
+            cell.textLabel.text = [NSString stringWithFormat:@"%li",(indexPath.row + 1) * 5];
         }
     }
     
