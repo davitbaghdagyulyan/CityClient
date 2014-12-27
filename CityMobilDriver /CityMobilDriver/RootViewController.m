@@ -43,10 +43,11 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
-    [self.gpsButtonIpad setNeedsDisplay];
-    [self.gpsButtonPort setNeedsDisplay];
-    [self.gpsButtonLand setNeedsDisplay];
+   
     
+    [[SingleDataProvider sharedKey] setGpsButtonHandlerPort:self.gpsButtonPort];
+    [[SingleDataProvider sharedKey] setGpsButtonHandlerLand:self.gpsButtonLand];
+    [[SingleDataProvider sharedKey] setGpsButtonHandlerIpad:self.gpsButtonIpad];
     [self.cityButtonIpad setNeedsDisplay];
     [self.cityButtonLand setNeedsDisplay];
     [self.cityButtonPort setNeedsDisplay];
@@ -323,7 +324,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
 
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

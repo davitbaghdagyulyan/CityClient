@@ -50,7 +50,18 @@ typedef enum ScrollDirection {
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.gpsButton setNeedsDisplay];
+    leftMenu=[LeftMenu getLeftMenu:self];
+    if ([leftMenu.tariffName isEqualToString:@"City"])
+    {
+        self.titleOfPage.text=@"ТАРИФЫ СитиМобил";
+    }
+    
+    else if([leftMenu.tariffName isEqualToString:@"Yandex"])
+    {
+        self.titleOfPage.text= @"ТАРИФЫ Яндекс";
+    }
+    
+     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
      [GPSConection showGPSConection:self];
     position=0;
     self.tariffsSacrollView.delegate=self;
@@ -58,12 +69,18 @@ typedef enum ScrollDirection {
     {
         [scroll removeFromSuperview];
     }
+    
+   
+    
+    
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
 //
+    
+    
     [self requestGetTariffsUrl];
    
-    leftMenu=[LeftMenu getLeftMenu:self];
+    
     contentWidth=0;
 // 
     scrollViewArray=[[NSMutableArray alloc]init];
@@ -172,7 +189,7 @@ typedef enum ScrollDirection {
             contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.tariffs_url]
                                                                 encoding:NSUTF8StringEncoding
                                                                    error:&error];
-           self.titleOfPage.text=@"ТАРИФЫ СитиМобил";
+        
         }
 
         else if([leftMenu.tariffName isEqualToString:@"Yandex"])
@@ -180,7 +197,7 @@ typedef enum ScrollDirection {
             contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.yandex_tariffs_url]
                                                                 encoding:NSUTF8StringEncoding
                                                                    error:&error];
-            self.titleOfPage.text= @"ТАРИФЫ Яндекс";
+        
         }
 
         NSLog(@"%@",contentsString);
@@ -422,7 +439,7 @@ typedef enum ScrollDirection {
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

@@ -58,7 +58,8 @@
     [super viewDidAppear:animated];
     
      [GPSConection showGPSConection:self];
-    [self.gpsButton setNeedsDisplay];
+ 
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     //narek change
     isLoad=YES;
     [self initPropertys];
@@ -810,7 +811,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

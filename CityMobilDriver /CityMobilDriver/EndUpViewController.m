@@ -68,7 +68,8 @@
 
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
-    [self.gpsButton setNeedsDisplay];
+    
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     bgViewHeigth = 0.f;
     
     
@@ -322,15 +323,16 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
-            [indicator stopAnimating];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -541,7 +543,7 @@
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Выберите действие"
                                                                        message:
-                                    [NSString stringWithFormat:@"Стоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@",self.bill,billTextField.text,billDifference.text]
+                                    [NSString stringWithFormat:@"Стоимость поездки: %@\nПолучено: %@\nБонус клиенту: %@",self.bill,billTextField.text,billDifference.text]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"Подвердить" style:UIAlertActionStyleDefault
@@ -566,7 +568,7 @@
     else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Операция невозможна"
                                                                        message:
-                                    [NSString stringWithFormat:@"Лимит превышен\nна:%ld\nСтоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@\nКомиссия с заказа:%@\nМин. необходимый остаток:%@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
+                                    [NSString stringWithFormat:@"Лимит превышен\nна: %ld\nСтоимость поездки: %@\nПолучено:%@\nБонус клиенту: %@\nКомиссия с заказа: %@\nМин. необходимый остаток: %@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
                                      self.bill,billTextField.text,billDifference.text,billResponse.commision,billResponse.creditlimit,billResponse.balance]
                                     
                                                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -680,7 +682,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     [self.view bringSubviewToFront:leftMenu];
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
@@ -779,105 +781,6 @@
    
     leftMenu.flag=1;
 }
-
-/////////vvv//////
-//- (IBAction)openAndCloseLeftMenu:(UIButton *)sender
-//{
-//    [UIView animateWithDuration:0.5
-//                          delay:0.0
-//                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-//                     animations:^(void)
-//     {
-//         CGPoint point;
-//         if (leftMenu.flag==0)
-//             point.x=(CGFloat)leftMenu.frame.size.width/2;
-//         else
-//             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
-//         point.y=leftMenu.center.y;
-//         leftMenu.center=point;
-//         
-//     }
-//                     completion:^(BOOL finished)
-//     {
-//         
-//         if (leftMenu.flag==0)
-//         {
-//             leftMenu.flag=1;
-//             self.myOrdersTableView.userInteractionEnabled=NO;
-//             
-//             self.myOrdersTableView.tag=1;
-//             [leftMenu.disabledViewsArray removeAllObjects];
-//             
-//             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.myOrdersTableView.tag]];
-//         }
-//         else
-//         {
-//             self.myOrdersTableView.userInteractionEnabled=YES;
-//             leftMenu.flag=0;
-//         }
-//         
-//     }
-//     ];
-//}
-//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [[event allTouches] anyObject];
-//    CGPoint touchLocation = [touch locationInView:touch.view];
-//    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
-//        return;
-//    [UIView animateWithDuration:0.5
-//                          delay:0.0
-//                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-//                     animations:^(void)
-//     {
-//         CGPoint point;
-//         NSLog(@"\n%f", 2*leftMenu.center.x);
-//         NSLog(@"\n%f",leftMenu.frame.size.width/2);
-//         if (touchLocation.x<=leftMenu.frame.size.width/2)
-//         {
-//             leftMenu.flag=0;
-//             self.myOrdersTableView.userInteractionEnabled=YES;
-//             
-//             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
-//         }
-//         else if (touchLocation.x>leftMenu.frame.size.width/2)
-//         {
-//             point.x=(CGFloat)leftMenu.frame.size.width/2;
-//             leftMenu.flag=1;
-//             self.myOrdersTableView.userInteractionEnabled=NO;
-//             
-//         }
-//         point.y=leftMenu.center.y;
-//         leftMenu.center=point;
-//         NSLog(@"\n%f",leftMenu.frame.size.width);
-//         
-//     }
-//                     completion:nil
-//     ];
-//}
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [[event allTouches] anyObject];
-//    CGPoint touchLocation = [touch locationInView:touch.view];
-//    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
-//    {
-//        return;
-//    }
-//    CGPoint point;
-//    point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
-//    point.y=leftMenu.center.y;
-//    if (point.x>leftMenu.frame.size.width/2)
-//    {
-//        return;
-//    }
-//    leftMenu.center=point;
-//    leftMenu.flag=1;
-//    self.myOrdersTableView.userInteractionEnabled=NO;
-//    
-//}
-//
-//////vvv end////
-
 
 
 - (IBAction)back:(id)sender

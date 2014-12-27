@@ -7,6 +7,8 @@
 //
 
 #import "SingleDataProvider.h"
+#import "AppDelegate.h"
+#import "RootViewController.h"
 
 
 @implementation SingleDataProvider
@@ -22,7 +24,52 @@
     }
     return obj;
 }
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    
+    
+    if (status==kCLAuthorizationStatusAuthorizedAlways)
+   {
+       
+     ///////////////////////////////ROOT////////////////////////////////
+       if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
+       {
+           [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+           
+           [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+           
+           [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
 
+       }
+       else
+       {
+           [[SingleDataProvider sharedKey].gpsButtonHandler setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+       }
+       
+    ///////////////////////////////ROOT////////////////////////////////
+       
+   }
+    else
+    {
+       
+        
+        ///////////////////////////////ROOT////////////////////////////////
+          if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
+          {
+              
+          [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+        
+        [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+        
+        [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+          }
+          else
+          {
+              [[SingleDataProvider sharedKey].gpsButtonHandler  setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+          }
+        ///////////////////////////////ROOT////////////////////////////////
+    }
+}
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations lastObject];

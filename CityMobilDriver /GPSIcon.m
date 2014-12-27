@@ -7,21 +7,7 @@
 //
 
 #import "GPSIcon.h"
-#import <CoreLocation/CoreLocation.h>
+
 @implementation GPSIcon
-
-
-- (void)drawRect:(CGRect)rect {
-    
-    if ([CLLocationManager locationServicesEnabled])
-    {
-        [self setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
-    }
-}
-
 
 @end

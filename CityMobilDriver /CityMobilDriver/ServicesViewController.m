@@ -40,7 +40,7 @@
     leftMenu=[LeftMenu getLeftMenu:self];
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
-
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     
 }
 

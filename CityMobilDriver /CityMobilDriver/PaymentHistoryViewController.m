@@ -45,7 +45,8 @@ GetPaymentsResponse * getPaymentsResponseObject;
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    [self.gpsButton setNeedsDisplay];
+    
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     [GPSConection showGPSConection:self];
     
     //Settings Buttons
@@ -183,7 +184,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
 
 - (IBAction)openAndCloseLeftMenu:(id)sender
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

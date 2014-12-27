@@ -78,7 +78,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.gpsButton setNeedsDisplay];
+  
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     [GPSConection showGPSConection:self];
     
     //Buttons color change for SettingsVC
@@ -130,10 +131,7 @@
     viewMap = [nib objectAtIndex:0];
     viewMap.frame=self.view.frame;
     viewMap.center=self.view.center;
-//    viewMap.smallMapView.layer.cornerRadius = 30;
-//    viewMap.smallMapView.layer.borderWidth = 2;
-//    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
-//    viewMap.smallMapView.layer.masksToBounds = YES;
+
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
     [singleTapYandex setNumberOfTapsRequired:1];
@@ -291,7 +289,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
