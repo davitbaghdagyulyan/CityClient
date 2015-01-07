@@ -7,6 +7,8 @@
 //
 
 #import "SingleDataProvider.h"
+#import "AppDelegate.h"
+#import "RootViewController.h"
 
 
 @implementation SingleDataProvider
@@ -22,7 +24,52 @@
     }
     return obj;
 }
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    
+    
+    if (status==kCLAuthorizationStatusAuthorizedAlways)
+   {
+       
+     ///////////////////////////////ROOT////////////////////////////////
+       if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
+       {
+           [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+           
+           [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+           
+           [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
 
+       }
+       else
+       {
+           [[SingleDataProvider sharedKey].gpsButtonHandler setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+       }
+       
+    ///////////////////////////////ROOT////////////////////////////////
+       
+   }
+    else
+    {
+       
+        
+        ///////////////////////////////ROOT////////////////////////////////
+          if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
+          {
+              
+          [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+        
+        [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+        
+        [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+          }
+          else
+          {
+              [[SingleDataProvider sharedKey].gpsButtonHandler  setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+          }
+        ///////////////////////////////ROOT////////////////////////////////
+    }
+}
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations lastObject];
@@ -36,12 +83,15 @@
 {
    
     addGPSJsonObject=[[AddGPSJson alloc] init];
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = [SingleDataProvider sharedKey];
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = [SingleDataProvider sharedKey];
+    if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [self.locationManager requestAlwaysAuthorization];
+    
+       
     }
-    [locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingLocation];
     self.timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addGPSaction) userInfo:nil repeats:YES];
      myQueue = [[NSOperationQueue alloc] init];
 
@@ -79,7 +129,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:myQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -98,7 +148,7 @@
         
         
         
-        if(addGPSResponseObject.code==nil)
+        if(addGPSResponseObject.code==nil && addGPSResponseObject.gpsError!=1)
         {
             [UserInformationProvider sharedInformation].balance = addGPSResponseObject.balance;
             [IconsColorSingltone sharedColor].yandexColor = [addGPSResponseObject.y_autoget integerValue];

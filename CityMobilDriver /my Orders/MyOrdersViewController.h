@@ -12,6 +12,7 @@
 #import "GetLastKnownLocationJson.h"
 #import "GetLastKnownLocationResponse.h"
 @interface MyOrdersViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UITableView *myOrdersTableView;
 
 - (IBAction)back:(id)sender;

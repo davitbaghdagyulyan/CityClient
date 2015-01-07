@@ -14,6 +14,8 @@
 #import "NSDictionary+BVJSONString.h"
 
 @interface TariffsCityMobilViewController : UIViewController<UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *titleOfPage;
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *tariffsSacrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;

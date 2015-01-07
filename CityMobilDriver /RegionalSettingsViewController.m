@@ -39,8 +39,9 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
+    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [locationManager requestAlwaysAuthorization];
     }
     
     [locationManager startUpdatingLocation];
@@ -89,7 +90,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -184,7 +185,7 @@
     
     UIButton* okButton = [[UIButton alloc]initWithFrame:CGRectMake(buttomView.frame.size.width/2 + 1, buttomView.frame.size.height/2 + 1, buttomView.frame.size.width/2 - 1, buttomView.frame.size.height/2)];
     okButton.backgroundColor = [UIColor whiteColor];
-    [okButton setTitle:@"ok" forState:UIControlStateNormal];
+    [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(okButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [buttomView addSubview:okButton];
@@ -251,7 +252,7 @@
     
     UIButton* okButton = [[UIButton alloc]initWithFrame:CGRectMake(2*buttomView.frame.size.width/3 + 1, 211, buttomView.frame.size.width/3 - 1, 40)];
     okButton.backgroundColor = [UIColor whiteColor];
-    [okButton setTitle:@"ok" forState:UIControlStateNormal];
+    [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(okButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [buttomView addSubview:okButton];
@@ -315,6 +316,42 @@
         }
     }
     
+}
+
+
+#pragma mark - Separators
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == sityTable) {
+        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        }
+        
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, 0)];
+        }
+    }
+    else{
+        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+            [cell setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
+    }
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if ([sityTable respondsToSelector:@selector(setSeparatorInset:)]) {
+        [sityTable setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([sityTable respondsToSelector:@selector(setLayoutMargins:)]) {
+        [sityTable setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 

@@ -11,6 +11,7 @@
 #import "CustomView.h"
 
 @interface ReplenishmentViewController : UIViewController<UIWebViewDelegate,view1Delegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)replenishmentSegmentedControl:(UISegmentedControl *)sender;

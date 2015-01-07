@@ -44,16 +44,31 @@
     self=[super init];
           if(self)
           {
+              CGFloat h;
+              CGFloat w;
               self.disabledViewsArray=[[NSMutableArray alloc] init];
               [self setSeparatorColor:[UIColor whiteColor]];
               self.flag=0;
               k=YES;
               p=YES;
-              self.frame=CGRectMake(-1*self.curentViewController.view.frame.size.width*(CGFloat)5/6, 64, self.curentViewController.view.frame.size.width*(CGFloat)5/6, self.curentViewController.view.frame.size.height-64);
+              if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+                 [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
+              {
+                  w=self.curentViewController.view.frame.size.width*(CGFloat)5/6;
+                  h=self.curentViewController.view.frame.size.height-64;
+                  
+              }
+              else
+              {
+                  w=self.curentViewController.view.frame.size.height*(CGFloat)5/6;
+                  h=self.curentViewController.view.frame.size.height-64;
+              }
+              
+              self.frame=CGRectMake(-1*self.curentViewController.view.frame.size.width*(CGFloat)5/6, 64,w, h);
             
               self.delegate=self;
               self.dataSource=self;
-              self.nameArray=[[NSMutableArray alloc]initWithObjects:@"Свабодные заказы",@"Мои заказы",@"Пополнение баланса",@"Сообщение",@"Настройка робота",@"Архив заказов",@"Архив платежей",@"Тарифы СитиМобил",@"Тарифы Яндекс",@"Обозначение иконок",@"Профиль",@"Статистика",@"Настройки",@"Выход", nil];
+              self.nameArray=[[NSMutableArray alloc]initWithObjects:@"Свободные заказы",@"Мои заказы",@"Пополнение баланса",@"Сообщение",@"Настройка робота",@"Архив заказов",@"Архив платежей",@"Тарифы СитиМобил",@"Тарифы Яндекс",@"Обозначение иконок",@"Профиль",@"Статистика",@"Настройки",@"Выход", nil];
 
           }
           return self;
@@ -172,14 +187,22 @@
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
         case 7:
+            self.tariffName=@"City";
             myClass = NSClassFromString(@"TariffsCityMobilViewController");
             identity =@"TariffsCityMobilViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+         
             break;
         case 8:
-            myClass = NSClassFromString(@"TariffsYandexViewController");
-            identity =@"TariffsYandexViewController";
+            self.tariffName=@"Yandex";
+            myClass = NSClassFromString(@"TariffsCityMobilViewController");
+            identity =@"TariffsCityMobilViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            
+            
+//            myClass = NSClassFromString(@"TariffsYandexViewController");
+//            identity =@"TariffsYandexViewController";
+//            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
         case 9:
             myClass = NSClassFromString(@"DesignationIconsViewController");
@@ -192,7 +215,7 @@
             //exit(0); //not recommended apple
             myClass = NSClassFromString(@"LoginViewController");
             identity =@"LoginViewController";
-            [[SingleDataProvider sharedKey]stopTimer];
+          
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action)

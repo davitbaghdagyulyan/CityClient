@@ -35,20 +35,13 @@
     [self setDriverInfo];
     
     
-    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    gradientLayer = [self greyGradient];
-    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
-    [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
-    
-    
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     [GPSConection showGPSConection:self];
+     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
+    [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
     
     self.segmentedControll.selectedSegmentIndex = 0;
@@ -57,6 +50,12 @@
     
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
+    
+    
+    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    gradientLayer = [self greyGradient];
+    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
+    [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
@@ -92,7 +91,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     
@@ -132,7 +131,11 @@
     [self setAtributedString:self.name :jsonResponseObject.name];
     [self setAtributedString:self.middleName :jsonResponseObject.middle_name];
     
-    [self setAtributedString:self.percentToCharge :jsonResponseObject.percenttocharge];
+    double percent = [jsonResponseObject.percenttocharge doubleValue];
+    NSInteger aaa = round(percent);
+    NSString* str = [NSString stringWithFormat:@"%ld",(long)aaa];
+    
+    [self setAtributedString:self.percentToCharge :[str stringByAppendingString:@"%"]];
     [self setAtributedString:self.passportSer :jsonResponseObject.passport_ser];
     
     [self setAtributedString:self.passportNum :jsonResponseObject.passport_num];
@@ -160,7 +163,7 @@
         label.text = [label.text stringByAppendingString:appendingString];
         NSRange range1 = [label.text rangeOfString:appendingString];
         NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
-        [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:17]} range:range1];
+        [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:13]} range:range1];
         label.attributedText=attributedText;
     }
 }
@@ -192,7 +195,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     
@@ -336,7 +339,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

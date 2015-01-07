@@ -10,6 +10,7 @@
 #import "GetOrderResponse.h"
 
 @interface TachometerViewController : UIViewController
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
@@ -69,6 +70,8 @@
 //// left Menu /////
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
+
+@property(nonatomic,strong)NSString*payment_method;
 @end
 
 

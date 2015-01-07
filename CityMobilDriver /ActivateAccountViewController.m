@@ -13,6 +13,9 @@
 #import "UserRegistrationInformation.h"
 
 @interface ActivateAccountViewController ()
+{
+    UIActivityIndicatorView* indicator;
+}
 
 @end
 
@@ -76,6 +79,12 @@
 
 -(void)getActivationCode
 {
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
     RegisterRequest* requestObject=[[RegisterRequest alloc]init];
     requestObject.phone = self.phone;
     requestObject.code = self.pinCode.text;
@@ -96,20 +105,23 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
@@ -119,7 +131,7 @@
         RegisterResponse* responseObject = [[RegisterResponse alloc]initWithString:jsonString error:&err];
         
         if (responseObject.code != nil) {
-            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:responseObject.text delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:responseObject.text delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
         if (responseObject.result == 1) {
@@ -134,6 +146,7 @@
             
             [self pushOrPopViewController:loginController];
         }
+        [indicator stopAnimating];
     }];
 }
 
@@ -148,6 +161,23 @@
         }
     }
     [self.navigationController pushViewController:controller animated:NO];
+}
+
+
+
+#pragma mark rotation UIContentContainer
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         indicator.center = self.view.center;
+     }
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     
+                                 }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
 }
 
 

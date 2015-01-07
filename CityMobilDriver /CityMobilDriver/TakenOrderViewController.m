@@ -67,7 +67,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
-    
+     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
  
@@ -80,7 +80,9 @@
 {
     getOrderJsonObject=[[GetOrderJson alloc]init];
     getOrderJsonObject.idhash=idhash;
+    getOrderJsonObject.versions=[[Versions alloc]init];
     cellUnderView=underView;
+    
     count=0;
     
     
@@ -92,10 +94,10 @@
     viewMap.frame=self.view.frame;
     viewMap.center=self.view.center;
     
-    viewMap.smallMapView.layer.cornerRadius = 30;
-    viewMap.smallMapView.layer.borderWidth = 2;
-    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
-    viewMap.smallMapView.layer.masksToBounds = YES;
+//    viewMap.smallMapView.layer.cornerRadius = 30;
+//    viewMap.smallMapView.layer.borderWidth = 2;
+//    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+//    viewMap.smallMapView.layer.masksToBounds = YES;
     
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
@@ -151,7 +153,7 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setHTTPBody:jsonData];
-        request.timeoutInterval = 10;
+        request.timeoutInterval = 30;
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (!data)
             {
@@ -664,7 +666,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -722,7 +724,9 @@
             {
                 TachometerViewController* tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TachometerViewController"];
                 [self.navigationController pushViewController:tvc animated:NO];
+                 tvc.payment_method=self.payment_method;
                 ////Karen change////
+                
                 tvc.orderResponse = getOrderResponseObject;
                 //// end Karen change ////
             }
@@ -755,7 +759,7 @@
     [self.navigationController pushViewController:tvc animated:NO];
     ////Karen change////
     tvc.orderResponse = getOrderResponseObject;
-   
+    tvc.payment_method=self.payment_method;
     //// end Karen change ////
 }
 
@@ -810,7 +814,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=0;
-    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
                   [SingleDataProvider sharedKey].lat,
                   [SingleDataProvider sharedKey].lon,
                   [getOrderResponseObject.latitude doubleValue],
@@ -830,7 +834,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=1;
-    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
                   [getOrderResponseObject.latitude doubleValue],
                   [getOrderResponseObject.longitude doubleValue],
                   [getOrderResponseObject.del_latitude doubleValue],
@@ -919,7 +923,7 @@
 
 -(void)animation
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options: 0
                      animations:^(void)

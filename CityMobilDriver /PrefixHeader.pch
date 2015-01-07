@@ -15,5 +15,6 @@
 
 #import "BadRequest.h"
 #import "GPSConection.h"
-
+#import "GPSIcon.h"
+#import "SingleDataProvider.h"
 #endif

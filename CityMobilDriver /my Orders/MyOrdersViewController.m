@@ -50,7 +50,9 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     [GPSConection showGPSConection:self];
+ 
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
+    [GPSConection showGPSConection:self];
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     selectedOrdersTableViewHandlerObject=[[SelectedOrdersTableViewHandler alloc]init];
@@ -67,10 +69,10 @@
     viewMap = [nib objectAtIndex:0];
     viewMap.frame=self.view.frame;
     viewMap.center=self.view.center;
-    viewMap.smallMapView.layer.cornerRadius = 30;
-    viewMap.smallMapView.layer.borderWidth = 2;
-    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
-    viewMap.smallMapView.layer.masksToBounds = YES;
+//    viewMap.smallMapView.layer.cornerRadius = 30;
+//    viewMap.smallMapView.layer.borderWidth = 2;
+//    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+//    viewMap.smallMapView.layer.masksToBounds = YES;
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
     [singleTapYandex setNumberOfTapsRequired:1];
@@ -102,6 +104,7 @@
     [indicator startAnimating];
     [self.view addSubview:indicator];
     GetMyOrdersJson* getMyOrdersJsonObject=[[GetMyOrdersJson alloc]init];
+    getMyOrdersJsonObject.versions=[[Versions alloc] init];
     
     
     NSDictionary*jsonDictionary=[getMyOrdersJsonObject toDictionary];
@@ -118,7 +121,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -208,6 +211,7 @@
     [self.navigationController pushViewController:tovc animated:NO];
     idhash=[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] idhash];
     [tovc setIdHash:idhash andUnderView:underView];
+    tovc.payment_method=[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] getPayment_method];
 }
 
 -(void)collMap
@@ -215,7 +219,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=0;
-    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
                   [SingleDataProvider sharedKey].lat,
                   [SingleDataProvider sharedKey].lon,
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
@@ -233,7 +237,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=1;
-    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",[[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
                   [[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
@@ -321,7 +325,7 @@
 
 -(void)animation
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options: 0
                      animations:^(void)

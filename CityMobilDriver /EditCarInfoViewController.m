@@ -32,14 +32,14 @@
     CAGradientLayer* gradientLayer1;
     CAGradientLayer* gradientLayer2;
     OpenMapButtonHandler*openMapButtonHandlerObject;
+    
+    
+    UIButton* cancelMarkButton;
+    UIButton* cancelModelButton;
+    UIButton* cancelColorButton;
 
 }
 @end
-
-
-
-#define kTabBarHeight 64
-
 
 
 @implementation EditCarInfoViewController
@@ -75,19 +75,17 @@
     self.carImageView.userInteractionEnabled = YES;
     [self.carImageView addGestureRecognizer:singleTap];
     
-    
-    gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
-    [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
-    
-    
     [self registerForKeyboardNotifications];
     
+    
+
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     [self requestGetMarkInfo];
     [self requestGetColorList];
     
@@ -100,10 +98,50 @@
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
+    
+    gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
+    [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
+    
+    
+    [self.model setTitle:self.modelString forState:UIControlStateNormal];
+
+    [self.color setTitle:self.colorString forState:UIControlStateNormal];
+
+    [self.mark setTitle:self.markString forState:UIControlStateNormal];
+    
+    
+    
+    
+    self.year.text = self.yearString;
+    self.gosNumber.text = self.gosNumberString;
+    self.vinCode.text = self.vinCodeString;
+    self.firstLicense.text = self.firstLicenseString;
+    self.lastLicense.text = self.lastLicenseString;
+    
+    
+    [self.model setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self.color setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self.mark setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    
+    
+    
+    self.year.textColor = [UIColor lightGrayColor];
+    self.gosNumber.textColor = [UIColor lightGrayColor];
+    self.vinCode.textColor = [UIColor lightGrayColor];
+    self.firstLicense.textColor = [UIColor lightGrayColor];
+    self.lastLicense.textColor = [UIColor lightGrayColor];
+    
 }
 
 -(void)requestGetColorList
 {
+    
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
     RequestGetColorList* jsonObject=[[RequestGetColorList alloc]init];
     jsonObject.key = [SingleDataProvider sharedKey].key;
     
@@ -126,7 +164,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -142,6 +180,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
@@ -155,8 +194,12 @@
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:getColorListObject.text code:getColorListObject.code];
         
+        if (self.color.titleLabel.text.length == 0) {
+            [self.color setTitle:[getColorListObject.colors[0] getColor] forState:UIControlStateNormal];
+        }
         
-        [self.color setTitle:[getColorListObject.colors[0] getColor] forState:UIControlStateNormal];
+        [indicator stopAnimating];
+
     }];
     
 }
@@ -192,7 +235,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -222,7 +265,11 @@
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:getMarkResponseObject.text code:getMarkResponseObject.code];
         
-        [self.mark setTitle:[getMarkResponseObject.marks[0] mark] forState:UIControlStateNormal];
+        if (self.mark.titleLabel.text.length == 0) {
+            [self.mark setTitle:[getMarkResponseObject.marks[0] mark] forState:UIControlStateNormal];
+        }
+        
+        
         [indicator stopAnimating];
         [self requestGetModelInfo:[getMarkResponseObject.marks[0] getId]];
     }];
@@ -255,7 +302,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -284,11 +331,8 @@
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:modelResponseObject.text code:modelResponseObject.code];
         
-        if ([modelResponseObject.models count]) {
+        if ([modelResponseObject.models count] && self.model.titleLabel.text.length == 0) {
             [self.model setTitle:[modelResponseObject.models[0] model] forState:UIControlStateNormal];
-        }
-        else{
-            [self.model setTitle:@"" forState:UIControlStateNormal];
         }
     }];
     
@@ -332,12 +376,30 @@
     [self.view addSubview:backgroundView1];
 
     
-    markTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+//    markTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+        markTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80)];
+    cancelMarkButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40)];
+    [cancelMarkButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    cancelMarkButton.backgroundColor = [UIColor orangeColor];
+    [cancelMarkButton setTitle:@"Отмена" forState:UIControlStateNormal];
+    [self.view addSubview:cancelMarkButton];
+    
+    
     markTableView.delegate = self;
     markTableView.dataSource = self;
     [self.view addSubview:markTableView];
 }
 
+
+-(void)cancelAction:(UIButton*)sender{
+    [backgroundView1 removeFromSuperview];
+    [cancelMarkButton removeFromSuperview];
+    [cancelModelButton removeFromSuperview];
+    [cancelColorButton removeFromSuperview];
+    [markTableView removeFromSuperview];
+    [modelTableView removeFromSuperview];
+    [colorTableView removeFromSuperview];
+}
 
 - (IBAction)modelAction:(id)sender
 {
@@ -348,17 +410,27 @@
         [self.view addSubview:backgroundView1];
         
         
+        cancelModelButton = [[UIButton alloc]init];
+        [cancelModelButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+        cancelModelButton.backgroundColor = [UIColor orangeColor];
+        [cancelModelButton setTitle:@"Отмена" forState:UIControlStateNormal];
+        
+        
+        
         if ([modelResponseObject.models count] * 40 >= self.view.frame.size.height - 40) {
-            modelTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+            modelTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80)];
         }
         else{
             CGRect tableRect;
             tableRect.origin = self.view.center;
             modelTableView = [[UITableView alloc]init];
             
-            modelTableView.frame = CGRectMake(20, (self.view.frame.size.height - 40 * [modelResponseObject.models count])/2, self.view.frame.size.width - 40, 40 * [modelResponseObject.models count]);
+            modelTableView.frame = CGRectMake(20, (self.view.frame.size.height - 40 * [modelResponseObject.models count])/2 - 20, self.view.frame.size.width - 40, 40 * [modelResponseObject.models count]);
+            
             modelTableView.scrollEnabled = NO;
         }
+        cancelModelButton.frame = CGRectMake(CGRectGetMinX(modelTableView.frame), CGRectGetMaxY(modelTableView.frame), CGRectGetWidth(modelTableView.frame), 40);
+        [self.view addSubview:cancelModelButton];
         
         
         modelTableView.delegate = self;
@@ -373,7 +445,14 @@
     backgroundView1.backgroundColor = [UIColor grayColor];
     [self.view addSubview:backgroundView1];
     
-    colorTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 40)];
+    colorTableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80)];
+    
+    cancelColorButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMinX(colorTableView.frame), CGRectGetMaxY(colorTableView.frame), CGRectGetWidth(colorTableView.frame), 40)];
+    [cancelColorButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    cancelColorButton.backgroundColor = [UIColor orangeColor];
+    [cancelColorButton setTitle:@"Отмена" forState:UIControlStateNormal];
+    [self.view addSubview:cancelColorButton];
+
     
     colorTableView.delegate = self;
     colorTableView.dataSource = self;
@@ -434,6 +513,7 @@
         [backgroundView1 removeFromSuperview];
         [self.mark setTitle:[getMarkResponseObject.marks[indexPath.row] mark] forState:UIControlStateNormal];
         [self requestGetModelInfo:[getMarkResponseObject.marks[indexPath.row] getId]];
+        [cancelMarkButton removeFromSuperview];
         //[modelTableView reloadData];
     }
     
@@ -441,15 +521,16 @@
         [modelTableView removeFromSuperview];
         [backgroundView1 removeFromSuperview];
         [self.model setTitle:[modelResponseObject.models[indexPath.row] model] forState:UIControlStateNormal];
+        [cancelModelButton removeFromSuperview];
     }
     
     if (tableView == colorTableView) {
         [colorTableView removeFromSuperview];
         [backgroundView1 removeFromSuperview];
         [self.color setTitle:[getColorListObject.colors[indexPath.row] getColor] forState:UIControlStateNormal];
+        [cancelColorButton removeFromSuperview];
     }
 }
-
 
 
 -(void)touchRecognizer{
@@ -561,6 +642,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     [self.carImageView setImage:[self imageWithImage:info[UIImagePickerControllerOriginalImage] scaledToSize:CGRectMake(0, y, min, min)]];
+    NSString *model = [[UIDevice currentDevice] model];
+    if (![model isEqualToString:@"iPhone Simulator"]) {
+        self.carImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
     self.carImageView.layer.cornerRadius = self.carImageView.frame.size.height /2;
     self.carImageView.layer.masksToBounds = YES;
     self.carImageView.layer.borderWidth = 0;
@@ -640,7 +725,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -730,7 +815,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -784,6 +869,32 @@
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
              gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310);
+         
+                 markTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
+             cancelMarkButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40);
+         backgroundView1.frame = self.view.frame;
+         
+         
+         
+         
+         colorTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
+         
+         cancelColorButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40);
+         
+         
+         
+         if ([modelResponseObject.models count] * 40 >= self.view.frame.size.height - 40) {
+             modelTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
+         }
+         else{
+             CGRect tableRect;
+             tableRect.origin = self.view.center;
+             modelTableView.frame = CGRectMake(20, (self.view.frame.size.height - 40 * [modelResponseObject.models count])/2 - 20, self.view.frame.size.width - 40, 40 * [modelResponseObject.models count]);
+             
+             modelTableView.scrollEnabled = NO;
+         }
+         cancelModelButton.frame = CGRectMake(CGRectGetMinX(modelTableView.frame), CGRectGetMaxY(modelTableView.frame), CGRectGetWidth(modelTableView.frame), 40);
+         
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
@@ -817,12 +928,27 @@
 }
 
 
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.firstLicense) {
+        if (textField.text.length >= 3 && range.length == 0)
+        {
+            return NO;
+        }
+        else{
+            return YES;
+        }
+    }
+    return YES;
+}
+
 #pragma mark - left Menu
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

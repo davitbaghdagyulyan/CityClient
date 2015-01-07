@@ -31,18 +31,13 @@
     [super viewDidLoad];
     [self getCarInfo];
     getCarInfoResponse = [[ResponseGetCarInfo alloc]init];
-    self.carInfoTable.delegate = self;
-    self.carInfoTable.dataSource = self;
-    
-    
-    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     self.segmentControll.selectedSegmentIndex = 1;
      [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
@@ -58,6 +53,12 @@
     
     gradientLayer3 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(CGRectGetMaxX(self.carInfoTable.frame), 0, CGRectGetWidth(self.backgroundView.frame) - CGRectGetWidth(self.carInfoTable.frame), 44)];
     [self.backgroundView.layer insertSublayer:gradientLayer3 atIndex:0];
+    
+    
+    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    //self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    self.carInfoTable.delegate = self;
+    self.carInfoTable.dataSource = self;
 }
 
 
@@ -92,7 +93,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
@@ -106,6 +107,7 @@
             
             [alert show];
             [indicator stopAnimating];
+            [self.carInfoTable reloadData];
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -137,39 +139,39 @@
 {
     UITableViewCell* cell = [[UITableViewCell alloc]init];
     cell.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    [cell.textLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:14]];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:13]];
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"марка ";
+            cell.textLabel.text = @"Марка ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.mark];
             cell.textLabel.backgroundColor = [UIColor clearColor];
             cell.tag = 100;
-            gradientLayer2 = [self greyGradient:cell widthFrame:CGRectMake(0, 0, CGRectGetWidth(cell.frame), CGRectGetHeight(cell.frame))];
+            gradientLayer2 = [self greyGradient:cell widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.carInfoTable.frame), CGRectGetHeight(cell.frame))];
             [cell.layer insertSublayer:gradientLayer2 atIndex:0];
             
             break;
         case 1:
-            cell.textLabel.text = @"модель ";
+            cell.textLabel.text = @"Модель ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.model];
             break;
         case 2:
-            cell.textLabel.text = @"год производства ";
+            cell.textLabel.text = @"Год производства ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.year];
             break;
         case 3:
-            cell.textLabel.text = @"цвет ";
+            cell.textLabel.text = @"Цвет ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.color];
             break;
         case 4:
-            cell.textLabel.text = @"гос.номер ";
+            cell.textLabel.text = @"Гос.номер ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.reg_num];
             break;
         case 5:
-            cell.textLabel.text = @"vin-код ";
+            cell.textLabel.text = @"Vin-код ";
             [self setAtributedString:cell.textLabel :getCarInfoResponse.VIN];
             break;
         case 6:
-            cell.textLabel.text = @"лицензия ";
+            cell.textLabel.text = @"Лицензия ";
             [self setAtributedString:cell.textLabel :[NSString stringWithFormat:@"%@ - %@",getCarInfoResponse.car_license_pref,getCarInfoResponse.car_license_number]];
             break;
             
@@ -191,7 +193,7 @@
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:label.text];
     float spacing = 0.1f;
     [attributedText addAttribute:NSKernAttributeName value:@(spacing) range:NSMakeRange(0, [labelText length])];
-    [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:14]} range:range1];
+    [attributedText setAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Roboto-Bold" size:13]} range:range1];
     label.attributedText=attributedText;
 }
 
@@ -221,14 +223,26 @@
     {
     }
     if (sender.selectedSegmentIndex == 2) {
-        CardsViewController* carInfoController=[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
-        [self pushOrPopViewController:carInfoController];
+        CardsViewController* cvc =[self.storyboard instantiateViewControllerWithIdentifier:@"CardsViewController"];
+        [self pushOrPopViewController:cvc];
     }
 }
 
 - (IBAction)edit:(UIButton *)sender {
     EditCarInfoViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCarInfoViewController"];
     controller.carImage = self.carImage.image;
+    
+    
+    controller.markString = getCarInfoResponse.mark;
+    controller.modelString = getCarInfoResponse.model;
+    controller.colorString = getCarInfoResponse.color;
+    controller.yearString = getCarInfoResponse.year;
+    controller.gosNumberString = getCarInfoResponse.reg_num;
+    controller.vinCodeString = getCarInfoResponse.VIN;
+    controller.firstLicenseString = getCarInfoResponse.car_license_pref;
+    controller.lastLicenseString = getCarInfoResponse.car_license_number;
+    
+    
     [self pushOrPopViewController:controller];
 }
 
@@ -280,7 +294,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

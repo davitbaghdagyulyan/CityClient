@@ -50,7 +50,18 @@ typedef enum ScrollDirection {
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
+        leftMenu=[LeftMenu getLeftMenu:self];
+    if ([leftMenu.tariffName isEqualToString:@"City"])
+    {
+        self.titleOfPage.text=@"ТАРИФЫ СитиМобил";
+    }
+    
+    else if([leftMenu.tariffName isEqualToString:@"Yandex"])
+    {
+        self.titleOfPage.text= @"ТАРИФЫ Яндекс";
+    }
+    
+     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
      [GPSConection showGPSConection:self];
     position=0;
     self.tariffsSacrollView.delegate=self;
@@ -58,12 +69,19 @@ typedef enum ScrollDirection {
     {
         [scroll removeFromSuperview];
     }
+    [self.tariffsSacrollView setContentOffset:CGPointMake(0, 0)];
+
+   
+    
+    
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
 //
+    
+    
     [self requestGetTariffsUrl];
    
-    leftMenu=[LeftMenu getLeftMenu:self];
+    
     contentWidth=0;
 // 
     scrollViewArray=[[NSMutableArray alloc]init];
@@ -112,7 +130,7 @@ typedef enum ScrollDirection {
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -140,6 +158,7 @@ typedef enum ScrollDirection {
         [badRequest showErrorAlertMessage:getTariffsUrlResponseObject.text code:getTariffsUrlResponseObject.code];
         
         
+        
 //        if(getTariffsUrlResponseObject.code!=nil)
 //        {
 //           
@@ -163,11 +182,25 @@ typedef enum ScrollDirection {
         [indicator stopAnimating];
         
         NSError *error;
-
+        NSString* contentsString;
         NSLog(@"%@",getTariffsUrlResponseObject.yandex_tariffs_url);
-        NSString* contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.tariffs_url]
-                                                      encoding:NSUTF8StringEncoding
-                                                         error:&error];
+
+        if ([leftMenu.tariffName isEqualToString:@"City"])
+        {
+            contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.tariffs_url]
+                                                                encoding:NSUTF8StringEncoding
+                                                                   error:&error];
+        
+        }
+
+        else if([leftMenu.tariffName isEqualToString:@"Yandex"])
+        {
+            contentsString = [NSString stringWithContentsOfURL:[NSURL URLWithString:getTariffsUrlResponseObject.yandex_tariffs_url]
+                                                                encoding:NSUTF8StringEncoding
+                                                                   error:&error];
+        
+        }
+
         NSLog(@"%@",contentsString);
         NSError*parseError=nil;
        // NSData* xmlData = [contentsString dataUsingEncoding:NSUTF8StringEncoding];
@@ -324,6 +357,9 @@ typedef enum ScrollDirection {
          for (int i=0;i<scrollViewArray.count;i++)
          {
              [[scrollViewArray objectAtIndex:i]setFrame:CGRectMake(5+i*self.tariffsSacrollView.frame.size.width, 60, self.tariffsSacrollView.frame.size.width-10, self.tariffsSacrollView.frame.size.height-60)];
+             UIScrollView *scrollV = (UIScrollView*)[scrollViewArray objectAtIndex:i];
+             CGFloat y = scrollV.contentSize.height;
+             [(UIScrollView*)[scrollViewArray objectAtIndex:i]setContentSize:CGSizeMake(self.tariffsSacrollView.frame.size.width-10, y)];
          }
          
          for (int i=0;i<daytimeLabelArray.count;i++)
@@ -364,7 +400,13 @@ typedef enum ScrollDirection {
              shortLabel.center=point;
             
          }
-             self.tariffsSacrollView.contentSize=CGSizeMake(self.tariffsSacrollView.frame.size.width*getTariffsUrlResponseXMLObject.Tariffs.Tariff.count, self.tariffsSacrollView.frame.size.height);
+       
+         
+
+         self.tariffsSacrollView.contentSize=CGSizeMake(self.tariffsSacrollView.frame.size.width*(getTariffsUrlResponseXMLObject.Tariffs.Tariff.count), self.tariffsSacrollView.frame.size.height);
+         
+         NSLog(@"widh==%f",self.tariffsSacrollView.frame.size.width);
+        
                   CGFloat xx;
          
          if(leftMenu.flag==0)
@@ -398,7 +440,7 @@ typedef enum ScrollDirection {
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)

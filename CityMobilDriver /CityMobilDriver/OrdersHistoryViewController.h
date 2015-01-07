@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OrdersHistoryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 
 

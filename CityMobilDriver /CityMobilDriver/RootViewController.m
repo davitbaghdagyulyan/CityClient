@@ -43,7 +43,11 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
+   
     
+    [[SingleDataProvider sharedKey] setGpsButtonHandlerPort:self.gpsButtonPort];
+    [[SingleDataProvider sharedKey] setGpsButtonHandlerLand:self.gpsButtonLand];
+    [[SingleDataProvider sharedKey] setGpsButtonHandlerIpad:self.gpsButtonIpad];
     [self.cityButtonIpad setNeedsDisplay];
     [self.cityButtonLand setNeedsDisplay];
     [self.cityButtonPort setNeedsDisplay];
@@ -56,7 +60,9 @@
     self.tableViewOrdersPort.userInteractionEnabled=YES;
     self.tableViewOrdersLand.userInteractionEnabled=YES;
     self.tableViewIpad.userInteractionEnabled=YES;
+    
     leftMenu=[LeftMenu getLeftMenu:self];
+    
     if (cancelOfAlertNoConIsClicked ==YES)
     {
         alertNoConIsCreated=NO;
@@ -318,7 +324,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
 
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
@@ -564,7 +570,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -652,7 +658,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data && alertNoConIsCreated ==NO)
         {

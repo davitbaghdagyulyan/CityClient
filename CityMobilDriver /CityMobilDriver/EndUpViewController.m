@@ -16,6 +16,7 @@
 #import "LeftMenu.h"
 #import "SingleDataProvider.h"
 #import "OpenMapButtonHandler.h"
+
 @interface EndUpViewController ()
 {
     ResponseSetBill* billResponse;
@@ -64,11 +65,14 @@
     [super viewDidAppear:animated];
     
      [GPSConection showGPSConection:self];
-    
+
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     bgViewHeigth = 0.f;
+    
+    
     [bgView removeFromSuperview];
      bgView = [[UIView alloc]init];
     leftMenu=[LeftMenu getLeftMenu:self];
@@ -114,10 +118,12 @@
     
     
     
-    if ([self.orderResponse.payment_method isEqualToString:@"cash"]) {
+    if ([self.payment_method isEqualToString:@"cash"])
+    {
         [self drowCashButton];
     }
-    else if ([self.orderResponse.payment_method isEqualToString:@"card"]) {
+    else if ([self.payment_method isEqualToString:@"card"])
+    {
         myTimer = [NSTimer scheduledTimerWithTimeInterval:1.f
                                                    target:self
                                                  selector:@selector(requestGetOrder)
@@ -127,7 +133,8 @@
         [self addAlertView:@"Выполняется оплата по карте"];
     }
     
-    else if ([self.orderResponse.payment_method isEqualToString:@"corporate"]) {
+    else if ([self.payment_method isEqualToString:@"corporate"])
+    {
         myTimer = [NSTimer scheduledTimerWithTimeInterval:1.f
                                                    target:self
                                                  selector:@selector(requestGetOrder)
@@ -182,7 +189,7 @@
     
     [self.endUpScrollView addSubview:bgView];
     
-    [self.view addGestureRecognizer:tapGasture];
+    [self.endUpScrollView addGestureRecognizer:tapGasture];
 }
 
 -(void)addAlertView:(NSString*)titleString{
@@ -310,21 +317,22 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ERROR"
-                                                            message:@"NO INTERNET CONECTION"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
-            
-            [alert show];
-            [indicator stopAnimating];
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
         
@@ -377,7 +385,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -535,7 +543,7 @@
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Выберите действие"
                                                                        message:
-                                    [NSString stringWithFormat:@"Стоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@",self.bill,billTextField.text,billDifference.text]
+                                    [NSString stringWithFormat:@"Стоимость поездки: %@\nПолучено: %@\nБонус клиенту: %@",self.bill,billTextField.text,billDifference.text]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"Подвердить" style:UIAlertActionStyleDefault
@@ -560,7 +568,7 @@
     else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Операция невозможна"
                                                                        message:
-                                    [NSString stringWithFormat:@"Лимит превышен\nна:%ld\nСтоимость поездки:%@\nПолучено:%@\nБонус клиенту:%@\nКомиссия с заказа:%@\nМин. необходимый остаток:%@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
+                                    [NSString stringWithFormat:@"Лимит превышен\nна: %ld\nСтоимость поездки: %@\nПолучено:%@\nБонус клиенту: %@\nКомиссия с заказа: %@\nМин. необходимый остаток: %@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
                                      self.bill,billTextField.text,billDifference.text,billResponse.commision,billResponse.creditlimit,billResponse.balance]
                                     
                                                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -608,7 +616,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -674,7 +682,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     [self.view bringSubviewToFront:leftMenu];
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
@@ -773,6 +781,8 @@
    
     leftMenu.flag=1;
 }
+
+
 - (IBAction)back:(id)sender
 {
     if (leftMenu.flag)

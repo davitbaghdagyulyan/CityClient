@@ -17,9 +17,10 @@
         self.ipass=@"o3XOFR7xpv";
         self.ilog=@"cm-api";
         self.locale=@"ru";
-        self.method=@"getOrder";
+        self.method=@"GetOrder";
         self.version=@"1.0.2";
         self.key=[[SingleDataProvider sharedKey]key];
+        
     }
     return self;
 }

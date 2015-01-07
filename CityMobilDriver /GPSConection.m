@@ -35,6 +35,9 @@
     
     [viewController presentViewController:gpsNotEnabled animated:NO completion:nil];
     }
+    else{
+        
+    }
 }
 
 

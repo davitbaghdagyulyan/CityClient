@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LeftMenu.h"
 @interface SendingMessageViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic)  UIScrollView *scrollView;
 
 @property (nonatomic, assign) BOOL isPushWidthInfoController;

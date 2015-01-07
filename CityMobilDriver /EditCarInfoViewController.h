@@ -22,6 +22,7 @@
 #import "RequestSetCarInfoWidthPhoto.h"
 
 @interface EditCarInfoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
@@ -69,6 +70,19 @@
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *carImageView;
+
+
+
+@property (weak, nonatomic)  NSString* markString;
+@property (weak, nonatomic)  NSString* modelString;
+@property (weak, nonatomic)  NSString* colorString;
+
+@property (weak, nonatomic)  NSString* yearString;
+@property (weak, nonatomic)  NSString* gosNumberString;
+@property (weak, nonatomic)  NSString* vinCodeString;
+@property (weak, nonatomic)  NSString* firstLicenseString;
+@property (weak, nonatomic)  NSString* lastLicenseString;
+
 
 
 

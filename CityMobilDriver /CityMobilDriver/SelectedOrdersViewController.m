@@ -78,7 +78,10 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+  
+  [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     [GPSConection showGPSConection:self];
+    
     //Buttons color change for SettingsVC
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
@@ -128,10 +131,7 @@
     viewMap = [nib objectAtIndex:0];
     viewMap.frame=self.view.frame;
     viewMap.center=self.view.center;
-    viewMap.smallMapView.layer.cornerRadius = 30;
-    viewMap.smallMapView.layer.borderWidth = 2;
-    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
-    viewMap.smallMapView.layer.masksToBounds = YES;
+
     [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
     [singleTapYandex setNumberOfTapsRequired:1];
@@ -189,7 +189,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data && alertNoConIsCreated ==NO)
         {
@@ -289,7 +289,7 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
@@ -469,7 +469,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
@@ -563,7 +563,10 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=0;
-    googleMapUrl= [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
+    
+    
+    googleMapUrl= [NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
+                  // http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",
                    [SingleDataProvider sharedKey].lat,
                     [SingleDataProvider sharedKey].lon,
                    [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude] doubleValue],
@@ -582,7 +585,7 @@
     [self.view addSubview:viewMap];
     viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
     number=1;
-    googleMapUrl=[NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",[[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] latitude]doubleValue],
                   [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] longitude] doubleValue],
                   [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_latitude] doubleValue],
                   [[[selectedOrdersDetailsResponseObject.orders objectAtIndex:indexOfCell] del_longitude] doubleValue]];
@@ -745,7 +748,7 @@ NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
 [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 [request setHTTPBody:jsonData];
-request.timeoutInterval = 10;
+request.timeoutInterval = 30;
 [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
     if (!data)
     {
@@ -792,7 +795,6 @@ preferredStyle:UIAlertControllerStyleAlert];
       
         [cell.updateLabelTimer invalidate];
         TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
-        
         
         [self.navigationController pushViewController:tovc animated:NO];
         [tovc setIdHash:assignOrderJsonObject.idhash andUnderView:underView];

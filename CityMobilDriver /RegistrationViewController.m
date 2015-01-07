@@ -13,10 +13,10 @@
 #import "ActivateAccountViewController.h"
 @interface RegistrationViewController ()
 {
-    //CGSize keyBoardSize;
     UIView* regionBackgroundView;
     UITableView* regionTable;
     NSInteger idLocalityNumber;
+    UIActivityIndicatorView* indicator;
 }
 @end
 
@@ -26,7 +26,6 @@
     [super viewDidLoad];
     [self registerForKeyboardNotifications];
     self.phoneNumber.keyboardType = UIKeyboardTypePhonePad;
-//    self.phoneNumber.textAlignment
 }
 
 - (IBAction)region:(id)sender {
@@ -39,10 +38,10 @@
     NSLog(@"%@",aa);
     
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad Simulator"] || [[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
-        regionTable = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 400)/2, (self.view.frame.size.height - 80)/2, 400, 80)];
+        regionTable = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 400)/2, (self.view.frame.size.height - 120)/2, 400, 120)];
     }
     else{
-        regionTable = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 80)/2, 300, 80)];
+        regionTable = [[UITableView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 120)/2, 300, 120)];
     }
     
     regionTable.delegate = self;
@@ -101,11 +100,13 @@
          //UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
          regionBackgroundView.frame = self.view.frame;
          if ([[UIDevice currentDevice].model isEqualToString:@"iPad Simulator"] || [[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
-             regionTable.frame = CGRectMake((self.view.frame.size.width - 400)/2, (self.view.frame.size.height - 80)/2, 400, 80);
+             regionTable.frame = CGRectMake((self.view.frame.size.width - 400)/2, (self.view.frame.size.height - 120)/2, 400, 120);
          }
          else{
-             regionTable.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 80)/2, 300, 80);
+             regionTable.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 120)/2, 300, 120);
          }
+         indicator.center = self.view.center;
+         
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
@@ -119,7 +120,7 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -131,6 +132,12 @@
     if (indexPath.row == 1) {
         cell.textLabel.text = @"Краснодар";
     }
+    if (indexPath.row == 2) {
+        cell.backgroundColor = [UIColor orangeColor];
+        cell.textLabel.text = @"Отмена";
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.textColor = [UIColor whiteColor];
+    }
     return cell;
 }
 
@@ -141,13 +148,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row != 2) {
+        idLocalityNumber = indexPath.row;
+        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+        [self.region setTitle:cell.textLabel.text forState:UIControlStateNormal];
+    }
+    
     [regionTable removeFromSuperview];
     [regionBackgroundView removeFromSuperview];
-    idLocalityNumber = indexPath.row;
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    [self.region setTitle:cell.textLabel.text forState:UIControlStateNormal];
-    
-//    [cell.selectedCell setImage:[UIImage imageNamed:@"rb_2.png"]];
 }
 
 #pragma mark - separators
@@ -180,6 +188,13 @@
 
 -(void)getActivationCode
 {
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    
     GetActivationCodeRequest* RequestObject=[[GetActivationCodeRequest alloc]init];
     RequestObject.phone = self.phoneNumber.text;
     if (idLocalityNumber == 0) {
@@ -205,7 +220,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -221,6 +236,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         
@@ -239,6 +255,7 @@
                                      }];
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
+            [indicator stopAnimating];
             return ;
         }
         if (responseObject.result == 1) {
@@ -246,6 +263,8 @@
             activationController.phone = self.phoneNumber.text;
             [self.navigationController pushViewController:activationController animated:NO];
         }
+        
+        [indicator stopAnimating];
         
     }];
 }

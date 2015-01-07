@@ -16,6 +16,7 @@
 #import "CreateProfilViewController.h"
 
 @interface ProfilViewController : UIViewController <UIScrollViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 
 @property (nonatomic,weak) IBOutlet UIView* bgView;

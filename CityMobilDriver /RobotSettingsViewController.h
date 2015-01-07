@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RobotSettingsViewController : UIViewController<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;

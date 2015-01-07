@@ -16,11 +16,13 @@
 @interface SingleDataProvider : NSObject<CLLocationManagerDelegate>
 {
     CLLocation* currentLocation;
-    CLLocationManager *locationManager;
+   
     AddGPSJson*addGPSJsonObject;
     AddGPSResponse*addGPSResponseObject;
     NSOperationQueue *myQueue ;
 }
+
+
 @property(nonatomic,strong)NSMutableArray * arrayOfIndexes1;
 @property(nonatomic,strong)NSMutableArray * arrayOfIndexes2;
 @property(nonatomic,strong) NSString* key;
@@ -30,6 +32,11 @@
 @property(nonatomic,assign)CGFloat time;
 @property(nonatomic,assign)CGFloat direction;
 @property(nonatomic,assign)CGFloat speed;
+@property(nonatomic,strong)CLLocationManager *locationManager;
+@property(nonatomic,strong)UIButton*gpsButtonHandler;
+@property(nonatomic,strong)UIButton*gpsButtonHandlerPort;
+@property(nonatomic,strong)UIButton*gpsButtonHandlerLand;
+@property(nonatomic,strong)UIButton*gpsButtonHandlerIpad;
 +(SingleDataProvider*)sharedKey;
 -(void)startTimer;
 -(void)stopTimer;

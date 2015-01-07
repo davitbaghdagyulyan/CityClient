@@ -11,6 +11,7 @@
 #import "Elements.h"
 
 @interface EndUpViewController : UIViewController <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *endUpScrollView;
 
 
@@ -24,5 +25,6 @@
 - (IBAction)openMap:(UIButton*)sender;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
+@property(nonatomic,strong)NSString*payment_method;
 
 @end

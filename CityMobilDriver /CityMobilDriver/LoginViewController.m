@@ -18,18 +18,15 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
 
 
 @interface LoginViewController ()
+{
+    UIActivityIndicatorView* indicator;
+}
 
 @end
 
 @implementation LoginViewController
 
-//@synthesize loginSpace;
-//@synthesize keyboardHeightInPortrait;
-//@synthesize keyboardHeightInLandscape;
-//@synthesize curentTextField;
-//@synthesize login;
-//@synthesize password;
-//@synthesize button;
+
 
 - (void)viewDidLoad
 {
@@ -55,23 +52,21 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         [self.navigationController pushViewController:rsvc animated:NO];
     }
     [defaults setObject:@"firstLogin" forKey:@"login"];
-    
+        
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [[SingleDataProvider sharedKey]stopTimer];
+    [[[SingleDataProvider sharedKey]locationManager]stopUpdatingLocation];
     [self.login setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.login.delegate = self;
     
     if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationLandscapeLeft ||
        [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationLandscapeRight)
     {
-    
-//    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-//    {
         int screenHeight = self.view.frame.size.height;
         if (screenHeight == 768)
         {
@@ -91,11 +86,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
             self.keyboardHeightInLandscape = 193;
         }
         self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height - 25;
-//    }
     }
     else{
-//        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
-//        {
             int screenHeight = self.view.frame.size.height;
             if (screenHeight == 1024)
             {
@@ -114,7 +106,6 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
                 self.keyboardHeightInPortrait = 253;
             }
             self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - self.login.frame.size.height - 25;//g
-//        }
     }
     
 
@@ -125,20 +116,14 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     
     
     if ([defaults boolForKey:UserDefaultsIsRemember]) {
-        //[self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
-        
         [self.rememberButton setSelected:YES];
         self.login.text = [defaults stringForKey:UserDefaultsBankId];
         self.password.text = [defaults stringForKey:UserDefaultsPassword];
     }
     else{
-//        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
         [self.rememberButton setSelected:NO];
         self.login.placeholder = @"логин";
         self.password.placeholder = @"Пароль";
-        
-//        login.text=@"110314";
-//        password.text=@"52750";
     }
     
     
@@ -147,8 +132,6 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         self.password.text = [UserRegistrationInformation sharedInformation].password;
     }
     
-    
-    //NSInteger count = self.navigationController.viewControllers.count;
 }
 
 
@@ -166,19 +149,10 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
            [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
         {
-        
-//        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
-//        {
-            
             [self.login resignFirstResponder];
             self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - 2*self.login.frame.size.height - 35;//g
-            //            [self.password becomeFirstResponder];
-//        }
         }
         else{
-//        
-//        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-//        {
             [self.login resignFirstResponder];
             if (self.view.frame.size.height == 768)
             {
@@ -188,8 +162,6 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
             {
                 self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - 2*self.login.frame.size.height - 15;//g
             }
-            
-//        }
         }
         [self.login resignFirstResponder];
         [self.password becomeFirstResponder];
@@ -205,21 +177,12 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
            [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
         {
-        
-//        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
-//        {
             [self.login resignFirstResponder];
             self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - 2*self.view.frame.size.height;//g
-            //            [self.password becomeFirstResponder];
-//        }
         }
         else{
-//        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-//        {
             [self.login resignFirstResponder];
             self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - 2*self.view.frame.size.height;//g
-            //            [self.password becomeFirstResponder];
-//        }
         }
         [self.login resignFirstResponder];
         [self.password becomeFirstResponder];
@@ -231,18 +194,11 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
            [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
         {
-//        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
-//        {
-            //            [self.password resignFirstResponder];
             self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - self.login.frame.size.height - 25;//g
             self.curentTextField = -1;
-//        }
     }
         else{
-//        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-//        {
             int screenHeight = self.view.frame.size.height;
-//            [self.password resignFirstResponder];
             if (screenHeight == 768)
             {
                 self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height  - 25;//g
@@ -260,124 +216,20 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     return YES;
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    
-    if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-        int screenHeight = self.view.frame.size.height;
-        if (screenHeight == 1024)
-        {
-            self.keyboardHeightInPortrait = 303;
-        }
-        
-        else if (screenHeight == 667)
-        {
-            self.keyboardHeightInPortrait = 258;
-        }
-        else if (screenHeight == 736)
-        {
-            self.keyboardHeightInPortrait = 271;
-        }
-        else
-        {
-            self.keyboardHeightInPortrait = 253;
-        }
-        
-        if (self.curentTextField == 1)
-        {
-            self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - self.login.frame.size.height - 25;//g
-        }
-        else if (self.curentTextField == 2)
-        {
-            self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - 2*self.login.frame.size.height - 35;//g
-        }
-        else
-        {
-            NSLog(@"---------->>>>>>>>>> %i",self.curentTextField);
-            self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - self.login.frame.size.height - 25;//g
-        }
-    }
-    
-    if (fromInterfaceOrientation == UIInterfaceOrientationPortrait || fromInterfaceOrientation == UIDeviceOrientationPortraitUpsideDown)
-    {
-        int screenHeight = self.view.frame.size.height;
-        
-        if (screenHeight == 768)
-        {
-            self.keyboardHeightInLandscape = 391;
-        }
-        else if (screenHeight == 375 || screenHeight == 414)
-        {
-            self.keyboardHeightInLandscape = 194;
-        }
-        else
-        {
-            self.keyboardHeightInLandscape = 193;
-        }
-        
-        if (self.curentTextField == 1)
-        {
-            if (screenHeight == 768)
-            {
-                self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height  - 25;//g
-            }
-            else
-            {
-                self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height - 8;//g
-            }
-        }
-        else if (self.curentTextField == 2)
-        {
-            if (self.view.frame.size.height == 768)
-            {
-                self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - 2*self.login.frame.size.height - 30;//g
-            }
-            else
-            {
-                self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - 2*self.login.frame.size.height - 15;//g
-            }
-        }
-        else
-        {
-            if (screenHeight == 768)
-            {
-                self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height  - 25;//g
-            }
-            else
-            {
-                self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height - 8;//g
-            }
-        }
-    }
-}
-
-
-
-
 - (IBAction)actionLogin:(UIButton *)sender
 {
-    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
     [self.view addSubview:indicator];
     
     LoginJson* loginJsonObject=[[LoginJson alloc]init];
-
-    //loginJsonObject.bankid=@"6666";//login.text;
-    //loginJsonObject.pass=@"6666";//password.text;
     
     if (self.login.text.length > 0) {
         loginJsonObject.bankid = self.login.text;
         loginJsonObject.pass = self.password.text;
     }
-//    else{
-//        loginJsonObject.bankid=@"110314";
-//        loginJsonObject.pass=@"52750";
-//    }
-//    
-
     
     NSDictionary*jsonDictionary=[loginJsonObject toDictionary];
     NSString*jsons=[loginJsonObject toJSONString];
@@ -398,12 +250,14 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
+           
+            
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -475,22 +329,12 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
 }
 
 - (IBAction)remember:(UIButton*)sender {
-    
-    
-//    if ([self image:sender.imageView.image isEqualTo:[UIImage imageNamed:@"box.png"]]) {
-//        [self.rememberButton setImage:[UIImage imageNamed:@"box2.png"] forState:UIControlStateNormal];
-//    }
-//    else{
-//        [self.rememberButton setImage:[UIImage imageNamed:@"box.png"] forState:UIControlStateNormal];
-//    }
-    
     if ([self.rememberButton isSelected]) {
         [self.rememberButton setSelected:NO];
     }
     else{
         [self.rememberButton setSelected:YES];
     }
-    
 }
 
 - (IBAction)rememberButton:(UIButton*)sender{
@@ -509,4 +353,120 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     NSData *data2 = UIImagePNGRepresentation(image2);
     return [data1 isEqual:data2];
 }
+
+
+#pragma mark - rotation
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
+            [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
+         {
+             int screenHeight = self.view.frame.size.height;
+             if (screenHeight == 1024)
+             {
+                 self.keyboardHeightInPortrait = 303;
+             }
+             
+             else if (screenHeight == 667)
+             {
+                 self.keyboardHeightInPortrait = 258;
+             }
+             else if (screenHeight == 736)
+             {
+                 self.keyboardHeightInPortrait = 271;
+             }
+             else
+             {
+                 self.keyboardHeightInPortrait = 253;
+             }
+             
+             if (self.curentTextField == 1)
+             {
+                 self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - self.login.frame.size.height - 25;//g
+             }
+             else if (self.curentTextField == 2)
+             {
+                 self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - 2*self.login.frame.size.height - 35;//g
+             }
+             else
+             {
+                 NSLog(@"---------->>>>>>>>>> %i",self.curentTextField);
+                 self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInPortrait - self.login.frame.size.height - 25;//g
+             }
+             
+             
+             [self.bgImageView setImage:[UIImage imageNamed:@"bg.png"]];
+         }
+         
+         
+         if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationLandscapeLeft ||
+            [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationLandscapeRight)
+         {
+             int screenHeight = self.view.frame.size.height;
+             
+             if (screenHeight == 768)
+             {
+                 self.keyboardHeightInLandscape = 391;
+             }
+             else if (screenHeight == 375 || screenHeight == 414)
+             {
+                 self.keyboardHeightInLandscape = 194;
+             }
+             else
+             {
+                 self.keyboardHeightInLandscape = 193;
+             }
+             
+             if (self.curentTextField == 1)
+             {
+                 if (screenHeight == 768)
+                 {
+                     self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height  - 25;//g
+                 }
+                 else
+                 {
+                     self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height - 8;//g
+                 }
+             }
+             else if (self.curentTextField == 2)
+             {
+                 if (self.view.frame.size.height == 768)
+                 {
+                     self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - 2*self.login.frame.size.height - 30;//g
+                 }
+                 else
+                 {
+                     self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - 2*self.login.frame.size.height - 15;//g
+                 }
+             }
+             else
+             {
+                 if (screenHeight == 768)
+                 {
+                     self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height  - 25;//g
+                 }
+                 else
+                 {
+                     self.loginSpace.constant = self.view.frame.size.height -  self.keyboardHeightInLandscape - self.login.frame.size.height - 8;//g
+                 }
+             }
+             
+         }
+         
+         
+        indicator.center = self.view.center;
+     }
+     
+
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         
+     }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+}
+
 @end

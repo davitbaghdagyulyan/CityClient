@@ -25,7 +25,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     [GPSConection showGPSConection:self];
+     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
+    [GPSConection showGPSConection:self];
     self.messagesTableView.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
     [self RequestGetMail];
@@ -94,7 +95,7 @@
 }
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
@@ -250,7 +251,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
-    request.timeoutInterval = 10;
+    request.timeoutInterval = 30;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
