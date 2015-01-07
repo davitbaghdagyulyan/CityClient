@@ -171,9 +171,9 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:cell.View2
-                                                                       attribute:NSLayoutAttributeLeading
-                                                                      multiplier:1.0
-                                                                        constant:10]];
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.033
+                                                                        constant:0]];
                 
                 
                 [cell.View2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCollAddressText
@@ -222,9 +222,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View2
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
@@ -276,9 +276,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View2
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
@@ -593,9 +593,9 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:cell.View3
-                                                                       attribute:NSLayoutAttributeLeading
-                                                                      multiplier:1.0
-                                                                        constant:10]];
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.033
+                                                                        constant:0]];
                 
                 
                 [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
@@ -637,9 +637,9 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:cell.View3
-                                                                       attribute:NSLayoutAttributeLeading
-                                                                      multiplier:1.0
-                                                                        constant:10]];
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.033
+                                                                        constant:0]];
                 
                 
                 [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
@@ -682,9 +682,9 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:cell.View3
-                                                                       attribute:NSLayoutAttributeLeading
-                                                                      multiplier:1.0
-                                                                        constant:10]];
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.033
+                                                                        constant:0]];
                 
                 
                 [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
@@ -744,9 +744,9 @@
                                                                         attribute:NSLayoutAttributeLeading
                                                                         relatedBy:NSLayoutRelationEqual
                                                                            toItem:cell.View2
-                                                                        attribute:NSLayoutAttributeLeading
-                                                                       multiplier:1.0
-                                                                         constant:10]];
+                                                                        attribute:NSLayoutAttributeTrailing
+                                                                       multiplier:0.033
+                                                                         constant:0]];
             
             
             [cell.View2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCollAddressText
@@ -796,9 +796,9 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:cell.View2
-                                                                       attribute:NSLayoutAttributeLeading
-                                                                      multiplier:1.0
-                                                                        constant:10]];
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.033
+                                                                        constant:0]];
                 
                 
                 [cell.View2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
@@ -841,9 +841,9 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:cell.View2
-                                                                       attribute:NSLayoutAttributeLeading
-                                                                      multiplier:1.0
-                                                                        constant:10]];
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.033
+                                                                        constant:0]];
                 
                 
                 [cell.View2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
@@ -911,9 +911,9 @@
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:cell.View3
-                                                                       attribute:NSLayoutAttributeLeading
-                                                                      multiplier:1.0
-                                                                        constant:10]];
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.033
+                                                                        constant:0]];
                 
                 
                 [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryAddressText
@@ -963,9 +963,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View3
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
@@ -1009,9 +1009,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View3
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
@@ -1061,9 +1061,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View3
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
@@ -1105,9 +1105,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View3
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
@@ -1151,9 +1151,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View3
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
@@ -1197,9 +1197,9 @@
                                                                            attribute:NSLayoutAttributeLeading
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:cell.View3
-                                                                           attribute:NSLayoutAttributeLeading
-                                                                          multiplier:1.0
-                                                                            constant:10]];
+                                                                           attribute:NSLayoutAttributeTrailing
+                                                                          multiplier:0.033
+                                                                            constant:0]];
                     
                     
                     [cell.View3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
@@ -1612,7 +1612,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                 }
                 else
                 {
-                    gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(curentSelf.view.frame.size.height/6)-3);
+                    gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,48);
                 }
                 
             }
@@ -1629,11 +1629,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                 if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait ||
                    [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown)
                 {
-                    gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(curentSelf.view.frame.size.height*146/1136)-3);
+                    gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(71-3));
                 }
                 else
                 {
-                    gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(curentSelf.view.frame.size.height/4)-3);
+                    gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(71-3));
                 }
                 
             }
@@ -1878,7 +1878,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             else
             {
                 
-                return curentSelf.view.frame.size.height/6;
+                return 51;
             }
             
         }
@@ -1889,11 +1889,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                 if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
                    [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
                 {
-                    return  curentSelf.view.frame.size.height*146/1136;
+                    return  71;
                 }
                 else
                 {
-                    return   curentSelf.view.frame.size.height/4;
+                    return  71;
                 }
             }
             else
