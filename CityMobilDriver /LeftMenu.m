@@ -45,7 +45,7 @@
           if(self)
           {
               CGFloat h;
-              CGFloat w;
+//              CGFloat w;
               self.disabledViewsArray=[[NSMutableArray alloc] init];
               [self setSeparatorColor:[UIColor whiteColor]];
               self.flag=0;
@@ -54,21 +54,21 @@
               if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
                  [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
               {
-                  w=self.curentViewController.view.frame.size.width*(CGFloat)5/6;
+                 
                   h=self.curentViewController.view.frame.size.height-64;
                   
               }
               else
               {
-                  w=self.curentViewController.view.frame.size.height*(CGFloat)5/6;
+                  
                   h=self.curentViewController.view.frame.size.height-64;
               }
               
-              self.frame=CGRectMake(-1*self.curentViewController.view.frame.size.width*(CGFloat)5/6, 64,w, h);
+              self.frame=CGRectMake(-1*320*(CGFloat)5/6, 64,320*(CGFloat)5/6, h);
             
               self.delegate=self;
               self.dataSource=self;
-              self.nameArray=[[NSMutableArray alloc]initWithObjects:@"Свободные заказы",@"Мои заказы",@"Пополнение баланса",@"Сообщение",@"Настройка робота",@"Архив заказов",@"Архив платежей",@"Тарифы СитиМобил",@"Тарифы Яндекс",@"Обозначение иконок",@"Профиль",@"Статистика",@"Настройки",@"Выход", nil];
+              self.nameArray=[[NSMutableArray alloc]initWithObjects:@"Свободные заказы",@"Мои заказы",@"Пополнение баланса",@"Сообщение",@"Настройка робота",@"Архив заказов",@"Архив платежей",@"Тарифы СитиМобил",@"Тарифы Яндекс",@"Обозначение иконок",@"Профиль",@"Статистика",@"Настройки",@"Выход",@"Карта", nil];
 
           }
           return self;
@@ -233,6 +233,13 @@
     }
 
             break;
+            
+            case 14:
+            myClass = NSClassFromString(@"MapViewController");
+            identity =@"MapViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+
+            
                     default:
             break;
             
@@ -317,9 +324,15 @@
     }
     if (isFirstloadViewController)
     {
-         id vc=[self.curentViewController.storyboard instantiateViewControllerWithIdentifier:identityString];
+        if ([identity isEqualToString:@"MapViewController"])
+        {
+             [self.curentViewController.navigationController pushViewController:[SingleDataProvider sharedKey].mapViewController  animated:NO];
+        }
+        else
+        {
+        id vc=[self.curentViewController.storyboard instantiateViewControllerWithIdentifier:identityString];
         [self.curentViewController.navigationController pushViewController:vc  animated:NO];
-        
+        }
     }
  
 }

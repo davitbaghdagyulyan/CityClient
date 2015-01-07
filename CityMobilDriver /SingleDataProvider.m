@@ -9,7 +9,8 @@
 #import "SingleDataProvider.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
+#import <MapKit/MapKit.h>
+#import "ASMapAnnotation.h"
 
 @implementation SingleDataProvider
 +(SingleDataProvider*)sharedKey
@@ -30,7 +31,7 @@
     
     if (status==kCLAuthorizationStatusAuthorizedAlways)
    {
-       
+       [[SingleDataProvider sharedKey]setIsGPSEnabled:YES];
      ///////////////////////////////ROOT////////////////////////////////
        if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
        {
@@ -52,7 +53,7 @@
     else
     {
        
-        
+          [[SingleDataProvider sharedKey]setIsGPSEnabled:NO];
         ///////////////////////////////ROOT////////////////////////////////
           if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
           {
@@ -78,10 +79,19 @@
     [SingleDataProvider sharedKey].time=currentLocation.timestamp.timeIntervalSince1970;
     [SingleDataProvider sharedKey].direction= currentLocation.horizontalAccuracy;
     [SingleDataProvider sharedKey].speed=currentLocation.speed;
+     if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[MapViewController class]])
+     {
+    [[SingleDataProvider sharedKey].mapViewController addAnotation:currentLocation.coordinate];
+     }
 }
 -(void)startTimer
 {
-   
+    /////test map////
+    UIViewController*vc=[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController];
+    [SingleDataProvider sharedKey].mapViewController=[vc.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    //[SingleDataProvider sharedKey].mapViewController.mapView=[[MKMapView alloc] init];
+    
+    //test end map////
     addGPSJsonObject=[[AddGPSJson alloc] init];
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = [SingleDataProvider sharedKey];

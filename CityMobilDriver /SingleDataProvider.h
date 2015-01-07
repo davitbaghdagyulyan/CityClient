@@ -5,7 +5,7 @@
 //  Created by Intern on 10/8/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
-
+#import "MapViewController.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
@@ -37,6 +37,8 @@
 @property(nonatomic,strong)UIButton*gpsButtonHandlerPort;
 @property(nonatomic,strong)UIButton*gpsButtonHandlerLand;
 @property(nonatomic,strong)UIButton*gpsButtonHandlerIpad;
+@property(nonatomic,strong)MapViewController*mapViewController;
+@property(nonatomic,assign)BOOL isGPSEnabled;
 +(SingleDataProvider*)sharedKey;
 -(void)startTimer;
 -(void)stopTimer;

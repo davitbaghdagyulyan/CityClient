@@ -58,6 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+        
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(8, 64, self.view.frame.size.width - 16, self.view.frame.size.height - 64)];
     scrollView.delegate = self;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -93,7 +94,15 @@
     [super viewDidAppear:animated];
     
     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
-
+    if ([SingleDataProvider sharedKey].isGPSEnabled)
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+         [self.gpsButton setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+    }
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
@@ -877,7 +886,7 @@
                                      
                                      if(leftMenu.flag==0)
                                      {
-                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                         xx=320*(CGFloat)5/6*(-1);
                                      }
                                      else
                                      {

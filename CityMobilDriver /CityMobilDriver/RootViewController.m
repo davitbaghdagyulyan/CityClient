@@ -475,7 +475,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
          
          if(leftMenu.flag==0)
          {
-             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+             xx=320*(CGFloat)5/6*(-1);
          }
          else
          {

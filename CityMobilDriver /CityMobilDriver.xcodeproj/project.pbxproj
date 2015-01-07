@@ -124,6 +124,9 @@
 		ECAD78BE1A306070005C2468 /* AddGPSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78BD1A306070005C2468 /* AddGPSResponse.m */; };
 		ECAD78C21A30AADB005C2468 /* GetLastKnownLocationJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */; };
 		ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */; };
+		ECB06C9B1A5D17C900001462 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB06C9A1A5D17C900001462 /* MapViewController.m */; };
+		ECB06C9E1A5D1D9F00001462 /* ASMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB06C9D1A5D1D9F00001462 /* ASMapAnnotation.m */; };
+		ECB06CA01A5D417F00001462 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB06C9F1A5D417F00001462 /* MapKit.framework */; };
 		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
 		ECB1EC1F1A42D06D008CC239 /* NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1EC1E1A42D06D008CC239 /* NavigationView.m */; };
 		ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F2A31A2DAD06008A3D15 /* iconmap.png */; };
@@ -536,6 +539,11 @@
 		ECAD78C11A30AADB005C2468 /* GetLastKnownLocationJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLastKnownLocationJson.m; sourceTree = "<group>"; };
 		ECAD78C31A30AAF1005C2468 /* GetLastKnownLocationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLastKnownLocationResponse.h; sourceTree = "<group>"; };
 		ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLastKnownLocationResponse.m; sourceTree = "<group>"; };
+		ECB06C991A5D17C900001462 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		ECB06C9A1A5D17C900001462 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		ECB06C9C1A5D1D9F00001462 /* ASMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMapAnnotation.h; sourceTree = "<group>"; };
+		ECB06C9D1A5D1D9F00001462 /* ASMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMapAnnotation.m; sourceTree = "<group>"; };
+		ECB06C9F1A5D417F00001462 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesCell.xib; path = ../MessagesCell.xib; sourceTree = "<group>"; };
 		ECB1EC1D1A42D06D008CC239 /* NavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationView.h; sourceTree = "<group>"; };
 		ECB1EC1E1A42D06D008CC239 /* NavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationView.m; sourceTree = "<group>"; };
@@ -901,6 +909,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB06CA01A5D417F00001462 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1015,6 +1024,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
+				ECB06C981A5D176200001462 /* MapViewController */,
 				ECB24B791A4C05AA0001C6F0 /* GPSIcon */,
 				EC0662BB1A440CFB007F2126 /* GPSConection.h */,
 				EC0662BC1A440CFB007F2126 /* GPSConection.m */,
@@ -1287,6 +1298,17 @@
 				EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */,
 			);
 			name = openMapButtonHandler;
+			sourceTree = "<group>";
+		};
+		ECB06C981A5D176200001462 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ECB06C9C1A5D1D9F00001462 /* ASMapAnnotation.h */,
+				ECB06C9D1A5D1D9F00001462 /* ASMapAnnotation.m */,
+				ECB06C991A5D17C900001462 /* MapViewController.h */,
+				ECB06C9A1A5D17C900001462 /* MapViewController.m */,
+			);
+			name = MapViewController;
 			sourceTree = "<group>";
 		};
 		ECB24B791A4C05AA0001C6F0 /* GPSIcon */ = {
@@ -2321,6 +2343,7 @@
 				8FC2224C1A36E76D0003CAAF /* OrdersElements.m in Sources */,
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
 				EC0662BD1A440CFB007F2126 /* GPSConection.m in Sources */,
+				ECB06C9E1A5D1D9F00001462 /* ASMapAnnotation.m in Sources */,
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
 				ECB52E3C1A0778BD0091293F /* StartAfterMKADClass.m in Sources */,
@@ -2439,6 +2462,7 @@
 				ECF4822C1A08D29B00415270 /* ResponseGetCarInfo.m in Sources */,
 				EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */,
 				ECC978F91A00DDE800D77B80 /* GetInfoResponse.m in Sources */,
+				ECB06C9B1A5D17C900001462 /* MapViewController.m in Sources */,
 				ECCA90A319DEE2060007831F /* JSONModel.m in Sources */,
 				ECCD4F431A0A20B8002456F6 /* RequestSetYandexAutoget.m in Sources */,
 				ECEC89CA1A2CA76F0036781D /* GetMyOrdersJson.m in Sources */,
