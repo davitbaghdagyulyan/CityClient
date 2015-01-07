@@ -7391,7 +7391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nd8-9k-kma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2146.5" y="1903.5"/>
+            <point key="canvasLocation" x="-2160" y="1845"/>
         </scene>
         <!--Car Info View Controller-->
         <scene sceneID="wx3-mJ-rjq">
@@ -8819,7 +8819,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JY-Qg-CgR">
-                                        <rect key="frame" x="436" y="10" width="31" height="21"/>
+                                        <rect key="frame" x="426" y="10" width="31" height="21"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="31" id="3eN-TC-QID"/>
@@ -8830,13 +8830,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djk-bJ-F9T">
-                                        <rect key="frame" x="472" y="10" width="110" height="21"/>
+                                        <rect key="frame" x="462" y="10" width="120" height="21"/>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="JRv-NA-4VN">
                                                 <variation key="heightClass=compact" constant="150"/>
                                             </constraint>
-                                            <constraint firstAttribute="width" constant="110" id="ghe-lA-mEf"/>
+                                            <constraint firstAttribute="width" constant="120" id="ghe-lA-mEf"/>
                                             <constraint firstAttribute="height" constant="21" id="oJg-CB-Bao"/>
                                         </constraints>
                                         <state key="normal">
@@ -8867,24 +8867,6 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="месяц" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfH-RR-hhl">
-                                        <rect key="frame" x="472" y="10" width="110" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="9R7-f2-H3O"/>
-                                            <constraint firstAttribute="width" constant="68" id="RAZ-ye-HVb">
-                                                <variation key="heightClass=compact" constant="148"/>
-                                            </constraint>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="9R7-f2-H3O"/>
-                                                <exclude reference="RAZ-ye-HVb"/>
-                                            </mask>
-                                        </variation>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9s-HF-4BP">
                                         <rect key="frame" x="34" y="10" width="120" height="21"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -8918,6 +8900,24 @@
                                             <action selector="findOrdersFromInterval:" destination="Mdo-if-CUv" eventType="touchUpInside" id="4bN-sb-fVT"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="месяц" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfH-RR-hhl" customClass="CustomLabel">
+                                        <rect key="frame" x="462" y="10" width="120" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="9R7-f2-H3O"/>
+                                            <constraint firstAttribute="width" constant="68" id="RAZ-ye-HVb">
+                                                <variation key="heightClass=compact" constant="148"/>
+                                            </constraint>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="9R7-f2-H3O"/>
+                                                <exclude reference="RAZ-ye-HVb"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -9170,7 +9170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cb-cF-Wih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6287" y="-1193"/>
+            <point key="canvasLocation" x="-6200" y="-1219"/>
         </scene>
         <!--Payment History View Controller-->
         <scene sceneID="GgR-qv-7DC">
@@ -9368,7 +9368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8T-T2-sGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2665" y="-744"/>
+            <point key="canvasLocation" x="-2320" y="-1205"/>
         </scene>
     </scenes>
     <resources>
@@ -9392,6 +9392,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H6G-Qj-NO6"/>
+        <segue reference="mkx-jr-dxs"/>
     </inferredMetricsTieBreakers>
 </document>

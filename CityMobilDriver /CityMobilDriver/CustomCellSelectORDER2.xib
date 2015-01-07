@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -38,7 +38,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" tag="250" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKo-mT-HZg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="37"/>
+                                                        <rect key="frame" x="12" y="0.0" width="164" height="37"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -50,7 +50,7 @@
                                                     <constraint firstItem="Yq3-4R-A1j" firstAttribute="top" secondItem="hUu-Xt-Z8A" secondAttribute="top" id="9C2-s9-AX2"/>
                                                     <constraint firstItem="XKo-mT-HZg" firstAttribute="top" secondItem="hUu-Xt-Z8A" secondAttribute="top" id="A35-bQ-Wud"/>
                                                     <constraint firstItem="XKo-mT-HZg" firstAttribute="height" secondItem="hUu-Xt-Z8A" secondAttribute="height" id="HLi-ub-2xY"/>
-                                                    <constraint firstItem="XKo-mT-HZg" firstAttribute="leading" secondItem="hUu-Xt-Z8A" secondAttribute="leading" id="akl-l4-5YL"/>
+                                                    <constraint firstItem="XKo-mT-HZg" firstAttribute="leading" secondItem="hUu-Xt-Z8A" secondAttribute="trailing" multiplier="1/40" id="akl-l4-5YL"/>
                                                     <constraint firstItem="XKo-mT-HZg" firstAttribute="width" secondItem="hUu-Xt-Z8A" secondAttribute="width" multiplier="1/3" id="eHm-jD-fuR"/>
                                                     <constraint firstAttribute="trailing" secondItem="Yq3-4R-A1j" secondAttribute="trailing" id="kpu-d0-cW5"/>
                                                     <constraint firstAttribute="height" constant="37" id="nRF-kN-l5a"/>
@@ -82,7 +82,7 @@
                                                 <rect key="frame" x="0.0" y="38" width="491" height="191"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gf9-nl-iZ3">
-                                                        <rect key="frame" x="10" y="12" width="14" height="11"/>
+                                                        <rect key="frame" x="16" y="12" width="14" height="11"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="11" id="iqG-Go-OOz"/>
                                                             <constraint firstAttribute="width" constant="14" id="sW6-2O-UGI"/>
@@ -99,7 +99,7 @@
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ei-s0-mGd">
-                                                        <rect key="frame" x="30" y="5" width="200" height="25"/>
+                                                        <rect key="frame" x="36" y="5" width="200" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="7ku-eW-SKe"/>
                                                             <constraint firstAttribute="height" constant="25" id="f9l-j2-8OV"/>
@@ -113,9 +113,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="mbr-AQ-8IT" secondAttribute="trailing" constant="5" id="B4R-Ee-gY3"/>
                                                     <constraint firstItem="6Ei-s0-mGd" firstAttribute="leading" secondItem="Gf9-nl-iZ3" secondAttribute="trailing" constant="6" id="PUQ-nq-7om"/>
-                                                    <constraint firstItem="Gf9-nl-iZ3" firstAttribute="leading" secondItem="OUD-ZQ-Reb" secondAttribute="leading" constant="10" id="YRA-0O-SkQ">
-                                                        <variation key="heightClass=compact" constant="20"/>
-                                                    </constraint>
+                                                    <constraint firstItem="Gf9-nl-iZ3" firstAttribute="leading" secondItem="OUD-ZQ-Reb" secondAttribute="trailing" multiplier="1/30" id="YRA-0O-SkQ"/>
                                                     <constraint firstAttribute="height" constant="296" id="eU7-hc-Uls"/>
                                                     <constraint firstItem="Gf9-nl-iZ3" firstAttribute="top" secondItem="OUD-ZQ-Reb" secondAttribute="top" constant="12" id="etf-j0-noc"/>
                                                     <constraint firstItem="6Ei-s0-mGd" firstAttribute="top" secondItem="OUD-ZQ-Reb" secondAttribute="top" constant="5" id="j6i-u3-778"/>

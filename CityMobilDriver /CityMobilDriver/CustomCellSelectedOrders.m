@@ -54,8 +54,8 @@
             secondsString =[NSString stringWithFormat:@"%ld",seconds];
         }
         stringForUrgent=[NSMutableString stringWithFormat:@"%@:%@",minutesString,secondsString];
-        self.labelShortName.text=[NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,stringForUrgent,self.shortName];
-        self.labelShortName0.text =[NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,stringForUrgent,self.shortName];
+        self.labelShortName.text=[NSString stringWithFormat:@"%@ %@ %@",self.stringForSrochno,stringForUrgent,self.shortName];
+        self.labelShortName0.text =[NSString stringWithFormat:@"%@ %@ %@",self.stringForSrochno,stringForUrgent,self.shortName];
         if (self.timerForUpdatingLabelShortNameIsCreated==NO)
         {
             updateLabelTimer= [NSTimer scheduledTimerWithTimeInterval:1
@@ -70,8 +70,8 @@
     {
         self.labelShortName.font=[UIFont fontWithName:@"Roboto-Bold" size:15];
         self.labelShortName0.font=[UIFont fontWithName:@"Roboto-Bold" size:15];
-        self.labelShortName.text=[NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,[self TimeFormat: self.callDate],self.shortName];
-        self.labelShortName0.text =[NSString stringWithFormat:@"  %@ %@ %@",self.stringForSrochno,[self TimeFormat: self.callDate],self.shortName];
+        self.labelShortName.text=[NSString stringWithFormat:@"%@ %@ %@",self.stringForSrochno,[self TimeFormat: self.callDate],self.shortName];
+        self.labelShortName0.text =[NSString stringWithFormat:@"%@ %@ %@",self.stringForSrochno,[self TimeFormat: self.callDate],self.shortName];
     }
     if ([stringForUrgent isEqualToString:@"00:00"])
     {
