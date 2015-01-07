@@ -7865,6 +7865,9 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                                    <rect key="frame" x="384" y="233" width="392" height="43"/>
+                                                </variation>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6SI-aX-8uC" customClass="LeftPaddingTextField">
                                                 <rect key="frame" x="284" y="80" width="292" height="31"/>
@@ -8556,6 +8559,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G22-cb-Yvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-6127" y="-519"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="gZg-Zk-8TY">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="FVE-sq-EEb" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ulw-5T-sfS"/>
+                        <viewControllerLayoutGuide type="bottom" id="AhE-j3-Udj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Pg-WI-ZKZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjv-0S-NlB">
+                                <rect key="frame" x="10" y="10" width="60" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="ecs-fB-IrN"/>
+                                    <constraint firstAttribute="height" constant="30" id="hMO-zY-Mv2"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backAction:" destination="FVE-sq-EEb" eventType="touchUpInside" id="IQH-Ht-gzG"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zes-iL-4Us">
+                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <connections>
+                                    <outlet property="delegate" destination="FVE-sq-EEb" id="y4G-H1-cHf"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sjv-0S-NlB" firstAttribute="top" secondItem="6Pg-WI-ZKZ" secondAttribute="top" constant="10" id="Qe8-73-jaP"/>
+                            <constraint firstItem="Sjv-0S-NlB" firstAttribute="leading" secondItem="6Pg-WI-ZKZ" secondAttribute="leading" constant="10" id="YJx-UV-yNd"/>
+                            <constraint firstItem="zes-iL-4Us" firstAttribute="top" secondItem="Sjv-0S-NlB" secondAttribute="bottom" constant="10" id="eeE-tm-x2S"/>
+                            <constraint firstItem="AhE-j3-Udj" firstAttribute="top" secondItem="zes-iL-4Us" secondAttribute="bottom" id="i9e-87-LmN"/>
+                            <constraint firstItem="zes-iL-4Us" firstAttribute="leading" secondItem="6Pg-WI-ZKZ" secondAttribute="leading" id="xSr-PS-yc6"/>
+                            <constraint firstAttribute="trailing" secondItem="zes-iL-4Us" secondAttribute="trailing" id="zuV-CK-QTa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="zes-iL-4Us" id="3Dk-3h-Nht"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6p1-Eg-vNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3454" y="2774"/>
         </scene>
         <!--My Orders View Controller-->
         <scene sceneID="Hcy-kB-3KU">

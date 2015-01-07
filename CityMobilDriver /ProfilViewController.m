@@ -41,6 +41,16 @@
 {
     [super viewDidAppear:animated];
      [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
+    if ([SingleDataProvider sharedKey].isGPSEnabled)
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+    }
+    
     [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
     
@@ -320,7 +330,7 @@
                                      
                                      if(leftMenu.flag==0)
                                      {
-                                         xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+                                         xx=320*(CGFloat)5/6*(-1);
                                      }
                                      else
                                      {
