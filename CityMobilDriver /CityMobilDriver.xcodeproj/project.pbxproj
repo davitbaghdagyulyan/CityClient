@@ -222,6 +222,7 @@
 		ECCA4CAD1A0B55F2007CEBC4 /* ActivateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA4CAC1A0B55F2007CEBC4 /* ActivateAccountViewController.m */; };
 		ECCA4CB01A0B5CE1007CEBC4 /* RegisterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA4CAF1A0B5CE1007CEBC4 /* RegisterRequest.m */; };
 		ECCA4CB31A0B60E6007CEBC4 /* RegisterResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA4CB21A0B60E6007CEBC4 /* RegisterResponse.m */; };
+		ECCA5DED1A5D7E0000782276 /* 2048x1536.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCA5DEC1A5D7E0000782276 /* 2048x1536.png */; };
 		ECCA90A319DEE2060007831F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908C19DEE2050007831F /* JSONModel.m */; };
 		ECCA90A419DEE2060007831F /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA908E19DEE2050007831F /* JSONModelArray.m */; };
 		ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCA909019DEE2060007831F /* JSONModelClassProperty.m */; };
@@ -696,6 +697,7 @@
 		ECCA4CAF1A0B5CE1007CEBC4 /* RegisterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRequest.m; sourceTree = "<group>"; };
 		ECCA4CB11A0B60E6007CEBC4 /* RegisterResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterResponse.h; sourceTree = "<group>"; };
 		ECCA4CB21A0B60E6007CEBC4 /* RegisterResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterResponse.m; sourceTree = "<group>"; };
+		ECCA5DEC1A5D7E0000782276 /* 2048x1536.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2048x1536.png; sourceTree = "<group>"; };
 		ECCA908B19DEE2050007831F /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
 		ECCA908C19DEE2050007831F /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
 		ECCA908D19DEE2050007831F /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
@@ -1314,6 +1316,7 @@
 		ECB38B281A0D12D400DFBB77 /* Designation Icons Images */ = {
 			isa = PBXGroup;
 			children = (
+				ECCA5DEC1A5D7E0000782276 /* 2048x1536.png */,
 				EC80D4111A41CFAA007885B6 /* cash.png */,
 				EC80D4121A41CFAA007885B6 /* on_bonuses_payment.png */,
 				ECF2FFFB1A406BCF00C8A269 /* ic_launcher-copy.png */,
@@ -2220,6 +2223,7 @@
 				ECEADF911A1F29B300FBA389 /* tachometer_bg.png in Resources */,
 				ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */,
 				ECEC89AE1A2CA1100036781D /* rublsi.ttf in Resources */,
+				ECCA5DED1A5D7E0000782276 /* 2048x1536.png in Resources */,
 				D70428C619D0071F00F5C38C /* LaunchScreen.xib in Resources */,
 				8FCFF59619F5054700C6E3A7 /* ic_wifi_small.png in Resources */,
 				ECCD34531A03D454000444BF /* arrow.png in Resources */,
