@@ -33,6 +33,7 @@
 		8FB0F8AE1A28D9AE003A79E9 /* metro_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB0F89E1A28D9AE003A79E9 /* metro_d.png */; };
 		8FB0F8AF1A28D9AE003A79E9 /* train.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB0F89F1A28D9AE003A79E9 /* train.png */; };
 		8FB0F8B01A28D9AE003A79E9 /* train_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB0F8A01A28D9AE003A79E9 /* train_d.png */; };
+		8FB5C5061A5E620100839F34 /* PaymentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB5C5051A5E620100839F34 /* PaymentLabel.m */; };
 		8FB64FB319F9221F005AAF2A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB219F9221F005AAF2A /* map.png */; };
 		8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */; };
 		8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */; };
@@ -393,6 +394,8 @@
 		8FB0F89E1A28D9AE003A79E9 /* metro_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro_d.png; sourceTree = "<group>"; };
 		8FB0F89F1A28D9AE003A79E9 /* train.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = train.png; sourceTree = "<group>"; };
 		8FB0F8A01A28D9AE003A79E9 /* train_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = train_d.png; sourceTree = "<group>"; };
+		8FB5C5041A5E620100839F34 /* PaymentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentLabel.h; path = ../PaymentLabel.h; sourceTree = "<group>"; };
+		8FB5C5051A5E620100839F34 /* PaymentLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentLabel.m; path = ../PaymentLabel.m; sourceTree = "<group>"; };
 		8FB64FB219F9221F005AAF2A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cash_payment_small.png; sourceTree = "<group>"; };
 		8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_smoking_lounge_small.png; sourceTree = "<group>"; };
@@ -994,6 +997,8 @@
 				8FC222741A36E9360003CAAF /* PaymentHistoryCustomCell.h */,
 				8FC222751A36E9360003CAAF /* PaymentHistoryCustomCell.m */,
 				8FC222761A36E9360003CAAF /* PaymentHistoryCustomCell.xib */,
+				8FB5C5041A5E620100839F34 /* PaymentLabel.h */,
+				8FB5C5051A5E620100839F34 /* PaymentLabel.m */,
 				8FC222711A36E9190003CAAF /* PaymentJson */,
 			);
 			name = PaymentHistory;
@@ -1026,14 +1031,12 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
 				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
+				ECD578131A5E76F200E46DEC /* BadRequest */,
+				ECD578121A5E769C00E46DEC /* GPSConection */,
 				ECB06C981A5D176200001462 /* MapViewController */,
 				ECB24B791A4C05AA0001C6F0 /* GPSIcon */,
-				EC0662BB1A440CFB007F2126 /* GPSConection.h */,
-				EC0662BC1A440CFB007F2126 /* GPSConection.m */,
-				ECFD3E491A42C5400066B55A /* BadRequest.h */,
-				ECFD3E4A1A42C5400066B55A /* BadRequest.m */,
-				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
 				ECC4718E1A11F4800062803A /* LeftMenu */,
 				ECFD3E4C1A431A5C0066B55A /* internet Conection */,
 				ECB063B31A31E7C5004633A6 /* openMapButtonHandler */,
@@ -1922,6 +1925,24 @@
 			name = BindCard;
 			sourceTree = "<group>";
 		};
+		ECD578121A5E769C00E46DEC /* GPSConection */ = {
+			isa = PBXGroup;
+			children = (
+				EC0662BB1A440CFB007F2126 /* GPSConection.h */,
+				EC0662BC1A440CFB007F2126 /* GPSConection.m */,
+			);
+			name = GPSConection;
+			sourceTree = "<group>";
+		};
+		ECD578131A5E76F200E46DEC /* BadRequest */ = {
+			isa = PBXGroup;
+			children = (
+				ECFD3E491A42C5400066B55A /* BadRequest.h */,
+				ECFD3E4A1A42C5400066B55A /* BadRequest.m */,
+			);
+			name = BadRequest;
+			sourceTree = "<group>";
+		};
 		ECE1C64E19EE6960001A9A96 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2495,6 +2516,7 @@
 				EC4CB40919F7F6EF0028F219 /* DriverInfoResponse.m in Sources */,
 				ECCC236F19E7F58A0091C43E /* infoViewController.m in Sources */,
 				ECCD34471A039EA4000444BF /* CardsViewController.m in Sources */,
+				8FB5C5061A5E620100839F34 /* PaymentLabel.m in Sources */,
 				ECCD4F401A0A1CC5002456F6 /* RequestSetAutoget.m in Sources */,
 				ECC9652E1A00F85800768E1F /* RequestGetMarkList.m in Sources */,
 				ECCA4CB31A0B60E6007CEBC4 /* RegisterResponse.m in Sources */,

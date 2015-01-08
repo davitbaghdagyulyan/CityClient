@@ -101,7 +101,7 @@
     self.titleLabel.text = self.titleString;
     if ([self.titleString isEqualToString:@"СРОЧНЫЕ"])
     {
-    timerForTitleLabel = [NSTimer scheduledTimerWithTimeInterval:5
+    timerForTitleLabel = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                           target:self selector:@selector(toggleTitleLabel) userInfo:nil repeats:YES];
     self.titleLabel.textColor =[UIColor redColor];
     self.stringForSrochno=@"СРОЧНО";
