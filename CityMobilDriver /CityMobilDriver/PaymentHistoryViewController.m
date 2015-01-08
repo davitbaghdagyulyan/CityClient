@@ -12,6 +12,7 @@
 #import "GetPaymentsResponse.h"
 #import "LeftMenu.h"
 #import "OpenMapButtonHandler.h"
+#import "PaymentLabel.h"
 @interface PaymentHistoryViewController ()
 {
     //NAREK
@@ -92,7 +93,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
     }
  cell.oppDate=[[getPaymentsResponseObject.result objectAtIndex:indexPath.row]oppdate];
  cell.sum=[[getPaymentsResponseObject.result objectAtIndex:indexPath.row]sum];
- cell.comment=[[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment];
+    cell.comment=[[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment];
  cell.selectionStyle=UITableViewCellSelectionStyleNone;
  [cell updateLabels];
  return cell;
@@ -101,30 +102,43 @@ GetPaymentsResponse * getPaymentsResponseObject;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UILabel * labelCalculateHeightOfCell;
-    CGSize  expectSizeForHeight;
-    if ([[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment])
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+       [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
     {
-        if (! labelCalculateHeightOfCell)
+        
+        UILabel * labelCalculateHeightOfCell;
+        CGSize  expectSizeForHeight;
+        if ([[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment])
         {
-            labelCalculateHeightOfCell =[[UILabel alloc]init];
+            if (! labelCalculateHeightOfCell)
+            {
+                labelCalculateHeightOfCell =[[PaymentLabel alloc]init];
+            }
+            labelCalculateHeightOfCell.text=[[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment];
+            labelCalculateHeightOfCell.font=[UIFont fontWithName:@"Roboto-Regular" size:14];
+            labelCalculateHeightOfCell.numberOfLines=0;
+            labelCalculateHeightOfCell.lineBreakMode=NSLineBreakByWordWrapping;
+            CGSize maximumLabelSize = CGSizeMake(90,150);
+            expectSizeForHeight = [labelCalculateHeightOfCell sizeThatFits:maximumLabelSize];
         }
-        labelCalculateHeightOfCell.text=[[getPaymentsResponseObject.result objectAtIndex:indexPath.row]comment];
-        labelCalculateHeightOfCell.font=[UIFont fontWithName:@"Roboto-Regular" size:14];
-        labelCalculateHeightOfCell.numberOfLines=0;
-        labelCalculateHeightOfCell.lineBreakMode=NSLineBreakByWordWrapping;
-        CGSize maximumLabelSize = CGSizeMake(90,100);
-        expectSizeForHeight = [labelCalculateHeightOfCell sizeThatFits:maximumLabelSize];
-    }
-    if (expectSizeForHeight.height<44)
-    {
-        return 44;
+        if (expectSizeForHeight.height<44)
+        {
+            return 44;
+        }
+        else
+        {
+            return expectSizeForHeight.height;
+        }
+
+    
     }
     else
     {
-    return expectSizeForHeight.height;
+        return 55;
     }
-
+    
+    
+    
 }
 
 -(void)requestGetPayments

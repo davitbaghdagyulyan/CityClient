@@ -38,18 +38,18 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUu-Xt-Z8A" userLabel="View1">
                                                 <rect key="frame" x="0.0" y="0.0" width="491" height="37"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" tag="250" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKo-mT-HZg">
-                                                        <rect key="frame" x="12" y="0.0" width="164" height="37"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yq3-4R-A1j">
                                                         <rect key="frame" x="421" y="0.0" width="70" height="37"/>
                                                         <color key="backgroundColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="19"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="250" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKo-mT-HZg">
+                                                        <rect key="frame" x="16" y="0.0" width="164" height="37"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -58,7 +58,7 @@
                                                     <constraint firstItem="Yq3-4R-A1j" firstAttribute="top" secondItem="hUu-Xt-Z8A" secondAttribute="top" id="9C2-s9-AX2"/>
                                                     <constraint firstItem="XKo-mT-HZg" firstAttribute="top" secondItem="hUu-Xt-Z8A" secondAttribute="top" id="A35-bQ-Wud"/>
                                                     <constraint firstItem="XKo-mT-HZg" firstAttribute="height" secondItem="hUu-Xt-Z8A" secondAttribute="height" id="HLi-ub-2xY"/>
-                                                    <constraint firstItem="XKo-mT-HZg" firstAttribute="leading" secondItem="hUu-Xt-Z8A" secondAttribute="trailing" multiplier="1/40" id="akl-l4-5YL"/>
+                                                    <constraint firstItem="XKo-mT-HZg" firstAttribute="leading" secondItem="hUu-Xt-Z8A" secondAttribute="trailing" multiplier="1/30" id="akl-l4-5YL"/>
                                                     <constraint firstItem="XKo-mT-HZg" firstAttribute="width" secondItem="hUu-Xt-Z8A" secondAttribute="width" multiplier="1/3" id="eHm-jD-fuR"/>
                                                     <constraint firstAttribute="trailing" secondItem="Yq3-4R-A1j" secondAttribute="trailing" id="kpu-d0-cW5"/>
                                                     <constraint firstAttribute="height" constant="37" id="nRF-kN-l5a"/>

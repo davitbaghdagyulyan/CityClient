@@ -33,6 +33,7 @@
 		8FB0F8AE1A28D9AE003A79E9 /* metro_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB0F89E1A28D9AE003A79E9 /* metro_d.png */; };
 		8FB0F8AF1A28D9AE003A79E9 /* train.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB0F89F1A28D9AE003A79E9 /* train.png */; };
 		8FB0F8B01A28D9AE003A79E9 /* train_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB0F8A01A28D9AE003A79E9 /* train_d.png */; };
+		8FB5C5061A5E620100839F34 /* PaymentLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB5C5051A5E620100839F34 /* PaymentLabel.m */; };
 		8FB64FB319F9221F005AAF2A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB64FB219F9221F005AAF2A /* map.png */; };
 		8FB6DC9619E6BB4D00671A4B /* ic_cash_payment_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */; };
 		8FB6DC9819E6BB5500671A4B /* ic_smoking_lounge_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */; };
@@ -393,6 +394,8 @@
 		8FB0F89E1A28D9AE003A79E9 /* metro_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro_d.png; sourceTree = "<group>"; };
 		8FB0F89F1A28D9AE003A79E9 /* train.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = train.png; sourceTree = "<group>"; };
 		8FB0F8A01A28D9AE003A79E9 /* train_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = train_d.png; sourceTree = "<group>"; };
+		8FB5C5041A5E620100839F34 /* PaymentLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentLabel.h; path = ../PaymentLabel.h; sourceTree = "<group>"; };
+		8FB5C5051A5E620100839F34 /* PaymentLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentLabel.m; path = ../PaymentLabel.m; sourceTree = "<group>"; };
 		8FB64FB219F9221F005AAF2A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		8FB6DC9519E6BB4D00671A4B /* ic_cash_payment_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cash_payment_small.png; sourceTree = "<group>"; };
 		8FB6DC9719E6BB5500671A4B /* ic_smoking_lounge_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_smoking_lounge_small.png; sourceTree = "<group>"; };
@@ -994,6 +997,8 @@
 				8FC222741A36E9360003CAAF /* PaymentHistoryCustomCell.h */,
 				8FC222751A36E9360003CAAF /* PaymentHistoryCustomCell.m */,
 				8FC222761A36E9360003CAAF /* PaymentHistoryCustomCell.xib */,
+				8FB5C5041A5E620100839F34 /* PaymentLabel.h */,
+				8FB5C5051A5E620100839F34 /* PaymentLabel.m */,
 				8FC222711A36E9190003CAAF /* PaymentJson */,
 			);
 			name = PaymentHistory;
@@ -2511,6 +2516,7 @@
 				EC4CB40919F7F6EF0028F219 /* DriverInfoResponse.m in Sources */,
 				ECCC236F19E7F58A0091C43E /* infoViewController.m in Sources */,
 				ECCD34471A039EA4000444BF /* CardsViewController.m in Sources */,
+				8FB5C5061A5E620100839F34 /* PaymentLabel.m in Sources */,
 				ECCD4F401A0A1CC5002456F6 /* RequestSetAutoget.m in Sources */,
 				ECC9652E1A00F85800768E1F /* RequestGetMarkList.m in Sources */,
 				ECCA4CB31A0B60E6007CEBC4 /* RegisterResponse.m in Sources */,
