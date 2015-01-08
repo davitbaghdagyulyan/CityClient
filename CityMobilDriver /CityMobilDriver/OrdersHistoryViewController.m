@@ -193,12 +193,20 @@
     NSString * collDate =[[ordersHistoryResponseObject.orders objectAtIndex:indexPath.row]OrderedDate];
     if (collDate)
     {
-    NSString *collDate1 =[collDate substringToIndex:16];
-    NSString * collDate2 =[collDate1 substringFromIndex:2];
-    NSString * collDateFirstRow=[collDate2 substringToIndex:8];
-    NSString * collDateSecondRow =[collDate2 substringFromIndex:9];
-    NSString * stringForDate = [NSString stringWithFormat:@"%@\n%@",collDateFirstRow,collDateSecondRow];
-    cell.labelDate.text = stringForDate;
+        NSString *collDate1 =[collDate substringToIndex:16];
+        NSString * year1 =[collDate1 substringToIndex:4];
+        NSString * year =[year1 substringFromIndex:2];
+        NSString * day1 =[collDate1 substringFromIndex:8];
+        NSString * day=[day1 substringToIndex:2];
+        NSString * month1=[collDate1 substringFromIndex:5];
+        NSString* month=[month1 substringToIndex:2];
+        NSString * time1=[collDate1 substringFromIndex:11];
+        NSString * hour=[time1 substringToIndex:2];
+        NSString *minutes=[time1 substringFromIndex:3];
+        NSString * collDateFirstRow=[NSString stringWithFormat:@"%@.%@.%@",day,month,year];
+        NSString * collDateSecondRow=[NSString stringWithFormat:@"%@.%@",hour,minutes];
+        NSString * stringForDate = [NSString stringWithFormat:@" %@\n %@",collDateFirstRow,collDateSecondRow];
+       cell.labelDate.text = stringForDate;
     }
     else
     {
@@ -395,10 +403,7 @@ else
 {
     self.tableViewOrdersHistory.userInteractionEnabled = NO;
     self.buttonDatePicker.userInteractionEnabled = NO;
-    if (!transparentView)
-    {
-      transparentView = [[UIView alloc]initWithFrame:self.view.frame];
-    }
+    transparentView = [[UIView alloc]initWithFrame:self.view.frame];
     transparentView.backgroundColor = [UIColor blackColor];
     transparentView.alpha =0.7;
     [self.view addSubview:transparentView];
@@ -871,10 +876,7 @@ else
 - (IBAction)actionGPS:(id)sender {
 }
 
-- (IBAction)refresh:(id)sender
-{
-    [self requestOrdersHistory];
-}
+
 - (IBAction)openMap:(UIButton*)sender
 {
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
