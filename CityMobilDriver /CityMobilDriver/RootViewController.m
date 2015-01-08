@@ -48,6 +48,25 @@
     [[SingleDataProvider sharedKey] setGpsButtonHandlerPort:self.gpsButtonPort];
     [[SingleDataProvider sharedKey] setGpsButtonHandlerLand:self.gpsButtonLand];
     [[SingleDataProvider sharedKey] setGpsButtonHandlerIpad:self.gpsButtonIpad];
+    
+    if ([SingleDataProvider sharedKey].isGPSEnabled)
+    {
+        [self.gpsButtonPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+        
+        [self.gpsButtonLand setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+        
+        [self.gpsButtonIpad setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.gpsButtonPort setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+        
+        [self.gpsButtonLand setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+        
+        [self.gpsButtonIpad setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+    }
+
+    
     [self.cityButtonIpad setNeedsDisplay];
     [self.cityButtonLand setNeedsDisplay];
     [self.cityButtonPort setNeedsDisplay];

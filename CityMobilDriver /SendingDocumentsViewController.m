@@ -61,6 +61,32 @@
 }
 
 
+#pragma mark rotation
+
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:nil
+     
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         CGFloat xx;
+         
+         if(leftMenu.flag==0)
+         {
+             xx=320*(CGFloat)5/6*(-1);
+         }
+         else
+         {
+             xx=0;
+         }
+         
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
+         
+     }];
+    
+    [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+}
+
 
 #pragma mark - left Menu
 

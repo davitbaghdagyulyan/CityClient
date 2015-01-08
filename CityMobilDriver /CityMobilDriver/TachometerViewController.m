@@ -50,8 +50,6 @@
 #pragma mark - life cicle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-   
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -135,7 +133,7 @@
         underLabel.frame = underLabelRect;
         underLabel.tag = 200 + i;
         underLabel.text = @"0";
-        [underLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(upLabel.bounds)]];
+        [underLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(underLabel.bounds)]];
         underLabel.textColor = [UIColor whiteColor];
         underLabel.textAlignment = NSTextAlignmentCenter;
         [tachoView addSubview:underLabel];
@@ -369,7 +367,7 @@
                  UILabel* underLabel1 = [[UILabel alloc]initWithFrame:underLabelRect];
                  underLabel1.text = @"0";
                  underLabel1.tag = 200 + i;
-                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(label.bounds)]];
+                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(underLabel1.bounds)]];//
                  underLabel1.textColor = [UIColor whiteColor];
                  underLabel1.textAlignment = NSTextAlignmentCenter;
                  [tachoView addSubview:underLabel1];
@@ -383,7 +381,7 @@
                  underLabelRect.origin.y = CGRectGetHeight(tachoView.bounds);
                  UILabel* underLabel1 = [[UILabel alloc]initWithFrame:underLabelRect];
                  underLabel1.tag = 200 + i;
-                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(label.bounds)]];
+                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(underLabel1.bounds)]];
                  underLabel1.textColor = [UIColor whiteColor];
                  underLabel1.textAlignment = NSTextAlignmentCenter;
                  [tachoView addSubview:underLabel1];
@@ -397,7 +395,7 @@
                  underLabelRect.origin.y = CGRectGetHeight(tachoView.bounds);
                  UILabel* underLabel1 = [[UILabel alloc]initWithFrame:underLabelRect];
                  underLabel1.tag = 200 + i;
-                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(label.bounds)]];
+                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(underLabel1.bounds)]];
                  underLabel1.textColor = [UIColor whiteColor];
                  underLabel1.textAlignment = NSTextAlignmentCenter;
                  [tachoView addSubview:underLabel1];
@@ -411,7 +409,7 @@
                  underLabelRect.origin.y = CGRectGetHeight(tachoView.bounds);
                  UILabel* underLabel1 = [[UILabel alloc]initWithFrame:underLabelRect];
                  underLabel1.tag = 200 + i;
-                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(label.bounds)]];
+                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(underLabel1.bounds)]];
                  underLabel1.textColor = [UIColor whiteColor];
                  underLabel1.textAlignment = NSTextAlignmentCenter;
                  [tachoView addSubview:underLabel1];
@@ -425,7 +423,7 @@
                  underLabelRect.origin.y = CGRectGetHeight(tachoView.bounds);
                  UILabel* underLabel1 = [[UILabel alloc]initWithFrame:underLabelRect];
                  underLabel1.tag = 200 + i;
-                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(label.bounds)]];
+                 [underLabel1 setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(underLabel1.bounds)]];
                  underLabel1.textColor = [UIColor whiteColor];
                  underLabel1.textAlignment = NSTextAlignmentCenter;
                  [tachoView addSubview:underLabel1];
@@ -791,6 +789,13 @@
              
          }
          
+         for (UIImageView* imageView in self.tachoElements) {
+             for (UILabel* label in imageView.subviews) {
+                 [label setFont:[UIFont fontWithName:@"Roboto-Regular" size:CGRectGetHeight(label.bounds)]];
+             }
+         }
+         
+         
          
      }
      
@@ -809,6 +814,8 @@
                                          xx=0;
                                      }
                                      leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
+        
+
         
                                  }];
     

@@ -45,6 +45,7 @@
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TariffCustomCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
+        [cell setBackgroundColor:[UIColor clearColor]];
     }
     if ([[[[[[[[[[[xmlDictionary objectForKey:@"Tariffs"] objectForKey:@"Tariff"]objectAtIndex:i] objectForKey:@"Description"]objectForKey:@"Interval"]objectAtIndex:0] objectForKey:@"Transfer"] objectForKey:@"Destination"]objectAtIndex:j] objectForKey:@"Source"] isKindOfClass:[NSArray class]])
     {
