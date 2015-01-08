@@ -25,6 +25,7 @@
     UIAlertView * alertConfirmPurchase;
     NSString *  deliveryAddrTypeMenu;
     NSString * deviceType;
+    NSString * deviceStringIphone;
     NSString * shortName;
     NSInteger percent;
     NSString * NoSmoking;

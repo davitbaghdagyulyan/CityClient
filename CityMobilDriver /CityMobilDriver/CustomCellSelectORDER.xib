@@ -100,7 +100,7 @@
                                                 <rect key="frame" x="0.0" y="38" width="491" height="167"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gf9-nl-iZ3">
-                                                        <rect key="frame" x="16" y="12" width="14" height="11"/>
+                                                        <rect key="frame" x="25" y="12" width="14" height="11"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="11" id="iqG-Go-OOz"/>
                                                             <constraint firstAttribute="width" constant="14" id="sW6-2O-UGI"/>
@@ -117,7 +117,7 @@
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ei-s0-mGd">
-                                                        <rect key="frame" x="36" y="5" width="200" height="25"/>
+                                                        <rect key="frame" x="45" y="5" width="200" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="7ku-eW-SKe"/>
                                                             <constraint firstAttribute="height" constant="25" id="f9l-j2-8OV"/>
@@ -131,7 +131,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="mbr-AQ-8IT" secondAttribute="trailing" constant="5" id="B4R-Ee-gY3"/>
                                                     <constraint firstItem="6Ei-s0-mGd" firstAttribute="leading" secondItem="Gf9-nl-iZ3" secondAttribute="trailing" constant="6" id="PUQ-nq-7om"/>
-                                                    <constraint firstItem="Gf9-nl-iZ3" firstAttribute="leading" secondItem="OUD-ZQ-Reb" secondAttribute="trailing" multiplier="1/30" id="YRA-0O-SkQ"/>
+                                                    <constraint firstItem="Gf9-nl-iZ3" firstAttribute="leading" secondItem="OUD-ZQ-Reb" secondAttribute="trailing" multiplier="1/20" id="YRA-0O-SkQ"/>
                                                     <constraint firstAttribute="height" constant="167" id="eU7-hc-Uls"/>
                                                     <constraint firstItem="Gf9-nl-iZ3" firstAttribute="top" secondItem="OUD-ZQ-Reb" secondAttribute="top" constant="12" id="etf-j0-noc"/>
                                                     <constraint firstItem="6Ei-s0-mGd" firstAttribute="top" secondItem="OUD-ZQ-Reb" secondAttribute="top" constant="5" id="j6i-u3-778"/>
@@ -142,7 +142,7 @@
                                                 <rect key="frame" x="0.0" y="206" width="491" height="126"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1rj-Xk-eRF">
-                                                        <rect key="frame" x="16" y="12" width="14" height="11"/>
+                                                        <rect key="frame" x="25" y="12" width="14" height="11"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="11" id="8Og-SP-gT3"/>
                                                             <constraint firstAttribute="width" constant="14" id="t7G-jI-jbt"/>
@@ -159,7 +159,7 @@
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goa-vB-gSk">
-                                                        <rect key="frame" x="36" y="5" width="200" height="25"/>
+                                                        <rect key="frame" x="45" y="5" width="200" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="l3G-0y-khQ"/>
                                                             <constraint firstAttribute="width" constant="200" id="wpw-xG-4ZI"/>
@@ -176,7 +176,7 @@
                                                     <constraint firstItem="goa-vB-gSk" firstAttribute="top" secondItem="60p-yd-arS" secondAttribute="top" constant="5" id="bVg-2W-l7b"/>
                                                     <constraint firstItem="1rj-Xk-eRF" firstAttribute="top" secondItem="60p-yd-arS" secondAttribute="top" constant="12" id="hcT-Z8-kgd"/>
                                                     <constraint firstAttribute="trailing" secondItem="fkK-sw-m37" secondAttribute="trailing" constant="5" id="kxm-H6-Xvu"/>
-                                                    <constraint firstItem="1rj-Xk-eRF" firstAttribute="leading" secondItem="60p-yd-arS" secondAttribute="trailing" multiplier="1/30" id="vf8-Uj-7yw"/>
+                                                    <constraint firstItem="1rj-Xk-eRF" firstAttribute="leading" secondItem="60p-yd-arS" secondAttribute="trailing" multiplier="1/20" id="vf8-Uj-7yw"/>
                                                     <constraint firstItem="fkK-sw-m37" firstAttribute="top" secondItem="60p-yd-arS" secondAttribute="top" constant="5" id="y6E-gV-pia"/>
                                                 </constraints>
                                             </view>

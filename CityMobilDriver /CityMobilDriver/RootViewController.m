@@ -705,7 +705,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             [self.tableViewIpad reloadData];
         }
        if (timerCreated ==NO) {
-            requestTimer= [NSTimer scheduledTimerWithTimeInterval:10
+            requestTimer= [NSTimer scheduledTimerWithTimeInterval:30
                                                        target:self
                                                      selector:@selector(requestGetOrders)
                                                      userInfo:nil
