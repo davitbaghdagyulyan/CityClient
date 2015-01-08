@@ -49,7 +49,15 @@ GetPaymentsResponse * getPaymentsResponseObject;
     
   [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     [GPSConection showGPSConection:self];
-    
+    if ([SingleDataProvider sharedKey].isGPSEnabled)
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+    }
     //Settings Buttons
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
@@ -338,7 +346,7 @@ GetPaymentsResponse * getPaymentsResponseObject;
          CGFloat xx;
          if(leftMenu.flag==0)
          {
-             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+             xx=320*(CGFloat)5/6*(-1);
          }
          else
          {

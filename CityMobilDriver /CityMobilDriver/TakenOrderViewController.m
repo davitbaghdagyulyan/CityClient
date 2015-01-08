@@ -68,6 +68,16 @@
 {
      [GPSConection showGPSConection:self];
      [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
+    if ([SingleDataProvider sharedKey].isGPSEnabled)
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+    }
+    
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
  
@@ -80,7 +90,7 @@
 {
     getOrderJsonObject=[[GetOrderJson alloc]init];
     getOrderJsonObject.idhash=idhash;
-    getOrderJsonObject.versions=[[Versions alloc]init];
+ 
     cellUnderView=underView;
     
     count=0;
@@ -967,7 +977,7 @@
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
@@ -1089,7 +1099,7 @@
          
          if(leftMenu.flag==0)
          {
-             xx=self.view.frame.size.width*(CGFloat)5/6*(-1);
+             xx=320*(CGFloat)5/6*(-1);
          }
          else
          {
