@@ -254,6 +254,8 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   
+    
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -268,7 +270,7 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
  
-
+   
 }
 
 -(void)viewDidLayoutSubviews
