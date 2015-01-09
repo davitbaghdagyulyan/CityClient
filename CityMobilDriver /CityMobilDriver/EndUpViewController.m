@@ -577,7 +577,7 @@
     else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Операция невозможна"
                                                                        message:
-                                    [NSString stringWithFormat:@"Лимит превышен\nна: %ld\nСтоимость поездки: %@\nПолучено:%@\nБонус клиенту: %@\nКомиссия с заказа: %@\nМин. необходимый остаток: %@\nТекущий баланс:%@", [billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue]),
+                                    [NSString stringWithFormat:@"Лимит превышен\nна: %ld\nСтоимость поездки: %@\nПолучено:%@\nБонус клиенту: %@\nКомиссия с заказа: %@\nМин. необходимый остаток: %@\nТекущий баланс:%@",(long) ([billResponse.creditlimit integerValue] - ([billResponse.balance integerValue] - [billDifference.text integerValue] - [billResponse.commision integerValue])),
                                      self.bill,billTextField.text,billDifference.text,billResponse.commision,billResponse.creditlimit,billResponse.balance]
                                     
                                                                 preferredStyle:UIAlertControllerStyleAlert];

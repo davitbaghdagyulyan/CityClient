@@ -8803,7 +8803,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
                                 <rect key="frame" x="10" y="295" width="580" height="23"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -8942,7 +8942,7 @@
                             <constraint firstAttribute="trailing" secondItem="Ilj-Rg-5Ij" secondAttribute="trailing" id="gnn-Uf-42V"/>
                             <constraint firstItem="WSL-6r-bUS" firstAttribute="leading" secondItem="Wbz-k4-Xrz" secondAttribute="leading" constant="10" id="inI-aD-jXU"/>
                             <constraint firstItem="wSh-cm-OLC" firstAttribute="top" secondItem="Ilj-Rg-5Ij" secondAttribute="bottom" constant="2" id="lbc-N4-O2U"/>
-                            <constraint firstAttribute="centerY" secondItem="WSL-6r-bUS" secondAttribute="centerY" constant="-5.5" id="m1C-LL-fc4"/>
+                            <constraint firstAttribute="centerY" secondItem="WSL-6r-bUS" secondAttribute="centerY" constant="-6.5" id="m1C-LL-fc4"/>
                             <constraint firstItem="wSh-cm-OLC" firstAttribute="leading" secondItem="Wbz-k4-Xrz" secondAttribute="leading" id="s84-zj-YBP"/>
                         </constraints>
                         <variation key="default">

@@ -390,7 +390,7 @@
         }
         else{
             [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
-            cell.textLabel.text = [NSString stringWithFormat:@"%li",indexPath.row + 1];
+            cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)(indexPath.row + 1)];
         }
     }
     
@@ -403,7 +403,7 @@
         }
         else{
             [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];//???
-            cell.textLabel.text = [NSString stringWithFormat:@"%li",(indexPath.row + 1) * 5];
+            cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)(indexPath.row + 1) * 5];
         }
     }
     
