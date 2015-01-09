@@ -212,9 +212,9 @@
             
             for (int i = 0; i < getCardsResponseObject.cards.count; ++i) {
                 CardView* cardView = [[NSBundle mainBundle] loadNibNamed:@"CardView" owner:self options:nil][0];
-                cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
+                cardView.frame = CGRectMake(0, i*(264 + 8), CGRectGetWidth(scrollView.frame), 264);
                 if (i == 0) {
-                    cardView.frame = CGRectMake(0, i*264, CGRectGetWidth(scrollView.frame), 264);
+                    cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
                 }
 
                 cardView.pan.text = [getCardsResponseObject.cards[i] pan];
@@ -367,7 +367,13 @@
 
          for (int i = 0; i < cardsArray.count; ++i) {
              CardView* cardView = (CardView*)cardsArray[i];
-             cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
+//             cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
+//             
+//             
+             cardView.frame = CGRectMake(0, i*(264 + 8), CGRectGetWidth(scrollView.frame), 264);
+             if (i == 0) {
+                 cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
+             }
              
              CAGradientLayer* gradientLayer = gradientArray[i];
              
