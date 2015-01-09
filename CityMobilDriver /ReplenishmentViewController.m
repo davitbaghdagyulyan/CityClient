@@ -158,11 +158,28 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+   
+    
     if ([webView isEqual:view1.webView])
     {
-        if (![webView.request.URL isEqual:[NSURL URLWithString:@"about:blank"]])
+//        if (![webView.request.URL isEqual:[NSURL URLWithString:@"about:blank"]])
+//        {
+//            
+//        }
+        
+        NSString *string = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+        BOOL isEmpty = string==nil || [string length]==0;
+        if(isEmpty)
         {
-            loadcount=1;
+            
+            isPressedCloseButton=YES;
+            [view1.customView bringSubviewToFront:view1.addCardButton];
+            [self requestGetCards];
+            
+        }
+        else
+        {
+          loadcount=1;
         }
     }
     else
@@ -175,21 +192,7 @@
     
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    
-    
-    if([request.URL isEqual:[NSURL URLWithString:@"http://city-mobil.ru/rbs/card_closed.html"]])
-    {
-        
-        isPressedCloseButton=YES;
-        [view1.customView bringSubviewToFront:view1.addCardButton];
-        [self requestGetCards];
-        
-    }
-    return YES;
-    
-}
+
 
 -(void)requestBindCard
 {
@@ -343,8 +346,12 @@
           
           view1.webView.delegate=self;
           
+          static int i=1;
+          if (i)
+          {
           [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-
+          }
+          i=0;
       }
       else
         {
