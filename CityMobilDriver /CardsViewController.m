@@ -17,6 +17,7 @@
 #import "CardView.h"
 
 #import "UnbindCardRequest.h"
+#import "UnbidCardResponse.h"
 
 @interface CardsViewController ()
 {
@@ -25,15 +26,19 @@
     GetCardsResponse* getCardsResponseObject;
     BindCardResponse*bindCardResponseObject;
     
-    UIWebView* webView;
+    
     
     LeftMenu* leftMenu;
     
     UIScrollView* scrollView;
-    CAGradientLayer* gradientLayer;
+//    CAGradientLayer* gradientLayer;
     
     NSMutableArray* cardsArray;
+    NSMutableArray* gradientArray;
+    
+    
 }
+@property(nonatomic,strong) UIWebView* webView;
 @end
 
 @implementation CardsViewController
@@ -42,7 +47,7 @@
     [super viewDidLoad];
     self.hasCards.hidden = YES;
     cardsArray = [[NSMutableArray alloc]init];
-    
+    gradientArray = [[NSMutableArray alloc]init];
 }
 
 
@@ -69,6 +74,16 @@
     [self requestGetCards];
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    for (CardView* cardView in cardsArray) {
+        [cardView removeFromSuperview];
+    }
+    [self.webView removeFromSuperview];
+    cardsArray = nil;
+    gradientArray = nil;
+}
 
 
 
@@ -120,17 +135,14 @@
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"getCardsJsonString:%@",jsonString);
         NSError*err;
-        getCardsResponseObject = [[GetCardsResponse alloc] initWithString:jsonString error:&err];
+        UnbidCardResponse* unbidCardResponse = [[UnbidCardResponse alloc] initWithString:jsonString error:&err];
         
         BadRequest* badRequest = [[BadRequest alloc]init];
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:getCardsResponseObject.text code:getCardsResponseObject.code];
         
-        
-        
         [indicator stopAnimating];
-        
-        
+        [self requestGetCards];
         
     }];
     
@@ -193,7 +205,7 @@
         if (getCardsResponseObject.cards.count != 0) {
             self.hasCards.hidden = YES;
             
-            
+            [scrollView removeFromSuperview];
             scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame) , CGRectGetWidth(self.view.frame) - 16, CGRectGetHeight(self.view.frame) - 155)];//64 - 29 - 16 - 30 - 16
             scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame) - 16, getCardsResponseObject.cards.count * (264 + 8));
             [self.view addSubview:scrollView];
@@ -201,6 +213,10 @@
             for (int i = 0; i < getCardsResponseObject.cards.count; ++i) {
                 CardView* cardView = [[NSBundle mainBundle] loadNibNamed:@"CardView" owner:self options:nil][0];
                 cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
+                if (i == 0) {
+                    cardView.frame = CGRectMake(0, i*264, CGRectGetWidth(scrollView.frame), 264);
+                }
+
                 cardView.pan.text = [getCardsResponseObject.cards[i] pan];
                 
                 NSString* string = [getCardsResponseObject.cards[i] cardholder];
@@ -214,12 +230,12 @@
                 NSUInteger location = aString.length;
                 [aString insertString:@" / " atIndex:location - 2];
                 cardView.expiration.text = aString;
-                //- (void)insertString:(NSString *)aString atIndex:(NSUInteger)loc;
                 
-                gradientLayer = [self greyGradient:cardView.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(scrollView.frame), 264)];
+                CAGradientLayer* gradientLayer = [self greyGradient:cardView.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(scrollView.frame), 264)];
                 [cardView.backgroundView.layer insertSublayer:gradientLayer atIndex:0];
                 
                 [cardsArray addObject:cardView];
+                [gradientArray addObject:gradientLayer];
                 
                 [scrollView addSubview:cardView];
                 
@@ -228,14 +244,9 @@
         }
         else
         {
+            [scrollView removeFromSuperview];
             self.hasCards.hidden = NO;
         }
-        
-        
-        
-        
-        
-        
         [indicator stopAnimating];
         
         
@@ -299,17 +310,18 @@
         [badRequest showErrorAlertMessage:bindCardResponseObject.text code:bindCardResponseObject.code];
         
         
-        webView = [[UIWebView alloc]initWithFrame:
-                   CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame) + 8,
+        self.webView = [[UIWebView alloc]initWithFrame:
+                   CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame),
                               CGRectGetWidth(self.view.frame) - 16,
                               CGRectGetHeight(self.view.frame)
-                              - 64 - CGRectGetHeight(self.segmentControll.frame) - 3*8)];
+                              - 64 - CGRectGetHeight(self.segmentControll.frame) - 2*8)];
+        self.webView.delegate = self;
         
-        webView.backgroundColor = [UIColor whiteColor];
+        self.webView.backgroundColor = [UIColor whiteColor];
         
-        [webView loadHTMLString:@"" baseURL:nil];
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:bindCardResponseObject.link]]];
-        [self.view addSubview:webView];
+        [self.webView loadHTMLString:@"" baseURL:nil];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:bindCardResponseObject.link]]];
+        [self.view addSubview:self.webView];
         
         
         [indicator stopAnimating];
@@ -323,8 +335,7 @@
 }
 
 - (IBAction)deleteCard:(UIButton *)sender {
-    NSString* id_card = [NSString stringWithFormat:@"%ld",(sender.tag - 100)];
-    [self requestUnbindCardWithID:id_card];
+    [self requestUnbindCardWithID:[getCardsResponseObject.cards[(sender.tag - 100)] getMyCardId]];
 }
 
 
@@ -358,11 +369,13 @@
              CardView* cardView = (CardView*)cardsArray[i];
              cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
              
+             CAGradientLayer* gradientLayer = gradientArray[i];
+             
              gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(scrollView.frame), 264);
          }
          
          
-         webView.frame = CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame) + 8,
+         self.webView.frame = CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame) + 8,
                                CGRectGetWidth(self.view.frame) - 16,
                                CGRectGetHeight(self.view.frame)
                                - 64 - CGRectGetHeight(self.segmentControll.frame) - 3*8);
@@ -446,21 +459,26 @@
          if (leftMenu.flag==0)
          {
              leftMenu.flag=1;
-//             self.scrollView.userInteractionEnabled = NO;
+             scrollView.userInteractionEnabled = NO;
              self.segmentControll.userInteractionEnabled = NO;
-             webView.userInteractionEnabled = NO;
-//             self.scrollView.tag=1;
+             self.webView.userInteractionEnabled = NO;
+              self.segmentControll.tag=1;
+              self.webView.tag=1;
+              scrollView.tag=1;
+             
              self.segmentControll.tag=2;
              [leftMenu.disabledViewsArray removeAllObjects];
              
-//             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.scrollView.tag]];
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:scrollView.tag]];
              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.segmentControll.tag]];
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.webView.tag]];
          }
          else
          {
              leftMenu.flag=0;
              self.segmentControll.userInteractionEnabled = YES;
-             webView.userInteractionEnabled = YES;
+             self.webView.userInteractionEnabled = YES;
+             scrollView.userInteractionEnabled=YES;
          }
          
      }
@@ -486,14 +504,16 @@
          {
              leftMenu.flag=0;
              self.segmentControll.userInteractionEnabled = YES;
-             webView.userInteractionEnabled = YES;
+             self.webView.userInteractionEnabled = YES;
+             scrollView.userInteractionEnabled=YES;
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
          else if (touchLocation.x>leftMenu.frame.size.width/2)
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              self.segmentControll.userInteractionEnabled = NO;
-             webView.userInteractionEnabled = NO;
+             self.webView.userInteractionEnabled = NO;
+             scrollView.userInteractionEnabled=NO;
              leftMenu.flag=1;
          }
          point.y=leftMenu.center.y;
@@ -519,7 +539,8 @@
     }
     leftMenu.center=point;
     self.segmentControll.userInteractionEnabled = NO;
-    webView.userInteractionEnabled = NO;
+    self.webView.userInteractionEnabled = NO;
+    scrollView.userInteractionEnabled=NO;
     leftMenu.flag=1;
 }
 
@@ -544,5 +565,18 @@
     }
     [self.navigationController popToRootViewControllerAnimated:NO];
     
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSString *string = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+    BOOL isEmpty = string==nil || [string length]==0;
+    if(isEmpty)
+    {
+        
+       
+        [self.webView removeFromSuperview];
+        [self requestGetCards];
+        
+    }
 }
 @end

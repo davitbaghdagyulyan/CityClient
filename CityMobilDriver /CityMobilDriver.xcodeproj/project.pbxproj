@@ -100,6 +100,7 @@
 		EC0798EE1A2379C90085E3F0 /* set3_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798ED1A2379C90085E3F0 /* set3_orange.png */; };
 		EC114E731A5FF79600C4D45F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = EC114E721A5FF79600C4D45F /* delete.png */; };
 		EC114E771A5FF90C00C4D45F /* UnbindCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */; };
+		EC114E7A1A60170600C4D45F /* UnbidCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E791A60170600C4D45F /* UnbidCardResponse.m */; };
 		EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */; };
 		EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6A19EBC22F007C77A2 /* SettingsViewController.m */; };
 		EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E4A6C19EC1C13007C77A2 /* pages_background.png */; };
@@ -502,6 +503,8 @@
 		EC114E721A5FF79600C4D45F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		EC114E751A5FF90C00C4D45F /* UnbindCardRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnbindCardRequest.h; sourceTree = "<group>"; };
 		EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbindCardRequest.m; sourceTree = "<group>"; };
+		EC114E781A60170600C4D45F /* UnbidCardResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnbidCardResponse.h; sourceTree = "<group>"; };
+		EC114E791A60170600C4D45F /* UnbidCardResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbidCardResponse.m; sourceTree = "<group>"; };
 		EC1E4A6619EBC189007C77A2 /* UserInformationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationProvider.h; sourceTree = "<group>"; };
 		EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationProvider.m; sourceTree = "<group>"; };
 		EC1E4A6919EBC22F007C77A2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -1190,6 +1193,8 @@
 			children = (
 				EC114E751A5FF90C00C4D45F /* UnbindCardRequest.h */,
 				EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */,
+				EC114E781A60170600C4D45F /* UnbidCardResponse.h */,
+				EC114E791A60170600C4D45F /* UnbidCardResponse.m */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -2619,6 +2624,7 @@
 				ECAD78BB1A306048005C2468 /* AddGPSJson.m in Sources */,
 				8F9933151A2CB5670040C97E /* BuyDeliveryAddressJson.m in Sources */,
 				EC0798EA1A2348DC0085E3F0 /* CityMobilIcon.m in Sources */,
+				EC114E7A1A60170600C4D45F /* UnbidCardResponse.m in Sources */,
 				8FC222821A36E9500003CAAF /* GetPaymentsResponse.m in Sources */,
 				ECEA963E19F54917001A6305 /* CustomView.m in Sources */,
 				ECB52E451A077A770091293F /* OtherClass.m in Sources */,
