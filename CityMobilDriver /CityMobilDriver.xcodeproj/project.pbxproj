@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84E6EDCC19E857D100EFFC54 /* LeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6EDCB19E857D100EFFC54 /* LeftMenu.m */; };
+		8F25E4DF1A5ED80700198065 /* OrdersLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F25E4DE1A5ED80700198065 /* OrdersLabel.m */; };
 		8F52FB5319E7DC1000585B40 /* metroAndroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F52FB5219E7DC1000585B40 /* metroAndroid.png */; };
 		8F8D322619E3BC4E003232F7 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */; };
 		8F8D322819E3BC67003232F7 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */; };
@@ -371,6 +372,8 @@
 /* Begin PBXFileReference section */
 		84E6EDCA19E857D100EFFC54 /* LeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftMenu.h; path = ../LeftMenu.h; sourceTree = "<group>"; };
 		84E6EDCB19E857D100EFFC54 /* LeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftMenu.m; path = ../LeftMenu.m; sourceTree = "<group>"; };
+		8F25E4DD1A5ED80700198065 /* OrdersLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrdersLabel.h; path = ../OrdersLabel.h; sourceTree = "<group>"; };
+		8F25E4DE1A5ED80700198065 /* OrdersLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrdersLabel.m; path = ../OrdersLabel.m; sourceTree = "<group>"; };
 		8F52FB5219E7DC1000585B40 /* metroAndroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metroAndroid.png; sourceTree = "<group>"; };
 		8F8D322319E3BC23003232F7 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		8F8D322519E3BC41003232F7 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
@@ -2060,6 +2063,8 @@
 				8FC222411A36DEFB0003CAAF /* CustomCellSelectedOrders2.xib */,
 				8FC2223D1A36DEC80003CAAF /* CustomCellSelectORDER.xib */,
 				ECEC89951A2CA1100036781D /* CustomCellSelectORDER.h */,
+				8F25E4DD1A5ED80700198065 /* OrdersLabel.h */,
+				8F25E4DE1A5ED80700198065 /* OrdersLabel.m */,
 				ECEC89961A2CA1100036781D /* rublsi.ttf */,
 				ECEC89971A2CA1100036781D /* CustomCellSelectORDER.m */,
 				ECEC89981A2CA1100036781D /* CustomCellSelectedOrders.h */,
@@ -2566,6 +2571,7 @@
 				ECCC12071A0CACA000AC94EE /* GetZonesResponse.m in Sources */,
 				ECCD34441A036549000444BF /* RequestGetCarInfo.m in Sources */,
 				ECE25C8B19E56BE80044F6AD /* textResponse.m in Sources */,
+				8F25E4DF1A5ED80700198065 /* OrdersLabel.m in Sources */,
 				ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */,
 				ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
