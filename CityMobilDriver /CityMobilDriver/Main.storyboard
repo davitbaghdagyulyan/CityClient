@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -2247,15 +2247,6 @@
                                 <exclude reference="O3r-UU-Kdr"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="fJ5-oA-MDX"/>
-                                <exclude reference="g0M-04-jvN"/>
-                                <exclude reference="AJQ-XQ-PCN"/>
-                                <exclude reference="SHC-gr-wEG"/>
-                                <exclude reference="Tt7-tb-KsG"/>
-                                <exclude reference="OCW-Vr-xh1"/>
-                                <exclude reference="qWY-X6-Q8O"/>
-                                <exclude reference="Bs3-cn-HTo"/>
-                                <exclude reference="b4T-cQ-UF4"/>
                                 <exclude reference="eYt-Ly-OGA"/>
                                 <exclude reference="o0w-37-HsJ"/>
                                 <exclude reference="ucp-gM-GQM"/>
@@ -2269,21 +2260,30 @@
                                 <exclude reference="SOA-RG-qyX"/>
                                 <exclude reference="amT-ig-SH9"/>
                                 <exclude reference="fhS-Gk-kTt"/>
+                                <exclude reference="d66-l7-GI2"/>
+                                <exclude reference="sbP-Rf-pEm"/>
+                                <exclude reference="sg6-sT-blm"/>
                                 <exclude reference="5ej-lr-kwd"/>
+                                <exclude reference="7bu-lP-aMm"/>
+                                <exclude reference="iJQ-mN-F4S"/>
+                                <exclude reference="yjE-VO-h3T"/>
+                                <exclude reference="HOa-ao-bXT"/>
+                                <exclude reference="xhV-Kv-jny"/>
+                                <exclude reference="fJ5-oA-MDX"/>
+                                <exclude reference="g0M-04-jvN"/>
+                                <exclude reference="AJQ-XQ-PCN"/>
+                                <exclude reference="SHC-gr-wEG"/>
+                                <exclude reference="Tt7-tb-KsG"/>
+                                <exclude reference="OCW-Vr-xh1"/>
+                                <exclude reference="qWY-X6-Q8O"/>
+                                <exclude reference="Bs3-cn-HTo"/>
+                                <exclude reference="b4T-cQ-UF4"/>
                                 <exclude reference="8ie-rs-zIQ"/>
                                 <exclude reference="MgQ-3D-OQI"/>
                                 <exclude reference="9P2-7x-XR9"/>
                                 <exclude reference="BP1-Bp-HJG"/>
                                 <exclude reference="DB2-9S-2hL"/>
                                 <exclude reference="XUI-iV-7i9"/>
-                                <exclude reference="HOa-ao-bXT"/>
-                                <exclude reference="xhV-Kv-jny"/>
-                                <exclude reference="d66-l7-GI2"/>
-                                <exclude reference="sbP-Rf-pEm"/>
-                                <exclude reference="sg6-sT-blm"/>
-                                <exclude reference="7bu-lP-aMm"/>
-                                <exclude reference="iJQ-mN-F4S"/>
-                                <exclude reference="yjE-VO-h3T"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -2294,10 +2294,6 @@
                                 <include reference="wV4-VC-vmH"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="fJ5-oA-MDX"/>
-                                <include reference="g0M-04-jvN"/>
-                                <include reference="Bs3-cn-HTo"/>
-                                <include reference="b4T-cQ-UF4"/>
                                 <exclude reference="0EL-eg-9bF"/>
                                 <include reference="9NG-uY-qWo"/>
                                 <include reference="Ma6-Ei-Vwa"/>
@@ -2305,9 +2301,13 @@
                                 <include reference="amT-ig-SH9"/>
                                 <include reference="fhS-Gk-kTt"/>
                                 <include reference="5ej-lr-kwd"/>
+                                <include reference="yjE-VO-h3T"/>
+                                <include reference="fJ5-oA-MDX"/>
+                                <include reference="g0M-04-jvN"/>
+                                <include reference="Bs3-cn-HTo"/>
+                                <include reference="b4T-cQ-UF4"/>
                                 <include reference="8ie-rs-zIQ"/>
                                 <include reference="MgQ-3D-OQI"/>
-                                <include reference="yjE-VO-h3T"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2318,11 +2318,6 @@
                                 <include reference="O3r-UU-Kdr"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="AJQ-XQ-PCN"/>
-                                <include reference="SHC-gr-wEG"/>
-                                <include reference="Tt7-tb-KsG"/>
-                                <include reference="OCW-Vr-xh1"/>
-                                <include reference="qWY-X6-Q8O"/>
                                 <include reference="eYt-Ly-OGA"/>
                                 <include reference="o0w-37-HsJ"/>
                                 <include reference="ucp-gM-GQM"/>
@@ -2331,6 +2326,11 @@
                                 <include reference="kBu-Os-M17"/>
                                 <include reference="pOW-ya-YNh"/>
                                 <include reference="iJQ-mN-F4S"/>
+                                <exclude reference="AJQ-XQ-PCN"/>
+                                <include reference="SHC-gr-wEG"/>
+                                <include reference="Tt7-tb-KsG"/>
+                                <include reference="OCW-Vr-xh1"/>
+                                <include reference="qWY-X6-Q8O"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -2340,16 +2340,16 @@
                                 <include reference="y4L-gN-tuh"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="9P2-7x-XR9"/>
-                                <include reference="BP1-Bp-HJG"/>
-                                <include reference="DB2-9S-2hL"/>
-                                <include reference="XUI-iV-7i9"/>
-                                <include reference="HOa-ao-bXT"/>
-                                <include reference="xhV-Kv-jny"/>
                                 <include reference="d66-l7-GI2"/>
                                 <include reference="sbP-Rf-pEm"/>
                                 <include reference="sg6-sT-blm"/>
                                 <include reference="7bu-lP-aMm"/>
+                                <include reference="HOa-ao-bXT"/>
+                                <include reference="xhV-Kv-jny"/>
+                                <exclude reference="9P2-7x-XR9"/>
+                                <include reference="BP1-Bp-HJG"/>
+                                <include reference="DB2-9S-2hL"/>
+                                <include reference="XUI-iV-7i9"/>
                             </mask>
                         </variation>
                     </view>
@@ -3872,7 +3872,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ir4-Cw-5A2">
                                         <rect key="frame" x="0.0" y="228" width="584" height="239"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Позывной:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2x5-hm-EWz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Позывной:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2x5-hm-EWz">
                                                 <rect key="frame" x="8" y="8" width="87" height="23"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3884,7 +3884,7 @@
                                                     <rect key="frame" x="8" y="8" width="86" height="20"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Баланс:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0Z-3V-SAB">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Баланс:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0Z-3V-SAB">
                                                 <rect key="frame" x="8" y="39" width="62" height="23"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3896,7 +3896,7 @@
                                                     <rect key="frame" x="8" y="36" width="63" height="20"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Лимит:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAV-a9-zOm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лимит:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAV-a9-zOm">
                                                 <rect key="frame" x="8" y="70" width="58" height="23"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3908,7 +3908,7 @@
                                                     <rect key="frame" x="8" y="64" width="56" height="20"/>
                                                 </variation>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sud-9V-UtH">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sud-9V-UtH">
                                                 <rect key="frame" x="8" y="101" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="lzI-gN-OEo"/>
@@ -3928,7 +3928,7 @@
                                                     <action selector="nightModeAction:" destination="40C-gD-0cA" eventType="touchUpInside" id="HhP-uT-AzI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-3J-q3A">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-3J-q3A">
                                                 <rect key="frame" x="560" y="108" width="16" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="niC-qW-7R9"/>
@@ -3949,7 +3949,7 @@
                                                     <action selector="remember:" destination="Poh-dO-P0e" eventType="touchUpInside" id="Gqr-XK-WuN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpC-MB-kcd">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpC-MB-kcd">
                                                 <rect key="frame" x="8" y="139" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="06q-aM-oAq"/>
@@ -3975,7 +3975,7 @@
                                                     <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="7La-sh-Wn1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Zb-3rM">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Zb-3rM">
                                                 <rect key="frame" x="565" y="145" width="11" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="1Aw-wx-4nz"/>
@@ -4002,7 +4002,7 @@
                                                     <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="Jg4-vg-bwH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-kz-TbG">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-kz-TbG">
                                                 <rect key="frame" x="8" y="177" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="77Q-ul-ZTi"/>
@@ -4028,7 +4028,7 @@
                                                     <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="3iP-K8-Ln2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-gB-u27">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-gB-u27">
                                                 <rect key="frame" x="565" y="183" width="11" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="bVZ-2Q-M8v"/>
@@ -4055,7 +4055,7 @@
                                                     <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="r5h-Pj-sx0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulw-Ml-TX4">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulw-Ml-TX4">
                                                 <rect key="frame" x="8" y="215" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="89k-k4-M4F"/>
@@ -4081,7 +4081,7 @@
                                                     <action selector="selectLanguage:" destination="40C-gD-0cA" eventType="touchUpInside" id="E5c-cE-AYb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-8A-wuG">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9q-8A-wuG">
                                                 <rect key="frame" x="565" y="220" width="11" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="Fv6-N5-jSE"/>
@@ -7904,7 +7904,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3W-dB-Tb5">
                                         <rect key="frame" x="0.0" y="0.0" width="584" height="313"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Модель" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMI-u4-zh0" customClass="ScaleStringLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Модель" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMI-u4-zh0" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="48" width="48" height="18"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -7916,7 +7916,7 @@
                                                     <rect key="frame" x="8" y="70" width="48" height="16"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Гос.номер" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-fe-xNB" customClass="ScaleStringLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Гос.номер" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-fe-xNB" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="159" width="63" height="18"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -7931,7 +7931,7 @@
                                                     <rect key="frame" x="8" y="239" width="64" height="16"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Год производства" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-0J-JhI" customClass="ScaleStringLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Год производства" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-0J-JhI" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="85" width="268" height="18"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -8063,7 +8063,7 @@
                                                     <rect key="frame" x="384" y="284" width="115" height="43"/>
                                                 </variation>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Лицензия -" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrX-x0-3PX" customClass="ScaleStringLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лицензия -" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrX-x0-3PX" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="239" width="67" height="18"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -8072,7 +8072,7 @@
                                                     <rect key="frame" x="8" y="241" width="68" height="16"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vin-код" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-G4-qkk" customClass="ScaleStringLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vin-код" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0s7-G4-qkk" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="200" width="45" height="18"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -8087,7 +8087,7 @@
                                                     <rect key="frame" x="8" y="246" width="45" height="18"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Цвет" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYo-LH-mJh" customClass="ScaleStringLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цвет" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYo-LH-mJh" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="123" width="31" height="18"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -8096,7 +8096,7 @@
                                                     <rect key="frame" x="8" y="125" width="30" height="16"/>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Марка" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpe-L2-vVb" customClass="ScaleStringLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Марка" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpe-L2-vVb" customClass="ScaleStringLabel">
                                                 <rect key="frame" x="8" y="13" width="40" height="18"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -8803,7 +8803,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
                                 <rect key="frame" x="10" y="295" width="580" height="23"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -8942,7 +8942,7 @@
                             <constraint firstAttribute="trailing" secondItem="Ilj-Rg-5Ij" secondAttribute="trailing" id="gnn-Uf-42V"/>
                             <constraint firstItem="WSL-6r-bUS" firstAttribute="leading" secondItem="Wbz-k4-Xrz" secondAttribute="leading" constant="10" id="inI-aD-jXU"/>
                             <constraint firstItem="wSh-cm-OLC" firstAttribute="top" secondItem="Ilj-Rg-5Ij" secondAttribute="bottom" constant="2" id="lbc-N4-O2U"/>
-                            <constraint firstAttribute="centerY" secondItem="WSL-6r-bUS" secondAttribute="centerY" constant="-5.5" id="m1C-LL-fc4"/>
+                            <constraint firstAttribute="centerY" secondItem="WSL-6r-bUS" secondAttribute="centerY" constant="-6.5" id="m1C-LL-fc4"/>
                             <constraint firstItem="wSh-cm-OLC" firstAttribute="leading" secondItem="Wbz-k4-Xrz" secondAttribute="leading" id="s84-zj-YBP"/>
                         </constraints>
                         <variation key="default">
@@ -9559,6 +9559,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pdf-nK-2Pg"/>
+        <segue reference="xJE-Oo-4Jf"/>
     </inferredMetricsTieBreakers>
 </document>

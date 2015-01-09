@@ -42,19 +42,19 @@
         NSString * secondsString;
         if(minutes<10)
         {
-            minutesString=[NSString stringWithFormat:@"0%ld",minutes];
+            minutesString=[NSString stringWithFormat:@"0%ld",(long)minutes];
         }
         else
         {
-            minutesString=[NSString stringWithFormat:@"%ld",minutes];
+            minutesString=[NSString stringWithFormat:@"%ld",(long)minutes];
         }
         if (seconds<10)
         {
-            secondsString =[NSString stringWithFormat:@"0%ld",seconds];
+            secondsString =[NSString stringWithFormat:@"0%ld",(long)seconds];
         }
         else
         {
-            secondsString =[NSString stringWithFormat:@"%ld",seconds];
+            secondsString =[NSString stringWithFormat:@"%ld",(long)seconds];
         }
         stringForUrgent=[NSMutableString stringWithFormat:@"%@:%@",minutesString,secondsString];
         self.labelShortName.text=[NSString stringWithFormat:@"%@ %@ %@",self.stringForSrochno,stringForUrgent,self.shortName];

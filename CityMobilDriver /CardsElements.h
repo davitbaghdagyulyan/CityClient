@@ -11,7 +11,7 @@
 
 @interface CardsElements : JSONModel
 
-@property(strong,nonatomic)NSString*id;
+@property(strong,nonatomic,getter=getMyCardId)NSString*id;
 @property(strong,nonatomic)NSString*pan;
 @property(strong,nonatomic)NSString*cardholder;
 @property(strong,nonatomic)NSString*expiration;
