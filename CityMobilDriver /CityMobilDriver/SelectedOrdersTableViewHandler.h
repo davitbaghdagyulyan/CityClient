@@ -26,6 +26,7 @@
     NSString *  deliveryAddrTypeMenu;
     NSString * deviceType;
     NSString * deviceStringIphone;
+    NSString * deviceStringIphoneSimulator;
     NSString * shortName;
     NSInteger percent;
     NSString * NoSmoking;

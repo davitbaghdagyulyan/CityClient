@@ -21,7 +21,7 @@
     if (self)
     {
         count=1;
-        diviceType=@"iPhone Simulator";
+        //diviceType=@"iPhone Simulator";
         //diviceType=@"iPhone";
     }
     return self;
@@ -41,7 +41,8 @@
     {
         selectedRow=-1;
         deviceType= [UIDevice currentDevice].model;
-        deviceStringIphone=@"iPhone Simulator";
+        deviceStringIphone=@"iPhone";
+        deviceStringIphoneSimulator=@"iPhone Simulator";
         if (numberOfClass==0)
         {
             if ([SingleDataProvider sharedKey].arrayOfIndexes1.count==0) {
@@ -139,7 +140,7 @@
             cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
             [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
             NSLayoutConstraint * view11Height;
-            if ([deviceType isEqualToString:deviceStringIphone])
+            if ([deviceType isEqualToString:deviceStringIphone] || [deviceType isEqualToString:deviceStringIphoneSimulator])
             {
             view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
             }
@@ -550,7 +551,7 @@
         cell.View1.translatesAutoresizingMaskIntoConstraints = NO;
         [cell.whiteView removeConstraint:[cell.whiteView.constraints objectAtIndex:3]];
         NSLayoutConstraint *view11Height;
-        if ([deviceType isEqualToString:deviceStringIphone])
+        if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
         {
             view11Height =[NSLayoutConstraint constraintWithItem:cell.View1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:cell.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22];
         }
@@ -1622,7 +1623,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
             UIColor * gradColStart =[UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1.f];
             UIColor * gradColFin =[UIColor colorWithRed:232/255.0f green:232/255.0f blue:232/255.0f alpha:1.f];
-            if ([deviceType isEqualToString:deviceStringIphone])
+            if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
             {
                 gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(51-3));
             }
@@ -1638,7 +1639,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             CAGradientLayer* gradLayerForCell =[CAGradientLayer layer];
             UIColor * gradColStart =[UIColor colorWithRed:211/255.0f green:211/255.0f blue:211/255.0f alpha:1.f];
             UIColor * gradColFin =[UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1.f];
-           if ([deviceType isEqualToString:deviceStringIphone])
+           if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
             {
                 gradLayerForCell.frame =CGRectMake(0,0,cell.bounds.size.width,(71-3));
             }
@@ -1855,7 +1856,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         }
         
         //DEFINING HEIGHT FOR CELL
-        if ([deviceType isEqualToString:deviceStringIphone])
+        if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
         {
         height = 2+1+22+height1+height2+1+4+45+4;
         }
@@ -1886,7 +1887,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if([deliveryAddrTypeMenu integerValue] ==0)
         {
-            if ([deviceType isEqualToString:deviceStringIphone])
+            if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
             {
                 return 51;
             }
@@ -1898,7 +1899,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         }
         else
         {
-            if ([deviceType isEqualToString:deviceStringIphone])
+            if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
             {
             return  71;
             }
@@ -1926,7 +1927,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView1ConstraintHeight;
     NSLayoutConstraint *imgView1X;
     NSLayoutConstraint *imgView1Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView1X = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -50];
@@ -1984,7 +1985,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView2ConstraintHeight;
     NSLayoutConstraint *imgView2X;
     NSLayoutConstraint *imgView2Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView2X = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView1 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
@@ -2046,7 +2047,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView3ConstraintHeight;
     NSLayoutConstraint *imgView3X;
     NSLayoutConstraint *imgView3Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView3X = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView2 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
@@ -2091,7 +2092,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView4ConstraintHeight;
     NSLayoutConstraint *imgView4X;
     NSLayoutConstraint *imgView4Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView4X = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView3 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
@@ -2136,7 +2137,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView5ConstraintHeight;
     NSLayoutConstraint *imgView5X;
     NSLayoutConstraint *imgView5Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView5X = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView4 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
@@ -2185,7 +2186,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView6ConstraintHeight;
     NSLayoutConstraint *imgView6X;
     NSLayoutConstraint *imgView6Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView6X = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView5 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-30];
         imgView6Y = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
@@ -2226,7 +2227,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView7ConstraintHeight;
     NSLayoutConstraint *imgView7X;
     NSLayoutConstraint *imgView7Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView7X = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView6 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-30];
         imgView7Y = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
@@ -2268,7 +2269,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView8ConstraintHeight;
     NSLayoutConstraint *imgView8X;
     NSLayoutConstraint *imgView8Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView8X = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView7 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
@@ -2312,7 +2313,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLayoutConstraint * imgView9ConstraintHeight;
     NSLayoutConstraint *imgView9X;
     NSLayoutConstraint *imgView9Y;
-    if ([deviceType isEqualToString:deviceStringIphone])
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
     {
         imgView9X = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView8 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
@@ -2356,7 +2357,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     if (arrayOfImages2.count != 0)
     {
-        if ([deviceType isEqualToString:deviceStringIphone])
+        if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
         {
             NSLayoutConstraint *constForX0 = [NSLayoutConstraint constraintWithItem:[arrayOfImages2 objectAtIndex:0] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:label attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:-25];
             [view addConstraint:constForX0];
