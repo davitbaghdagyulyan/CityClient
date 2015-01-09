@@ -16,21 +16,26 @@
 #import "BindCardJson.h"
 #import "BindCardResponse.h"
 #import "OpenMapButtonHandler.h"
-
+#import "CustomView2.h"
+#import "SetDriverPaymentJson.h"
+#import "SetDriverPaymentResponse.h"
 
 @interface ReplenishmentViewController ()
 {
     OpenMapButtonHandler*openMapButtonHandlerObject;
     CustomWebView*view2;
     CustomView*view1;
+    CustomView2*view1_2;
     UIActivityIndicatorView* indicator;
     GetQiwiBillsUrlResponse*getQiwiBillsUrlResponseObject;
     GetCardsResponse*getCardsResponseObject;
     BindCardResponse*bindCardResponseObject;
     NSInteger loadcount;
+     NSInteger loadcount2;
     LeftMenu*leftMenu;
-  
+    ComboBoxTableView*comboBoxTableView;
     BOOL isPressedCloseButton;
+    NSUInteger indexOfCard;
 
 }
 @end
@@ -55,6 +60,7 @@
     isPressedCloseButton=NO;
     [super viewDidAppear:animated];
     loadcount=0;
+    loadcount2=0;
    
     if (!loadcount)
     {
@@ -65,6 +71,7 @@
         
         [self.view addSubview:view1];
     }
+    
 
 
     leftMenu=[LeftMenu getLeftMenu:self];
@@ -117,7 +124,7 @@
             
             [view1 removeFromSuperview];
             
-            if (!loadcount)
+            if (!loadcount2)
             {
                 
                 CGPoint point;
@@ -126,12 +133,12 @@
                 
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomWebView" owner:self options:nil];
                 view2 = [nib objectAtIndex:0];
-               
+               view2.customWebView.delegate=self;
                 view2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
                 [self.view addSubview:view2];
                 
                 [self requestGetQiwiBillsUrl];
-                view2.customWebView.delegate=self;
+                
             }
             else
             {
@@ -140,7 +147,7 @@
                 [self.view bringSubviewToFront:leftMenu];
             }
             
-            loadcount=1;
+         
         }
             break;
         default:
@@ -151,26 +158,41 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [indicator stopAnimating];
+   
+    
+    if ([webView isEqual:view1.webView])
+    {
+//        if (![webView.request.URL isEqual:[NSURL URLWithString:@"about:blank"]])
+//        {
+//            
+//        }
+        
+        NSString *string = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+        BOOL isEmpty = string==nil || [string length]==0;
+        if(isEmpty)
+        {
+            
+            isPressedCloseButton=YES;
+            [view1.customView bringSubviewToFront:view1.addCardButton];
+            [self requestGetCards];
+            
+        }
+        else
+        {
+          loadcount=1;
+        }
+    }
+    else
+    {
+        loadcount2=1;
+    }
+   
+        [indicator stopAnimating];
     
     
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    
-    
-    if([request.URL isEqual:[NSURL URLWithString:@"http://city-mobil.ru/rbs/card_closed.html"]])
-    {
-        
-        isPressedCloseButton=YES;
-        [view1.customView bringSubviewToFront:view1.addCardButton];
-        
-        
-    }
-    return YES;
-    
-}
+
 
 -(void)requestBindCard
 {
@@ -245,7 +267,7 @@
         
         [view1.customView bringSubviewToFront:view1.webView];
         [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:bindCardResponseObject.link]]];
-
+       
     }];
     
 }
@@ -297,49 +319,210 @@
         NSError*err;
         getCardsResponseObject = [[GetCardsResponse alloc] initWithString:jsonString error:&err];
 
-        BadRequest* badRequest = [[BadRequest alloc]init];
-        badRequest.delegate = self;
-        [badRequest showErrorAlertMessage:getCardsResponseObject.text code:getCardsResponseObject.code];
+/*********************************Karen Change*********************************************************************/
+//*
+      
+       BadRequest* badRequest = [[BadRequest alloc]init];
+       badRequest.delegate = self;
+      [badRequest showErrorAlertMessage:getCardsResponseObject.text code:getCardsResponseObject.code];
+
+//*
+/*********************************End Karen Change**********************************************************************/
         
-        
-//        if(getCardsResponseObject.code!=nil)
-//        {
-//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getCardsResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                          handler:^(UIAlertAction * action)
-//                                    {
-//                                        [alert dismissViewControllerAnimated:YES completion:nil];
-//                                        
-//                                    }];
-//            [alert addAction:cancel];
-//            [self presentViewController:alert animated:YES completion:nil];
-//
-//            [indicator stopAnimating];
-//        }
+      if(getCardsResponseObject.cards.count==0)
+      {
+          [view1 removeFromSuperview];
+          NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:self options:nil];
+          view1 = [nib objectAtIndex:0];
+          view1.delegate=self;
+          
+          view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+          
+          [self.view addSubview:view1];
+          view1.checkCardLabel.text=@"нет привязанных карт";
+          
+          
+          [view1.customView bringSubviewToFront:view1.addCardButton];
+          
+          view1.webView.delegate=self;
+          
+          static int i=1;
+          if (i)
+          {
+          [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+          }
+          i=0;
+      }
+      else
+        {
+            [view1 removeFromSuperview];
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView2" owner:self options:nil];
+            view1_2 = [nib objectAtIndex:0];
+            view1_2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+            [self.view addSubview:view1_2];
+            view1_2.chooseCardLabel.text=[[getCardsResponseObject.cards objectAtIndex:0] pan];
+            UITapGestureRecognizer* tapGasture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showComboBox)];
+            [view1_2.cardsView addGestureRecognizer:tapGasture1];
+            
+            UITapGestureRecognizer* tapGasture2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(closeKeyboard)];
+            [view1_2 addGestureRecognizer:tapGasture2];
+            
+            view1_2.delegate=self;
+            view1_2.priceTextField.keyboardType=UIKeyboardTypeNumberPad;
+            indexOfCard=0;
+         
+
+        }
 
         [indicator stopAnimating];
         
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:self options:nil];
-        view1 = [nib objectAtIndex:0];
-        view1.delegate=self;
-        
-        view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
-
-       [self.view addSubview:view1];
-         view1.checkCardLabel.text=@"нет привязанных карт";
-        
-        
-        [view1.customView bringSubviewToFront:view1.addCardButton];
-        
-        view1.webView.delegate=self;
-      
-        [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
         
         [self.view bringSubviewToFront:leftMenu];
     }];
     
 }
+
+-(void)closeKeyboard
+{
+    [view1_2.priceTextField resignFirstResponder];
+}
+-(void)showComboBox
+{
+    static int i=1;
+    if (i)
+    {
+        comboBoxTableView=[[ComboBoxTableView alloc] init];
+        comboBoxTableView.myDelegate = self;
+        NSLog(@"%@",getCardsResponseObject.cards);
+        NSLog(@"%@",NSStringFromCGPoint(self.view.center));
+        NSMutableArray* arr = [[NSMutableArray alloc]init];
+        for(int j=0;j<getCardsResponseObject.cards.count;j++)
+        {
+            [arr addObject:[[getCardsResponseObject.cards objectAtIndex:j] pan]];
+        }
+        comboBoxTableView.titles = arr;
+        [comboBoxTableView func];
+        
+    }
+    else
+    {
+        [comboBoxTableView.superview setHidden:NO];
+    }
+    i=0;
+}
+
+#pragma mark - ComboBoxDelegate
+-(void) didSelectWithIndex:(NSUInteger)index andTitle:(NSString*)title
+{
+    [comboBoxTableView.superview setHidden:YES];
+    view1_2.chooseCardLabel.text=title;
+    indexOfCard=index;
+    
+}
+#pragma mark - View1_2Delegate
+
+-(void)setDriverPaymentRequest
+{
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    SetDriverPaymentJson* setDriverPaymentJsonObject=[[SetDriverPaymentJson alloc]init];
+    setDriverPaymentJsonObject.id_card=[[getCardsResponseObject.cards objectAtIndex:indexOfCard]getMyCardId];
+    setDriverPaymentJsonObject.sum=view1_2.priceTextField.text;
+    
+    NSDictionary*jsonDictionary=[setDriverPaymentJsonObject toDictionary];
+    NSString*jsons=[setDriverPaymentJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSError* error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 30;
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+            
+            [indicator stopAnimating];
+            return ;
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"responseString:%@",jsonString);
+        NSError*err;
+        
+        SetDriverPaymentResponse*setDriverPaymentResponseObject = [[SetDriverPaymentResponse alloc] initWithString:jsonString error:&err];
+        
+        
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:setDriverPaymentResponseObject.text code:setDriverPaymentResponseObject.code];
+        if(setDriverPaymentResponseObject.code==nil)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "" message:setDriverPaymentResponseObject.message preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+       [indicator stopAnimating];
+    }];
+
+}
+
+
+-(void)setDriverPayment
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Подтвердите платеж" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                            {
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                
+                            }];
+    [alert addAction:cancel];
+    
+    
+    UIAlertAction*ok = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
+                                                  handler:^(UIAlertAction * action)
+                            {
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                [self setDriverPaymentRequest];
+                                
+                            }];
+    [alert addAction:ok];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+    }
+
 -(void)requestGetQiwiBillsUrl
 {
     indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -523,6 +706,8 @@
                                     
                                              view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
                                               view2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height-98);
+                                               view1_2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height-98);
+                                     comboBoxTableView.center=self.view.center;
                                      CGFloat x;
                                     
                                          if(leftMenu.flag==0)

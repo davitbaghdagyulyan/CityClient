@@ -115,7 +115,7 @@
     [indicator startAnimating];
     [self.view addSubview:indicator];
     GetMyOrdersJson* getMyOrdersJsonObject=[[GetMyOrdersJson alloc]init];
-    getMyOrdersJsonObject.versions=[[Versions alloc] init];
+    
     
     
     NSDictionary*jsonDictionary=[getMyOrdersJsonObject toDictionary];

@@ -48,6 +48,7 @@
 //              CGFloat w;
               self.disabledViewsArray=[[NSMutableArray alloc] init];
               [self setSeparatorColor:[UIColor whiteColor]];
+              self.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
               self.flag=0;
               k=YES;
               p=YES;

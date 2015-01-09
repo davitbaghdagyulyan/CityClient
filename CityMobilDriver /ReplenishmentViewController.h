@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "LeftMenu.h"
 #import "CustomView.h"
+#import "ComboBoxTableView.h"
+#import "CustomView2.h"
 
-@interface ReplenishmentViewController : UIViewController<UIWebViewDelegate,view1Delegate>
+@interface ReplenishmentViewController : UIViewController<UIWebViewDelegate,view1Delegate,ComboBoxDelegate,view1_2Delegate>
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;

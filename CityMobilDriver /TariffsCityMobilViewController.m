@@ -554,28 +554,24 @@ typedef enum ScrollDirection {
     [super viewWillDisappear:animated];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
     ScrollDirection scrollDirection;
     if (self.lastContentOffset > scrollView.contentOffset.x)
     {
         scrollDirection = ScrollDirectionRight;
-    
-             position-=1;
- 
-       
-       
+        
+        position-=1;
+
     }
     else if (self.lastContentOffset < scrollView.contentOffset.x)
     {
         scrollDirection = ScrollDirectionLeft;
         position+=1;
     }
-  
-    self.lastContentOffset = scrollView.contentOffset.x;
     
-    // do whatever you need to with scrollDirection here.
+    self.lastContentOffset = scrollView.contentOffset.x;
 }
-
 
 @end
