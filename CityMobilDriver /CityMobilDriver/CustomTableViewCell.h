@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CustomLabel.h"
 @interface CustomTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *cellText;
+@property (weak, nonatomic) IBOutlet CustomLabel *cellText;
+//@property (weak, nonatomic) IBOutlet Cust *cellText;
 @property (weak, nonatomic) IBOutlet UIImageView *selectedCell;
 
 @end
