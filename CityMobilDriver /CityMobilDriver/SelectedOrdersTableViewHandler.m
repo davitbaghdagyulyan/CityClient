@@ -12,6 +12,7 @@
 #import "SelectedOrdersDetailsResponse.h"
 #import "SelectedOrdersViewController.h"
 #import "SingleDataProvider.h"
+#import "OrdersLabel.h"
 @implementation SelectedOrdersTableViewHandler
 -(instancetype)init
 {
@@ -1735,7 +1736,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         if(callComment && callComment.length !=0)       {
             if (YES)//!labelCallComment)
             {
-                labelCallComment  = [[UILabel alloc] init];
+                labelCallComment  = [[OrdersLabel alloc] init];
             }
             labelCallComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelCallComment.text =callComment;
@@ -1793,7 +1794,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
             if (YES)//!labelDeliveryComment)
             {
-                labelDeliveryComment  = [[UILabel alloc] init];
+                labelDeliveryComment  = [[OrdersLabel alloc] init];
             }
             labelDeliveryComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelDeliveryComment.text =deliveryComment;
@@ -1822,7 +1823,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
             if (YES)//!labelOurComment)
             {
-                labelOurComment  = [[UILabel alloc] init];
+                labelOurComment  = [[OrdersLabel alloc] init];
             }
             labelOurComment.font =  [UIFont fontWithName:@"Roboto-LightItalic" size:15];
             labelOurComment.text = ourComment;
@@ -1934,7 +1935,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     else
     {
         imgView1X = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
-        imgView1Y = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView1Y = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     [view addConstraint:imgView1X];
     [view addConstraint:imgView1Y];
@@ -1993,7 +1994,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
         imgView2X = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView1 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -100];
-        imgView2Y = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView2Y = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
         
     }
     [view addConstraint:imgView2X];
@@ -2054,7 +2055,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     else
     {
         imgView3X = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView2 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
-        imgView3Y = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView3Y = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     
     [view addConstraint:imgView3X];
@@ -2101,7 +2102,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
         imgView4X = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView3 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -100];
-        imgView4Y = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView4Y = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     [view addConstraint:imgView4X];
     [view addConstraint:imgView4Y];
@@ -2146,7 +2147,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
         imgView5X = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView4 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -100];
-        imgView5Y = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView5Y = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     [view addConstraint:imgView5X];
     [view addConstraint:imgView5Y];
@@ -2192,7 +2193,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     else
     {
         imgView6X = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView5 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
-        imgView6Y = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView6Y = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     [view addConstraint:imgView6X];
     [view addConstraint:imgView6Y];
@@ -2233,7 +2234,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     else
     {
         imgView7X = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView6 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
-        imgView7Y = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView7Y = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     
     [view addConstraint:imgView7X];
@@ -2276,7 +2277,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     else
     {
         imgView8X = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView7 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
-        imgView8Y = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView8Y = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     [view addConstraint:imgView8X];
     [view addConstraint:imgView8Y];
@@ -2315,7 +2316,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     {
         imgView9X = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView8 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
-        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     else
     {
