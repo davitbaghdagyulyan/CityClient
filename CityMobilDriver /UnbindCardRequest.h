@@ -9,5 +9,11 @@
 #import "JSONModel.h"
 
 @interface UnbindCardRequest : JSONModel
-
+@property(nonatomic,strong)NSString* method;
+@property(nonatomic,strong)NSString* ipass;
+@property(nonatomic,strong)NSString* ilog;
+@property(nonatomic,strong)NSString* key;
+@property(nonatomic,strong)NSString* locale;
+@property(nonatomic,strong)NSString* version;
+@property(nonatomic,strong)NSString* id_card;
 @end

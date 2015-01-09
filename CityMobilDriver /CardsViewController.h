@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControll;
 - (IBAction)segmentControllAction:(UISegmentedControl*)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *hasCards;
+
+- (IBAction)addCard:(UIButton *)sender;
+
+- (IBAction)deleteCard:(UIButton *)sender;
 
 
 

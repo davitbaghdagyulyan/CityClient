@@ -9,5 +9,18 @@
 #import "UnbindCardRequest.h"
 
 @implementation UnbindCardRequest
-
+-(instancetype)init
+{
+    self=[super init];
+    if(self)
+    {
+        self.key = [SingleDataProvider sharedKey].key;
+        self.method = @"unbindcard";
+        self.ipass = @"o3XOFR7xpv";
+        self.ilog = @"cm-api";
+        self.locale = @"en";
+        self.version = @"1.0.2";
+    }
+    return self;
+}
 @end

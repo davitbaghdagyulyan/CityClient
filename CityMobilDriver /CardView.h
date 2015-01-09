@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CardView : UIView
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *pan;
+@property (weak, nonatomic) IBOutlet UILabel *expiration;
+@property (weak, nonatomic) IBOutlet UILabel *cardholder;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end
