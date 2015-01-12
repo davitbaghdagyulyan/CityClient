@@ -203,18 +203,51 @@
 }
 
 
-#pragma mark - rotation
+//#pragma mark - rotation
+//
+//- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+//{
+//    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+//     {
+//         NSURL* url = [[NSURL alloc]init];
+//         [self.web loadHTMLString:HTMLString baseURL:url];
+//          answerButton.frame = CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36);
+//     }
+//                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+//     {
+//         CGFloat xx;
+//         
+//         if(leftMenu.flag==0)
+//         {
+//             xx=320*(CGFloat)5/6*(-1);
+//         }
+//         else
+//         {
+//             xx=0;
+//         }
+//         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
+//        
+//     }];
+//    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
+//}
 
+
+
+#pragma mark - Rotation
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          NSURL* url = [[NSURL alloc]init];
          [self.web loadHTMLString:HTMLString baseURL:url];
-          answerButton.frame = CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36);
+         answerButton.frame = CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36);
+         
      }
+     
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
+         
+         
          CGFloat xx;
          
          if(leftMenu.flag==0)
@@ -225,13 +258,17 @@
          {
              xx=0;
          }
-         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
-        
+         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, leftMenu.frame.size.width, self.view.frame.size.height-64);
+         
+         
+         
      }];
+    
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
 }
 
-     
+
+
 - (IBAction)back:(id)sender
 {
     if (leftMenu.flag)
@@ -283,7 +320,7 @@
              [leftMenu.disabledViewsArray removeAllObjects];
         
              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.web.tag]];
-              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:answerButton.tag]];
+            [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:answerButton.tag]];
              
          }
          else
