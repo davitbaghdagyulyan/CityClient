@@ -319,6 +319,7 @@
                 }
                 
             }
+        self.distance.text = [self setAtributedString:tachometerResponse.distance];
     }];
 }
 
@@ -441,7 +442,7 @@
 -(void)setTachometerViews{
     self.shortLabel.text = self.shortname;
     
-    self.distance.text = [self setAtributedString:tachometerResponse.distance];
+    //self.distance.text = [self setAtributedString:tachometerResponse.distance];
     
     for (int i = 0; i < self.elements.count; ++i) {
         UIButton* button = self.elements[i];

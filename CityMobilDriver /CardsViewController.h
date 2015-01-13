@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardsViewController : UIViewController
+@interface CardsViewController : UIViewController<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 - (IBAction)openMap:(UIButton*)sender;
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControll;
 - (IBAction)segmentControllAction:(UISegmentedControl*)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *hasCards;
+
+- (IBAction)addCard:(UIButton *)sender;
+
+- (IBAction)deleteCard:(UIButton *)sender;
 
 
 

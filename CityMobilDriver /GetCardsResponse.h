@@ -7,7 +7,7 @@
 //
 #import "CardsElements.h"
 #import "JSONModel.h"
-
+#import "CardsElements.h"
 @interface GetCardsResponse : JSONModel
 @property(strong,nonatomic)NSMutableArray<CardsElements>*cards;
 @property(nonatomic,strong)NSString*code;

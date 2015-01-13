@@ -446,16 +446,13 @@
     UIAlertAction*confirmPurchase = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
                                                   handler:^(UIAlertAction * action) {
                                                       [self requestBuyDeliveryAddress];
-                                                      if ([result integerValue]==1)
-                                                      {
-                                                          [self requestOrder];
-                                                      }
+                                                      
                                                   }];
 
     [alertConfirmPurchaseVC addAction:cancel];
     [alertConfirmPurchaseVC addAction:confirmPurchase];
     [self presentViewController:alertConfirmPurchaseVC animated:YES completion:nil];
-     return ;
+   
 
 }
 
@@ -505,6 +502,10 @@
             
         }
         result=buyDeliveryAddressResponseObject.result;
+        if ([result integerValue]==1)
+        {
+            [self requestOrder];
+        }
         
     }];
     

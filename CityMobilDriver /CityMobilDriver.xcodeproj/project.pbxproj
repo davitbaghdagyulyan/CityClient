@@ -98,6 +98,9 @@
 		EC0798EA1A2348DC0085E3F0 /* CityMobilIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */; };
 		EC0798EC1A2349840085E3F0 /* icon_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798EB1A2349840085E3F0 /* icon_green.png */; };
 		EC0798EE1A2379C90085E3F0 /* set3_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798ED1A2379C90085E3F0 /* set3_orange.png */; };
+		EC114E731A5FF79600C4D45F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = EC114E721A5FF79600C4D45F /* delete.png */; };
+		EC114E771A5FF90C00C4D45F /* UnbindCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */; };
+		EC114E7A1A60170600C4D45F /* UnbidCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E791A60170600C4D45F /* UnbidCardResponse.m */; };
 		EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */; };
 		EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6A19EBC22F007C77A2 /* SettingsViewController.m */; };
 		EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E4A6C19EC1C13007C77A2 /* pages_background.png */; };
@@ -337,6 +340,8 @@
 		ECF529BA1A122BC500150931 /* yandex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B81A122BC500150931 /* yandex@2x.png */; };
 		ECF529BB1A122BC500150931 /* gmap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF529B91A122BC500150931 /* gmap@2x.png */; };
 		ECF529C41A124AA000150931 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF529C31A124AA000150931 /* CustomWebView.m */; };
+		ECF75B201A5FCC240018669C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF75B1F1A5FCC240018669C /* CardView.xib */; };
+		ECF75B231A5FCD550018669C /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF75B221A5FCD550018669C /* CardView.m */; };
 		ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */; };
 		ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */; };
 		ECFD3E4B1A42C5400066B55A /* BadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E4A1A42C5400066B55A /* BadRequest.m */; };
@@ -495,6 +500,11 @@
 		EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityMobilIcon.m; sourceTree = "<group>"; };
 		EC0798EB1A2349840085E3F0 /* icon_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_green.png; sourceTree = "<group>"; };
 		EC0798ED1A2379C90085E3F0 /* set3_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set3_orange.png; sourceTree = "<group>"; };
+		EC114E721A5FF79600C4D45F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		EC114E751A5FF90C00C4D45F /* UnbindCardRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnbindCardRequest.h; sourceTree = "<group>"; };
+		EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbindCardRequest.m; sourceTree = "<group>"; };
+		EC114E781A60170600C4D45F /* UnbidCardResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnbidCardResponse.h; sourceTree = "<group>"; };
+		EC114E791A60170600C4D45F /* UnbidCardResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbidCardResponse.m; sourceTree = "<group>"; };
 		EC1E4A6619EBC189007C77A2 /* UserInformationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationProvider.h; sourceTree = "<group>"; };
 		EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationProvider.m; sourceTree = "<group>"; };
 		EC1E4A6919EBC22F007C77A2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -908,6 +918,9 @@
 		ECF529B91A122BC500150931 /* gmap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gmap@2x.png"; sourceTree = "<group>"; };
 		ECF529C21A124AA000150931 /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
 		ECF529C31A124AA000150931 /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebView.m; sourceTree = "<group>"; };
+		ECF75B1F1A5FCC240018669C /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		ECF75B211A5FCD550018669C /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
+		ECF75B221A5FCD550018669C /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		ECF7A7821A1CE68E001F0B49 /* StandartResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandartResponse.h; sourceTree = "<group>"; };
 		ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandartResponse.m; sourceTree = "<group>"; };
 		ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingDocumentsViewController.h; sourceTree = "<group>"; };
@@ -1142,6 +1155,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4CB40019F7D18A0028F219 /* requests */,
+				ECF75B1B1A5FBA310018669C /* Cards View Controller */,
 				EC00342319F1620A0062A6DF /* ProfilViewController.h */,
 				EC00342419F1620A0062A6DF /* ProfilViewController.m */,
 				ECCB8AE219FFD6480012F2FD /* CreateProfilViewController.h */,
@@ -1150,8 +1164,6 @@
 				ECC965271A00C23800768E1F /* CarInfoViewController.m */,
 				ECC965291A00D91A00768E1F /* EditCarInfoViewController.h */,
 				ECC9652A1A00D91A00768E1F /* EditCarInfoViewController.m */,
-				ECCD34451A039EA4000444BF /* CardsViewController.h */,
-				ECCD34461A039EA4000444BF /* CardsViewController.m */,
 				ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */,
 				ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */,
 				ECF2FFF81A40628A00C8A269 /* ScaleStringLabel.h */,
@@ -1174,6 +1186,17 @@
 				ECB1EC1E1A42D06D008CC239 /* NavigationView.m */,
 			);
 			name = "Navigation view";
+			sourceTree = "<group>";
+		};
+		EC114E741A5FF8E200C4D45F /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				EC114E751A5FF90C00C4D45F /* UnbindCardRequest.h */,
+				EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */,
+				EC114E781A60170600C4D45F /* UnbidCardResponse.h */,
+				EC114E791A60170600C4D45F /* UnbidCardResponse.m */,
+			);
+			name = Requests;
 			sourceTree = "<group>";
 		};
 		EC1E4A6519EBC179007C77A2 /* Single UserInformation Provider */ = {
@@ -1807,6 +1830,7 @@
 				8FB0F8901A28D9AE003A79E9 /* landmark */,
 				ECB38B281A0D12D400DFBB77 /* Designation Icons Images */,
 				ECC8CCE51A10E58400883CD1 /* box.png */,
+				EC114E721A5FF79600C4D45F /* delete.png */,
 				ECB1F2A31A2DAD06008A3D15 /* iconmap.png */,
 				EC0798EB1A2349840085E3F0 /* icon_green.png */,
 				8FC5D8EC1A14FFB400B33FA9 /* Roboto-LightItalic.ttf */,
@@ -2139,6 +2163,19 @@
 			name = "get Services requests";
 			sourceTree = "<group>";
 		};
+		ECF75B1B1A5FBA310018669C /* Cards View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EC114E741A5FF8E200C4D45F /* Requests */,
+				ECCD34451A039EA4000444BF /* CardsViewController.h */,
+				ECCD34461A039EA4000444BF /* CardsViewController.m */,
+				ECF75B1F1A5FCC240018669C /* CardView.xib */,
+				ECF75B211A5FCD550018669C /* CardView.h */,
+				ECF75B221A5FCD550018669C /* CardView.m */,
+			);
+			name = "Cards View Controller";
+			sourceTree = "<group>";
+		};
 		ECFD3E4C1A431A5C0066B55A /* internet Conection */ = {
 			isa = PBXGroup;
 			children = (
@@ -2295,6 +2332,7 @@
 				8FB0F8AD1A28D9AE003A79E9 /* metro.png in Resources */,
 				8FB0F8A21A28D9AE003A79E9 /* ic_landmark_airport_viewed.png in Resources */,
 				ECB38B401A0D130B00DFBB77 /* 10@2x.png in Resources */,
+				EC114E731A5FF79600C4D45F /* delete.png in Resources */,
 				ECC2BA5B1A10F801009A8CE4 /* 12@2x.png in Resources */,
 				ECEADF911A1F29B300FBA389 /* tachometer_bg.png in Resources */,
 				ECE3CFAD1A0918900053FF85 /* tachometer_arrow.png in Resources */,
@@ -2317,6 +2355,7 @@
 				ECC7B82C19F52D3A0045CBCE /* FirstView.xib in Resources */,
 				ECB38B411A0D130B00DFBB77 /* 11@2x.png in Resources */,
 				ECCC120F1A0CD54500AC94EE /* FoundRegion.xib in Resources */,
+				ECF75B201A5FCC240018669C /* CardView.xib in Resources */,
 				ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */,
 				ECB38B3A1A0D130B00DFBB77 /* 4@2x.png in Resources */,
 				8FB0F8AF1A28D9AE003A79E9 /* train.png in Resources */,
@@ -2405,6 +2444,7 @@
 				ECB06C9E1A5D1D9F00001462 /* ASMapAnnotation.m in Sources */,
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
+				ECF75B231A5FCD550018669C /* CardView.m in Sources */,
 				ECB52E3C1A0778BD0091293F /* StartAfterMKADClass.m in Sources */,
 				8FC222641A36E8550003CAAF /* CustomCellOrdersHistory.m in Sources */,
 				ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */,
@@ -2464,6 +2504,7 @@
 				ECF4A4171A31A6B90057BE10 /* ServicesResponseArray.m in Sources */,
 				ECF4A4201A31ABF20057BE10 /* ServicesArray.m in Sources */,
 				ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */,
+				EC114E771A5FF90C00C4D45F /* UnbindCardRequest.m in Sources */,
 				D70428BB19D0071F00F5C38C /* AppDelegate.m in Sources */,
 				ECC471861A11EC770062803A /* MessagesCell.m in Sources */,
 				ECB52E301A0776530091293F /* TransferClass.m in Sources */,
@@ -2583,6 +2624,7 @@
 				ECAD78BB1A306048005C2468 /* AddGPSJson.m in Sources */,
 				8F9933151A2CB5670040C97E /* BuyDeliveryAddressJson.m in Sources */,
 				EC0798EA1A2348DC0085E3F0 /* CityMobilIcon.m in Sources */,
+				EC114E7A1A60170600C4D45F /* UnbidCardResponse.m in Sources */,
 				8FC222821A36E9500003CAAF /* GetPaymentsResponse.m in Sources */,
 				ECEA963E19F54917001A6305 /* CustomView.m in Sources */,
 				ECB52E451A077A770091293F /* OtherClass.m in Sources */,
