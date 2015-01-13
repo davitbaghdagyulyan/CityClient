@@ -724,6 +724,7 @@
              self.endUpScrollView.userInteractionEnabled=YES;
          
          }
+         
      }
      ];
 }

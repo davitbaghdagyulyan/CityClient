@@ -46,7 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.segmentControll.selectedSegmentIndex = 1;
+    
     
     self.year.returnKeyType = UIReturnKeyNext;
     self.gosNumber.returnKeyType = UIReturnKeyNext;
@@ -108,9 +108,6 @@
     [self.yandexButton setNeedsDisplay];
     
     
-    gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
-    [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
-    
     
     [self.model setTitle:self.modelString forState:UIControlStateNormal];
 
@@ -139,6 +136,18 @@
     self.vinCode.textColor = [UIColor lightGrayColor];
     self.firstLicense.textColor = [UIColor lightGrayColor];
     self.lastLicense.textColor = [UIColor lightGrayColor];
+    
+    
+    self.segmentControll.selectedSegmentIndex = 1;
+    
+    
+    gradientLayer1 = [self greyGradient:self.backgroundView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310)];
+    [self.backgroundView.layer insertSublayer:gradientLayer1 atIndex:0];
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
+    
+    gradientLayer2 = [self greyGradient:self.bgView widthFrame:CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19)];
+    [self.bgView.layer insertSublayer:gradientLayer2 atIndex:0];
+    self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
     
 }
 
@@ -877,19 +886,34 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-             gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.backgroundView.frame), CGRectGetHeight(self.backgroundView.frame)*45.f/310);
+         gradientLayer1.frame = CGRectMake(0, 0,
+                                           CGRectGetWidth(self.backgroundView.frame),
+                                           CGRectGetHeight(self.backgroundView.frame)*45.f/310);
+
          
-                 markTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
-             cancelMarkButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40);
+         gradientLayer2.frame = CGRectMake(0, 0,
+                                           CGRectGetWidth(self.bgView.frame),
+                                           CGRectGetHeight(self.bgView.frame)*9.f/19);
+
+         
+         markTableView.frame = CGRectMake(20, 20,
+                                          self.view.frame.size.width - 40,
+                                          self.view.frame.size.height - 80);
+         
+         cancelMarkButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame),
+                                             CGRectGetMaxY(markTableView.frame),
+                                             CGRectGetWidth(markTableView.frame), 40);
+         
          backgroundView1.frame = self.view.frame;
          
+
+         colorTableView.frame = CGRectMake(20, 20,
+                                           self.view.frame.size.width - 40,
+                                           self.view.frame.size.height - 80);
          
-         
-         
-         colorTableView.frame = CGRectMake(20, 20, self.view.frame.size.width - 40, self.view.frame.size.height - 80);
-         
-         cancelColorButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame), CGRectGetMaxY(markTableView.frame), CGRectGetWidth(markTableView.frame), 40);
-         
+         cancelColorButton.frame = CGRectMake(CGRectGetMinX(markTableView.frame),
+                                              CGRectGetMaxY(markTableView.frame),
+                                              CGRectGetWidth(markTableView.frame), 40);
          
          
          if ([modelResponseObject.models count] * 40 >= self.view.frame.size.height - 40) {
@@ -899,10 +923,12 @@
              CGRect tableRect;
              tableRect.origin = self.view.center;
              modelTableView.frame = CGRectMake(20, (self.view.frame.size.height - 40 * [modelResponseObject.models count])/2 - 20, self.view.frame.size.width - 40, 40 * [modelResponseObject.models count]);
-             
              modelTableView.scrollEnabled = NO;
          }
-         cancelModelButton.frame = CGRectMake(CGRectGetMinX(modelTableView.frame), CGRectGetMaxY(modelTableView.frame), CGRectGetWidth(modelTableView.frame), 40);
+         
+         cancelModelButton.frame = CGRectMake(CGRectGetMinX(modelTableView.frame),
+                                              CGRectGetMaxY(modelTableView.frame),
+                                              CGRectGetWidth(modelTableView.frame), 40);
          
      }
      

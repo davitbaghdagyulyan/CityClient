@@ -23,4 +23,5 @@
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 - (IBAction)openMap:(UIButton*)sender;
 @property (nonatomic, assign) CGFloat lastContentOffset;
+
 @end

@@ -13,6 +13,7 @@
 #import "DriverInfoResponse.h"
 
 @interface CreateProfilViewController : UIViewController<UIScrollViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 
