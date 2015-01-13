@@ -36,6 +36,7 @@
     ComboBoxTableView*comboBoxTableView;
     BOOL isPressedCloseButton;
     NSUInteger indexOfCard;
+    BOOL view1IsLoad;
 
 }
 @end
@@ -56,7 +57,7 @@
     }
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
-    
+    view1IsLoad=YES;
     isPressedCloseButton=NO;
     [super viewDidAppear:animated];
     loadcount=0;
@@ -332,11 +333,17 @@
       if(getCardsResponseObject.cards.count==0)
       {
           [view1 removeFromSuperview];
-          NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:self options:nil];
-          view1 = [nib objectAtIndex:0];
-          view1.delegate=self;
-          
-          view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+         
+          if (view1IsLoad)
+          {
+              NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView" owner:self options:nil];
+              view1 = [nib objectAtIndex:0];
+              view1.delegate=self;
+               view1IsLoad=NO;
+              view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+              view1.webView.delegate=self;
+              [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+          }
           
           [self.view addSubview:view1];
           view1.checkCardLabel.text=@"нет привязанных карт";
@@ -344,14 +351,10 @@
           
           [view1.customView bringSubviewToFront:view1.addCardButton];
           
-          view1.webView.delegate=self;
           
-          static int i=1;
-          if (i)
-          {
-          [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-          }
-          i=0;
+          
+        
+         
       }
       else
         {
