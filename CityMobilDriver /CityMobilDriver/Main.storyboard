@@ -3761,6 +3761,9 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАСТРОЙКИ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT0-VD-43L">
                                         <rect key="frame" x="245" y="20" width="95" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="cxs-We-Shc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.4963733917" blue="0.1055777322" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3824,6 +3827,9 @@
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Автоназначение Яндекс.Такси" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ty-bs-mdb">
                                         <rect key="frame" x="177" y="145" width="247" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="lot-aw-pOJ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -3870,7 +3876,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ir4-Cw-5A2">
-                                        <rect key="frame" x="0.0" y="228" width="584" height="247"/>
+                                        <rect key="frame" x="0.0" y="228" width="584" height="300"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Позывной:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2x5-hm-EWz">
                                                 <rect key="frame" x="8" y="8" width="87" height="23"/>
@@ -4137,11 +4143,20 @@
                                             <constraint firstItem="3m3-gB-u27" firstAttribute="centerY" secondItem="o3M-kz-TbG" secondAttribute="centerY" id="rWG-Bt-3kD"/>
                                             <constraint firstItem="a9q-8A-wuG" firstAttribute="centerY" secondItem="Ulw-Ml-TX4" secondAttribute="centerY" constant="-0.5" id="scV-QI-OQb"/>
                                             <constraint firstItem="Ulw-Ml-TX4" firstAttribute="top" secondItem="o3M-kz-TbG" secondAttribute="bottom" constant="8" id="tpg-Ie-2yg"/>
+                                            <constraint firstAttribute="height" priority="750" constant="300" id="vhY-xS-G4u"/>
                                             <constraint firstItem="S0Z-3V-SAB" firstAttribute="top" secondItem="2x5-hm-EWz" secondAttribute="bottom" constant="8" id="weC-S0-N29"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="r4N-Cr-Ffo"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Автоназначение СитиМобил" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkw-dk-432">
                                         <rect key="frame" x="177" y="50" width="230" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="u6f-wi-ZYU"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -5501,8 +5516,8 @@
                         <outlet property="cityButton" destination="Zhk-Dy-nTM" id="r19-56-ob8"/>
                         <outlet property="createPhotoImageView" destination="JBF-ke-kuv" id="rpa-Zk-Gls"/>
                         <outlet property="driverLicenseClass" destination="wRQ-ru-G64" id="EPs-fF-fOk"/>
-                        <outlet property="driverLicenseNumber" destination="90y-7x-eLi" id="yyJ-V1-lAR"/>
-                        <outlet property="driverLicenseSerial" destination="6lq-J8-Fc1" id="RKt-0O-Cme"/>
+                        <outlet property="driverLicenseNumber" destination="6lq-J8-Fc1" id="h3e-al-AOy"/>
+                        <outlet property="driverLicenseSerial" destination="90y-7x-eLi" id="b42-8b-c63"/>
                         <outlet property="firstView" destination="r7F-QM-tcC" id="3GZ-Jd-9yk"/>
                         <outlet property="gpsButton" destination="Y97-Sa-cN5" id="UjI-uw-Ore"/>
                         <outlet property="lastName" destination="kBF-5u-H1Z" id="k47-D5-5HH"/>
@@ -9577,6 +9592,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ygv-Ts-1xQ"/>
+        <segue reference="ika-VO-VaQ"/>
     </inferredMetricsTieBreakers>
 </document>

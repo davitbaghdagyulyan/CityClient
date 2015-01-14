@@ -367,7 +367,10 @@
     return [data1 isEqual:data2];
 }
 - (NSString *)encodeToBase64String:(UIImage *)image {
-    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSData* imageData = UIImagePNGRepresentation(image);
+    NSString* imageString = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    return imageString;
 }
 
 
