@@ -135,7 +135,7 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomWebView" owner:self options:nil];
                 view2 = [nib objectAtIndex:0];
                view2.customWebView.delegate=self;
-                view2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+                view2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
                 [self.view addSubview:view2];
                 
                 [self requestGetQiwiBillsUrl];
@@ -340,7 +340,7 @@
               view1 = [nib objectAtIndex:0];
               view1.delegate=self;
                view1IsLoad=NO;
-              view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+              view1.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
               view1.webView.delegate=self;
               [view1.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
           }
@@ -361,7 +361,7 @@
             [view1 removeFromSuperview];
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView2" owner:self options:nil];
             view1_2 = [nib objectAtIndex:0];
-            view1_2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
+            view1_2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
             [self.view addSubview:view1_2];
             view1_2.chooseCardLabel.text=[[getCardsResponseObject.cards objectAtIndex:0] pan];
             UITapGestureRecognizer* tapGasture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showComboBox)];
@@ -707,9 +707,9 @@
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context){
                                     
-                                             view1.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height - 98);
-                                              view2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height-98);
-                                               view1_2.frame = CGRectMake(0,98, self.view.frame.size.width, self.view.frame.size.height-98);
+                                             view1.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
+                                              view2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height-98);
+                                               view1_2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height-98);
                                      comboBoxTableView.center=self.view.center;
                                      CGFloat x;
                                     

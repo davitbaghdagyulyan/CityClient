@@ -29,7 +29,7 @@
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     
-    self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116)];
+    self.scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(5, 66, self.view.frame.size.width-10, self.view.frame.size.height-116)];
     self.writeLetterLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.scrollView.frame.size.width, 50)];
     self.underView=[[UIView alloc]initWithFrame:CGRectMake(0, 50, self.scrollView.frame.size.width, self.scrollView.frame.size.height-50)];
      self.titleTextView=[[UITextField alloc] initWithFrame:CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40)];
@@ -451,7 +451,7 @@
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          
-         self.scrollView.frame=CGRectMake(10, 66, self.view.frame.size.width-20, self.view.frame.size.height-116);
+         self.scrollView.frame=CGRectMake(5, 66, self.view.frame.size.width-10, self.view.frame.size.height-116);
          self.writeLetterLabel.frame=CGRectMake(0, 0, self.scrollView.frame.size.width, 50);
          self.messageTextView.frame=CGRectMake(10, 60, self.scrollView.frame.size.width-20, self.messageTextView.frame.size.height);
 //         yCord=(CGRectGetMaxY(self.messageTextView.frame));
