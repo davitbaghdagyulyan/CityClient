@@ -13,6 +13,7 @@
 #import "DriverInfoResponse.h"
 
 @interface CreateProfilViewController : UIViewController<UIScrollViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 
@@ -53,8 +54,8 @@
 
 ///////
 
-@property (weak, nonatomic) IBOutlet UITextField *driverLicenseNumber;
 @property (weak, nonatomic) IBOutlet UITextField *driverLicenseSerial;
+@property (weak, nonatomic) IBOutlet UITextField *driverLicenseNumber;
 @property (weak, nonatomic) IBOutlet UITextField *driverLicenseClass;
 
 

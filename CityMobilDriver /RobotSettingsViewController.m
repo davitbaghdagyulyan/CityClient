@@ -59,7 +59,9 @@
     [super viewDidLoad];
     
         
-    scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(8, 64, self.view.frame.size.width - 16, self.view.frame.size.height - 64)];
+    scrollView = [[UIScrollView alloc]initWithFrame:
+                  CGRectMake(8, 64, self.view.frame.size.width - 16, self.view.frame.size.height - 64)];
+    
     scrollView.delegate = self;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 551);
@@ -71,8 +73,6 @@
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
     [scrollView addSubview:descriptionLabel];
     
-    
-
     
     
     saveButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 508, scrollView.frame.size.width, 35)];
@@ -103,7 +103,9 @@
     {
          [self.gpsButton setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
     }
-    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:
+                                                UIActivityIndicatorViewStyleWhiteLarge];
     indicator.center = self.view.center;
     indicator.color=[UIColor blackColor];
     [indicator startAnimating];
@@ -225,7 +227,8 @@
     cell.backgroundColor = [UIColor colorWithRed:236/255 green:236/255 blue:236/255 alpha:0.1];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    UILabel* textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width - 60, 45)];
+    UILabel* textLabel = [[UILabel alloc]initWithFrame:
+                          CGRectMake(0, 0, scrollView.frame.size.width - 60, 45)];
     textLabel.numberOfLines = 2;
         
     [cell.contentView addSubview:textLabel];
@@ -439,13 +442,21 @@
 
     Switch.translatesAutoresizingMaskIntoConstraints = NO;
     [cell.contentView addSubview:Switch];
-    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:Switch attribute:NSLayoutAttributeTrailingMargin
-                                 relatedBy:NSLayoutRelationEqual toItem:cell.contentView
-                                 attribute:NSLayoutAttributeTrailingMargin multiplier:1.0 constant:-10]];
+    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:Switch
+                                                        attribute:NSLayoutAttributeTrailingMargin
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:cell.contentView
+                                                        attribute:NSLayoutAttributeTrailingMargin
+                                                        multiplier:1.0
+                                                        constant:-10]];
     
-    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:Switch attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual toItem:cell.contentView
-                                                     attribute:NSLayoutAttributeTop multiplier:1.0 constant:8]];
+    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:Switch
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:cell.contentView
+                                                        attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                        constant:8]];
     
     
     if (!isDefaultTable) {
@@ -484,21 +495,37 @@
     
     
     button.translatesAutoresizingMaskIntoConstraints = NO;
-    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTrailingMargin
-                                                                 relatedBy:NSLayoutRelationEqual toItem:cell.contentView
-                                                                 attribute:NSLayoutAttributeTrailingMargin multiplier:1.0 constant:-10]];
+    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                        attribute:NSLayoutAttributeTrailingMargin
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:cell.contentView
+                                                        attribute:NSLayoutAttributeTrailingMargin
+                                                        multiplier:1.0
+                                                        constant:-10]];
     
-    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual toItem:cell.contentView
-                                                                 attribute:NSLayoutAttributeTop multiplier:1.0 constant:8]];
+    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:cell.contentView
+                                                        attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                        constant:8]];
     
-    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeWidth
-                                                                 relatedBy:NSLayoutRelationEqual toItem:cell.contentView
-                                                                 attribute:NSLayoutAttributeWidth multiplier:0 constant:48]];
+    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                        attribute:NSLayoutAttributeWidth
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:cell.contentView
+                                                        attribute:NSLayoutAttributeWidth
+                                                        multiplier:0
+                                                        constant:48]];
     
-    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeHeight
-                                                                 relatedBy:NSLayoutRelationEqual toItem:cell.contentView
-                                                                 attribute:NSLayoutAttributeWidth multiplier:0 constant:25]];
+    [cell.contentView addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                        attribute:NSLayoutAttributeHeight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:cell.contentView
+                                                        attribute:NSLayoutAttributeWidth
+                                                        multiplier:0
+                                                        constant:25]];
 }
 
 

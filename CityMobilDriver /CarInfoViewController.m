@@ -29,8 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getCarInfo];
     getCarInfoResponse = [[ResponseGetCarInfo alloc]init];
+    self.carInfoTable.delegate = self;
+    self.carInfoTable.dataSource = self;
 }
 
 
@@ -66,8 +67,9 @@
     
     self.bgView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
     //self.backgroundView.backgroundColor = [UIColor colorWithRed:229.f/255 green:229.f/255 blue:229.f/255 alpha:1];
-    self.carInfoTable.delegate = self;
-    self.carInfoTable.dataSource = self;
+    
+
+    [self getCarInfo];
 }
 
 
@@ -116,7 +118,6 @@
             
             [alert show];
             [indicator stopAnimating];
-            [self.carInfoTable reloadData];
             return ;
         }
         NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -275,9 +276,18 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         gradientLayer1.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/19);
-         gradientLayer2.frame = CGRectMake(0, 0, CGRectGetWidth([self.carInfoTable viewWithTag:100].frame), CGRectGetHeight([self.carInfoTable viewWithTag:100].frame));
-         gradientLayer3.frame = CGRectMake(CGRectGetMaxX(self.carInfoTable.frame), 0, CGRectGetWidth(self.backgroundView.frame) - CGRectGetWidth(self.carInfoTable.frame), 44);
+         gradientLayer1.frame = CGRectMake(0, 0,
+                                CGRectGetWidth(self.bgView.frame),
+                                CGRectGetHeight(self.bgView.frame)*9.f/19);
+         
+         gradientLayer2.frame = CGRectMake(0, 0,
+                                CGRectGetWidth([self.carInfoTable viewWithTag:100].frame),
+                                CGRectGetHeight([self.carInfoTable viewWithTag:100].frame));
+         
+         
+         gradientLayer3.frame = CGRectMake(CGRectGetMaxX(self.carInfoTable.frame),
+                                           0, CGRectGetWidth(self.backgroundView.frame)
+                                           - CGRectGetWidth(self.carInfoTable.frame), 44);
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {

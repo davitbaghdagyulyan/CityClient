@@ -73,6 +73,7 @@ typedef enum ScrollDirection {
     }
      [GPSConection showGPSConection:self];
     position=0;
+
     self.lastContentOffset=0;
     self.tariffsSacrollView.delegate=self;
     for (UIScrollView* scroll in self.tariffsSacrollView.subviews)
@@ -554,6 +555,7 @@ typedef enum ScrollDirection {
 {
     [super viewWillDisappear:animated];
 }
+
 
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset

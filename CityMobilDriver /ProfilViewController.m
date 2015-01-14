@@ -78,6 +78,69 @@
     }
 }
 
+#pragma mark - Requests
+
+-(NSString*)getLink
+{
+    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    
+    RequestDocScansUrl* RequestDocScansUrlObject=[[RequestDocScansUrl alloc]init];
+    RequestDocScansUrlObject.key = [SingleDataProvider sharedKey].key;
+    NSDictionary* jsonDictionary = [RequestDocScansUrlObject toDictionary];
+    
+    
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 30;
+    
+    
+    
+    NSError* err;
+    NSURLResponse *response = [[NSURLResponse alloc]init];
+    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if (!data)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return @"";
+    }
+    NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    //NSLog(@"--%@",jsonString);
+    ResponseGetDocScansUrl* jsonResponseGetUrlObject = [[ResponseGetDocScansUrl alloc]initWithString:jsonString error:&err];
+    BadRequest* badRequest = [[BadRequest alloc]init];
+    badRequest.delegate = self;
+    [badRequest showErrorAlertMessage:jsonResponseGetUrlObject.text code:jsonResponseGetUrlObject.code];
+    //NSLog(@"******* %@",jsonResponseObject.doc_scans_url);
+    [indicator stopAnimating];
+    return jsonResponseGetUrlObject.doc_scans_url;
+    
+}
+
+
+
 -(void)setDriverInfoRequest
 {
     RequestDocScansUrl* RequestDocScansUrlObject=[[RequestDocScansUrl alloc]init];
@@ -155,7 +218,10 @@
     
     [self setAtributedString:self.passportWho :jsonResponseObject.passport_who];
     
-    //[self setAtributedString:self.passportAddress :jsonResponseObject.passport_address];
+    if (jsonResponseObject.passport_address != nil) {
+        [self setAtributedString:self.passportAddress :jsonResponseObject.passport_address];//???
+    }
+    
     
     [self setAtributedString:self.driverLicenseSerial :jsonResponseObject.driver_license_serial];
     
@@ -163,9 +229,14 @@
     
     [self setAtributedString:self.driverLicenseClass :jsonResponseObject.driver_license_class];
     
+    
+    if (jsonResponseObject.photo != nil) {
+        [self.profilImageView setImage:[self stringToUIImage:jsonResponseObject.photo]];
+    }
+    
 }
 
-
+#pragma mark - Help Functions
 -(void)setAtributedString:(UILabel*)label  :(NSString*)appendingString
 {
     if (appendingString) {
@@ -178,66 +249,15 @@
     }
 }
 
-
--(NSString*)getLink
+-(UIImage *)stringToUIImage:(NSString *)string
 {
-    indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicator.center = self.view.center;
-    indicator.color=[UIColor blackColor];
-    [indicator startAnimating];
+    NSData *data = [[NSData alloc]
+                    initWithBase64EncodedString:string
+                    options:NSDataBase64DecodingIgnoreUnknownCharacters];
     
-    RequestDocScansUrl* RequestDocScansUrlObject=[[RequestDocScansUrl alloc]init];
-    RequestDocScansUrlObject.key = [SingleDataProvider sharedKey].key;
-    NSDictionary* jsonDictionary = [RequestDocScansUrlObject toDictionary];
-    
-    
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
-    
-    NSError* error;
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:&error];
-    
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPBody:jsonData];
-    request.timeoutInterval = 30;
-    
-    
-    
-    NSError* err;
-    NSURLResponse *response = [[NSURLResponse alloc]init];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    if (!data)
-    {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                     
-                                 }];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
-        return @"";
-    }
-    NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    //NSLog(@"--%@",jsonString);
-    ResponseGetDocScansUrl* jsonResponseGetUrlObject = [[ResponseGetDocScansUrl alloc]initWithString:jsonString error:&err];
-    BadRequest* badRequest = [[BadRequest alloc]init];
-    badRequest.delegate = self;
-    [badRequest showErrorAlertMessage:jsonResponseGetUrlObject.text code:jsonResponseGetUrlObject.code];
-    //NSLog(@"******* %@",jsonResponseObject.doc_scans_url);
-    [indicator stopAnimating];
-    return jsonResponseGetUrlObject.doc_scans_url;
-    
+    UIImage* image = [UIImage imageWithData:data];
+    return image;
 }
-
 
 
 - (IBAction)sendDocumentsAction:(UIButton *)sender

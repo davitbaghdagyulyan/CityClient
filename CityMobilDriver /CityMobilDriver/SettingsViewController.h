@@ -17,6 +17,9 @@
 
 
 @interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewHeight;
+
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 
