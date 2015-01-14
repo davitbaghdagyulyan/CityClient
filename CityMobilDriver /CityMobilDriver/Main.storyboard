@@ -3886,9 +3886,6 @@
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="8" width="86" height="20"/>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="8" width="86" height="20"/>
-                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Баланс:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0Z-3V-SAB">
                                                 <rect key="frame" x="8" y="39" width="62" height="23"/>
@@ -3898,9 +3895,6 @@
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="36" width="63" height="20"/>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="36" width="63" height="20"/>
-                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лимит:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAV-a9-zOm">
                                                 <rect key="frame" x="8" y="70" width="58" height="23"/>
@@ -3908,9 +3902,6 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="64" width="56" height="20"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="64" width="56" height="20"/>
                                                 </variation>
                                             </label>
@@ -3926,9 +3917,6 @@
                                                 </state>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="92" width="568" height="30"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="92" width="368" height="30"/>
                                                 </variation>
                                                 <connections>
                                                     <action selector="nightModeAction:" destination="40C-gD-0cA" eventType="touchUpInside" id="HhP-uT-AzI"/>
@@ -3946,9 +3934,6 @@
                                                 <state key="selected" image="box2.png"/>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="560" y="99" width="16" height="15"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="360" y="99" width="16" height="15"/>
                                                 </variation>
                                                 <connections>
                                                     <action selector="nightModeAction:" destination="40C-gD-0cA" eventType="touchUpInside" id="VW2-rG-iUd"/>
@@ -3974,9 +3959,6 @@
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="130" width="568" height="30"/>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="130" width="368" height="30"/>
-                                                </variation>
                                                 <connections>
                                                     <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="7La-sh-Wn1"/>
                                                 </connections>
@@ -4001,9 +3983,6 @@
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="565" y="136" width="11" height="19"/>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="365" y="136" width="11" height="19"/>
-                                                </variation>
                                                 <connections>
                                                     <action selector="fontSize:" destination="40C-gD-0cA" eventType="touchUpInside" id="Jg4-vg-bwH"/>
                                                 </connections>
@@ -4026,9 +4005,6 @@
                                                 </variation>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="168" width="568" height="30"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="168" width="368" height="30"/>
                                                 </variation>
                                                 <connections>
                                                     <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="3iP-K8-Ln2"/>
@@ -4054,9 +4030,6 @@
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="565" y="174" width="11" height="19"/>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="365" y="174" width="11" height="19"/>
-                                                </variation>
                                                 <connections>
                                                     <action selector="stileIcon:" destination="40C-gD-0cA" eventType="touchUpInside" id="r5h-Pj-sx0"/>
                                                 </connections>
@@ -4079,9 +4052,6 @@
                                                 </variation>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="8" y="206" width="568" height="30"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="8" y="206" width="368" height="30"/>
                                                 </variation>
                                                 <connections>
                                                     <action selector="selectLanguage:" destination="40C-gD-0cA" eventType="touchUpInside" id="E5c-cE-AYb"/>
@@ -4106,9 +4076,6 @@
                                                 </variation>
                                                 <variation key="heightClass=compact" misplaced="YES">
                                                     <rect key="frame" x="565" y="211" width="11" height="19"/>
-                                                </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="365" y="211" width="11" height="19"/>
                                                 </variation>
                                                 <connections>
                                                     <action selector="selectLanguage:" destination="40C-gD-0cA" eventType="touchUpInside" id="3nj-uE-yNv"/>
@@ -4143,7 +4110,7 @@
                                             <constraint firstItem="3m3-gB-u27" firstAttribute="centerY" secondItem="o3M-kz-TbG" secondAttribute="centerY" id="rWG-Bt-3kD"/>
                                             <constraint firstItem="a9q-8A-wuG" firstAttribute="centerY" secondItem="Ulw-Ml-TX4" secondAttribute="centerY" constant="-0.5" id="scV-QI-OQb"/>
                                             <constraint firstItem="Ulw-Ml-TX4" firstAttribute="top" secondItem="o3M-kz-TbG" secondAttribute="bottom" constant="8" id="tpg-Ie-2yg"/>
-                                            <constraint firstAttribute="height" priority="750" constant="300" id="vhY-xS-G4u"/>
+                                            <constraint firstAttribute="height" constant="300" id="vhY-xS-G4u"/>
                                             <constraint firstItem="S0Z-3V-SAB" firstAttribute="top" secondItem="2x5-hm-EWz" secondAttribute="bottom" constant="8" id="weC-S0-N29"/>
                                         </constraints>
                                         <variation key="default">
@@ -4180,6 +4147,7 @@
                                     <constraint firstAttribute="centerX" secondItem="7ty-bs-mdb" secondAttribute="centerX" constant="-8.5" id="er7-cd-Tf8"/>
                                     <constraint firstAttribute="centerX" secondItem="XT0-VD-43L" secondAttribute="centerX" id="faJ-6O-RuZ"/>
                                     <constraint firstItem="C2d-am-Var" firstAttribute="top" secondItem="dkw-dk-432" secondAttribute="bottom" constant="8" id="iYV-LA-WiW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ir4-Cw-5A2" secondAttribute="bottom" constant="8" id="kX2-Br-uXi"/>
                                     <constraint firstAttribute="trailing" secondItem="Ir4-Cw-5A2" secondAttribute="trailing" id="lop-BT-3Ub"/>
                                     <constraint firstItem="C2d-am-Var" firstAttribute="top" secondItem="XT0-VD-43L" secondAttribute="bottom" constant="41" id="mUV-Le-gAS"/>
                                     <constraint firstAttribute="centerX" secondItem="NlT-Bf-u5k" secondAttribute="centerX" id="s2c-dC-4fr"/>
@@ -4189,6 +4157,7 @@
                                     <mask key="constraints">
                                         <exclude reference="R7z-j2-3J0"/>
                                         <exclude reference="2LU-7s-Qw8"/>
+                                        <exclude reference="FF9-MI-eBi"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -4300,6 +4269,7 @@
                     <connections>
                         <outlet property="backgroundImage" destination="1HH-or-Xen" id="u4g-Wk-SRH"/>
                         <outlet property="balance" destination="S0Z-3V-SAB" id="5d5-ad-med"/>
+                        <outlet property="bgViewHeight" destination="vhY-xS-G4u" id="0C0-ad-6hf"/>
                         <outlet property="callsign" destination="2x5-hm-EWz" id="0Hm-6Y-pDq"/>
                         <outlet property="checkBox" destination="Dks-3J-q3A" id="Qav-ow-XPa"/>
                         <outlet property="cityIcon" destination="8LP-Lg-Yez" id="zCc-qR-qu2"/>
@@ -5820,6 +5790,9 @@
                                                 <exclude reference="yRD-AK-QaP"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="165" y="8" width="36" height="92"/>
+                                        </variation>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D54-K1-Psi">
                                         <rect key="frame" x="8" y="477" width="280" height="35"/>
@@ -5874,6 +5847,9 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="108" y="266" width="93" height="54"/>
+                                        </variation>
                                         <connections>
                                             <action selector="goingToOrder:" destination="6Zc-x9-ACd" eventType="touchUpInside" id="tlh-Ei-ZPG"/>
                                         </connections>
@@ -5905,6 +5881,9 @@
                                                 <exclude reference="G8v-Ly-gAd"/>
                                                 <exclude reference="ahf-l9-zhZ"/>
                                             </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="102" width="126" height="44"/>
                                         </variation>
                                     </label>
                                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP3-Vz-Qf7">
@@ -5946,6 +5925,9 @@
                                                 <exclude reference="HEc-XO-tFL"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="136" y="102" width="65" height="44"/>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPt-jM-u0o">
                                         <rect key="frame" x="197" y="143" width="189" height="60"/>
@@ -5967,6 +5949,9 @@
                                             <mask key="constraints">
                                                 <include reference="3OK-9C-ygd"/>
                                             </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="72" y="146" width="64" height="60"/>
                                         </variation>
                                         <connections>
                                             <action selector="elementAction:" destination="6Zc-x9-ACd" eventType="touchUpInside" id="WqM-pO-Mwf"/>
@@ -6446,6 +6431,9 @@
                                                         <exclude reference="q2P-fs-i55"/>
                                                     </mask>
                                                 </variation>
+                                                <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="140"/>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
@@ -6472,6 +6460,9 @@
                                                 <include reference="zV4-Iw-iem"/>
                                             </mask>
                                         </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="209" y="8" width="183" height="312"/>
+                                        </variation>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wms-e7-Ter">
                                         <rect key="frame" x="0.0" y="0.0" width="584" height="8"/>
@@ -6497,6 +6488,9 @@
                                             <mask key="constraints">
                                                 <include reference="1XB-vQ-mJF"/>
                                             </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="137" y="146" width="63" height="60"/>
                                         </variation>
                                         <connections>
                                             <action selector="elementAction:" destination="6Zc-x9-ACd" eventType="touchUpInside" id="nKQ-hg-WS8"/>
