@@ -662,6 +662,20 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
             
             categories=[[NSMutableArray alloc]init];
+            
+            if (ordersResponseObject.categories.count==0)
+            {
+                self.tableViewOrdersPort.hidden=YES;
+                self.tableViewOrdersLand.hidden=YES;
+                self.tableViewIpad.hidden=YES;
+            }
+            else
+            {
+                self.tableViewOrdersPort.hidden=NO;
+                self.tableViewOrdersLand.hidden=NO;
+                self.tableViewIpad.hidden=NO;
+            }
+            
             for (int i=0; i<ordersResponseObject.categories.count; i++)
             {
                 if ([[[ordersResponseObject.categories objectAtIndex:i]getCount]integerValue] !=0)

@@ -23,7 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        self.backButton.clipsToBounds=YES;
+        self.backButton.layer.cornerRadius = self.backButton.frame.size.height/2.0f;
+        self.backButton.layer.borderWidth = 1;
+        self.backButton.layer.borderColor=[UIColor clearColor].CGColor;
+        self.backButton.layer.masksToBounds = YES;
     // Do any additional setup after loading the view.
 }
 

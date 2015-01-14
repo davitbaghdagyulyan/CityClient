@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @interface MapViewController : UIViewController<MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)backAction:(UIButton *)sender;
 
