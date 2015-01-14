@@ -485,24 +485,32 @@
 - (IBAction)nightModeAction:(id)sender
 {
     
-    NSNumber* isNightMode = nil;
-    if (![self.checkBox isSelected]) {
-        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
-        self.settings.textColor = [UIColor orangeColor];
-        self.yandexSettings.textColor = [UIColor orangeColor];
-        isNightMode = [NSNumber numberWithBool:YES];
-        [self.checkBox setSelected:YES];
-    }
-    else{
-        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
-        self.settings.textColor = [UIColor blackColor];
-        self.yandexSettings.textColor = [UIColor blackColor];
-        isNightMode = [NSNumber numberWithBool:NO];
+//    NSNumber* isNightMode = nil;
+//    if (![self.checkBox isSelected]) {
+//        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
+//        self.settings.textColor = [UIColor orangeColor];
+//        self.yandexSettings.textColor = [UIColor orangeColor];
+//        isNightMode = [NSNumber numberWithBool:YES];
+//        [self.checkBox setSelected:YES];
+//    }
+//    else{
+//        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
+//        self.settings.textColor = [UIColor blackColor];
+//        self.yandexSettings.textColor = [UIColor blackColor];
+//        isNightMode = [NSNumber numberWithBool:NO];
+//        [self.checkBox setSelected:NO];
+//    }
+    
+//    [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if ([self.checkBox isSelected]) {
         [self.checkBox setSelected:NO];
     }
+    else{
+        [self.checkBox setSelected:YES];
+    }
     
-    [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void)setAppMode
