@@ -13,7 +13,6 @@
 @interface RootViewController ()
 {
     //ARUS
-  
     NSInteger flag1;
     BOOL  timerCreated;
     BOOL alertNoConIsCreated;
@@ -25,8 +24,6 @@
     CAGradientLayer * gradLayerLabel1;
     CAGradientLayer * gradLayerLabel2;
     NSTimer * requestTimer;
-//    UILabel * label1;
-//    UILabel * label2;
     NSInteger selectedRow;
     //NAREK
     LeftMenu*leftMenu;
@@ -43,43 +40,20 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
-   
-    
-    [[SingleDataProvider sharedKey] setGpsButtonHandlerPort:self.gpsButtonPort];
-    [[SingleDataProvider sharedKey] setGpsButtonHandlerLand:self.gpsButtonLand];
-    [[SingleDataProvider sharedKey] setGpsButtonHandlerIpad:self.gpsButtonIpad];
-    
+     [[SingleDataProvider sharedKey] setGpsButtonHandlerPort:self.gpsButtonPort];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {
-        [self.gpsButtonPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
-        
-        [self.gpsButtonLand setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
-        
-        [self.gpsButtonIpad setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+    [self.gpsButtonPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
     }
     else
     {
-        [self.gpsButtonPort setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
-        
-        [self.gpsButtonLand setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
-        
-        [self.gpsButtonIpad setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+    [self.gpsButtonPort setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
     }
-
-    
-    [self.cityButtonIpad setNeedsDisplay];
-    [self.cityButtonLand setNeedsDisplay];
     [self.cityButtonPort setNeedsDisplay];
-    [self.yandexButtonIpad setNeedsDisplay];
-    [self.yandexButtonLand setNeedsDisplay];
     [self.yandexButtonPort setNeedsDisplay];
     [super viewDidAppear:animated];
     timerCreated =NO;
-//    leftMenu.flag=0;
     self.tableViewOrdersPort.userInteractionEnabled=YES;
-    self.tableViewOrdersLand.userInteractionEnabled=YES;
-    self.tableViewIpad.userInteractionEnabled=YES;
-    
     leftMenu=[LeftMenu getLeftMenu:self];
     
     if (cancelOfAlertNoConIsClicked ==YES)
@@ -142,7 +116,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return categories.count;
+ return categories.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -226,8 +200,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         {
         selectedRow =indexPath.row;
         [self.tableViewOrdersPort reloadData];
-        [self.tableViewOrdersLand reloadData];
-        [self.tableViewIpad reloadData];
+        
         SelectedOrdersViewController *selectedOrdersCont = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectedOrders"];
         if ([[ordersResponseObject.categories objectAtIndex:indexPath.row] getFilter])
         {
@@ -324,29 +297,22 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
          {
            leftMenu.flag=1;
              self.tableViewOrdersPort.userInteractionEnabled=NO;
-             self.tableViewOrdersLand.userInteractionEnabled=NO;
-             self.tableViewIpad.userInteractionEnabled=NO;
              
              self.tableViewOrdersPort.tag=1;
-             self.tableViewOrdersLand.tag=2;
-             self.tableViewIpad.tag=3;
+             
              
              
              [leftMenu.disabledViewsArray removeAllObjects];
             
              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc]initWithLong:self.tableViewOrdersPort.tag]];
              
-               [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.tableViewOrdersLand.tag]];
-          
-              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.tableViewIpad.tag]];
+             
          }
          else
          {
            leftMenu.flag=0;
              self.tableViewOrdersPort.userInteractionEnabled=YES;
-             self.tableViewOrdersLand.userInteractionEnabled=YES;
-             self.tableViewIpad.userInteractionEnabled=YES;
-         }
+                     }
          
      }
      
@@ -375,8 +341,6 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
                       {
                           leftMenu.flag=0;
                           self.tableViewOrdersPort.userInteractionEnabled=YES;
-                          self.tableViewOrdersLand.userInteractionEnabled=YES;
-                          self.tableViewIpad.userInteractionEnabled=YES;
                           point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
                       }
                  else if (touchLocation.x>leftMenu.frame.size.width/2)
@@ -384,9 +348,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
                          point.x=(CGFloat)leftMenu.frame.size.width/2;
                         
                          self.tableViewOrdersPort.userInteractionEnabled=NO;
-                         self.tableViewOrdersLand.userInteractionEnabled=NO;
-                         self.tableViewIpad.userInteractionEnabled=NO;
-                          leftMenu.flag=1;
+                         leftMenu.flag=1;
                      }
                   point.y=leftMenu.center.y;
                   leftMenu.center=point;
@@ -413,8 +375,6 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     }
     leftMenu.center=point;
     self.tableViewOrdersPort.userInteractionEnabled=NO;
-    self.tableViewOrdersLand.userInteractionEnabled=NO;
-    self.tableViewIpad.userInteractionEnabled=NO;
     leftMenu.flag=1;
     
 }
@@ -431,21 +391,14 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
          if (UIDeviceOrientationIsLandscape(deviceOrientation))
          {
              NSLog(@"Will change to Landscape");
-             [self.tableViewIpad reloadData];
-             [self.tableViewOrdersLand reloadData];
-             [self.tableViewIpad reloadData];
+             [self.tableViewOrdersPort reloadData];
              
          }
          
          else
          {
              NSLog(@"Will change to Landscape");
-             [self.tableViewIpad reloadData];
-             [self.tableViewOrdersLand reloadData];
-             [self.tableViewIpad reloadData];
-
-            
-             
+             [self.tableViewOrdersPort reloadData];
          }
          
 
@@ -613,15 +566,11 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 {
     flag1=-1;
     self.view.backgroundColor = [UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-    self.tableViewIpad.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-    self.tableViewOrdersLand.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     self.tableViewOrdersPort.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     self.titleLabelPort.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-    self.titleLabelIpad.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
-    self.titleLabelLand.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     [self.tableViewOrdersPort reloadData];
-    [self.tableViewOrdersLand reloadData];
-    [self.tableViewIpad reloadData];
+    self.labelEmptyArray.hidden=NO;
+    self.tableViewOrdersPort.hidden=NO;
     OrdersJson* ordersJsonObject=[[OrdersJson alloc]init];
     NSDictionary*jsonDictionary=[ordersJsonObject toDictionary];
     NSString*jsons=[ordersJsonObject toJSONString];
@@ -641,7 +590,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data && alertNoConIsCreated ==NO)
         {
-           
+            self.labelEmptyArray.hidden=YES;
             UIAlertController *alertNoCon = [UIAlertController alertControllerWithTitle:@ "Нет соединения с интернетом!" message:nil preferredStyle:UIAlertControllerStyleAlert];
             alertNoConIsCreated =YES;
             cancelOfAlertNoConIsClicked =NO;
@@ -660,7 +609,6 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             NSLog(@"First Json String %@",jsonString);
             NSError*err;
             ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
-            
             categories=[[NSMutableArray alloc]init];
             for (int i=0; i<ordersResponseObject.categories.count; i++)
             {
@@ -670,12 +618,18 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
                 }
 
         }
+            if (categories.count==0)
+            {
+            self.tableViewOrdersPort.hidden=YES;
+            }
+            
         
-        
+            
             
         }
         if(ordersResponseObject.code!=nil && alertServErrIsCreated==NO)
         {
+            self.labelEmptyArray.hidden=YES;
             UIAlertController *alertServerErr = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:ordersResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
             alertServErrIsCreated =YES;
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -686,6 +640,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             [alertServerErr addAction:cancel];
             [self presentViewController:alertServerErr animated:YES completion:nil];
             
+            
         }
         else if(ordersResponseObject.code==nil)
         {
@@ -695,15 +650,10 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
         if (ordersResponseObject.code==nil && data)
         {   self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             self.tableViewOrdersPort.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-            self.tableViewOrdersLand.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-            self.tableViewIpad.backgroundColor=[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             self.titleLabelPort.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-            self.titleLabelLand.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
-            self.titleLabelIpad.backgroundColor =[UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
             [self.tableViewOrdersPort reloadData];
-            [self.tableViewOrdersLand reloadData];
-            [self.tableViewIpad reloadData];
-        }
+            
+                    }
        if (timerCreated ==NO) {
             requestTimer= [NSTimer scheduledTimerWithTimeInterval:30
                                                        target:self
