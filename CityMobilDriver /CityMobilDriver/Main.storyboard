@@ -2473,7 +2473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2va-g9-Vtx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6318" y="-1353"/>
+            <point key="canvasLocation" x="-5564" y="-1829"/>
         </scene>
         <!--Internet Conection View Controller-->
         <scene sceneID="wbE-Ou-BG1">
@@ -9732,6 +9732,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j2F-2J-mvC"/>
+        <segue reference="pdf-nK-2Pg"/>
     </inferredMetricsTieBreakers>
 </document>
