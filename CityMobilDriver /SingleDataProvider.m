@@ -32,43 +32,42 @@
     if (status==kCLAuthorizationStatusAuthorizedAlways)
    {
        [[SingleDataProvider sharedKey]setIsGPSEnabled:YES];
-     ///////////////////////////////ROOT////////////////////////////////
-       if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
-       {
-           [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
-           
-           [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
-           
-           [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
 
-       }
-       else
+//       if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
+//       {
+//           [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+//           
+//           [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+//           
+//           [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+//
+//       }
+//       else
        {
            [[SingleDataProvider sharedKey].gpsButtonHandler setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
        }
-       
-    ///////////////////////////////ROOT////////////////////////////////
+
        
    }
     else
     {
        
           [[SingleDataProvider sharedKey]setIsGPSEnabled:NO];
-        ///////////////////////////////ROOT////////////////////////////////
-          if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
-          {
-              
-          [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
-        
-        [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
-        
-        [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
-          }
-          else
+       
+//          if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[RootViewController class]])
+//          {
+//              
+//          [[SingleDataProvider sharedKey].gpsButtonHandlerPort setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+//        
+//        [[SingleDataProvider sharedKey].gpsButtonHandlerLand setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+//        
+//        [[SingleDataProvider sharedKey].gpsButtonHandlerIpad setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+//          }
+//          else
           {
               [[SingleDataProvider sharedKey].gpsButtonHandler  setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
           }
-        ///////////////////////////////ROOT////////////////////////////////
+ 
     }
 }
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

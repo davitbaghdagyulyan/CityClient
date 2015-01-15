@@ -40,7 +40,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
      [GPSConection showGPSConection:self];
-     [[SingleDataProvider sharedKey] setGpsButtonHandlerPort:self.gpsButtonPort];
+     [[SingleDataProvider sharedKey] setGpsButtonHandler:self.gpsButtonPort];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {
     [self.gpsButtonPort setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
