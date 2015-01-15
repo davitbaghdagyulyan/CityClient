@@ -282,6 +282,17 @@
         NSError*err;
         mailResponseObject = [[MailResponse alloc] initWithString:jsonString error:&err];
         
+        
+        if (mailResponseObject.mail.count==0)
+        {
+            self.messagesTableView.hidden=YES;
+        }
+        else
+        {
+            self.messagesTableView.hidden=NO;
+        }
+        
+        
         BadRequest* badRequest = [[BadRequest alloc]init];
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:mailResponseObject.text code:mailResponseObject.code];

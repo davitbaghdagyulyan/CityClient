@@ -116,6 +116,7 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
         <mutableArray key="Time Normal.TTF">
             <string>TimeNormal</string>
@@ -1177,6 +1178,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет писем" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-i2-jd3">
+                                <rect key="frame" x="5" y="280" width="590" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZBg-Xb-mHm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СООБЩЕНИЕ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGc-8P-A0T">
                                 <rect key="frame" x="0.0" y="66" width="600" height="50"/>
                                 <color key="backgroundColor" white="0.95004562043795615" alpha="1" colorSpace="calibratedWhite"/>
@@ -1322,21 +1332,29 @@
                             <constraint firstItem="EBG-QB-TXH" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" id="CoR-X2-pqk"/>
                             <constraint firstItem="CMi-uD-OqW" firstAttribute="width" secondItem="V7V-b5-MJJ" secondAttribute="width" multiplier="580/600" id="D4o-aQ-n0h"/>
                             <constraint firstAttribute="trailing" secondItem="83l-8j-f15" secondAttribute="trailing" constant="5" id="F9h-QW-LRP"/>
+                            <constraint firstAttribute="trailing" secondItem="Xdb-i2-jd3" secondAttribute="trailing" constant="590" id="HOx-RU-CgF"/>
                             <constraint firstItem="cYs-eW-RmS" firstAttribute="top" secondItem="CMi-uD-OqW" secondAttribute="bottom" constant="8" id="JmD-DB-Nf7"/>
+                            <constraint firstAttribute="centerY" secondItem="Xdb-i2-jd3" secondAttribute="centerY" id="KUl-aC-1vo"/>
                             <constraint firstAttribute="trailing" secondItem="CMi-uD-OqW" secondAttribute="trailing" constant="10" id="KwX-DA-WNS"/>
                             <constraint firstItem="CMi-uD-OqW" firstAttribute="top" secondItem="83l-8j-f15" secondAttribute="bottom" id="LDN-gM-CCb"/>
                             <constraint firstItem="CMi-uD-OqW" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" constant="10" id="OGo-QZ-Hhr"/>
                             <constraint firstItem="CMi-uD-OqW" firstAttribute="height" secondItem="V7V-b5-MJJ" secondAttribute="height" multiplier="40/600" id="OvD-6e-N0Y"/>
                             <constraint firstItem="cYs-eW-RmS" firstAttribute="top" secondItem="CMi-uD-OqW" secondAttribute="bottom" constant="8" id="TYr-QD-eVY"/>
                             <constraint firstItem="CMi-uD-OqW" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" constant="10" id="TvD-rf-LUg"/>
+                            <constraint firstAttribute="trailing" secondItem="Xdb-i2-jd3" secondAttribute="trailing" constant="5" id="U4F-k1-6jL"/>
                             <constraint firstItem="pGc-8P-A0T" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" id="VKb-1u-KJ6"/>
+                            <constraint firstAttribute="centerX" secondItem="Xdb-i2-jd3" secondAttribute="centerX" id="XRM-LY-xmo"/>
                             <constraint firstItem="83l-8j-f15" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" constant="5" id="Yjg-sU-JXW"/>
                             <constraint firstItem="CMi-uD-OqW" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="trailing" multiplier="10/600" id="YsS-5a-Xhe"/>
                             <constraint firstItem="cYs-eW-RmS" firstAttribute="top" secondItem="CMi-uD-OqW" secondAttribute="bottom" constant="8" id="ZiI-PU-8Kl"/>
                             <constraint firstAttribute="trailing" secondItem="EBG-QB-TXH" secondAttribute="trailing" id="blf-Ob-g8S"/>
+                            <constraint firstItem="Xdb-i2-jd3" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" constant="5" id="ewM-Vd-7qG"/>
+                            <constraint firstAttribute="centerX" secondItem="Xdb-i2-jd3" secondAttribute="centerX" id="exp-gN-x1Y"/>
                             <constraint firstAttribute="trailing" secondItem="pGc-8P-A0T" secondAttribute="trailing" id="fYH-si-cUE"/>
                             <constraint firstItem="83l-8j-f15" firstAttribute="top" secondItem="pGc-8P-A0T" secondAttribute="bottom" id="iM0-TG-Xib"/>
+                            <constraint firstItem="Xdb-i2-jd3" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" constant="5" id="ify-F0-Rlk"/>
                             <constraint firstAttribute="trailing" secondItem="CMi-uD-OqW" secondAttribute="trailing" constant="10" id="nKJ-R1-9f1"/>
+                            <constraint firstAttribute="centerY" secondItem="Xdb-i2-jd3" secondAttribute="centerY" id="pQQ-YJ-M0r"/>
                             <constraint firstItem="CMi-uD-OqW" firstAttribute="top" secondItem="cYs-eW-RmS" secondAttribute="bottom" multiplier="552/600" id="pvI-8U-33I"/>
                             <constraint firstAttribute="trailing" secondItem="pGc-8P-A0T" secondAttribute="trailing" id="rW2-2I-l6c"/>
                             <constraint firstItem="pGc-8P-A0T" firstAttribute="leading" secondItem="V7V-b5-MJJ" secondAttribute="leading" id="yFL-LP-Fhf"/>
@@ -1345,6 +1363,10 @@
                             <mask key="constraints">
                                 <exclude reference="VKb-1u-KJ6"/>
                                 <exclude reference="fYH-si-cUE"/>
+                                <exclude reference="HOx-RU-CgF"/>
+                                <exclude reference="KUl-aC-1vo"/>
+                                <exclude reference="XRM-LY-xmo"/>
+                                <exclude reference="ewM-Vd-7qG"/>
                                 <exclude reference="3CQ-b1-Mnt"/>
                                 <exclude reference="D4o-aQ-n0h"/>
                                 <exclude reference="KwX-DA-WNS"/>
@@ -7384,8 +7406,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
-                                <rect key="frame" x="10" y="297" width="580" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="нет закрепленных заказов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-6r-bUS">
+                                <rect key="frame" x="10" y="295" width="580" height="23"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
