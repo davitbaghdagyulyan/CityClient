@@ -3467,7 +3467,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-Mr-vMs">
-                                <rect key="frame" x="5" y="108" width="590" height="508"/>
+                                <rect key="frame" x="5" y="108" width="590" height="484"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZn-KR-AC1">
                                         <rect key="frame" x="0.0" y="208" width="590" height="488"/>
@@ -3973,7 +3973,7 @@
                                     <constraint firstAttribute="trailing" secondItem="SZn-KR-AC1" secondAttribute="trailing" id="Jk7-jd-Bst"/>
                                     <constraint firstAttribute="trailing" secondItem="r7F-QM-tcC" secondAttribute="trailing" id="MSy-pQ-1Bo"/>
                                     <constraint firstItem="r7F-QM-tcC" firstAttribute="top" secondItem="e7q-Mr-vMs" secondAttribute="top" id="OjC-Vo-cPW"/>
-                                    <constraint firstAttribute="bottom" secondItem="Cj8-z8-8UP" secondAttribute="bottom" constant="25" id="Sph-eG-pmS"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cj8-z8-8UP" secondAttribute="bottom" id="Sph-eG-pmS"/>
                                     <constraint firstItem="Cj8-z8-8UP" firstAttribute="top" secondItem="SZn-KR-AC1" secondAttribute="bottom" constant="8" id="Wti-2L-tXi"/>
                                     <constraint firstAttribute="bottom" secondItem="SZn-KR-AC1" secondAttribute="bottom" constant="8" id="aJM-Go-cFY"/>
                                     <constraint firstItem="r7F-QM-tcC" firstAttribute="leading" secondItem="e7q-Mr-vMs" secondAttribute="leading" id="cfI-AF-5Va"/>
@@ -3995,7 +3995,7 @@
                             <constraint firstItem="S8o-rZ-qSO" firstAttribute="leading" secondItem="ZZI-jo-LRl" secondAttribute="leading" constant="5" id="HQp-Oa-Eqp"/>
                             <constraint firstAttribute="trailing" secondItem="e7q-Mr-vMs" secondAttribute="trailing" constant="5" id="IPQ-To-ggk"/>
                             <constraint firstItem="IMJ-P2-hFt" firstAttribute="leading" secondItem="ZZI-jo-LRl" secondAttribute="leading" id="Lza-pd-KUN"/>
-                            <constraint firstItem="9aX-wu-efd" firstAttribute="top" secondItem="e7q-Mr-vMs" secondAttribute="bottom" constant="-16" id="M8Y-sf-vGJ"/>
+                            <constraint firstItem="9aX-wu-efd" firstAttribute="top" secondItem="e7q-Mr-vMs" secondAttribute="bottom" constant="8" id="M8Y-sf-vGJ"/>
                             <constraint firstItem="hTE-c8-n4h" firstAttribute="leading" secondItem="ZZI-jo-LRl" secondAttribute="leading" id="Ta9-L3-RL2"/>
                             <constraint firstItem="S8o-rZ-qSO" firstAttribute="top" secondItem="hTE-c8-n4h" secondAttribute="bottom" constant="8" id="bUw-eu-hyb"/>
                             <constraint firstAttribute="trailing" secondItem="IMJ-P2-hFt" secondAttribute="trailing" id="fWG-QX-53c"/>
@@ -6214,7 +6214,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qk1-tV-1qM">
-                                <rect key="frame" x="5" y="108" width="590" height="508"/>
+                                <rect key="frame" x="5" y="108" width="590" height="484"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hT8-zD-J1o">
                                         <rect key="frame" x="0.0" y="0.0" width="590" height="308"/>
@@ -6323,7 +6323,7 @@
                                     <constraint firstItem="aA4-s7-9pc" firstAttribute="top" secondItem="hT8-zD-J1o" secondAttribute="bottom" constant="8" id="fr2-cO-dZR"/>
                                     <constraint firstItem="hT8-zD-J1o" firstAttribute="leading" secondItem="qk1-tV-1qM" secondAttribute="leading" id="gEf-xn-YE6"/>
                                     <constraint firstAttribute="width" secondItem="hT8-zD-J1o" secondAttribute="width" id="jbm-m8-bqv"/>
-                                    <constraint firstAttribute="bottom" secondItem="aA4-s7-9pc" secondAttribute="bottom" constant="25" id="nfE-e3-4jm"/>
+                                    <constraint firstAttribute="bottom" secondItem="aA4-s7-9pc" secondAttribute="bottom" id="nfE-e3-4jm"/>
                                     <constraint firstAttribute="trailing" secondItem="hT8-zD-J1o" secondAttribute="trailing" id="oag-S9-g0k"/>
                                     <constraint firstAttribute="trailing" secondItem="aA4-s7-9pc" secondAttribute="trailing" id="wg1-bY-W4u"/>
                                 </constraints>
@@ -6344,7 +6344,7 @@
                             <constraint firstItem="cA1-bY-ppa" firstAttribute="leading" secondItem="bFe-dk-weY" secondAttribute="leading" id="p07-uG-BPT"/>
                             <constraint firstItem="oFy-Ww-x0y" firstAttribute="top" secondItem="Sz0-V3-O3I" secondAttribute="bottom" constant="8" id="uus-XJ-XdC"/>
                             <constraint firstItem="cA1-bY-ppa" firstAttribute="top" secondItem="oFy-Ww-x0y" secondAttribute="bottom" constant="-36" id="xlf-Rg-LCJ"/>
-                            <constraint firstItem="rdb-91-SDy" firstAttribute="top" secondItem="qk1-tV-1qM" secondAttribute="bottom" constant="-16" id="zLs-xM-CRo"/>
+                            <constraint firstItem="rdb-91-SDy" firstAttribute="top" secondItem="qk1-tV-1qM" secondAttribute="bottom" constant="8" id="zLs-xM-CRo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -6494,7 +6494,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdz-xH-BDM">
-                                <rect key="frame" x="5" y="108" width="590" height="508"/>
+                                <rect key="frame" x="5" y="108" width="590" height="484"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3W-dB-Tb5">
                                         <rect key="frame" x="0.0" y="0.0" width="590" height="313"/>
@@ -6910,7 +6910,7 @@
                                     <constraint firstAttribute="trailing" secondItem="l3W-dB-Tb5" secondAttribute="trailing" id="2jT-s6-8An"/>
                                     <constraint firstItem="l3W-dB-Tb5" firstAttribute="leading" secondItem="Sdz-xH-BDM" secondAttribute="leading" id="8j1-0z-KAP"/>
                                     <constraint firstItem="G8V-ed-nvW" firstAttribute="top" secondItem="l3W-dB-Tb5" secondAttribute="bottom" constant="8" id="8pz-JT-5hF"/>
-                                    <constraint firstAttribute="bottom" secondItem="G8V-ed-nvW" secondAttribute="bottom" constant="25" id="AIu-8y-rbs"/>
+                                    <constraint firstAttribute="bottom" secondItem="G8V-ed-nvW" secondAttribute="bottom" id="AIu-8y-rbs"/>
                                     <constraint firstAttribute="trailing" secondItem="G8V-ed-nvW" secondAttribute="trailing" id="F10-kd-EBR"/>
                                     <constraint firstItem="G8V-ed-nvW" firstAttribute="leading" secondItem="Sdz-xH-BDM" secondAttribute="leading" id="Y9s-bm-ha7"/>
                                     <constraint firstItem="l3W-dB-Tb5" firstAttribute="top" secondItem="Sdz-xH-BDM" secondAttribute="top" id="lsf-5Y-nRv"/>
@@ -6935,7 +6935,7 @@
                             <constraint firstItem="IbS-DG-BKJ" firstAttribute="top" secondItem="b2F-Jz-lkh" secondAttribute="bottom" constant="7" id="G6O-ko-LBz"/>
                             <constraint firstAttribute="trailing" secondItem="b2F-Jz-lkh" secondAttribute="trailing" id="IOB-Fm-OT3"/>
                             <constraint firstItem="IZy-Gc-JzJ" firstAttribute="top" secondItem="IbS-DG-BKJ" secondAttribute="bottom" constant="-35" id="RW1-eT-o6k"/>
-                            <constraint firstItem="y1Z-B6-ugQ" firstAttribute="top" secondItem="Sdz-xH-BDM" secondAttribute="bottom" constant="-16" id="T4P-R8-2I7"/>
+                            <constraint firstItem="y1Z-B6-ugQ" firstAttribute="top" secondItem="Sdz-xH-BDM" secondAttribute="bottom" constant="8" id="T4P-R8-2I7"/>
                             <constraint firstItem="Sdz-xH-BDM" firstAttribute="top" secondItem="IbS-DG-BKJ" secondAttribute="bottom" constant="9" id="aeJ-EH-Msx"/>
                             <constraint firstAttribute="trailing" secondItem="Sdz-xH-BDM" secondAttribute="trailing" constant="5" id="e17-TU-agH"/>
                             <constraint firstAttribute="trailing" secondItem="IZy-Gc-JzJ" secondAttribute="trailing" id="i2g-Zw-C16"/>
@@ -8138,6 +8138,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ibu-0T-hQe"/>
+        <segue reference="ygv-Ts-1xQ"/>
     </inferredMetricsTieBreakers>
 </document>

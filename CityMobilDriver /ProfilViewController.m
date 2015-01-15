@@ -22,6 +22,7 @@
     
     CAGradientLayer* gradientLayer;
     OpenMapButtonHandler*openMapButtonHandlerObject;
+    BOOL isFirstLoad;
 }
 @end
 
@@ -31,10 +32,7 @@
 {
     self.scrollView.delegate = self;
     self.scrollView.showsHorizontalScrollIndicator = NO;
-    [self setDriverInfoRequest];
-    [self setDriverInfo];
-    
-    
+    isFirstLoad = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -66,6 +64,13 @@
     gradientLayer = [self greyGradient];
     gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.bgView.frame), CGRectGetHeight(self.bgView.frame)*9.f/97);
     [self.bgView.layer insertSublayer:gradientLayer atIndex:0];
+    
+    if (isFirstLoad) {
+        [self setDriverInfoRequest];
+        [self setDriverInfo];
+        isFirstLoad = NO;
+    }
+    
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
@@ -136,7 +141,6 @@
     //NSLog(@"******* %@",jsonResponseObject.doc_scans_url);
     [indicator stopAnimating];
     return jsonResponseGetUrlObject.doc_scans_url;
-    
 }
 
 
