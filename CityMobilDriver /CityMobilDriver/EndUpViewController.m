@@ -56,7 +56,7 @@
 #pragma mark - life circle
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    [self registerForKeyboardNotifications];
     
     [self requestSetBill];
 }
@@ -810,6 +810,41 @@
 {
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
+}
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    self.endUpScrollView.contentInset = contentInsets;
+     self.endUpScrollView.scrollIndicatorInsets = contentInsets;
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= keyboardSize.height;
+    
+    [self.endUpScrollView scrollRectToVisible:billTextField.frame animated:YES];
+   
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.endUpScrollView .contentInset = contentInsets;
+    self.endUpScrollView .scrollIndicatorInsets = contentInsets;
+    self.endUpScrollView.contentOffset=CGPointZero;
 }
 
 @end

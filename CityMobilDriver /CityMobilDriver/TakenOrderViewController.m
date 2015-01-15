@@ -215,7 +215,7 @@
                 UILabel*label=(UILabel*)[cellUnderView viewWithTag:250];
                  label.font=[UIFont fontWithName:@"Roboto-Bold" size:15];
                 label.text=[self TimeFormat:getOrderResponseObject.CollDate];
-                label.text=[NSString stringWithFormat:@"   %@ %@",label.text,getOrderResponseObject.shortname];
+                label.text=[NSString stringWithFormat:@" %@ %@",label.text,getOrderResponseObject.shortname];
               if(count==1)
                 [self drawPage];
                 else
