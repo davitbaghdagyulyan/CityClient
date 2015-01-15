@@ -6103,7 +6103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nd8-9k-kma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2160" y="1845"/>
+            <point key="canvasLocation" x="-2314" y="1845"/>
         </scene>
         <!--Car Info View Controller-->
         <scene sceneID="wx3-mJ-rjq">

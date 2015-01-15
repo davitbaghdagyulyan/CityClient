@@ -469,7 +469,7 @@
                                                                            toItem:nil
                                                                         attribute: NSLayoutAttributeWidth
                                                                        multiplier:1.0
-                                                                         constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                                                                         constant:(curentSelf.view.frame.size.width-10)/2-2]];
                 
                 [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
                                                                         attribute: NSLayoutAttributeHeight
@@ -512,7 +512,7 @@
                                                                              toItem:nil
                                                                           attribute: NSLayoutAttributeWidth
                                                                          multiplier:1.0
-                                                                           constant:(curentSelf.view.frame.size.width-20)/2-2]];
+                                                                           constant:(curentSelf.view.frame.size.width-10)/2-2]];
                 
                 [toOrderButton addConstraint:[NSLayoutConstraint constraintWithItem:toOrderButton
                                                                           attribute: NSLayoutAttributeHeight
