@@ -564,19 +564,17 @@ typedef enum ScrollDirection {
     if (self.lastContentOffset > targetContentOffset->x)
     {
         scrollDirection = ScrollDirectionRight;
-        
-        
-        
         position-=1;
-
+        
     }
     else if (self.lastContentOffset < targetContentOffset->x)
     {
         scrollDirection = ScrollDirectionLeft;
         position+=1;
+        
     }
-    
-    self.lastContentOffset = targetContentOffset->x;
+     self.lastContentOffset = targetContentOffset->x;
+  
 }
 
 @end

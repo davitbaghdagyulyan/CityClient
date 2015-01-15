@@ -16,23 +16,32 @@
     if (code != nil) {
         if ([code isEqualToString:@"400"])
         {
-    UIAlertController *keyExpiredAlert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action)
+            UIAlertController *keyExpiredAlert = [UIAlertController
+                                          alertControllerWithTitle:nil
+                                          message:message preferredStyle:
+                                          UIAlertControllerStyleAlert];
+            
+            UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action)
                          {
                              [keyExpiredAlert dismissViewControllerAnimated:YES completion:nil];
-                            LoginViewController* loginController=[self.delegate.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+                             LoginViewController* loginController=[self.delegate.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
                              [self.delegate.navigationController pushViewController:loginController animated:NO];
                          }];
-    [keyExpiredAlert addAction:ok];
-    [self.delegate presentViewController:keyExpiredAlert animated:YES completion:nil];
+            
+            [keyExpiredAlert addAction:ok];
+            [self.delegate presentViewController:keyExpiredAlert animated:YES completion:nil];
         }
         else{
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController
+                                            alertControllerWithTitle:nil
+                                            message:message
+                                            preferredStyle:UIAlertControllerStyleAlert];
             
-                UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                               handler:^(UIAlertAction * action)
+                UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK"
+                                                   style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action)
                                          {
                                              [alert dismissViewControllerAnimated:YES completion:nil];
             

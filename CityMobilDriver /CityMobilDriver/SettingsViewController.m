@@ -60,6 +60,28 @@
     [self.view.layer insertSublayer:backgroundLayer atIndex:0];
     
 
+    
+    
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+       [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
+    {
+        /// detect if iphone 4s ///
+        if (CGRectGetHeight(self.view.frame) == 480) {
+            self.bgViewHeight.constant = 248;
+        }
+        else{
+            self.bgViewHeight.constant = CGRectGetHeight(self.view.frame) - 300;
+        }
+    }
+    else{
+        /// detect if ipad ///
+        if (CGRectGetHeight(self.view.frame) == 768) {
+            self.bgViewHeight.constant = CGRectGetHeight(self.view.frame) - 300;
+        }
+        else{
+            self.bgViewHeight.constant = 248;
+        }
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -89,17 +111,7 @@
     /////////////////
     
     [super viewDidAppear:animated];
-//    if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait && self.view.frame.size.height == 480)
-//    {
-//        self.scrolView.contentSize = self.view.frame.size;
-//    }
-//    
-//    if (([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) && self.view.frame.size.height != 768)
-//    {
-//        CGSize scrolViewSize = self.view.frame.size;
-//        scrolViewSize.height = self.view.frame.size.width;
-//        self.scrolView.contentSize = scrolViewSize;
-//    }
+
     
     NSInteger fontNubmer = [[NSUserDefaults standardUserDefaults] integerForKey:@"fontSize"];
     
@@ -181,6 +193,8 @@
     gradientLayer = [self greyGradient];
     gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.settingsView.frame), CGRectGetHeight(self.settingsView.frame)*9.f/46);
     [self.settingsView.layer insertSublayer:gradientLayer atIndex:0];
+    
+
 }
 
 #pragma mark - scrollView horizontal scroll
@@ -471,24 +485,32 @@
 - (IBAction)nightModeAction:(id)sender
 {
     
-    NSNumber* isNightMode = nil;
-    if (![self.checkBox isSelected]) {
-        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
-        self.settings.textColor = [UIColor orangeColor];
-        self.yandexSettings.textColor = [UIColor orangeColor];
-        isNightMode = [NSNumber numberWithBool:YES];
-        [self.checkBox setSelected:YES];
-    }
-    else{
-        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
-        self.settings.textColor = [UIColor blackColor];
-        self.yandexSettings.textColor = [UIColor blackColor];
-        isNightMode = [NSNumber numberWithBool:NO];
+//    NSNumber* isNightMode = nil;
+//    if (![self.checkBox isSelected]) {
+//        self.backgroundImage.image = [UIImage imageNamed:@"pages_background.png"];
+//        self.settings.textColor = [UIColor orangeColor];
+//        self.yandexSettings.textColor = [UIColor orangeColor];
+//        isNightMode = [NSNumber numberWithBool:YES];
+//        [self.checkBox setSelected:YES];
+//    }
+//    else{
+//        self.backgroundImage.image = [UIImage imageNamed:@"notFoundImage.png"];
+//        self.settings.textColor = [UIColor blackColor];
+//        self.yandexSettings.textColor = [UIColor blackColor];
+//        isNightMode = [NSNumber numberWithBool:NO];
+//        [self.checkBox setSelected:NO];
+//    }
+    
+//    [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if ([self.checkBox isSelected]) {
         [self.checkBox setSelected:NO];
     }
+    else{
+        [self.checkBox setSelected:YES];
+    }
     
-    [[NSUserDefaults standardUserDefaults] setObject:isNightMode forKey:@"isNightMode"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void)setAppMode
@@ -829,6 +851,29 @@
          
          backgroundLayer.frame = self.view.bounds;
          gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.settingsView.frame), CGRectGetHeight(self.settingsView.frame)*9.f/46);
+         
+         
+         if([[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortrait ||
+            [[UIApplication sharedApplication] statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
+         {
+             /// detect if iphone 4s ///
+             if (CGRectGetHeight(self.view.frame) == 480) {
+                 self.bgViewHeight.constant = 248;
+             }
+             else{
+                 self.bgViewHeight.constant = CGRectGetHeight(self.view.frame) - 300;
+             }
+         }
+         else{
+             /// detect if ipad ///
+             if (CGRectGetHeight(self.view.frame) == 768) {
+                 self.bgViewHeight.constant = CGRectGetHeight(self.view.frame) - 300;
+             }
+             else{
+                 self.bgViewHeight.constant = 248;
+             }
+         }
+         
      }
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {

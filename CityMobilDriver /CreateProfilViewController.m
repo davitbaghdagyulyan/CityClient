@@ -29,6 +29,7 @@
 
 @implementation CreateProfilViewController
 
+#pragma mark - life Circle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -167,6 +168,7 @@
     }
 }
 
+#pragma mark - Image Settings
 -(void)actionHandleTapOnCreateImageView
 {
     imagePicker = [[UIImagePickerController alloc]init];
@@ -216,6 +218,7 @@
     return newImage;
 }
 
+#pragma mark - UITextField Settings
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     switch (textField.tag)
@@ -244,10 +247,10 @@
             [self.pasportAdress becomeFirstResponder];
             break;
         case 107:
-            [self.driverLicenseNumber becomeFirstResponder];
+            [self.driverLicenseSerial becomeFirstResponder];
             break;
         case 108:
-            [self.driverLicenseSerial becomeFirstResponder];
+            [self.driverLicenseNumber becomeFirstResponder];
             break;
         case 109:
             [self.driverLicenseClass becomeFirstResponder];
@@ -288,9 +291,9 @@
     CGRect aRect = self.view.frame;
     aRect.size.height -= keyboardSize.height;
     NSLog(@"%@",NSStringFromCGRect(activeTextFeild.frame));
-////    if (!CGRectContainsPoint(aRect, activeTextFeild.frame.origin) ) {
-//        [self.scrollView scrollRectToVisible:activeTextFeild.frame animated:YES];
-////    }
+    if (!CGRectContainsPoint(aRect, activeTextFeild.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:activeTextFeild.frame animated:YES];
+    }
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
@@ -367,7 +370,10 @@
     return [data1 isEqual:data2];
 }
 - (NSString *)encodeToBase64String:(UIImage *)image {
-    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSData* imageData = UIImagePNGRepresentation(image);
+    NSString* imageString = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    return imageString;
 }
 
 

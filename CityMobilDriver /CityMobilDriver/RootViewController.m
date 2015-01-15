@@ -610,6 +610,8 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
             NSError*err;
             ordersResponseObject = [[OrdersResponse alloc] initWithString:jsonString error:&err];
             categories=[[NSMutableArray alloc]init];
+            
+            
             for (int i=0; i<ordersResponseObject.categories.count; i++)
             {
                 if ([[[ordersResponseObject.categories objectAtIndex:i]getCount]integerValue] !=0)

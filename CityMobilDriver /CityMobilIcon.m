@@ -13,12 +13,15 @@
 - (void)drawRect:(CGRect)rect {
     if([IconsColorSingltone sharedColor].cityMobilColor == 0){
         [self setImage:[UIImage imageNamed:@"icon"] forState:UIControlStateNormal];
+        [self setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     }
     if ([IconsColorSingltone sharedColor].cityMobilColor == 1) {
         [self setImage:[UIImage imageNamed:@"set3_orange.png"] forState:UIControlStateNormal];
+        [self setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     }
     if ([IconsColorSingltone sharedColor].cityMobilColor == 2) {
         [self setImage:[UIImage imageNamed:@"icon_green.png"] forState:UIControlStateNormal];
+        [self setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     }
 }
 

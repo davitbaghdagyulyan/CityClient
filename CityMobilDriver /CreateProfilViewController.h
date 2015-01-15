@@ -54,8 +54,8 @@
 
 ///////
 
-@property (weak, nonatomic) IBOutlet UITextField *driverLicenseNumber;
 @property (weak, nonatomic) IBOutlet UITextField *driverLicenseSerial;
+@property (weak, nonatomic) IBOutlet UITextField *driverLicenseNumber;
 @property (weak, nonatomic) IBOutlet UITextField *driverLicenseClass;
 
 
