@@ -53,11 +53,11 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQU-kT-FiQ">
-                            <rect key="frame" x="150" y="70" width="440" height="20"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQU-kT-FiQ">
+                            <rect key="frame" x="150" y="70" width="440" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="3d9-P3-Bu5"/>
+                                <constraint firstAttribute="height" constant="30" id="3d9-P3-Bu5"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -119,7 +119,7 @@
                         <constraint firstItem="Qj5-qb-1I8" firstAttribute="top" secondItem="PhF-9M-MpA" secondAttribute="bottom" constant="20" id="MSQ-xd-RSq"/>
                         <constraint firstItem="uvZ-Km-R1j" firstAttribute="top" secondItem="2it-pg-AVe" secondAttribute="top" constant="10" id="W5w-TU-SN7"/>
                         <constraint firstItem="PhF-9M-MpA" firstAttribute="top" secondItem="uvZ-Km-R1j" secondAttribute="bottom" constant="30" id="Z5L-RC-tFf"/>
-                        <constraint firstItem="dvt-u2-9cn" firstAttribute="top" secondItem="PQU-kT-FiQ" secondAttribute="bottom" constant="20" id="g9x-wz-gcd"/>
+                        <constraint firstItem="dvt-u2-9cn" firstAttribute="top" secondItem="PQU-kT-FiQ" secondAttribute="bottom" constant="10" id="g9x-wz-gcd"/>
                         <constraint firstItem="6dA-aN-8kY" firstAttribute="leading" secondItem="2it-pg-AVe" secondAttribute="leading" constant="10" id="lo9-xl-p3t"/>
                         <constraint firstItem="uvZ-Km-R1j" firstAttribute="leading" secondItem="2it-pg-AVe" secondAttribute="leading" id="mla-5O-BCl"/>
                         <constraint firstAttribute="trailing" secondItem="dvt-u2-9cn" secondAttribute="trailing" constant="10" id="nrt-I6-ZxY"/>
