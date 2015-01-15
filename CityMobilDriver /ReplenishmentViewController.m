@@ -37,6 +37,7 @@
     BOOL isPressedCloseButton;
     NSUInteger indexOfCard;
     BOOL view1IsLoad;
+    UIScrollView*view1_2ScrollView;
 
 }
 @end
@@ -44,7 +45,8 @@
 @implementation ReplenishmentViewController
 -(void)viewDidAppear:(BOOL)animated
 {
-     [GPSConection showGPSConection:self];
+      [self registerForKeyboardNotifications];
+    [GPSConection showGPSConection:self];
        [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {
@@ -80,6 +82,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
     // Do any additional setup after loading the view.
 }
 
@@ -359,10 +362,14 @@
       else
         {
             [view1 removeFromSuperview];
+            view1_2ScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98)];
+            CGSize size={view1_2ScrollView.bounds.size.width,view1_2ScrollView.bounds.size.height};
+            view1_2ScrollView.contentSize=size;
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView2" owner:self options:nil];
             view1_2 = [nib objectAtIndex:0];
-            view1_2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
-            [self.view addSubview:view1_2];
+            view1_2.frame =view1_2ScrollView.bounds;
+            [self.view addSubview:view1_2ScrollView];
+            [view1_2ScrollView addSubview:view1_2];
             view1_2.chooseCardLabel.text=[[getCardsResponseObject.cards objectAtIndex:0] pan];
             UITapGestureRecognizer* tapGasture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showComboBox)];
             [view1_2.cardsView addGestureRecognizer:tapGasture1];
@@ -605,6 +612,7 @@
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
+    [self.view bringSubviewToFront:leftMenu];
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
@@ -626,18 +634,21 @@
              leftMenu.flag=1;
              view1.userInteractionEnabled=NO;
              view2.userInteractionEnabled=NO;
-             
+             view1_2ScrollView.userInteractionEnabled=NO;
              view1.tag=1;
              view2.tag=2;
+             view1_2ScrollView.tag=3;
              [leftMenu.disabledViewsArray removeAllObjects];
           
              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:view1.tag]];
              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:view2.tag]];
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:view1_2ScrollView.tag]];
          }
          else
          {
              view1.userInteractionEnabled=YES;
              view2.userInteractionEnabled=YES;
+             view1_2ScrollView.userInteractionEnabled=YES;
              leftMenu.flag=0;
          }
      }
@@ -645,6 +656,7 @@
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self.view bringSubviewToFront:leftMenu];
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
     if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
@@ -662,6 +674,7 @@
              leftMenu.flag=0;
              view1.userInteractionEnabled=YES;
              view2.userInteractionEnabled=YES;
+              view1_2ScrollView.userInteractionEnabled=YES;
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
          else if (touchLocation.x>leftMenu.frame.size.width/2)
@@ -670,6 +683,7 @@
              leftMenu.flag=1;
              view1.userInteractionEnabled=NO;
              view2.userInteractionEnabled=NO;
+              view1_2ScrollView.userInteractionEnabled=NO;
          }
          point.y=leftMenu.center.y;
          leftMenu.center=point;
@@ -681,6 +695,7 @@
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+   [self.view bringSubviewToFront:leftMenu];
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:touch.view];
     if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
@@ -698,6 +713,7 @@
     leftMenu.flag=1;
     view1.userInteractionEnabled=NO;
     view2.userInteractionEnabled=NO;
+    view1_2ScrollView.userInteractionEnabled=NO;
 }
 
 
@@ -709,7 +725,11 @@
                                     
                                              view1.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
                                               view2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height-98);
-                                               view1_2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height-98);
+                                     view1_2ScrollView.frame=CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
+                                     CGSize size={view1_2ScrollView.bounds.size.width,view1_2ScrollView.bounds.size.height};
+                                     view1_2ScrollView.contentSize=size;
+                                     view1_2.frame =view1_2ScrollView.bounds;
+                                    
                                      comboBoxTableView.center=self.view.center;
                                      CGFloat x;
                                     
@@ -734,5 +754,44 @@
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height+20, 0.0);
+   view1_2ScrollView.contentInset = contentInsets;
+    view1_2ScrollView.scrollIndicatorInsets = contentInsets;
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= keyboardSize.height;
+  
+   if (!CGRectContainsPoint(aRect, view1_2.priceTextField.frame.origin) )
+    {
+        [view1_2ScrollView scrollRectToVisible:view1_2.priceTextField.frame animated:YES];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    view1_2ScrollView.contentInset = contentInsets;
+    view1_2ScrollView.scrollIndicatorInsets = contentInsets;
+}
+
+
+
 
 @end
