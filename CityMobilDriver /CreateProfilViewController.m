@@ -29,6 +29,7 @@
 
 @implementation CreateProfilViewController
 
+#pragma mark - life Circle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -167,6 +168,7 @@
     }
 }
 
+#pragma mark - Image Settings
 -(void)actionHandleTapOnCreateImageView
 {
     imagePicker = [[UIImagePickerController alloc]init];
@@ -216,6 +218,7 @@
     return newImage;
 }
 
+#pragma mark - UITextField Settings
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     switch (textField.tag)
