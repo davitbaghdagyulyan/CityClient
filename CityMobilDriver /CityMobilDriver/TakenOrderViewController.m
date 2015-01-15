@@ -327,7 +327,7 @@
         if(i==0)
         {
             UIButton*button=[buttonArray objectAtIndex:i];
-        labelView.frame=CGRectMake(2,cellUnderView.frame.size.height-(i+1)*button.frame.size.height-8, self.scrollView.frame.size.width-4, button.frame.size.height+4);
+        labelView.frame=CGRectMake(2,cellUnderView.frame.size.height-(i+1)*button.frame.size.height-8, self.view.frame.size.width-14, button.frame.size.height+4);
         labelView.backgroundColor=[UIColor whiteColor];
         }
         else
@@ -599,6 +599,8 @@
         [refuseTheOrderButton addTarget:self action:@selector(refuseTheOrderAction) forControlEvents:UIControlEventTouchUpInside];
         
         
+     
+        
         UIImageView*chatImageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 12, 32, 26)];
         chatImageView.image=[UIImage imageNamed:@"chat1.png"];
         
@@ -616,6 +618,8 @@
         [contentView addSubview:chatWithaCustomerButton];
         [chatWithaCustomerButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+10+5;
+        
+       
         
     }
     else
@@ -640,9 +644,11 @@
         [contentView addSubview:chatWithaCustomerButton];
         [chatWithaCustomerButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
+        
+         [buttons addObject:chatWithaCustomerButton];
 
     }
-    self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-20, yCoord);
+    self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
     contentView.frame=CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
     
     setStatusJsonObject.lat=getOrderResponseObject.latitude;
@@ -1077,21 +1083,28 @@
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-          self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-20, yCoord);
+          self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
           contentView.frame=CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
          
-         labelView.frame=CGRectMake(labelView.frame.origin.x,labelView.frame.origin.y, self.view.frame.size.width-24, labelView.frame.size.height);
+         labelView.frame=CGRectMake(labelView.frame.origin.x,labelView.frame.origin.y, self.view.frame.size.width-14, labelView.frame.size.height);
           blackLineLabel.frame=CGRectMake(10, 0, labelView.frame.size.width-16,1);
          
          for(UIButton*button in buttons)
          {
              button.frame=CGRectMake(button.frame.origin.x, button.frame.origin.y, self.scrollView.frame.size.width-20, button.frame.size.height);
          }
-       
-         chatWithaCustomerButton.frame=CGRectMake(self.scrollView.frame.size.width/2+5, chatWithaCustomerButton.frame.origin.y, self.scrollView.frame.size.width/2-15, chatWithaCustomerButton.frame.size.height);
+       if ([getOrderResponseObject.PossibleStatuses containsObject:@"RJ"])
+       {
+       chatWithaCustomerButton.frame=CGRectMake(self.scrollView.frame.size.width/2+5, chatWithaCustomerButton.frame.origin.y, self.scrollView.frame.size.width/2-15, chatWithaCustomerButton.frame.size.height);
           textLabel.frame=CGRectMake(25, 0, chatWithaCustomerButton.frame.size.width-40, chatWithaCustomerButton.frame.size.height);
+          
         refuseTheOrderButton.frame=CGRectMake(10, refuseTheOrderButton.frame.origin.y, self.scrollView.frame.size.width/2-15, refuseTheOrderButton.frame.size.height);
-         
+       }
+       else
+       {
+           CGPoint point=CGPointMake(chatWithaCustomerButton.center.x, textLabel.center.y);
+           textLabel.center=point;
+       }
          viewMap.frame=self.view.frame;
          viewMap.center=self.view.center;
          
