@@ -722,7 +722,8 @@
     [coordinator animateAlongsideTransition:nil
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context){
-                                    
+                                     view1_2ScrollView.contentOffset=CGPointZero;
+                                     [view1_2.priceTextField resignFirstResponder];
                                              view1.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
                                               view2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height-98);
                                      view1_2ScrollView.frame=CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
