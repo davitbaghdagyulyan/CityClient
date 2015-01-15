@@ -533,7 +533,7 @@
         [self cutStringsInArray:arr];
         NSString* price = arr[0];
         str = [str stringByAppendingFormat:@" %@ - %@ \n",[tachometerResponse.services[i] name],price];//[tachometerResponse.services[i] prices]
-        [idArray addObject:[tachometerResponse.services[i] name]];
+        [idArray addObject:[tachometerResponse.services[i] getID]];
     }
     
 

@@ -263,13 +263,20 @@
     cell.priceLabel.textAlignment = NSTextAlignmentCenter;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    for (int i = 0; i < self.selectedID.count; ++i) {
-        if ([titleArray[indexPath.row] isEqualToString:self.selectedID[i]]) {
+    
+    
+//    for (int i = 0; i < self.selectedID.count; ++i) {
+//        if ([titleArray[indexPath.row] isEqualToString:self.selectedID[i]]) {
+//            [cell.checkbox setSelected:YES];
+//        }
+//    }
+
+    NSString* str = idArray[indexPath.row];
+    for (int j = 0; j < self.selectedID.count; ++j) {
+        if ([str isEqualToString:self.selectedID[j]]) {
             [cell.checkbox setSelected:YES];
         }
     }
-    
-
     
     
     CGRect cellRect = cell.bgView.frame;
@@ -349,7 +356,7 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         [self.servicesTable reloadData];
+         //[self.servicesTable reloadData];
          
          
          
@@ -417,7 +424,7 @@
          }
          
          
-         [self.servicesTable reloadData];
+         //[self.servicesTable reloadData];
      }
      ];
     
