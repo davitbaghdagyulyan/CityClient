@@ -380,7 +380,7 @@
             view1_2.delegate=self;
             view1_2.priceTextField.keyboardType=UIKeyboardTypeNumberPad;
             indexOfCard=0;
-         
+            view1_2.priceTextField.font=[UIFont fontWithName:@"Roboto-Regular" size:20];
 
         }
 
