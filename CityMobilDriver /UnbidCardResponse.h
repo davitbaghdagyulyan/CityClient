@@ -10,6 +10,6 @@
 
 @interface UnbidCardResponse : JSONModel
 @property(nonatomic,strong) NSString* text;
-@property(nonatomic,strong) NSString* cade;
+@property(nonatomic,strong) NSString* code;
 @property(nonatomic,strong) NSString* result;
 @end

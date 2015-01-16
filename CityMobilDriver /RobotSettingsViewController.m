@@ -60,7 +60,7 @@
     
         
     scrollView = [[UIScrollView alloc]initWithFrame:
-                  CGRectMake(8, 64, self.view.frame.size.width - 16, self.view.frame.size.height - 64)];
+                  CGRectMake(5, 64, self.view.frame.size.width - 10, self.view.frame.size.height - 64)];
     
     scrollView.delegate = self;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -882,7 +882,7 @@
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        scrollView.frame = CGRectMake(8, 64, self.view.frame.size.width - 16, self.view.frame.size.height - 64);
+        scrollView.frame = CGRectMake(5, 64, self.view.frame.size.width - 10, self.view.frame.size.height - 64);
         descriptionLabel.frame = CGRectMake(0, 0, scrollView.frame.size.width, 50);
         robotTable.frame = CGRectMake(0, 50, scrollView.frame.size.width, 450);
         if (isDefaultTable) {

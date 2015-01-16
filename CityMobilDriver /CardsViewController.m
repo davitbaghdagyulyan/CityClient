@@ -31,7 +31,6 @@
     LeftMenu* leftMenu;
     
     UIScrollView* scrollView;
-//    CAGradientLayer* gradientLayer;
     
     NSMutableArray* cardsArray;
     NSMutableArray* gradientArray;
@@ -46,8 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hasCards.hidden = YES;
-    cardsArray = [[NSMutableArray alloc]init];
-    gradientArray = [[NSMutableArray alloc]init];
+    
 }
 
 
@@ -139,7 +137,7 @@
         
         BadRequest* badRequest = [[BadRequest alloc]init];
         badRequest.delegate = self;
-        [badRequest showErrorAlertMessage:getCardsResponseObject.text code:getCardsResponseObject.code];
+        [badRequest showErrorAlertMessage:unbidCardResponse.text code:unbidCardResponse.code];
         
         [indicator stopAnimating];
         [self requestGetCards];
@@ -201,13 +199,16 @@
         [badRequest showErrorAlertMessage:getCardsResponseObject.text code:getCardsResponseObject.code];
         
         
+        cardsArray = [[NSMutableArray alloc]init];
+        gradientArray = [[NSMutableArray alloc]init];
         
         if (getCardsResponseObject.cards.count != 0) {
             self.hasCards.hidden = YES;
             
             [scrollView removeFromSuperview];
-            scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame) , CGRectGetWidth(self.view.frame) - 16, CGRectGetHeight(self.view.frame) - 155)];//64 - 29 - 16 - 30 - 16
-            scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame) - 16, getCardsResponseObject.cards.count * (264 + 8));
+            scrollView = nil;
+            scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(self.segmentControll.frame) , CGRectGetWidth(self.view.frame) - 10, CGRectGetHeight(self.view.frame) - 155)];//64 - 29 - 16 - 30 - 16
+            scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame) - 10, getCardsResponseObject.cards.count * (264 + 8));
             [self.view addSubview:scrollView];
             
             for (int i = 0; i < getCardsResponseObject.cards.count; ++i) {
@@ -248,7 +249,6 @@
             self.hasCards.hidden = NO;
         }
         [indicator stopAnimating];
-        
         
         
     }];
@@ -311,8 +311,8 @@
         
         
         self.webView = [[UIWebView alloc]initWithFrame:
-                   CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame),
-                              CGRectGetWidth(self.view.frame) - 16,
+                   CGRectMake(5, CGRectGetMaxY(self.segmentControll.frame),
+                              CGRectGetWidth(self.view.frame) - 10,
                               CGRectGetHeight(self.view.frame)
                               - 64 - CGRectGetHeight(self.segmentControll.frame) - 2*8)];
         self.webView.delegate = self;
@@ -360,29 +360,23 @@
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          
-
-         
-         scrollView.frame = CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame), CGRectGetWidth(self.view.frame) - 16, CGRectGetHeight(self.view.frame) - 155);
+         scrollView.frame = CGRectMake(5, CGRectGetMaxY(self.segmentControll.frame), CGRectGetWidth(self.view.frame) - 10, CGRectGetHeight(self.view.frame) - 155);
          
 
          for (int i = 0; i < cardsArray.count; ++i) {
-             CardView* cardView = (CardView*)cardsArray[i];
-//             cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
-//             
-//             
+             CardView* cardView = cardsArray[i];
              cardView.frame = CGRectMake(0, i*(264 + 8), CGRectGetWidth(scrollView.frame), 264);
              if (i == 0) {
                  cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
              }
              
              CAGradientLayer* gradientLayer = gradientArray[i];
-             
              gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(scrollView.frame), 264);
          }
          
          
-         self.webView.frame = CGRectMake(8, CGRectGetMaxY(self.segmentControll.frame) + 8,
-                               CGRectGetWidth(self.view.frame) - 16,
+         self.webView.frame = CGRectMake(5, CGRectGetMaxY(self.segmentControll.frame) + 8,
+                               CGRectGetWidth(self.view.frame) - 10,
                                CGRectGetHeight(self.view.frame)
                                - 64 - CGRectGetHeight(self.segmentControll.frame) - 3*8);
          

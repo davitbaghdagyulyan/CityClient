@@ -60,6 +60,7 @@
 -(void)request{
     
     NSURL* url = [NSURL URLWithString:@"http://web-q.city-mobil.ru/taxiserv/yandex/tariffs_for_us2.json"];
+   // NSURL* url = [NSURL URLWithString:@"http://web-q.city-mobil.ru/taxiserv/yandex/tariffs_for_us2_2_ru.json"];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     
 
@@ -178,27 +179,6 @@
             [alert addAction:cancel];
             [self presentViewController:alert animated:YES completion:nil];
         }
-    
-//    if (standatrRespons.code) {
-//        UIAlertController *alertController = [UIAlertController
-//                                              alertControllerWithTitle:@""
-//                                              message:standatrRespons.text
-//                                              preferredStyle:UIAlertControllerStyleAlert];
-//        
-//        UIAlertAction* ok = [UIAlertAction
-//                             actionWithTitle:@"OK"
-//                             style:UIAlertActionStyleDefault
-//                             handler:^(UIAlertAction * action)
-//                             {
-//                                 [alertController dismissViewControllerAnimated:YES completion:nil];
-//                                 
-//                             }];
-//        
-//        [alertController addAction:ok];
-//        
-//        [self presentViewController:alertController animated:YES completion:nil];
-//    }
-//    else{
         
         BadRequest* badRequest = [[BadRequest alloc]init];
         badRequest.delegate = self;
@@ -262,14 +242,6 @@
     
     cell.priceLabel.textAlignment = NSTextAlignmentCenter;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
-    
-//    for (int i = 0; i < self.selectedID.count; ++i) {
-//        if ([titleArray[indexPath.row] isEqualToString:self.selectedID[i]]) {
-//            [cell.checkbox setSelected:YES];
-//        }
-//    }
 
     NSString* str = idArray[indexPath.row];
     for (int j = 0; j < self.selectedID.count; ++j) {

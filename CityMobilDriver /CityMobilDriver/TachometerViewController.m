@@ -472,13 +472,7 @@
     label4.text = [self timeFormat:tachometerResponse.GoodArrived];
     
     UILabel* label5 = self.labelsColoection[5];//addPrice
-    
-//    NSInteger sum = 0;
-//    for (int i = 0; i < tachometerResponse.services.count; ++i) {
-//        sum += [[tachometerResponse.services[i] prices] integerValue];
-//    }
-//    label5.text = [NSString stringWithFormat:@"%li",(long)sum];
-//    NSLog(@"%li",(long)tachometerResponse.wayPrice);
+
     
     label5.text = [NSString stringWithFormat:@"%ld",(long)tachometerResponse.addPrice];
     
@@ -577,8 +571,6 @@
 
     
     [self.scrollView addSubview:additionalServices];
-    
-
     
 
     

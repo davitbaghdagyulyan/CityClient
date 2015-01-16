@@ -29,7 +29,7 @@
     self.web.scrollView.delegate = self;
     self.web.delegate = self;
     self.web.scrollView.showsHorizontalScrollIndicator = NO;
-    [self textJsonRequest];
+    
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     self.web.scrollView.scrollEnabled = YES;
@@ -51,18 +51,8 @@
     [GPSConection showGPSConection:self];
     self.web.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
+    [self textJsonRequest];
 }
-
-//- (void)scrollViewDidScroll:(UIScrollView *)sender
-//{
-//    
-//    if (sender.contentOffset.x != 0)
-//    {
-//        CGPoint offset = sender.contentOffset;
-//        offset.x = 0;
-//        sender.contentOffset = offset;
-//    }
-//}
 
 -(void)textJsonRequest
 {
@@ -110,7 +100,7 @@
             [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
-        
+        //Roboto-Bold
         NSError* err;
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         
@@ -128,29 +118,21 @@
         self.web.opaque = NO;//????
         for (int i = 0; i < [jsonResponseObject.messages count]; ++i) {
             if ([[jsonResponseObject.messages objectAtIndex:i] from_me] == 0) {
-                str = [str stringByAppendingString:@"<b><font size=\"4\">От: </font></b> Сити мобил</br>"];
+                str = [str stringByAppendingString:@"<b><font size=\"3\" face=\"Roboto-Bold\">От: </font></b> Сити мобил</br>"];
             }
             else{
-                str = [str stringByAppendingString:@"<b><font size=\"4\">От: </font></b> Вас</br>"];
+                str = [str stringByAppendingString:@"<b><font size=\"3\" face=\"Roboto-Bold\">От: </font></b> Вас</br>"];
             }
             
             
             NSString* dateString = [[jsonResponseObject.messages objectAtIndex:i] getDate];
             dateString = [self TimeFormat:dateString];
             dateString = [dateString stringByReplacingOccurrencesOfString:@"-" withString:@"."];
-            str = [str stringByAppendingString:@"<b><font size=\"4\">Когда: </font></b>"];
-            str = [str stringByAppendingFormat:@"<font size=\"4\"> %@ </font><br>" ,dateString];
-            str = [str stringByAppendingString:[[jsonResponseObject.messages objectAtIndex:i] text]];
-            str = [str stringByAppendingString:@"</font><br>"];
-            
-//            if (i%2 == 1) {
-//                UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 65*i,CGRectGetWidth(self.web.frame), 65)];
-//                view.userInteractionEnabled = NO;
-//                
-//                view.backgroundColor = [UIColor grayColor];
-//                view.alpha = 0.09;
-//                [self.web.scrollView addSubview:view];
-//            }
+            str = [str stringByAppendingString:@"<b><font size=\"3\" face=\"Roboto-Bold\">Когда: </font></b>"];
+            str = [str stringByAppendingFormat:@"<font size=\"3\"> %@ </font><br>" ,dateString];
+            str = [str stringByAppendingFormat:@"<font size=\"3\" face=\"Roboto-Regular\"> %@ </font><br>" ,[[jsonResponseObject.messages objectAtIndex:i] text]];
+            str = [str stringByAppendingString:@"<br>"];
+
         }
         
         if ([jsonResponseObject.messages count] < 8) {
@@ -160,7 +142,7 @@
         HTMLString = str;
         
         if (jsonResponseObject.can_answer == 1) {
-            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36)];
+            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(5, self.view.frame.size.height - 44, self.view.frame.size.width - 10, 36)];
             answerButton.backgroundColor = [UIColor orangeColor];
             [answerButton addTarget:self action:@selector(pushSendingMessage) forControlEvents:UIControlEventTouchUpInside];
             [answerButton setTitle:@"Ответить" forState:UIControlStateNormal];
@@ -240,7 +222,7 @@
      {
          NSURL* url = [[NSURL alloc]init];
          [self.web loadHTMLString:HTMLString baseURL:url];
-         answerButton.frame = CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36);
+         answerButton.frame = CGRectMake(5, self.view.frame.size.height - 44, self.view.frame.size.width - 10, 36);
          
      }
      
