@@ -54,6 +54,10 @@
     [self textJsonRequest];
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [answerButton removeFromSuperview];
+}
+
 -(void)textJsonRequest
 {
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
