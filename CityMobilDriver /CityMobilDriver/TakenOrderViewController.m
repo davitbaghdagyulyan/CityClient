@@ -58,7 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
-
+    gestureRecognizer.delegate=self;
     [self.scrollView addGestureRecognizer:gestureRecognizer];
 
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4IA-x9-ydD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -5971,6 +5971,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Принятый заказ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qt1-4y-8rr">
                                 <rect key="frame" x="0.0" y="66" width="600" height="50"/>
+                                <color key="backgroundColor" white="0.94916172445255476" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="TEB-Cy-tWz"/>
                                 </constraints>
@@ -5980,6 +5981,7 @@
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Re-32-tYg">
                                 <rect key="frame" x="5" y="116" width="590" height="484"/>
+                                <color key="backgroundColor" white="0.95332458941605835" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKD-Rh-YbR" userLabel="NavigationView" customClass="NavigationView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -6080,7 +6082,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.94996008211678828" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Re-32-tYg" firstAttribute="top" secondItem="qt1-4y-8rr" secondAttribute="bottom" id="19a-mE-DzU"/>
                             <constraint firstAttribute="trailing" secondItem="AKD-Rh-YbR" secondAttribute="trailing" id="G6k-uU-ibm"/>
@@ -7515,6 +7517,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МОИ ЗАКАЗЫ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSh-cm-OLC">
                                 <rect key="frame" x="0.0" y="66" width="600" height="50"/>
+                                <color key="backgroundColor" white="0.94576870437956206" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9Zh-g0-WRK"/>
                                 </constraints>
@@ -7524,10 +7527,12 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Nkm-9J-GsS">
                                 <rect key="frame" x="5" y="116" width="590" height="484"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.95081546532846717" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.95343864051094895" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.94890510948905105" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.94525547445255476" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ilj-Rg-5Ij" firstAttribute="leading" secondItem="Wbz-k4-Xrz" secondAttribute="leading" id="3M9-aI-FRa"/>
                             <constraint firstItem="Nkm-9J-GsS" firstAttribute="leading" secondItem="Wbz-k4-Xrz" secondAttribute="leading" constant="5" id="6kf-mM-Sx3"/>
@@ -8160,6 +8165,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H6G-Qj-NO6"/>
+        <segue reference="o53-UE-w8R"/>
     </inferredMetricsTieBreakers>
 </document>

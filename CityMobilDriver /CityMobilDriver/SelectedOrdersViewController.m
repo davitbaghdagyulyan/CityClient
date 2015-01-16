@@ -476,8 +476,6 @@ return fabs(velocity.y) < fabs(velocity.x);
      
      
      ];
-    
-    
 }
 
 
