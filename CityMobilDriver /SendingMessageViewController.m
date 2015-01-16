@@ -36,7 +36,7 @@
      self.messageTextView=[[UITextView alloc] initWithFrame:CGRectMake(10, 60, self.scrollView.frame.size.width-20, 80)];
     self.titleTextView.backgroundColor=[UIColor whiteColor];
     yCord=CGRectGetMaxY(self.messageTextView.frame);
-    self.sendButton=[[UIButton alloc]initWithFrame:CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40)];
+    self.sendButton=[[UIButton alloc]initWithFrame:CGRectMake(5, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40)];
     [self.view addSubview:self.scrollView];
     
  
@@ -467,7 +467,7 @@
          
          self.titleTextView.frame=CGRectMake(10, 8, self.scrollView.frame.size.width-20, 40);
          
-         self.sendButton.frame=CGRectMake(10, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.scrollView.frame.size.width,40);
+         self.sendButton.frame=CGRectMake(5, self.scrollView.frame.origin.y+self.scrollView.frame.size.height+5, self.view.frame.size.width-10,40);
      self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width,yCord+60);
          CGFloat xx;
          
