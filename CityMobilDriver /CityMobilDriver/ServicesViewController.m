@@ -60,6 +60,7 @@
 -(void)request{
     
     NSURL* url = [NSURL URLWithString:@"http://web-q.city-mobil.ru/taxiserv/yandex/tariffs_for_us2.json"];
+   // NSURL* url = [NSURL URLWithString:@"http://web-q.city-mobil.ru/taxiserv/yandex/tariffs_for_us2_2_ru.json"];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     
 

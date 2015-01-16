@@ -580,8 +580,6 @@
     
 
     
-
-    
     additionalServicesButton.frame = CGRectMake(CGRectGetWidth(additionalServices.frame) - 19, additionalServices.frame.size.height/2 - 10,11, 19);
     [additionalServicesButton setBackgroundImage:[UIImage imageNamed:@"tachometer_arrow.png"] forState:UIControlStateNormal];
     
