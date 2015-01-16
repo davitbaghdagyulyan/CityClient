@@ -33,7 +33,8 @@
     NSMutableArray *categories;
     UIAlertView *callDispetcherAlert;
     OpenMapButtonHandler*openMapButtonHandlerObject;
-   
+    NSString*messagesText;
+     BOOL isMove;
     
 }
 @end
@@ -83,6 +84,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    messagesText=[[NSString alloc] initWithString:self.labelMessages.text];
+    
+    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    //[gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.tableViewOrdersPort addGestureRecognizer:gestureRecognizer];
+    
+    
     selectedRow = -1;
     
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
@@ -106,7 +115,75 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)swipeHandler:(UIPanGestureRecognizer *)sender
+{
+   
+   
+    CGPoint touchLocation = [sender locationInView:sender.view];
+    
+    NSLog(@"x=%f",touchLocation.x);
+    
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        isMove=leftMenu.flag==0 && touchLocation.x>30;
+        if (isMove)
+            return;
+    }
+    if (sender.state == UIGestureRecognizerStateChanged)
+    {
+        if (isMove)
+            return;
+        CGPoint point;
+        point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
+        point.y=leftMenu.center.y;
+        if (point.x>leftMenu.frame.size.width/2)
+        {
+            return;
+        }
+        leftMenu.center=point;
+       
+        leftMenu.flag=1;
+    }
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        
+        if (isMove)
+            return;
+        isMove=NO;
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                         animations:^(void)
+         {
+             CGPoint point;
+             NSLog(@"\n%f", 2*leftMenu.center.x);
+             NSLog(@"\n%f",leftMenu.frame.size.width/2);
+             if (touchLocation.x<=leftMenu.frame.size.width/2)
+             {
+                 leftMenu.flag=0;
+                 
+                 point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+             }
+             else if (touchLocation.x>leftMenu.frame.size.width/2)
+             {
+                 point.x=(CGFloat)leftMenu.frame.size.width/2;
+                 
+                
+                 leftMenu.flag=1;
+             }
+             point.y=leftMenu.center.y;
+             leftMenu.center=point;
+             NSLog(@"\n%f",leftMenu.frame.size.width);
+             
+         }
+                         completion:nil
+         ];
 
+    }
+    
+    
+   
+}
 -(void)setSelectedRow
 {
     selectedRow=-1;
@@ -165,7 +242,7 @@
         cell.label2.text=@"";
     }
     
-
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return  cell;
 }
 
@@ -726,7 +803,9 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
         [badRequest showErrorAlertMessage:getNewMailResponseObject.text code:getNewMailResponseObject.code];
         if ([getNewMailResponseObject.count intValue])
         {
-            self.labelMessages.text=[NSString stringWithFormat:@"%@ %@%@%@",self.labelMessages.text,@"[",getNewMailResponseObject.count,@"]"];
+            
+            NSString*countString=[[NSString alloc] initWithString:[NSString stringWithFormat:@" %@%@%@",@"[",getNewMailResponseObject.count,@"]"]];
+            self.labelMessages.text=[messagesText stringByAppendingString:countString];
         }
 
     }];

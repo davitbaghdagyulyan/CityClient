@@ -68,6 +68,75 @@
    
     
 }
+-(void)swipeHandler:(UIPanGestureRecognizer *)sender
+{
+    static BOOL isMove;
+    
+    CGPoint touchLocation = [sender locationInView:sender.view];
+    
+    NSLog(@"x=%f",touchLocation.x);
+    
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        isMove=leftMenu.flag==0 && touchLocation.x>30;
+        if (isMove)
+            return;
+    }
+    if (sender.state == UIGestureRecognizerStateChanged)
+    {
+        if (isMove)
+            return;
+        CGPoint point;
+        point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
+        point.y=leftMenu.center.y;
+        if (point.x>leftMenu.frame.size.width/2)
+        {
+            return;
+        }
+        leftMenu.center=point;
+        
+        leftMenu.flag=1;
+    }
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        
+        if (isMove)
+            return;
+        isMove=NO;
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                         animations:^(void)
+         {
+             CGPoint point;
+             NSLog(@"\n%f", 2*leftMenu.center.x);
+             NSLog(@"\n%f",leftMenu.frame.size.width/2);
+             if (touchLocation.x<=leftMenu.frame.size.width/2)
+             {
+                 leftMenu.flag=0;
+                 
+                 point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+             }
+             else if (touchLocation.x>leftMenu.frame.size.width/2)
+             {
+                 point.x=(CGFloat)leftMenu.frame.size.width/2;
+                 
+                 
+                 leftMenu.flag=1;
+             }
+             point.y=leftMenu.center.y;
+             leftMenu.center=point;
+             NSLog(@"\n%f",leftMenu.frame.size.width);
+             
+         }
+                         completion:nil
+         ];
+        
+    }
+    
+    
+    
+}
 
 -(void)setFilter:(NSDictionary *)filter
 {
@@ -163,6 +232,10 @@
     cancelOfAlertNoConIsClicked =YES;
     cancelOfAlertServErrIsClicked=YES;
     // Do any additional setup after loading the view
+    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    //[gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.tableViewOrdersDetails addGestureRecognizer:gestureRecognizer];
+
 }
 
 - (void)didReceiveMemoryWarning {
