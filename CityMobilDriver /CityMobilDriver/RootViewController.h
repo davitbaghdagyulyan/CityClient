@@ -4,7 +4,7 @@
 #import "LoginViewController.h"
 #import "UIAlertView+Orientation.h"
 #import "MessagesViewController.h"
-@interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIGestureRecognizerDelegate>
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *gpsButtonPort;
 @property (strong, nonatomic) IBOutlet UIButton *yandexButtonPort;

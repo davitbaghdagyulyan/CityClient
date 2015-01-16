@@ -11,7 +11,7 @@
 #import "SelectedOrdersTableViewHandler.h"
 #import "CustomCellSelectORDER.h"
 
-@interface SelectedOrdersViewController : UIViewController
+@interface SelectedOrdersViewController : UIViewController<UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;

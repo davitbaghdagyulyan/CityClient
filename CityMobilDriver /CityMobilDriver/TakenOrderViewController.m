@@ -91,7 +91,11 @@
     [self requestGetOrder];
     
 }
-
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
+{
+    CGPoint velocity = [panGestureRecognizer velocityInView:self.scrollView];
+    return fabs(velocity.y) < fabs(velocity.x);
+}
 -(void)swipeHandler:(UIPanGestureRecognizer *)sender
 {
     static BOOL isMove;

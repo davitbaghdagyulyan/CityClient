@@ -41,7 +41,7 @@
     [super viewDidLoad];
    
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
-    //[gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    gestureRecognizer.delegate=self;
     [self.myOrdersTableView addGestureRecognizer:gestureRecognizer];
 
     // Do any additional setup after loading the view.
@@ -107,7 +107,11 @@
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
-
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
+{
+    CGPoint velocity = [panGestureRecognizer velocityInView:self.myOrdersTableView];
+    return fabs(velocity.y) < fabs(velocity.x);
+}
     
 -(void)swipeHandler:(UIPanGestureRecognizer *)sender
 {

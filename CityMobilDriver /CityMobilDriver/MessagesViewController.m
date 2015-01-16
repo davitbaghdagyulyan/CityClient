@@ -65,17 +65,22 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , (long)indexPath.row];
+   NSString* simpleTableIdentifier = [NSString stringWithFormat:@"SimpleTableViewCell_%ld" , (long)indexPath.row];
+   
     MessagesCell *cell = (MessagesCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if( cell == nil )
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MessagesCell" owner:self options:nil];
+       
+
         cell =[nib objectAtIndex:0];
+        [cell  setValue:simpleTableIdentifier forKey:@"reuseIdentifier"];
+        cell.titLabel.text=[[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
+        cell.dateLabel.text=[self TimeFormat:[[mailResponseObject.mail objectAtIndex:indexPath.row] getDate]];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     
-    cell.titLabel.text=[[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
-    cell.dateLabel.text=[self TimeFormat:[[mailResponseObject.mail objectAtIndex:indexPath.row] getDate]];
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
