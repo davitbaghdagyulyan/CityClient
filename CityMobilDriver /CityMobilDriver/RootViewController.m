@@ -9,7 +9,8 @@
 #import "OpenMapButtonHandler.h"
 #import "InternetConectionViewController.h"
 #import "Reachability.h"
-
+#import "GetNewMailJson.h"
+#import "GetNewMailResponse.h"
 @interface RootViewController ()
 {
     //ARUS
@@ -72,6 +73,9 @@
     {
         alertServErrIsCreated =YES;
     }
+    
+    [self requestGetNewMail];
+    
     [self requestGetOrders];
     
 }
@@ -667,7 +671,6 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     
      
            }];
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -680,6 +683,54 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }
+-(void)requestGetNewMail
+{
+    GetNewMailJson* getNewMailJsonObject=[[GetNewMailJson alloc]init];
+    NSDictionary*jsonDictionary=[getNewMailJsonObject toDictionary];
+    NSString*jsons=[getNewMailJsonObject toJSONString];
+    NSLog(@"%@",jsons);
+    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSError* error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 30;
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+            return ;
+        }
+        NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
+        NSError*err;
+        GetNewMailResponse*getNewMailResponseObject = [[GetNewMailResponse alloc] initWithString:jsonString error:&err];
+        
+        BadRequest* badRequest = [[BadRequest alloc]init];
+        badRequest.delegate = self;
+        [badRequest showErrorAlertMessage:getNewMailResponseObject.text code:getNewMailResponseObject.code];
+        if ([getNewMailResponseObject.count intValue])
+        {
+            self.labelMessages.text=[NSString stringWithFormat:@"%@ %@%@%@",self.labelMessages.text,@"[",getNewMailResponseObject.count,@"]"];
+        }
 
+    }];
+
+}
 
 @end

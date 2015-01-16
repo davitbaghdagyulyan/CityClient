@@ -11,6 +11,7 @@
 #import "UserRegistrationInformation.h"
 #import "IconsColorSingltone.h"
 #import "RegionalSettingsViewController.h"
+#import "RootViewController.h"
 
 NSString* const UserDefaultsBankId = @"bankid";
 NSString* const UserDefaultsPassword = @"password";
@@ -319,6 +320,8 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
                 [defaults setObject:@"логин" forKey:UserDefaultsBankId];
                 [defaults setObject:@"Пароль" forKey:UserDefaultsPassword];
             }
+            RootViewController* rvc = self.navigationController.viewControllers[0];
+            [rvc setSelectedRow];
             [self.navigationController popToRootViewControllerAnimated:NO];
         }
         
