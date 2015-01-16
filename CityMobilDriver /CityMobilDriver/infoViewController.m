@@ -54,6 +54,10 @@
     [self textJsonRequest];
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [answerButton removeFromSuperview];
+}
+
 -(void)textJsonRequest
 {
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -142,7 +146,7 @@
         HTMLString = str;
         
         if (jsonResponseObject.can_answer == 1) {
-            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(5, self.view.frame.size.height - 44, self.view.frame.size.width - 10, 36)];
+            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(5, self.view.frame.size.height - 40, self.view.frame.size.width - 10, 36)];
             answerButton.backgroundColor = [UIColor orangeColor];
             [answerButton addTarget:self action:@selector(pushSendingMessage) forControlEvents:UIControlEventTouchUpInside];
             [answerButton setTitle:@"Ответить" forState:UIControlStateNormal];
@@ -222,7 +226,7 @@
      {
          NSURL* url = [[NSURL alloc]init];
          [self.web loadHTMLString:HTMLString baseURL:url];
-         answerButton.frame = CGRectMake(5, self.view.frame.size.height - 44, self.view.frame.size.width - 10, 36);
+         answerButton.frame = CGRectMake(5, self.view.frame.size.height - 40, self.view.frame.size.width - 10, 36);
          
      }
      
