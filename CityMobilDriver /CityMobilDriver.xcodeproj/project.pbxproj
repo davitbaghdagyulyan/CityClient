@@ -132,6 +132,8 @@
 		ECB06C9B1A5D17C900001462 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB06C9A1A5D17C900001462 /* MapViewController.m */; };
 		ECB06C9E1A5D1D9F00001462 /* ASMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB06C9D1A5D1D9F00001462 /* ASMapAnnotation.m */; };
 		ECB06CA01A5D417F00001462 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB06C9F1A5D417F00001462 /* MapKit.framework */; };
+		ECB0AF661A68F9E40082B6B0 /* GetNewMailJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB0AF651A68F9E40082B6B0 /* GetNewMailJson.m */; };
+		ECB0AF691A68F9FF0082B6B0 /* GetNewMailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB0AF681A68F9FF0082B6B0 /* GetNewMailResponse.m */; };
 		ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */; };
 		ECB1EC1F1A42D06D008CC239 /* NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB1EC1E1A42D06D008CC239 /* NavigationView.m */; };
 		ECB1F2A41A2DAD06008A3D15 /* iconmap.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F2A31A2DAD06008A3D15 /* iconmap.png */; };
@@ -565,6 +567,10 @@
 		ECB06C9C1A5D1D9F00001462 /* ASMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMapAnnotation.h; sourceTree = "<group>"; };
 		ECB06C9D1A5D1D9F00001462 /* ASMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMapAnnotation.m; sourceTree = "<group>"; };
 		ECB06C9F1A5D417F00001462 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ECB0AF641A68F9E40082B6B0 /* GetNewMailJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNewMailJson.h; sourceTree = "<group>"; };
+		ECB0AF651A68F9E40082B6B0 /* GetNewMailJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNewMailJson.m; sourceTree = "<group>"; };
+		ECB0AF671A68F9FF0082B6B0 /* GetNewMailResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNewMailResponse.h; sourceTree = "<group>"; };
+		ECB0AF681A68F9FF0082B6B0 /* GetNewMailResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNewMailResponse.m; sourceTree = "<group>"; };
 		ECB1C16C19E2A19A0027F482 /* MessagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesCell.xib; path = ../MessagesCell.xib; sourceTree = "<group>"; };
 		ECB1EC1D1A42D06D008CC239 /* NavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationView.h; sourceTree = "<group>"; };
 		ECB1EC1E1A42D06D008CC239 /* NavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationView.m; sourceTree = "<group>"; };
@@ -982,6 +988,7 @@
 		8FC222431A36E7270003CAAF /* RootViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ECB0AF631A68F9BA0082B6B0 /* GetNewMail */,
 				8FC222551A36E7990003CAAF /* RootViewController.h */,
 				8FC222561A36E7990003CAAF /* RootViewController.m */,
 				8FC222571A36E7990003CAAF /* CustomCell.h */,
@@ -1352,6 +1359,17 @@
 				ECB06C9A1A5D17C900001462 /* MapViewController.m */,
 			);
 			name = MapViewController;
+			sourceTree = "<group>";
+		};
+		ECB0AF631A68F9BA0082B6B0 /* GetNewMail */ = {
+			isa = PBXGroup;
+			children = (
+				ECB0AF641A68F9E40082B6B0 /* GetNewMailJson.h */,
+				ECB0AF651A68F9E40082B6B0 /* GetNewMailJson.m */,
+				ECB0AF671A68F9FF0082B6B0 /* GetNewMailResponse.h */,
+				ECB0AF681A68F9FF0082B6B0 /* GetNewMailResponse.m */,
+			);
+			name = GetNewMail;
 			sourceTree = "<group>";
 		};
 		ECB24B791A4C05AA0001C6F0 /* GPSIcon */ = {
@@ -2605,6 +2623,8 @@
 				ECB52E601A0785820091293F /* MinPriceClass.m in Sources */,
 				EC24371A1A0B9807005FC018 /* LoginViewController.m in Sources */,
 				ECEC89AF1A2CA1100036781D /* CustomCellSelectORDER.m in Sources */,
+				ECB0AF691A68F9FF0082B6B0 /* GetNewMailResponse.m in Sources */,
+				ECB0AF661A68F9E40082B6B0 /* GetNewMailJson.m in Sources */,
 				ECFF3A9A1A30B7C0009A88E0 /* ServicesViewController.m in Sources */,
 				ECCA4CB01A0B5CE1007CEBC4 /* RegisterRequest.m in Sources */,
 				ECCA4CAD1A0B55F2007CEBC4 /* ActivateAccountViewController.m in Sources */,
