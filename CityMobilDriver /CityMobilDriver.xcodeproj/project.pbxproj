@@ -207,6 +207,8 @@
 		ECC7862E1A109F8600DAD7A6 /* rb.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC7862D1A109F8600DAD7A6 /* rb.png */; };
 		ECC786301A109F8A00DAD7A6 /* rb_2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC7862F1A109F8A00DAD7A6 /* rb_2.png */; };
 		ECC7B82C19F52D3A0045CBCE /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC7B82B19F52D3A0045CBCE /* FirstView.xib */; };
+		ECC867111A69310300C599CB /* WebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC8670E1A69310300C599CB /* WebViewCell.m */; };
+		ECC867121A69310300C599CB /* WebViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC8670F1A69310300C599CB /* WebViewCell.xib */; };
 		ECC8CCE61A10E58400883CD1 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE51A10E58400883CD1 /* box.png */; };
 		ECC8CCE81A10E7D800883CD1 /* box2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC8CCE71A10E7D800883CD1 /* box2.png */; };
 		ECC8F6E61A373FDC00D93B07 /* EndUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F6E51A373FDC00D93B07 /* EndUpViewController.m */; };
@@ -683,6 +685,9 @@
 		ECC7862D1A109F8600DAD7A6 /* rb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb.png; sourceTree = "<group>"; };
 		ECC7862F1A109F8A00DAD7A6 /* rb_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rb_2.png; sourceTree = "<group>"; };
 		ECC7B82B19F52D3A0045CBCE /* FirstView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
+		ECC8670E1A69310300C599CB /* WebViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewCell.m; sourceTree = "<group>"; };
+		ECC8670F1A69310300C599CB /* WebViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewCell.xib; sourceTree = "<group>"; };
+		ECC867101A69310300C599CB /* WebViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewCell.h; sourceTree = "<group>"; };
 		ECC8CCE51A10E58400883CD1 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		ECC8CCE71A10E7D800883CD1 /* box2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box2.png; sourceTree = "<group>"; };
 		ECC8F6E41A373FDC00D93B07 /* EndUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndUpViewController.h; sourceTree = "<group>"; };
@@ -1600,6 +1605,9 @@
 			children = (
 				ECCC236D19E7F58A0091C43E /* infoViewController.h */,
 				ECCC236E19E7F58A0091C43E /* infoViewController.m */,
+				ECC8670E1A69310300C599CB /* WebViewCell.m */,
+				ECC8670F1A69310300C599CB /* WebViewCell.xib */,
+				ECC867101A69310300C599CB /* WebViewCell.h */,
 				ECE25C7919E56BD80044F6AD /* info */,
 			);
 			name = infoViewController;
@@ -2389,6 +2397,7 @@
 				ECCD99461A19DF93009D482C /* Roboto-ThinItalic.ttf in Resources */,
 				8FB0F8AD1A28D9AE003A79E9 /* metro.png in Resources */,
 				8FB0F8A21A28D9AE003A79E9 /* ic_landmark_airport_viewed.png in Resources */,
+				ECC867121A69310300C599CB /* WebViewCell.xib in Resources */,
 				ECB38B401A0D130B00DFBB77 /* 10@2x.png in Resources */,
 				EC114E731A5FF79600C4D45F /* delete.png in Resources */,
 				ECC2BA5B1A10F801009A8CE4 /* 12@2x.png in Resources */,
@@ -2630,6 +2639,7 @@
 				ECC71B8F19F00BFB00468D33 /* SendingMessageViewController.m in Sources */,
 				8FC222541A36E7830003CAAF /* RecallResponse.m in Sources */,
 				ECB52E571A0784750091293F /* IncludedClass.m in Sources */,
+				ECC867111A69310300C599CB /* WebViewCell.m in Sources */,
 				ECB52E241A0771B20091293F /* IntervalElements.m in Sources */,
 				ECB52E361A0776BA0091293F /* SpecialClass.m in Sources */,
 				ECEC89A51A2CA1100036781D /* AssignOrderJson.m in Sources */,
