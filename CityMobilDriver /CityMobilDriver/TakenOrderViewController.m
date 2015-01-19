@@ -58,7 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
-
+    gestureRecognizer.delegate=self;
     [self.scrollView addGestureRecognizer:gestureRecognizer];
 
     
@@ -91,7 +91,11 @@
     [self requestGetOrder];
     
 }
-
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
+{
+    CGPoint velocity = [panGestureRecognizer velocityInView:self.scrollView];
+    return fabs(velocity.y) < fabs(velocity.x);
+}
 -(void)swipeHandler:(UIPanGestureRecognizer *)sender
 {
     static BOOL isMove;

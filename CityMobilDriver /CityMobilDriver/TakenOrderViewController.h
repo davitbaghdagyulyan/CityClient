@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TakenOrderViewController : UIViewController
+@interface TakenOrderViewController : UIViewController<UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;

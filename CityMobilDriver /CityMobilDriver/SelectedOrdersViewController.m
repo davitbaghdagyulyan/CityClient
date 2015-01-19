@@ -233,6 +233,7 @@
     cancelOfAlertServErrIsClicked=YES;
     // Do any additional setup after loading the view
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
+    gestureRecognizer.delegate=self;
     //[gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.tableViewOrdersDetails addGestureRecognizer:gestureRecognizer];
 
@@ -426,7 +427,11 @@
     
 }
 
-
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
+{
+ CGPoint velocity = [panGestureRecognizer velocityInView:self.tableViewOrdersDetails];
+return fabs(velocity.y) < fabs(velocity.x);
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -471,8 +476,6 @@
      
      
      ];
-    
-    
 }
 
 

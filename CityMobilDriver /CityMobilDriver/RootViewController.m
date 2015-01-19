@@ -88,7 +88,7 @@
     messagesText=[[NSString alloc] initWithString:self.labelMessages.text];
     
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
-    //[gestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    gestureRecognizer.delegate=self;
     [self.tableViewOrdersPort addGestureRecognizer:gestureRecognizer];
     
     
@@ -114,6 +114,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
+{
+    CGPoint velocity = [panGestureRecognizer velocityInView:self.tableViewOrdersPort];
+    return fabs(velocity.y) < fabs(velocity.x);
 }
 -(void)swipeHandler:(UIPanGestureRecognizer *)sender
 {
@@ -206,13 +211,13 @@
     CustomCell * cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifierIphone];
     if (cell == nil)
     {
-        
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
+     
     }
     if (flag1 ==-1)
     {
-    cell.contentView.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
+        cell.contentView.backgroundColor =[UIColor colorWithRed:93/255.0f green:93/255.0f blue:93/255.0f alpha:1.0f];
     }
     else
     {
@@ -292,7 +297,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             NSLog(@"There is no filter");
             [selectedOrdersCont setFilter:nil];
         }
-        [self.navigationController pushViewController:selectedOrdersCont animated:YES];
+        
+            if (leftMenu.flag)
+            {
+                CGPoint point;
+                point.x=leftMenu.center.x-leftMenu.frame.size.width;
+                point.y=leftMenu.center.y;
+                leftMenu.center=point;
+                leftMenu.flag=0;
+            }
+            [self.navigationController pushViewController:selectedOrdersCont animated:YES];
         selectedOrdersCont.titleString =[[categories objectAtIndex:indexPath.row]name];
             
     }
