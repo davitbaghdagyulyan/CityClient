@@ -213,7 +213,7 @@
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
-        [cell  setValue:simpleTableIdentifierIphone forKey:@"reuseIdentifier"];
+     
     }
     if (flag1 ==-1)
     {
