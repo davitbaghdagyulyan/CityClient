@@ -370,7 +370,7 @@
             view1_2.frame =view1_2ScrollView.bounds;
             [self.view addSubview:view1_2ScrollView];
             [view1_2ScrollView addSubview:view1_2];
-            view1_2.chooseCardLabel.text=[[getCardsResponseObject.cards objectAtIndex:0] pan];
+            view1_2.chooseCardLabel.text=[[getCardsResponseObject.cards objectAtIndex:0] getPan];
             UITapGestureRecognizer* tapGasture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showComboBox)];
             [view1_2.cardsView addGestureRecognizer:tapGasture1];
             
@@ -408,7 +408,7 @@
         NSMutableArray* arr = [[NSMutableArray alloc]init];
         for(int j=0;j<getCardsResponseObject.cards.count;j++)
         {
-            [arr addObject:[[getCardsResponseObject.cards objectAtIndex:j] pan]];
+            [arr addObject:[[getCardsResponseObject.cards objectAtIndex:j] getPan]];
         }
         comboBoxTableView.titles = arr;
         [comboBoxTableView func];

@@ -71,7 +71,10 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-     [GPSConection showGPSConection:self];
+    self.contentView.frame=self.orangeView.frame;
+    self.contentView.translatesAutoresizingMaskIntoConstraints=YES;
+    [self.contentView updateConstraints];
+    [GPSConection showGPSConection:self];
      [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {
@@ -275,30 +278,12 @@
             [badRequest showErrorAlertMessage:getOrderResponseObject.text code:getOrderResponseObject.code];
           
 
-//            if(getOrderResponseObject.code!=nil)
-//            {
-//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:getOrderResponseObject.text preferredStyle:UIAlertControllerStyleAlert];
-//                
-//                UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                              handler:^(UIAlertAction * action)
-//                                        {
-//                                            [alert dismissViewControllerAnimated:YES completion:nil];
-//                                            
-//                                        }];
-//                [alert addAction:cancel];
-//                [self presentViewController:alert animated:YES completion:nil];
-//            }
-//            else
-//            {
-                UILabel*label=(UILabel*)[cellUnderView viewWithTag:250];
-                 label.font=[UIFont fontWithName:@"Roboto-Bold" size:15];
-                label.text=[self TimeFormat:getOrderResponseObject.CollDate];
-                label.text=[NSString stringWithFormat:@" %@ %@",label.text,getOrderResponseObject.shortname];
-              if(count==1)
+
+              if(getOrderResponseObject.code==nil)
+              {
                 [self drawPage];
-                else
-                    [self drawButtons];
-//            }
+              }
+            
              [indicator stopAnimating];
            
         }];
@@ -319,227 +304,30 @@
 }
 -(void)drawPage
 {
-    
-    
-    
-    contentView = [[UIView alloc] init];
-    [self.scrollView addSubview:contentView];
-    CGFloat xCoord=0;
-    
-    buttonArray=[[NSMutableArray alloc]init];
-
-    [contentView addSubview:cellUnderView];
-    
-    
-    NSLog(@"%@",NSStringFromCGRect(cellUnderView.frame));
-   
-   
-    
-    
-    
-    
-
-    
-    [contentView addConstraint:[NSLayoutConstraint constraintWithItem:cellUnderView
-                                                          attribute:NSLayoutAttributeLeading
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:contentView
-                                                          attribute:NSLayoutAttributeLeading
-                                                         multiplier:1.0
-                                                           constant:0]];
-    
-    
-    [contentView addConstraint:[NSLayoutConstraint constraintWithItem:contentView
-                                                          attribute:NSLayoutAttributeTrailing
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:cellUnderView
-                                                          attribute:NSLayoutAttributeTrailing
-                                                         multiplier:1.0
-                                                           constant:0]];
-    
-    [contentView addConstraint:[NSLayoutConstraint constraintWithItem:cellUnderView
-                                                          attribute:NSLayoutAttributeTop
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:contentView
-                                                          attribute:NSLayoutAttributeTop
-                                                         multiplier:1.0
-                                                           constant:0]];
-    
-    [cellUnderView addConstraint:[NSLayoutConstraint constraintWithItem:cellUnderView
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:NSLayoutAttributeHeight
-                                                         multiplier:1.0
-                                                           constant:cellUnderView.frame.size.height]];
-    
-    
-  
-    labelView=[[UIView alloc] init];
-    labelView.backgroundColor=[UIColor whiteColor];
-    
-    
-    for (UIView*view in cellUnderView.subviews )
-    {
-        int i=-1;
-
-        if([view viewWithTag:111])
-        {
-            i++;
-            [buttonArray addObject:[view viewWithTag:61]];
-            [[view viewWithTag:111] removeFromSuperview];
-            
-        }
-        for (UIView*viewsub in view.subviews )
-        {
-            
-            
-            
-            if ([viewsub isKindOfClass:[UIButton class]])
-            {
-                i++;
-               [viewsub removeFromSuperview];
-                [buttonArray addObject:viewsub];
-            }
-        }
-        if(i==0)
-        {
-            UIButton*button=[buttonArray objectAtIndex:i];
-        labelView.frame=CGRectMake(2,cellUnderView.frame.size.height-(i+1)*button.frame.size.height-8, self.view.frame.size.width-14, button.frame.size.height+4);
-        labelView.backgroundColor=[UIColor whiteColor];
-        }
-        else
-        {
-            UIButton*button=[buttonArray objectAtIndex:i];
-            labelView.frame=CGRectMake(2,cellUnderView.frame.size.height-(i+1)*button.frame.size.height-8, self.scrollView.frame.size.width-4, button.frame.size.height+4);
-            labelView.backgroundColor=[UIColor whiteColor];
-            cellUnderView.frame=CGRectMake(cellUnderView.frame.origin.x, cellUnderView.frame.origin.x, cellUnderView.frame.size.width, cellUnderView.frame.size.height-button.frame.size.height-8);
-            [cellUnderView removeConstraint:[NSLayoutConstraint constraintWithItem:cellUnderView
-                                                                         attribute:NSLayoutAttributeHeight
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:nil
-                                                                         attribute:NSLayoutAttributeHeight
-                                                                        multiplier:1.0
-                                                                          constant:cellUnderView.frame.size.height]];
-            
-            [cellUnderView addConstraint:[NSLayoutConstraint constraintWithItem:cellUnderView
-                                                                      attribute:NSLayoutAttributeHeight
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:nil
-                                                                      attribute:NSLayoutAttributeHeight
-                                                                     multiplier:1.0
-                                                                       constant:cellUnderView.frame.size.height]];
-        }
-    }
-  
-    [contentView addSubview:labelView];
-    blackLineLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, 0, labelView.frame.size.width-16,1)];
-    blackLineLabel.backgroundColor=[UIColor blackColor];
-    
-    [labelView addSubview:blackLineLabel];
-    [cellUnderView updateConstraints];
-    UILabel*clientLabel=[[UILabel alloc] initWithFrame:CGRectMake(10, labelView.frame.size.height/2-12, 50, 25)];
-    xCoord=60;
-    clientLabel.font=[UIFont fontWithName:@"Roboto-Bold" size:12];
-    clientLabel.textColor=[UIColor blackColor];
-    clientLabel.text=@"Клиент:";
-//    clientLabel.backgroundColor=[UIColor greenColor];
-    [labelView addSubview:clientLabel];
-    
-   
-    clientPhoneLabel=[[LabelUnderLine alloc] init];
-   
-    clientPhoneLabel.font=[UIFont fontWithName:@"Roboto" size:12];
-    clientPhoneLabel.textColor=[UIColor blueColor];
-    clientPhoneLabel.text=getOrderResponseObject.ClientPhone;
-    clientPhoneLabel.numberOfLines=0;
-    clientPhoneLabel.userInteractionEnabled=YES;
+    self.phoneLabel.text=getOrderResponseObject.ClientPhone;
+    self.phoneLabel.numberOfLines=0;
+    self.phoneLabel.userInteractionEnabled=YES;
     
     UITapGestureRecognizer *singlecall =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callAction)];
     [singlecall setNumberOfTapsRequired:1];
-    
-    
+    [self.phoneLabel addGestureRecognizer:singlecall];
 
-
-    [clientPhoneLabel addGestureRecognizer:singlecall];
-
-    
-    CGSize maximumLabelSize = CGSizeMake(self.view.frame.size.width,25);
-    CGSize expectSizeForLabel = [clientPhoneLabel sizeThatFits:maximumLabelSize];
-    clientPhoneLabel.frame=CGRectMake(xCoord, labelView.frame.size.height/2-12, expectSizeForLabel.width, 25);
-    [labelView addSubview:clientPhoneLabel];
-    xCoord=xCoord+expectSizeForLabel.width;
-    
-    UILabel*commaLabel=[[UILabel alloc] init];
-    
-    commaLabel.font=[UIFont fontWithName:@"Roboto" size:12];
-    commaLabel.textColor=[UIColor blackColor];
-    commaLabel.text=@",";
-    commaLabel.numberOfLines=0;
-    
-     maximumLabelSize = CGSizeMake(self.view.frame.size.width,25);
-     expectSizeForLabel = [commaLabel sizeThatFits:maximumLabelSize];
-    commaLabel.frame=CGRectMake(xCoord, labelView.frame.size.height/2-10, expectSizeForLabel.width, 25);
-    [labelView addSubview:commaLabel];
+    self.klientNameLabel.text=getOrderResponseObject.ClientFullName;
+    self.klientNameLabel.numberOfLines=0;
     
 
     
-  xCoord=xCoord+expectSizeForLabel.width;
-  
-    UILabel* clientPhoneAdditionalLabel=[[UILabel alloc] init];
-    if (![getOrderResponseObject.ClientPhoneAdditional isEqual:[NSNull null]])
-    
-    {
-        
-        clientPhoneAdditionalLabel.font=[UIFont fontWithName:@"Roboto" size:12];
-        clientPhoneAdditionalLabel.textColor=[UIColor blackColor];
-        clientPhoneAdditionalLabel.text=getOrderResponseObject.ClientPhoneAdditional;
-        clientPhoneAdditionalLabel.numberOfLines=0;
-        
-        maximumLabelSize=CGSizeMake(self.view.frame.size.width,25);
-        expectSizeForLabel = [clientPhoneAdditionalLabel sizeThatFits:maximumLabelSize];
+   self.asteriskLabel.text=getOrderResponseObject.ClientStars;
+   self.asteriskLabel.numberOfLines=0;
+   self.shortNameLabel.text=[NSString stringWithFormat:@"%@ %@",[self TimeFormat:getOrderResponseObject.CollDate],getOrderResponseObject.shortname];
 
-        
-        clientPhoneAdditionalLabel.frame=CGRectMake(xCoord, labelView.frame.size.height/2-12, expectSizeForLabel.width, 25);
-        xCoord=xCoord+expectSizeForLabel.width;
-        [labelView addSubview:clientPhoneAdditionalLabel];
-        
-        commaLabel.frame=CGRectMake(xCoord, labelView.frame.size.height/2-10,commaLabel.frame.size.width, 25);
-        [labelView addSubview:commaLabel];
-        xCoord=xCoord+expectSizeForLabel.width+5;
-        
-
-    }
+    
+    //arus changes///
     
     
-    
-    UILabel* clientFullNameLabel=[[UILabel alloc]init];
-    
-    clientFullNameLabel.font=[UIFont fontWithName:@"Roboto" size:12];
-    clientFullNameLabel.textColor=[UIColor blackColor];
-    clientFullNameLabel.text=getOrderResponseObject.ClientFullName;
-    clientFullNameLabel.numberOfLines=0;
-    maximumLabelSize=CGSizeMake(self.view.frame.size.width,25);
-    expectSizeForLabel = [clientFullNameLabel sizeThatFits:maximumLabelSize];
-    clientFullNameLabel.frame=CGRectMake(xCoord, labelView.frame.size.height/2-12, expectSizeForLabel.width, 25);
-    [labelView addSubview:clientFullNameLabel];
+    //end Arus changes///
    
-    xCoord=xCoord+expectSizeForLabel.width+5;
-    
-    UILabel*clientStarsLabel=[[UILabel alloc]init];
-    
-    clientStarsLabel.font=[UIFont fontWithName:@"Roboto" size:12];
-    clientStarsLabel.textColor=[UIColor orangeColor];
-    clientStarsLabel.text=getOrderResponseObject.ClientStars;
-    clientStarsLabel.numberOfLines=0;
-   
-    maximumLabelSize=CGSizeMake(self.view.frame.size.width,25);
-    expectSizeForLabel = [clientStarsLabel sizeThatFits:maximumLabelSize];
-    clientStarsLabel.frame=CGRectMake(xCoord, labelView.frame.size.height/2-16,expectSizeForLabel.width, 25);
-    [labelView addSubview:clientStarsLabel];
-    xCoord=xCoord+expectSizeForLabel.width+5;
-    
-    [self drawButtons];
+    //[self drawButtons];
     
     
 }
@@ -1161,11 +949,17 @@
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-          self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
-          contentView.frame=CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
+          self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
+         self.contentView.frame=self.orangeView.frame;
+      
+        
+         [self.contentView updateConstraints];
          
-         labelView.frame=CGRectMake(labelView.frame.origin.x,labelView.frame.origin.y, self.view.frame.size.width-14, labelView.frame.size.height);
-          blackLineLabel.frame=CGRectMake(10, 0, labelView.frame.size.width-16,1);
+//         self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
+//          contentView.frame=CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
+//         
+//         labelView.frame=CGRectMake(labelView.frame.origin.x,labelView.frame.origin.y, self.view.frame.size.width-14, labelView.frame.size.height);
+//          blackLineLabel.frame=CGRectMake(10, 0, labelView.frame.size.width-16,1);
          
          for(UIButton*button in buttons)
          {
@@ -1202,5 +996,10 @@
      }];
     
     [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+}
+- (IBAction)deliveryMapAction:(UIButton *)sender {
+}
+
+- (IBAction)collMapAction:(UIButton *)sender {
 }
 @end

@@ -33,6 +33,7 @@
     self.scrollView.delegate = self;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     isFirstLoad = YES;
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -70,7 +71,7 @@
         [self setDriverInfo];
         isFirstLoad = NO;
     }
-    
+        NSLog(@"%f\n%f",self.scrollView.contentSize.height,self.scrollView.contentSize.width);
 }
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {

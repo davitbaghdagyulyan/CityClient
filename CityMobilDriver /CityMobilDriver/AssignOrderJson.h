@@ -16,4 +16,5 @@
 @property(nonatomic,strong)NSString*locale;
 @property(nonatomic,strong)NSString*method;
 @property(nonatomic,strong)NSString*version;
+@property(nonatomic,strong)NSString*manualaction;
 @end

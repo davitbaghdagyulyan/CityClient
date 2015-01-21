@@ -7,7 +7,7 @@
 //
 
 #import "JSONModel.h"
-
+#import "Order.h"
 @interface AddGPSResponse : JSONModel
 
 @property(nonatomic,strong)NSString*result;
@@ -19,4 +19,5 @@
 @property(nonatomic,strong)NSString*code;
 @property(nonatomic,strong)NSString*text;
 @property(nonatomic,assign)NSInteger gpsError;
+@property(nonatomic,strong)Order*order;
 @end

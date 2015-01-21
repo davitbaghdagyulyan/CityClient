@@ -98,6 +98,8 @@
 		EC0798EA1A2348DC0085E3F0 /* CityMobilIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */; };
 		EC0798EC1A2349840085E3F0 /* icon_green.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798EB1A2349840085E3F0 /* icon_green.png */; };
 		EC0798EE1A2379C90085E3F0 /* set3_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EC0798ED1A2379C90085E3F0 /* set3_orange.png */; };
+		EC102EF31A6E719600E9EE41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102EF21A6E719600E9EE41 /* AVFoundation.framework */; };
+		EC102EF91A6E86B800E9EE41 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC102EF81A6E86B800E9EE41 /* alarm.mp3 */; };
 		EC114E731A5FF79600C4D45F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = EC114E721A5FF79600C4D45F /* delete.png */; };
 		EC114E771A5FF90C00C4D45F /* UnbindCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */; };
 		EC114E7A1A60170600C4D45F /* UnbidCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E791A60170600C4D45F /* UnbidCardResponse.m */; };
@@ -262,6 +264,8 @@
 		ECCD4F401A0A1CC5002456F6 /* RequestSetAutoget.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD4F3F1A0A1CC5002456F6 /* RequestSetAutoget.m */; };
 		ECCD4F431A0A20B8002456F6 /* RequestSetYandexAutoget.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD4F421A0A20B8002456F6 /* RequestSetYandexAutoget.m */; };
 		ECCD4F461A0A2624002456F6 /* SucceedResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD4F451A0A2624002456F6 /* SucceedResponse.m */; };
+		ECCD5A1B1A6CF1E800168B28 /* IncomingOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD5A1A1A6CF1E800168B28 /* IncomingOrderViewController.m */; };
+		ECCD5A291A6D37D700168B28 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD5A281A6D37D700168B28 /* Order.m */; };
 		ECCD99361A19DF93009D482C /* NOTICE.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99241A19DF93009D482C /* NOTICE.txt */; };
 		ECCD99371A19DF93009D482C /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99251A19DF93009D482C /* Roboto-Black.ttf */; };
 		ECCD99381A19DF93009D482C /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCD99261A19DF93009D482C /* Roboto-BlackItalic.ttf */; };
@@ -502,6 +506,8 @@
 		EC0798E91A2348DC0085E3F0 /* CityMobilIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityMobilIcon.m; sourceTree = "<group>"; };
 		EC0798EB1A2349840085E3F0 /* icon_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_green.png; sourceTree = "<group>"; };
 		EC0798ED1A2379C90085E3F0 /* set3_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set3_orange.png; sourceTree = "<group>"; };
+		EC102EF21A6E719600E9EE41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EC102EF81A6E86B800E9EE41 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		EC114E721A5FF79600C4D45F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		EC114E751A5FF90C00C4D45F /* UnbindCardRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnbindCardRequest.h; sourceTree = "<group>"; };
 		EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbindCardRequest.m; sourceTree = "<group>"; };
@@ -790,6 +796,10 @@
 		ECCD4F421A0A20B8002456F6 /* RequestSetYandexAutoget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestSetYandexAutoget.m; sourceTree = "<group>"; };
 		ECCD4F441A0A2624002456F6 /* SucceedResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SucceedResponse.h; sourceTree = "<group>"; };
 		ECCD4F451A0A2624002456F6 /* SucceedResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SucceedResponse.m; sourceTree = "<group>"; };
+		ECCD5A191A6CF1E800168B28 /* IncomingOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomingOrderViewController.h; sourceTree = "<group>"; };
+		ECCD5A1A1A6CF1E800168B28 /* IncomingOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomingOrderViewController.m; sourceTree = "<group>"; };
+		ECCD5A271A6D37D700168B28 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		ECCD5A281A6D37D700168B28 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		ECCD99241A19DF93009D482C /* NOTICE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		ECCD99251A19DF93009D482C /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ECCD99261A19DF93009D482C /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -948,6 +958,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC102EF31A6E719600E9EE41 /* AVFoundation.framework in Frameworks */,
 				ECB06CA01A5D417F00001462 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1066,6 +1077,8 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
+				EC102EF21A6E719600E9EE41 /* AVFoundation.framework */,
 				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
 				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
 				ECD578131A5E76F200E46DEC /* BadRequest */,
@@ -1097,6 +1110,7 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
+				ECCD5A1C1A6CF20D00168B28 /* IncomingOrderViewController */,
 				ECC929F21A19CA840047E84C /* Robot Settings */,
 				ECC8F6E31A373F9100D93B07 /* EndUpViewController */,
 				8FC222701A36E9120003CAAF /* PaymentHistory */,
@@ -1320,6 +1334,8 @@
 				ECAD78BA1A306048005C2468 /* AddGPSJson.m */,
 				ECAD78BC1A306070005C2468 /* AddGPSResponse.h */,
 				ECAD78BD1A306070005C2468 /* AddGPSResponse.m */,
+				ECCD5A271A6D37D700168B28 /* Order.h */,
+				ECCD5A281A6D37D700168B28 /* Order.m */,
 			);
 			name = AddGPS;
 			sourceTree = "<group>";
@@ -1951,6 +1967,15 @@
 			name = Requests;
 			sourceTree = "<group>";
 		};
+		ECCD5A1C1A6CF20D00168B28 /* IncomingOrderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ECCD5A191A6CF1E800168B28 /* IncomingOrderViewController.h */,
+				ECCD5A1A1A6CF1E800168B28 /* IncomingOrderViewController.m */,
+			);
+			name = IncomingOrderViewController;
+			sourceTree = "<group>";
+		};
 		ECCD99231A19DF93009D482C /* Roboto Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2416,6 +2441,7 @@
 				ECF75B201A5FCC240018669C /* CardView.xib in Resources */,
 				ECB1C16D19E2A19A0027F482 /* MessagesCell.xib in Resources */,
 				ECB38B3A1A0D130B00DFBB77 /* 4@2x.png in Resources */,
+				EC102EF91A6E86B800E9EE41 /* alarm.mp3 in Resources */,
 				8FB0F8AF1A28D9AE003A79E9 /* train.png in Resources */,
 				ECF2FFFC1A406BCF00C8A269 /* ic_launcher-copy.png in Resources */,
 				ECB38B3C1A0D130B00DFBB77 /* 6@2x.png in Resources */,
@@ -2495,6 +2521,7 @@
 				ECCA90A919DEE2060007831F /* JSONHTTPClient.m in Sources */,
 				8FC2226F1A36E88D0003CAAF /* OrdersHistoryElements.m in Sources */,
 				ECCA90A819DEE2060007831F /* JSONAPI.m in Sources */,
+				ECCD5A291A6D37D700168B28 /* Order.m in Sources */,
 				8FC2225A1A36E7990003CAAF /* RootViewController.m in Sources */,
 				8FC2224C1A36E76D0003CAAF /* OrdersElements.m in Sources */,
 				ECCD994A1A19E48A009D482C /* LabelUnderLine.m in Sources */,
@@ -2676,6 +2703,7 @@
 				ECAD78C51A30AAF1005C2468 /* GetLastKnownLocationResponse.m in Sources */,
 				ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */,
 				ECCA90AA19DEE2060007831F /* JSONModel+networking.m in Sources */,
+				ECCD5A1B1A6CF1E800168B28 /* IncomingOrderViewController.m in Sources */,
 				ECF2FFF71A40240B00C8A269 /* LeftPaddingTextField.m in Sources */,
 				ECD55D8819F7C755002E182D /* GetCardsJson.m in Sources */,
 				ECC978F61A00DDC900D77B80 /* GetInfoJson.m in Sources */,

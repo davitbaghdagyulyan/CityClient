@@ -218,7 +218,7 @@
                     cardView.frame = CGRectMake(0, i*264 + 8, CGRectGetWidth(scrollView.frame), 264);
                 }
 
-                cardView.pan.text = [getCardsResponseObject.cards[i] pan];
+                cardView.pan.text = [getCardsResponseObject.cards[i] getPan];
                 
                 NSString* string = [getCardsResponseObject.cards[i] cardholder];
                 string = [string uppercaseString];

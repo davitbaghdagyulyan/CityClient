@@ -13,6 +13,7 @@
 #import "AddGPSResponse.h"
 #import "UserInformationProvider.h"
 #import "IconsColorSingltone.h"
+#import "IncomingOrderViewController.h"
 @interface SingleDataProvider : NSObject<CLLocationManagerDelegate>
 {
     CLLocation* currentLocation;
@@ -20,6 +21,7 @@
     AddGPSJson*addGPSJsonObject;
     AddGPSResponse*addGPSResponseObject;
     NSOperationQueue *myQueue ;
+    IncomingOrderViewController*iovc;
 }
 
 

@@ -7,9 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LabelUnderLine.h"
 
 @interface TakenOrderViewController : UIViewController<UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet UIView *orangeView;
+- (IBAction)deliveryMapAction:(UIButton *)sender;
+- (IBAction)collMapAction:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UILabel *deliveryMetroName;
+@property (weak, nonatomic) IBOutlet UIButton *deliveryMapButton;
+@property (weak, nonatomic) IBOutlet UIImageView *deliveryImageView;
+@property (weak, nonatomic) IBOutlet UILabel *collMetroName;
+@property (weak, nonatomic) IBOutlet UIButton *collMapButton;
+@property (weak, nonatomic) IBOutlet UIImageView *collMetroImageView;
+@property (weak, nonatomic) IBOutlet UIView *view3;
+@property (weak, nonatomic) IBOutlet UIView *view2;
+@property (weak, nonatomic) IBOutlet UILabel *shortNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *percentLabel;
+@property (weak, nonatomic) IBOutlet UIView *view1;
+
+@property (weak, nonatomic) IBOutlet UIView *labelVew;
+@property (weak, nonatomic) IBOutlet UILabel *asteriskLabel;
+@property (weak, nonatomic) IBOutlet UILabel *klientNameLabel;
+@property (weak, nonatomic) IBOutlet LabelUnderLine *phoneLabel;
+//////////////new//////////////////
+
+
+
+
+//////////////////////////////////
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
@@ -20,4 +46,5 @@
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 @property(nonatomic,strong)NSString*payment_method;
+@property(nonatomic,strong)NSString*idhash;
 @end

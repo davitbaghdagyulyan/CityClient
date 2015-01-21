@@ -18,11 +18,13 @@
     static SingleDataProvider* obj = nil;
     if (obj == nil)
     {
+        
         obj = [[super alloc] init];
         
 
         
     }
+   
     return obj;
 }
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -113,11 +115,12 @@
 
 -(void)addGPSaction
 {
-    
-    [self performSelectorInBackground:@selector(fff) withObject:nil];
+    NSLog(@"self==%@",self);
+   
+   [self performSelectorInBackground:@selector(addGPS) withObject:nil];
 }
 
--(void)fff
+-(void)addGPS
 {
     addGPSJsonObject.lat=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].lat];
     addGPSJsonObject.lon=[NSString stringWithFormat:@"%f",[SingleDataProvider sharedKey].lon];
@@ -139,7 +142,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody:jsonData];
     request.timeoutInterval = 30;
-    [NSURLConnection sendAsynchronousRequest:request queue:myQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (!data)
         {
             NSLog(@"%@",@"Нет соединения с интернетом!");
@@ -163,8 +166,49 @@
             [IconsColorSingltone sharedColor].yandexColor = [addGPSResponseObject.y_autoget integerValue];
             [IconsColorSingltone sharedColor].cityMobilColor = [addGPSResponseObject.autoget integerValue];
         }
-    }];
 
+       
+        if (addGPSResponseObject.order != nil)
+        {
+
+          dispatch_async(dispatch_get_main_queue(), ^{
+              
+              
+                        if ([[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController] isKindOfClass:[IncomingOrderViewController class]])
+                        {
+                             [(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController ] popViewControllerAnimated:NO];
+                        }
+              
+              
+              iovc = [[(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController] visibleViewController].storyboard instantiateViewControllerWithIdentifier:@"IncomingOrderViewController"];
+              
+             
+
+              iovc.order= addGPSResponseObject.order;
+              //addGPSResponseObject.order=nil;
+              /////test ////
+              
+//              iovc.order.OrderComment=@"uygugygyu uvyubuybubuy uybuybbybyby yvbyvyvy yvyvybyb";
+//              iovc.order.DeliveryAddressText=@"м. Парк культуры, пер Кропоткинский, д.12";
+//              iovc.order.canReject=@"1";
+//              iovc.order.idhash=@"e07877686ca81175433e40c41ae160c4";
+              
+              
+              //////test ///
+              
+              
+                
+                [(UINavigationController *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController ] pushViewController:iovc animated:NO];
+           });
+            
+            
+            
+        }
+
+    }];
+    
+    
+   
 }
 
 @end
