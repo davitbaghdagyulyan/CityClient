@@ -9,15 +9,22 @@
 #import "infoViewController.h"
 #import "SendingMessageViewController.h"
 #import "OpenMapButtonHandler.h"
+#import "WebViewCell.h"
 @interface infoViewController ()
 {
     LeftMenu* leftMenu;
-
+    
     UIButton* answerButton;
-    NSString* HTMLString;
     
     textResponse* jsonResponseObject;
     OpenMapButtonHandler*openMapButtonHandlerObject;
+    
+    
+    UITableView* infoTable;
+    
+    NSMutableArray* cellArray;
+    UIWebView* requestWebView;
+    
 }
 @end
 
@@ -26,19 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.web.scrollView.delegate = self;
-    self.web.delegate = self;
-    self.web.scrollView.showsHorizontalScrollIndicator = NO;
-    
-}
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    self.web.scrollView.scrollEnabled = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
+    [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {
         [self.gpsButton setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
@@ -49,14 +49,146 @@
         [self.gpsButton setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
     }
     [GPSConection showGPSConection:self];
-    self.web.userInteractionEnabled=YES;
     leftMenu=[LeftMenu getLeftMenu:self];
+    
+    
     [self textJsonRequest];
+    
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [answerButton removeFromSuperview];
+
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString* str = @"";
+    
+    if ([[jsonResponseObject.messages objectAtIndex:indexPath.row] from_me] == 0) {
+        str = [str stringByAppendingString:@"От: Сити мобил</br>"];
+    }
+    else{
+        str = [str stringByAppendingString:@"От: Вас</br>"];
+    }
+    
+//    NSString* dateString = [[jsonResponseObject.messages objectAtIndex:indexPath.row] getDate];
+//    str = [str stringByAppendingString:dateString];
+    
+    
+    
+    NSString* dateString = [[jsonResponseObject.messages objectAtIndex:indexPath.row] getDate];
+    dateString = [self TimeFormat:dateString];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+//    str = [str stringByAppendingString:@"Когда: "];
+    str = [str stringByAppendingFormat:@"Когда: %@ </br>",dateString];
+    
+    
+    str = [str stringByAppendingString:[jsonResponseObject.messages[indexPath.row] text]];
+    
+
+    
+    str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@"</br>"];
+    NSLog(@"str = %@",str);
+    CGSize maximumLabelSize = CGSizeMake(CGRectGetWidth(infoTable.frame), CGFLOAT_MAX);
+    CGRect textRect = [str boundingRectWithSize:maximumLabelSize
+                                        options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20.0f]}
+                                        context:nil];
+    
+
+    return textRect.size.height + 30;
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [jsonResponseObject.messages count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    WebViewCell* cell;
+    if([cellArray[indexPath.row] isEqual:@"NO"])
+    {
+    
+        cell = [[NSBundle mainBundle] loadNibNamed:@"WebViewCell" owner:self options:nil][0];
+        [cellArray replaceObjectAtIndex:indexPath.row withObject:cell];
+        
+    
+        if (indexPath.row % 2 == 1) {
+            [cell.webView setBackgroundColor:[UIColor colorWithRed:240.f/255 green:240.f/255 blue:240.f/255 alpha:1]];
+            [cell.webView setOpaque:NO];
+        }
+        
+        NSString* str = @"";
+        
+        if ([[jsonResponseObject.messages objectAtIndex:indexPath.row] from_me] == 0) {
+            str = [str stringByAppendingString:@"<font face=\"Roboto-Bold\">От: </font> <font face=\"Roboto-Regular\">Сити мобил</font></br>"];
+        }
+        else{
+            str = [str stringByAppendingString:@"<font face=\"Roboto-Bold\">От:</font> <font face=\"Roboto-Regular\">Вас</font></br>"];
+        }
+        
+        
+        
+        NSString* dateString = [[jsonResponseObject.messages objectAtIndex:indexPath.row] getDate];
+        dateString = [self TimeFormat:dateString];
+        dateString = [dateString stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+        str = [str stringByAppendingString:@"<font face=\"Roboto-Bold\">Когда: </font>"];
+        
+        str = [str stringByAppendingFormat:@"<font face=\"Roboto-Regular\"> %@ </font><br>" ,dateString];
+        str = [str stringByAppendingFormat:@"<font face=\"Roboto-Regular\"> %@ </font><br>" ,[[jsonResponseObject.messages objectAtIndex:indexPath.row] text]];
+        str = [str stringByAppendingString:@"<br>"];
+        
+        
+        
+        //str = [str stringByAppendingString:[jsonResponseObject.messages[indexPath.row] text]];
+        
+        str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@"</br>"];
+        
+        ///// TEST ////
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"linkFile" ofType:@"txt"];
+//        NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//        
+//        str = [str stringByAppendingString:content];
+        
+        ////// END TEST ////
+        
+        
+        [cell.webView loadHTMLString:str baseURL:nil];
+        cell.webView.scrollView.scrollEnabled = NO;
+        cell.webView.delegate = self;
+
+    
+    }
+    else{
+        return cellArray[indexPath.row];
+    }
+    return cell;
+}
+
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+    
+    if(navigationType == UIWebViewNavigationTypeLinkClicked)
+    {
+        requestWebView = [[UIWebView alloc]initWithFrame:
+                              CGRectMake(5, 65,
+                              CGRectGetWidth(self.view.frame) - 10,
+                              CGRectGetHeight(self.view.frame) - 65)];
+        requestWebView.backgroundColor = [UIColor whiteColor];
+        [requestWebView loadHTMLString:@"" baseURL:nil];
+        [requestWebView loadRequest:request];
+        [self.view addSubview:requestWebView];
+        
+    }
+    return YES;
+}
+
+
+
 
 -(void)textJsonRequest
 {
@@ -104,7 +236,7 @@
             [self presentViewController:alert animated:YES completion:nil];
             return ;
         }
-        //Roboto-Bold
+        
         NSError* err;
         NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
         
@@ -115,48 +247,32 @@
         badRequest.delegate = self;
         [badRequest showErrorAlertMessage:jsonResponseObject.text code:jsonResponseObject.code];
         
-        NSURL* url = [[NSURL alloc]init];
-        
-        NSString *str = [[NSString alloc]init];
-        self.descriptionLabel.text = [NSString stringWithFormat:@" %@", self.titleText];
-        self.web.opaque = NO;//????
-        for (int i = 0; i < [jsonResponseObject.messages count]; ++i) {
-            if ([[jsonResponseObject.messages objectAtIndex:i] from_me] == 0) {
-                str = [str stringByAppendingString:@"<b><font size=\"3\" face=\"Roboto-Bold\">От: </font></b> Сити мобил</br>"];
-            }
-            else{
-                str = [str stringByAppendingString:@"<b><font size=\"3\" face=\"Roboto-Bold\">От: </font></b> Вас</br>"];
-            }
-            
-            
-            NSString* dateString = [[jsonResponseObject.messages objectAtIndex:i] getDate];
-            dateString = [self TimeFormat:dateString];
-            dateString = [dateString stringByReplacingOccurrencesOfString:@"-" withString:@"."];
-            str = [str stringByAppendingString:@"<b><font size=\"3\" face=\"Roboto-Bold\">Когда: </font></b>"];
-            str = [str stringByAppendingFormat:@"<font size=\"3\"> %@ </font><br>" ,dateString];
-            str = [str stringByAppendingFormat:@"<font size=\"3\" face=\"Roboto-Regular\"> %@ </font><br>" ,[[jsonResponseObject.messages objectAtIndex:i] text]];
-            str = [str stringByAppendingString:@"<br>"];
 
-        }
-        
-        if ([jsonResponseObject.messages count] < 8) {
-            self.web.scrollView.scrollEnabled = NO;
-        }
-        
-        HTMLString = str;
+        self.descriptionLabel.text = [NSString stringWithFormat:@" %@", self.titleText];
         
         if (jsonResponseObject.can_answer == 1) {
-            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(5, self.view.frame.size.height - 40, self.view.frame.size.width - 10, 36)];
+            answerButton = [[UIButton alloc]initWithFrame:CGRectMake(5, self.view.frame.size.height - 41, self.view.frame.size.width - 10, 36)];
             answerButton.backgroundColor = [UIColor orangeColor];
             [answerButton addTarget:self action:@selector(pushSendingMessage) forControlEvents:UIControlEventTouchUpInside];
             [answerButton setTitle:@"Ответить" forState:UIControlStateNormal];
             [self.view addSubview:answerButton];
         }
         
-        //str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
-        [self.web loadHTMLString:str baseURL:url];
-        self.web.delegate = self;
+
         
+        
+        cellArray = [[NSMutableArray alloc]init];
+        for (int i = 0; i < [jsonResponseObject.messages count]; ++i) {
+            [cellArray addObject:@"NO"];
+        }
+        
+        infoTable = [[UITableView alloc]initWithFrame:CGRectMake(5, 94, CGRectGetWidth(self.view.frame) - 10, CGRectGetHeight(self.view.frame) - 64 - 30 - 36 - 10)];
+        infoTable.separatorColor = [UIColor whiteColor];
+        infoTable.delegate = self;
+        infoTable.dataSource = self;
+        infoTable.backgroundColor = [UIColor whiteColor];
+        infoTable.tintColor = [UIColor whiteColor];
+        [self.view addSubview:infoTable];
         [indicator stopAnimating];
     }];
 }
@@ -189,44 +305,25 @@
 }
 
 
-//#pragma mark - rotation
-//
-//- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-//{
-//    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
-//     {
-//         NSURL* url = [[NSURL alloc]init];
-//         [self.web loadHTMLString:HTMLString baseURL:url];
-//          answerButton.frame = CGRectMake(8, self.view.frame.size.height - 44, self.view.frame.size.width - 16, 36);
-//     }
-//                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
-//     {
-//         CGFloat xx;
-//         
-//         if(leftMenu.flag==0)
-//         {
-//             xx=320*(CGFloat)5/6*(-1);
-//         }
-//         else
-//         {
-//             xx=0;
-//         }
-//         leftMenu.frame =CGRectMake(xx, leftMenu.frame.origin.y, self.view.frame.size.width*(CGFloat)5/6, self.view.frame.size.height-64);
-//        
-//     }];
-//    [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
-//}
-
-
-
 #pragma mark - Rotation
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         NSURL* url = [[NSURL alloc]init];
-         [self.web loadHTMLString:HTMLString baseURL:url];
-         answerButton.frame = CGRectMake(5, self.view.frame.size.height - 40, self.view.frame.size.width - 10, 36);
+         answerButton.frame = CGRectMake(5, self.view.frame.size.height - 41, self.view.frame.size.width - 10, 36);
+         infoTable.frame = CGRectMake(5, 94, CGRectGetWidth(self.view.frame) - 10, CGRectGetHeight(self.view.frame) - 64 - 30 - 36 - 10);
+         
+         [infoTable reloadData];
+         
+         requestWebView.frame = CGRectMake(5, 65,
+                                CGRectGetWidth(self.view.frame) - 10,
+                                CGRectGetHeight(self.view.frame) - 65);
+         
+         
+
+         for (int i = 0; i < cellArray.count; ++i) {
+             [cellArray replaceObjectAtIndex:i withObject:@"NO"];
+         }
          
      }
      
@@ -253,8 +350,6 @@
     [super viewWillTransitionToSize: size withTransitionCoordinator: coordinator];
 }
 
-
-
 - (IBAction)back:(id)sender
 {
     if (leftMenu.flag)
@@ -263,7 +358,7 @@
         point.x=leftMenu.center.x-leftMenu.frame.size.width;
         point.y=leftMenu.center.y;
         leftMenu.center=point;
-          leftMenu.flag=0;
+        leftMenu.flag=0;
     }
     [self.navigationController popViewControllerAnimated:NO];
     
@@ -297,22 +392,18 @@
          if (leftMenu.flag==0)
          {
              leftMenu.flag=1;
-             self.web.userInteractionEnabled=NO;
              answerButton.userInteractionEnabled=NO;
              
-             self.web.tag=1;
              answerButton.tag=2;
              
              [leftMenu.disabledViewsArray removeAllObjects];
-        
-             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.web.tag]];
-            [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:answerButton.tag]];
+             
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:answerButton.tag]];
              
          }
          else
          {
              leftMenu.flag=0;
-             self.web.userInteractionEnabled=YES;
              answerButton.userInteractionEnabled=YES;
          }
      }
@@ -339,7 +430,6 @@
          if (touchLocation.x<=leftMenu.frame.size.width/2)
          {
              leftMenu.flag=0;
-             self.web.userInteractionEnabled=YES;
              answerButton.userInteractionEnabled=YES;
              
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
@@ -348,7 +438,6 @@
          {
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              
-             self.web.userInteractionEnabled=NO;
              answerButton.userInteractionEnabled=NO;
              
              leftMenu.flag=1;
@@ -377,7 +466,6 @@
         return;
     }
     leftMenu.center=point;
-    self.web.userInteractionEnabled=NO;
     answerButton.userInteractionEnabled=NO;
     leftMenu.flag=1;
 }

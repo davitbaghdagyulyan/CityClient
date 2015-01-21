@@ -2600,10 +2600,6 @@
                                     <constraint firstAttribute="trailing" secondItem="9nz-jL-WuH" secondAttribute="trailing" id="xFC-If-aLH"/>
                                 </constraints>
                             </view>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoS-gE-Cny">
-                                <rect key="frame" x="5" y="94" width="590" height="462"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiX-CX-4Wh">
                                 <rect key="frame" x="8" y="64" width="584" height="30"/>
                                 <constraints>
@@ -2617,35 +2613,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aiX-CX-4Wh" firstAttribute="top" secondItem="PeW-aX-MEz" secondAttribute="bottom" id="3eg-2L-6fh"/>
-                            <constraint firstItem="JoS-gE-Cny" firstAttribute="leading" secondItem="tah-gk-LUN" secondAttribute="leadingMargin" constant="-11" id="4p1-Zl-sep"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JoS-gE-Cny" secondAttribute="trailing" constant="-11" id="AFX-ra-uoB"/>
-                            <constraint firstItem="JoS-gE-Cny" firstAttribute="top" secondItem="aiX-CX-4Wh" secondAttribute="bottom" id="BrE-om-sMI"/>
-                            <constraint firstItem="JoS-gE-Cny" firstAttribute="top" secondItem="aiX-CX-4Wh" secondAttribute="bottom" id="CZS-ey-1fm"/>
                             <constraint firstAttribute="trailing" secondItem="PeW-aX-MEz" secondAttribute="trailing" id="GfC-RQ-mlQ"/>
                             <constraint firstItem="PeW-aX-MEz" firstAttribute="leading" secondItem="tah-gk-LUN" secondAttribute="leading" id="VRZ-ot-JZU"/>
-                            <constraint firstItem="a3a-9d-Yaz" firstAttribute="top" secondItem="JoS-gE-Cny" secondAttribute="bottom" constant="44" id="XeG-eW-IZm"/>
                             <constraint firstItem="PeW-aX-MEz" firstAttribute="top" secondItem="tah-gk-LUN" secondAttribute="top" id="YMD-Lc-7Nz"/>
                             <constraint firstAttribute="trailing" secondItem="aiX-CX-4Wh" secondAttribute="trailing" constant="8" id="ZdE-Wu-bQi"/>
-                            <constraint firstItem="JoS-gE-Cny" firstAttribute="top" secondItem="aiX-CX-4Wh" secondAttribute="bottom" id="ahY-E4-vKs"/>
                             <constraint firstItem="aiX-CX-4Wh" firstAttribute="leading" secondItem="tah-gk-LUN" secondAttribute="leading" constant="8" id="kiX-ex-oZW"/>
                             <constraint firstItem="PeW-aX-MEz" firstAttribute="leading" secondItem="tah-gk-LUN" secondAttribute="leading" id="tXP-7k-a4r"/>
-                            <constraint firstItem="JoS-gE-Cny" firstAttribute="top" secondItem="PeW-aX-MEz" secondAttribute="bottom" constant="1" id="wNh-9D-K0G"/>
                             <constraint firstAttribute="trailing" secondItem="PeW-aX-MEz" secondAttribute="trailing" id="yK7-Dh-nHS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="GfC-RQ-mlQ"/>
                                 <exclude reference="VRZ-ot-JZU"/>
-                                <exclude reference="BrE-om-sMI"/>
-                                <exclude reference="CZS-ey-1fm"/>
-                                <exclude reference="wNh-9D-K0G"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="aiX-CX-4Wh" id="Cfl-e3-cqX"/>
                         <outlet property="gpsButton" destination="9Br-TK-NLu" id="O4U-0Z-Rbr"/>
-                        <outlet property="web" destination="JoS-gE-Cny" id="XUm-3A-lMX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfV-3d-rGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
