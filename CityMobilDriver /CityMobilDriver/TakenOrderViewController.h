@@ -30,9 +30,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *asteriskLabel;
 @property (weak, nonatomic) IBOutlet UILabel *klientNameLabel;
 @property (weak, nonatomic) IBOutlet LabelUnderLine *phoneLabel;
+
+
+@property (strong, nonatomic) IBOutlet UIView *whiteView;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightVIew1;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightView2;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightView3;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *proportionalHeight;
+
+
+
 //////////////new//////////////////
 
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightOrangeView;
 
 
 //////////////////////////////////

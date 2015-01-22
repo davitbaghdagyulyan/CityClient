@@ -22,9 +22,8 @@
 @interface TakenOrderViewController ()
 
 {
-     OpenMapButtonHandler*openMapButtonHandlerObject;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
     LeftMenu*leftMenu;
-   
     GetOrderResponse*getOrderResponseObject;
     GetOrderJson*getOrderJsonObject;
     UIView*cellUnderView;
@@ -49,6 +48,15 @@
     NSInteger count;
     NSString* googleMapUrl;
     NSString* yandexMapUrl;
+    NSString * deviceType;
+    NSString *deviceStringIphone;
+    NSString *deviceStringIphoneSimulator;
+    NSString * NoSmoking;
+    NSString * G_Width;
+    NSString * payment_method;
+    NSString * conditioner;
+    NSString * animal;
+    NSString * need_WiFi;
 }
 
 @end
@@ -71,6 +79,9 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+    deviceType= [UIDevice currentDevice].model;
+    deviceStringIphone=@"iPhone";
+    deviceStringIphoneSimulator=@"iPhone Simulator";
     self.contentView.frame=self.orangeView.frame;
     self.contentView.translatesAutoresizingMaskIntoConstraints=YES;
     [self.contentView updateConstraints];
@@ -323,9 +334,42 @@
 
     
     //arus changes///
+    //Updating Constraints
+    float heightOrange=2+50+1+100+1+150+1+45;
+    self.orangeView.translatesAutoresizingMaskIntoConstraints=NO;
+    self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
+    [self.orangeView removeConstraint:[self.orangeView.constraints objectAtIndex:0]];
+    NSLayoutConstraint * orangeViewHeight;
+    orangeViewHeight =[NSLayoutConstraint constraintWithItem:self.orangeView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant:heightOrange
+    ];
+    [self.orangeView addConstraint:orangeViewHeight];
+   
+    //VIEW1
+    self.view1.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view1 removeConstraint:[self.view1.constraints objectAtIndex:0]];
+     NSLayoutConstraint * view11Height;
+     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:50                   ];
+    [self.view1 addConstraint:view11Height];
+    self.percentLabel.text=[NSString stringWithFormat:@"%ld%%",(long)getOrderResponseObject.percent];
+    //[self addImages:self.view1  withLabel:self.percentLabel];
     
+    //VIEW2
+    self.view2.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view2 removeConstraint:[self.view2.constraints objectAtIndex:0]];
     
-    //end Arus changes///
+    NSLayoutConstraint * view22Height;
+    view22Height =[NSLayoutConstraint constraintWithItem:self.view2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:100
+                   ];
+    [self.view2 addConstraint:view22Height];
+    //VIEW3
+    self.view3.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view3 removeConstraint:[self.view3.constraints objectAtIndex:0]];
+    NSLayoutConstraint * view33Height;
+     view33Height =[NSLayoutConstraint constraintWithItem:self.view3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:150];
+    [self.whiteView addConstraint:view33Height];
+
+    
+//    //end Arus changes///
    
     //[self drawButtons];
     
@@ -945,15 +989,18 @@
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
+    //self.orangeView.translatesAutoresizingMaskIntoConstraints=YES;
+   // self.contentView.translatesAutoresizingMaskIntoConstraints=YES;
     [coordinator animateAlongsideTransition:nil
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-          self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
-         self.contentView.frame=self.orangeView.frame;
+         
+//          self.contentView.translatesAutoresizingMaskIntoConstraints=YES;
+           //self.contentView.frame=self.orangeView.frame;
       
         
-         [self.contentView updateConstraints];
+         //[self.contentView updateConstraints];
          
 //         self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
 //          contentView.frame=CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
@@ -1002,4 +1049,504 @@
 
 - (IBAction)collMapAction:(UIButton *)sender {
 }
+
+-(void)addImages:(UIView *)view
+   withLabel :(UILabel *)label
+{
+    
+    UIImageView * imgView1;
+    if (!imgView1)
+    {
+        imgView1 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView1.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView1];
+    NSLayoutConstraint * imgView1ConstraintWidth;
+    NSLayoutConstraint * imgView1ConstraintHeight;
+    NSLayoutConstraint *imgView1X;
+    NSLayoutConstraint *imgView1Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView1X = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -50];
+        imgView1Y = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    else
+    {
+        imgView1X = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
+        imgView1Y = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    [view addConstraint:imgView1X];
+    [view addConstraint:imgView1Y];
+    
+    if ([getOrderResponseObject getNoSmoking])
+    {
+        NoSmoking =[getOrderResponseObject getNoSmoking];
+        if ([NoSmoking isEqualToString:@"Y"])
+        {
+            imgView1.image = [UIImage imageNamed: @"ic_no_smoking_lounge_small.png"];
+            imgView1ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            imgView1ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            [view   addConstraint:imgView1ConstraintWidth];
+            [view addConstraint:imgView1ConstraintHeight];
+        }
+        else if([getOrderResponseObject  getG_width])
+        {
+            G_Width =[getOrderResponseObject getG_width];
+            if ([G_Width integerValue] ==1)
+            {
+                imgView1ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+                imgView1ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+                imgView1.image = [UIImage imageNamed: @"ic_smoking_lounge_small.png"];
+                [view addConstraint:imgView1ConstraintHeight];
+                [view addConstraint:imgView1ConstraintWidth];
+            }
+            else if([G_Width integerValue] ==0)
+            {
+                imgView1.image = nil;
+            }
+            else
+            {
+                imgView1.image = nil;
+            }
+        }
+    }
+    //Image2 construction and initializatio
+    UIImageView * imgView2;
+    if (!imgView2)
+    {
+        imgView2 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView2.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView2];
+    NSLayoutConstraint * imgView2ConstraintWidth;
+    NSLayoutConstraint * imgView2ConstraintHeight;
+    NSLayoutConstraint *imgView2X;
+    NSLayoutConstraint *imgView2Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView2X = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView1 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -30];
+        imgView2Y = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    else
+    {
+        imgView2X = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView1 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -100];
+        imgView2Y = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+        
+    }
+    [view addConstraint:imgView2X];
+    [view addConstraint:imgView2Y];
+    if ([getOrderResponseObject getPayment_method])
+    {
+        payment_method =[getOrderResponseObject getPayment_method];
+        if ([payment_method isEqualToString:@"cash"])
+        {
+            imgView2.image = [UIImage imageNamed:@"ic_cash_payment_small.png"];
+            imgView2ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:24];
+            imgView2ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            [view addConstraint:imgView2ConstraintHeight];
+            [view addConstraint:imgView2ConstraintWidth];
+        }
+        else if  ([payment_method isEqualToString:@"card"])
+        {
+            imgView2.image = [UIImage imageNamed:@"ic_credit_card_payment_small.png"];
+            imgView2ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:19];
+            imgView2ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            [view addConstraint:imgView2ConstraintHeight];
+            [view addConstraint:imgView2ConstraintWidth];
+        }
+        else if([payment_method isEqualToString:@"corporate"]   )
+        {
+            imgView2.image = [UIImage imageNamed:@"ic_non_cash_payment_small.png"];
+            imgView2ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:21];
+            imgView2ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            [view addConstraint:imgView2ConstraintHeight];
+            [view addConstraint:imgView2ConstraintWidth];
+        }
+        else
+        {
+            imgView2.image = nil;
+        }
+        
+    }
+    
+    
+    //********Image3 construction and initialization
+    UIImageView * imgView3;
+    if (!imgView3)
+    {
+        imgView3 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView3.translatesAutoresizingMaskIntoConstraints = NO;
+    [view  addSubview:imgView3];
+    NSLayoutConstraint * imgView3ConstraintWidth;
+    NSLayoutConstraint * imgView3ConstraintHeight;
+    NSLayoutConstraint *imgView3X;
+    NSLayoutConstraint *imgView3Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView3X = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView2 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -30];
+        imgView3Y = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    else
+    {
+        imgView3X = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView2 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
+        imgView3Y = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    
+    [view addConstraint:imgView3X];
+    [view addConstraint:imgView3Y];
+    
+    if ([getOrderResponseObject getConditioner])
+        
+    {
+        conditioner =[getOrderResponseObject getConditioner];
+        if ([conditioner integerValue]==1)
+        {
+            imgView3.image = [UIImage imageNamed:@"ic_air_conditioning_small.png"];
+            imgView3ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:15];
+            imgView3ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            [view addConstraint:imgView3ConstraintHeight];
+            [view addConstraint:imgView3ConstraintWidth];
+            
+        }
+        else
+        {
+            imgView3.image = nil;
+        }
+    }
+    //********Image4 construction and initialization
+    UIImageView * imgView4;
+    if (!imgView4)
+    {
+        imgView4 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView4.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView4];
+    NSLayoutConstraint * imgView4ConstraintWidth;
+    NSLayoutConstraint * imgView4ConstraintHeight;
+    NSLayoutConstraint *imgView4X;
+    NSLayoutConstraint *imgView4Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView4X = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView3 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -30];
+        imgView4Y = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    
+    else
+    {
+        imgView4X = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView3 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -100];
+        imgView4Y = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    [view addConstraint:imgView4X];
+    [view addConstraint:imgView4Y];
+    if ([getOrderResponseObject getAnimal])
+    {
+        animal =[getOrderResponseObject getAnimal];
+        if ([animal integerValue]==1)
+        {
+            imgView4.image = [UIImage imageNamed:@"ic_transportation_of_animals_small.png"];
+            imgView4ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            imgView4ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView4 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            [view addConstraint:imgView4ConstraintHeight];
+            [view addConstraint:imgView4ConstraintWidth];
+        }
+        else
+        {
+            imgView4.image = nil;
+        }
+        
+        
+    }
+    //********Image5 construction and initialization
+    UIImageView * imgView5;
+    if (!imgView5)
+    {
+        imgView5 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView5.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView5];
+    NSLayoutConstraint * imgView5ConstraintWidth;
+    NSLayoutConstraint * imgView5ConstraintHeight;
+    NSLayoutConstraint *imgView5X;
+    NSLayoutConstraint *imgView5Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView5X = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView4 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -30];
+        imgView5Y = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    
+    else
+    {
+        imgView5X = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView4 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -100];
+        imgView5Y = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    [view addConstraint:imgView5X];
+    [view addConstraint:imgView5Y];
+    if ([getOrderResponseObject getBaby_seat])
+    {
+        NSString * babySeat;
+        babySeat =[getOrderResponseObject getBaby_seat];
+        if ([babySeat integerValue]>0)
+        {
+            imgView5.image = [UIImage imageNamed:@"ic_child_seat_small.png"];
+            
+            imgView5ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:15];
+            imgView5ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView5 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            [view addConstraint:imgView5ConstraintHeight];
+            [view addConstraint:imgView5ConstraintWidth];
+            
+            
+        }
+        else
+        {
+            imgView5.image = nil;
+            
+        }
+        
+    }
+    //********Image6 construction and initialization
+    UIImageView * imgView6;
+    if (!imgView6)
+    {
+        imgView6 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView6.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView6];
+    NSLayoutConstraint * imgView6ConstraintWidth;
+    NSLayoutConstraint * imgView6ConstraintHeight;
+    NSLayoutConstraint *imgView6X;
+    NSLayoutConstraint *imgView6Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView6X = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView5 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-30];
+        imgView6Y = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    else
+    {
+        imgView6X = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView5 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
+        imgView6Y = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    [view addConstraint:imgView6X];
+    [view addConstraint:imgView6Y];
+    if ([getOrderResponseObject getLuggage])
+    {
+        NSString * luggage;
+        luggage =[getOrderResponseObject getLuggage];
+        if ([luggage integerValue]==1)
+        {
+            imgView6.image = [UIImage imageNamed:@"ic_baggage_small.png"];
+            imgView6ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            imgView6ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView6 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            [view addConstraint:imgView6ConstraintHeight];
+            [view addConstraint:imgView6ConstraintWidth];
+        }
+        else
+        {
+            imgView6.image = nil;
+        }
+    }
+    //********Image7 construction and initialization
+    UIImageView * imgView7;
+    if (!imgView7)
+    {
+        imgView7 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView7.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView7];
+    NSLayoutConstraint * imgView7ConstraintWidth;
+    NSLayoutConstraint * imgView7ConstraintHeight;
+    NSLayoutConstraint *imgView7X;
+    NSLayoutConstraint *imgView7Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView7X = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView6 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-30];
+        imgView7Y = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    else
+    {
+        imgView7X = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView6 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
+        imgView7Y = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    
+    [view addConstraint:imgView7X];
+    [view addConstraint:imgView7Y];
+    if ([getOrderResponseObject getUseBonus])
+    {
+        NSString * useBonus;
+        useBonus =[getOrderResponseObject getUseBonus];
+        if ([useBonus isEqualToString:@"Y"])
+        {
+            imgView7.image = [UIImage imageNamed:@"ic_on_bonuses_payment_small.png"];
+            imgView7ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:15];
+            imgView7ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView7 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            [view addConstraint:imgView7ConstraintHeight];
+            [view addConstraint:imgView7ConstraintWidth];
+        }
+        else
+        {
+            imgView7.image = nil;
+        }
+    }
+    //********Image8 construction and initialization
+    UIImageView * imgView8;
+    if (!imgView8)
+    {
+        imgView8 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView8.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView8];
+    NSLayoutConstraint * imgView8ConstraintWidth;
+    NSLayoutConstraint * imgView8ConstraintHeight;
+    NSLayoutConstraint *imgView8X;
+    NSLayoutConstraint *imgView8Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView8X = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView7 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -30];
+        imgView8Y = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    else
+    {
+        imgView8X = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView7 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
+        imgView8Y = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    [view addConstraint:imgView8X];
+    [view addConstraint:imgView8Y];
+    if ([getOrderResponseObject getNeed_wifi])
+    {
+        NSString * need_WiFi;
+        need_WiFi =[getOrderResponseObject getNeed_wifi];
+        if ([need_WiFi integerValue]==1)
+        {
+            imgView8.image = [UIImage imageNamed:@"ic_wifi_small.png"];
+            
+            imgView8ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            imgView8ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView8 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            [view addConstraint:imgView8ConstraintHeight];
+            [view addConstraint:imgView8ConstraintWidth];
+            
+        }
+        else
+        {
+            imgView8.image = nil;
+        }
+    }
+    //********Image9 construction and initialization
+    UIImageView * imgView9;
+    if (!imgView9)
+    {
+        imgView9 = [[UIImageView alloc]initWithImage:nil];
+    }
+    imgView9.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:imgView9];
+    NSLayoutConstraint * imgView9ConstraintWidth;
+    NSLayoutConstraint * imgView9ConstraintHeight;
+    NSLayoutConstraint *imgView9X;
+    NSLayoutConstraint *imgView9Y;
+    if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        imgView9X = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView8 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
+                     -30];
+        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+    }
+    else
+    {
+        imgView9X = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView8 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
+        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+    }
+    [view addConstraint:imgView9X];
+    [view addConstraint:imgView9Y];
+    if ([getOrderResponseObject getYellow_reg_num])
+    {
+        NSString * yellowNumber;
+        yellowNumber =[getOrderResponseObject getYellow_reg_num];
+        if ([yellowNumber integerValue]==1)
+        {
+            imgView9.image = [UIImage imageNamed:@"n_color copy.png"];
+            imgView9ConstraintWidth = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:18];
+            imgView9ConstraintHeight = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:0.f constant:17];
+            [view addConstraint:imgView9ConstraintHeight];
+            [view addConstraint:imgView9ConstraintWidth];
+            
+            
+        }
+        else
+        {
+            imgView9.image = nil;
+        }
+    }
+    NSMutableArray * arrayOfImages =[[NSMutableArray alloc]initWithObjects:imgView1,imgView2,imgView3,imgView4,imgView5,imgView6,imgView7,imgView8,imgView9,nil];
+    NSMutableArray * arrayOfImages2 =[[NSMutableArray alloc]init];
+    for (int i =0; i<arrayOfImages.count; i++)
+    {
+        UIImageView * imgViewCurrent =[arrayOfImages objectAtIndex:i];
+        if (imgViewCurrent.image!=nil)
+        {
+            [arrayOfImages2 addObject:[arrayOfImages objectAtIndex:i]];
+        }
+    }
+    if (arrayOfImages2.count != 0)
+    {
+        if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+        {
+            NSLayoutConstraint *constForX0 = [NSLayoutConstraint constraintWithItem:[arrayOfImages2 objectAtIndex:0] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:label attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:-25];
+            [view addConstraint:constForX0];
+            for (int i =0; i<arrayOfImages2.count; i++)
+            {
+                if (i!=0)
+                {
+                    NSLayoutConstraint *constForX = [NSLayoutConstraint constraintWithItem:[arrayOfImages2 objectAtIndex:i] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:[arrayOfImages2 objectAtIndex:i-1]attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:-25];
+                    [view addConstraint:constForX];
+                }
+            }
+            
+        }
+        else
+        {
+            NSLayoutConstraint *constForX0 = [NSLayoutConstraint constraintWithItem:[arrayOfImages2 objectAtIndex:0] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:label attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:-50];
+            [view addConstraint:constForX0];
+            for (int i =0; i<arrayOfImages2.count; i++)
+            {
+                if (i!=0)
+                {
+                    NSLayoutConstraint *constForX = [NSLayoutConstraint constraintWithItem:[arrayOfImages2 objectAtIndex:i] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:[arrayOfImages2 objectAtIndex:i-1]attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:-50];
+                    [view addConstraint:constForX];
+                }
+            }
+        }
+    }
+    
+    else
+        
+    {
+        
+        
+        for (int i =0; i<arrayOfImages.count; i++)
+        {
+            NSLayoutConstraint *constForXhide = [NSLayoutConstraint constraintWithItem:[arrayOfImages objectAtIndex:i] attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:label attribute:NSLayoutAttributeLeadingMargin multiplier:1.f constant:20];
+            [view addConstraint:constForXhide];
+            
+        }
+        
+    }
+    
+    if (arrayOfImages2.count >=5 && ([[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortrait || [[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown))
+    {
+        for (int i =5; i<arrayOfImages2.count; i++)
+        {
+            UIImageView * imgViewCurrentHid =[arrayOfImages2 objectAtIndex:i];
+            imgViewCurrentHid.hidden=YES;
+        }
+    }
+    
+}
+
 @end
