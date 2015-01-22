@@ -82,9 +82,6 @@
     deviceType= [UIDevice currentDevice].model;
     deviceStringIphone=@"iPhone";
     deviceStringIphoneSimulator=@"iPhone Simulator";
-    self.contentView.frame=self.orangeView.frame;
-    self.contentView.translatesAutoresizingMaskIntoConstraints=YES;
-    [self.contentView updateConstraints];
     [GPSConection showGPSConection:self];
      [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
@@ -335,20 +332,20 @@
     
     //arus changes///
     //Updating Constraints
-    float heightOrange=2+50+1+100+1+150+1+45;
+    float heightOrange=2+10+1+50+1+100+1+45;
     self.orangeView.translatesAutoresizingMaskIntoConstraints=NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
-    [self.orangeView removeConstraint:[self.orangeView.constraints objectAtIndex:0]];
+    [self.contentView removeConstraint:[self.contentView.constraints objectAtIndex:0]];
     NSLayoutConstraint * orangeViewHeight;
     orangeViewHeight =[NSLayoutConstraint constraintWithItem:self.orangeView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant:heightOrange
     ];
-    [self.orangeView addConstraint:orangeViewHeight];
+    [self.contentView addConstraint:orangeViewHeight];
    
     //VIEW1
     self.view1.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view1 removeConstraint:[self.view1.constraints objectAtIndex:0]];
      NSLayoutConstraint * view11Height;
-     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:50                   ];
+     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:10                   ];
     [self.view1 addConstraint:view11Height];
     self.percentLabel.text=[NSString stringWithFormat:@"%ld%%",(long)getOrderResponseObject.percent];
     //[self addImages:self.view1  withLabel:self.percentLabel];
@@ -358,14 +355,14 @@
     [self.view2 removeConstraint:[self.view2.constraints objectAtIndex:0]];
     
     NSLayoutConstraint * view22Height;
-    view22Height =[NSLayoutConstraint constraintWithItem:self.view2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:100
+    view22Height =[NSLayoutConstraint constraintWithItem:self.view2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:50
                    ];
     [self.view2 addConstraint:view22Height];
     //VIEW3
     self.view3.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view3 removeConstraint:[self.view3.constraints objectAtIndex:0]];
     NSLayoutConstraint * view33Height;
-     view33Height =[NSLayoutConstraint constraintWithItem:self.view3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:150];
+     view33Height =[NSLayoutConstraint constraintWithItem:self.view3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:100];
     view33Height.priority=250;
     [self.whiteView addConstraint:view33Height];
 
