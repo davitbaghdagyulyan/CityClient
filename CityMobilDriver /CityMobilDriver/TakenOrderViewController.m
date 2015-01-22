@@ -18,6 +18,7 @@
 #import "TachometerViewController.h"
 #import "SingleDataProvider.h"
 #import "OpenMapButtonHandler.h"
+#import "OrdersLabel.h"
 
 @interface TakenOrderViewController ()
 
@@ -57,6 +58,21 @@
     NSString * conditioner;
     NSString * animal;
     NSString * need_WiFi;
+    UILabel *labelCollAddressText;
+    CGSize expectSizeForCollAddress;
+    UILabel *labelCallComment;
+    CGSize expectSizeForCallComment;
+    UILabel * labelDeliveryAddressText;
+    CGSize  expectSizeForDeliveryAddress;
+    UILabel *labelDeliveryComment;
+    CGSize expectSizeDeliveryComment;
+    UILabel *labelOurComment;
+    CGSize expectSizeForOurComment;
+    NSString * deliveryAddrTypeMenu;
+    CGFloat  height1;
+    CGFloat  height2;
+    CGFloat height;
+
 }
 
 @end
@@ -289,6 +305,7 @@
 
               if(getOrderResponseObject.code==nil)
               {
+                [self calculateHeight];
                 [self drawPage];
               }
             
@@ -297,6 +314,186 @@
         }];
         
 }
+
+-(void)calculateHeight
+{
+    deliveryAddrTypeMenu =[getOrderResponseObject DeliveryAddrTypeMenu];
+    height1 =40;
+    //CALLADDRESS
+    NSString * collAddress =[getOrderResponseObject CollAddressText];
+    if (collAddress && collAddress.length !=0)
+        {
+            if (YES)//!labelCollAddressText)
+            {
+                labelCollAddressText  = [[UILabel alloc] init];
+            }
+            labelCollAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
+            labelCollAddressText.text = collAddress;
+            labelCollAddressText.numberOfLines = 0;
+            labelCollAddressText.lineBreakMode = NSLineBreakByWordWrapping;
+            CGSize maximumLabelSize = CGSizeMake(220,100);
+            expectSizeForCollAddress = [labelCollAddressText sizeThatFits:maximumLabelSize];
+        }
+        else
+        {
+            expectSizeForCollAddress = CGSizeMake(0, 0);
+        }
+        
+        if (expectSizeForCollAddress.height !=0)
+        {
+            height1 += expectSizeForCollAddress.height+5;
+        }
+        else
+        {
+            height1 = 5+43+5;
+        }
+        //CALLCOMMENT
+        NSString * callComment =[getOrderResponseObject CollComment];
+        NSLog(@"CallComment is %@",callComment);
+        
+        if(callComment && callComment.length !=0)       {
+            if (YES)//!labelCallComment)
+            {
+                labelCallComment  = [[OrdersLabel alloc] init];
+            }
+            labelCallComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
+            labelCallComment.text =callComment;
+            labelCallComment.numberOfLines = 0;
+            labelCallComment.lineBreakMode = NSLineBreakByWordWrapping;
+            CGSize maximumLabelSize = CGSizeMake(300,100);
+            expectSizeForCallComment = [labelCallComment sizeThatFits:maximumLabelSize];
+        }
+        else
+        {
+            expectSizeForCallComment = CGSizeMake(0, 0);
+        }
+        if (expectSizeForCallComment.height !=0)
+        {
+            height1 +=expectSizeForCallComment.height+4+5;
+        }
+        else
+        {
+            height1 +=0;
+        }
+        //DELIVERYADDRESS
+        height2 =40;
+        NSString * deliveryAddress =[getOrderResponseObject DeliveryAddressText];
+        
+        if(deliveryAddress && deliveryAddress.length !=0)
+        {
+            if (YES)//!labelDeliveryAddressText)
+            {
+                labelDeliveryAddressText  = [[UILabel alloc] init];
+            }
+            labelDeliveryAddressText.font = [UIFont fontWithName:@"Roboto-Regular" size:15];
+            labelDeliveryAddressText.text =deliveryAddress;
+            labelDeliveryAddressText.numberOfLines = 0;
+            labelDeliveryAddressText.lineBreakMode = NSLineBreakByWordWrapping;
+            CGSize maximumLabelSize = CGSizeMake(220,100);
+            expectSizeForDeliveryAddress = [labelDeliveryAddressText sizeThatFits:maximumLabelSize];
+        }
+        else
+        {
+            expectSizeForDeliveryAddress = CGSizeMake(0, 0);
+        }
+        if ( expectSizeForDeliveryAddress.height !=0)
+        {
+            height2 += expectSizeForDeliveryAddress.height+5;
+        }
+        else
+        {
+            height2 =5+43+5;
+        }
+        
+        //DELIVERYCOMMENT
+    NSString * deliveryComment =[getOrderResponseObject DeliveryComment];
+    
+        if(deliveryComment && deliveryComment.length !=0)
+        {
+            if (YES)//!labelDeliveryComment)
+            {
+                labelDeliveryComment  = [[OrdersLabel alloc] init];
+            }
+            labelDeliveryComment.font = [UIFont fontWithName:@"Roboto-LightItalic" size:15];
+            labelDeliveryComment.text =deliveryComment;
+            labelDeliveryComment.numberOfLines = 0;
+            labelDeliveryComment.lineBreakMode = NSLineBreakByWordWrapping;
+            CGSize maximumLabelSize = CGSizeMake(300,100);
+            expectSizeDeliveryComment = [labelDeliveryComment sizeThatFits:maximumLabelSize];
+        }
+        else
+        {
+            expectSizeDeliveryComment = CGSizeMake(0, 0);
+        }
+        if (expectSizeDeliveryComment.height != 0)
+        {
+            height2 +=expectSizeDeliveryComment.height+4+5;
+        }
+        else
+        {
+            height2+=0;
+        }
+        
+        //OURCOMMENT
+        NSString * ourComment =[getOrderResponseObject OurComment];
+        
+        if(ourComment && ourComment.length !=0)
+        {
+            if (YES)//!labelOurComment)
+            {
+                labelOurComment  = [[OrdersLabel alloc] init];
+            }
+            labelOurComment.font =  [UIFont fontWithName:@"Roboto-LightItalic" size:15];
+            labelOurComment.text = ourComment;
+            labelOurComment.numberOfLines = 0;
+            labelOurComment.lineBreakMode = NSLineBreakByWordWrapping;
+            CGSize maximumLabelSize = CGSizeMake(300,100);
+            expectSizeForOurComment = [labelOurComment sizeThatFits:maximumLabelSize];
+        }
+        else
+        {
+            expectSizeForOurComment = CGSizeMake(0, 0);
+        }
+        if (expectSizeForOurComment.height != 0)
+        {
+            height2 +=expectSizeForOurComment.height +4+5;
+        }
+        else
+        {
+            height2 +=0;
+        }
+        if ([[getOrderResponseObject DeliveryAddrTypeMenu]integerValue]==0 && expectSizeDeliveryComment.height==0
+            && expectSizeForOurComment.height==0 )
+        {
+            height2=0;
+        }
+        if ([[getOrderResponseObject DeliveryAddrTypeMenu]integerValue]==0 &&(expectSizeDeliveryComment.height!=0 ||expectSizeForOurComment.height!=0 ))
+        {
+            height2=5+expectSizeDeliveryComment.height+4+5+expectSizeForOurComment.height+4+5;
+        }
+        
+        //DEFINING HEIGHT FOR CELL
+        if ([deviceType isEqualToString:deviceStringIphone]||[deviceType isEqualToString:deviceStringIphoneSimulator])
+        {
+            height = 2+1+22+height1+height2+1+4+45+4;
+        }
+        else
+        {
+            height = 2+1+34+height1+height2+1+4+45+4;
+        }
+        //CustomCellSelectedORDER2
+        if ([[getOrderResponseObject CanBuyDeliveryAddress]integerValue]==1)
+        {
+            height = 2+1+22+height1+4+80;
+        }
+        
+    
+
+
+
+}
+
+
 -(NSString*)TimeFormat:(NSString*)string
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -332,39 +529,629 @@
     
     //arus changes///
     //Updating Constraints
-    float heightOrange=2+25+1+50+1+100+1+45;
+    CGFloat heightOrange=2+22+1+height1+1+height2+1+45;
+    CGFloat heightContentView=heightOrange+20;
     self.orangeView.translatesAutoresizingMaskIntoConstraints=NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
     [self.contentView removeConstraint:[self.contentView.constraints objectAtIndex:0]];
+    NSLayoutConstraint * contentViewHeight;
+    contentViewHeight =[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant: heightContentView
+                       ];
+    [self.contentView addConstraint:contentViewHeight];
+    [self.orangeView removeConstraint:[self.orangeView.constraints objectAtIndex:0]];
     NSLayoutConstraint * orangeViewHeight;
-    orangeViewHeight =[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant:heightOrange
+    orangeViewHeight =[NSLayoutConstraint constraintWithItem:self.orangeView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant:heightOrange
     ];
-    [self.contentView addConstraint:orangeViewHeight];
+    [self.orangeView addConstraint:orangeViewHeight];
    
     //VIEW1
     self.view1.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view1 removeConstraint:[self.view1.constraints objectAtIndex:0]];
      NSLayoutConstraint * view11Height;
-     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:25                   ];
+     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22                   ];
     [self.view1 addConstraint:view11Height];
     self.percentLabel.text=[NSString stringWithFormat:@"%ld%%",(long)getOrderResponseObject.percent];
-    //[self addImages:self.view1  withLabel:self.percentLabel];
-    
+    [self addImages:self.view1  withLabel:self.percentLabel];
     //VIEW2
     self.view2.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view2 removeConstraint:[self.view2.constraints objectAtIndex:0]];
-    
     NSLayoutConstraint * view22Height;
-    view22Height =[NSLayoutConstraint constraintWithItem:self.view2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:50
+    view22Height =[NSLayoutConstraint constraintWithItem:self.view2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height1
                    ];
     [self.view2 addConstraint:view22Height];
+    if (getOrderResponseObject.CollMetroName)
+    {
+        self.collMetroName.text=getOrderResponseObject.CollMetroName;
+    }
+    else
+    {
+     self.collMetroName.text=@"";
+    }
     //VIEW3
     self.view3.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view3 removeConstraint:[self.view3.constraints objectAtIndex:0]];
     NSLayoutConstraint * view33Height;
-     view33Height =[NSLayoutConstraint constraintWithItem:self.view3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:100];
+    view33Height =[NSLayoutConstraint constraintWithItem:self.view3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:height2];
     view33Height.priority=250;
     [self.whiteView addConstraint:view33Height];
+    if (![getOrderResponseObject DeliveryMetroName]|| [[getOrderResponseObject DeliveryMetroName]length]==0)
+    {
+        self.deliveryMapButton.hidden=YES;
+        
+    }
+
+    if ([getOrderResponseObject CollMetroName])
+    {
+        self.collMetroName.text=[getOrderResponseObject CollMetroName];
+    }
+    else
+    {
+        self.collMetroName.text= @"";
+    }
+    
+    NSString * CollAddrTypeMenu =[getOrderResponseObject CollAddrTypeMenu];
+    if (CollAddrTypeMenu)
+    {
+        switch ([CollAddrTypeMenu integerValue]) {
+            case 1:
+                
+               self.collMetroImageView.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 2:
+                self.collMetroImageView.image = [UIImage imageNamed:@"train.png"];
+                break;
+            case 3:
+               self.collMetroImageView.image = [UIImage imageNamed:@"ic_landmark_airport.png"];
+                break;
+            case 4:
+                self.collMetroImageView.image = [UIImage imageNamed:@"ic_landmark_outdoors.png"];
+                break;
+            case 10:
+                self.collMetroImageView.image = [UIImage imageNamed:@"ic_landmark_hospital.png"];
+                break;
+            case 11:
+                self.collMetroImageView.image = [UIImage imageNamed:@"ic_landmark_school.png"];
+                break;
+            case 12:
+                self.collMetroImageView.image = [UIImage imageNamed:@"ic_landmark_cinema copy.png"];
+                break;
+            case 13:
+            self.collMetroImageView.image = [UIImage imageNamed:@"ic_landmark_mall.png"];
+                break;
+            default:
+                break;
+        }
+    }
+    NSString * DeliveryAddrTypeMenu =[getOrderResponseObject DeliveryAddrTypeMenu];
+    if (DeliveryAddrTypeMenu)
+    {
+        switch ([DeliveryAddrTypeMenu integerValue]) {
+            case 1:
+                self.deliveryImageView.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 50:
+                self.deliveryImageView.image = [UIImage imageNamed:@"metro.png"];
+                break;
+            case 2:
+                self.deliveryImageView.image = [UIImage imageNamed:@"train.png"];
+                break;
+            case 3:
+                self.deliveryImageView.image = [UIImage imageNamed:@"ic_landmark_airport.png"];
+                break;
+            case 4:
+               self.deliveryImageView.image = [UIImage imageNamed:@"ic_landmark_outdoors.png"];
+                break;
+            case 10:
+                self.deliveryImageView.image = [UIImage imageNamed:@"ic_landmark_hospital.png"];
+                break;
+            case 11:
+                self.deliveryImageView.image = [UIImage imageNamed:@"ic_landmark_school.png"];
+                break;
+            case 12:
+                self.deliveryImageView.image = [UIImage imageNamed:@"ic_landmark_cinema copy.png"];
+                break;
+            case 13:
+               self.deliveryImageView.image = [UIImage imageNamed:@"ic_landmark_mall.png"];
+                break;
+            default:
+                break;
+        }
+    }
+
+    if (expectSizeForCollAddress.height !=0)
+    {
+        labelCollAddressText.backgroundColor=[UIColor whiteColor];
+        labelCollAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+        self.collMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+        [self.view2 addSubview:labelCollAddressText];
+        [self.view2  addConstraint:[NSLayoutConstraint constraintWithItem:labelCollAddressText
+                                                               attribute:NSLayoutAttributeLeading
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.view2
+                                                               attribute:NSLayoutAttributeTrailing
+                                                              multiplier:0.05
+                                                                constant:0]];
+        
+        
+        [self.view2  addConstraint:[NSLayoutConstraint constraintWithItem:labelCollAddressText
+                                                               attribute:NSLayoutAttributeTop
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.collMetroName                                                                        attribute:NSLayoutAttributeBottom
+                                                              multiplier:1.0
+                                                                constant:5]];
+        
+        
+        [self.view2  addConstraint:[NSLayoutConstraint constraintWithItem:labelCollAddressText
+                                                               attribute:NSLayoutAttributeTrailing
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.collMapButton
+                                                               attribute:NSLayoutAttributeLeading
+                                                              multiplier:1.0
+                                                                constant:-10]];
+        
+        
+        
+        [labelCollAddressText addConstraint:[NSLayoutConstraint constraintWithItem:labelCollAddressText
+                                                                         attribute: NSLayoutAttributeHeight
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute: NSLayoutAttributeHeight
+                                                                        multiplier:1.0
+                                                                          constant:expectSizeForCollAddress.height+4]];
+        
+        
+        
+    }
+    if(expectSizeForCallComment.height !=0)
+    {
+        [self.view2 addSubview:labelCallComment];
+        labelCallComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
+        if (expectSizeForCollAddress.height ==0)
+        {
+            
+            
+            self.view2.translatesAutoresizingMaskIntoConstraints=NO;
+            labelCollAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+            self.collMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+            labelCallComment.translatesAutoresizingMaskIntoConstraints=NO;
+            
+            
+            [self.view2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view2
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                  multiplier:0.05
+                                                                    constant:0]];
+            
+            
+            [self.view2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                   attribute:NSLayoutAttributeTop
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.collMapButton                                                                       attribute:NSLayoutAttributeBottom
+                                                                  multiplier:1.0
+                                                                    constant:5]];
+            
+            //Strange
+            [self.view2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view2
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                  multiplier:1.0
+                                                                    constant:-10]];
+            
+            
+            
+            [labelCallComment addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                         attribute: NSLayoutAttributeHeight
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute: NSLayoutAttributeHeight
+                                                                        multiplier:1.0
+                                                                          constant:expectSizeForCallComment.height+4]];
+        }
+        else
+        {
+            self.view2.translatesAutoresizingMaskIntoConstraints=NO;
+            labelCollAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+            self.collMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+            labelCallComment.translatesAutoresizingMaskIntoConstraints=NO;
+            
+            
+            [self.view2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view2
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                  multiplier:0.05
+                                                                    constant:0]];
+            
+            
+            [self.view2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                   attribute:NSLayoutAttributeTop
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:labelCollAddressText                                                                        attribute:NSLayoutAttributeBottom
+                                                                  multiplier:1.0
+                                                                    constant:5]];
+            
+            
+            [self.view2 addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view2
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                  multiplier:1.0
+                                                                    constant:-5]];
+            
+            
+            
+            [labelCallComment addConstraint:[NSLayoutConstraint constraintWithItem:labelCallComment
+                                                                         attribute: NSLayoutAttributeHeight
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute: NSLayoutAttributeHeight
+                                                                        multiplier:1.0
+                                                                          constant:expectSizeForCallComment.height+4]];
+            
+        }
+        
+    }
+    if (height2 !=0 && [[getOrderResponseObject DeliveryAddrTypeMenu]integerValue]!=0)
+    {
+        NSString *deliveryAddressType =[getOrderResponseObject DeliveryAddrTypeMenu];
+        if(deliveryAddressType && [deliveryAddressType integerValue]==50)
+        {
+            self.deliveryMetroName.text=@"По указанию";
+            
+            
+        }
+        else
+        {
+            if ([getOrderResponseObject DeliveryMetroName])
+            {
+                self.deliveryMetroName.text =[NSString stringWithFormat:@"%@",[getOrderResponseObject DeliveryMetroName]];
+            }else
+            {
+                self.deliveryMetroName.text =@"";
+            }
+        }
+        
+        if(expectSizeForDeliveryAddress.height !=0)
+        {
+            [self.view3 addSubview:labelDeliveryAddressText];
+            
+            labelDeliveryAddressText.backgroundColor= [UIColor whiteColor];
+            //                labelDeliveryAddressText.frame = CGRectMake(10, 30+5, curentSelf.view.frame.size.width-k-43-25,
+            //                                                            expectSizeForDeliveryAddress.height+4);
+            
+            self.view3.translatesAutoresizingMaskIntoConstraints=NO;
+            labelDeliveryAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+            self.deliveryMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+            
+            
+            
+            [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryAddressText
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view3
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                  multiplier:0.05
+                                                                    constant:0]];
+            
+            
+            [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryAddressText
+                                                                   attribute:NSLayoutAttributeTop
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.deliveryMetroName                                                                       attribute:NSLayoutAttributeBottom
+                                                                  multiplier:1.0
+                                                                    constant:5]];
+            
+            
+            [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryAddressText
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.deliveryMapButton
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                  multiplier:1.0
+                                                                    constant:-10]];
+            
+            
+            
+            [labelDeliveryAddressText addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryAddressText
+                                                                                 attribute: NSLayoutAttributeHeight
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:nil
+                                                                                 attribute: NSLayoutAttributeHeight
+                                                                                multiplier:1.0
+                                                                                  constant:expectSizeForDeliveryAddress.height]];
+            
+            
+            
+        }
+        if(expectSizeDeliveryComment.height !=0)
+        {
+            [self.view3 addSubview:labelDeliveryComment];
+            labelDeliveryComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
+            if (expectSizeForDeliveryAddress.height ==0)
+            {
+                //                    labelDeliveryComment.frame = CGRectMake(10, 35+15, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+                
+                self.view3.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+                self.deliveryMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryComment.translatesAutoresizingMaskIntoConstraints=NO;
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.05
+                                                                        constant:0]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.deliveryMapButton                                                                      attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:5]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:-10]];
+                
+                
+                
+                [labelDeliveryComment addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                                 attribute: NSLayoutAttributeHeight
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:nil
+                                                                                 attribute: NSLayoutAttributeHeight
+                                                                                multiplier:1.0
+                                                                                  constant:expectSizeDeliveryComment.height+4]];
+            }
+            else
+            {
+                //                    labelDeliveryComment.frame = CGRectMake(10, 30+5+expectSizeForDeliveryAddress.height+4+5, curentSelf.view.frame.size.width-k-15,  expectSizeDeliveryComment.height+4);
+                
+                
+                self.view3.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+                self.deliveryMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryComment.translatesAutoresizingMaskIntoConstraints=NO;
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.05
+                                                                        constant:0]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:labelDeliveryAddressText
+                                                                       attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:5]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:-5]];
+                
+                
+                
+                [labelDeliveryComment addConstraint:[NSLayoutConstraint constraintWithItem:labelDeliveryComment
+                                                                                 attribute: NSLayoutAttributeHeight
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:nil
+                                                                                 attribute: NSLayoutAttributeHeight
+                                                                                multiplier:1.0
+                                                                                  constant:expectSizeDeliveryComment.height+4]];
+            }
+            
+        }
+        if (expectSizeForOurComment.height !=0)
+        {
+            labelOurComment.backgroundColor =  [UIColor colorWithRed:241/255.0f green:241/255.0f blue:241/255.0f alpha:1.0f];
+            [self.view3 addSubview:labelOurComment];
+            
+            if(expectSizeForDeliveryAddress.height ==0 && expectSizeDeliveryComment.height !=0)
+            {
+                
+                self.view3.translatesAutoresizingMaskIntoConstraints=NO;
+                labelOurComment.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryComment.translatesAutoresizingMaskIntoConstraints=NO;
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.05
+                                                                        constant:0]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:labelDeliveryComment                                                                        attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:5]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:-5]];
+                
+                
+                
+                [labelOurComment addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:nil
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                           multiplier:1.0
+                                                                             constant:expectSizeForOurComment.height+4]];
+            }
+            else if(expectSizeForDeliveryAddress.height ==0 && expectSizeDeliveryComment.height ==0)
+            {
+                //                    labelOurComment.frame =CGRectMake(10,35+15,curentSelf.view.frame.size.width-k-15,expectSizeForOurComment.height);
+                
+               self.view3.translatesAutoresizingMaskIntoConstraints=NO;
+                labelOurComment.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryComment.translatesAutoresizingMaskIntoConstraints=NO;
+                self.deliveryMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+                [ self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem: self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.05
+                                                                        constant:0]];
+                
+                
+                [ self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.deliveryMapButton                                                                       attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:5]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:-10]];
+                
+                
+                
+                [labelOurComment addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:nil
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                           multiplier:1.0
+                                                                             constant:expectSizeForOurComment.height+4]];
+                
+            }
+            else if(expectSizeForDeliveryAddress.height !=0 && expectSizeDeliveryComment.height ==0)
+            {
+                                self.view3.translatesAutoresizingMaskIntoConstraints=NO;
+                labelOurComment.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryComment.translatesAutoresizingMaskIntoConstraints=NO;
+                self.deliveryMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.05
+                                                                        constant:0]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:labelDeliveryAddressText                                                                        attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:5]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:-5]];
+                
+                
+                
+                [labelOurComment addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:nil
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                           multiplier:1.0
+                                                                             constant:expectSizeForOurComment.height+4]];
+                
+            }
+            else
+            {
+                self.view3.translatesAutoresizingMaskIntoConstraints=NO;
+                labelOurComment.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryComment.translatesAutoresizingMaskIntoConstraints=NO;
+                self.deliveryMetroName.translatesAutoresizingMaskIntoConstraints=NO;
+                labelDeliveryAddressText.translatesAutoresizingMaskIntoConstraints=NO;
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeLeading
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:0.05
+                                                                        constant:0]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:labelDeliveryComment                                                                        attribute:NSLayoutAttributeBottom
+                                                                      multiplier:1.0
+                                                                        constant:5]];
+                
+                
+                [self.view3 addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view3
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                      multiplier:1.0
+                                                                        constant:-5]];
+                
+                
+                
+                [labelOurComment addConstraint:[NSLayoutConstraint constraintWithItem:labelOurComment
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:nil
+                                                                            attribute: NSLayoutAttributeHeight
+                                                                           multiplier:1.0
+                                                                             constant:expectSizeForOurComment.height+4]];
+                
+            }
+            
+        }
+    }
+    
+
 
     
 //    //end Arus changes///

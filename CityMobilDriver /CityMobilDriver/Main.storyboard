@@ -4414,7 +4414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7t-Xf-bw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4674" y="943"/>
+            <point key="canvasLocation" x="-4308" y="943"/>
         </scene>
         <!--Cards View Controller-->
         <scene sceneID="38O-Rr-VeB">
@@ -6448,11 +6448,10 @@
                                                         <rect key="frame" x="2" y="2" width="586" height="297"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkk-C6-1Bi" userLabel="DL4">
-                                                                <rect key="frame" x="12" y="252" width="84" height="1"/>
+                                                                <rect key="frame" x="19" y="252" width="561" height="1"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="rZ0-Zr-nJf"/>
-                                                                    <constraint firstAttribute="width" constant="84" id="zeJ-lq-1pr"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -6470,13 +6469,13 @@
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="250" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKd-zD-eEe">
                                                                         <rect key="frame" x="19" y="0.0" width="196" height="40"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.96211978139999998" green="1" blue="0.39984337920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstItem="MKd-zD-eEe" firstAttribute="leading" secondItem="m0t-iq-cFV" secondAttribute="trailing" multiplier="1/30" id="22c-eb-FPR"/>
                                                                     <constraint firstItem="MKd-zD-eEe" firstAttribute="width" secondItem="m0t-iq-cFV" secondAttribute="width" multiplier="1/3" id="88I-Ar-DhQ"/>
@@ -6553,7 +6552,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="1" green="0.69536952549999997" blue="0.96655451640000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstItem="IuL-85-S2g" firstAttribute="leading" secondItem="eGD-dO-pTI" secondAttribute="trailing" constant="6" id="3RQ-aj-6ak"/>
                                                                     <constraint firstAttribute="trailing" secondItem="CZk-AA-OFt" secondAttribute="trailing" constant="5" id="Az1-1x-h6C"/>
@@ -6598,7 +6597,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.30465898722627738" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstItem="4ro-XS-Ggx" firstAttribute="leading" secondItem="VT5-uO-zl3" secondAttribute="trailing" constant="6" id="3kQ-y1-tXZ"/>
                                                                     <constraint firstItem="VT5-uO-zl3" firstAttribute="leading" secondItem="TaJ-jI-c2U" secondAttribute="trailing" multiplier="1/20" id="9FM-Mk-KGR"/>
@@ -6649,7 +6648,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="1" green="0.15644958940000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstItem="Von-9Q-oZZ" firstAttribute="width" secondItem="EW2-5l-5L5" secondAttribute="width" id="1Va-Ya-13I"/>
                                                                     <constraint firstItem="n2K-gK-SGa" firstAttribute="height" secondItem="EW2-5l-5L5" secondAttribute="height" id="796-OM-wCJ"/>
@@ -6675,7 +6674,7 @@
                                                                 </variation>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.31671989049999999" green="0.50588235290000005" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="EW2-5l-5L5" secondAttribute="bottom" id="2aG-jV-fwP"/>
                                                             <constraint firstItem="m0t-iq-cFV" firstAttribute="height" secondItem="3G9-tC-mgY" secondAttribute="height" multiplier="1/9" id="5ea-qW-NZ6"/>
@@ -6683,6 +6682,7 @@
                                                             <constraint firstItem="aDP-Li-uSm" firstAttribute="top" secondItem="m0t-iq-cFV" secondAttribute="bottom" id="7lM-ST-Wll"/>
                                                             <constraint firstAttribute="trailing" secondItem="ZTb-Ra-k4o" secondAttribute="trailing" id="Bnr-mj-WgC"/>
                                                             <constraint firstAttribute="trailing" secondItem="TaJ-jI-c2U" secondAttribute="trailing" id="DNQ-SB-MFy"/>
+                                                            <constraint firstItem="dkk-C6-1Bi" firstAttribute="width" secondItem="Ml6-eE-SM3" secondAttribute="width" id="Dgv-ok-rEP"/>
                                                             <constraint firstAttribute="trailing" secondItem="zay-H8-mTw" secondAttribute="trailing" id="HVo-5F-25m"/>
                                                             <constraint firstItem="zay-H8-mTw" firstAttribute="width" secondItem="3G9-tC-mgY" secondAttribute="width" multiplier="1/7" id="KwE-MF-e1U"/>
                                                             <constraint firstItem="TaJ-jI-c2U" firstAttribute="leading" secondItem="3G9-tC-mgY" secondAttribute="leading" id="Ljs-kH-8Op"/>
@@ -6700,6 +6700,7 @@
                                                             <constraint firstItem="aDP-Li-uSm" firstAttribute="leading" secondItem="3G9-tC-mgY" secondAttribute="trailing" multiplier="1/30" id="ouH-Cl-BBS"/>
                                                             <constraint firstItem="TaJ-jI-c2U" firstAttribute="top" secondItem="ZTb-Ra-k4o" secondAttribute="bottom" constant="1" id="rVz-em-Hy6"/>
                                                             <constraint firstItem="dkk-C6-1Bi" firstAttribute="leading" secondItem="3G9-tC-mgY" secondAttribute="leading" constant="12" id="sTB-dh-TTS"/>
+                                                            <constraint firstItem="Ml6-eE-SM3" firstAttribute="leading" secondItem="dkk-C6-1Bi" secondAttribute="leading" id="sj9-Cs-Eee"/>
                                                             <constraint firstItem="ZTb-Ra-k4o" firstAttribute="leading" secondItem="3G9-tC-mgY" secondAttribute="leading" id="tLm-xP-Ps8"/>
                                                             <constraint firstAttribute="trailing" secondItem="EW2-5l-5L5" secondAttribute="trailing" id="v74-zo-kTB"/>
                                                             <constraint firstAttribute="trailing" secondItem="m0t-iq-cFV" secondAttribute="trailing" id="zUR-3u-qog"/>
@@ -6707,6 +6708,7 @@
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="5ea-qW-NZ6"/>
+                                                                <exclude reference="sTB-dh-TTS"/>
                                                                 <exclude reference="2aG-jV-fwP"/>
                                                                 <exclude reference="j1E-sA-1JK"/>
                                                             </mask>
@@ -6719,6 +6721,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="3G9-tC-mgY" secondAttribute="bottom" id="GlG-aX-tTy"/>
                                                     <constraint firstAttribute="height" constant="299" id="Uip-b1-45v"/>
                                                     <constraint firstAttribute="trailing" secondItem="3G9-tC-mgY" secondAttribute="trailing" constant="2" id="VGo-mC-1Zu"/>
+                                                    <constraint firstAttribute="height" constant="299" id="e2C-kE-Zal"/>
                                                     <constraint firstItem="3G9-tC-mgY" firstAttribute="leading" secondItem="PfD-kk-czr" secondAttribute="leading" constant="-47" id="u6t-qq-sqE"/>
                                                     <constraint firstItem="3G9-tC-mgY" firstAttribute="top" secondItem="PfD-kk-czr" secondAttribute="top" constant="2" id="uz2-ff-dXZ"/>
                                                 </constraints>
@@ -6741,6 +6744,7 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="gW6-qa-bcL"/>
                                                 <exclude reference="zVH-3I-wfU"/>
                                             </mask>
                                         </variation>
@@ -6816,7 +6820,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nd8-9k-kma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4191" y="1176"/>
+            <point key="canvasLocation" x="-4321" y="1191"/>
         </scene>
         <!--Car Info View Controller-->
         <scene sceneID="wx3-mJ-rjq">
