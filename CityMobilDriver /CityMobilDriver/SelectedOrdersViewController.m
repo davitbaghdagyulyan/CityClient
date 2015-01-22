@@ -880,9 +880,9 @@ preferredStyle:UIAlertControllerStyleAlert];
       
         [cell.updateLabelTimer invalidate];
         TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
-        
+        tovc.idhash=assignOrderJsonObject.idhash;
         [self.navigationController pushViewController:tovc animated:NO];
-        [tovc setIdHash:assignOrderJsonObject.idhash andUnderView:underView];
+        
         
         [indicator stopAnimating];
 

@@ -1861,7 +1861,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="openAndCloseLeftMenu:" destination="koY-fA-tde" eventType="touchUpInside" id="bwH-i1-dHT"/>
+                                            <action selector="openAndCloseLeftMenu:" destination="J5E-9Q-R6x" eventType="touchUpInside" id="BBI-Z9-yiD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBc-nP-ZCJ" userLabel="Button1">
@@ -1874,7 +1874,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="back:" destination="koY-fA-tde" eventType="touchUpInside" id="dci-2X-7o8"/>
+                                            <action selector="back:" destination="J5E-9Q-R6x" eventType="touchUpInside" id="sGM-qf-QKk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xr2-1L-5Uf" userLabel="GPS" customClass="GPSIcon">
@@ -1887,7 +1887,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="openMap:" destination="koY-fA-tde" eventType="touchUpInside" id="gee-8S-ACT"/>
+                                            <action selector="openMap:" destination="J5E-9Q-R6x" eventType="touchUpInside" id="ktG-8l-LnU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-Es-34L" userLabel="Yandex" customClass="yandexIcon">
@@ -1899,6 +1899,9 @@
                                         <state key="normal" image="ya.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="40C-gD-0cA" kind="show" id="Pgr-qo-5YJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXg-y8-QWX" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="457" y="25" width="35" height="35"/>
@@ -1909,6 +1912,9 @@
                                         <state key="normal" image="icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="40C-gD-0cA" kind="show" id="zZM-xg-VHd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1983,7 +1989,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="91P-rx-7io"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2170,13 +2176,17 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="pXg-y8-QWX" id="lBa-pR-aLT"/>
                         <outlet property="collAdressTextLabel" destination="FCP-06-TkS" id="ido-RK-OdX"/>
+                        <outlet property="contentView" destination="e3u-iA-U6i" id="Mc3-u7-WlC"/>
                         <outlet property="deliveryAdressText" destination="dlI-gm-3FS" id="g3Q-xI-iRb"/>
                         <outlet property="dinamicTimeLabel" destination="flw-3K-hwK" id="kQ7-mJ-nZ7"/>
+                        <outlet property="gpsButton" destination="xr2-1L-5Uf" id="9cS-Ge-6fq"/>
                         <outlet property="line1View" destination="G2w-Jg-eKR" id="qSw-go-UFs"/>
                         <outlet property="orangeView" destination="W5D-MX-875" id="6gh-6A-HGv"/>
                         <outlet property="shortNameAndTimeLabel" destination="9HV-Lg-6ZP" id="D4l-Au-rpe"/>
                         <outlet property="whiteView" destination="iY2-mz-yQ0" id="eK2-7t-oA8"/>
+                        <outlet property="yandexButton" destination="6gh-Es-34L" id="9Bb-DZ-TYK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3V0-4P-9Yn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6439,7 +6449,7 @@
                                 <rect key="frame" x="5" y="116" width="590" height="484"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFy-jP-hFs">
-                                        <rect key="frame" x="0.0" y="0.0" width="590" height="299"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="590" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfD-kk-czr" userLabel="OrangeView">
                                                 <rect key="frame" x="0.0" y="0.0" width="590" height="299"/>
@@ -6460,14 +6470,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0t-iq-cFV" userLabel="View1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="586" height="40"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Od1-jI-CWC">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Od1-jI-CWC">
                                                                         <rect key="frame" x="502" y="0.0" width="84" height="40"/>
                                                                         <color key="backgroundColor" red="0.45098039220000002" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="19"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="250" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKd-zD-eEe">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="250" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKd-zD-eEe">
                                                                         <rect key="frame" x="19" y="0.0" width="196" height="40"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
@@ -6541,7 +6551,7 @@
                                                                             <action selector="collMapAction:" destination="4Ht-P7-Pt4" eventType="touchUpInside" id="Qmd-QO-pBB"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuL-85-S2g">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuL-85-S2g">
                                                                         <rect key="frame" x="50" y="5" width="200" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="iIZ-34-8Ic"/>
@@ -6586,7 +6596,7 @@
                                                                             <action selector="deliveryMapAction:" destination="4Ht-P7-Pt4" eventType="touchUpInside" id="bnK-s3-LUt"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ro-XS-Ggx">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ro-XS-Ggx">
                                                                         <rect key="frame" x="50" y="5" width="200" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="NIu-wu-EIv"/>
@@ -6620,7 +6630,7 @@
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+72222222222" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wb-Al-ESb" customClass="LabelUnderLine">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wb-Al-ESb" customClass="LabelUnderLine">
                                                                         <rect key="frame" x="84" y="8" width="105" height="29"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="105" id="Hbv-hb-jDL"/>
@@ -6638,7 +6648,7 @@
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*****" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2K-gK-SGa">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2K-gK-SGa">
                                                                         <rect key="frame" x="294" y="0.0" width="50" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="50" id="SNQ-Qk-865"/>
@@ -6733,11 +6743,11 @@
                                                 </variation>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.83659329379562042" green="0.65756158759124084" blue="0.94810675182481752" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="PfD-kk-czr" secondAttribute="trailing" id="YQv-I5-O3h"/>
                                             <constraint firstItem="PfD-kk-czr" firstAttribute="leading" secondItem="dFy-jP-hFs" secondAttribute="leading" id="ZZ8-Se-I9F"/>
-                                            <constraint firstAttribute="height" constant="299" id="bDn-7v-GMz"/>
+                                            <constraint firstAttribute="height" constant="600" id="bDn-7v-GMz"/>
                                             <constraint firstAttribute="bottom" secondItem="PfD-kk-czr" secondAttribute="bottom" id="gW6-qa-bcL"/>
                                             <constraint firstItem="PfD-kk-czr" firstAttribute="top" secondItem="dFy-jP-hFs" secondAttribute="top" id="icz-L2-U6h"/>
                                             <constraint firstItem="PfD-kk-czr" firstAttribute="height" secondItem="dFy-jP-hFs" secondAttribute="height" priority="750" id="zVH-3I-wfU"/>
@@ -6756,7 +6766,7 @@
                                     <constraint firstItem="dFy-jP-hFs" firstAttribute="leading" secondItem="8Re-32-tYg" secondAttribute="leading" id="2pG-j4-g4z"/>
                                     <constraint firstAttribute="width" secondItem="dFy-jP-hFs" secondAttribute="width" id="BMX-up-ocG"/>
                                     <constraint firstAttribute="trailing" secondItem="dFy-jP-hFs" secondAttribute="trailing" constant="-8" id="G4j-0c-lgX"/>
-                                    <constraint firstAttribute="bottom" secondItem="dFy-jP-hFs" secondAttribute="bottom" constant="10" id="HPG-RI-hCe"/>
+                                    <constraint firstAttribute="bottom" secondItem="dFy-jP-hFs" secondAttribute="bottom" id="HPG-RI-hCe"/>
                                     <constraint firstItem="dFy-jP-hFs" firstAttribute="top" secondItem="8Re-32-tYg" secondAttribute="top" id="OZj-ot-Xjt"/>
                                     <constraint firstAttribute="trailing" secondItem="dFy-jP-hFs" secondAttribute="trailing" id="iUz-YH-u1K"/>
                                     <constraint firstItem="dFy-jP-hFs" firstAttribute="bottom" secondItem="8Re-32-tYg" secondAttribute="bottom" id="kbs-6F-3lc"/>
@@ -6820,7 +6830,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nd8-9k-kma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4321" y="1191"/>
+            <point key="canvasLocation" x="-4352" y="1191"/>
         </scene>
         <!--Car Info View Controller-->
         <scene sceneID="wx3-mJ-rjq">
@@ -8881,6 +8891,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="laa-em-lbP"/>
+        <segue reference="ulh-Ga-Izo"/>
     </inferredMetricsTieBreakers>
 </document>

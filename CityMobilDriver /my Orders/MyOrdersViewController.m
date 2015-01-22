@@ -297,7 +297,7 @@
     TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
     [self.navigationController pushViewController:tovc animated:NO];
     idhash=[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] idhash];
-    [tovc setIdHash:idhash andUnderView:underView];
+    tovc.idhash=idhash;
     tovc.payment_method=[[getMyOrdersResponseObject.orders objectAtIndex:indexOfCell] getPayment_method];
 }
 

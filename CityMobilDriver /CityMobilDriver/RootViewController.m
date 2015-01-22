@@ -771,6 +771,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
 
 - (IBAction)openMap:(UIButton*)sender
 {
+   
     openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
     [openMapButtonHandlerObject setCurentSelf:self];
 }

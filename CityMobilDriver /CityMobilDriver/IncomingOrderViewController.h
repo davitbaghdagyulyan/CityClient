@@ -28,5 +28,9 @@
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 - (IBAction)back:(id)sender;
 - (IBAction)openMap:(UIButton*)sender;
+@property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
+@property (nonatomic,weak) IBOutlet UIButton* yandexButton;
+@property (nonatomic,weak) IBOutlet UIButton* cityButton;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @end

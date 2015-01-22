@@ -72,6 +72,8 @@
     CGFloat  height1;
     CGFloat  height2;
     CGFloat height;
+    
+    CGFloat heightContentView;
 
 }
 
@@ -81,6 +83,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   
+    
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
     gestureRecognizer.delegate=self;
     [self.scrollView addGestureRecognizer:gestureRecognizer];
@@ -88,6 +93,7 @@
     
     // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -115,9 +121,45 @@
  
     leftMenu=[LeftMenu getLeftMenu:self];
     setStatusJsonObject=[[SetStatusJson alloc]init];
+    [self initMyVariables];
     [self requestGetOrder];
     
 }
+
+-(void)initMyVariables
+{
+    getOrderJsonObject=[[GetOrderJson alloc]init];
+    getOrderJsonObject.idhash=self.idhash;
+    count=0;
+    
+    
+    viewMap=[[CustomViewForMaps alloc] init];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
+    viewMap = [nib objectAtIndex:0];
+    
+    
+    viewMap.frame=self.view.frame;
+    viewMap.center=self.view.center;
+    
+    //    viewMap.smallMapView.layer.cornerRadius = 30;
+    //    viewMap.smallMapView.layer.borderWidth = 2;
+    //    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
+    //    viewMap.smallMapView.layer.masksToBounds = YES;
+    
+    [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
+    [singleTapYandex setNumberOfTapsRequired:1];
+    
+    UITapGestureRecognizer *singleTapGoogle =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openGoogleMap)];
+    [singleTapYandex setNumberOfTapsRequired:1];
+    
+    viewMap.yandexImageView.userInteractionEnabled=YES;
+    viewMap.googleImageView.userInteractionEnabled=YES;
+    [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
+    [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
+    
+}
+
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
 {
     CGPoint velocity = [panGestureRecognizer velocityInView:self.scrollView];
@@ -191,42 +233,7 @@
 
 }
 
--(void)setIdHash:(NSString*)idhash andUnderView:(UIView*)underView
-{
-    getOrderJsonObject=[[GetOrderJson alloc]init];
-    getOrderJsonObject.idhash=idhash;
- 
-    cellUnderView=underView;
-    
-    count=0;
-    
-    
-    viewMap=[[CustomViewForMaps alloc] init];
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomViewForMaps" owner:self options:nil];
-    viewMap = [nib objectAtIndex:0];
-    
-    
-    viewMap.frame=self.view.frame;
-    viewMap.center=self.view.center;
-    
-//    viewMap.smallMapView.layer.cornerRadius = 30;
-//    viewMap.smallMapView.layer.borderWidth = 2;
-//    viewMap.smallMapView.layer.borderColor=[UIColor clearColor].CGColor;
-//    viewMap.smallMapView.layer.masksToBounds = YES;
-    
-    [viewMap.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-    UITapGestureRecognizer *singleTapYandex =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openYandexMap)];
-    [singleTapYandex setNumberOfTapsRequired:1];
-    
-    UITapGestureRecognizer *singleTapGoogle =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openGoogleMap)];
-    [singleTapYandex setNumberOfTapsRequired:1];
-    
-    viewMap.yandexImageView.userInteractionEnabled=YES;
-    viewMap.googleImageView.userInteractionEnabled=YES;
-    [viewMap.yandexImageView addGestureRecognizer:singleTapYandex];
-    [viewMap.googleImageView addGestureRecognizer:singleTapGoogle];
-    
-}
+
 
 - (IBAction)back:(id)sender
 {
@@ -245,7 +252,7 @@
 {
         isRefuseTheOrderButtonPressed=NO;
         isOnTheWayButtonPressed=NO;
-        count++;
+    
         UIActivityIndicatorView*indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         indicator.center = self.view.center;
         indicator.color=[UIColor blackColor];
@@ -305,10 +312,17 @@
 
               if(getOrderResponseObject.code==nil)
               {
+                  if (count)
+                  {
+                      [self drawButtons];
+                  }
+                  else
+                  {
                 [self calculateHeight];
                 [self drawPage];
+                  }
               }
-            
+            count++;
              [indicator stopAnimating];
            
         }];
@@ -530,14 +544,20 @@
     //arus changes///
     //Updating Constraints
     CGFloat heightOrange=2+22+1+height1+1+height2+1+45;
-    CGFloat heightContentView=heightOrange+20;
+    heightContentView=heightOrange;
     self.orangeView.translatesAutoresizingMaskIntoConstraints=NO;
-    self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
-    [self.contentView removeConstraint:[self.contentView.constraints objectAtIndex:0]];
-    NSLayoutConstraint * contentViewHeight;
-    contentViewHeight =[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant: heightContentView
-                       ];
-    [self.contentView addConstraint:contentViewHeight];
+   
+//*******************contentview change height***************************//
+//    self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
+//    [self.contentView removeConstraint:[self.contentView.constraints objectAtIndex:0]];
+//    NSLayoutConstraint * contentViewHeight;
+//    contentViewHeight =[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant: heightContentView
+//                       ];
+//    [self.contentView addConstraint:contentViewHeight];
+    
+//*******************end contentview change height***************************//
+   
+    
     [self.orangeView removeConstraint:[self.orangeView.constraints objectAtIndex:0]];
     NSLayoutConstraint * orangeViewHeight;
     orangeViewHeight =[NSLayoutConstraint constraintWithItem:self.orangeView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant:heightOrange
@@ -1156,16 +1176,16 @@
     
 //    //end Arus changes///
    
-    //[self drawButtons];
+    [self drawButtons];
     
     
 }
 
 -(void)drawButtons
 {
-    yCoord=labelView.frame.origin.y+labelView.frame.size.height;
+    yCoord=heightContentView;
     CGFloat heightForButton=40;
-    if (count!=1) {
+    if (count) {
         for (UIButton*button in buttons)
         {
             [button removeFromSuperview];
@@ -1176,10 +1196,10 @@
     
     
     buttons=[[NSMutableArray alloc]init];
-    UIButton*buttonMap1=(UIButton*)[cellUnderView viewWithTag:10];
-    UIButton*buttonMap2=(UIButton*)[cellUnderView viewWithTag:11];
-    [buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
-    [buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton*buttonMap1=(UIButton*)[cellUnderView viewWithTag:10];
+//    UIButton*buttonMap2=(UIButton*)[cellUnderView viewWithTag:11];
+//    [buttonMap1 addTarget:self action:@selector(collMap) forControlEvents:UIControlEventTouchUpInside];
+//    [buttonMap2  addTarget:self action:@selector(deliveryMapp) forControlEvents:UIControlEventTouchUpInside];
     
     
     if ([getOrderResponseObject.PossibleStatuses containsObject:@"OW"])
@@ -1188,7 +1208,7 @@
         onTheWayButton.backgroundColor=[UIColor orangeColor];
         [onTheWayButton setTitle:@"В пути" forState:UIControlStateNormal];
         [onTheWayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:onTheWayButton];
+        [self.contentView addSubview:onTheWayButton];
         [onTheWayButton addTarget:self action:@selector(onTheWayAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:onTheWayButton];
@@ -1203,7 +1223,7 @@
         returnToTheTaximeterButton.backgroundColor=[UIColor orangeColor];
         [returnToTheTaximeterButton setTitle:@"Вернуться к таксометру" forState:UIControlStateNormal];
         [returnToTheTaximeterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:returnToTheTaximeterButton];
+        [self.contentView addSubview:returnToTheTaximeterButton];
         [returnToTheTaximeterButton addTarget:self action:@selector(returnToTheTaximeterAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:returnToTheTaximeterButton];
@@ -1215,7 +1235,7 @@
         foodToTheCustomerButton.backgroundColor=[UIColor orangeColor];
         [foodToTheCustomerButton setTitle:@"Еду к клиенту" forState:UIControlStateNormal];
         [foodToTheCustomerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:foodToTheCustomerButton];
+        [self.contentView addSubview:foodToTheCustomerButton];
         [foodToTheCustomerButton addTarget:self action:@selector(foodToTheCustomerAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:foodToTheCustomerButton];
@@ -1227,7 +1247,7 @@
         machineAccordingToAddressButton.backgroundColor=[UIColor orangeColor];
         [machineAccordingToAddressButton setTitle:@"Машина по адресу" forState:UIControlStateNormal];
         [machineAccordingToAddressButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:machineAccordingToAddressButton];
+        [self.contentView addSubview:machineAccordingToAddressButton];
         [machineAccordingToAddressButton addTarget:self action:@selector(machineAccordingToAddressAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:machineAccordingToAddressButton];
@@ -1239,7 +1259,7 @@
         willBeIn5MinutesButton.backgroundColor=[UIColor lightGrayColor];
         [willBeIn5MinutesButton setTitle:@"Буду через 5 минут" forState:UIControlStateNormal];
         [willBeIn5MinutesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:willBeIn5MinutesButton];
+        [self.contentView addSubview:willBeIn5MinutesButton];
         [willBeIn5MinutesButton addTarget:self action:@selector(willBeIn5MinutesAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:willBeIn5MinutesButton];
@@ -1251,7 +1271,7 @@
         DoNotHaveTimeTo5MinutesButton.backgroundColor=[UIColor lightGrayColor];
         [DoNotHaveTimeTo5MinutesButton setTitle:@"Не успеваю через 5 минут" forState:UIControlStateNormal];
         [DoNotHaveTimeTo5MinutesButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:DoNotHaveTimeTo5MinutesButton];
+        [self.contentView addSubview:DoNotHaveTimeTo5MinutesButton];
         [DoNotHaveTimeTo5MinutesButton addTarget:self action:@selector(DoNotHaveTimeTo5MinutesAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:DoNotHaveTimeTo5MinutesButton];
@@ -1263,7 +1283,7 @@
         safetyNetButton.backgroundColor=[UIColor grayColor];
         [safetyNetButton setTitle:@"Подстраховка" forState:UIControlStateNormal];
         [safetyNetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:safetyNetButton];
+        [self.contentView addSubview:safetyNetButton];
         [safetyNetButton addTarget:self action:@selector(safetyNetAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:safetyNetButton];
@@ -1275,7 +1295,7 @@
         removeFromHedgingButton.backgroundColor=[UIColor grayColor];
         [removeFromHedgingButton setTitle:@"Снять с подстраховки" forState:UIControlStateNormal];
         [removeFromHedgingButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:removeFromHedgingButton];
+        [self.contentView addSubview:removeFromHedgingButton];
         [removeFromHedgingButton addTarget:self action:@selector(removeFromHedgingAction) forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         [buttons addObject:removeFromHedgingButton];
@@ -1290,7 +1310,7 @@
         refuseTheOrderButton.backgroundColor=[UIColor lightGrayColor];
         [refuseTheOrderButton setTitle:@"Отказаться от заказа" forState:UIControlStateNormal];
         [refuseTheOrderButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [contentView addSubview:refuseTheOrderButton];
+        [self.contentView addSubview:refuseTheOrderButton];
         [refuseTheOrderButton addTarget:self action:@selector(refuseTheOrderAction) forControlEvents:UIControlEventTouchUpInside];
         
         
@@ -1310,7 +1330,7 @@
         textLabel.text=@"Чат с клиентом";
         textLabel.textColor=[UIColor whiteColor];
         [chatWithaCustomerButton addSubview:textLabel];
-        [contentView addSubview:chatWithaCustomerButton];
+        [self.contentView addSubview:chatWithaCustomerButton];
         [chatWithaCustomerButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+10+5;
         
@@ -1336,7 +1356,7 @@
         textLabel.text=@"Чат с клиентом";
         textLabel.textColor=[UIColor whiteColor];
         [chatWithaCustomerButton addSubview:textLabel];
-        [contentView addSubview:chatWithaCustomerButton];
+        [self.contentView addSubview:chatWithaCustomerButton];
         [chatWithaCustomerButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
         yCoord=yCoord+heightForButton+5;
         
@@ -1345,6 +1365,25 @@
     }
     self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
     contentView.frame=CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
+    
+    self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
+    
+    int indexOfConstrait;
+    if (count)
+    {
+        indexOfConstrait=3;
+    }
+    else
+    {
+        indexOfConstrait=0;
+    }
+    [self.contentView removeConstraint:[self.contentView.constraints objectAtIndex:indexOfConstrait]];
+    
+    NSLayoutConstraint * contentViewHeight;
+    contentViewHeight =[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.f constant:yCoord
+                        ];
+    [self.contentView addConstraint:contentViewHeight];
+    
     
     setStatusJsonObject.lat=getOrderResponseObject.latitude;
     setStatusJsonObject.lon=getOrderResponseObject.longitude;
@@ -1522,41 +1561,11 @@
 
 -(void)collMap
 {
-    [self.view addSubview:viewMap];
-    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
-    number=0;
-    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
-                  [SingleDataProvider sharedKey].lat,
-                  [SingleDataProvider sharedKey].lon,
-                  [getOrderResponseObject.latitude doubleValue],
-                  [getOrderResponseObject.del_longitude doubleValue]];
-    
-    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",
-                  [SingleDataProvider sharedKey].lat,
-                  [SingleDataProvider sharedKey].lon,
-                  [getOrderResponseObject.latitude doubleValue],
-                  [getOrderResponseObject.del_longitude doubleValue]];
-
-    [self animation];
-}
+    }
 
 -(void)deliveryMapp
 {
-    [self.view addSubview:viewMap];
-    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
-    number=1;
-    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
-                  [getOrderResponseObject.latitude doubleValue],
-                  [getOrderResponseObject.longitude doubleValue],
-                  [getOrderResponseObject.del_latitude doubleValue],
-                  [getOrderResponseObject.del_longitude doubleValue]];
-    
-    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",  [getOrderResponseObject.latitude doubleValue],
-                  [getOrderResponseObject.longitude doubleValue],
-                  [getOrderResponseObject.del_latitude doubleValue],
-                  [getOrderResponseObject.del_longitude doubleValue]];
-    [self animation];
-}
+    }
 -(void)close
 {
     [viewMap removeFromSuperview];
@@ -1774,25 +1783,15 @@
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    //self.orangeView.translatesAutoresizingMaskIntoConstraints=YES;
-   // self.contentView.translatesAutoresizingMaskIntoConstraints=YES;
+  
     [coordinator animateAlongsideTransition:nil
      
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
+
          
-         //self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
-           //self.contentView.frame=self.orangeView.frame;
-      
-        
-         //[self.contentView updateConstraints];
          
-//         self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
-//          contentView.frame=CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
-//         
-//         labelView.frame=CGRectMake(labelView.frame.origin.x,labelView.frame.origin.y, self.view.frame.size.width-14, labelView.frame.size.height);
-//          blackLineLabel.frame=CGRectMake(10, 0, labelView.frame.size.width-16,1);
-         
+         //self.scrollView.contentSize=CGSizeMake(self.view.frame.size.width-10, yCoord);
          for(UIButton*button in buttons)
          {
              button.frame=CGRectMake(button.frame.origin.x, button.frame.origin.y, self.scrollView.frame.size.width-20, button.frame.size.height);
@@ -1829,10 +1828,45 @@
     
     [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
 }
-- (IBAction)deliveryMapAction:(UIButton *)sender {
+
+- (IBAction)deliveryMapAction:(UIButton *)sender
+{
+    [self.view addSubview:viewMap];
+    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
+    number=1;
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
+                  [getOrderResponseObject.latitude doubleValue],
+                  [getOrderResponseObject.longitude doubleValue],
+                  [getOrderResponseObject.del_latitude doubleValue],
+                  [getOrderResponseObject.del_longitude doubleValue]];
+    
+    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",  [getOrderResponseObject.latitude doubleValue],
+                  [getOrderResponseObject.longitude doubleValue],
+                  [getOrderResponseObject.del_latitude doubleValue],
+                  [getOrderResponseObject.del_longitude doubleValue]];
+    [self animation];
+
 }
 
-- (IBAction)collMapAction:(UIButton *)sender {
+- (IBAction)collMapAction:(UIButton *)sender
+{
+    [self.view addSubview:viewMap];
+    viewMap.smallMapView.transform = CGAffineTransformMakeScale(0,0);
+    number=0;
+    googleMapUrl=[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f&directionsmode=driving",
+                  [SingleDataProvider sharedKey].lat,
+                  [SingleDataProvider sharedKey].lon,
+                  [getOrderResponseObject.latitude doubleValue],
+                  [getOrderResponseObject.del_longitude doubleValue]];
+    
+    yandexMapUrl=[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_from=%f&lon_from=%f&lat_to=%f&lon_to=%f",
+                  [SingleDataProvider sharedKey].lat,
+                  [SingleDataProvider sharedKey].lon,
+                  [getOrderResponseObject.latitude doubleValue],
+                  [getOrderResponseObject.del_longitude doubleValue]];
+    
+    [self animation];
+
 }
 
 -(void)addImages:(UIView *)view

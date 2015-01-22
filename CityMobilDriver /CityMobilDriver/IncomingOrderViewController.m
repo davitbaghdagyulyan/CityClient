@@ -12,11 +12,16 @@
 #import "TakenOrderViewController.h"
 #import "SetStatusJson.h"
 #import "SetStatusResponse.h"
+#import "LeftMenu.h"
 
+#import "SingleDataProvider.h"
+#import "OpenMapButtonHandler.h"
 
 @interface IncomingOrderViewController ()
 {
     NSUInteger time;
+    OpenMapButtonHandler*openMapButtonHandlerObject;
+    LeftMenu*leftMenu;
 }
 @end
 
@@ -43,6 +48,22 @@
 {
     [super viewDidAppear:animated];
    
+    [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
+    [GPSConection showGPSConection:self];
+    if ([SingleDataProvider sharedKey].isGPSEnabled)
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps_green.png"] forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        [self.gpsButton setImage:[UIImage imageNamed:@"gps.png"] forState:UIControlStateNormal];
+    }
+    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
+    leftMenu=[LeftMenu getLeftMenu:self];
+    
     time=11;
     [self addCommentAction];
     [self drowPage];
@@ -137,12 +158,21 @@
         else
         {
             
-            
-            
+            for (id controller in self.navigationController.viewControllers)
+            {
+                if ([controller isKindOfClass:[TakenOrderViewController class]])
+                {
+                    NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+                    [allViewControllers removeObjectIdenticalTo:controller];
+                    self.navigationController.viewControllers = allViewControllers;
+                     break;
+                }
+            }
+           
             TakenOrderViewController* tovc = [self.storyboard instantiateViewControllerWithIdentifier:@"TakenOrderViewController"];
-            
-            [self.navigationController pushViewController:tovc animated:NO];
             tovc.idhash=self.order.idhash;
+            [self.navigationController pushViewController:tovc animated:NO];
+            
             
             [indicator stopAnimating];
             
@@ -343,4 +373,117 @@
     [super viewWillDisappear:animated];
     [self.player stop];
 }
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender
+{
+    [UIView animateWithDuration:0.2
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         CGPoint point;
+         if (leftMenu.flag==0)
+             point.x=(CGFloat)leftMenu.frame.size.width/2;
+         else
+             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+         point.y=leftMenu.center.y;
+         leftMenu.center=point;
+         
+     }
+                     completion:^(BOOL finished)
+     {
+         
+         if (leftMenu.flag==0)
+         {
+             leftMenu.flag=1;
+             self.contentView.userInteractionEnabled=NO;
+             
+             self.contentView.tag=1;
+             [leftMenu.disabledViewsArray removeAllObjects];
+             
+             [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:self.contentView.tag]];
+         }
+         else
+         {
+             self.contentView.userInteractionEnabled=YES;
+             leftMenu.flag=0;
+         }
+         
+     }
+     ];
+
+}
+- (IBAction)back:(id)sender
+{
+    if (leftMenu.flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+        leftMenu.flag=0;
+    }
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
+- (IBAction)openMap:(UIButton*)sender
+{
+    openMapButtonHandlerObject=[[OpenMapButtonHandler alloc]init];
+    [openMapButtonHandlerObject setCurentSelf:self];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:touch.view];
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+        return;
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         CGPoint point;
+         NSLog(@"\n%f", 2*leftMenu.center.x);
+         NSLog(@"\n%f",leftMenu.frame.size.width/2);
+         if (touchLocation.x<=leftMenu.frame.size.width/2)
+         {
+             leftMenu.flag=0;
+             self.contentView.userInteractionEnabled=YES;
+             point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
+         }
+         else if (touchLocation.x>leftMenu.frame.size.width/2)
+         {
+             point.x=(CGFloat)leftMenu.frame.size.width/2;
+             leftMenu.flag=1;
+             self.contentView.userInteractionEnabled=NO;
+         }
+         point.y=leftMenu.center.y;
+         leftMenu.center=point;
+         NSLog(@"\n%f",leftMenu.frame.size.width);
+         
+     }
+                     completion:nil
+     ];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:touch.view];
+    if (leftMenu.flag==0 && touchLocation.x>((float)1/16 *self.view.frame.size.width))
+    {
+        return;
+    }
+    CGPoint point;
+    point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
+    point.y=leftMenu.center.y;
+    if (point.x>leftMenu.frame.size.width/2)
+    {
+        return;
+    }
+    leftMenu.center=point;
+    leftMenu.flag=1;
+    self.contentView.userInteractionEnabled=NO;
+}
+
 @end
