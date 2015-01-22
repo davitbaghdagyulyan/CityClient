@@ -6724,6 +6724,7 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="Uip-b1-45v"/>
                                                         <exclude reference="u6t-qq-sqE"/>
                                                     </mask>
                                                 </variation>
@@ -6734,6 +6735,7 @@
                                             <constraint firstAttribute="trailing" secondItem="PfD-kk-czr" secondAttribute="trailing" id="YQv-I5-O3h"/>
                                             <constraint firstItem="PfD-kk-czr" firstAttribute="leading" secondItem="dFy-jP-hFs" secondAttribute="leading" id="ZZ8-Se-I9F"/>
                                             <constraint firstAttribute="height" constant="299" id="bDn-7v-GMz"/>
+                                            <constraint firstAttribute="bottom" secondItem="PfD-kk-czr" secondAttribute="bottom" id="gW6-qa-bcL"/>
                                             <constraint firstItem="PfD-kk-czr" firstAttribute="top" secondItem="dFy-jP-hFs" secondAttribute="top" id="icz-L2-U6h"/>
                                             <constraint firstItem="PfD-kk-czr" firstAttribute="height" secondItem="dFy-jP-hFs" secondAttribute="height" priority="750" id="zVH-3I-wfU"/>
                                         </constraints>
@@ -6750,7 +6752,7 @@
                                     <constraint firstItem="dFy-jP-hFs" firstAttribute="leading" secondItem="8Re-32-tYg" secondAttribute="leading" id="2pG-j4-g4z"/>
                                     <constraint firstAttribute="width" secondItem="dFy-jP-hFs" secondAttribute="width" id="BMX-up-ocG"/>
                                     <constraint firstAttribute="trailing" secondItem="dFy-jP-hFs" secondAttribute="trailing" constant="-8" id="G4j-0c-lgX"/>
-                                    <constraint firstAttribute="bottom" secondItem="dFy-jP-hFs" secondAttribute="bottom" constant="70" id="HPG-RI-hCe"/>
+                                    <constraint firstAttribute="bottom" secondItem="dFy-jP-hFs" secondAttribute="bottom" constant="10" id="HPG-RI-hCe"/>
                                     <constraint firstItem="dFy-jP-hFs" firstAttribute="top" secondItem="8Re-32-tYg" secondAttribute="top" id="OZj-ot-Xjt"/>
                                     <constraint firstAttribute="trailing" secondItem="dFy-jP-hFs" secondAttribute="trailing" id="iUz-YH-u1K"/>
                                     <constraint firstItem="dFy-jP-hFs" firstAttribute="bottom" secondItem="8Re-32-tYg" secondAttribute="bottom" id="kbs-6F-3lc"/>

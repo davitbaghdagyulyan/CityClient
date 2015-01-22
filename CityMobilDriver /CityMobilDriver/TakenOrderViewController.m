@@ -332,12 +332,12 @@
     
     //arus changes///
     //Updating Constraints
-    float heightOrange=2+10+1+50+1+100+1+45;
+    float heightOrange=2+25+1+50+1+100+1+45;
     self.orangeView.translatesAutoresizingMaskIntoConstraints=NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
     [self.contentView removeConstraint:[self.contentView.constraints objectAtIndex:0]];
     NSLayoutConstraint * orangeViewHeight;
-    orangeViewHeight =[NSLayoutConstraint constraintWithItem:self.orangeView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant:heightOrange
+    orangeViewHeight =[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.f constant:heightOrange
     ];
     [self.contentView addConstraint:orangeViewHeight];
    
@@ -345,7 +345,7 @@
     self.view1.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view1 removeConstraint:[self.view1.constraints objectAtIndex:0]];
      NSLayoutConstraint * view11Height;
-     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:10                   ];
+     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:25                   ];
     [self.view1 addConstraint:view11Height];
     self.percentLabel.text=[NSString stringWithFormat:@"%ld%%",(long)getOrderResponseObject.percent];
     //[self addImages:self.view1  withLabel:self.percentLabel];
