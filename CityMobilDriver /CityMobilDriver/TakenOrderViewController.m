@@ -366,6 +366,7 @@
     [self.view3 removeConstraint:[self.view3.constraints objectAtIndex:0]];
     NSLayoutConstraint * view33Height;
      view33Height =[NSLayoutConstraint constraintWithItem:self.view3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:150];
+    view33Height.priority=250;
     [self.whiteView addConstraint:view33Height];
 
     
@@ -996,7 +997,7 @@
                                  completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          
-//          self.contentView.translatesAutoresizingMaskIntoConstraints=YES;
+         //self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
            //self.contentView.frame=self.orangeView.frame;
       
         
