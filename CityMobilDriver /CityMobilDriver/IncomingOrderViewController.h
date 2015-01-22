@@ -24,4 +24,9 @@
 @property(nonatomic,strong)NSTimer*timer;
 @property(nonatomic,strong)AVAudioPlayer*player;
 @property(nonatomic,strong)UILabel*orderCommentLabel;
+
+- (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
+- (IBAction)back:(id)sender;
+- (IBAction)openMap:(UIButton*)sender;
+
 @end
