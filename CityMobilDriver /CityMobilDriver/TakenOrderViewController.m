@@ -74,7 +74,7 @@
     CGFloat height;
     
     CGFloat heightContentView;
-
+    BOOL isPageFirstLoad;
 }
 
 @end
@@ -83,7 +83,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    isPageFirstLoad=YES;
    
     
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
@@ -121,8 +121,12 @@
  
     leftMenu=[LeftMenu getLeftMenu:self];
     setStatusJsonObject=[[SetStatusJson alloc]init];
-    [self initMyVariables];
-    [self requestGetOrder];
+    if(isPageFirstLoad)
+    {
+        [self initMyVariables];
+        [self requestGetOrder];
+    }
+    
     
 }
 
@@ -2386,5 +2390,8 @@
     }
     
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    isPageFirstLoad=NO;
+}
 @end
