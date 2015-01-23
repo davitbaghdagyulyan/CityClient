@@ -120,9 +120,10 @@
     [self.yandexButton setNeedsDisplay];
  
     leftMenu=[LeftMenu getLeftMenu:self];
-    setStatusJsonObject=[[SetStatusJson alloc]init];
+    
     if(isPageFirstLoad)
     {
+        setStatusJsonObject=[[SetStatusJson alloc]init];
         [self initMyVariables];
         [self requestGetOrder];
     }
