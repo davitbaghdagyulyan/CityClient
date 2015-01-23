@@ -37,6 +37,7 @@
     BOOL isPressedCloseButton;
     NSUInteger indexOfCard;
     BOOL view1IsLoad;
+    BOOL view1_2ScrollIsLoad;
     UIScrollView*view1_2ScrollView;
 
 }
@@ -60,6 +61,7 @@
     [self.cityButton setNeedsDisplay];
     [self.yandexButton setNeedsDisplay];
     view1IsLoad=YES;
+    view1_2ScrollIsLoad=YES;
     isPressedCloseButton=NO;
     [super viewDidAppear:animated];
     loadcount=0;
@@ -127,7 +129,7 @@
         {
             
             [view1 removeFromSuperview];
-            
+            [view1_2 removeFromSuperview];
             if (!loadcount2)
             {
                 
@@ -362,15 +364,24 @@
       else
         {
             [view1 removeFromSuperview];
+             if (view1_2ScrollIsLoad)
+             {
             view1_2ScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98)];
+                     view1_2ScrollIsLoad=NO;
+             }
             CGSize size={view1_2ScrollView.bounds.size.width,view1_2ScrollView.bounds.size.height};
             view1_2ScrollView.contentSize=size;
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomView2" owner:self options:nil];
             view1_2 = [nib objectAtIndex:0];
             view1_2.frame =view1_2ScrollView.bounds;
-            [self.view addSubview:view1_2ScrollView];
+            
             [view1_2ScrollView addSubview:view1_2];
+            
+         
+              [self.view addSubview:view1_2ScrollView];
+                 
             view1_2.chooseCardLabel.text=[[getCardsResponseObject.cards objectAtIndex:0] getPan];
+
             UITapGestureRecognizer* tapGasture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showComboBox)];
             [view1_2.cardsView addGestureRecognizer:tapGasture1];
             
@@ -381,6 +392,7 @@
             view1_2.priceTextField.keyboardType=UIKeyboardTypeNumberPad;
             indexOfCard=0;
             view1_2.priceTextField.font=[UIFont fontWithName:@"Roboto-Regular" size:20];
+            
 
         }
 
@@ -612,7 +624,9 @@
 
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender
 {
+    
     [self.view bringSubviewToFront:leftMenu];
+    
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
@@ -635,9 +649,11 @@
              view1.userInteractionEnabled=NO;
              view2.userInteractionEnabled=NO;
              view1_2ScrollView.userInteractionEnabled=NO;
+             
              view1.tag=1;
              view2.tag=2;
              view1_2ScrollView.tag=3;
+             
              [leftMenu.disabledViewsArray removeAllObjects];
           
              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:view1.tag]];
