@@ -1082,10 +1082,10 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
-				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
-				EC102EF21A6E719600E9EE41 /* AVFoundation.framework */,
 				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
+				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
 				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
+				EC102EF21A6E719600E9EE41 /* AVFoundation.framework */,
 				ECD578131A5E76F200E46DEC /* BadRequest */,
 				ECD578121A5E769C00E46DEC /* GPSConection */,
 				ECB06C981A5D176200001462 /* MapViewController */,

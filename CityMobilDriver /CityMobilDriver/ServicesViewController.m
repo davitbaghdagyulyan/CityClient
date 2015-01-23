@@ -328,7 +328,7 @@
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         //[self.servicesTable reloadData];
+         [self.servicesTable reloadData];
          
          
          
