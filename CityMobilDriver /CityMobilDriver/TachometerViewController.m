@@ -160,25 +160,31 @@
 }
 
 
-- (IBAction)elementAction:(id)sender {
+- (IBAction)elementAction:(id)sender
+{
+if (tachometerResponse.elements.count) {
     UIButton* button = (UIButton*) sender;
     
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@""
                                           message:@""
-                                          preferredStyle:UIAlertControllerStyleAlert];
-    if (button.tag == 100) {
-        alertController.message = [tachometerResponse.elements[0] name];
-    }
+    preferredStyle:UIAlertControllerStyleAlert];
     
-    if (button.tag == 101) {
-        alertController.message = [tachometerResponse.elements[1] name];
-    }
+  
+        if (button.tag == 100) {
+            alertController.message = [tachometerResponse.elements[0] name];
+        }
+        
+        if (button.tag == 101) {
+            alertController.message = [tachometerResponse.elements[1] name];
+        }
+        
+        if (button.tag == 102) {
+            alertController.message = [tachometerResponse.elements[2] name];
+        }
+       
     
-    if (button.tag == 102) {
-        alertController.message = [tachometerResponse.elements[2] name];
-    }
-    __block UITextField* textLabel;
+   __block UITextField* textLabel;
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
      {
@@ -237,7 +243,7 @@
     [alertController addAction:okAction];
     
     [self presentViewController:alertController animated:YES completion:nil];
-
+}
 }
 
 #pragma mark - Requests
@@ -439,7 +445,8 @@
 }
 
 
--(void)setTachometerViews{
+-(void)setTachometerViews
+{
     self.shortLabel.text = self.shortname;
     
     //self.distance.text = [self setAtributedString:tachometerResponse.distance];
@@ -449,9 +456,13 @@
         button.titleLabel.numberOfLines = 3;
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         
-        [self.elements[i] setTitle:[tachometerResponse.elements[i] name] forState:UIControlStateNormal];
-    NSString* str = [[tachometerResponse.elements[i] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",[tachometerResponse.elements[i] getValue]]];
-        [self.elements[i] setTitle:str forState:UIControlStateNormal];
+        if (tachometerResponse.elements.count)
+        {
+            [self.elements[i] setTitle:[tachometerResponse.elements[i] name] forState:UIControlStateNormal];
+            NSString* str = [[tachometerResponse.elements[i] name] stringByAppendingString:[NSString stringWithFormat:@"\n%@",[tachometerResponse.elements[i] getValue]]];
+            [self.elements[i] setTitle:str forState:UIControlStateNormal];
+        }
+     
     }
     
 //    [self cutStringsInArray:array];
