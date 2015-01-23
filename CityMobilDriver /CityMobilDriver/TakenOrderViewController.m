@@ -544,6 +544,16 @@
     //arus changes///
     //Updating Constraints
     CGFloat heightOrange=2+22+1+height1+1+height2+1+45;
+    if ([deviceType isEqualToString:deviceStringIphone] || [deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        heightOrange=2+22+1+height1+1+height2+1+45;
+    }
+    else
+    {
+        heightOrange=2+34+1+height1+1+height2+1+45;
+    }
+
+    
     heightContentView=heightOrange;
     self.orangeView.translatesAutoresizingMaskIntoConstraints=NO;
    
@@ -568,7 +578,16 @@
     self.view1.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view1 removeConstraint:[self.view1.constraints objectAtIndex:0]];
      NSLayoutConstraint * view11Height;
-     view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22                   ];
+    if ([deviceType isEqualToString:deviceStringIphone] || [deviceType isEqualToString:deviceStringIphoneSimulator])
+    {
+        view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:22                   ];
+    }
+    else
+    {
+       view11Height =[NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.whiteView attribute:NSLayoutAttributeHeight multiplier:0.f constant:34                   ];
+    }
+
+    
     [self.view1 addConstraint:view11Height];
     self.percentLabel.text=[NSString stringWithFormat:@"%ld%%",(long)getOrderResponseObject.percent];
     [self addImages:self.view1  withLabel:self.percentLabel];
@@ -2274,12 +2293,12 @@
     {
         imgView9X = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView8 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:
                      -30];
-        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
+        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
     }
     else
     {
         imgView9X = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:imgView8 attribute:NSLayoutAttributeTrailingMargin multiplier:1.f constant:-100];
-        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:2];
+        imgView9Y = [NSLayoutConstraint constraintWithItem:imgView9 attribute:NSLayoutAttributeTopMargin relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTopMargin multiplier:1.f constant:7];
     }
     [view addConstraint:imgView9X];
     [view addConstraint:imgView9Y];
