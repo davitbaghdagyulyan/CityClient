@@ -156,7 +156,8 @@
 
 -(void)drowPage
 {
-    if ([self.orderResponse.useBonus isEqualToString:@"Y"]) {
+    if ([[self.orderResponse getUseBonus] isEqualToString:@"Y"])
+    {
         PaymentOnBonusesButton = [[UIButton alloc]initWithFrame:CGRectMake(8, bgViewHeigth , CGRectGetWidth(self.endUpScrollView.frame) - 16, 40)];
         PaymentOnBonusesButton.titleLabel.font=[UIFont fontWithName:@"Roboto-Regular" size:15];
         
@@ -459,7 +460,7 @@
          billTextField.frame = CGRectMake(CGRectGetWidth(self.endUpScrollView.frame) - (CGRectGetWidth(self.endUpScrollView.frame) - 16)/2 - 8, CGRectGetMinY(getPriceLabel.frame), (CGRectGetWidth(self.endUpScrollView.frame) - 16)/2, 25);
          bgViewHeigth+=35;
          
-        billDifference.frame = CGRectMake(CGRectGetMinX(billTextField.frame), CGRectGetMaxY(clientBonus.frame), CGRectGetWidth(billTextField.frame), 25);
+        billDifference.frame = CGRectMake(CGRectGetMinX(billTextField.frame), CGRectGetMinY(clientBonus.frame), CGRectGetWidth(billTextField.frame), 25);
          bgViewHeigth+=55;
          
         PaymentOnBonusesButton.frame = CGRectMake(8, bgViewHeigth , CGRectGetWidth(self.endUpScrollView.frame) - 16, 40);
