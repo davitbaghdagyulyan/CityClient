@@ -1695,7 +1695,7 @@
       
         
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка" message:@"Your device doesn't support this feature."preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка" message:@"Ваше устройство не поддерживает эту функцию."preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction * action)
