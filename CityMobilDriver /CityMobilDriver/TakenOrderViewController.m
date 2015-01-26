@@ -125,8 +125,9 @@
     {
         setStatusJsonObject=[[SetStatusJson alloc]init];
         [self initMyVariables];
-        [self requestGetOrder];
+        
     }
+    [self requestGetOrder];
     
     
 }
