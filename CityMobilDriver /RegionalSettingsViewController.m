@@ -221,7 +221,7 @@
     backgroundView.alpha = 0.3;
     [self.view addSubview:backgroundView];
     
-    buttomView = [[UIView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 250) / 2, 300, 250)];
+    buttomView = [[UIView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 250) / 2, 300, responseObject.zones.count*40+91)];
     buttomView.backgroundColor = [UIColor blueColor];
     isbuttomViewInNotFound = YES;
     [self.view addSubview:buttomView];
@@ -237,20 +237,20 @@
     descriptionLabel.backgroundColor = [UIColor whiteColor];
     [buttomView addSubview:descriptionLabel];
     
-    sityTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 51, buttomView.frame.size.width, 160)];
+    sityTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 51, buttomView.frame.size.width, responseObject.zones.count*40)];
     sityTable.delegate = self;
     sityTable.dataSource = self;
     sityTable.scrollEnabled = NO;
     [buttomView addSubview:sityTable];
     
-    UIButton* tryAgainButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 211, 2*buttomView.frame.size.width/3, 40)];
+    UIButton* tryAgainButton = [[UIButton alloc]initWithFrame:CGRectMake(0, responseObject.zones.count*40+51, 2*buttomView.frame.size.width/3, 40)];
     tryAgainButton.backgroundColor = [UIColor whiteColor];
     [tryAgainButton setTitle:@"повторить попытку" forState:UIControlStateNormal];
     [tryAgainButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [tryAgainButton addTarget:self action:@selector(tryAgainButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [buttomView addSubview:tryAgainButton];
     
-    UIButton* okButton = [[UIButton alloc]initWithFrame:CGRectMake(2*buttomView.frame.size.width/3 + 1, 211, buttomView.frame.size.width/3 - 1, 40)];
+    UIButton* okButton = [[UIButton alloc]initWithFrame:CGRectMake(2*buttomView.frame.size.width/3 + 1, responseObject.zones.count*40+51, buttomView.frame.size.width/3 - 1, 40)];
     okButton.backgroundColor = [UIColor whiteColor];
     [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -265,35 +265,31 @@
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (isRegionFound) {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)secKtion{
+    if (isRegionFound){
         return 1;
     }
-    return 4;
+    
+    return responseObject.zones.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     CustomTableViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil] objectAtIndex:0];
-    if (isRegionFound) {
+    if (isRegionFound)
+    {
         cell.cellText.text = sity;
     }
-    else{
-        if (indexPath.row == 0) {
-            cell.cellText.text = @"   Москва";
-        }
-        if (indexPath.row == 1) {
-            cell.cellText.text = @"   Краснодар";
-        }
-        if (indexPath.row == 2) {
-            cell.cellText.text = @"   Ростов-на-Дон";
-        }
-        if (indexPath.row == 3) {
-            cell.cellText.text = @"   Казань";
-        }
+    else
+    {
+        NSString*city=[[responseObject.zones objectAtIndex:indexPath.row] name];
+        cell.cellText.text =[@"   " stringByAppendingString:city];
+        
+        
+
     }
-    
+    NSLog(@"sdzdsr");
 
     return cell;
 }
@@ -310,8 +306,9 @@
     
     for (UIView *view in tableView.subviews) {
         for (CustomTableViewCell* cell in view.subviews) {
-            if (cell != selectedCell) {
-                cell.selectedCell.image = [UIImage imageNamed:@"rb.png"];
+        if (cell != selectedCell)
+            {
+               cell.selectedCell.image = [UIImage imageNamed:@"rb.png"];
             }
         }
     }
@@ -365,7 +362,7 @@
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         backgroundView.frame = self.view.frame;
         if (isbuttomViewInNotFound) {
-            buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 250) / 2, 300, 250);
+            buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 250) / 2, 300, responseObject.zones.count*40+91);
         }
         else{
             buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 120) / 2, 300, 120);

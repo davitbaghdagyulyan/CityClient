@@ -16,5 +16,5 @@
 @property(nonatomic,strong)NSString*method;
 @property(nonatomic,strong)NSString*pass;
 @property(nonatomic,strong)NSString*version;
-@property(nonatomic,strong)NSString * versionCode;
+@property(nonatomic,strong)NSDictionary*versions;
 @end

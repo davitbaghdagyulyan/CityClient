@@ -28,7 +28,13 @@
         self.locale=@"ru";
         self.method=@"login";
         self.version=@"1.0.2";
-        self.versionCode = @"17";
+        self.versions=@{ @"versionCode": @20,
+                         @"brand": @"apple",
+                         @"model": @"iPone/iPad",
+                         @"versionName": @"2.9.1",
+                         @"manufacturer": @"apple",
+                         @"sdkVersion": @17
+                         };
     }
     return self;
 }
