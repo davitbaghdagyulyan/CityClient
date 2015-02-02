@@ -14,6 +14,10 @@
 #import "LeftMenu.h"
 
 @interface infoViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIButton *cityButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *yandexButton;
+
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;

@@ -46,7 +46,18 @@
 @implementation ReplenishmentViewController
 -(void)viewDidAppear:(BOOL)animated
 {
-      [self registerForKeyboardNotifications];
+     [super viewDidAppear:animated];
+    
+    if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexButton.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.yandexButton.userInteractionEnabled=YES;
+    }
+    
+    [self registerForKeyboardNotifications];
     [GPSConection showGPSConection:self];
        [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
@@ -63,7 +74,7 @@
     view1IsLoad=YES;
     view1_2ScrollIsLoad=YES;
     isPressedCloseButton=NO;
-    [super viewDidAppear:animated];
+   
     loadcount=0;
     loadcount2=0;
    

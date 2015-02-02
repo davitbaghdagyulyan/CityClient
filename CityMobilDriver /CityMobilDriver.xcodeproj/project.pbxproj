@@ -1134,7 +1134,7 @@
 				8FC222701A36E9120003CAAF /* PaymentHistory */,
 				8FC222431A36E7270003CAAF /* RootViewController */,
 				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */,
-				ECEC89C41A2CA76F0036781D /* my Orders */,
+				ECEC89C41A2CA76F0036781D /* MyOrdersViewController */,
 				ECD218901A1CE80600F38F7D /* TachometerViewController */,
 				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
 				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
@@ -2246,14 +2246,14 @@
 			name = SelectedOrdersDetails;
 			sourceTree = "<group>";
 		};
-		ECEC89C41A2CA76F0036781D /* my Orders */ = {
+		ECEC89C41A2CA76F0036781D /* MyOrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECEC89C51A2CA76F0036781D /* GetMyOrder */,
 				ECEC89C81A2CA76F0036781D /* MyOrdersViewController.h */,
 				ECEC89C91A2CA76F0036781D /* MyOrdersViewController.m */,
 			);
-			name = "my Orders";
+			name = MyOrdersViewController;
 			path = "../my Orders";
 			sourceTree = "<group>";
 		};

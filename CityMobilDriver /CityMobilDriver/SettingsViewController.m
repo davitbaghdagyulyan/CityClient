@@ -87,7 +87,41 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     
-  [GPSConection showGPSConection:self];
+    if([ApiAbilitiesSingleTon sharedApiAbilities].autoassignment_enabled)
+    {
+        self.yandexLabel.userInteractionEnabled=NO;
+        self.cityLabel.userInteractionEnabled=NO;
+        self.yandexView.userInteractionEnabled=NO;
+        self.cityView.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.yandexLabel.userInteractionEnabled=YES;
+        self.cityLabel.userInteractionEnabled=YES;
+        self.yandexView.userInteractionEnabled=YES;
+        self.cityView.userInteractionEnabled=YES;
+    }
+    
+    if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexLabel.userInteractionEnabled=NO;
+        self.yandexView.userInteractionEnabled=NO;
+        
+        self.yandexIcon.userInteractionEnabled=NO;
+    
+    }
+    else
+    {
+        self.yandexLabel.userInteractionEnabled=YES;
+        self.yandexView.userInteractionEnabled=YES;
+        
+        self.yandexIcon.userInteractionEnabled=YES;
+
+    }
+
+    
+    
+    [GPSConection showGPSConection:self];
      [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {

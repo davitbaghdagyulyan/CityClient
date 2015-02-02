@@ -25,14 +25,19 @@
 
 +(LeftMenu*)getLeftMenu:(id)curentSelf
 {
-    static LeftMenu* leftMenu = nil;
     
-    if (leftMenu == nil)
+    static LeftMenu* leftMenu = nil;
+  
+    if (leftMenu == nil
+        ||leftMenu.isChangedRegion
+        )
     {
         leftMenu = [LeftMenu alloc];
         leftMenu.curentViewController=curentSelf;
         leftMenu = [leftMenu init];
+        leftMenu.isChangedRegion=NO;
     }
+    
     leftMenu.curentViewController=curentSelf;
 
     [leftMenu.curentViewController.view addSubview:leftMenu];
@@ -69,7 +74,13 @@
             
               self.delegate=self;
               self.dataSource=self;
+              self.indexArray=[[NSMutableArray alloc]init];
               self.nameArray=[[NSMutableArray alloc]initWithObjects:@"Свободные заказы",@"Мои заказы",@"Пополнение баланса",@"Сообщение",@"Настройка робота",@"Архив заказов",@"Архив платежей",@"Тарифы СитиМобил",@"Тарифы Яндекс",@"Обозначение иконок",@"Профиль",@"Статистика",@"Настройки",@"Выход",@"Карта", nil];
+               if(![ApiAbilitiesSingleTon sharedApiAbilities].statistics_enabled)
+               {
+                  
+                   [self.indexArray addObject:@11];
+               }
 
           }
           return self;
@@ -146,6 +157,13 @@
             identity =@"ReplenishmentViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
+            
+        case 3:
+            myClass = NSClassFromString(@"MessagesViewController");
+            identity =@"MessagesViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            break;
+            
         case 4:
             myClass = NSClassFromString(@"RobotSettingsViewController");
             identity =@"RobotSettingsViewController";
@@ -161,17 +179,24 @@
             identity =@"PaymentHistoryViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
- 
-        case 3:
-        
-            myClass = NSClassFromString(@"MessagesViewController");
-            identity =@"MessagesViewController";
+       
+        case 7:
+            self.tariffName=@"City";
+            myClass = NSClassFromString(@"TariffsCityMobilViewController");
+            identity =@"TariffsCityMobilViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-        case 12:
             
-            myClass = NSClassFromString(@"SettingsViewController");
-            identity =@"SettingsViewController";
+        case 8:
+            self.tariffName=@"Yandex";
+            myClass = NSClassFromString(@"TariffsCityMobilViewController");
+            identity =@"TariffsCityMobilViewController";
+            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+            
+            break;
+        case 9:
+            myClass = NSClassFromString(@"DesignationIconsViewController");
+            identity =@"DesignationIconsViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
             
@@ -187,27 +212,11 @@
             identity =@"StatisticsViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
-        case 7:
-            self.tariffName=@"City";
-            myClass = NSClassFromString(@"TariffsCityMobilViewController");
-            identity =@"TariffsCityMobilViewController";
-            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
-         
-            break;
-        case 8:
-            self.tariffName=@"Yandex";
-            myClass = NSClassFromString(@"TariffsCityMobilViewController");
-            identity =@"TariffsCityMobilViewController";
-            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+       
+        case 12:
             
-            
-//            myClass = NSClassFromString(@"TariffsYandexViewController");
-//            identity =@"TariffsYandexViewController";
-//            [self pushOrPoptoViewContrller:myClass andIdentity:identity];
-            break;
-        case 9:
-            myClass = NSClassFromString(@"DesignationIconsViewController");
-            identity =@"DesignationIconsViewController";
+            myClass = NSClassFromString(@"SettingsViewController");
+            identity =@"SettingsViewController";
             [self pushOrPoptoViewContrller:myClass andIdentity:identity];
             break;
 
@@ -288,6 +297,10 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.indexArray containsObject:[NSNumber numberWithInteger:indexPath.row]])
+    {
+        return 0;
+    }
     return  44;
 }
 

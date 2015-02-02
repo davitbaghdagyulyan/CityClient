@@ -101,6 +101,15 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+    if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexButton.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.yandexButton.userInteractionEnabled=YES;
+    }
+    
     deviceType= [UIDevice currentDevice].model;
     deviceStringIphone=@"iPhone";
     deviceStringIphoneSimulator=@"iPhone Simulator";

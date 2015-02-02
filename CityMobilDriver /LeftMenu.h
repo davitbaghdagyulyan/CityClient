@@ -15,4 +15,6 @@
 @property(nonatomic,assign)NSUInteger flag;
 @property(nonatomic,strong)NSMutableArray*disabledViewsArray;
 @property(nonatomic,strong)NSString*tariffName;
+@property(nonatomic,strong)NSMutableArray*indexArray;
+@property(nonatomic,assign)BOOL isChangedRegion;
 @end

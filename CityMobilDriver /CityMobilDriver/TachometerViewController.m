@@ -55,6 +55,16 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+    
+    if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexButton.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.yandexButton.userInteractionEnabled=YES;
+    }
+
      [GPSConection showGPSConection:self];
  
   [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];

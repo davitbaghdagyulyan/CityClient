@@ -84,6 +84,16 @@
 
 {
     [super viewDidAppear:NO];
+    
+    if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexButton.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.yandexButton.userInteractionEnabled=YES;
+    }
+    
      [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {

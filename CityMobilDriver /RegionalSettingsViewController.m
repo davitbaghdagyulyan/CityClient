@@ -14,6 +14,10 @@
 #import "RequestGetApiAbilities.h"
 #import "ResponseGetApiAbilities.h"
 
+#import "LeftMenu.h"
+
+
+
 @interface RegionalSettingsViewController ()
 {
     CLLocationManager *locationManager;
@@ -30,6 +34,7 @@
     NSInteger selectedIndexOfCell;
     BOOL isRegionFound;
     BOOL isbuttomViewInNotFound;
+    LeftMenu*leftMenu;
 }
 @end
 
@@ -202,6 +207,11 @@
 {
     [backgroundView removeFromSuperview];
     [buttomView removeFromSuperview];
+   
+    leftMenu=[LeftMenu getLeftMenu:self];
+
+    
+    leftMenu.isChangedRegion=YES;
     
     [self requestGetApiAbilities];
     

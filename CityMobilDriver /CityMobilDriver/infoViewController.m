@@ -18,10 +18,7 @@
     
     textResponse* jsonResponseObject;
     OpenMapButtonHandler*openMapButtonHandlerObject;
-    
-    
     UITableView* infoTable;
-    
     NSMutableArray* cellArray;
     UIWebView* requestWebView;
     
@@ -38,6 +35,16 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexButton.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.yandexButton.userInteractionEnabled=YES;
+    }
+    
     [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
     if ([SingleDataProvider sharedKey].isGPSEnabled)
     {
@@ -50,7 +57,8 @@
     }
     [GPSConection showGPSConection:self];
     leftMenu=[LeftMenu getLeftMenu:self];
-    
+    [self.cityButton setNeedsDisplay];
+    [self.yandexButton setNeedsDisplay];
     
     [self textJsonRequest];
     

@@ -2549,7 +2549,7 @@
                                             <action selector="openMap:" destination="XBe-nq-8cO" eventType="touchUpInside" id="rDc-lj-JQX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTa-sE-22q" userLabel="Yandex">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTa-sE-22q" userLabel="Yandex" customClass="yandexIcon">
                                         <rect key="frame" x="404" y="25" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="NGE-LU-zl8"/>
@@ -2559,7 +2559,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Q-tB-S2e" userLabel="Button4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Q-tB-S2e" userLabel="Button4" customClass="CityMobilIcon">
                                         <rect key="frame" x="457" y="25" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="jPq-Ub-eyT"/>
@@ -2644,13 +2644,15 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="Q4Q-tB-S2e" id="iHK-E6-ntU"/>
                         <outlet property="descriptionLabel" destination="aiX-CX-4Wh" id="Cfl-e3-cqX"/>
                         <outlet property="gpsButton" destination="9Br-TK-NLu" id="O4U-0Z-Rbr"/>
+                        <outlet property="yandexButton" destination="DTa-sE-22q" id="LMl-Yf-LI6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfV-3d-rGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5651" y="-564"/>
+            <point key="canvasLocation" x="-5678" y="-556"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="5mr-5j-7bD">
@@ -8900,6 +8902,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3e-Nz-Khh"/>
+        <segue reference="H6G-Qj-NO6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -50,6 +50,16 @@ typedef enum ScrollDirection {
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexButton.userInteractionEnabled=NO;
+    }
+    else
+    {
+        self.yandexButton.userInteractionEnabled=YES;
+    }
+    
         leftMenu=[LeftMenu getLeftMenu:self];
     if ([leftMenu.tariffName isEqualToString:@"City"])
     {
