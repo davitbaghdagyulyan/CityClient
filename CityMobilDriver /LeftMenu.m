@@ -78,9 +78,13 @@
               self.nameArray=[[NSMutableArray alloc]initWithObjects:@"Свободные заказы",@"Мои заказы",@"Пополнение баланса",@"Сообщение",@"Настройка робота",@"Архив заказов",@"Архив платежей",@"Тарифы СитиМобил",@"Тарифы Яндекс",@"Обозначение иконок",@"Профиль",@"Статистика",@"Настройки",@"Выход",@"Карта", nil];
                if(![ApiAbilitiesSingleTon sharedApiAbilities].statistics_enabled)
                {
-                  
                    [self.indexArray addObject:@11];
                }
+              
+              if (![ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+              {
+                  [self.indexArray addObject:@8];
+              }
 
           }
           return self;
@@ -89,13 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-
-   
         return self.nameArray.count;
-   
-    
-    
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
