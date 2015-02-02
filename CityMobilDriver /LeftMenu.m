@@ -85,6 +85,10 @@
               {
                   [self.indexArray addObject:@8];
               }
+              if (![ApiAbilitiesSingleTon sharedApiAbilities].messages_enabled)
+              {
+                  [self.indexArray addObject:@3];
+              }
 
           }
           return self;
