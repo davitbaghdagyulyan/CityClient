@@ -17,4 +17,5 @@
 #import "GPSConection.h"
 #import "GPSIcon.h"
 #import "SingleDataProvider.h"
+#import "ApiAbilitiesSingleTon.h"
 #endif

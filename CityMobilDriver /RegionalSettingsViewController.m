@@ -11,6 +11,8 @@
 #import "SingleDataProvider.h"
 #import "GetZonesResponse.h"
 #import "CustomTableViewCell.h"
+#import "RequestGetApiAbilities.h"
+#import "ResponseGetApiAbilities.h"
 
 @interface RegionalSettingsViewController ()
 {
@@ -25,7 +27,7 @@
     UIView* buttomView;
     UITableView* sityTable;
     
-    
+    NSInteger selectedIndexOfCell;
     BOOL isRegionFound;
     BOOL isbuttomViewInNotFound;
 }
@@ -122,7 +124,8 @@
         
         //NSLog(@"%@",[responseObject description]);
         isRegionFound = [self isCircleContainsPoint];
-        if (isRegionFound) {
+        if (isRegionFound)
+        {
             [self regionFound:sity];
         }
         else{
@@ -136,20 +139,24 @@
 
 -(BOOL)isCircleContainsPoint
 {
-    if (currentLocation) {
-    for (int i = 0; i < [responseObject.zones count]; ++i) {
+    if (currentLocation)
+    {
+    for (int i = 0; i < [responseObject.zones count]; ++i)
+      {
         CLLocation* sityLocation = [[CLLocation alloc]initWithLatitude:[responseObject.zones[i] latitude]
                                                              longitude:[responseObject.zones[i] longitude]];
 
         
         NSLog(@"%@",currentLocation);
             currentDistance = [sityLocation distanceFromLocation:currentLocation];
-            if (currentDistance < [responseObject.zones[i] getRadius]) {
+            if (currentDistance < [responseObject.zones[i] getRadius])
+            {
                 sity = [responseObject.zones[i] name];
+                selectedIndexOfCell=i;
                 return YES;
             
-        }
-    }
+            }
+      }
     }
     return NO;
 }
@@ -191,11 +198,12 @@
     [buttomView addSubview:okButton];
 }
 
--(void)okButtonAction{
+-(void)okButtonAction
+{
     [backgroundView removeFromSuperview];
     [buttomView removeFromSuperview];
     
-    [self.navigationController popViewControllerAnimated:NO];
+    [self requestGetApiAbilities];
     
     
 }
@@ -266,7 +274,8 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)secKtion{
-    if (isRegionFound){
+    if (isRegionFound)
+    {
         return 1;
     }
     
@@ -283,27 +292,29 @@
     }
     else
     {
+        if (!indexPath.row)
+        {
+            cell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
+            selectedIndexOfCell=0;
+        }
         NSString*city=[[responseObject.zones objectAtIndex:indexPath.row] name];
         cell.cellText.text =[@"   " stringByAppendingString:city];
-        
-        
-
     }
-    NSLog(@"sdzdsr");
-
     return cell;
 }
 
 #pragma mark UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 40;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     CustomTableViewCell* selectedCell = (CustomTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     selectedCell.selectedCell.image = [UIImage imageNamed:@"rb_2.png"];
-    
+    selectedIndexOfCell=indexPath.row;
     for (UIView *view in tableView.subviews) {
         for (CustomTableViewCell* cell in view.subviews) {
         if (cell != selectedCell)
@@ -351,7 +362,110 @@
     }
 }
 
+-(void)requestGetApiAbilities
+{
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.center = self.view.center;
+    indicator.color=[UIColor blackColor];
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+    
+    RequestGetApiAbilities* requestGetApiAbilitiesObject=[[RequestGetApiAbilities alloc]init];
 
+   
+    NSDictionary* jsonDictionary = [requestGetApiAbilitiesObject toDictionary];
+    
+    NSURL* url = [NSURL URLWithString:[responseObject.zones[selectedIndexOfCell]api_url]];
+    
+    NSError* error;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonData];
+    request.timeoutInterval = 30;
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (!data)
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@ "Ошибка сервера" message:@"Нет соединения с интернетом!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:cancel];
+            [indicator stopAnimating];
+            [self presentViewController:alert animated:YES completion:nil];
+            return ;
+        }
+        
+        NSError* err;
+        NSString* jsonString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
+        
+        ResponseGetApiAbilities*responseGetApiAbilitiesObject = [[ResponseGetApiAbilities alloc]initWithString:jsonString error:&err];
+        if (responseGetApiAbilitiesObject.code ==nil)
+        {
+            NSUserDefaults*defaults=[NSUserDefaults standardUserDefaults];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.api_registration_enabled forKey:@"api_registration_enabled"];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.messages_enabled
+                         forKey:@"messages_enabled"];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.managers_calling_enabled forKey:@"managers_calling_enabled"];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.autoassignment_enabled
+                         forKey:@"autoassignment_enabled"];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.yandex_enabled
+                         forKey:@"yandex_enabled"];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.new_order_notification_enabled forKey:@"new_order_notification_enabled"];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.statistics_enabled
+                         forKey:@"statistics_enabled"];
+            
+            [defaults setObject:responseGetApiAbilitiesObject.calculate_wait_time_enabled
+                         forKey:@"calculate_wait_time_enabled"];
+            
+            [defaults setObject:[responseObject.zones[selectedIndexOfCell]country]
+                         forKey:@"country"];
+            
+            [defaults setObject:[responseObject.zones[selectedIndexOfCell]phone]
+                         forKey:@"phone"];
+            
+            [defaults setObject:[responseObject.zones[selectedIndexOfCell]gmt]
+                         forKey:@"gmt"];
+            
+            [defaults setObject:[responseObject.zones[selectedIndexOfCell]api_url]
+                         forKey:@"api_url"];
+            
+            
+            [defaults setObject:[[responseObject.zones[selectedIndexOfCell]application_behavior]sound_notification_on_new_order]
+                         forKey:@"sound_notification_on_new_order"];
+            NSObject*object=[ApiAbilitiesSingleTon sharedApiAbilities];
+            object=nil;
+            [ApiAbilitiesSingleTon sharedApiAbilities];
+
+        }
+        [indicator stopAnimating];
+        
+        [self.navigationController popViewControllerAnimated:NO];
+    }];
+
+}
 
 #pragma mark - rotation
 
@@ -359,16 +473,20 @@
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+    {
         backgroundView.frame = self.view.frame;
-        if (isbuttomViewInNotFound) {
+        if (isbuttomViewInNotFound)
+        {
             buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 250) / 2, 300, responseObject.zones.count*40+91);
         }
-        else{
+        else
+        {
             buttomView.frame = CGRectMake((self.view.frame.size.width - 300)/2, (self.view.frame.size.height - 120) / 2, 300, 120);
         }
     }
-                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+    {
 
     }];
     

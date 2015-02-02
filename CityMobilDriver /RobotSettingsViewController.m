@@ -703,7 +703,7 @@
     RequestObject.method = @"GetAutoSettings";
     NSDictionary* jsonDictionary = [RequestObject toDictionary];
     
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     
     NSError* error;
     
@@ -813,7 +813,7 @@
     NSLog(@"%@",jsonDictionary);
     
     
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     
     NSError* error;
     

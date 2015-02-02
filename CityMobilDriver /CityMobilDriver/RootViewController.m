@@ -75,6 +75,47 @@
         alertServErrIsCreated =YES;
     }
     
+//***************************************************ApiAbilities********************************************//
+    
+    if ([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
+    {
+        self.yandexButtonPort.hidden=NO;
+    }
+    else
+    {
+        self.yandexButtonPort.hidden=YES;
+    }
+    
+    
+    
+    if ([ApiAbilitiesSingleTon sharedApiAbilities].managers_calling_enabled)
+    {
+        self.callToDispetcher.hidden=NO;
+        self.callToDispetcherLabel.hidden=NO;
+        self.callToDispetcherImageView.hidden=NO;
+    }
+    else
+    {
+        self.callToDispetcher.hidden=YES;
+        self.callToDispetcherLabel.hidden=YES;
+        self.callToDispetcherImageView.hidden=YES;
+    }
+
+    if ([ApiAbilitiesSingleTon sharedApiAbilities].messages_enabled)
+    {
+        self.messagesButton.hidden=NO;
+        self.labelMessages.hidden=NO;
+        self.messagesImageView.hidden=NO;
+    }
+    else
+    {
+        self.messagesButton.hidden=YES;
+        self.labelMessages.hidden=YES;
+        self.messagesImageView.hidden=YES;
+    }
+
+    
+    
     [self requestGetNewMail];
     
     [self requestGetOrders];
@@ -586,7 +627,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     NSDictionary*jsonDictionary=[recallJsonObject toDictionary];
     NSString*jsons=[recallJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
@@ -670,7 +711,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     NSDictionary*jsonDictionary=[ordersJsonObject toDictionary];
     NSString*jsons=[ordersJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
@@ -781,7 +822,7 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
     NSDictionary*jsonDictionary=[getNewMailJsonObject toDictionary];
     NSString*jsons=[getNewMailJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted

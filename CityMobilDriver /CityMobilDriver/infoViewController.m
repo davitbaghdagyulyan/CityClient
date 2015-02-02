@@ -204,7 +204,7 @@
     textJsonObject.id_mail = self.id_mail;
     NSDictionary* jsonDictionary = [textJsonObject toDictionary];
     
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     
     NSError* error;
     

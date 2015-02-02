@@ -103,6 +103,9 @@
 		EC114E731A5FF79600C4D45F /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = EC114E721A5FF79600C4D45F /* delete.png */; };
 		EC114E771A5FF90C00C4D45F /* UnbindCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */; };
 		EC114E7A1A60170600C4D45F /* UnbidCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC114E791A60170600C4D45F /* UnbidCardResponse.m */; };
+		EC1C7C381A7B8367004A3B5D /* RequestGetApiAbilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1C7C371A7B8367004A3B5D /* RequestGetApiAbilities.m */; };
+		EC1C7C3B1A7B837B004A3B5D /* ResponseGetApiAbilities.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1C7C3A1A7B837B004A3B5D /* ResponseGetApiAbilities.m */; };
+		EC1C7C411A7B94D9004A3B5D /* Bahelvor.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1C7C401A7B94D9004A3B5D /* Bahelvor.m */; };
 		EC1E4A6819EBC189007C77A2 /* UserInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */; };
 		EC1E4A6B19EBC22F007C77A2 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E4A6A19EBC22F007C77A2 /* SettingsViewController.m */; };
 		EC1E4A6D19EC1C13007C77A2 /* pages_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E4A6C19EC1C13007C77A2 /* pages_background.png */; };
@@ -352,6 +355,7 @@
 		ECF75B231A5FCD550018669C /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF75B221A5FCD550018669C /* CardView.m */; };
 		ECF7A7841A1CE68E001F0B49 /* StandartResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */; };
 		ECF989461A15E7260073FE17 /* SendingDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */; };
+		ECFC0C9A1A7BAB4800EBE358 /* ApiAbilitiesSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFC0C991A7BAB4800EBE358 /* ApiAbilitiesSingleTon.m */; };
 		ECFD3E4B1A42C5400066B55A /* BadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E4A1A42C5400066B55A /* BadRequest.m */; };
 		ECFD3E521A431B350066B55A /* InternetConectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E511A431B350066B55A /* InternetConectionViewController.m */; };
 		ECFD3E551A431CC20066B55A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFD3E541A431CC20066B55A /* Reachability.m */; };
@@ -515,6 +519,12 @@
 		EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbindCardRequest.m; sourceTree = "<group>"; };
 		EC114E781A60170600C4D45F /* UnbidCardResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnbidCardResponse.h; sourceTree = "<group>"; };
 		EC114E791A60170600C4D45F /* UnbidCardResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbidCardResponse.m; sourceTree = "<group>"; };
+		EC1C7C361A7B8367004A3B5D /* RequestGetApiAbilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestGetApiAbilities.h; sourceTree = "<group>"; };
+		EC1C7C371A7B8367004A3B5D /* RequestGetApiAbilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestGetApiAbilities.m; sourceTree = "<group>"; };
+		EC1C7C391A7B837B004A3B5D /* ResponseGetApiAbilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetApiAbilities.h; sourceTree = "<group>"; };
+		EC1C7C3A1A7B837B004A3B5D /* ResponseGetApiAbilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetApiAbilities.m; sourceTree = "<group>"; };
+		EC1C7C3F1A7B94D9004A3B5D /* Bahelvor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bahelvor.h; sourceTree = "<group>"; };
+		EC1C7C401A7B94D9004A3B5D /* Bahelvor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bahelvor.m; sourceTree = "<group>"; };
 		EC1E4A6619EBC189007C77A2 /* UserInformationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationProvider.h; sourceTree = "<group>"; };
 		EC1E4A6719EBC189007C77A2 /* UserInformationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationProvider.m; sourceTree = "<group>"; };
 		EC1E4A6919EBC22F007C77A2 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -946,6 +956,8 @@
 		ECF7A7831A1CE68E001F0B49 /* StandartResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandartResponse.m; sourceTree = "<group>"; };
 		ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendingDocumentsViewController.h; sourceTree = "<group>"; };
 		ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendingDocumentsViewController.m; sourceTree = "<group>"; };
+		ECFC0C981A7BAB4800EBE358 /* ApiAbilitiesSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiAbilitiesSingleTon.h; sourceTree = "<group>"; };
+		ECFC0C991A7BAB4800EBE358 /* ApiAbilitiesSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiAbilitiesSingleTon.m; sourceTree = "<group>"; };
 		ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		ECFD3E491A42C5400066B55A /* BadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadRequest.h; sourceTree = "<group>"; };
 		ECFD3E4A1A42C5400066B55A /* BadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadRequest.m; sourceTree = "<group>"; };
@@ -1082,6 +1094,7 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
+				ECFC0C971A7BAB1200EBE358 /* ApiAbilitiesSingleTon */,
 				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
 				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
 				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
@@ -1218,6 +1231,17 @@
 				EC114E791A60170600C4D45F /* UnbidCardResponse.m */,
 			);
 			name = Requests;
+			sourceTree = "<group>";
+		};
+		EC1C7C351A7B82F1004A3B5D /* RequestGetApiAbilities */ = {
+			isa = PBXGroup;
+			children = (
+				EC1C7C361A7B8367004A3B5D /* RequestGetApiAbilities.h */,
+				EC1C7C371A7B8367004A3B5D /* RequestGetApiAbilities.m */,
+				EC1C7C391A7B837B004A3B5D /* ResponseGetApiAbilities.h */,
+				EC1C7C3A1A7B837B004A3B5D /* ResponseGetApiAbilities.m */,
+			);
+			name = RequestGetApiAbilities;
 			sourceTree = "<group>";
 		};
 		EC1E4A6519EBC179007C77A2 /* Single UserInformation Provider */ = {
@@ -1886,7 +1910,8 @@
 		ECCC12091A0CACDE00AC94EE /* Regional Settings */ = {
 			isa = PBXGroup;
 			children = (
-				ECCC120A1A0CAD0800AC94EE /* Requests */,
+				EC1C7C351A7B82F1004A3B5D /* RequestGetApiAbilities */,
+				ECCC120A1A0CAD0800AC94EE /* RequestGetZones */,
 				EC24371E1A0BA1DA005FC018 /* RegionalSettingsViewController.h */,
 				EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */,
 				ECCC120E1A0CD54500AC94EE /* FoundRegion.xib */,
@@ -1895,15 +1920,17 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		ECCC120A1A0CAD0800AC94EE /* Requests */ = {
+		ECCC120A1A0CAD0800AC94EE /* RequestGetZones */ = {
 			isa = PBXGroup;
 			children = (
 				ECCC12051A0CACA000AC94EE /* GetZonesResponse.h */,
 				ECCC12061A0CACA000AC94EE /* GetZonesResponse.m */,
 				ECCC120B1A0CAD8B00AC94EE /* Sities.h */,
 				ECCC120C1A0CAD8B00AC94EE /* Sities.m */,
+				EC1C7C3F1A7B94D9004A3B5D /* Bahelvor.h */,
+				EC1C7C401A7B94D9004A3B5D /* Bahelvor.m */,
 			);
-			name = Requests;
+			name = RequestGetZones;
 			sourceTree = "<group>";
 		};
 		ECCD34511A03D422000444BF /* Images */ = {
@@ -2267,6 +2294,15 @@
 			name = "Cards View Controller";
 			sourceTree = "<group>";
 		};
+		ECFC0C971A7BAB1200EBE358 /* ApiAbilitiesSingleTon */ = {
+			isa = PBXGroup;
+			children = (
+				ECFC0C981A7BAB4800EBE358 /* ApiAbilitiesSingleTon.h */,
+				ECFC0C991A7BAB4800EBE358 /* ApiAbilitiesSingleTon.m */,
+			);
+			name = ApiAbilitiesSingleTon;
+			sourceTree = "<group>";
+		};
 		ECFD3E4C1A431A5C0066B55A /* internet Conection */ = {
 			isa = PBXGroup;
 			children = (
@@ -2539,6 +2575,7 @@
 				ECEEC62C1A1C7215000F5776 /* Tariffs.m in Sources */,
 				ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */,
 				ECF75B231A5FCD550018669C /* CardView.m in Sources */,
+				ECFC0C9A1A7BAB4800EBE358 /* ApiAbilitiesSingleTon.m in Sources */,
 				ECB52E3C1A0778BD0091293F /* StartAfterMKADClass.m in Sources */,
 				8FC222641A36E8550003CAAF /* CustomCellOrdersHistory.m in Sources */,
 				ECDD39A01A0A1DD4007F3C3C /* TariffCustomCell.m in Sources */,
@@ -2608,6 +2645,7 @@
 				ECC965341A0102AE00768E1F /* Mark.m in Sources */,
 				ECCB8AE419FFD6480012F2FD /* CreateProfilViewController.m in Sources */,
 				ECCA90A519DEE2060007831F /* JSONModelClassProperty.m in Sources */,
+				EC1C7C381A7B8367004A3B5D /* RequestGetApiAbilities.m in Sources */,
 				ECB52E1B1A076B090091293F /* DescriptionClass.m in Sources */,
 				8FC2224E1A36E76D0003CAAF /* OrdersResponse.m in Sources */,
 				EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */,
@@ -2625,6 +2663,7 @@
 				8FC2226D1A36E88D0003CAAF /* OrdersHistoryJson.m in Sources */,
 				ECB3D7611A03BB680039DD3A /* GetTariffsUrlJson.m in Sources */,
 				ECC9653D1A0128E400768E1F /* Models.m in Sources */,
+				EC1C7C411A7B94D9004A3B5D /* Bahelvor.m in Sources */,
 				ECDEBF101A2F2C90000D0C5E /* Services.m in Sources */,
 				EC5AD4421A14FA2800588DE6 /* TakenOrderViewController.m in Sources */,
 				ECCD344D1A03AC49000444BF /* ResponseSetCarInfo.m in Sources */,
@@ -2646,6 +2685,7 @@
 				ECFD3E521A431B350066B55A /* InternetConectionViewController.m in Sources */,
 				ECD4064919F146D200EFE6B2 /* WriteLetterResponse.m in Sources */,
 				ECB59E9719F6A36D00F69529 /* GetQiwiBillsUrlJson.m in Sources */,
+				EC1C7C3B1A7B837B004A3B5D /* ResponseGetApiAbilities.m in Sources */,
 				EC2A13FE1A31FBDA00CA8937 /* SelectedOrdersViewController.m in Sources */,
 				ECB3D7711A03D95B0039DD3A /* NSDictionary+BVJSONString.m in Sources */,
 				ECE25C8A19E56BE80044F6AD /* messages.m in Sources */,

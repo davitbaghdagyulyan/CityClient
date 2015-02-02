@@ -313,7 +313,7 @@
     NSLog(@"%@",jsons);
     
     
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     
     NSError* error;
     
@@ -384,7 +384,7 @@
     NSDictionary*jsonDictionary=[getOrderJsonObject toDictionary];
     NSString*jsons=[getOrderJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
@@ -615,7 +615,7 @@
     NSDictionary*jsonDictionary=[setStatusObject toDictionary];
     NSString*jsons=[setStatusObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted

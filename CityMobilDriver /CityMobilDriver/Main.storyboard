@@ -890,11 +890,16 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="callToDispetcher" destination="oJr-2F-AIe" id="YJ7-qH-Lk8"/>
+                        <outlet property="callToDispetcherImageView" destination="x3w-En-fhO" id="kY4-74-Duu"/>
+                        <outlet property="callToDispetcherLabel" destination="XLU-jA-YYf" id="myd-oh-9Aj"/>
                         <outlet property="cityButtonPort" destination="Q9U-HC-3hC" id="Zcm-F3-mXu"/>
                         <outlet property="gpsButtonPort" destination="r5Q-Ev-BDR" id="twA-Ys-kh2"/>
                         <outlet property="labelEmptyArray" destination="zYM-23-mj3" id="OM2-bW-g3f"/>
                         <outlet property="labelForDesign" destination="qaP-NG-YPZ" id="i4A-x5-z4b"/>
                         <outlet property="labelMessages" destination="y22-oY-cRt" id="KGR-dV-PZ8"/>
+                        <outlet property="messagesButton" destination="nHj-X9-5fS" id="h4C-qG-bas"/>
+                        <outlet property="messagesImageView" destination="Ihg-K1-AqG" id="49D-v3-Hc1"/>
                         <outlet property="navigationView" destination="iZS-fJ-SrY" id="5fM-b7-bA5"/>
                         <outlet property="tableViewOrdersPort" destination="xdO-UW-Jx9" id="bQ6-zJ-L9a"/>
                         <outlet property="titleLabelPort" destination="QFo-hQ-uCb" id="d73-Pr-OtG"/>
@@ -3182,6 +3187,8 @@
                         <outlet property="callsign" destination="2x5-hm-EWz" id="0Hm-6Y-pDq"/>
                         <outlet property="checkBox" destination="Dks-3J-q3A" id="Qav-ow-XPa"/>
                         <outlet property="cityIcon" destination="8LP-Lg-Yez" id="zCc-qR-qu2"/>
+                        <outlet property="cityLabel" destination="dkw-dk-432" id="ecq-Ez-Krb"/>
+                        <outlet property="cityView" destination="C2d-am-Var" id="kuq-lp-o6A"/>
                         <outlet property="fontSize" destination="fpC-MB-kcd" id="QBP-nm-IAk"/>
                         <outlet property="gpsButton" destination="P3F-u0-BgI" id="rHf-vi-Hn9"/>
                         <outlet property="limit" destination="lAV-a9-zOm" id="xZV-aW-ItA"/>
@@ -3195,13 +3202,15 @@
                         <outlet property="settingsView" destination="Ir4-Cw-5A2" id="dCp-Pw-jzY"/>
                         <outlet property="stileIcon" destination="o3M-kz-TbG" id="vcY-Ah-WrE"/>
                         <outlet property="yandexIcon" destination="aTP-lt-qz7" id="XGP-Ty-Sau"/>
+                        <outlet property="yandexLabel" destination="7ty-bs-mdb" id="lAj-VX-C3t"/>
                         <outlet property="yandexOff" destination="31f-O6-WhJ" id="iSs-nS-ouK"/>
                         <outlet property="yandexSettings" destination="7ty-bs-mdb" id="SKv-cj-vVv"/>
+                        <outlet property="yandexView" destination="NlT-Bf-u5k" id="QV3-In-PEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vud-m9-pHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6428" y="-1386"/>
+            <point key="canvasLocation" x="-6625" y="-1332"/>
         </scene>
         <!--Profil View Controller-->
         <scene sceneID="rru-go-EQb">
@@ -8891,6 +8900,6 @@
         <image name="ya.png" width="24" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ulh-Ga-Izo"/>
+        <segue reference="c3e-Nz-Khh"/>
     </inferredMetricsTieBreakers>
 </document>

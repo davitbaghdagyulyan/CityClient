@@ -91,7 +91,7 @@
     
     NSDictionary* jsonDictionary = [requestObject toDictionary];
     
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     
     NSError* error;
     

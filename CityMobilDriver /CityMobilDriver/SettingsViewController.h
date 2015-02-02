@@ -17,6 +17,10 @@
 
 
 @interface SettingsViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *yandexLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UIView *yandexView;
+@property (weak, nonatomic) IBOutlet UIView *cityView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewHeight;
 

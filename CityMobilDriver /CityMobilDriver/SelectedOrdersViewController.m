@@ -260,7 +260,7 @@
     NSDictionary*jsonDictionary=[detailsJsonObject toDictionary];
     NSString*jsons=[detailsJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
@@ -539,7 +539,7 @@ return fabs(velocity.y) < fabs(velocity.x);
     NSDictionary*jsonDictionary=[buyAddressJsonObject toDictionary];
     NSString*jsons=[buyAddressJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
@@ -822,7 +822,7 @@ assignOrderJsonObject.idhash=[[selectedOrdersDetailsResponseObject.orders object
 NSDictionary*jsonDictionary=[assignOrderJsonObject toDictionary];
 NSString*jsons=[assignOrderJsonObject toJSONString];
 NSLog(@"%@",jsons);
-NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
 NSError* error;
 NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                    options:NSJSONWritingPrettyPrinted

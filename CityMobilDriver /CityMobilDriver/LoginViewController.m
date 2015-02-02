@@ -237,7 +237,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
     NSLog(@"%@",jsons);
     
     
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     
     NSError* error;
     
@@ -292,7 +292,7 @@ NSString* const UserDefaultsIsRemember = @"isRemember";
         
         
         
-        if(loginResponseObject.code!=nil)
+        if(loginResponseObject.code!=nil ||loginResponseObject.key==nil)
         {
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка"

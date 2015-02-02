@@ -5,10 +5,13 @@
 //  Created by Intern on 11/7/14.
 //  Copyright (c) 2014 Davit Baghdagyulyan. All rights reserved.
 //
-
+#import "Bahelvor.h"
 #import "JSONModel.h"
+
 @protocol Sities @end
+
 @interface Sities : JSONModel
+
 @property (nonatomic,assign,getter=getId) int id;
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,strong) NSString* country;
@@ -20,6 +23,6 @@
 @property (nonatomic,assign,getter=getRadius) float radius;
 @property (nonatomic,strong) NSString* gmt;
 @property (nonatomic,strong) NSString* api_url;
-//@property (nonatomic,strong) NSString* application_behavior;
-//@property (nonatomic,strong) NSString* sound_notification_on_new_order;
+@property (nonatomic,strong) Bahelvor* application_behavior;
+
 @end

@@ -270,7 +270,7 @@
         NSDictionary*jsonDictionary=[getOrderJsonObject toDictionary];
         NSString*jsons=[getOrderJsonObject toJSONString];
         NSLog(@"%@",jsons);
-        NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+        NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
         NSError* error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                            options:NSJSONWritingPrettyPrinted
@@ -1430,7 +1430,7 @@
     NSDictionary*jsonDictionary=[setStatusJsonObject toDictionary];
     NSString*jsons=[setStatusJsonObject toJSONString];
     NSLog(@"%@",jsons);
-    NSURL* url = [NSURL URLWithString:@"https://driver-msk.city-mobil.ru/taxiserv/api/driver/"];
+    NSURL* url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"api_url"]];
     NSError* error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted

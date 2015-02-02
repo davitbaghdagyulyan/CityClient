@@ -5,6 +5,11 @@
 #import "UIAlertView+Orientation.h"
 #import "MessagesViewController.h"
 @interface RootViewController : UIViewController <UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *callToDispetcher;
+@property (weak, nonatomic) IBOutlet UIButton *messagesButton;
+@property (weak, nonatomic) IBOutlet UIImageView *callToDispetcherImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *messagesImageView;
+@property (weak, nonatomic) IBOutlet UILabel *callToDispetcherLabel;
 - (IBAction)openAndCloseLeftMenu:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *gpsButtonPort;
 @property (strong, nonatomic) IBOutlet UIButton *yandexButtonPort;
