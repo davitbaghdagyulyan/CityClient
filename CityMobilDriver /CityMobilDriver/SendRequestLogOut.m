@@ -81,7 +81,7 @@
             
                         [indicator stopAnimating];
                     }
-                    else if([responseLogOutObject.result intValue])
+                    //else if([responseLogOutObject.result intValue])
                     {
                         [IdhashSetSingleTon setIdHashSet:nil];
                         LoginViewController* lvc=[curentSelf.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];

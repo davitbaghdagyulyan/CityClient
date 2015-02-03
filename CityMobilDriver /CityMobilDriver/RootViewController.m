@@ -396,6 +396,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)back:(id)sender
 
 {
+    if (leftMenu.flag)
+    {
+        CGPoint point;
+        point.x=leftMenu.center.x-leftMenu.frame.size.width;
+        point.y=leftMenu.center.y;
+        leftMenu.center=point;
+        leftMenu.flag=0;
+    }
+    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
 UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction * action)

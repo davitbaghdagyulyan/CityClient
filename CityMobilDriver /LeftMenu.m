@@ -229,6 +229,17 @@
             myClass = NSClassFromString(@"LoginViewController");
             identity =@"LoginViewController";
           
+            if (self.flag)
+            {
+                CGPoint point;
+                point.x=self.center.x-self.frame.size.width;
+                point.y=self.center.y;
+                self.center=point;
+                self.flag=0;
+            }
+            
+            
+            
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action)
