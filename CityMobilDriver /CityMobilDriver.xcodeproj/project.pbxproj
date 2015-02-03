@@ -518,7 +518,7 @@
 		EC0798EB1A2349840085E3F0 /* icon_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_green.png; sourceTree = "<group>"; };
 		EC0798ED1A2379C90085E3F0 /* set3_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set3_orange.png; sourceTree = "<group>"; };
 		EC102EF21A6E719600E9EE41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		EC102EF81A6E86B800E9EE41 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		EC102EF81A6E86B800E9EE41 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alarm.mp3; path = ../alarm.mp3; sourceTree = "<group>"; };
 		EC114E721A5FF79600C4D45F /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		EC114E751A5FF90C00C4D45F /* UnbindCardRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnbindCardRequest.h; sourceTree = "<group>"; };
 		EC114E761A5FF90C00C4D45F /* UnbindCardRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnbindCardRequest.m; sourceTree = "<group>"; };
@@ -687,7 +687,7 @@
 		ECB59E9619F6A36D00F69529 /* GetQiwiBillsUrlJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetQiwiBillsUrlJson.m; sourceTree = "<group>"; };
 		ECB59E9819F6A3B300F69529 /* GetQiwiBillsUrlResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetQiwiBillsUrlResponse.h; sourceTree = "<group>"; };
 		ECB59E9919F6A3B300F69529 /* GetQiwiBillsUrlResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetQiwiBillsUrlResponse.m; sourceTree = "<group>"; };
-		ECB5BDAF1A80BB6A00F242A3 /* new_order_notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_order_notification.mp3; sourceTree = "<group>"; };
+		ECB5BDAF1A80BB6A00F242A3 /* new_order_notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = new_order_notification.mp3; path = ../new_order_notification.mp3; sourceTree = "<group>"; };
 		ECB5BDB11A80C50100F242A3 /* IdhashSetSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdhashSetSingleTon.h; sourceTree = "<group>"; };
 		ECB5BDB21A80C50100F242A3 /* IdhashSetSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdhashSetSingleTon.m; sourceTree = "<group>"; };
 		ECB5BDB51A80CBA200F242A3 /* RequestLogOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestLogOut.h; sourceTree = "<group>"; };
@@ -1069,7 +1069,7 @@
 			name = Recall;
 			sourceTree = "<group>";
 		};
-		8FC222701A36E9120003CAAF /* PaymentHistory */ = {
+		8FC222701A36E9120003CAAF /* PaymentHistoryViewController */ = {
 			isa = PBXGroup;
 			children = (
 				8FC222721A36E9360003CAAF /* PaymentHistoryViewController.h */,
@@ -1081,7 +1081,7 @@
 				8FB5C5051A5E620100839F34 /* PaymentLabel.m */,
 				8FC222711A36E9190003CAAF /* PaymentJson */,
 			);
-			name = PaymentHistory;
+			name = PaymentHistoryViewController;
 			sourceTree = "<group>";
 		};
 		8FC222711A36E9190003CAAF /* PaymentJson */ = {
@@ -1111,24 +1111,7 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
-				EC102EF21A6E719600E9EE41 /* AVFoundation.framework */,
-				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
-				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
-				ECB5BDAF1A80BB6A00F242A3 /* new_order_notification.mp3 */,
-				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
-				ECB5BDB41A80CA4700F242A3 /* IdhashSingleTon */,
-				ECFC0C971A7BAB1200EBE358 /* ApiAbilitiesSingleTon */,
-				ECD578131A5E76F200E46DEC /* BadRequest */,
-				ECD578121A5E769C00E46DEC /* GPSConection */,
-				ECB06C981A5D176200001462 /* MapViewController */,
-				ECB24B791A4C05AA0001C6F0 /* GPSIcon */,
-				ECC4718E1A11F4800062803A /* LeftMenu */,
-				ECFD3E4C1A431A5C0066B55A /* internet Conection */,
-				ECB063B31A31E7C5004633A6 /* openMapButtonHandler */,
-				ECAD78BF1A30AA7A005C2468 /* getLastKnownLocation */,
-				EC0798D31A232E290085E3F0 /* Navigation view */,
-				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
-				ECCA908919DEE2050007831F /* JSONModel */,
+				ECB5BDC11A80E4A000F242A3 /* Frameworks */,
 				D70428B419D0071F00F5C38C /* CityMobilDriver */,
 				D70428CE19D0072000F5C38C /* CityMobilDriverTests */,
 				D70428B319D0071F00F5C38C /* Products */,
@@ -1147,30 +1130,10 @@
 		D70428B419D0071F00F5C38C /* CityMobilDriver */ = {
 			isa = PBXGroup;
 			children = (
-				ECCD5A1C1A6CF20D00168B28 /* IncomingOrderViewController */,
-				ECC929F21A19CA840047E84C /* Robot Settings */,
-				ECC8F6E31A373F9100D93B07 /* EndUpViewController */,
-				8FC222701A36E9120003CAAF /* PaymentHistory */,
-				8FC222431A36E7270003CAAF /* RootViewController */,
-				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */,
-				ECEC89C41A2CA76F0036781D /* MyOrdersViewController */,
-				ECD218901A1CE80600F38F7D /* TachometerViewController */,
-				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
-				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
-				EC00342219F15DCA0062A6DF /* Driver Profil */,
-				ECEBD87B1A0A661600118466 /* Registration */,
-				ECB38B201A0CFA3600DFBB77 /* DesignationIconsViewController */,
-				ECCC12091A0CACDE00AC94EE /* Regional Settings */,
-				ECB3D7581A03B35C0039DD3A /* TariffsCityMobilViewController */,
-				ECC978EF1A00DCE800D77B80 /* StatisticsViewController */,
-				ECB49FC919F528D90022EB28 /* ReplenishmentViewController */,
-				ECC71B8C19F00BBB00468D33 /* SendingMessageViewController */,
-				EC55988819E535D000877CBC /* Single Data Provider */,
+				ECB5BDC31A80E5C700F242A3 /* Other */,
+				ECB5BDC21A80E55900F242A3 /* SingleTones */,
+				ECB5BDBF1A80E41E00F242A3 /* ViewControllers */,
 				ECC4718F1A11F62D0062803A /* Categories */,
-				ECC4718D1A11F3C50062803A /* LoginViewController */,
-				ECC4718C1A11F30E0062803A /* infoViewController */,
-				ECC4718B1A11F2920062803A /* MessagesViewController */,
-				ECC471891A11F1AE0062803A /* OrdersHistoryViewController */,
 				D70428B919D0071F00F5C38C /* AppDelegate.h */,
 				D70428BA19D0071F00F5C38C /* AppDelegate.m */,
 				ECEC89CE1A2CA9170036781D /* Main.storyboard */,
@@ -1183,6 +1146,7 @@
 		D70428B519D0071F00F5C38C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ECB5BDC01A80E47E00F242A3 /* Sounds */,
 				ECCD99231A19DF93009D482C /* Roboto Fonts */,
 				ECCD34511A03D422000444BF /* Images */,
 				D70428B619D0071F00F5C38C /* Info.plist */,
@@ -1209,20 +1173,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EC00342219F15DCA0062A6DF /* Driver Profil */ = {
+		EC00342219F15DCA0062A6DF /* DriverProfilViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				ECC867071A690A9D00C599CB /* Createw Profile View Controller */,
-				ECC867061A690A7A00C599CB /* Profile View Controller */,
-				ECC8670A1A690B2600C599CB /* Sending Documents */,
-				ECC867091A690B0B00C599CB /* Edit Car Info View Controller */,
-				ECC867081A690AF800C599CB /* Car Info View Controller */,
-				EC4CB40019F7D18A0028F219 /* requests */,
+				ECC867071A690A9D00C599CB /* CreatewProfileViewController */,
+				ECC867061A690A7A00C599CB /* ProfileViewController */,
+				ECC8670A1A690B2600C599CB /* SendingDocumentsViewController */,
+				ECC867091A690B0B00C599CB /* EditCarInfoViewController */,
+				ECC867081A690AF800C599CB /* CarInfoViewController */,
 				ECF75B1B1A5FBA310018669C /* Cards View Controller */,
 				ECF2FFF81A40628A00C8A269 /* ScaleStringLabel.h */,
 				ECF2FFF91A40628A00C8A269 /* ScaleStringLabel.m */,
+				EC4CB40019F7D18A0028F219 /* requests */,
 			);
-			name = "Driver Profil";
+			name = DriverProfilViewControllers;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -1239,6 +1203,7 @@
 				ECB1EC1E1A42D06D008CC239 /* NavigationView.m */,
 			);
 			name = "Navigation view";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		EC114E741A5FF8E200C4D45F /* Requests */ = {
@@ -1397,7 +1362,6 @@
 				ECAD78C41A30AAF1005C2468 /* GetLastKnownLocationResponse.m */,
 			);
 			name = getLastKnownLocation;
-			path = CityMobilDriver;
 			sourceTree = "<group>";
 		};
 		ECB063B31A31E7C5004633A6 /* openMapButtonHandler */ = {
@@ -1407,6 +1371,7 @@
 				EC84D9AE1A3EDB1700ECC915 /* OpenMapButtonHandler.m */,
 			);
 			name = openMapButtonHandler;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECB06C981A5D176200001462 /* MapViewController */ = {
@@ -1418,6 +1383,7 @@
 				ECB06C9A1A5D17C900001462 /* MapViewController.m */,
 			);
 			name = MapViewController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECB0AF631A68F9BA0082B6B0 /* GetNewMail */ = {
@@ -1438,6 +1404,7 @@
 				ECB24B7B1A4C05E10001C6F0 /* GPSIcon.m */,
 			);
 			name = GPSIcon;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECB38B201A0CFA3600DFBB77 /* DesignationIconsViewController */ = {
@@ -1626,6 +1593,7 @@
 				ECB5BDB21A80C50100F242A3 /* IdhashSetSingleTon.m */,
 			);
 			name = IdhashSingleTon;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECB5BDBB1A80CBD600F242A3 /* LogOut */ = {
@@ -1637,6 +1605,82 @@
 				ECB5BDB91A80CBC500F242A3 /* ResponseLogOut.m */,
 			);
 			name = LogOut;
+			sourceTree = "<group>";
+		};
+		ECB5BDBF1A80E41E00F242A3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ECB06C981A5D176200001462 /* MapViewController */,
+				ECCD5A1C1A6CF20D00168B28 /* IncomingOrderViewController */,
+				ECC929F21A19CA840047E84C /* RobotSettingsViewController */,
+				ECC8F6E31A373F9100D93B07 /* EndUpViewController */,
+				8FC222701A36E9120003CAAF /* PaymentHistoryViewController */,
+				8FC222431A36E7270003CAAF /* RootViewController */,
+				ECEC89881A2CA0E40036781D /* SelectedOrdersViewController */,
+				ECEC89C41A2CA76F0036781D /* MyOrdersViewController */,
+				ECD218901A1CE80600F38F7D /* TachometerViewController */,
+				EC5AD43C1A14F9B300588DE6 /* TakenOrderViewController */,
+				ECE1C64E19EE6960001A9A96 /* SettingsViewController */,
+				EC00342219F15DCA0062A6DF /* DriverProfilViewControllers */,
+				ECEBD87B1A0A661600118466 /* RegistrationViewControllers */,
+				ECB38B201A0CFA3600DFBB77 /* DesignationIconsViewController */,
+				ECCC12091A0CACDE00AC94EE /* RegionalSettingsViewController */,
+				ECB3D7581A03B35C0039DD3A /* TariffsCityMobilViewController */,
+				ECC978EF1A00DCE800D77B80 /* StatisticsViewController */,
+				ECB49FC919F528D90022EB28 /* ReplenishmentViewController */,
+				ECC71B8C19F00BBB00468D33 /* SendingMessageViewController */,
+				ECC4718D1A11F3C50062803A /* LoginViewController */,
+				ECC4718C1A11F30E0062803A /* infoViewController */,
+				ECC4718B1A11F2920062803A /* MessagesViewController */,
+				ECC471891A11F1AE0062803A /* OrdersHistoryViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ECB5BDC01A80E47E00F242A3 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				ECB5BDAF1A80BB6A00F242A3 /* new_order_notification.mp3 */,
+				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		ECB5BDC11A80E4A000F242A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
+				ECB3D7661A03D16E0039DD3A /* XMLReader-master */,
+				ECCA908919DEE2050007831F /* JSONModel */,
+				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
+				EC102EF21A6E719600E9EE41 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECB5BDC21A80E55900F242A3 /* SingleTones */ = {
+			isa = PBXGroup;
+			children = (
+				EC55988819E535D000877CBC /* Single Data Provider */,
+				ECB5BDB41A80CA4700F242A3 /* IdhashSingleTon */,
+				ECFC0C971A7BAB1200EBE358 /* ApiAbilitiesSingleTon */,
+			);
+			name = SingleTones;
+			sourceTree = "<group>";
+		};
+		ECB5BDC31A80E5C700F242A3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				EC0798D31A232E290085E3F0 /* Navigation view */,
+				ECAD78BF1A30AA7A005C2468 /* getLastKnownLocation */,
+				ECB063B31A31E7C5004633A6 /* openMapButtonHandler */,
+				ECFD3E4C1A431A5C0066B55A /* internet Conection */,
+				ECC4718E1A11F4800062803A /* LeftMenu */,
+				ECB24B791A4C05AA0001C6F0 /* GPSIcon */,
+				ECD578121A5E769C00E46DEC /* GPSConection */,
+				ECD578131A5E76F200E46DEC /* BadRequest */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		ECC471891A11F1AE0062803A /* OrdersHistoryViewController */ = {
@@ -1711,7 +1755,6 @@
 				84E6EDCB19E857D100EFFC54 /* LeftMenu.m */,
 			);
 			name = LeftMenu;
-			path = CityMobilDriver;
 			sourceTree = "<group>";
 		};
 		ECC4718F1A11F62D0062803A /* Categories */ = {
@@ -1736,49 +1779,49 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		ECC867061A690A7A00C599CB /* Profile View Controller */ = {
+		ECC867061A690A7A00C599CB /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EC00342319F1620A0062A6DF /* ProfilViewController.h */,
 				EC00342419F1620A0062A6DF /* ProfilViewController.m */,
 			);
-			name = "Profile View Controller";
+			name = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		ECC867071A690A9D00C599CB /* Createw Profile View Controller */ = {
+		ECC867071A690A9D00C599CB /* CreatewProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECCB8AE219FFD6480012F2FD /* CreateProfilViewController.h */,
 				ECCB8AE319FFD6480012F2FD /* CreateProfilViewController.m */,
 			);
-			name = "Createw Profile View Controller";
+			name = CreatewProfileViewController;
 			sourceTree = "<group>";
 		};
-		ECC867081A690AF800C599CB /* Car Info View Controller */ = {
+		ECC867081A690AF800C599CB /* CarInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECC965261A00C23800768E1F /* CarInfoViewController.h */,
 				ECC965271A00C23800768E1F /* CarInfoViewController.m */,
 			);
-			name = "Car Info View Controller";
+			name = CarInfoViewController;
 			sourceTree = "<group>";
 		};
-		ECC867091A690B0B00C599CB /* Edit Car Info View Controller */ = {
+		ECC867091A690B0B00C599CB /* EditCarInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECC965291A00D91A00768E1F /* EditCarInfoViewController.h */,
 				ECC9652A1A00D91A00768E1F /* EditCarInfoViewController.m */,
 			);
-			name = "Edit Car Info View Controller";
+			name = EditCarInfoViewController;
 			sourceTree = "<group>";
 		};
-		ECC8670A1A690B2600C599CB /* Sending Documents */ = {
+		ECC8670A1A690B2600C599CB /* SendingDocumentsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECF989441A15E7260073FE17 /* SendingDocumentsViewController.h */,
 				ECF989451A15E7260073FE17 /* SendingDocumentsViewController.m */,
 			);
-			name = "Sending Documents";
+			name = SendingDocumentsViewController;
 			sourceTree = "<group>";
 		};
 		ECC8F6E31A373F9100D93B07 /* EndUpViewController */ = {
@@ -1810,7 +1853,7 @@
 			name = SetBill;
 			sourceTree = "<group>";
 		};
-		ECC929F21A19CA840047E84C /* Robot Settings */ = {
+		ECC929F21A19CA840047E84C /* RobotSettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				ECC929F61A1A115E0047E84C /* Requests */,
@@ -1818,7 +1861,7 @@
 				ECC929F41A19CAA80047E84C /* RobotSettingsViewController.m */,
 				ECC42DA71A1B3F750020F7C7 /* childYear.xib */,
 			);
-			name = "Robot Settings";
+			name = RobotSettingsViewController;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -1946,7 +1989,7 @@
 			name = SetDriverPayment;
 			sourceTree = "<group>";
 		};
-		ECCC12091A0CACDE00AC94EE /* Regional Settings */ = {
+		ECCC12091A0CACDE00AC94EE /* RegionalSettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EC1C7C351A7B82F1004A3B5D /* RequestGetApiAbilities */,
@@ -1955,7 +1998,7 @@
 				EC24371F1A0BA1DA005FC018 /* RegionalSettingsViewController.m */,
 				ECCC120E1A0CD54500AC94EE /* FoundRegion.xib */,
 			);
-			name = "Regional Settings";
+			name = RegionalSettingsViewController;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -2144,6 +2187,7 @@
 				EC0662BC1A440CFB007F2126 /* GPSConection.m */,
 			);
 			name = GPSConection;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECD578131A5E76F200E46DEC /* BadRequest */ = {
@@ -2153,6 +2197,7 @@
 				ECFD3E4A1A42C5400066B55A /* BadRequest.m */,
 			);
 			name = BadRequest;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECE1C64E19EE6960001A9A96 /* SettingsViewController */ = {
@@ -2201,7 +2246,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		ECEBD87B1A0A661600118466 /* Registration */ = {
+		ECEBD87B1A0A661600118466 /* RegistrationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				ECEBD87F1A0A73A400118466 /* Requests */,
@@ -2214,7 +2259,7 @@
 				ECF2FFF51A40240B00C8A269 /* LeftPaddingTextField.h */,
 				ECF2FFF61A40240B00C8A269 /* LeftPaddingTextField.m */,
 			);
-			name = Registration;
+			name = RegistrationViewControllers;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -2340,6 +2385,7 @@
 				ECFC0C991A7BAB4800EBE358 /* ApiAbilitiesSingleTon.m */,
 			);
 			name = ApiAbilitiesSingleTon;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ECFD3E4C1A431A5C0066B55A /* internet Conection */ = {
@@ -2351,7 +2397,6 @@
 				ECFD3E511A431B350066B55A /* InternetConectionViewController.m */,
 			);
 			name = "internet Conection";
-			path = CityMobilDriver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
