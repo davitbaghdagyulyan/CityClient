@@ -126,7 +126,10 @@
             [view2 removeFromSuperview];
             if (!loadcount)
             {
+              
                  [self requestGetCards];
+                              
+               
             }
             else
             {
@@ -153,8 +156,10 @@
                view2.customWebView.delegate=self;
                 view2.frame = CGRectMake(5,98, self.view.frame.size.width-10, self.view.frame.size.height - 98);
                 [self.view addSubview:view2];
+           
+                          [self requestGetQiwiBillsUrl];
+                            
                 
-                [self requestGetQiwiBillsUrl];
                 
             }
             else
@@ -345,7 +350,11 @@
 
 //*
 /*********************************End Karen Change**********************************************************************/
-        
+        if (self.segmentedControl.selectedSegmentIndex==1)
+        {
+            return;
+        }
+
       if(getCardsResponseObject.cards.count==0)
       {
           [view1 removeFromSuperview];

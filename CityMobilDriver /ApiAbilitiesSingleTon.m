@@ -17,14 +17,14 @@
         
         obj = [[super alloc] init];
         
-        obj.api_registration_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]valueForKey:@"api_registration_enabled"];
-        obj.messages_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]valueForKey:@"messages_enabled"];
-        obj.managers_calling_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]stringForKey:@"managers_calling_enabled"];
-        obj.autoassignment_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]stringForKey:@"autoassignment_enabled"];
-        obj.yandex_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]stringForKey:@"yandex_enabled"];
-        obj.new_order_notification_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]stringForKey:@"new_order_notification_enabled"];
-        obj.statistics_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]stringForKey:@"statistics_enabled"];
-        obj.calculate_wait_time_enabled=(NSInteger)[[NSUserDefaults standardUserDefaults]stringForKey:@"statistics_enabled"];
+        obj.api_registration_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"api_registration_enabled"];
+        obj.messages_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"messages_enabled"];
+        obj.managers_calling_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"managers_calling_enabled"];
+        obj.autoassignment_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"autoassignment_enabled"];
+        obj.yandex_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"yandex_enabled"];
+        obj.new_order_notification_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"new_order_notification_enabled"];
+        obj.statistics_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"statistics_enabled"];
+        obj.calculate_wait_time_enabled=[[NSUserDefaults standardUserDefaults]integerForKey:@"calculate_wait_time_enabled"];
 
     }
     

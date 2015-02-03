@@ -429,25 +429,26 @@
         {
             NSUserDefaults*defaults=[NSUserDefaults standardUserDefaults];
             
-            [defaults setObject:responseGetApiAbilitiesObject.api_registration_enabled forKey:@"api_registration_enabled"];
+            [defaults setInteger:[responseGetApiAbilitiesObject.api_registration_enabled integerValue] forKey:@"api_registration_enabled"];
             
-            [defaults setObject:responseGetApiAbilitiesObject.messages_enabled
+            [defaults setInteger:[responseGetApiAbilitiesObject.messages_enabled integerValue]
                          forKey:@"messages_enabled"];
             
-            [defaults setObject:responseGetApiAbilitiesObject.managers_calling_enabled forKey:@"managers_calling_enabled"];
+            [defaults setInteger:[responseGetApiAbilitiesObject.managers_calling_enabled integerValue] forKey:@"managers_calling_enabled"];
             
-            [defaults setObject:responseGetApiAbilitiesObject.autoassignment_enabled
+            [defaults setInteger:[responseGetApiAbilitiesObject.autoassignment_enabled integerValue]
                          forKey:@"autoassignment_enabled"];
             
-            [defaults setObject:responseGetApiAbilitiesObject.yandex_enabled
+            [defaults setInteger:[responseGetApiAbilitiesObject.yandex_enabled integerValue]
                          forKey:@"yandex_enabled"];
             
-            [defaults setObject:responseGetApiAbilitiesObject.new_order_notification_enabled forKey:@"new_order_notification_enabled"];
+            [defaults setInteger:[responseGetApiAbilitiesObject.new_order_notification_enabled integerValue]
+                          forKey:@"new_order_notification_enabled"];
             
-            [defaults setObject:responseGetApiAbilitiesObject.statistics_enabled
+            [defaults setInteger:[responseGetApiAbilitiesObject.statistics_enabled integerValue]
                          forKey:@"statistics_enabled"];
             
-            [defaults setObject:responseGetApiAbilitiesObject.calculate_wait_time_enabled
+            [defaults setInteger:[responseGetApiAbilitiesObject.calculate_wait_time_enabled integerValue]
                          forKey:@"calculate_wait_time_enabled"];
             
             [defaults setObject:[responseObject.zones[selectedIndexOfCell]country]
@@ -463,7 +464,7 @@
                          forKey:@"api_url"];
             
             
-            [defaults setObject:[[responseObject.zones[selectedIndexOfCell]application_behavior]sound_notification_on_new_order]
+            [defaults setInteger:[[[responseObject.zones[selectedIndexOfCell]application_behavior]sound_notification_on_new_order] integerValue]
                          forKey:@"sound_notification_on_new_order"];
             NSObject*object=[ApiAbilitiesSingleTon sharedApiAbilities];
             object=nil;
