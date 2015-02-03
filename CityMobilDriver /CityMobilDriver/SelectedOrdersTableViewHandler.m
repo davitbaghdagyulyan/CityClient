@@ -71,8 +71,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    
-    
+
     NSInteger k=0;
     if([[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortrait || [[UIApplication sharedApplication]statusBarOrientation]==UIDeviceOrientationPortraitUpsideDown)
     {

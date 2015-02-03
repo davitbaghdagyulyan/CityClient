@@ -11,6 +11,7 @@
 #import "Reachability.h"
 #import "GetNewMailJson.h"
 #import "GetNewMailResponse.h"
+#import "SendRequestLogOut.h"
 @interface RootViewController ()
 {
     //ARUS
@@ -394,11 +395,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)back:(id)sender
 
-{UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Подтвердите выход из приложения" message:nil preferredStyle:UIAlertControllerStyleAlert];
 UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
-                                    handler:^(UIAlertAction * action) {
-                                    [[self navigationController] pushViewController:log animated:NO];
-                                                              }];
+                                    handler:^(UIAlertAction * action)
+    {
+        SendRequestLogOut*sendRequestLogOutObject=[[SendRequestLogOut alloc] init];
+        [sendRequestLogOutObject requestLogOut:self];
+        
+    }];
 UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action) {
                                             [self requestGetOrders];

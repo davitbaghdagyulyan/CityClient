@@ -9,8 +9,10 @@
 #import "LeftMenu.h"
 #import "RootViewController.h"
 #import "NavigationView.h"
-@implementation LeftMenu
+#import "SendRequestLogOut.h"
 
+
+@implementation LeftMenu
 {
     Class myClass;
     NSString*identity;
@@ -20,7 +22,6 @@
     CGPoint oldTouchLocation;
 //    UITouch *touch;
     CGPoint touchLocation;
-
 }
 
 +(LeftMenu*)getLeftMenu:(id)curentSelf
@@ -232,7 +233,8 @@
             UIAlertAction*cancel = [UIAlertAction actionWithTitle:@"ОК" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action)
                                                           {
-                                                              [self pushOrPoptoViewContrller:myClass andIdentity:identity];
+        SendRequestLogOut*sendRequestLogOutObject=[[SendRequestLogOut alloc] init];
+        [sendRequestLogOutObject requestLogOut:self.curentViewController];
                                                           }];
             UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault
                                                                  handler:^(UIAlertAction * action) {

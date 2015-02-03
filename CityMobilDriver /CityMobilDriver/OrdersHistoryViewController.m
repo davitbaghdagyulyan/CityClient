@@ -87,11 +87,11 @@
     
     if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
     {
-        self.yandexButton.userInteractionEnabled=NO;
+        self.yandexButton.hidden=NO;
     }
     else
     {
-        self.yandexButton.userInteractionEnabled=YES;
+        self.yandexButton.hidden=YES;
     }
     
      [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
@@ -132,9 +132,10 @@
     leftMenu=[LeftMenu getLeftMenu:self];
 
 }
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   // Dispose of any resources that can be recreated.
 }
 
 

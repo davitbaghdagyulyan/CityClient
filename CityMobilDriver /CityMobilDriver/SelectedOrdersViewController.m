@@ -9,7 +9,6 @@
 #import "SelectedOrdersViewController.h"
 #import "CustomCellSelectedOrders.h"
 #import "SingleDataProvider.h"
-
 #import "SelectedOrdersDetailsResponse.h"
 #import "SelectedOrdersDetailsJson.h"
 #import "JSONModel.h"
@@ -25,6 +24,7 @@
 
 @interface SelectedOrdersViewController ()
 {
+ 
     //LEFT MUENU
 
     LeftMenu*leftMenu;
@@ -48,7 +48,9 @@
     SelectedOrdersTableViewHandler* selectedOrdersTableViewHandlerObject;
     CustomCellSelectORDER*cell;
     OpenMapButtonHandler*openMapButtonHandlerObject;
-   }
+    NSMutableSet*idHashSet;
+    BOOL MustPlaySound;
+}
 
 @end
 
@@ -65,9 +67,8 @@
     NSString * result;
    //User Interface
     NSTimer * timerForTitleLabel;
-   
-    
 }
+
 -(void)swipeHandler:(UIPanGestureRecognizer *)sender
 {
     static BOOL isMove;
@@ -131,11 +132,7 @@
          }
                          completion:nil
          ];
-        
     }
-    
-    
-    
 }
 
 -(void)setFilter:(NSDictionary *)filter
@@ -147,14 +144,14 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-  
+    idHashSet=[[NSMutableSet alloc] initWithSet:[IdhashSetSingleTon getIdHashSet]];
     if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
     {
-        self.yandexButton.userInteractionEnabled=NO;
+        self.yandexButton.hidden=NO;
     }
     else
     {
-        self.yandexButton.userInteractionEnabled=YES;
+        self.yandexButton.hidden=YES;
     }
     
   [[SingleDataProvider sharedKey]setGpsButtonHandler:self.gpsButton];
@@ -316,10 +313,56 @@
             [self presentViewController:alertServerErr animated:YES completion:nil];
         }
         else if(selectedOrdersDetailsResponseObject.code==nil)
-        {
+    {
             alertServErrIsCreated=NO;
+    if ([ApiAbilitiesSingleTon sharedApiAbilities].new_order_notification_enabled)
+        {
+            NSString*idhash;
+            
+            if (!idHashSet.count)
+            {
+                MustPlaySound=NO;
+                for (int i=0; i<selectedOrdersDetailsResponseObject.orders.count;i++)
+                {
+                idhash=[[selectedOrdersDetailsResponseObject.orders objectAtIndex:i]idhash];
+                    [idHashSet addObject:idhash];
+
+                }
+                [IdhashSetSingleTon setIdHashSet:idHashSet];
+            }
+            else
+            {
+                for (int i=0; i<selectedOrdersDetailsResponseObject.orders.count;i++)
+                {
+                    idhash=[[selectedOrdersDetailsResponseObject.orders objectAtIndex:i]idhash];
+                    
+                    if (![idHashSet containsObject:idhash])
+                    {
+                        [idHashSet addObject:idhash];
+                        [IdhashSetSingleTon setIdHashSet:idHashSet];
+                        MustPlaySound=YES;
+                    }
+                }
+            }
+          
+            if (MustPlaySound)
+            {
+                NSString *audioFilePath = [[NSBundle mainBundle] pathForResource:@"new_order_notification" ofType:@"mp3"];
+                NSURL *pathAsURL = [[NSURL alloc] initFileURLWithPath:audioFilePath];
+                
+                //    // Init the audio player.
+                NSError *error;
+                self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:pathAsURL error:&error];
+                [self.player play];
+                MustPlaySound=NO;
+            }
+            
+            
+        }
+        
         }
         flag1=1;
+        
         [selectedOrdersTableViewHandlerObject setResponseObject:selectedOrdersDetailsResponseObject andStringforSroch:self.stringForSrochno andFlag1:flag1 andCurentSelf:self andNumberOfClass:0];
         if (selectedOrdersDetailsResponseObject.code==nil && data)
         {
@@ -349,6 +392,7 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [requestTimer invalidate];
+    [self.player stop];
 }
 
 

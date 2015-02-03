@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IdhashSetSingleTon.h"
 #import "SelectedOrdersTableViewHandler.h"
 #import "CustomCellSelectORDER.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface SelectedOrdersViewController : UIViewController<UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
@@ -33,4 +34,5 @@
 @property (nonatomic,weak) IBOutlet UIButton* yandexButton;
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 -(void)setFilter:(NSDictionary *)filter;
+@property(nonatomic,strong)AVAudioPlayer*player;
 @end

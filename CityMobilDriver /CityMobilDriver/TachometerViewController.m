@@ -58,11 +58,11 @@
     
     if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
     {
-        self.yandexButton.userInteractionEnabled=NO;
+        self.yandexButton.hidden=NO;
     }
     else
     {
-        self.yandexButton.userInteractionEnabled=YES;
+        self.yandexButton.hidden=YES;
     }
 
      [GPSConection showGPSConection:self];

@@ -89,33 +89,33 @@
     
     if([ApiAbilitiesSingleTon sharedApiAbilities].autoassignment_enabled)
     {
-        self.yandexLabel.userInteractionEnabled=NO;
-        self.cityLabel.userInteractionEnabled=NO;
-        self.yandexView.userInteractionEnabled=NO;
-        self.cityView.userInteractionEnabled=NO;
+        self.yandexLabel.hidden=NO;
+        self.cityLabel.hidden=NO;
+        self.yandexView.hidden=NO;
+        self.cityView.hidden=NO;
     }
     else
     {
-        self.yandexLabel.userInteractionEnabled=YES;
-        self.cityLabel.userInteractionEnabled=YES;
-        self.yandexView.userInteractionEnabled=YES;
-        self.cityView.userInteractionEnabled=YES;
+        self.yandexLabel.hidden=YES;
+        self.cityLabel.hidden=YES;
+        self.yandexView.hidden=YES;
+        self.cityView.hidden=YES;
     }
     
     if([ApiAbilitiesSingleTon sharedApiAbilities].yandex_enabled)
     {
-        self.yandexLabel.userInteractionEnabled=NO;
-        self.yandexView.userInteractionEnabled=NO;
+        self.yandexLabel.hidden=NO;
+        self.yandexView.hidden=NO;
         
-        self.yandexIcon.userInteractionEnabled=NO;
+        self.yandexIcon.hidden=NO;
     
     }
     else
     {
-        self.yandexLabel.userInteractionEnabled=YES;
-        self.yandexView.userInteractionEnabled=YES;
+        self.yandexLabel.hidden=YES;
+        self.yandexView.hidden=YES;
         
-        self.yandexIcon.userInteractionEnabled=YES;
+        self.yandexIcon.hidden=YES;
 
     }
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LeftMenu : UITableView <UITableViewDelegate,UITableViewDataSource>
+
 @property(strong,nonatomic)UIViewController* curentViewController;
 @property(strong,nonatomic)NSMutableArray*nameArray;
 +(LeftMenu*)getLeftMenu:(id)curentSelf;
@@ -17,4 +18,5 @@
 @property(nonatomic,strong)NSString*tariffName;
 @property(nonatomic,strong)NSMutableArray*indexArray;
 @property(nonatomic,assign)BOOL isChangedRegion;
+
 @end

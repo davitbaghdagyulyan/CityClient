@@ -194,6 +194,11 @@
 		ECB52E601A0785820091293F /* MinPriceClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB52E5F1A0785820091293F /* MinPriceClass.m */; };
 		ECB59E9719F6A36D00F69529 /* GetQiwiBillsUrlJson.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB59E9619F6A36D00F69529 /* GetQiwiBillsUrlJson.m */; };
 		ECB59E9A19F6A3B300F69529 /* GetQiwiBillsUrlResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB59E9919F6A3B300F69529 /* GetQiwiBillsUrlResponse.m */; };
+		ECB5BDB01A80BB6B00F242A3 /* new_order_notification.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECB5BDAF1A80BB6A00F242A3 /* new_order_notification.mp3 */; };
+		ECB5BDB31A80C50100F242A3 /* IdhashSetSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB5BDB21A80C50100F242A3 /* IdhashSetSingleTon.m */; };
+		ECB5BDB71A80CBA300F242A3 /* RequestLogOut.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB5BDB61A80CBA300F242A3 /* RequestLogOut.m */; };
+		ECB5BDBA1A80CBC500F242A3 /* ResponseLogOut.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB5BDB91A80CBC500F242A3 /* ResponseLogOut.m */; };
+		ECB5BDBE1A80CCB700F242A3 /* SendRequestLogOut.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB5BDBD1A80CCB700F242A3 /* SendRequestLogOut.m */; };
 		ECBC00191A0B8A3A0040EBC7 /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC00181A0B8A3A0040EBC7 /* CustomTableView.m */; };
 		ECBC001C1A0BBF900040EBC7 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBC001B1A0BBF900040EBC7 /* CustomLabel.m */; };
 		ECBFF24419F9106600DE8131 /* CardsElements.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBFF24319F9106600DE8131 /* CardsElements.m */; };
@@ -682,6 +687,15 @@
 		ECB59E9619F6A36D00F69529 /* GetQiwiBillsUrlJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetQiwiBillsUrlJson.m; sourceTree = "<group>"; };
 		ECB59E9819F6A3B300F69529 /* GetQiwiBillsUrlResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetQiwiBillsUrlResponse.h; sourceTree = "<group>"; };
 		ECB59E9919F6A3B300F69529 /* GetQiwiBillsUrlResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetQiwiBillsUrlResponse.m; sourceTree = "<group>"; };
+		ECB5BDAF1A80BB6A00F242A3 /* new_order_notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_order_notification.mp3; sourceTree = "<group>"; };
+		ECB5BDB11A80C50100F242A3 /* IdhashSetSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdhashSetSingleTon.h; sourceTree = "<group>"; };
+		ECB5BDB21A80C50100F242A3 /* IdhashSetSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdhashSetSingleTon.m; sourceTree = "<group>"; };
+		ECB5BDB51A80CBA200F242A3 /* RequestLogOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestLogOut.h; sourceTree = "<group>"; };
+		ECB5BDB61A80CBA300F242A3 /* RequestLogOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestLogOut.m; sourceTree = "<group>"; };
+		ECB5BDB81A80CBC500F242A3 /* ResponseLogOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseLogOut.h; sourceTree = "<group>"; };
+		ECB5BDB91A80CBC500F242A3 /* ResponseLogOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseLogOut.m; sourceTree = "<group>"; };
+		ECB5BDBC1A80CCB700F242A3 /* SendRequestLogOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendRequestLogOut.h; sourceTree = "<group>"; };
+		ECB5BDBD1A80CCB700F242A3 /* SendRequestLogOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendRequestLogOut.m; sourceTree = "<group>"; };
 		ECBC00171A0B8A3A0040EBC7 /* CustomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableView.h; sourceTree = "<group>"; };
 		ECBC00181A0B8A3A0040EBC7 /* CustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableView.m; sourceTree = "<group>"; };
 		ECBC001A1A0BBF900040EBC7 /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
@@ -1016,6 +1030,7 @@
 		8FC222431A36E7270003CAAF /* RootViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ECB5BDBB1A80CBD600F242A3 /* LogOut */,
 				ECB0AF631A68F9BA0082B6B0 /* GetNewMail */,
 				8FC222551A36E7990003CAAF /* RootViewController.h */,
 				8FC222561A36E7990003CAAF /* RootViewController.m */,
@@ -1024,6 +1039,8 @@
 				8FC222591A36E7990003CAAF /* CustomCell.xib */,
 				8FC222451A36E74C0003CAAF /* Recall */,
 				8FC222441A36E7320003CAAF /* Orders */,
+				ECB5BDBC1A80CCB700F242A3 /* SendRequestLogOut.h */,
+				ECB5BDBD1A80CCB700F242A3 /* SendRequestLogOut.m */,
 			);
 			name = RootViewController;
 			sourceTree = "<group>";
@@ -1094,10 +1111,12 @@
 		D70428A919D0071F00F5C38C = {
 			isa = PBXGroup;
 			children = (
-				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
-				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
-				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
 				EC102EF21A6E719600E9EE41 /* AVFoundation.framework */,
+				ECB06C9F1A5D417F00001462 /* MapKit.framework */,
+				ECFD3E481A42C2D60066B55A /* PrefixHeader.pch */,
+				ECB5BDAF1A80BB6A00F242A3 /* new_order_notification.mp3 */,
+				EC102EF81A6E86B800E9EE41 /* alarm.mp3 */,
+				ECB5BDB41A80CA4700F242A3 /* IdhashSingleTon */,
 				ECFC0C971A7BAB1200EBE358 /* ApiAbilitiesSingleTon */,
 				ECD578131A5E76F200E46DEC /* BadRequest */,
 				ECD578121A5E769C00E46DEC /* GPSConection */,
@@ -1598,6 +1617,26 @@
 				ECF529C31A124AA000150931 /* CustomWebView.m */,
 			);
 			name = GetQiwiBillsUrl;
+			sourceTree = "<group>";
+		};
+		ECB5BDB41A80CA4700F242A3 /* IdhashSingleTon */ = {
+			isa = PBXGroup;
+			children = (
+				ECB5BDB11A80C50100F242A3 /* IdhashSetSingleTon.h */,
+				ECB5BDB21A80C50100F242A3 /* IdhashSetSingleTon.m */,
+			);
+			name = IdhashSingleTon;
+			sourceTree = "<group>";
+		};
+		ECB5BDBB1A80CBD600F242A3 /* LogOut */ = {
+			isa = PBXGroup;
+			children = (
+				ECB5BDB51A80CBA200F242A3 /* RequestLogOut.h */,
+				ECB5BDB61A80CBA300F242A3 /* RequestLogOut.m */,
+				ECB5BDB81A80CBC500F242A3 /* ResponseLogOut.h */,
+				ECB5BDB91A80CBC500F242A3 /* ResponseLogOut.m */,
+			);
+			name = LogOut;
 			sourceTree = "<group>";
 		};
 		ECC471891A11F1AE0062803A /* OrdersHistoryViewController */ = {
@@ -2492,6 +2531,7 @@
 				ECB38B3C1A0D130B00DFBB77 /* 6@2x.png in Resources */,
 				8FE032F219DEC83B00B17C09 /* icon@2x.png in Resources */,
 				8FC222851A37207C0003CAAF /* n_color copy.png in Resources */,
+				ECB5BDB01A80BB6B00F242A3 /* new_order_notification.mp3 in Resources */,
 				ECB38B361A0D130B00DFBB77 /* 0@2x.png in Resources */,
 				8FB0F8A11A28D9AE003A79E9 /* ic_landmark_airport.png in Resources */,
 				8FE032F419DEC84A00B17C09 /* icon2@2x.png in Resources */,
@@ -2650,6 +2690,7 @@
 				8FC2224E1A36E76D0003CAAF /* OrdersResponse.m in Sources */,
 				EC00342519F1620A0062A6DF /* ProfilViewController.m in Sources */,
 				ECF35CD91A2DFF500005E2A6 /* TachometerViewController.m in Sources */,
+				ECB5BDB31A80C50100F242A3 /* IdhashSetSingleTon.m in Sources */,
 				ECB24B7C1A4C05E10001C6F0 /* GPSIcon.m in Sources */,
 				ECEC89B01A2CA1100036781D /* CustomCellSelectedOrders.m in Sources */,
 				ECCA300619F8F36100BE48E0 /* DriverAllInfoResponse.m in Sources */,
@@ -2670,6 +2711,7 @@
 				EC4CB40619F7E5E00028F219 /* RequestSetDriverInfo.m in Sources */,
 				EC0798D91A2331A10085E3F0 /* yandexIcon.m in Sources */,
 				8F9933181A2CB58A0040C97E /* BuyDeliveryAddressResponse.m in Sources */,
+				ECB5BDBE1A80CCB700F242A3 /* SendRequestLogOut.m in Sources */,
 				EC2437201A0BA1DA005FC018 /* RegionalSettingsViewController.m in Sources */,
 				EC40D44419E436C5007BA02C /* MailElements.m in Sources */,
 				ECC978F21A00DD4700D77B80 /* StatisticsViewController.m in Sources */,
@@ -2720,10 +2762,12 @@
 				8FC2226E1A36E88D0003CAAF /* OrdersHistoryResponse.m in Sources */,
 				ECFD3E551A431CC20066B55A /* Reachability.m in Sources */,
 				EC5BF0981A022E69009EC444 /* RequestGetColorList.m in Sources */,
+				ECB5BDB71A80CBA300F242A3 /* RequestLogOut.m in Sources */,
 				ECC9653A1A01255A00768E1F /* ResponseGetModelList.m in Sources */,
 				8FC2225B1A36E7990003CAAF /* CustomCell.m in Sources */,
 				ECF40D5919D2DD3900699A2F /* UINavigationController+UINavigationController_shouldAutorotate.m in Sources */,
 				ECC8F6E61A373FDC00D93B07 /* EndUpViewController.m in Sources */,
+				ECB5BDBA1A80CBC500F242A3 /* ResponseLogOut.m in Sources */,
 				ECF4A41A1A31A8E30057BE10 /* IntervalsArray.m in Sources */,
 				ECE25C8919E56BE80044F6AD /* textRequest.m in Sources */,
 				EC4CB40919F7F6EF0028F219 /* DriverInfoResponse.m in Sources */,
