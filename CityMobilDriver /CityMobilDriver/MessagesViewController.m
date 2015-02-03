@@ -84,7 +84,6 @@
        
 
         cell =[nib objectAtIndex:0];
-        [cell  setValue:simpleTableIdentifier forKey:@"reuseIdentifier"];
         cell.titLabel.text=[[mailResponseObject.mail objectAtIndex:indexPath.row] getTitle];
         cell.dateLabel.text=[self TimeFormat:[[mailResponseObject.mail objectAtIndex:indexPath.row] getDate]];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;

@@ -10,6 +10,7 @@
 #import "SendingMessageViewController.h"
 #import "OpenMapButtonHandler.h"
 #import "WebViewCell.h"
+
 @interface infoViewController ()
 {
     LeftMenu* leftMenu;
@@ -401,18 +402,20 @@
          {
              leftMenu.flag=1;
              answerButton.userInteractionEnabled=NO;
-             
+             infoTable.userInteractionEnabled=NO;
+             infoTable.tag=1;
              answerButton.tag=2;
              
              [leftMenu.disabledViewsArray removeAllObjects];
              
              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:answerButton.tag]];
-             
+              [leftMenu.disabledViewsArray addObject:[[NSNumber alloc] initWithLong:infoTable.tag]];
          }
          else
          {
              leftMenu.flag=0;
              answerButton.userInteractionEnabled=YES;
+             infoTable.userInteractionEnabled=YES;
          }
      }
      ];
@@ -439,6 +442,7 @@
          {
              leftMenu.flag=0;
              answerButton.userInteractionEnabled=YES;
+               infoTable.userInteractionEnabled=YES;
              
              point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
          }
@@ -447,7 +451,7 @@
              point.x=(CGFloat)leftMenu.frame.size.width/2;
              
              answerButton.userInteractionEnabled=NO;
-             
+             infoTable.userInteractionEnabled=NO;
              leftMenu.flag=1;
          }
          point.y=leftMenu.center.y;
@@ -475,6 +479,7 @@
     }
     leftMenu.center=point;
     answerButton.userInteractionEnabled=NO;
+    infoTable.userInteractionEnabled=NO;
     leftMenu.flag=1;
 }
 
