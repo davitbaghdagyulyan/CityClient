@@ -26,5 +26,6 @@
 - (IBAction)openMap:(UIButton*)sender;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewOrdersPort;
 @property (strong, nonatomic) IBOutlet UILabel *labelEmptyArray;
+-(void)refreshAction;
 @end
 

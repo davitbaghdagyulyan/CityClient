@@ -21,6 +21,7 @@
 #import "BuyDeliveryAddressJson.h"
 #import "BuyDeliveryAddressResponse.h"
 #import "OpenMapButtonHandler.h"
+#import "PullDownToRefresh.h"
 
 @interface SelectedOrdersViewController ()
 {
@@ -55,6 +56,7 @@
     BOOL firstRefresh;
     UILabel*loadLabel;
     BOOL isMove;
+    PullDownToRefresh*pullDownToRefreshObject;
 }
 
 @end
@@ -74,274 +76,13 @@
     NSTimer * timerForTitleLabel;
 }
 
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-//{
-//    
-//  
-//        CGPoint velocity = [(UIPanGestureRecognizer*)gestureRecognizer velocityInView:self.tableViewOrdersDetails];
-//    swipeBool=((fabs(velocity.y) < fabs(velocity.x)));
-//    refreshBool=(((fabs(velocity.y) > fabs(velocity.x)))&&(self.tableViewOrdersDetails.contentOffset.y==0)&&(velocity.y>0));
-//
-//    firstRefresh=YES;
-//    return swipeBool||refreshBool;
-//    
-//  
-//    
-//}
-//
-//-(void)swipeHandler:(UIPanGestureRecognizer *)sender
-//{
-//    static BOOL isMove;
-//    static CGFloat y0=0.0;
-//    static CGFloat y=0.0;
-//    CGPoint touchLocation = [sender locationInView:sender.view];
-//    
-//    NSLog(@"x=%f,y=%f",touchLocation.x,touchLocation.y);
-//    
-//    if (sender.state == UIGestureRecognizerStateBegan)
-//    {
-//        if (swipeBool)
-//        {
-//            isMove=leftMenu.flag==0 && touchLocation.x>30;
-//            if (isMove)
-//                return;
-//        }
-//        else if (refreshBool)
-//        {
-//            y0=touchLocation.y;
-//            loadLabel=[[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, 68, 0, 2)];
-//            loadLabel.backgroundColor=[UIColor orangeColor];
-//            [self.view addSubview:loadLabel];
-//            
-//        }
-//
-//       
-//    }
-//    if (sender.state == UIGestureRecognizerStateChanged)
-//    {
-//        if (swipeBool)
-//        {
-//        if (isMove)
-//            return;
-//        CGPoint point;
-//        point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
-//        point.y=leftMenu.center.y;
-//        if (point.x>leftMenu.frame.size.width/2)
-//        {
-//            return;
-//        }
-//        leftMenu.center=point;
-//        
-//        leftMenu.flag=1;
-//        }
-//    }
-//    else if (refreshBool)
-//    {
-//        CGPoint point=self.view.center;
-//        point.y=68;
-//        y=touchLocation.y;
-//        CGFloat delta=y-y0;
-//        CGFloat unit=self.view.bounds.size.width/150;
-//        CGPoint velocity = [sender velocityInView:self.tableViewOrdersDetails];
-//        if (delta<150)
-//        {
-//            if (velocity.y>0)
-//            {
-//                loadLabel.bounds=CGRectMake(0,0, delta*unit, 4);
-//                loadLabel.center=point;
-//            }
-//            else
-//            {
-//                [loadLabel removeFromSuperview];
-//            }
-//            
-//        }
-//        if (delta>=150&&firstRefresh)
-//        {
-//            firstRefresh=NO;
-//            [self refreshAction];
-//            [loadLabel removeFromSuperview];
-//        }
-//    }
-//
-//    if (sender.state == UIGestureRecognizerStateEnded)
-//    {
-//        if (swipeBool)
-//        {
-//        if (isMove)
-//            return;
-//        isMove=NO;
-//        [UIView animateWithDuration:0.5
-//                              delay:0.0
-//                            options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-//                         animations:^(void)
-//         {
-//             CGPoint point;
-//             NSLog(@"\n%f", 2*leftMenu.center.x);
-//             NSLog(@"\n%f",leftMenu.frame.size.width/2);
-//             if (touchLocation.x<=leftMenu.frame.size.width/2)
-//             {
-//                 leftMenu.flag=0;
-//                 
-//                 point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
-//             }
-//             else if (touchLocation.x>leftMenu.frame.size.width/2)
-//             {
-//                 point.x=(CGFloat)leftMenu.frame.size.width/2;
-//                 
-//                 
-//                 leftMenu.flag=1;
-//             }
-//             point.y=leftMenu.center.y;
-//             leftMenu.center=point;
-//             NSLog(@"\n%f",leftMenu.frame.size.width);
-//             
-//         }
-//                         completion:nil
-//         ];
-//    }
-//        else if (refreshBool)
-//        {
-//            [loadLabel removeFromSuperview];
-//        }
-//    }
-//    
-//}
-
-
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer
 {
-    CGPoint velocity = [panGestureRecognizer velocityInView:self.tableViewOrdersDetails];
-    swipeBool=((fabs(velocity.y) < fabs(velocity.x)));
-    refreshBool=(((fabs(velocity.y) > fabs(velocity.x)))&&(self.tableViewOrdersDetails.contentOffset.y==0)&&(velocity.y>0));
-    firstRefresh=YES;
-    
-    return swipeBool||refreshBool;
-    
+    return [pullDownToRefreshObject gestureRecognizerShouldBegin:panGestureRecognizer andView:self.tableViewOrdersDetails];
 }
 -(void)swipeHandler:(UIPanGestureRecognizer *)sender
 {
-    
-    static CGFloat y0=0.0;
-    static CGFloat y=0.0;
-    CGPoint touchLocation = [sender locationInView:sender.view];
-    
-    NSLog(@"x=%f",touchLocation.x);
-    
-    if (sender.state == UIGestureRecognizerStateBegan)
-    {
-        if (swipeBool)
-        {
-            isMove=leftMenu.flag==0 && touchLocation.x>30;
-            if (isMove)
-                return;
-        }
-        else if (refreshBool)
-        {
-            y0=touchLocation.y;
-            loadLabel=[[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2, 68, 0, 2)];
-            loadLabel.backgroundColor=[UIColor orangeColor];
-            [self.view addSubview:loadLabel];
-            
-        }
-    }
-    if (sender.state == UIGestureRecognizerStateChanged)
-    {
-        if (swipeBool)
-        {
-            if (isMove)
-                return;
-            CGPoint point;
-            point.x= touchLocation.x- (CGFloat)leftMenu.frame.size.width/2;
-            point.y=leftMenu.center.y;
-            if (point.x>leftMenu.frame.size.width/2)
-            {
-                return;
-            }
-            leftMenu.center=point;
-            
-            leftMenu.flag=1;
-        }
-        else if (refreshBool)
-        {
-            CGPoint point=self.view.center;
-            point.y=68;
-            y=touchLocation.y;
-            CGFloat delta=y-y0;
-            CGFloat unit=self.view.bounds.size.width/150;
-            CGPoint velocity = [sender velocityInView:self.tableViewOrdersDetails];
-            if (delta<150)
-            {
-                if (velocity.y>0)
-                {
-                    loadLabel.bounds=CGRectMake(0,0, delta*unit, 4);
-                    loadLabel.center=point;
-                }
-                else
-                {
-                    [loadLabel removeFromSuperview];
-                }
-                
-            }
-            if (delta>=150&&firstRefresh)
-            {
-                firstRefresh=NO;
-                [self refreshAction];
-                [loadLabel removeFromSuperview];
-            }
-        }
-    }
-    if (sender.state == UIGestureRecognizerStateEnded)
-    {
-        if (swipeBool)
-        {
-            
-            if (isMove)
-                return;
-            isMove=NO;
-            [UIView animateWithDuration:0.5
-                                  delay:0.0
-                                options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-                             animations:^(void)
-             {
-                 CGPoint point;
-                 NSLog(@"\n%f", 2*leftMenu.center.x);
-                 NSLog(@"\n%f",leftMenu.frame.size.width/2);
-                 if (touchLocation.x<=leftMenu.frame.size.width/2)
-                 {
-                     leftMenu.flag=0;
-                     
-                     point.x=(CGFloat)leftMenu.frame.size.width/2*(-1);
-                 }
-                 else if (touchLocation.x>leftMenu.frame.size.width/2)
-                 {
-                     point.x=(CGFloat)leftMenu.frame.size.width/2;
-                     
-                     
-                     leftMenu.flag=1;
-                 }
-                 point.y=leftMenu.center.y;
-                 leftMenu.center=point;
-                 NSLog(@"\n%f",leftMenu.frame.size.width);
-                 
-             }
-                             completion:nil
-             ];
-            
-        }
-        else if (refreshBool)
-        {
-            [loadLabel removeFromSuperview];
-            //            y=touchLocation.y;
-            //            
-            //            if(y-y0>50)
-            //            {
-            //                [self refreshAction];
-            //            }
-        }
-        
-        
-    }
+    [pullDownToRefreshObject swipeHandler:sender andSelf:self andTableView:self.tableViewOrdersDetails andLeftMenu:leftMenu andClassName:NSStringFromClass([self class])];
 }
 
 
@@ -446,6 +187,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    pullDownToRefreshObject=[[PullDownToRefresh alloc] init];
     self.tableViewOrdersDetails.separatorStyle = UITableViewCellSeparatorStyleNone;
     cancelOfAlertNoConIsClicked =YES;
     cancelOfAlertServErrIsClicked=YES;
@@ -453,10 +195,7 @@
    UIPanGestureRecognizer* gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHandler:)];
     gestureRecognizer.delegate=self;
     
-//    UISwipeGestureRecognizer *refreshRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(refreshHandler:)];
-//    refreshRecognizer.delegate=self;
-//    //[refreshRecognizer setDirection:UISwipeGestureRecognizerDirectionDown];
-//     [self.tableViewOrdersDetails addGestureRecognizer:refreshRecognizer];
+
     
     [self.tableViewOrdersDetails addGestureRecognizer:gestureRecognizer];
 
