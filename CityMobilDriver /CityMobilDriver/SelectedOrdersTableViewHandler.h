@@ -17,7 +17,7 @@
 //-(void)deliveryMapp;
 //@end
 
-@interface SelectedOrdersTableViewHandler : UITableView<UITableViewDataSource,UITableViewDelegate>
+@interface SelectedOrdersTableViewHandler : UITableView<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {
     CGFloat heightOfMyOrderCell;
     NSString * idhash;

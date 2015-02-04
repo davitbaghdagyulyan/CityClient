@@ -12,7 +12,7 @@
 #import "CustomCellSelectORDER.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface SelectedOrdersViewController : UIViewController<UIGestureRecognizerDelegate>
+@interface SelectedOrdersViewController : UIViewController<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet GPSIcon *gpsButton;
 @property (strong, nonatomic) IBOutlet SelectedOrdersTableViewHandler *tableViewOrdersDetails;
 @property(nonatomic,strong)NSString * titleString;
@@ -35,4 +35,5 @@
 @property (nonatomic,weak) IBOutlet UIButton* cityButton;
 -(void)setFilter:(NSDictionary *)filter;
 @property(nonatomic,strong)AVAudioPlayer*player;
+-(void)refreshAction;
 @end
