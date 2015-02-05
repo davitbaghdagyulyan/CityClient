@@ -406,11 +406,9 @@ UIAlertAction* cancellation = [UIAlertAction actionWithTitle:@"Отмена" sty
          {
            leftMenu.flag=0;
              self.tableViewOrdersPort.userInteractionEnabled=YES;
-                     }
-         
+             
+         }
      }
-     
-     
      ];
     
 }

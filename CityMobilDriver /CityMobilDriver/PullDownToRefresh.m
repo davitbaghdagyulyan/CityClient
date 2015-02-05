@@ -15,8 +15,10 @@
     BOOL firstRefresh;
     BOOL isMove;
     UILabel*loadLabel;
+    UILabel*upLabel;
     
 }
+
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)panGestureRecognizer andView:(UITableView*)tableView
 {
     CGPoint velocity = [panGestureRecognizer velocityInView:tableView];
@@ -44,9 +46,19 @@
         else if (refreshBool)
         {
             y0=touchLocation.y;
-            loadLabel=[[UILabel alloc] initWithFrame:CGRectMake(currentSelf.view.frame.size.width/2, 68, 0, 2)];
+            loadLabel=[[UILabel alloc] initWithFrame:CGRectMake(currentSelf.view.frame.size.width/2, 68, 0, 4)];
             loadLabel.backgroundColor=[UIColor orangeColor];
             [currentSelf.view addSubview:loadLabel];
+            upLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, currentSelf.view.frame.size.width, 0)];
+            upLabel.backgroundColor=[UIColor colorWithRed:220.f/255 green:220.f/255 blue:220.f/255 alpha:1];
+            upLabel.textColor=[UIColor blackColor];
+            upLabel.textAlignment=NSTextAlignmentCenter;
+            upLabel.text=@"Потините";
+            upLabel.tag=144;
+            upLabel.userInteractionEnabled=YES;
+            [currentSelf.view addSubview:upLabel];
+            //upLabel.transform = CGAffineTransformMakeScale(0,0);
+            [self animationUpToDown:currentSelf.view.frame.size.width];
             
         }
     }
@@ -84,6 +96,7 @@
                 }
                 else
                 {
+                    [self animationDownToUp:currentSelf.view.frame.size.width];
                     [loadLabel removeFromSuperview];
                 }
                 
@@ -99,7 +112,9 @@
                 {
                     [(SelectedOrdersViewController*)currentSelf refreshAction];
                 }
-               [loadLabel removeFromSuperview];
+                [self animationDownToUp:currentSelf.view.frame.size.width];
+                [loadLabel removeFromSuperview];
+              
             }
         }
     }
@@ -143,17 +158,51 @@
         }
         else if (refreshBool)
         {
+            [self animationDownToUp:currentSelf.view.frame.size.width];
             [loadLabel removeFromSuperview];
-            //            y=touchLocation.y;
-            //            
-            //            if(y-y0>50)
-            //            {
-            //                [self refreshAction];
-            //            }
         }
         
         
     }
  
 }
+
+-(void)animationUpToDown:(CGFloat)width
+{
+   
+    {
+        [UIView animateWithDuration:0.1
+                              delay:0.0
+                            options: 0
+                         animations:^(void)
+         {
+            
+             upLabel.frame=CGRectMake(0, 0,width, 67);
+             
+         }
+                         completion:nil];
+    }
+
+}
+
+-(void)animationDownToUp:(CGFloat)width
+{
+    
+    {
+        [UIView animateWithDuration:0.8
+                              delay:0
+                            options: UIViewAnimationOptionTransitionFlipFromBottom
+                         animations:^(void)
+         {
+             
+             upLabel.frame=CGRectMake(0, -67,width, 67);
+             
+         }
+                         completion:^(BOOL finished){
+                             [upLabel removeFromSuperview];
+                         }];
+    }
+    
+}
+
 @end
